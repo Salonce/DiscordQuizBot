@@ -1,20 +1,20 @@
 [
 {
-    "question": "Which of the following components are included in the JDK but not in the JRE?",
-    "correct_answers": ["Debugger", "Compiler", "Document creator", "Java Archive Tool", "Java Disassembler", "Java Dependency Analysis Tool", "Java Packager"],
-    "incorrect_answers": ["Java Virtual Machine", "Integrated Development Environment", "Java Runtime Environment", "Garbage Collector", "Memory Management tools", "Plugin manager", "JavaFX", "Application Server", "Web server"],
+    "question": "Which of the following components is included in the JDK but not in the JRE?",
+    "correctAnswers": ["Debugger", "Compiler", "Document creator", "Java Archive Tool", "Java Disassembler", "Java Dependency Analysis Tool", "Java Packager"],
+    "incorrectAnswers": ["Java Virtual Machine", "Integrated Development Environment", "Java Runtime Environment", "Garbage Collector", "Memory Management tools", "Plugin manager", "JavaFX", "Application Server", "Web server"],
     "explanation": "JDK includes JRE and development tools: Compiler, Debugger, Javadoc, Java Archive Tool, Java Disssembler, Java Dependency Analysis Tool and Java Packager."
 },
 {
     "question": "What truly makes Java platform independent?",
-    "correct_answers": ["Bytecode"],
-    "incorrect_answers": ["Native Code Compilation", "Java Runtime Environment (JRE)", "Java Development Kit", "Class Loader"],
+    "correctAnswers": ["Bytecode"],
+    "incorrectAnswers": ["Native Code Compilation", "Java Runtime Environment (JRE)", "Java Development Kit", "Class Loader"],
     "explanation": "Bytecode into which java source code is compiled makes Java platform independent, because it can be executed on any system with compatible JVM."
 },
 {
     "question": "What is classloader responsible for?",
-    "correct_answers": ["It dynamically loads java classes and interfaces to JVM during the execution of bytecode."],
-    "incorrect_answers": ["It dynamically loads java classes and interfaces to JDK during compilation process.", "It dynamically loads java classes but not interfaces during execution of bytecode.", "It dynamically loads java classes abut not interfaces to JDK during compilation process."],
+    "correctAnswers": ["It dynamically loads java classes and interfaces to JVM during the execution of bytecode."],
+    "incorrectAnswers": ["It dynamically loads java classes and interfaces to JDK during compilation process.", "It dynamically loads java classes but not interfaces during execution of bytecode.", "It dynamically loads java classes abut not interfaces to JDK during compilation process."],
     "explanation": "Java classloader loads classes and interfaces into the JVM memory - specifically Class (Method) Area during runtime, so during execution of the bytecode and not during the compilation process."
 }
 ]

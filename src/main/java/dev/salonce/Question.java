@@ -3,13 +3,43 @@ package dev.salonce;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
+import java.util.*;
 
 @Getter
 @Setter
 public class Question {
+
     private String question;
     private List<String> correctAnswers;
-    private List<String> wrongAnswers;
+    private List<String> incorrectAnswers;
     private String explanation;
+
+
+    public List<Answer> getAnswers(){
+
+        //make an answer list
+        List<Answer> answers = new ArrayList<>();
+
+        //add correct answers
+        Random rand = new Random();
+        int num = rand.nextInt(correctAnswers.size());
+        answers.add(new Answer(correctAnswers.get(num), true));
+
+        //add incorrect answers
+        Set<Integer> set = new HashSet();
+        while (set.size() != 3){
+            num = rand.nextInt(incorrectAnswers.size());
+            set.add(num);
+        }
+
+        for (int i : set){
+            answers.add(new Answer(incorrectAnswers.get(i), false));
+        }
+
+        //shuffle the list
+        Collections.shuffle(answers);
+
+        return answers;
+    }
 }
+
