@@ -1,4 +1,4 @@
-package dev.salonce;
+package dev.salonce.discordQuizBot;
 
 import lombok.Getter;
 import lombok.Setter;

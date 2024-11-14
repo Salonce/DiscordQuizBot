@@ -1,4 +1,4 @@
-package dev.salonce;
+package dev.salonce.discordQuizBot;
 
 public record Answer(String answer, boolean correctness) {
 }
