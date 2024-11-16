@@ -57,7 +57,6 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 		final DiscordClient client = DiscordClient.create(discordBotToken);
 		final GatewayDiscordClient gateway = client.login().block();
 
-
 		gateway.on(MessageCreateEvent.class).subscribe(event -> {
 			messageHandlerChain.handle(new Message(event.getMessage()));
 		});
