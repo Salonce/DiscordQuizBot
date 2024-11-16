@@ -27,7 +27,8 @@ public class Question {
 
         //add incorrect answers
         Set<Integer> set = new HashSet();
-        while (set.size() != 3){
+        int size = Math.min(3, incorrectAnswers.size());
+        while (set.size() != size){
             num = rand.nextInt(incorrectAnswers.size());
             set.add(num);
         }
