@@ -10,6 +10,7 @@ import discord4j.core.GatewayDiscordClient;
 import discord4j.core.event.domain.message.MessageCreateEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,36 +20,23 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-@RequiredArgsConstructor
+
 @SpringBootApplication
 public class DiscordQuizBotApplication implements CommandLineRunner {
 
+	public DiscordQuizBotApplication(MessageHandlerChain messageHandlerChain, @Qualifier("javaQuestions") List<Question> javaQuestions){
+		this.messageHandlerChain = messageHandlerChain;
+		this.javaQuestions = javaQuestions;
+	}
 	private final MessageHandlerChain messageHandlerChain;
+	private final List<Question> javaQuestions;
 
 	@Value("${discord.bot.token}")
 	private String discordBotToken;
 
-
-
 	public static void main(String[] args) throws IOException {
+
 		SpringApplication.run(DiscordQuizBotApplication.class, args);
-
-
-		ObjectMapper mapper = new ObjectMapper();
-		File file = new File("src/main/resources/java.json");
-
-		Question[] questions = mapper.readValue(file, Question[].class);
-
-
-		for (Question question : questions) {
-			System.out.println(question.getQuestion());
-			List<Answer> answers = question.getAnswers();
-
-			for (Answer answer : answers) {
-				System.out.println(answer.answer() + ", " + answer.correctness());
-			}
-			System.out.println();
-		}
 	}
 
 	@Override

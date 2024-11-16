@@ -1,56 +1,56 @@
 [
     {
         "question": "Which of the following components are included in the JDK but not in the JRE?",
-        "correct_answers": ["Debugger", "Compiler", "Document creator", "Java Archive Tool", "Java Disassembler", "Java Dependency Analysis Tool", "Java Packager"],
-        "incorrect_answers": ["Java Virtual Machine", "Integrated Development Environment", "Java Runtime Environment", "Garbage Collector", "Memory Management tools", "Plugin manager", "JavaFX", "Application Server", "Web server"],
+        "correctAnswers": ["Debugger", "Compiler", "Document creator", "Java Archive Tool", "Java Disassembler", "Java Dependency Analysis Tool", "Java Packager"],
+        "incorrectAnswers": ["Java Virtual Machine", "Integrated Development Environment", "Java Runtime Environment", "Garbage Collector", "Memory Management tools", "Plugin manager", "JavaFX", "Application Server", "Web server"],
         "explanation": "JDK includes JRE and development tools: Compiler, Debugger, Javadoc, Java Archive Tool, Java Disssembler, Java Dependency Analysis Tool and Java Packager."
     },
     {
         "question": "What truly makes Java platform independent?",
-        "correct_answers": ["Bytecode"],
-        "incorrect_answers": ["Native Code Compilation", "Java Runtime Environment (JRE)", "Java Development Kit", "Class Loader"],
+        "correctAnswers": ["Bytecode"],
+        "incorrectAnswers": ["Native Code Compilation", "Java Runtime Environment (JRE)", "Java Development Kit", "Class Loader"],
         "explanation": "Bytecode into which java source code is compiled makes Java platform independent, because it can be executed on any system with compatible JVM."
     },
     {
         "question": "What is classloader responsible for?",
-        "correct_answers": ["It dynamically loads java classes and interfaces to JVM during the execution of bytecode."],
-        "incorrect_answers": ["It dynamically loads java classes and interfaces to JDK during compilation process.", "It dynamically loads java classes but not interfaces during execution of bytecode.", "It dynamically loads java classes abut not interfaces to JDK during compilation process."],
+        "correctAnswers": ["It dynamically loads java classes and interfaces to JVM during the execution of bytecode."],
+        "incorrectAnswers": ["It dynamically loads java classes and interfaces to JDK during compilation process.", "It dynamically loads java classes but not interfaces during execution of bytecode.", "It dynamically loads java classes abut not interfaces to JDK during compilation process."],
         "explanation": "Java classloader loads classes and interfaces into the JVM memory - specifically Class (Method) Area during runtime, so during execution of the bytecode and not during the compilation process."
     },
     {
         "question": "What is Just-in-Time (JIT) responsible for?",
-        "correct_answers": ["Compiling bytecode to the source code.", "Increasing performace of the program at runtime."],
-        "incorrect_answers": ["Compiling source code to bytecode.", "Reclaiming objects' memory just in time before memory storage is full.", "Loading java classes into memory right before execution."],
+        "correctAnswers": ["Compiling bytecode to the source code.", "Increasing performace of the program at runtime."],
+        "incorrectAnswers": ["Compiling source code to bytecode.", "Reclaiming objects' memory just in time before memory storage is full.", "Loading java classes into memory right before execution."],
         "explanation": "Just-in-Time compiler is a part of JVM and works together with an interpreter. It compiles bytecode into native machine code during runtime to increase program's performance."
     },
     {
         "question": "Which one is NOT a name of a java memory storage?",
-        "correct_answers": ["Object Area", "Data Queue", "Binary Storage Tree", "Solid memory", "References register"],
-        "incorrect_answers": ["Class (Method) Area", "Heap", "Stack", "PC Register", "Native Method Stack"],
+        "correctAnswers": ["Object Area", "Data Queue", "Binary Storage Tree", "Solid memory", "References register"],
+        "incorrectAnswers": ["Class (Method) Area", "Heap", "Stack", "PC Register", "Native Method Stack"],
         "explanation": ""
     },
     {
         "question": "Which one is NOT a name of a java memory storage?",
-        "correct_answers": ["Object Area", "Data Queue", "Binary Storage Tree", "Solid memory", "References register"],
-        "incorrect_answers": ["Class (Method) Area", "Heap", "Stack", "PC Register", "Native Method Stack"],
+        "correctAnswers": ["Object Area", "Data Queue", "Binary Storage Tree", "Solid memory", "References register"],
+        "incorrectAnswers": ["Class (Method) Area", "Heap", "Stack", "PC Register", "Native Method Stack"],
         "explanation": ""
     },
     {
         "question": "Is JVM platform independent?",
-        "correct_answers": ["No"],
-        "incorrect_answers": ["Yes"],
+        "correctAnswers": ["No"],
+        "incorrectAnswers": ["Yes"],
         "explanation": "JVM is platform dependent. It translates bytecode to specific machine code based on implementation. Thanks to that feature, java language itself is platform independent."
     },
     {
         "question": "Is Java language platform independent?",
-        "correct_answers": ["Yes"],
-        "incorrect_answers": ["No"],
+        "correctAnswers": ["Yes"],
+        "incorrectAnswers": ["No"],
         "explanation": "Yes, Java language is platform independent. Java compilator translates source code into bytecode, which is available to various implementations of Java Virtual Machine (JVM). JVM, which is platform dependent, translates bytecode to specific machine code based on its implementation."
     },
     {
         "question": "Is protected access modifier more restrictive than no modifier?",
-        "correct_answers": ["No"],
-        "incorrect_answers": ["Yes"],
+        "correctAnswers": ["No"],
+        "incorrectAnswers": ["Yes"],
         "explanation": "Protected fields are visible in subclasses, while fields without modifiers aren't."
     }
 ]
