@@ -28,12 +28,7 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 	@Value("${discord.bot.token}")
 	private String discordBotToken;
 
-
-
 	public static void main(String[] args) throws IOException {
-		SpringApplication.run(DiscordQuizBotApplication.class, args);
-
-
 		ObjectMapper mapper = new ObjectMapper();
 		File file = new File("src/main/resources/java.json");
 
@@ -49,6 +44,8 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 			}
 			System.out.println();
 		}
+
+		SpringApplication.run(DiscordQuizBotApplication.class, args);
 	}
 
 	@Override
