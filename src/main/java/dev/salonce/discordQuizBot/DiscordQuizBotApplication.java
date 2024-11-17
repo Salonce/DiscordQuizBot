@@ -1,22 +1,17 @@
 package dev.salonce.discordQuizBot;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.salonce.discordQuizBot.Core.Answer;
 import dev.salonce.discordQuizBot.Core.Message;
-import dev.salonce.discordQuizBot.Core.Question;
+import dev.salonce.discordQuizBot.Core.RawQuestion;
 import dev.salonce.discordQuizBot.MessageHandlers.MessageHandlerChain;
 import discord4j.core.DiscordClient;
 import discord4j.core.GatewayDiscordClient;
 import discord4j.core.event.domain.message.MessageCreateEvent;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -24,12 +19,12 @@ import java.util.List;
 @SpringBootApplication
 public class DiscordQuizBotApplication implements CommandLineRunner {
 
-	public DiscordQuizBotApplication(MessageHandlerChain messageHandlerChain, @Qualifier("javaQuestions") List<Question> javaQuestions){
+	public DiscordQuizBotApplication(MessageHandlerChain messageHandlerChain, @Qualifier("javaQuestions") List<RawQuestion> javaQuestions){
 		this.messageHandlerChain = messageHandlerChain;
 		this.javaQuestions = javaQuestions;
 	}
 	private final MessageHandlerChain messageHandlerChain;
-	private final List<Question> javaQuestions;
+	private final List<RawQuestion> javaQuestions;
 
 	@Value("${discord.bot.token}")
 	private String discordBotToken;
