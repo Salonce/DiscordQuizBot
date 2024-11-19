@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.util.List;
 
 @Getter
-public class Match{
+public class Match implements Runnable{
 
     private final List<Player> players;
     private final List<Question> questions;
@@ -18,5 +18,8 @@ public class Match{
         this.players = players;
     }
 
+    @Override
+    public void run() {
 
+    }
 }

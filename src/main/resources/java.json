@@ -27,13 +27,13 @@
         "question": "Which one is NOT a name of a java memory storage?",
         "correctAnswers": ["Object Area", "Data Queue", "Binary Storage Tree", "Solid memory", "References register"],
         "incorrectAnswers": ["Class (Method) Area", "Heap", "Stack", "PC Register", "Native Method Stack"],
-        "explanation": ""
+        "explanation": "Java memory storages are the following: Class(method) Area, Heap, Stack, Program Counter Register, Native Method Stack."
     },
     {
         "question": "Which one is NOT a name of a java memory storage?",
         "correctAnswers": ["Object Area", "Data Queue", "Binary Storage Tree", "Solid memory", "References register"],
         "incorrectAnswers": ["Class (Method) Area", "Heap", "Stack", "PC Register", "Native Method Stack"],
-        "explanation": ""
+        "explanation": "Java memory storages are the following: Class(method) Area, Heap, Stack, Program Counter Register, Native Method Stack."
     },
     {
         "question": "Is JVM platform independent?",
@@ -53,4 +53,5 @@
         "incorrectAnswers": ["Yes"],
         "explanation": "Protected fields are visible in subclasses, while fields without modifiers aren't."
     }
+
 ]
