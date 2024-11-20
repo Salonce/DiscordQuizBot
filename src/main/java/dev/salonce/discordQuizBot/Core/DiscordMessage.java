@@ -1,5 +1,6 @@
 package dev.salonce.discordQuizBot.Core;
 
+import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.Getter;
 
@@ -7,8 +8,8 @@ import java.util.NoSuchElementException;
 
 
 @Getter
-public class Message {
-    public Message(discord4j.core.object.entity.Message message) {
+public class DiscordMessage {
+    public DiscordMessage(Message message) {
         try {
             //author, maybe change optional and throw
             this.id = message.getAuthor().get().getId().asLong();
