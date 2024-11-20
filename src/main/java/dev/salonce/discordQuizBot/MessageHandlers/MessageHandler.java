@@ -1,7 +1,7 @@
 package dev.salonce.discordQuizBot.MessageHandlers;
 
-import dev.salonce.discordQuizBot.Core.Message;
+import dev.salonce.discordQuizBot.Core.DiscordMessage;
 
 public interface MessageHandler {
-    boolean handleMessage(Message message);
+    boolean handleMessage(DiscordMessage discordMessage);
 }

@@ -1,21 +1,24 @@
 package dev.salonce.discordQuizBot.Util;
 
-import dev.salonce.discordQuizBot.Core.Message;
+import dev.salonce.discordQuizBot.Core.DiscordMessage;
+import discord4j.core.object.entity.Message;
 import discord4j.core.spec.EmbedCreateSpec;
+import discord4j.core.spec.MessageCreateMono;
 import org.springframework.stereotype.Component;
+import reactor.core.publisher.Mono;
 
 @Component
 public class MessageSender {
 
-    public void sendMessage(Message incomingMessage, String text) {
+    public Mono<Message> sendMessage(DiscordMessage incomingDiscordMessage, String text) {
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .author(incomingMessage.getUserName(), null, incomingMessage.getUserAvatarUrl())
+                .author(incomingDiscordMessage.getUserName(), null, incomingDiscordMessage.getUserAvatarUrl())
                 .title(text)
                 .build();
-        sendMessage(incomingMessage, embed);
+        return sendMessage(incomingDiscordMessage, embed);
     }
 
-    private void sendMessage(Message message, EmbedCreateSpec embedMessage) {
-        message.getChannel().createMessage(embedMessage).block();
+    public Mono<Message> sendMessage(DiscordMessage discordMessage, EmbedCreateSpec embedMessage) {
+        return discordMessage.getChannel().createMessage(embedMessage);
     }
 }

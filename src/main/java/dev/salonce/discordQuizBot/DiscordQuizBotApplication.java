@@ -1,6 +1,6 @@
 package dev.salonce.discordQuizBot;
 
-import dev.salonce.discordQuizBot.Core.Message;
+import dev.salonce.discordQuizBot.Core.DiscordMessage;
 import dev.salonce.discordQuizBot.Core.RawQuestion;
 import dev.salonce.discordQuizBot.MessageHandlers.MessageHandlerChain;
 import discord4j.core.DiscordClient;
@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
 
 import java.io.IOException;
 import java.util.List;
@@ -41,10 +43,15 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 		final GatewayDiscordClient gateway = client.login().block();
 
 		gateway.on(MessageCreateEvent.class)
-				.map(event -> event.getMessage())
-				.map(discordMessage -> new Message(discordMessage))
-				.subscribe(message -> messageHandlerChain.handle(message));
-
+				.map(MessageCreateEvent::getMessage)
+				.map(DiscordMessage::new)
+				.flatMap(message -> Mono.fromCallable(() -> {
+									messageHandlerChain.handle(message);
+									return message;
+								})
+								.subscribeOn(Schedulers.boundedElastic()),
+						10)  // Process up to 10 messages concurrently
+				.subscribe();
 
 //		gateway.on(MessageCreateEvent.class).subscribe(event -> {
 //			messageHandlerChain.handle(new Message(event.getMessage()));
