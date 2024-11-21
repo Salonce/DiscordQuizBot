@@ -9,6 +9,7 @@ import reactor.core.publisher.Mono;
 @Component
 public class MessageSender {
 
+
     public Mono<Message> sendMessage(DiscordMessage incomingDiscordMessage, String text) {
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .author(incomingDiscordMessage.getUserName(), null, incomingDiscordMessage.getUserAvatarUrl())
