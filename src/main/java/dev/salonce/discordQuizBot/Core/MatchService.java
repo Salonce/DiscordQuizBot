@@ -13,7 +13,7 @@ public class MatchService {
     private final MessageSender messageSender;
 
     public void startMatch(Match match) {
-        messageSender.sendChannelMessage(match.getMessageChannel(), "Match participants: " + match.getPlayers().subscribe());
+        messageSender.sendChannelMessage(match.getMessageChannel(), "Match participants: " + match.getPlayers()).subscribe();
         // Additional quiz logic
     }
 
