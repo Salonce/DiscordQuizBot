@@ -1,22 +1,21 @@
 package dev.salonce.discordQuizBot.MessageHandlers.handlers;
 
 import dev.salonce.discordQuizBot.Core.DiscordMessage;
-import dev.salonce.discordQuizBot.Core.Match;
 import dev.salonce.discordQuizBot.Core.MatchMaker;
+import dev.salonce.discordQuizBot.Core.MatchService;
+import dev.salonce.discordQuizBot.Core.Player;
 import dev.salonce.discordQuizBot.MessageHandlers.MessageHandler;
 import dev.salonce.discordQuizBot.Util.MessageSender;
 import discord4j.core.object.entity.Message;
+import discord4j.core.object.entity.User;
+import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.object.reaction.ReactionEmoji;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import reactor.core.publisher.Signal;
-import reactor.core.scheduler.Scheduler;
-import reactor.core.scheduler.Schedulers;
 
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
 
 @Component("startQuiz")
@@ -24,22 +23,29 @@ import java.util.List;
 public class StartQuiz implements MessageHandler {
     private final MessageSender messageSender;
     private final MatchMaker matchMaker;
+    private final MatchService matchService;
 
     @Override
     public boolean handleMessage(DiscordMessage discordMessage) {
         if (discordMessage.getContent().equalsIgnoreCase("qq quiz")) {
-            Match match;
-
             messageSender.sendMessage(discordMessage, "Starting quiz. Click the door button to participate.")
-                    .flatMap(message -> addDoorReaction(message) // Add emojis asynchronously
-                            .thenReturn(message))
-//                    .delayElement(Duration.ofSeconds(5))
-//                    .flatMap(message -> message.addReaction(ReactionEmoji.unicode("👍")).thenReturn(message))
-//
+                    .flatMap(message -> addDoorReaction(message).thenReturn(message))
                     .delayElement(Duration.ofSeconds(10))
-                    .flatMapMany(message -> message.getReactors(ReactionEmoji.unicode("\uD83D\uDEAA")))
-                    //.subscribeOn(Schedulers.boundedElastic())
+                    .flatMap(message ->
+                            message.getReactors(ReactionEmoji.unicode("\uD83D\uDEAA"))
+                                    .map(user -> user.getId().asLong())
+                                    .map(id -> new Player(id))
+                                    .collectList()
+                                    .zipWith(message.getChannel())
+                                    .map(tuple -> {
+                                        List<Player> players = tuple.getT1();
+                                        MessageChannel channel = tuple.getT2();
+                                        return matchMaker.javaMatch(players, channel);
+                                    })
+                    )
+                    .doOnNext(matchService::startMatch)
                     .subscribe();
+
             return true;
         }
 
@@ -53,7 +59,6 @@ public class StartQuiz implements MessageHandler {
                 .concatMap(emoji -> message.addReaction(ReactionEmoji.unicode(emoji)))
                 .then();
     }
-
 
 //    public Mono<Void> addReactions(Message message, int number) {
 //        String[] emojiList = {"🇦", "🇧", "🇨", "🇩"};
