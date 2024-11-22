@@ -1,4 +1,4 @@
-package dev.salonce.discordQuizBot.Core;
+package dev.salonce.discordQuizBot.Core.Matches;
 
 import discord4j.core.object.entity.User;
 import lombok.Getter;

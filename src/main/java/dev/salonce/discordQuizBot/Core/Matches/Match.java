@@ -1,5 +1,6 @@
-package dev.salonce.discordQuizBot.Core;
+package dev.salonce.discordQuizBot.Core.Matches;
 
+import dev.salonce.discordQuizBot.Core.Questions.Question;
 import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.Getter;
 

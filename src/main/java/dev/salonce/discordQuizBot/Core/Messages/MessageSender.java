@@ -1,14 +1,8 @@
-package dev.salonce.discordQuizBot.Util;
+package dev.salonce.discordQuizBot.Core.Messages;
 
-import dev.salonce.discordQuizBot.Core.DiscordMessage;
-import discord4j.common.util.Snowflake;
-import discord4j.core.object.component.ActionRow;
-import discord4j.core.object.component.Button;
 import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.spec.EmbedCreateSpec;
-import discord4j.core.spec.MessageCreateSpec;
-import discord4j.rest.util.Color;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 

@@ -1,4 +1,4 @@
-package dev.salonce.discordQuizBot.Core;
+package dev.salonce.discordQuizBot.Core.Questions;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Component;
@@ -29,9 +29,5 @@ public class QuestionRepository {
 
 //    public List<RawQuestion> getDockerQuestions() {
 //        return questionMap.getOrDefault("docker", Collections.emptyList());
-//    }
-
-//    public List<RawQuestion> getQuestionsByTopic(String topic) {
-//        return questionMap.getOrDefault(topic, Collections.emptyList());
 //    }
 }
