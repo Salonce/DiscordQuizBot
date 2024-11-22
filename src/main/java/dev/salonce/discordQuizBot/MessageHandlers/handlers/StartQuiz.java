@@ -6,10 +6,14 @@ import dev.salonce.discordQuizBot.Core.MatchService;
 import dev.salonce.discordQuizBot.Core.Player;
 import dev.salonce.discordQuizBot.MessageHandlers.MessageHandler;
 import dev.salonce.discordQuizBot.Util.MessageSender;
+import discord4j.core.object.component.ActionRow;
+import discord4j.core.object.component.Button;
 import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.User;
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.object.reaction.ReactionEmoji;
+import discord4j.core.spec.EmbedCreateSpec;
+import discord4j.core.spec.MessageCreateSpec;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
@@ -30,11 +34,11 @@ public class StartQuiz implements MessageHandler {
         if (discordMessage.getContent().equalsIgnoreCase("qq quiz")) {
             messageSender.sendMessage(discordMessage, "Starting quiz. Click the door button to participate.")
                     .flatMap(message -> addDoorReaction(message).thenReturn(message))
-                    .delayElement(Duration.ofSeconds(10))
+                    .delayElement(Duration.ofSeconds(5))
                     .flatMap(message ->
                             message.getReactors(ReactionEmoji.unicode("\uD83D\uDEAA"))
-                                    .map(user -> user.getId().asLong())
-                                    .map(id -> new Player(id))
+                                    .filter(user -> !user.isBot())
+                                    .map(Player::new)
                                     .collectList()
                                     .zipWith(message.getChannel())
                                     .map(tuple -> {
@@ -59,6 +63,7 @@ public class StartQuiz implements MessageHandler {
                 .concatMap(emoji -> message.addReaction(ReactionEmoji.unicode(emoji)))
                 .then();
     }
+
 
 //    public Mono<Void> addReactions(Message message, int number) {
 //        String[] emojiList = {"🇦", "🇧", "🇨", "🇩"};

@@ -1,14 +1,15 @@
 package dev.salonce.discordQuizBot.Core;
 
+import discord4j.core.object.entity.User;
 import lombok.Getter;
 
 @Getter
 public class Player{
-    public Player(Long id){
-        this.id = id;
+    public Player(User user){
+        this.user = user;
         this.points = 0;
     }
-    private final Long id;
+    private final User user;
     private int points;
 
     public void addPoint(){
