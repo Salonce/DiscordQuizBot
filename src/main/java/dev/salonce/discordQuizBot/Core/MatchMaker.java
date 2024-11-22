@@ -1,24 +1,30 @@
 package dev.salonce.discordQuizBot.Core;
 
-import dev.salonce.discordQuizBot.Util.MessageSender;
 import discord4j.core.object.entity.channel.MessageChannel;
-import lombok.RequiredArgsConstructor;
+import lombok.Getter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-@RequiredArgsConstructor
 @Component
 public class MatchMaker {
 
     private final QuestionFactory questionFactory;
+    @Getter
+    private final Set<MessageChannel> playingChannels;
+
+    @Autowired
+    public MatchMaker(QuestionFactory questionFactory){
+        this.questionFactory = questionFactory;
+        playingChannels = new HashSet<>();
+    }
 
     public Match javaMatch(List<Player> players, MessageChannel messageChannel){
         List<Question> questions = questionFactory.javaQuestions();
         return new Match(questions, players, messageChannel);
     }
-
-
 
 }

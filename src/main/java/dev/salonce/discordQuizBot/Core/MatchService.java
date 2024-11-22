@@ -19,7 +19,7 @@ public class MatchService {
 
     public void startMatch(Match match) {
         messageSender.sendChannelMessage(match.getMessageChannel(), matchParticipants(match.getPlayers())).subscribe();
-        writeSpecMessage(match.getMessageChannel(), matchParticipants(match.getPlayers()));
+        sendSpecMessage(match.getMessageChannel(), matchParticipants(match.getPlayers()));
     }
 
 
@@ -41,7 +41,7 @@ public class MatchService {
     }
 
 
-    public void writeSpecMessage(MessageChannel messageChannel, String participants){
+    public void sendSpecMessage(MessageChannel messageChannel, String participants){
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("Participants")
                 //.description("Some participants")

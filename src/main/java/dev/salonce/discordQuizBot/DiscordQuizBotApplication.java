@@ -3,9 +3,13 @@ package dev.salonce.discordQuizBot;
 import dev.salonce.discordQuizBot.Core.DiscordMessage;
 import dev.salonce.discordQuizBot.Core.RawQuestion;
 import dev.salonce.discordQuizBot.MessageHandlers.MessageHandlerChain;
+import discord4j.common.util.Snowflake;
 import discord4j.core.DiscordClient;
 import discord4j.core.GatewayDiscordClient;
+import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import discord4j.core.event.domain.message.MessageCreateEvent;
+import discord4j.core.object.entity.channel.Channel;
+import discord4j.core.object.entity.channel.MessageChannel;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -53,5 +57,18 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 		}
 
 
-	}
+        gateway.on(ButtonInteractionEvent.class, event -> {
+            String customId = event.getCustomId();
+            Snowflake userId = event.getInteraction().getUser().getId();
+
+//			Mono<MessageChannel> monoChannel = event.getMessage().get().getChannel();
+//			Snowflake channelId = monoChannel.block().getId();
+
+            return switch (customId) {
+                case "join" -> handleJoin(event, userId);
+                case "leave" -> handleLeave(event, userId);
+                default -> event.reply("Unknown button interaction").withEphemeral(true);
+            };
+        });
+    }
 }
