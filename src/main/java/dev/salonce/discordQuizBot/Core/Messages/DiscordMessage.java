@@ -1,4 +1,4 @@
-package dev.salonce.discordQuizBot.Core;
+package dev.salonce.discordQuizBot.Core.Messages;
 
 import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.channel.MessageChannel;

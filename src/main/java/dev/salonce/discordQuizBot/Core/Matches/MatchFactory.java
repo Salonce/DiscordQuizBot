@@ -1,24 +1,22 @@
-package dev.salonce.discordQuizBot.Core;
+package dev.salonce.discordQuizBot.Core.Matches;
 
-import dev.salonce.discordQuizBot.Util.MessageSender;
+import dev.salonce.discordQuizBot.Core.Questions.Question;
+import dev.salonce.discordQuizBot.Core.Questions.QuestionFactory;
 import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 import java.util.List;
 
 @RequiredArgsConstructor
 @Component
-public class MatchMaker {
+public class MatchFactory {
 
     private final QuestionFactory questionFactory;
 
-    public Match javaMatch(List<Player> players, MessageChannel messageChannel){
+    public Match javaMatch(){
         List<Question> questions = questionFactory.javaQuestions();
-        return new Match(questions, players, messageChannel);
+        return new Match(questions);
     }
-
-
 
 }

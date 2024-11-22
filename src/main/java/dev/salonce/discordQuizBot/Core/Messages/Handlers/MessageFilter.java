@@ -1,12 +1,10 @@
-package dev.salonce.discordQuizBot.MessageHandlers.handlers;
+package dev.salonce.discordQuizBot.Core.Messages.Handlers;
 
-import dev.salonce.discordQuizBot.Core.DiscordMessage;
-import dev.salonce.discordQuizBot.MessageHandlers.MessageHandler;
-import dev.salonce.discordQuizBot.Util.MessageSender;
+import dev.salonce.discordQuizBot.Core.Messages.DiscordMessage;
+import dev.salonce.discordQuizBot.Core.Messages.MessageHandler;
+import dev.salonce.discordQuizBot.Core.Messages.MessageSender;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import reactor.core.publisher.Mono;
-import reactor.core.scheduler.Schedulers;
 
 import static java.lang.Thread.sleep;
 
@@ -19,7 +17,7 @@ public class MessageFilter implements MessageHandler {
     public boolean handleMessage(DiscordMessage discordMessage){
         if (discordMessage.getContent().equalsIgnoreCase("qq")) {
 
-            messageSender.sendMessage(discordMessage, "Empty request").block();
+            messageSender.sendMessage(discordMessage, "Empty request").subscribe();
 //            Mono.just(discordMessage).publishOn(Schedulers.boundedElastic())
 //                            .doOnEach(message -> messageSender.sendMessage(discordMessage, "Empty request"));
 //

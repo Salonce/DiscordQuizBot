@@ -1,16 +1,13 @@
-package dev.salonce.discordQuizBot.Util;
+package dev.salonce.discordQuizBot.Core.Messages;
 
-import dev.salonce.discordQuizBot.Core.DiscordMessage;
 import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.spec.EmbedCreateSpec;
-import discord4j.core.spec.MessageCreateSpec;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 @Component
 public class MessageSender {
-
 
 
     public Mono<Message> sendFullChannelMessage(MessageChannel messageChannel, String title, String text) {
