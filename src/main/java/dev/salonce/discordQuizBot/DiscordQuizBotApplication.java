@@ -8,11 +8,13 @@ import discord4j.core.DiscordClient;
 import discord4j.core.GatewayDiscordClient;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import discord4j.core.event.domain.message.MessageCreateEvent;
+import discord4j.core.object.entity.channel.MessageChannel;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import reactor.core.publisher.Mono;
 
 import java.io.IOException;
 import java.util.List;
@@ -49,22 +51,25 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 					.doOnNext(messageHandlerChain::handle)
 					.subscribe();
 
+			gateway.on(ButtonInteractionEvent.class, event -> {
+				String customId = event.getCustomId();
+				MessageChannel messageChannel = event.getMessage().get().getChannel().blockOptional().orElse(null);
+				if (messageChannel != null) {
+					System.out.println("Interaction channel doesn't exist. Something went wrong.");
+				}
+
+				return switch (customId) {
+//                	case "joinQuiz" -> handleJoin(event, userId);
+					case "joinQuiz" -> event.reply("You've joined the quiz.").withEphemeral(true);
+					case "leaveQuiz" -> event.reply("You've left the quiz.").withEphemeral(false);
+					default -> event.reply("Unknown button interaction").withEphemeral(true);
+				};
+			}).subscribe();
+
 			gateway.onDisconnect().block();
 		}
 
 
-//        gateway.on(ButtonInteractionEvent.class, event -> {
-//            String customId = event.getCustomId();
-//            Snowflake userId = event.getInteraction().getUser().getId();
-//
-////			Mono<MessageChannel> monoChannel = event.getMessage().get().getChannel();
-////			Snowflake channelId = monoChannel.block().getId();
-//
-//            return switch (customId) {
-//                case "join" -> handleJoin(event, userId);
-//                case "leave" -> handleLeave(event, userId);
-//                default -> event.reply("Unknown button interaction").withEphemeral(true);
-//            };
-//        });
+
     }
 }

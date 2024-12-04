@@ -1,10 +1,10 @@
 package dev.salonce.discordQuizBot.Core.Matches;
 
 import dev.salonce.discordQuizBot.Core.Messages.MessageSender;
-import discord4j.common.util.Snowflake;
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
 import discord4j.core.object.entity.Message;
+import discord4j.core.object.entity.User;
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.spec.EmbedCreateSpec;
 import discord4j.core.spec.MessageCreateSpec;
@@ -15,17 +15,28 @@ import reactor.core.publisher.Mono;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
 public class QuizManager {
 
-    private final HashMap<MessageChannel, Match> quizzes;
+    private final Map<MessageChannel, Match> quizzes;
 
     public QuizManager(){
         quizzes = new HashMap<>();
     }
 
+    public void addUserToMatch(MessageChannel messageChannel, User user){
+        if (quizzes.containsKey(messageChannel)){
+            if (quizzes.get(messageChannel).addPlayer(user)) {
+                //send message to the message channel that user is added
+            }
+            else{
+                //send message to the message channel that interacting failed because match doesn't exist?
+            }
+        }
+    }
 
     @Autowired
     private MessageSender messageSender;
@@ -58,13 +69,13 @@ public class QuizManager {
     }
 
     //String listing match participants
-    private String matchParticipants(List<Player> players){
+    private String matchParticipants(List<Player> playerMatchData){
         StringBuilder stringBuilder = new StringBuilder("Match participants: ");
-        if (!players.isEmpty()) {
-            stringBuilder.append(players.get(0).getUser().getMention());
-            for (int i = 1; i < players.size(); i++){
+        if (!playerMatchData.isEmpty()) {
+            stringBuilder.append(playerMatchData.get(0).getUser().getMention());
+            for (int i = 1; i < playerMatchData.size(); i++){
                 stringBuilder.append(", ");
-                stringBuilder.append(players.get(i));
+                stringBuilder.append(playerMatchData.get(i));
             }
             stringBuilder.append(".");
         }
