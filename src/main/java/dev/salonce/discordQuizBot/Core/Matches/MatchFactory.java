@@ -14,7 +14,7 @@ public class MatchFactory {
 
     private final QuestionFactory questionFactory;
 
-    public Match javaMatch(List<Player> players, MessageChannel messageChannel){
+    public Match javaMatch(){
         List<Question> questions = questionFactory.javaQuestions();
         return new Match(questions);
     }

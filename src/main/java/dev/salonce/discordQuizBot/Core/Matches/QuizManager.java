@@ -50,7 +50,7 @@ public class QuizManager {
                 .build();
 
         MessageCreateSpec spec = MessageCreateSpec.builder()
-                .addComponent(ActionRow.of(Button.success("Join", "Join!"), Button.success("Join not", "Don't join.")))
+                .addComponent(ActionRow.of(Button.success("joinQuiz", "Join"), Button.success("leaveQuiz", "Leave")))
                 .addEmbed(embed)
                 .build();
 

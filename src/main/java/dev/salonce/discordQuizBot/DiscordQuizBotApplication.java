@@ -53,18 +53,18 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 		}
 
 
-        gateway.on(ButtonInteractionEvent.class, event -> {
-            String customId = event.getCustomId();
-            Snowflake userId = event.getInteraction().getUser().getId();
-
-//			Mono<MessageChannel> monoChannel = event.getMessage().get().getChannel();
-//			Snowflake channelId = monoChannel.block().getId();
-
-            return switch (customId) {
-                case "join" -> handleJoin(event, userId);
-                case "leave" -> handleLeave(event, userId);
-                default -> event.reply("Unknown button interaction").withEphemeral(true);
-            };
-        });
+//        gateway.on(ButtonInteractionEvent.class, event -> {
+//            String customId = event.getCustomId();
+//            Snowflake userId = event.getInteraction().getUser().getId();
+//
+////			Mono<MessageChannel> monoChannel = event.getMessage().get().getChannel();
+////			Snowflake channelId = monoChannel.block().getId();
+//
+//            return switch (customId) {
+//                case "join" -> handleJoin(event, userId);
+//                case "leave" -> handleLeave(event, userId);
+//                default -> event.reply("Unknown button interaction").withEphemeral(true);
+//            };
+//        });
     }
 }

@@ -20,7 +20,6 @@ import java.time.Duration;
 @Component("startQuiz")
 @RequiredArgsConstructor
 public class StartQuiz implements MessageHandler {
-    private final MessageSender messageSender;
     private final MatchFactory matchFactory;
     private final QuizManager quizManager;
 
@@ -28,19 +27,9 @@ public class StartQuiz implements MessageHandler {
     public boolean handleMessage(DiscordMessage discordMessage) {
         if (discordMessage.getContent().equalsIgnoreCase("qq quiz java")) {
             MessageChannel messageChannel = discordMessage.getChannel();
-
-            if (matchFactory.getPlayingChannels().contains(messageChannel))
-                return true;
-            else {
-                quizManager.addMatch(matchFactory.javaMatch());
-                sendSpecMessage(discordMessage.getChannel())
-                        .delayElement(Duration.ofSeconds(60))
-                        .subscribe();
-
-                return true;
-            }
+            quizManager.addMatch(messageChannel, matchFactory.javaMatch());
+            return true;
         }
-
         return false;
     }
 
