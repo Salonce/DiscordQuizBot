@@ -69,13 +69,13 @@ public class QuizManager {
     }
 
     //String listing match participants
-    private String matchParticipants(List<Player> playerMatchData){
+    private String matchParticipants(List<User> user){
         StringBuilder stringBuilder = new StringBuilder("Match participants: ");
-        if (!playerMatchData.isEmpty()) {
-            stringBuilder.append(playerMatchData.get(0).getUser().getMention());
-            for (int i = 1; i < playerMatchData.size(); i++){
+        if (!user.isEmpty()) {
+            stringBuilder.append(user.get(0).getMention());
+            for (int i = 1; i < user.size(); i++){
                 stringBuilder.append(", ");
-                stringBuilder.append(playerMatchData.get(i));
+                stringBuilder.append(user.get(i));
             }
             stringBuilder.append(".");
         }
