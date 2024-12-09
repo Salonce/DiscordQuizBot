@@ -1,13 +1,14 @@
 package dev.salonce.discordQuizBot;
 
+import dev.salonce.discordQuizBot.Core.Matches.QuizManager;
 import dev.salonce.discordQuizBot.Core.Messages.DiscordMessage;
 import dev.salonce.discordQuizBot.Core.Questions.RawQuestion;
 import dev.salonce.discordQuizBot.Core.Messages.MessageHandlerChain;
-import discord4j.common.util.Snowflake;
 import discord4j.core.DiscordClient;
 import discord4j.core.GatewayDiscordClient;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import discord4j.core.event.domain.message.MessageCreateEvent;
+import discord4j.core.object.entity.User;
 import discord4j.core.object.entity.channel.MessageChannel;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,12 +24,15 @@ import java.util.List;
 @SpringBootApplication
 public class DiscordQuizBotApplication implements CommandLineRunner {
 
-	public DiscordQuizBotApplication(MessageHandlerChain messageHandlerChain, @Qualifier("javaQuestions") List<RawQuestion> javaQuestions){
+	public DiscordQuizBotApplication(MessageHandlerChain messageHandlerChain, @Qualifier("javaQuestions") List<RawQuestion> javaQuestions, QuizManager quizManager){
 		this.messageHandlerChain = messageHandlerChain;
 		this.javaQuestions = javaQuestions;
+		this.quizManager = quizManager;
 	}
+
 	private final MessageHandlerChain messageHandlerChain;
 	private final List<RawQuestion> javaQuestions;
+	private final QuizManager quizManager;
 
 	@Value("${discord.bot.token}")
 	private String discordBotToken;
@@ -53,23 +57,31 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 
 			gateway.on(ButtonInteractionEvent.class, event -> {
 				String customId = event.getCustomId();
+
+				User user = event.getInteraction().getUser();
 				MessageChannel messageChannel = event.getMessage().get().getChannel().blockOptional().orElse(null);
-				if (messageChannel != null) {
+				if (messageChannel == null) {
 					System.out.println("Interaction channel doesn't exist. Something went wrong.");
+					return null;
 				}
 
 				return switch (customId) {
 //                	case "joinQuiz" -> handleJoin(event, userId);
-					case "joinQuiz" -> event.reply("You've joined the quiz.").withEphemeral(true);
-					case "leaveQuiz" -> event.reply("You've left the quiz.").withEphemeral(false);
+					case "joinQuiz" -> {
+						quizManager.addUserToMatch(messageChannel, user);
+						yield event.reply("You've joined the quiz.").withEphemeral(true);
+
+					}
+					case "leaveQuiz" -> {
+						quizManager.removeUserFromMatch(messageChannel, user);
+						yield event.reply("You've left the quiz.").withEphemeral(false);
+					}
 					default -> event.reply("Unknown button interaction").withEphemeral(true);
 				};
 			}).subscribe();
 
 			gateway.onDisconnect().block();
 		}
-
-
 
     }
 }

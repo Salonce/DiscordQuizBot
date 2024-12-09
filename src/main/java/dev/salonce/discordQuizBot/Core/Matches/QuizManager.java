@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,10 +31,23 @@ public class QuizManager {
     public void addUserToMatch(MessageChannel messageChannel, User user){
         if (quizzes.containsKey(messageChannel)){
             if (quizzes.get(messageChannel).addPlayer(user)) {
+                //messageChannel.createMessage()
                 //send message to the message channel that user is added
             }
             else{
-                //send message to the message channel that interacting failed because match doesn't exist?
+                //change message to the message channel that interacting failed because the match doesn't exist
+            }
+        }
+    }
+
+    public void removeUserFromMatch(MessageChannel messageChannel, User user){
+        if (quizzes.containsKey(messageChannel)){
+            if (quizzes.get(messageChannel).removePlayer(user)) {
+                //messageChannel.createMessage()
+                //change message to the message channel that user is removed
+            }
+            else{
+                //change message to the message channel that interaction failed because the match doesn't exist
             }
         }
     }
@@ -47,7 +61,10 @@ public class QuizManager {
         }
         else{
             quizzes.put(messageChannel, match);
-            sendStartQuizMessage(messageChannel).subscribe();
+            sendStartQuizMessage(messageChannel)
+                    .delayElement(Duration.ofSeconds(6))
+                    .doOnNext(__ -> startingMatch(messageChannel))
+                    .subscribe();
 //          messageSender.sendChannelMessage(messageChannel, matchParticipants(match.getPlayers())).subscribe();
 //          sendSpecMessage(messageChannel, matchParticipants(match.getPlayers()));
         }
@@ -67,7 +84,35 @@ public class QuizManager {
 
         return messageChannel.createMessage(spec);
     }
+    ////////////
+    private Mono<Message> startingMatch(MessageChannel messageChannel){
+        EmbedCreateSpec embed = EmbedCreateSpec.builder()
+                .title("Starting match")
+                //.description("Some participants")
+                .description("match starter")
+                .build();
 
+        MessageCreateSpec spec = MessageCreateSpec.builder()
+                .addEmbed(embed)
+                .build();
+
+        return messageChannel.createMessage(spec);
+    }
+
+    ////////////
+    private Mono<Message> sendParticipantsMessage(MessageChannel messageChannel, String participants){
+        EmbedCreateSpec embed = EmbedCreateSpec.builder()
+                .title("Participants")
+                //.description("Some participants")
+                .description(participants)
+                .build();
+
+        MessageCreateSpec spec = MessageCreateSpec.builder()
+                .addEmbed(embed)
+                .build();
+
+        return messageChannel.createMessage(spec);
+    }
     //String listing match participants
     private String matchParticipants(List<User> user){
         StringBuilder stringBuilder = new StringBuilder("Match participants: ");
@@ -85,20 +130,8 @@ public class QuizManager {
 
         return stringBuilder.toString();
     }
+    ////////////////
 
-    private void sendParticipantsMessage(MessageChannel messageChannel, String participants){
-        EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("Participants")
-                //.description("Some participants")
-                .description(participants)
-                .build();
-
-        MessageCreateSpec spec = MessageCreateSpec.builder()
-                .addEmbed(embed)
-                .build();
-
-        messageChannel.createMessage(spec).subscribe();
-    }
 }
 
 

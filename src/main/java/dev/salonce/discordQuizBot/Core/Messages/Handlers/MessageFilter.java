@@ -15,7 +15,10 @@ public class MessageFilter implements MessageHandler {
 
     @Override
     public boolean handleMessage(DiscordMessage discordMessage){
-        if (discordMessage.getContent().equalsIgnoreCase("qq")) {
+        if (discordMessage.getContent() == null){
+            return true;
+        }
+        else if (discordMessage.getContent().equalsIgnoreCase("qq")) {
 
             messageSender.sendMessage(discordMessage, "Empty request").subscribe();
 //            Mono.just(discordMessage).publishOn(Schedulers.boundedElastic())
