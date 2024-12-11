@@ -8,6 +8,7 @@ import discord4j.core.object.entity.User;
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.spec.EmbedCreateSpec;
 import discord4j.core.spec.MessageCreateSpec;
+import discord4j.core.spec.MessageEditSpec;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,9 +29,10 @@ public class QuizManager {
         quizzes = new HashMap<>();
     }
 
-    public void addUserToMatch(MessageChannel messageChannel, User user){
+    public void addUserToMatch(Message message, MessageChannel messageChannel, User user){
         if (quizzes.containsKey(messageChannel)){
             if (quizzes.get(messageChannel).addPlayer(user)) {
+                editQuizMessage(message, messageChannel).subscribe();
                 //messageChannel.createMessage()
                 //send message to the message channel that user is added
             }
@@ -40,9 +42,10 @@ public class QuizManager {
         }
     }
 
-    public void removeUserFromMatch(MessageChannel messageChannel, User user){
+    public void removeUserFromMatch(Message message, MessageChannel messageChannel, User user){
         if (quizzes.containsKey(messageChannel)){
             if (quizzes.get(messageChannel).removePlayer(user)) {
+                editQuizMessage(message, messageChannel).subscribe();
                 //messageChannel.createMessage()
                 //change message to the message channel that user is removed
             }
@@ -68,6 +71,20 @@ public class QuizManager {
 //          messageSender.sendChannelMessage(messageChannel, matchParticipants(match.getPlayers())).subscribe();
 //          sendSpecMessage(messageChannel, matchParticipants(match.getPlayers()));
         }
+    }
+
+    private Mono<Message> editQuizMessage(Message message, MessageChannel messageChannel){
+        Match match = quizzes.get(messageChannel);
+
+        EmbedCreateSpec embed = EmbedCreateSpec.builder()
+                .title("Java quiz")
+                .description("Click the button to participate. Participants: " + match.getUserNames())
+                .build();
+
+        return message.edit(MessageEditSpec.builder()
+                .addComponent(ActionRow.of(Button.success("joinQuiz", "Join"), Button.success("leaveQuiz", "Leave")))
+                .addEmbed(embed)
+                .build());
     }
 
 
@@ -113,6 +130,7 @@ public class QuizManager {
 
         return messageChannel.createMessage(spec);
     }
+
     //String listing match participants
     private String matchParticipants(List<User> user){
         StringBuilder stringBuilder = new StringBuilder("Match participants: ");

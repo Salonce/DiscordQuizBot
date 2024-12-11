@@ -8,6 +8,7 @@ import discord4j.core.DiscordClient;
 import discord4j.core.GatewayDiscordClient;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import discord4j.core.event.domain.message.MessageCreateEvent;
+import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.User;
 import discord4j.core.object.entity.channel.MessageChannel;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -60,8 +61,9 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 
 				//event.getInteraction().getMessage();
 				User user = event.getInteraction().getUser();
+				Message message = event.getMessage().get();
 				MessageChannel messageChannel = event.getMessage().get().getChannel().blockOptional().orElse(null);
-				if (messageChannel == null) {
+				if (message == null || messageChannel == null) {
 					System.out.println("Interaction channel doesn't exist. Something went wrong.");
 					return null;
 				}
@@ -69,12 +71,12 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 				return switch (customId) {
 //                	case "joinQuiz" -> handleJoin(event, userId);
 					case "joinQuiz" -> {
-						quizManager.addUserToMatch(messageChannel, user);
+						quizManager.addUserToMatch(message, messageChannel, user);
 						yield event.reply("You've joined the quiz.").withEphemeral(true);
 
 					}
 					case "leaveQuiz" -> {
-						quizManager.removeUserFromMatch(messageChannel, user);
+						quizManager.removeUserFromMatch(message, messageChannel, user);
 						yield event.reply("You've left the quiz.").withEphemeral(false);
 					}
 					default -> event.reply("Unknown button interaction").withEphemeral(true);
