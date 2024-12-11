@@ -58,6 +58,7 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 			gateway.on(ButtonInteractionEvent.class, event -> {
 				String customId = event.getCustomId();
 
+				//event.getInteraction().getMessage();
 				User user = event.getInteraction().getUser();
 				MessageChannel messageChannel = event.getMessage().get().getChannel().blockOptional().orElse(null);
 				if (messageChannel == null) {

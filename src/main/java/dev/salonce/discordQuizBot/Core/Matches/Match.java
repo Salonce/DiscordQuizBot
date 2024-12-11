@@ -14,13 +14,22 @@ public class Match{
 
     private final Map<User, Player> players;
     private final List<Question> questions;
+    private int questionNumber;
     @Setter
     private boolean enrolment;
+
+    public Question getNextQuestion(){
+        if (questions.size() <= questionNumber)
+            return questions.get(questionNumber++);
+        else
+            return null;
+    }
 
     public Match(List<Question> questions){
         this.questions = questions;
         this.players = new HashMap<>();
         this.enrolment = true;
+        this.questionNumber = 0;
     }
 
     public boolean addPlayer(User user){

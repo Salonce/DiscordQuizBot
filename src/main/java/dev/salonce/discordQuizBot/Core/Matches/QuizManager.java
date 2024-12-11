@@ -63,7 +63,7 @@ public class QuizManager {
             quizzes.put(messageChannel, match);
             sendStartQuizMessage(messageChannel)
                     .delayElement(Duration.ofSeconds(6))
-                    .doOnNext(__ -> startingMatch(messageChannel))
+                    .doOnNext(__ -> startingMatch(messageChannel).subscribe())
                     .subscribe();
 //          messageSender.sendChannelMessage(messageChannel, matchParticipants(match.getPlayers())).subscribe();
 //          sendSpecMessage(messageChannel, matchParticipants(match.getPlayers()));
