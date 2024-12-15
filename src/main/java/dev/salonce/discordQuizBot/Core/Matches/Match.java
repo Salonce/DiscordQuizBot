@@ -5,7 +5,6 @@ import discord4j.core.object.entity.User;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,11 +22,18 @@ public class Match{
         return questionNumber > questions.size() - 1;
     }
 
-    public Question getNextQuestion(){
+    public Question getQuestion(){
         if (questionNumber <= questions.size())
-            return questions.get(questionNumber++);
+            return questions.get(questionNumber);
         else
             return null;
+    }
+
+    public boolean nextQuestion(){
+        if (++questionNumber <= questions.size() - 1)
+            return true;
+        else
+            return false;
     }
 
     public String getUserNames(){

@@ -78,12 +78,13 @@ public class QuizManager {
     }
 
     private void repeatQuestionMessages(MessageChannel messageChannel) {
-        Flux.interval(Duration.ofSeconds(2))  // Emit items every 30 seconds
+        Flux.interval(Duration.ofSeconds(2))  // Emit items every 2 seconds
+                //.doOnNext(tick -> quizzes.get(messageChannel).nextQuestion())
                 .flatMap(tick -> questionMessage(messageChannel)
                         .subscribeOn(Schedulers.parallel())
                         //.subscribe(Schedulers.parallel())
                 )
-                .takeWhile(__ -> quizzes.get(messageChannel).quizEnd() == false)  // Stop when questionMessage returns null
+                .takeWhile(__ -> quizzes.get(messageChannel).nextQuestion() == true)  // Stop when questionMessage returns null
                 .doOnComplete(() -> System.out.println("Question messages stopped."))
                 .subscribe();
     }
@@ -93,7 +94,7 @@ public class QuizManager {
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("Question number " + match.getQuestionNumber() + ": ")
-                .description(match.getNextQuestion().getQuestion())
+                .description(match.getQuestion().getQuestion())
                 .build();
 
         MessageCreateSpec spec = MessageCreateSpec.builder()
