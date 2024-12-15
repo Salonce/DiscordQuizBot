@@ -14,12 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import reactor.core.scheduler.Schedulers;
 
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -34,15 +34,24 @@ public class QuizManager {
     public void addUserToMatch(Message message, MessageChannel messageChannel, User user){
         if (quizzes.containsKey(messageChannel)){
             if (quizzes.get(messageChannel).addPlayer(user)) {
+                System.out.println("Participants after adding: " + quizzes.get(messageChannel).getUserNames());
                 editQuizMessage(message, messageChannel).subscribe();
-                //messageChannel.createMessage()
-                //send message to the message channel that user is added
-            }
-            else{
-                //change message to the message channel that interacting failed because the match doesn't exist
             }
         }
     }
+
+//    public void addUserToMatch(Message message, MessageChannel messageChannel, User user){
+//        if (quizzes.containsKey(messageChannel)){
+//            if (quizzes.get(messageChannel).addPlayer(user)) {
+//                editQuizMessage(message, messageChannel).subscribe();
+//                //messageChannel.createMessage()
+//                //send message to the message channel that user is added
+//            }
+//            else{
+//                //change message to the message channel that interacting failed because the match doesn't exist
+//            }
+//        }
+//    }
 
     public void removeUserFromMatch(Message message, MessageChannel messageChannel, User user){
         if (quizzes.containsKey(messageChannel)){
@@ -66,23 +75,44 @@ public class QuizManager {
         }
         else{
             quizzes.put(messageChannel, match);
+            System.out.println("Initial participants: " + match.getUserNames());
             sendStartQuizMessage(messageChannel)
+                    //.doOnNext(a -> System.out.println("inside chain: " + quizzes.get(messageChannel).getUserNames()))
                     .delayElement(Duration.ofSeconds(3))
-                    .doOnNext(__ -> startingMatchMessage(messageChannel).subscribe())
+                    //.doOnNext(a -> System.out.println("inside chain2: " + quizzes.get(messageChannel).getUserNames()))
+                    .then(Mono.defer(() -> startingMatchMessage(messageChannel)))
+                    //.doOnNext(a -> System.out.println("inside chain3: " + quizzes.get(messageChannel).getUserNames()))
                     .delayElement(Duration.ofSeconds(1))
-                    .doOnNext(__ -> repeatQuestionMessages(messageChannel))
+                    //.doOnNext(a -> System.out.println("inside chain4: " + quizzes.get(messageChannel).getUserNames()))
+                    .then(Mono.defer(() -> repeatQuestionMessages(messageChannel)))
+                    .then(Mono.defer(() -> showMatchResults(messageChannel)))
                     .subscribe();
 //          messageSender.sendChannelMessage(messageChannel, matchParticipants(match.getPlayers())).subscribe();
 //          sendSpecMessage(messageChannel, matchParticipants(match.getPlayers()));
         }
     }
 
-    private void repeatQuestionMessages(MessageChannel messageChannel) {
-        // Start the question flow
-        sendQuestionsSequentially(messageChannel)
-                .then(Mono.delay(Duration.ofSeconds(2))) // Wait 2 seconds after the last question
-                //.doOnSuccess(__ -> showResults(messageChannel)) 
-                .subscribe();
+    private Mono<Message> showMatchResults(MessageChannel messageChannel){
+        Match match = quizzes.get(messageChannel);
+        String results = match.getPlayers().entrySet().stream().map(entry -> entry.getKey().getUsername() + ": " + entry.getValue().getPoints()).collect(Collectors.joining("\n"));
+
+        EmbedCreateSpec embed = EmbedCreateSpec.builder()
+                .title("Match results, users and points: " )
+                .description(results)
+                .build();
+
+        MessageCreateSpec spec = MessageCreateSpec.builder()
+                .addComponent(ActionRow.of(Button.primary("answerA", "A"), Button.success("answerB", "B"), Button.success("answerC", "C"), Button.success("answerD", "D")))
+                .addEmbed(embed)
+                .build();
+
+        return messageChannel.createMessage(spec);
+    }
+
+    private Mono<Void> repeatQuestionMessages(MessageChannel messageChannel) {
+        return sendQuestionsSequentially(messageChannel) // Process all questions sequentially
+                .then(Mono.delay(Duration.ofSeconds(2)))
+                .then(); // Wait 2 seconds after the last question
     }
 
     private Mono<Void> sendQuestionsSequentially(MessageChannel messageChannel) {
@@ -148,7 +178,10 @@ public class QuizManager {
     }
     ////////////
     private Mono<Message> startingMatchMessage(MessageChannel messageChannel){
+
         Match match = quizzes.get(messageChannel);
+
+        System.out.println("dadada: " + match.getUserNames());
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("Starting match.")
                 //.description("Some participants")
