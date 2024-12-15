@@ -8,6 +8,7 @@ import lombok.Setter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Getter
 public class Match{
@@ -36,19 +37,10 @@ public class Match{
             return false;
     }
 
-    public String getUserNames(){
-        List<String> users = players.keySet().stream().map(User::getUsername).toList();
-        StringBuilder userNamesBuilder = new StringBuilder();
-        for (int i = 0; i < users.size() - 1; i++){
-                userNamesBuilder.append(users.get(i)).append(", ");
-        }
-        if (users.size() > 0) {
-            userNamesBuilder.append(users.get(users.size() - 1));
-        }
-        return userNamesBuilder.toString();
-
-        //String userNames = players.keySet().toString();
-        //return userNames;
+    public String getUserNames() {
+        return players.keySet().stream()
+                .map(User::getUsername)
+                .collect(Collectors.joining(", "));
     }
 
     public Match(List<Question> questions){
