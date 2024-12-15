@@ -78,15 +78,27 @@ public class QuizManager {
     }
 
     private void repeatQuestionMessages(MessageChannel messageChannel) {
-        Flux.interval(Duration.ofSeconds(2))  // Emit items every 2 seconds
-                //.doOnNext(tick -> quizzes.get(messageChannel).nextQuestion())
-                .flatMap(tick -> questionMessage(messageChannel)
-                        .subscribeOn(Schedulers.parallel())
-                        //.subscribe(Schedulers.parallel())
-                )
-                .takeWhile(__ -> quizzes.get(messageChannel).nextQuestion() == true)  // Stop when questionMessage returns null
-                .doOnComplete(() -> System.out.println("Question messages stopped."))
+        // Start the question flow
+        sendQuestionsSequentially(messageChannel)
+                .then(Mono.delay(Duration.ofSeconds(2))) // Wait 2 seconds after the last question
+                //.doOnSuccess(__ -> showResults(messageChannel)) 
                 .subscribe();
+    }
+
+    private Mono<Void> sendQuestionsSequentially(MessageChannel messageChannel) {
+        Match match = quizzes.get(messageChannel);
+
+        return Flux.generate(sink -> {
+                    if (match.nextQuestion()) {
+                        sink.next(match.getQuestion());
+                    } else {
+                        sink.complete();
+                    }
+                })
+                .concatMap(question -> questionMessage(messageChannel)
+                        .then(Mono.delay(Duration.ofSeconds(2)))
+                )
+                .then();
     }
 
     private Mono<Message> questionMessage(MessageChannel messageChannel){
@@ -188,6 +200,18 @@ public class QuizManager {
 
 
 
-//    public void newMatch(Snowflake channelId, Match match){
-//        quizzes.put(channelId, match);
+
+//    private void repeatQuestionMessages(MessageChannel messageChannel) {
+//        Flux.interval(Duration.ofSeconds(2))  // Emit items every 2 seconds
+//                //.doOnNext(tick -> quizzes.get(messageChannel).nextQuestion())
+//                .flatMap(tick -> questionMessage(messageChannel)
+//                        .subscribeOn(Schedulers.parallel())
+//                        //.subscribe(Schedulers.parallel())
+//                )
+//                .takeWhile(__ -> quizzes.get(messageChannel).nextQuestion() == true)  // Stop when questionMessage returns null
+//                .doOnComplete(() -> {
+//                    System.out.println("Question messages stopped.");
+//
+//                })
+//                .subscribe();
 //    }
