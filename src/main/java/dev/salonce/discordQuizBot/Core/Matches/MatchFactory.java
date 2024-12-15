@@ -15,6 +15,7 @@ public class MatchFactory {
 
     public Match javaMatch(){
         List<Question> questions = questionFactory.javaQuestions();
+        //System.out.println(questions.get(0).getQuestion());
         return new Match(questions);
     }
 

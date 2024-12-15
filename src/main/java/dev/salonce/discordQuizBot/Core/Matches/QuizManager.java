@@ -12,7 +12,9 @@ import discord4j.core.spec.MessageEditSpec;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -65,13 +67,43 @@ public class QuizManager {
         else{
             quizzes.put(messageChannel, match);
             sendStartQuizMessage(messageChannel)
-                    .delayElement(Duration.ofSeconds(6))
-                    .doOnNext(__ -> startingMatch(messageChannel).subscribe())
+                    .delayElement(Duration.ofSeconds(3))
+                    .doOnNext(__ -> startingMatchMessage(messageChannel).subscribe())
+                    .delayElement(Duration.ofSeconds(1))
+                    .doOnNext(__ -> repeatQuestionMessages(messageChannel))
                     .subscribe();
 //          messageSender.sendChannelMessage(messageChannel, matchParticipants(match.getPlayers())).subscribe();
 //          sendSpecMessage(messageChannel, matchParticipants(match.getPlayers()));
         }
     }
+
+    private void repeatQuestionMessages(MessageChannel messageChannel) {
+        Flux.interval(Duration.ofSeconds(2))  // Emit items every 30 seconds
+                .flatMap(tick -> questionMessage(messageChannel)
+                        .subscribeOn(Schedulers.parallel())
+                        //.subscribe(Schedulers.parallel())
+                )
+                .takeWhile(__ -> quizzes.get(messageChannel).quizEnd() == false)  // Stop when questionMessage returns null
+                .doOnComplete(() -> System.out.println("Question messages stopped."))
+                .subscribe();
+    }
+
+    private Mono<Message> questionMessage(MessageChannel messageChannel){
+        Match match = quizzes.get(messageChannel);
+
+        EmbedCreateSpec embed = EmbedCreateSpec.builder()
+                .title("Question number " + match.getQuestionNumber() + ": ")
+                .description(match.getNextQuestion().getQuestion())
+                .build();
+
+        MessageCreateSpec spec = MessageCreateSpec.builder()
+                .addComponent(ActionRow.of(Button.primary("answerA", "A"), Button.success("answerB", "B"), Button.success("answerC", "C"), Button.success("answerD", "D")))
+                .addEmbed(embed)
+                .build();
+
+        return messageChannel.createMessage(spec);
+    }
+
 
     private Mono<Message> editQuizMessage(Message message, MessageChannel messageChannel){
         Match match = quizzes.get(messageChannel);
@@ -102,11 +134,12 @@ public class QuizManager {
         return messageChannel.createMessage(spec);
     }
     ////////////
-    private Mono<Message> startingMatch(MessageChannel messageChannel){
+    private Mono<Message> startingMatchMessage(MessageChannel messageChannel){
+        Match match = quizzes.get(messageChannel);
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("Starting match")
+                .title("Starting match.")
                 //.description("Some participants")
-                .description("match starter")
+                .description("Type: java quiz. Questions: 5. \nParticipants: " + match.getUserNames())
                 .build();
 
         MessageCreateSpec spec = MessageCreateSpec.builder()

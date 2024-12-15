@@ -11,7 +11,7 @@ import java.util.Random;
 @RequiredArgsConstructor
 public class QuestionFactory {
 
-    private Random rand = new Random();
+    private final Random rand = new Random();
     private final QuestionRepository questionRepository;
 
     //add logic to eliminate <5 questions by throwing exceptions
@@ -22,6 +22,7 @@ public class QuestionFactory {
             int next = rand.nextInt(rawQuestions.size());
             questions.add(rawQuestions.get(next).generateQuestion());
             rawQuestions.remove(next);
+            //System.out.println(questions.get(i).getQuestion());
         }
 
         return questions;

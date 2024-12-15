@@ -19,8 +19,12 @@ public class Match{
     @Setter
     private boolean enrolment;
 
+    public boolean quizEnd(){
+        return questionNumber > questions.size() - 1;
+    }
+
     public Question getNextQuestion(){
-        if (questions.size() <= questionNumber)
+        if (questionNumber <= questions.size())
             return questions.get(questionNumber++);
         else
             return null;
