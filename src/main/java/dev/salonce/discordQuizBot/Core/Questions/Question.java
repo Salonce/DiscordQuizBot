@@ -17,6 +17,14 @@ public class Question {
         this.explanation = explanation;
     }
 
+    public Character getCorrectAnswer(){
+        for (int i = 0; i < answers.size(); i++){
+            if (answers.get(i).correctness())
+                return (char)('A' + i);
+        }
+        return null;
+    }
+
     public String getStringAnswers(){
         StringBuilder sb = new StringBuilder();
         char letter = 'A';
