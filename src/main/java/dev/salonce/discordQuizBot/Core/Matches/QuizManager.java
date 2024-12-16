@@ -123,7 +123,7 @@ public class QuizManager {
                         .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
                         .then(Mono.defer(() -> questionMessageAnswer(messageChannel)))
                         .then(Mono.defer(() -> cleanPlayersAnswers(messageChannel)))
-                        .then(Mono.delay(Duration.ofSeconds(5)))
+                        .then(Mono.delay(Duration.ofSeconds(10)))
                 )
                 .then();
     }
@@ -149,7 +149,7 @@ public class QuizManager {
                 .color(Color.of(255, 99, 71))
                 .title("Answer " + match.getQuestionNumber() + ": ")
                 .description("**" + match.getQuestion().getQuestion() + "**")
-                .addField("", "Correct answer: " + match.getQuestion().getCorrectAnswer() + " - " + match.getQuestion().getCorrectAnswer(), true)
+                .addField("", "Correct answer: " + match.getQuestion().getCorrectAnswer() + " - " + match.getQuestion().getCorrectAnswerString(), true)
                 .addField("", "Explanation: " + match.getQuestion().getExplanation(), false)
                 .addField("", "Answers:\n" + match.getUsersAnswers(), false)
                 .addField("", "Scoreboard:\n" + results, false)

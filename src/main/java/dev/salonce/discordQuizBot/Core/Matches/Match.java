@@ -28,6 +28,10 @@ public class Match{
         return questions.get(questionNumber).getCorrectAnswerInt();
     }
 
+    private String getQuestionCorrectAnswerString(){
+        return questions.get(questionNumber).getCorrectAnswerString();
+    }
+
 //    private List<Integer> getQuestionCorrectAnswerInt(){
 //        return questions.get(questionNumber).getCorrectAnswerListInt();
 //    }
