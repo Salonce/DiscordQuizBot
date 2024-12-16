@@ -66,6 +66,11 @@ public class QuizManager {
         }
     }
 
+    private void setPlayerAnswer(MessageChannel messageChannel, User user, Character answer){
+        Match match = quizzes.get(messageChannel);
+        match.getPlayers().get(user).setCurrentAnswer(answer);
+    }
+
     @Autowired
     private MessageSender messageSender;
 
