@@ -30,6 +30,9 @@ public class QuizManager {
 
     private final Map<MessageChannel, Match> quizzes;
 
+    @Autowired
+    private MessageSender messageSender;
+
     public QuizManager(){
         quizzes = new HashMap<>();
     }
@@ -56,13 +59,20 @@ public class QuizManager {
         }
     }
 
-    public void setPlayerAnswer(Message message, MessageChannel messageChannel, User user, Character answer){
+    public boolean setPlayerAnswer(Message message, MessageChannel messageChannel, User user, int intAnswer){
         Match match = quizzes.get(messageChannel);
-        match.getPlayers().get(user).setCurrentAnswer(answer);
+        if (match.getPlayers().containsKey(user)) {
+            match.getPlayers().get(user).setCurrentAnswerNum(intAnswer);
+            return true;
+        }
+        else return false;
     }
 
-    @Autowired
-    private MessageSender messageSender;
+    public Mono<Void> cleanPlayersAnswers(MessageChannel messageChannel){
+        Match match = quizzes.get(messageChannel);
+        match.cleanPlayersAnswers();
+        return Mono.empty();
+    }
 
     public void addMatch(MessageChannel messageChannel, Match match) {
         if (quizzes.containsKey(messageChannel)){
@@ -106,6 +116,7 @@ public class QuizManager {
                 .concatMap(question -> questionMessage(messageChannel)
                         .then(Mono.delay(Duration.ofSeconds(5)))
                         .then(questionMessageAnswer(messageChannel))
+                        .then(cleanPlayersAnswers(messageChannel))
                         .then(Mono.delay(Duration.ofSeconds(5)))
                 )
                 .then();
@@ -146,6 +157,13 @@ public class QuizManager {
     private Mono<Message> questionMessage(MessageChannel messageChannel){
         Match match = quizzes.get(messageChannel);
         String questionsAnswers = match.getQuestion().getStringAnswers();
+        int answersSize = match.getQuestion().getAnswers().size();
+
+        // Create buttons dynamically
+        List<Button> buttons = new ArrayList<>();
+        for (int i = 0; i < answersSize; i++) {
+            buttons.add(Button.success("answer" + (char)('A' + i), String.valueOf((char)('A' + i))));
+        }
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .color(Color.of(255, 99, 71))
@@ -155,12 +173,32 @@ public class QuizManager {
                 .build();
 
         MessageCreateSpec spec = MessageCreateSpec.builder()
-                .addComponent(ActionRow.of(Button.success("answerA", "A"), Button.success("answerB", "B"), Button.success("answerC", "C"), Button.success("answerD", "D")))
+                .addComponent(ActionRow.of(buttons))
                 .addEmbed(embed)
                 .build();
 
         return messageChannel.createMessage(spec);
     }
+
+//    private Mono<Message> questionMessage(MessageChannel messageChannel){
+//        Match match = quizzes.get(messageChannel);
+//        String questionsAnswers = match.getQuestion().getStringAnswers();
+//        int questionsSize = match.getQuestions().size();
+//
+//        EmbedCreateSpec embed = EmbedCreateSpec.builder()
+//                .color(Color.of(255, 99, 71))
+//                .title("Question " + match.getQuestionNumber() + ": ")
+//                .description("**" + match.getQuestion().getQuestion() + "**")
+//                .addField("", questionsAnswers, true)
+//                .build();
+//
+//        MessageCreateSpec spec = MessageCreateSpec.builder()
+//                .addComponent(ActionRow.of(Button.success("answerA", "A"), Button.success("answerB", "B"), Button.success("answerC", "C"), Button.success("answerD", "D")))
+//                .addEmbed(embed)
+//                .build();
+//
+//        return messageChannel.createMessage(spec);
+//    }
 
     private Mono<Message> editQuizMessage(Message message, MessageChannel messageChannel){
         Match match = quizzes.get(messageChannel);
