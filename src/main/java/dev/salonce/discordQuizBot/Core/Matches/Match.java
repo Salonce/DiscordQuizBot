@@ -17,11 +17,31 @@ public class Match{
     @Setter
     private boolean enrolment;
 
+    public void addPlayerPoints(){
+        for (Player player : players.values()){
+            if (player.getCurrentAnswerNum() == getQuestionCorrectAnswerInt())
+                player.addPoint();
+        }
+    }
+
+    private int getQuestionCorrectAnswerInt(){
+        return questions.get(questionNumber).getCorrectAnswerInt();
+    }
+
+//    private List<Integer> getQuestionCorrectAnswerInt(){
+//        return questions.get(questionNumber).getCorrectAnswerListInt();
+//    }
+
+//    public String getScoreBoard() {
+//    }
+
     public void cleanPlayersAnswers(){
         for (Player player : players.values()){
             player.setCurrentAnswerNum(0);
         }
     }
+
+
 
     public String getUsersAnswers(){
         List<List<String>> playersAnswers = new ArrayList<>();
@@ -92,6 +112,7 @@ public class Match{
             return false;
         }
     }
+
 
 
 }

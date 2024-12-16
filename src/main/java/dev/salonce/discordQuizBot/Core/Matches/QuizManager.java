@@ -103,6 +103,11 @@ public class QuizManager {
                 .then();
     }
 
+    public Mono<Void> addPlayerPoints(MessageChannel messageChannel){
+        quizzes.get(messageChannel).addPlayerPoints();
+        return Mono.empty();
+    }
+
     private Mono<Void> sendQuestionsSequentially(MessageChannel messageChannel) {
         Match match = quizzes.get(messageChannel);
 
@@ -115,8 +120,9 @@ public class QuizManager {
                 })
                 .concatMap(question -> questionMessage(messageChannel)
                         .then(Mono.delay(Duration.ofSeconds(5)))
-                        .then(questionMessageAnswer(messageChannel))
-                        .then(cleanPlayersAnswers(messageChannel))
+                        .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
+                        .then(Mono.defer(() -> questionMessageAnswer(messageChannel)))
+                        .then(Mono.defer(() -> cleanPlayersAnswers(messageChannel)))
                         .then(Mono.delay(Duration.ofSeconds(5)))
                 )
                 .then();
@@ -131,24 +137,23 @@ public class QuizManager {
                 .description(results)
                 .build();
 
-        MessageCreateSpec spec = MessageCreateSpec.builder()
-                .addComponent(ActionRow.of(Button.success("answerA", "A"), Button.success("answerB", "B"), Button.success("answerC", "C"), Button.success("answerD", "D")))
-                .addEmbed(embed)
-                .build();
-
-        return messageChannel.createMessage(spec);
+        return messageChannel.createMessage(embed);
     }
 
     private Mono<Message> questionMessageAnswer(MessageChannel messageChannel){
         Match match = quizzes.get(messageChannel);
         //List<List<String>> qAnswers = new ArrayList<>();
+        String results = match.getPlayers().entrySet().stream().map(entry -> entry.getKey().getUsername() + ": " + entry.getValue().getPoints()).collect(Collectors.joining("\n"));
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .color(Color.of(255, 99, 71))
-                .title("Question " + match.getQuestionNumber() + ": ")
+                .title("Answer " + match.getQuestionNumber() + ": ")
                 .description("**" + match.getQuestion().getQuestion() + "**")
-                .addField("", "Correct answer: " + match.getQuestion().getCorrectAnswer(), true)
+                .addField("", "Correct answer: " + match.getQuestion().getCorrectAnswer() + " - " + match.getQuestion().getCorrectAnswer(), true)
+                .addField("", "Explanation: " + match.getQuestion().getExplanation(), false)
                 .addField("", "Answers:\n" + match.getUsersAnswers(), false)
+                .addField("", "Scoreboard:\n" + results, false)
+                //.addField("", "Scoreboard:\n" + match.getScoreBoard(), false)
                 .build();
 
         return messageChannel.createMessage(embed);
