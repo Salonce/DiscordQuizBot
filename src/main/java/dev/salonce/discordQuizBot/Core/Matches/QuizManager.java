@@ -1,6 +1,7 @@
 package dev.salonce.discordQuizBot.Core.Matches;
 
 import dev.salonce.discordQuizBot.Core.Messages.MessageSender;
+import dev.salonce.discordQuizBot.Core.Questions.Answer;
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
 import discord4j.core.object.entity.Message;
@@ -9,6 +10,7 @@ import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.spec.EmbedCreateSpec;
 import discord4j.core.spec.MessageCreateSpec;
 import discord4j.core.spec.MessageEditSpec;
+import discord4j.rest.util.Color;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -107,7 +109,7 @@ public class QuizManager {
                 .build();
 
         MessageCreateSpec spec = MessageCreateSpec.builder()
-                .addComponent(ActionRow.of(Button.primary("answerA", "A"), Button.success("answerB", "B"), Button.success("answerC", "C"), Button.success("answerD", "D")))
+                .addComponent(ActionRow.of(Button.success("answerA", "A"), Button.success("answerB", "B"), Button.success("answerC", "C"), Button.success("answerD", "D")))
                 .addEmbed(embed)
                 .build();
 
@@ -138,14 +140,17 @@ public class QuizManager {
 
     private Mono<Message> questionMessage(MessageChannel messageChannel){
         Match match = quizzes.get(messageChannel);
+        String questionsAnswers = match.getQuestion().getStringAnswers();
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("Question number " + match.getQuestionNumber() + ": ")
-                .description(match.getQuestion().getQuestion())
+                .color(Color.of(255, 99, 71))
+                .title("Question " + match.getQuestionNumber() + ": ")
+                .description("**" + match.getQuestion().getQuestion() + "**")
+                .addField("", questionsAnswers, true)
                 .build();
 
         MessageCreateSpec spec = MessageCreateSpec.builder()
-                .addComponent(ActionRow.of(Button.primary("answerA", "A"), Button.success("answerB", "B"), Button.success("answerC", "C"), Button.success("answerD", "D")))
+                .addComponent(ActionRow.of(Button.success("answerA", "A"), Button.success("answerB", "B"), Button.success("answerC", "C"), Button.success("answerD", "D")))
                 .addEmbed(embed)
                 .build();
 
@@ -158,7 +163,8 @@ public class QuizManager {
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("Java quiz")
-                .description("Click the button to participate. Participants: " + match.getUserNames())
+                .description("Click 'Join' to participate.")
+                .addField("", "Participants: " + match.getUserNames(), false)
                 .build();
 
         return message.edit(MessageEditSpec.builder()
@@ -186,11 +192,12 @@ public class QuizManager {
 
         Match match = quizzes.get(messageChannel);
 
-        System.out.println("dadada: " + match.getUserNames());
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("Starting match.")
-                //.description("Some participants")
-                .description("Type: java quiz. Questions: 5. \nParticipants: " + match.getUserNames())
+                .title("**Java quiz**")
+                //.description("Type: java quiz. Questions: 5. \nParticipants: " + match.getUserNames())
+                .addField("", "Questions: 5", true)
+                .addField("", "Participants: " + match.getUserNames(), false)
+                .addField("", "Starting in X seconds", false)
                 .build();
 
         MessageCreateSpec spec = MessageCreateSpec.builder()
