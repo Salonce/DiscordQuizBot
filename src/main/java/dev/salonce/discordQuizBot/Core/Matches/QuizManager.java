@@ -137,7 +137,7 @@ public class QuizManager {
                 .title("Question " + match.getQuestionNumber() + ": ")
                 .description("**" + match.getQuestion().getQuestion() + "**")
                 .addField("", "Correct answer: " + match.getQuestion().getCorrectAnswer(), true)
-                .addField("", "Answers by user: " + match.getUsersAnswers(), true)
+                .addField("", "Answers:\n" + match.getUsersAnswers(), false)
                 .build();
 
         return messageChannel.createMessage(embed);
