@@ -3,6 +3,7 @@ package dev.salonce.discordQuizBot.Core.Questions;
 import lombok.Getter;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 //can be a record class
 @Getter
@@ -15,6 +16,21 @@ public class Question {
         this.question = question;
         this.answers = answers;
         this.explanation = explanation;
+    }
+
+//    public List<Integer> getCorrectAnswerListInt(){
+//        return IntStream.range(0, answers.size())
+//                .filter(i -> answers.get(i).correctness())
+//                .boxed()
+//                .toList();
+//    }
+
+    public int getCorrectAnswerInt(){
+        for (int i = 0; i < answers.size(); i++){
+            if (answers.get(i).correctness())
+                return i;
+        }
+        return -1;
     }
 
     public Character getCorrectAnswer(){
