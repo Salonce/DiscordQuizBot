@@ -78,20 +78,24 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 						yield event.reply("You've left the quiz.").withEphemeral(true);
 					}
 					case "answerA" -> {
-						quizManager.setPlayerAnswer(message, messageChannel, user, 'A');
-						yield event.reply("Your answer: A.").withEphemeral(true);
+						boolean inMatch = quizManager.setPlayerAnswer(message, messageChannel, user, 0);
+						String answer = (inMatch) ? "Your answer: A." : "You are not in the match.";
+						yield event.reply(answer).withEphemeral(true);
 					}
 					case "answerB" -> {
-						quizManager.setPlayerAnswer(message, messageChannel, user, 'B');
-						yield event.reply("Your answer: B.").withEphemeral(true);
+						boolean inMatch = quizManager.setPlayerAnswer(message, messageChannel, user, 1);
+						String answer = (inMatch) ? "Your answer: B." : "You are not in the match.";
+						yield event.reply(answer).withEphemeral(true);
 					}
 					case "answerC" -> {
-						quizManager.setPlayerAnswer(message, messageChannel, user, 'C');
-						yield event.reply("Your answer: C.").withEphemeral(true);
+						boolean inMatch = quizManager.setPlayerAnswer(message, messageChannel, user, 2);
+						String answer = (inMatch) ? "Your answer: C." : "You are not in the match.";
+						yield event.reply(answer).withEphemeral(true);
 					}
 					case "answerD" -> {
-						quizManager.setPlayerAnswer(message, messageChannel, user, 'D');
-						yield event.reply("Your answer: D.").withEphemeral(true);
+						boolean inMatch = quizManager.setPlayerAnswer(message, messageChannel, user, 3);
+						String answer = (inMatch) ? "Your answer: D." : "You are not in the match.";
+						yield event.reply(answer).withEphemeral(true);
 					}
 
 

@@ -17,6 +17,12 @@ public class Match{
     @Setter
     private boolean enrolment;
 
+    public void cleanPlayersAnswers(){
+        for (Player player : players.values()){
+            player.setCurrentAnswerNum(0);
+        }
+    }
+
     public String getUsersAnswers(){
         List<List<String>> playersAnswers = new ArrayList<>();
         for (int i = 0; i < questions.get(questionNumber).getAnswers().size(); i++){
