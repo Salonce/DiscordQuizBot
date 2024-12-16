@@ -17,6 +17,25 @@ public class Match{
     @Setter
     private boolean enrolment;
 
+    public String getScoreboard(){
+        return getPlayers().entrySet().stream().sorted((a, b) -> (a.getValue().getPoints() - b.getValue().getPoints())).map(entry -> "<@" + entry.getKey().getId().asString() + ">" + ": " + entry.getValue().getPoints()).collect(Collectors.joining("\n"));
+    }
+
+    public String getWinners() {
+        // Find the max points
+        int maxPoints = getPlayers().values().stream()
+                .mapToInt(Player::getPoints)
+                .max()
+                .orElse(0);
+
+        // Get all players with max points
+        return getPlayers().entrySet().stream()
+                .filter(entry -> entry.getValue().getPoints() == maxPoints)
+                .map(entry -> "<@" + entry.getKey().getId().asString() + ">")
+//              .map(entry -> "<@" + entry.getKey().getId().asString() + ">: " + maxPoints)
+                .collect(Collectors.joining(", "));
+    }
+
     public void addPlayerPoints(){
         for (Player player : players.values()){
             if (player.getCurrentAnswerNum() == getQuestionCorrectAnswerInt())
@@ -54,7 +73,7 @@ public class Match{
         }
         for (Map.Entry<User, Player> entry : players.entrySet()){
             int intAnswer = entry.getValue().getCurrentAnswerNum();
-            playersAnswers.get(intAnswer).add(entry.getKey().getUsername());
+            playersAnswers.get(intAnswer).add("<@" + entry.getKey().getId().asString() + ">");
         }
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < playersAnswers.size(); i++){
@@ -84,7 +103,8 @@ public class Match{
 
     public String getUserNames() {
         return players.keySet().stream()
-                .map(User::getUsername)
+                //.map(User::getUsername)
+                .map(user -> "<@" + user.getId().asString() + ">")
                 .collect(Collectors.joining(", "));
     }
 
