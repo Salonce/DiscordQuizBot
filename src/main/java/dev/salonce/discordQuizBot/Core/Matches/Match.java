@@ -60,45 +60,51 @@ public class Match{
 
     public void cleanPlayersAnswers(){
         for (Player player : players.values()){
-            player.setCurrentAnswerNum(0);
+            player.setCurrentAnswerNum(-1);
         }
     }
 
 
-
+    //change only this list to show
     public String getUsersAnswers(){
         List<List<String>> playersAnswers = new ArrayList<>();
-        for (int i = 0; i < questions.get(questionNumber).getAnswers().size(); i++){
+        for (int i = 0; i < questions.get(questionNumber).getAnswers().size() + 1; i++){
             playersAnswers.add(new ArrayList<>());
         }
         for (Map.Entry<User, Player> entry : players.entrySet()){
-            int intAnswer = entry.getValue().getCurrentAnswerNum();
+            int intAnswer = entry.getValue().getCurrentAnswerNum() + 1;
             playersAnswers.get(intAnswer).add("<@" + entry.getKey().getId().asString() + ">");
         }
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < playersAnswers.size(); i++){
-            if (i != 0) sb.append("\n");
-            sb.append((char)('A' + i)).append(": ");
+        for (int i = 1; i < playersAnswers.size(); i++){
+            if (i != 1) sb.append("\n");
+            sb.append((char)('A' + i - 1)).append(": ");
             for (int j = 0; j < playersAnswers.get(i).size(); j++){
                 if (j != 0) sb.append(", ");
                 sb.append(playersAnswers.get(i).get(j));
             }
         }
+        sb.append("\nNone: ");
+        for (int j = 0; j < playersAnswers.get(0).size(); j++){
+            if (j != 0) sb.append(", ");
+            sb.append(playersAnswers.get(0).get(j));
+        }
         return sb.toString();
     }
 
+    public boolean questionExists(){
+        return questionNumber < questions.size();
+    }
+
     public Question getQuestion(){
-        if (questionNumber <= questions.size())
+        if (questionNumber < questions.size())
             return questions.get(questionNumber);
         else
             return null;
     }
 
-    public boolean nextQuestion(){
-        if (++questionNumber <= questions.size() - 1)
-            return true;
-        else
-            return false;
+    public void nextQuestion(){
+        questionNumber++;
     }
 
     public String getUserNames() {
