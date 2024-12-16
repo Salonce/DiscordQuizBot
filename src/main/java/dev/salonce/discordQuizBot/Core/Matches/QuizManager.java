@@ -138,6 +138,25 @@ public class QuizManager {
                 .then();
     }
 
+    private Mono<Message> questionMessageAnswers(MessageChannel messageChannel){
+        Match match = quizzes.get(messageChannel);
+        String questionsAnswers = match.getQuestion().getStringAnswers();
+
+        EmbedCreateSpec embed = EmbedCreateSpec.builder()
+                .color(Color.of(255, 99, 71))
+                .title("Question " + match.getQuestionNumber() + ": ")
+                .description("**" + match.getQuestion().getQuestion() + "**")
+                .addField("", questionsAnswers, true)
+                .build();
+
+        MessageCreateSpec spec = MessageCreateSpec.builder()
+                .addComponent(ActionRow.of(Button.success("answerA", "A"), Button.success("answerB", "B"), Button.success("answerC", "C"), Button.success("answerD", "D")))
+                .addEmbed(embed)
+                .build();
+
+        return messageChannel.createMessage(spec);
+    }
+
     private Mono<Message> questionMessage(MessageChannel messageChannel){
         Match match = quizzes.get(messageChannel);
         String questionsAnswers = match.getQuestion().getStringAnswers();
