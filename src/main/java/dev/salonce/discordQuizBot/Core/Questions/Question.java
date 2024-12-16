@@ -25,6 +25,13 @@ public class Question {
 //                .toList();
 //    }
 
+    public String getCorrectAnswerString(){
+        int corAns = getCorrectAnswerInt();
+        if (corAns != -1)
+            return answers.get(corAns).answer();
+        return "No correct answer";
+    }
+
     public int getCorrectAnswerInt(){
         for (int i = 0; i < answers.size(); i++){
             if (answers.get(i).correctness())
