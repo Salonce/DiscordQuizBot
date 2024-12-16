@@ -5,9 +5,7 @@ import discord4j.core.object.entity.User;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Getter
@@ -19,8 +17,25 @@ public class Match{
     @Setter
     private boolean enrolment;
 
-    public boolean quizEnd(){
-        return questionNumber > questions.size() - 1;
+    public String getUsersAnswers(){
+        List<List<String>> playersAnswers = new ArrayList<>();
+        for (int i = 0; i < questions.size(); i++){
+            playersAnswers.add(new ArrayList<>());
+        }
+        for (Map.Entry<User, Player> entry : players.entrySet()){
+            int intAnswer = entry.getValue().getCurrentAnswerNum();
+            playersAnswers.get(intAnswer).add(entry.getKey().getUsername());
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < playersAnswers.size(); i++){
+            if (i != 0) sb.append("\n");
+            sb.append((char)('A' + i)).append(": ");
+            for (int j = 0; j < playersAnswers.get(i).size(); j++){
+                if (j != 0) sb.append(", ");
+                sb.append(playersAnswers.get(i).get(j));
+            }
+        }
+        return sb.toString();
     }
 
     public Question getQuestion(){

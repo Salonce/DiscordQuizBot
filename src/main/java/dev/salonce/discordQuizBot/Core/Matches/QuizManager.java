@@ -18,6 +18,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -129,12 +130,14 @@ public class QuizManager {
 
     private Mono<Message> questionMessageAnswer(MessageChannel messageChannel){
         Match match = quizzes.get(messageChannel);
+        //List<List<String>> qAnswers = new ArrayList<>();
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .color(Color.of(255, 99, 71))
                 .title("Question " + match.getQuestionNumber() + ": ")
                 .description("**" + match.getQuestion().getQuestion() + "**")
                 .addField("", "Correct answer: " + match.getQuestion().getCorrectAnswer(), true)
+                .addField("", "Answers by user: " + match.getUsersAnswers(), true)
                 .build();
 
         return messageChannel.createMessage(embed);
