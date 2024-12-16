@@ -69,16 +69,32 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 				}
 
 				return switch (customId) {
-//                	case "joinQuiz" -> handleJoin(event, userId);
 					case "joinQuiz" -> {
 						quizManager.addUserToMatch(message, messageChannel, user);
 						yield event.reply("You've joined the quiz.").withEphemeral(true);
-
 					}
 					case "leaveQuiz" -> {
 						quizManager.removeUserFromMatch(message, messageChannel, user);
-						yield event.reply("You've left the quiz.").withEphemeral(false);
+						yield event.reply("You've left the quiz.").withEphemeral(true);
 					}
+					case "answerA" -> {
+						quizManager.setPlayerAnswer(message, messageChannel, user, 'A');
+						yield event.reply("Your answer: A.").withEphemeral(true);
+					}
+					case "answerB" -> {
+						quizManager.setPlayerAnswer(message, messageChannel, user, 'B');
+						yield event.reply("Your answer: B.").withEphemeral(true);
+					}
+					case "answerC" -> {
+						quizManager.setPlayerAnswer(message, messageChannel, user, 'C');
+						yield event.reply("Your answer: C.").withEphemeral(true);
+					}
+					case "answerD" -> {
+						quizManager.setPlayerAnswer(message, messageChannel, user, 'D');
+						yield event.reply("Your answer: D.").withEphemeral(true);
+					}
+
+
 					default -> event.reply("Unknown button interaction").withEphemeral(true);
 				};
 			}).subscribe();
