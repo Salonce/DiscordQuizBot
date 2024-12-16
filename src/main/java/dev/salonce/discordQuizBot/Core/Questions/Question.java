@@ -16,4 +16,14 @@ public class Question {
         this.answers = answers;
         this.explanation = explanation;
     }
+
+    public String getStringAnswers(){
+        StringBuilder sb = new StringBuilder();
+        char letter = 'A';
+        for (Answer answer : answers){
+            sb.append(letter + ") " + answer.answer() + "\n");
+            letter++;
+        }
+        return sb.toString();
+    }
 }

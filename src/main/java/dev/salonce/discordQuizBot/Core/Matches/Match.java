@@ -38,24 +38,10 @@ public class Match{
     }
 
     public String getUserNames() {
-        StringBuilder userNames = new StringBuilder();
-        for (User user : players.keySet()) {
-            if (userNames.length() > 0) {
-                userNames.append(", ");
-            }
-            userNames.append(user.getUsername());
-        }
-        return userNames.toString();
+        return players.keySet().stream()
+                .map(User::getUsername)
+                .collect(Collectors.joining(", "));
     }
-
-//    public String getUserNames() {
-//        System.out.println(players.keySet().stream()
-//                .map(User::getUsername)
-//                .collect(Collectors.joining(", ")));
-//        return players.keySet().stream()
-//                .map(User::getUsername)
-//                .collect(Collectors.joining(", "));
-//    }
 
     public Match(List<Question> questions){
         this.questions = questions;
