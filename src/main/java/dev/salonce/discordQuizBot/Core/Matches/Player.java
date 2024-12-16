@@ -14,7 +14,7 @@ public class Player {
     private Character currentAnswer = '0';
 
     @Setter
-    private Integer currentAnswerNum = 0;
+    private Integer currentAnswerNum = -1;
 
     public void addPoint(){
         this.points++;
