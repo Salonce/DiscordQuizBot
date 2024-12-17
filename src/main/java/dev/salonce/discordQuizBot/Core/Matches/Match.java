@@ -38,8 +38,10 @@ public class Match{
 
     public void addPlayerPoints(){
         for (Player player : players.values()){
-            if (player.getCurrentAnswerNum() == getQuestionCorrectAnswerInt())
+            if (player.getAnswersList().get(questionNumber) == getQuestionCorrectAnswerInt())
                 player.addPoint();
+//            if (player.getCurrentAnswerNum() == getQuestionCorrectAnswerInt())
+//                player.addPoint();
         }
     }
 
@@ -51,28 +53,20 @@ public class Match{
         return questions.get(questionNumber).getCorrectAnswerString();
     }
 
-//    private List<Integer> getQuestionCorrectAnswerInt(){
-//        return questions.get(questionNumber).getCorrectAnswerListInt();
-//    }
-
-//    public String getScoreBoard() {
-//    }
-
     public void cleanPlayersAnswers(){
         for (Player player : players.values()){
             player.setCurrentAnswerNum(-1);
         }
     }
 
-
-    //change only this list to show
     public String getUsersAnswers(){
         List<List<String>> playersAnswers = new ArrayList<>();
         for (int i = 0; i < questions.get(questionNumber).getAnswers().size() + 1; i++){
             playersAnswers.add(new ArrayList<>());
         }
         for (Map.Entry<User, Player> entry : players.entrySet()){
-            int intAnswer = entry.getValue().getCurrentAnswerNum() + 1;
+            int intAnswer = entry.getValue().getAnswersList().get(questionNumber) + 1;
+            //int intAnswer = entry.getValue().getCurrentAnswerNum() + 1;
             playersAnswers.get(intAnswer).add("<@" + entry.getKey().getId().asString() + ">");
         }
         StringBuilder sb = new StringBuilder();
@@ -121,13 +115,13 @@ public class Match{
         this.questionNumber = 0;
     }
 
-    public boolean addPlayer(User user){
+    public boolean addPlayer(User user, int questionsNumber){
         if (players.containsKey(user)) {
             //System.out.println("User is already on player list.");
             return false;
         }
         else {
-            players.put(user, new Player());
+            players.put(user, new Player(questionsNumber));
             return true;
         }
     }
