@@ -93,6 +93,31 @@ public class QuizManager {
         }
     }
 
+    private Mono<Void> sendQuestionsSequentially(MessageChannel messageChannel) {
+        Match match = quizzes.get(messageChannel);
+        int newQuestionWait = 5; //default is 10, test is 5
+        int AnswerTimeWait = 5; //default is 30, test is 5
+
+        return Flux.generate(sink -> {
+                    if (match.questionExists()) {
+                        System.out.println("question exists or no: " + match.questionExists());
+                        sink.next(match.getQuestion());
+                        //match.nextQuestion();
+                    } else {
+                        sink.complete();
+                    }
+                })
+                .concatMap(question -> questionMessage(messageChannel)
+                        .then(Mono.delay(Duration.ofSeconds(AnswerTimeWait)))
+                        .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
+                        .then(Mono.defer(() -> questionMessageAnswer(messageChannel)))
+                        .then(Mono.defer(() -> cleanPlayersAnswers(messageChannel)))
+                        .then(Mono.delay(Duration.ofSeconds(newQuestionWait)))
+                        .then(Mono.defer(() -> nextQuestion(match)))
+                )
+                .then();
+    }
+
 
     private Mono<Void> repeatQuestionMessages(MessageChannel messageChannel) {
         return sendQuestionsSequentially(messageChannel) // Process all questions sequentially
@@ -105,29 +130,13 @@ public class QuizManager {
         return Mono.empty();
     }
 
-    private Mono<Void> sendQuestionsSequentially(MessageChannel messageChannel) {
-        Match match = quizzes.get(messageChannel);
-        int newQuestionWait = 5; //default is 10, test is 5
-        int AnswerTimeWait = 5; //default is 30, test is 5
-
-        return Flux.generate(sink -> {
-                    if (match.questionExists()) {
-                        System.out.println("question exists or no: " + match.questionExists());
-                        sink.next(match.getQuestion());
-                        match.nextQuestion();
-                    } else {
-                        sink.complete();
-                    }
-                })
-                .concatMap(question -> questionMessage(messageChannel)
-                        .then(Mono.delay(Duration.ofSeconds(AnswerTimeWait)))
-                        .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
-                        .then(Mono.defer(() -> questionMessageAnswer(messageChannel)))
-                        .then(Mono.defer(() -> cleanPlayersAnswers(messageChannel)))
-                        .then(Mono.delay(Duration.ofSeconds(newQuestionWait)))
-                )
-                .then();
+    private Mono<Void> nextQuestion(Match match){
+        match.nextQuestion();
+        return Mono.empty();
     }
+
+
+
 
     private Mono<Message> showMatchResults(MessageChannel messageChannel){
         Match match = quizzes.get(messageChannel);
