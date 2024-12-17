@@ -57,8 +57,9 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 				ButtonInteraction buttonInteraction = new ButtonInteraction(event);
 				if (!buttonInteraction.buttonEventValid())
 					return null;
+				ButtonInteractionData buttonInteractionData = new ButtonInteractionData(buttonId);
 
-				return switch (buttonId) {
+				return switch (buttonInteractionData.getButtonType()) {
 					case "joinQuiz" -> {
 						quizManager.addUserToMatch(buttonInteraction);
 						yield event.reply("You've joined the quiz.").withEphemeral(true);
@@ -67,23 +68,23 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 						quizManager.removeUserFromMatch(buttonInteraction);
 						yield event.reply("You've left the quiz.").withEphemeral(true);
 					}
-					case "answerA" -> {
-						boolean inMatch = quizManager.setPlayerAnswer(buttonInteraction, 0);
+					case "A" -> {
+						boolean inMatch = quizManager.setPlayerAnswer(buttonInteraction, buttonInteractionData);
 						String answer = (inMatch) ? "Your answer: A." : "You are not in the match.";
 						yield event.reply(answer).withEphemeral(true);
 					}
-					case "answerB" -> {
-						boolean inMatch = quizManager.setPlayerAnswer(buttonInteraction, 1);
+					case "B" -> {
+						boolean inMatch = quizManager.setPlayerAnswer(buttonInteraction, buttonInteractionData);
 						String answer = (inMatch) ? "Your answer: B." : "You are not in the match.";
 						yield event.reply(answer).withEphemeral(true);
 					}
-					case "answerC" -> {
-						boolean inMatch = quizManager.setPlayerAnswer(buttonInteraction, 2);
+					case "C" -> {
+						boolean inMatch = quizManager.setPlayerAnswer(buttonInteraction, buttonInteractionData);
 						String answer = (inMatch) ? "Your answer: C." : "You are not in the match.";
 						yield event.reply(answer).withEphemeral(true);
 					}
-					case "answerD" -> {
-						boolean inMatch = quizManager.setPlayerAnswer(buttonInteraction, 3);
+					case "D" -> {
+						boolean inMatch = quizManager.setPlayerAnswer(buttonInteraction, buttonInteractionData);
 						String answer = (inMatch) ? "Your answer: D." : "You are not in the match.";
 						yield event.reply(answer).withEphemeral(true);
 					}

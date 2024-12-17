@@ -1,6 +1,7 @@
 package dev.salonce.discordQuizBot.Core.Matches;
 
 import dev.salonce.discordQuizBot.ButtonInteraction;
+import dev.salonce.discordQuizBot.ButtonInteractionData;
 import dev.salonce.discordQuizBot.Core.Messages.MessageSender;
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
@@ -69,13 +70,17 @@ public class QuizManager {
                     else
                         sink.complete();
                 })
-                .concatMap(question -> createQuestionMessage(messageChannel)
-                        .then(Mono.delay(Duration.ofSeconds(AnswerTimeWait)))
-                        .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
-                        .then(Mono.defer(() -> createAnswerMessage(messageChannel)))
-                        .then(Mono.defer(() -> cleanPlayersAnswers(messageChannel)))
-                        .then(Mono.delay(Duration.ofSeconds(newQuestionWait)))
-                        .then(Mono.defer(() -> moveToNextQuestion(match)))
+                .index()
+                .concatMap(tuple -> {
+                            long index = tuple.getT1();
+                            return createQuestionMessage(messageChannel, index)
+                                    .then(Mono.delay(Duration.ofSeconds(AnswerTimeWait)))
+                                    .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
+                                    .then(Mono.defer(() -> createAnswerMessage(messageChannel)))
+                                    .then(Mono.defer(() -> cleanPlayersAnswers(messageChannel)))
+                                    .then(Mono.delay(Duration.ofSeconds(newQuestionWait)))
+                                    .then(Mono.defer(() -> moveToNextQuestion(match)));
+                        }
                 )
                 .then();
     }
@@ -99,7 +104,7 @@ public class QuizManager {
         return messageChannel.createMessage(embed);
     }
 
-    private Mono<Message> createQuestionMessage(MessageChannel messageChannel){
+    private Mono<Message> createQuestionMessage(MessageChannel messageChannel, Long questionNumber){
         Match match = quizzes.get(messageChannel);
         String questionsAnswers = match.getQuestion().getStringAnswers();
         int answersSize = match.getQuestion().getAnswers().size();
@@ -107,7 +112,8 @@ public class QuizManager {
         // Create buttons dynamically
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
-            buttons.add(Button.success("answer" + (char)('A' + i), String.valueOf((char)('A' + i))));
+            buttons.add(Button.success((char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))));
+            System.out.println((char)('A' + i) + "-" + questionNumber.toString());
         }
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
@@ -200,9 +206,11 @@ public class QuizManager {
         User user = buttonInteraction.getUser();
         Message message = buttonInteraction.getMessage();
         MessageChannel messageChannel = buttonInteraction.getMessageChannel();
+        Match match = quizzes.get(messageChannel);
+        int questionsNumber = match.getQuestionNumber();
 
         if (quizzes.containsKey(messageChannel)){
-            if (quizzes.get(messageChannel).addPlayer(user)) {
+            if (quizzes.get(messageChannel).addPlayer(user, questionsNumber)) {
                 System.out.println("Participants after adding: " + quizzes.get(messageChannel).getUserNames());
                 editStartQuizMessage(message, messageChannel).subscribe();
             }
@@ -226,13 +234,14 @@ public class QuizManager {
         }
     }
 
-    public boolean setPlayerAnswer(ButtonInteraction buttonInteraction, int intAnswer){
+    public boolean setPlayerAnswer(ButtonInteraction buttonInteraction, ButtonInteractionData buttonInteractionData){
         User user = buttonInteraction.getUser();
         MessageChannel messageChannel = buttonInteraction.getMessageChannel();
+        int answerNum = Integer.parseInt(buttonInteractionData.getAdditionalData());
 
         Match match = quizzes.get(messageChannel);
         if (match.getPlayers().containsKey(user)) {
-            match.getPlayers().get(user).setCurrentAnswerNum(intAnswer);
+            match.getPlayers().get(user).setCurrentAnswerNum(answerNum);
             return true;
         }
         else return false;
