@@ -1,5 +1,6 @@
 package dev.salonce.discordQuizBot.Core.Matches;
 
+import dev.salonce.discordQuizBot.ButtonInteraction;
 import dev.salonce.discordQuizBot.Core.Messages.MessageSender;
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
@@ -38,7 +39,11 @@ public class QuizManager {
         quizzes = new HashMap<>();
     }
 
-    public void addUserToMatch(Message message, MessageChannel messageChannel, User user){
+    public void addUserToMatch(ButtonInteraction buttonInteraction){
+        User user = buttonInteraction.getUser();
+        Message message = buttonInteraction.getMessage();
+        MessageChannel messageChannel = buttonInteraction.getMessageChannel();
+
         if (quizzes.containsKey(messageChannel)){
             if (quizzes.get(messageChannel).addPlayer(user)) {
                 System.out.println("Participants after adding: " + quizzes.get(messageChannel).getUserNames());
@@ -47,7 +52,11 @@ public class QuizManager {
         }
     }
 
-    public void removeUserFromMatch(Message message, MessageChannel messageChannel, User user){
+    public void removeUserFromMatch(ButtonInteraction buttonInteraction){
+        User user = buttonInteraction.getUser();
+        Message message = buttonInteraction.getMessage();
+        MessageChannel messageChannel = buttonInteraction.getMessageChannel();
+
         if (quizzes.containsKey(messageChannel)){
             if (quizzes.get(messageChannel).removePlayer(user)) {
                 editStartQuizMessage(message, messageChannel).subscribe();
@@ -60,7 +69,10 @@ public class QuizManager {
         }
     }
 
-    public boolean setPlayerAnswer(Message message, MessageChannel messageChannel, User user, int intAnswer){
+    public boolean setPlayerAnswer(ButtonInteraction buttonInteraction, int intAnswer){
+        User user = buttonInteraction.getUser();
+        MessageChannel messageChannel = buttonInteraction.getMessageChannel();
+
         Match match = quizzes.get(messageChannel);
         if (match.getPlayers().containsKey(user)) {
             match.getPlayers().get(user).setCurrentAnswerNum(intAnswer);
@@ -99,13 +111,10 @@ public class QuizManager {
         int AnswerTimeWait = 5; //default is 30, test is 5
 
         return Flux.generate(sink -> {
-                    if (match.questionExists()) {
-                        System.out.println("question exists or no: " + match.questionExists());
+                    if (match.questionExists())
                         sink.next(match.getQuestion());
-                        //match.nextQuestion();
-                    } else {
+                    else
                         sink.complete();
-                    }
                 })
                 .concatMap(question -> questionMessage(messageChannel)
                         .then(Mono.delay(Duration.ofSeconds(AnswerTimeWait)))
@@ -134,9 +143,6 @@ public class QuizManager {
         match.nextQuestion();
         return Mono.empty();
     }
-
-
-
 
     private Mono<Message> showMatchResults(MessageChannel messageChannel){
         Match match = quizzes.get(messageChannel);
