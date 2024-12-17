@@ -92,18 +92,19 @@ public class Match{
         return sb.toString();
     }
 
+    public boolean questionExists(){
+        return questionNumber < questions.size();
+    }
+
     public Question getQuestion(){
-        if (questionNumber <= questions.size())
+        if (questionNumber < questions.size())
             return questions.get(questionNumber);
         else
             return null;
     }
 
-    public boolean nextQuestion(){
-        if (++questionNumber <= questions.size() - 1)
-            return true;
-        else
-            return false;
+    public void nextQuestion(){
+        questionNumber++;
     }
 
     public String getUserNames() {

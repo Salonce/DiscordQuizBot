@@ -111,8 +111,10 @@ public class QuizManager {
         int AnswerTimeWait = 5; //default is 30, test is 5
 
         return Flux.generate(sink -> {
-                    if (match.nextQuestion()) {
+                    if (match.questionExists()) {
+                        System.out.println("question exists or no: " + match.questionExists());
                         sink.next(match.getQuestion());
+                        match.nextQuestion();
                     } else {
                         sink.complete();
                     }
