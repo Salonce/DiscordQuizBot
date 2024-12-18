@@ -38,10 +38,10 @@ public class Match{
 
     public void addPlayerPoints(){
         for (Player player : players.values()){
-//            if (player.getAnswersList().get(questionNumber) == getQuestionCorrectAnswerInt())
-//                player.addPoint();
-            if (player.getCurrentAnswerNum() == getQuestionCorrectAnswerInt())
+            if (player.getAnswersList().get(questionNumber) == getQuestionCorrectAnswerInt())
                 player.addPoint();
+//            if (player.getCurrentAnswerNum() == getQuestionCorrectAnswerInt())
+//                player.addPoint();
         }
     }
 
@@ -65,7 +65,8 @@ public class Match{
             playersAnswers.add(new ArrayList<>());
         }
         for (Map.Entry<User, Player> entry : players.entrySet()){
-            int intAnswer = entry.getValue().getCurrentAnswerNum() + 1;
+            int intAnswer = entry.getValue().getAnswersList().get(questionNumber) + 1;
+            //int intAnswer = entry.getValue().getCurrentAnswerNum() + 1;
             playersAnswers.get(intAnswer).add("<@" + entry.getKey().getId().asString() + ">");
         }
         StringBuilder sb = new StringBuilder();

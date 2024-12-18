@@ -11,7 +11,11 @@ import java.util.List;
 public class Player {
     public Player(int numOfAnswers){
         this.points = 0;
-        this.answersList = new ArrayList<>(Collections.nCopies(numOfAnswers, -1));
+        answersList = new ArrayList<>();
+        for (int i = 0; i < numOfAnswers; i++){
+            answersList.add(-1);
+        }
+        //this.answersList = new ArrayList<>(Collections.nCopies(numOfAnswers, -1));
     }
     private int points;
 

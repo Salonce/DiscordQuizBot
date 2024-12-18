@@ -1,24 +1,32 @@
 package dev.salonce.discordQuizBot;
 
-import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import lombok.Getter;
 
 @Getter
 public class ButtonInteractionData {
     private final String buttonType;
-    private final String additionalData;
+    private final int questionNumber;
+    private final int answerNumber;
 
     public ButtonInteractionData(String buttonId) {
         if (buttonId.equals("joinQuiz")) {
             buttonType = "joinQuiz";
-            additionalData = null;
+            questionNumber = -1;
+            answerNumber = -1;
         } else if (buttonId.equals("leaveQuiz")) {
             buttonType = "leaveQuiz";
-            additionalData = null;
-        } else if (buttonId.matches("[A-D]-\\d+")) {
+            questionNumber = -1;
+            answerNumber = -1;
+        } else if (buttonId.matches("Answer-[A-D]-\\d+")) {
             String[] parts = buttonId.split("-");
-            buttonType = parts[0];
-            additionalData = parts[1];
+            buttonType = "Answer";
+
+            // Convert letter to answer number (A=0, B=1, C=2, D=3)
+            char letterPart = parts[1].charAt(0);
+            answerNumber = letterPart - 'A';
+
+            // Extract question number
+            questionNumber = Integer.parseInt(parts[2]);
         } else {
             throw new IllegalArgumentException("Invalid button ID: " + buttonId);
         }

@@ -59,7 +59,9 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 					return null;
 				ButtonInteractionData buttonInteractionData = new ButtonInteractionData(buttonId);
 
+				System.out.println("Button clicked type:" + buttonInteractionData.getButtonType());
 				return switch (buttonInteractionData.getButtonType()) {
+
 					case "joinQuiz" -> {
 						quizManager.addUserToMatch(buttonInteraction);
 						yield event.reply("You've joined the quiz.").withEphemeral(true);
@@ -68,26 +70,26 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 						quizManager.removeUserFromMatch(buttonInteraction);
 						yield event.reply("You've left the quiz.").withEphemeral(true);
 					}
-					case "A" -> {
+					case "Answer" -> {
 						boolean inMatch = quizManager.setPlayerAnswer(buttonInteraction, buttonInteractionData);
-						String answer = (inMatch) ? "Your answer: A." : "You are not in the match.";
+						String answer = (inMatch) ? "Your answer:" + (char)('A' + (buttonInteractionData.getAnswerNumber())) + "." : "You are not in the match.";
 						yield event.reply(answer).withEphemeral(true);
 					}
-					case "B" -> {
-						boolean inMatch = quizManager.setPlayerAnswer(buttonInteraction, buttonInteractionData);
-						String answer = (inMatch) ? "Your answer: B." : "You are not in the match.";
-						yield event.reply(answer).withEphemeral(true);
-					}
-					case "C" -> {
-						boolean inMatch = quizManager.setPlayerAnswer(buttonInteraction, buttonInteractionData);
-						String answer = (inMatch) ? "Your answer: C." : "You are not in the match.";
-						yield event.reply(answer).withEphemeral(true);
-					}
-					case "D" -> {
-						boolean inMatch = quizManager.setPlayerAnswer(buttonInteraction, buttonInteractionData);
-						String answer = (inMatch) ? "Your answer: D." : "You are not in the match.";
-						yield event.reply(answer).withEphemeral(true);
-					}
+//					case "B" -> {
+//						boolean inMatch = quizManager.setPlayerAnswer(buttonInteraction, buttonInteractionData);
+//						String answer = (inMatch) ? "Your answer: B." : "You are not in the match.";
+//						yield event.reply(answer).withEphemeral(true);
+//					}
+//					case "C" -> {
+//						boolean inMatch = quizManager.setPlayerAnswer(buttonInteraction, buttonInteractionData);
+//						String answer = (inMatch) ? "Your answer: C." : "You are not in the match.";
+//						yield event.reply(answer).withEphemeral(true);
+//					}
+//					case "D" -> {
+//						boolean inMatch = quizManager.setPlayerAnswer(buttonInteraction, buttonInteractionData);
+//						String answer = (inMatch) ? "Your answer: D." : "You are not in the match.";
+//						yield event.reply(answer).withEphemeral(true);
+//					}
 					default -> event.reply("Unknown button interaction").withEphemeral(true);
 				};
 			}).subscribe();
