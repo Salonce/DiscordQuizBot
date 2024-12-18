@@ -14,6 +14,9 @@ public class Match{
     private final Map<User, Player> players;
     private final List<Question> questions;
     private int questionNumber;
+
+    @Setter
+    private boolean answeringOpen;
     @Setter
     private boolean enrolment;
 
