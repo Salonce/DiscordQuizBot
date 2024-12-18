@@ -77,9 +77,9 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 						if (answerInteractionEnum == AnswerInteractionEnum.NOT_IN_MATCH)
 							answer = "You are not in the match.";
 						else if (answerInteractionEnum == AnswerInteractionEnum.TOO_LATE)
-							answer = "Your answer came too late!";
+							answer = "Your text came too late!";
 						else if (answerInteractionEnum == AnswerInteractionEnum.VALID){
-							answer = "Your answer: " + (char)('A' + (buttonInteractionData.getAnswerNumber())) + ".";
+							answer = "Your text: " + (char)('A' + (buttonInteractionData.getAnswerNumber())) + ".";
 						}
 						else answer = "Something went wrong.";
 						yield event.reply(answer).withEphemeral(true);

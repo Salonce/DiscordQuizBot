@@ -63,8 +63,8 @@ public class QuizManager {
 
     private Mono<Void> createQuestionMessagesSequentially(MessageChannel messageChannel) {
         Match match = quizzes.get(messageChannel);
-        int newQuestionWait = 1; //default is 10, test is 5
-        int AnswerTimeWait = 1; //default is 30, test is 5
+        int newQuestionWait = 5; //default is 10, test is 5
+        int AnswerTimeWait = 5; //default is 30, test is 5
 
         return Flux.generate(sink -> {
                     if (match.questionExists())
@@ -75,15 +75,18 @@ public class QuizManager {
                 .index()
                 .concatMap(tuple -> {
                             long index = tuple.getT1();
-                            return createQuestionMessage(messageChannel, index)
+                    return createQuestionMessage(messageChannel, index)
+                            .flatMap(message -> Mono.just(message)
                                     .then(Mono.defer(() -> openAnswering(messageChannel)))
                                     .then(Mono.delay(Duration.ofSeconds(AnswerTimeWait)))
                                     .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
                                     .then(Mono.defer(() -> closeAnswering(messageChannel)))
-                                    .then(Mono.defer(() -> createAnswerMessage(messageChannel)))
+                                    .then(Mono.defer(() -> editQuestionMessage(messageChannel, message, index)))
+                                    //.then(Mono.defer(() -> createAnswerMessage(messageChannel)))
                                     //.then(Mono.defer(() -> cleanPlayersAnswers(messageChannel)))
                                     .then(Mono.delay(Duration.ofSeconds(newQuestionWait)))
-                                    .then(Mono.defer(() -> moveToNextQuestion(match)));
+                                    .then(Mono.defer(() -> moveToNextQuestion(match)))
+                            );
                         }
                 )
                 .then();
@@ -101,40 +104,22 @@ public class QuizManager {
         return Mono.empty();
     }
 
-    private Mono<Message> createAnswerMessage(MessageChannel messageChannel){
-        Match match = quizzes.get(messageChannel);
-
-        EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .color(Color.of(255, 99, 71))
-                .title("Answer " + match.getQuestionNumber() + ": ")
-                .description("**" + match.getQuestion().getQuestion() + "**")
-                .addField("", "Correct answer: " + match.getQuestion().getCorrectAnswer() + " - " + match.getQuestion().getCorrectAnswerString(), true)
-                .addField("", "Explanation: " + match.getQuestion().getExplanation(), false)
-                .addField("", "Answers:\n" + match.getUsersAnswers(), false)
-                .addField("", "Scoreboard:\n" + match.getScoreboard(), false)
-                //.addField("", "Scoreboard:\n" + match.getScoreBoard(), false)
-                .build();
-
-        return messageChannel.createMessage(embed);
-    }
 
     private Mono<Message> createQuestionMessage(MessageChannel messageChannel, Long questionNumber){
         Match match = quizzes.get(messageChannel);
-        String questionsAnswers = match.getQuestion().getStringAnswers();
+        String questionsAnswers = match.getQuestion().getStringAnswers(false);
         int answersSize = match.getQuestion().getAnswers().size();
 
-        // Create buttons dynamically
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
             buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))));
-            System.out.println("Creating button of id:" + "Answer-" + (char)('A' + i) + "-" + questionNumber.toString());
+            //System.out.println("Creating button of id:" + "Answer-" + (char)('A' + i) + "-" + questionNumber.toString());
         }
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                //.color(Color.of(255, 99, 71))
-                .title("Question " + match.getQuestionNumber() + ": ")
-                .description("**" + match.getQuestion().getQuestion() + "**")
-                .addField("", questionsAnswers, true)
+                .title("#" + (match.getQuestionNumber() + 1) + " **" + match.getQuestion().getQuestion() + "**")
+                //.description("**" + match.getQuestion().getQuestion() + "**")
+                .addField("\n", questionsAnswers + "\n", false)
                 .build();
 
         MessageCreateSpec spec = MessageCreateSpec.builder()
@@ -145,12 +130,38 @@ public class QuizManager {
         return messageChannel.createMessage(spec);
     }
 
+    private Mono<Message> editQuestionMessage(MessageChannel messageChannel, Message message, Long questionNumber){
+        Match match = quizzes.get(messageChannel);
+        String questionsAnswers = match.getQuestion().getStringAnswers(true);
+        int answersSize = match.getQuestion().getAnswers().size();
+
+        List<Button> buttons = new ArrayList<>();
+        for (int i = 0; i < answersSize; i++) {
+            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))).disabled());
+            //System.out.println("Creating button of id:" + "Answer-" + (char)('A' + i) + "-" + questionNumber.toString());
+        }
+
+        EmbedCreateSpec embed = EmbedCreateSpec.builder()
+                .title("#" + (match.getQuestionNumber() + 1) + " **" + match.getQuestion().getQuestion() + "**")
+                .addField("\n", questionsAnswers + "\n", false)
+                .addField("Explanation", match.getQuestion().getExplanation() + "\n", false)
+                //.addField("", "Answers:\n" + match.getUsersAnswers(), false)
+                .addField("Answers", match.getUsersAnswers(), false)
+                .addField("Scoreboard", match.getScoreboard(), false)
+                .build();
+
+        return message.edit(MessageEditSpec.builder()
+                .addComponent(ActionRow.of(buttons))
+                .addEmbed(embed)
+                .build());
+    }
+
     public Mono<Message> createStartQuizMessage(MessageChannel messageChannel){
         Match match = quizzes.get(messageChannel);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("\uD83C\uDFC1 Java Quiz Lobby")
-                .addField("", "Questions: " + match.getQuestions().size(), true)
+                .title("\uD83C\uDFC1 Java Quiz")
+                .addField("", "Questions: " + match.getQuestions().size(), false)
                 .addField("", "Participants: " + match.getUserNames(), false)
                 .addField("", "You have " + participationTimeWait + " seconds to join.", false)
                 .build();
@@ -167,8 +178,8 @@ public class QuizManager {
         Match match = quizzes.get(messageChannel);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("\uD83C\uDFC1 Java Quiz Lobby")
-                .addField("", "Questions: " + match.getQuestions().size(), true)
+                .title("\uD83C\uDFC1 Java Quiz")
+                .addField("", "Questions: " + match.getQuestions().size(), false)
                 .addField("", "Participants: " + match.getUserNames(), false)
                 .addField("", "You have " + participationTimeWait + " seconds to join.", false)
                 .build();
@@ -183,8 +194,8 @@ public class QuizManager {
         Match match = quizzes.get(messageChannel);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("\uD83C\uDFC1 Java Quiz Lobby")
-                .addField("", "Questions: " + match.getQuestions().size(), true)
+                .title("\uD83C\uDFC1 Java Quiz")
+                .addField("", "Questions: " + match.getQuestions().size(), false)
                 .addField("", "Participants: " + match.getUserNames(), false)
                 .addField("", "Starting in " + preparationTime + " seconds.", false)
                 .build();
@@ -277,3 +288,21 @@ public class QuizManager {
         return Mono.empty();
     }
 }
+
+
+//    private Mono<Message> createAnswerMessage(MessageChannel messageChannel){
+//        Match match = quizzes.get(messageChannel);
+//
+//        EmbedCreateSpec embed = EmbedCreateSpec.builder()
+//                .color(Color.of(255, 99, 71))
+//                .title("Answer " + match.getQuestionNumber() + ": ")
+//                .description("**" + match.getQuestion().getQuestion() + "**")
+//                .addField("", "Correct text: " + match.getQuestion().getCorrectAnswer() + " - " + match.getQuestion().getCorrectAnswerString(), true)
+//                .addField("", "Explanation: " + match.getQuestion().getExplanation(), false)
+//                .addField("", "Answers:\n" + match.getUsersAnswers(), false)
+//                .addField("", "Scoreboard:\n" + match.getScoreboard(), false)
+//                //.addField("", "Scoreboard:\n" + match.getScoreBoard(), false)
+//                .build();
+//
+//        return messageChannel.createMessage(embed);
+//    }
