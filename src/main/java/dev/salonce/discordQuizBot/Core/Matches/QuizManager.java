@@ -1,5 +1,6 @@
 package dev.salonce.discordQuizBot.Core.Matches;
 
+import dev.salonce.discordQuizBot.AnswerInteractionEnum;
 import dev.salonce.discordQuizBot.ButtonInteraction;
 import dev.salonce.discordQuizBot.ButtonInteractionData;
 import dev.salonce.discordQuizBot.Core.Messages.MessageSender;
@@ -74,8 +75,10 @@ public class QuizManager {
                 .concatMap(tuple -> {
                             long index = tuple.getT1();
                             return createQuestionMessage(messageChannel, index)
+                                    .then(Mono.defer(() -> openAnswering(messageChannel)))
                                     .then(Mono.delay(Duration.ofSeconds(AnswerTimeWait)))
                                     .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
+                                    .then(Mono.defer(() -> closeAnswering(messageChannel)))
                                     .then(Mono.defer(() -> createAnswerMessage(messageChannel)))
                                     //.then(Mono.defer(() -> cleanPlayersAnswers(messageChannel)))
                                     .then(Mono.delay(Duration.ofSeconds(newQuestionWait)))
@@ -85,7 +88,17 @@ public class QuizManager {
                 .then();
     }
 
+    private Mono<Void> closeAnswering(MessageChannel messageChannel){
+        Match match = quizzes.get(messageChannel);
+        match.setAnsweringOpen(false);
+        return Mono.empty();
+    }
 
+    private Mono<Void> openAnswering(MessageChannel messageChannel){
+        Match match = quizzes.get(messageChannel);
+        match.setAnsweringOpen(true);
+        return Mono.empty();
+    }
 
     private Mono<Message> createAnswerMessage(MessageChannel messageChannel){
         Match match = quizzes.get(messageChannel);
@@ -234,19 +247,26 @@ public class QuizManager {
         }
     }
 
-    public boolean setPlayerAnswer(ButtonInteraction buttonInteraction, ButtonInteractionData buttonInteractionData){
+    public AnswerInteractionEnum setPlayerAnswer(ButtonInteraction buttonInteraction, ButtonInteractionData buttonInteractionData){
         User user = buttonInteraction.getUser();
         MessageChannel messageChannel = buttonInteraction.getMessageChannel();
         int questionNum = buttonInteractionData.getQuestionNumber();
         int answerNum = buttonInteractionData.getAnswerNumber();
 
         Match match = quizzes.get(messageChannel);
+
+        if (match == null)
+            return AnswerInteractionEnum.TOO_LATE; // could be different
+
+        if (questionNum != match.getQuestionNumber() || match.isAnsweringOpen() != true)
+            return AnswerInteractionEnum.TOO_LATE;
+
         if (match.getPlayers().containsKey(user)) {
             match.getPlayers().get(user).setCurrentAnswerNum(questionNum);
             match.getPlayers().get(user).getAnswersList().set(questionNum, answerNum);
-            return true;
+            return AnswerInteractionEnum.VALID;
         }
-        else return false;
+        else return AnswerInteractionEnum.NOT_IN_MATCH;
     }
 //
 //    public Mono<Void> cleanPlayersAnswers(MessageChannel messageChannel){

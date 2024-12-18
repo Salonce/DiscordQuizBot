@@ -71,8 +71,16 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 						yield event.reply("You've left the quiz.").withEphemeral(true);
 					}
 					case "Answer" -> {
-						boolean inMatch = quizManager.setPlayerAnswer(buttonInteraction, buttonInteractionData);
-						String answer = (inMatch) ? "Your answer:" + (char)('A' + (buttonInteractionData.getAnswerNumber())) + "." : "You are not in the match.";
+						AnswerInteractionEnum answerInteractionEnum = quizManager.setPlayerAnswer(buttonInteraction, buttonInteractionData);
+						String answer;
+						if (answerInteractionEnum == AnswerInteractionEnum.NOT_IN_MATCH)
+							answer = "You are not in the match.";
+						else if (answerInteractionEnum == AnswerInteractionEnum.TOO_LATE)
+							answer = "Your answer came too late!";
+						else if (answerInteractionEnum == AnswerInteractionEnum.VALID){
+							answer = "Your answer:" + (char)('A' + (buttonInteractionData.getAnswerNumber())) + ".";
+						}
+						else answer = "Something went wrong.";
 						yield event.reply(answer).withEphemeral(true);
 					}
 //					case "B" -> {
