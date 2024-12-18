@@ -48,10 +48,11 @@ public class QuizManager {
         }
         else{
             quizzes.put(messageChannel, match);
-            System.out.println("Initial participants: " + match.getUserNames());
-            createStartingQuizMessage(messageChannel)
+            //System.out.println("Initial participants: " + match.getUserNames());
+            createStartQuizMessage(messageChannel)
                     .delayElement(Duration.ofSeconds(enrollmentTime))
-                    .then(Mono.defer(() -> createStartingMatchMessage(messageChannel)))
+                    .flatMap(message -> editStartQuizMessage2(message, messageChannel))
+                    //.then(Mono.defer(() -> createStartingMatchMessage(messageChannel)))
                     .delayElement(Duration.ofSeconds(preparationTime))
                     .then(Mono.defer(() -> createQuestionMessages(messageChannel)))
                     .then(Mono.defer(() -> createMatchResultsMessage(messageChannel)))
@@ -62,8 +63,8 @@ public class QuizManager {
 
     private Mono<Void> createQuestionMessagesSequentially(MessageChannel messageChannel) {
         Match match = quizzes.get(messageChannel);
-        int newQuestionWait = 5; //default is 10, test is 5
-        int AnswerTimeWait = 5; //default is 30, test is 5
+        int newQuestionWait = 1; //default is 10, test is 5
+        int AnswerTimeWait = 1; //default is 30, test is 5
 
         return Flux.generate(sink -> {
                     if (match.questionExists())
@@ -144,10 +145,14 @@ public class QuizManager {
         return messageChannel.createMessage(spec);
     }
 
-    public Mono<Message> createStartingQuizMessage(MessageChannel messageChannel){
+    public Mono<Message> createStartQuizMessage(MessageChannel messageChannel){
+        Match match = quizzes.get(messageChannel);
+
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("\uD83C\uDFC1 Java Quiz Lobby")
-                .description("You have " + participationTimeWait + " seconds to join.")
+                .addField("", "Questions: " + match.getQuestions().size(), true)
+                .addField("", "Participants: " + match.getUserNames(), false)
+                .addField("", "You have " + participationTimeWait + " seconds to join.", false)
                 .build();
 
         MessageCreateSpec spec = MessageCreateSpec.builder()
@@ -163,8 +168,9 @@ public class QuizManager {
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("\uD83C\uDFC1 Java Quiz Lobby")
-                .description("You have " + participationTimeWait + " seconds to join.")
+                .addField("", "Questions: " + match.getQuestions().size(), true)
                 .addField("", "Participants: " + match.getUserNames(), false)
+                .addField("", "You have " + participationTimeWait + " seconds to join.", false)
                 .build();
 
         return message.edit(MessageEditSpec.builder()
@@ -173,23 +179,20 @@ public class QuizManager {
                 .build());
     }
 
-    private Mono<Message> createStartingMatchMessage(MessageChannel messageChannel){
-
+    private Mono<Message> editStartQuizMessage2(Message message, MessageChannel messageChannel){
         Match match = quizzes.get(messageChannel);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("\uD83D\uDCCB Quiz Setup in Progress")
-                //.description("Type: java quiz. Questions: 5. \nParticipants: " + match.getUserNames())
+                .title("\uD83C\uDFC1 Java Quiz Lobby")
                 .addField("", "Questions: " + match.getQuestions().size(), true)
                 .addField("", "Participants: " + match.getUserNames(), false)
-                .addField("", "Starting in " + preparationTime + " seconds", false)
+                .addField("", "Starting in " + preparationTime + " seconds.", false)
                 .build();
 
-        MessageCreateSpec spec = MessageCreateSpec.builder()
+        return message.edit(MessageEditSpec.builder()
+                .addComponent(ActionRow.of(Button.success("joinQuiz", "Join").disabled(), Button.success("leaveQuiz", "Leave").disabled()))
                 .addEmbed(embed)
-                .build();
-
-        return messageChannel.createMessage(spec);
+                .build());
     }
 
     private Mono<Void> createQuestionMessages(MessageChannel messageChannel) {
@@ -268,12 +271,6 @@ public class QuizManager {
         }
         else return AnswerInteractionEnum.NOT_IN_MATCH;
     }
-//
-//    public Mono<Void> cleanPlayersAnswers(MessageChannel messageChannel){
-//        Match match = quizzes.get(messageChannel);
-//        match.cleanPlayersAnswers();
-//        return Mono.empty();
-//    }
 
     public Mono<Void> addPlayerPoints(MessageChannel messageChannel){
         quizzes.get(messageChannel).addPlayerPoints();
