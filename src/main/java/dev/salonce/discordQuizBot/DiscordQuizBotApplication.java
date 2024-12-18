@@ -53,6 +53,7 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 					.subscribe();
 
 			gateway.on(ButtonInteractionEvent.class, event -> {
+				// maybe also check event interaction date to not process anything too old
 				String buttonId = event.getCustomId();
 				ButtonInteraction buttonInteraction = new ButtonInteraction(event);
 				if (!buttonInteraction.buttonEventValid())
@@ -78,27 +79,12 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 						else if (answerInteractionEnum == AnswerInteractionEnum.TOO_LATE)
 							answer = "Your answer came too late!";
 						else if (answerInteractionEnum == AnswerInteractionEnum.VALID){
-							answer = "Your answer:" + (char)('A' + (buttonInteractionData.getAnswerNumber())) + ".";
+							answer = "Your answer: " + (char)('A' + (buttonInteractionData.getAnswerNumber())) + ".";
 						}
 						else answer = "Something went wrong.";
 						yield event.reply(answer).withEphemeral(true);
 					}
-//					case "B" -> {
-//						boolean inMatch = quizManager.setPlayerAnswer(buttonInteraction, buttonInteractionData);
-//						String answer = (inMatch) ? "Your answer: B." : "You are not in the match.";
-//						yield event.reply(answer).withEphemeral(true);
-//					}
-//					case "C" -> {
-//						boolean inMatch = quizManager.setPlayerAnswer(buttonInteraction, buttonInteractionData);
-//						String answer = (inMatch) ? "Your answer: C." : "You are not in the match.";
-//						yield event.reply(answer).withEphemeral(true);
-//					}
-//					case "D" -> {
-//						boolean inMatch = quizManager.setPlayerAnswer(buttonInteraction, buttonInteractionData);
-//						String answer = (inMatch) ? "Your answer: D." : "You are not in the match.";
-//						yield event.reply(answer).withEphemeral(true);
-//					}
-					default -> event.reply("Unknown button interaction").withEphemeral(true);
+					default -> event.reply("Button interaction failed. Is it old?").withEphemeral(true);
 				};
 			}).subscribe();
 
