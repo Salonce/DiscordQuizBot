@@ -180,7 +180,7 @@ public class QuizManager {
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("\uD83D\uDCCB Quiz Setup in Progress")
                 //.description("Type: java quiz. Questions: 5. \nParticipants: " + match.getUserNames())
-                .addField("", "Questions: 5", true)
+                .addField("", "Questions: " + match.getQuestions().size(), true)
                 .addField("", "Participants: " + match.getUserNames(), false)
                 .addField("", "Starting in " + preparationTime + " seconds", false)
                 .build();

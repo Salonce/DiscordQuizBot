@@ -28,7 +28,9 @@ public class ButtonInteractionData {
             // Extract question number
             questionNumber = Integer.parseInt(parts[2]);
         } else {
-            throw new IllegalArgumentException("Invalid button ID: " + buttonId);
+            buttonType = "Invalid";
+            questionNumber = -1;
+            answerNumber = -1;
         }
     }
 }
