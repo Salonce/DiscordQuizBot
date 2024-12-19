@@ -63,8 +63,8 @@ public class QuizManager {
 
     private Mono<Void> createQuestionMessagesSequentially(MessageChannel messageChannel) {
         Match match = quizzes.get(messageChannel);
-        int newQuestionWait = 10; //default is 10, test is 5
-        int AnswerTimeWait = 20; //default is 30, test is 5
+        int newQuestionWait = 5; //default is 10, test is 5
+        int AnswerTimeWait = 5; //default is 30, test is 5
 
         return Flux.generate(sink -> {
                     if (match.questionExists())
@@ -119,7 +119,7 @@ public class QuizManager {
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("#" + (match.getQuestionNumber() + 1) + " **" + match.getQuestion().getQuestion() + "**")
                 //.description("**" + match.getQuestion().getQuestion() + "**")
-                .addField("", questionsAnswers, false)
+                .addField("\n", questionsAnswers + "\n", false)
                 .build();
 
         MessageCreateSpec spec = MessageCreateSpec.builder()
@@ -143,11 +143,11 @@ public class QuizManager {
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("#" + (match.getQuestionNumber() + 1) + " **" + match.getQuestion().getQuestion() + "**")
-                .addField("", questionsAnswers, false)
-                .addField("", "Explanation: " + match.getQuestion().getExplanation(), false)
+                .addField("\n", questionsAnswers + "\n", false)
+                .addField("Explanation", match.getQuestion().getExplanation() + "\n", false)
                 //.addField("", "Answers:\n" + match.getUsersAnswers(), false)
-                .addField("", match.getUsersAnswers(), false)
-                .addField("", "Scoreboard:\n" + match.getScoreboard(), false)
+                .addField("Answers", match.getUsersAnswers(), false)
+                .addField("Scoreboard", match.getScoreboard(), false)
                 .build();
 
         return message.edit(MessageEditSpec.builder()
@@ -178,7 +178,7 @@ public class QuizManager {
         Match match = quizzes.get(messageChannel);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("\uD83C\uDFC1 Java Quiz Lobby")
+                .title("\uD83C\uDFC1 Java Quiz")
                 .addField("", "Questions: " + match.getQuestions().size(), false)
                 .addField("", "Participants: " + match.getUserNames(), false)
                 .addField("", "You have " + participationTimeWait + " seconds to join.", false)
@@ -194,7 +194,7 @@ public class QuizManager {
         Match match = quizzes.get(messageChannel);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("\uD83C\uDFC1 Java Quiz Lobby")
+                .title("\uD83C\uDFC1 Java Quiz")
                 .addField("", "Questions: " + match.getQuestions().size(), false)
                 .addField("", "Participants: " + match.getUserNames(), false)
                 .addField("", "Starting in " + preparationTime + " seconds.", false)
