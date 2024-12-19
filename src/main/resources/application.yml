@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: discordQuizBot
+
+discord:
+  bot:
+    token: ${DISCORD_BOT_TOKEN}
+
+questions:
+  files:
+    java: src/main/resources/java.json
+    memory: src/main/resources/memory.json
