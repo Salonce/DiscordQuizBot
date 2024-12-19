@@ -63,8 +63,8 @@ public class QuizManager {
 
     private Mono<Void> createQuestionMessagesSequentially(MessageChannel messageChannel) {
         Match match = quizzes.get(messageChannel);
-        int newQuestionWait = 10; //default is 10, test is 5
-        int AnswerTimeWait = 20; //default is 30, test is 5
+        int newQuestionWait = 5; //default is 10, test is 5
+        int AnswerTimeWait = 5; //default is 30, test is 5
 
         return Flux.generate(sink -> {
                     if (match.questionExists())

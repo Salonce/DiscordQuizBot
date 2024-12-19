@@ -8,7 +8,7 @@ import java.util.Arrays;
 @Configuration
 public class MessageHandlerChainConfig {
 
-    public MessageHandlerChain getMessageHandlerChain(@Qualifier("messageFilter") MessageHandler messageFilter, @Qualifier("startQuiz") MessageHandler startQuiz){
+    public MessageHandlerChain getMessageHandlerChain(@Qualifier("messageFilter") MessageHandler messageFilter, @Qualifier("javaQuiz") MessageHandler startQuiz){
 
         return new MessageHandlerChain(Arrays.asList(messageFilter, startQuiz));
     }

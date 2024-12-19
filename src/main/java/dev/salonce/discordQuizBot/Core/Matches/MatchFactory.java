@@ -14,9 +14,12 @@ public class MatchFactory {
     private final QuestionFactory questionFactory;
 
     public Match javaMatch(){
-        List<Question> questions = questionFactory.javaQuestions();
-        //System.out.println(questions.get(0).getQuestion());
+        List<Question> questions = questionFactory.generateQuestions("java");
         return new Match(questions);
     }
 
+    public Match memoryMatch(){
+        List<Question> questions = questionFactory.generateQuestions("memory");
+        return new Match(questions);
+    }
 }

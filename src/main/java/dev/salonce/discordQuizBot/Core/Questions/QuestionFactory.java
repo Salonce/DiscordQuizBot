@@ -15,8 +15,8 @@ public class QuestionFactory {
     private final QuestionRepository questionRepository;
 
     //add logic to eliminate <5 questions by throwing exceptions
-    public List<Question> javaQuestions(){
-        List<RawQuestion> rawQuestions = questionRepository.getJavaQuestions();
+    public List<Question> generateQuestions(String type){
+        List<RawQuestion> rawQuestions = questionRepository.getQuestions(type);
         List<Question> questions = new ArrayList<>();
         for(int i = 0; i < 5; i++){
             int next = rand.nextInt(rawQuestions.size());

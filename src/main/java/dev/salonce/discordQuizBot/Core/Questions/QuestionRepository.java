@@ -22,7 +22,6 @@ public class QuestionRepository {
         for (Map.Entry<String, String> entry : questionsConfig.getFiles().entrySet()) {
             String questionType = entry.getKey();
             String filePath = entry.getValue();
-            System.out.println("qtype: " + questionType + ", file path: " + filePath);
             questionMap.put(questionType, loadQuestionsFromFile(filePath));
         }
     }
@@ -33,8 +32,8 @@ public class QuestionRepository {
         return Arrays.asList(mapper.readValue(file, RawQuestion[].class));
     }
 
-    public List<RawQuestion> getJavaQuestions() {
-        return new ArrayList<>(questionMap.getOrDefault("java", Collections.emptyList()));
+    public List<RawQuestion> getQuestions(String type) {
+        return new ArrayList<>(questionMap.getOrDefault(type, Collections.emptyList()));
     }
 
 //    public List<RawQuestion> getDockerQuestions() {

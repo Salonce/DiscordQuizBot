@@ -17,6 +17,15 @@ public class StartQuiz implements MessageHandler {
 
     @Override
     public boolean handleMessage(DiscordMessage discordMessage) {
+        String[] message = discordMessage.getContent().split(" ");
+        if (message.length < 2)
+            return false;
+        if (message[0].equals("qq") && message[1].equals("quiz") && message[2].equals("memory")){
+            MessageChannel messageChannel = discordMessage.getChannel();
+            quizManager.addMatch(messageChannel, matchFactory.memoryMatch());
+            return true;
+        }
+
         if (discordMessage.getContent().equalsIgnoreCase("qq quiz java")) {
             MessageChannel messageChannel = discordMessage.getChannel();
             quizManager.addMatch(messageChannel, matchFactory.javaMatch());
