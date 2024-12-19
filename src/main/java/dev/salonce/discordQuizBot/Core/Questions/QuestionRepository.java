@@ -1,6 +1,7 @@
 package dev.salonce.discordQuizBot.Core.Questions;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dev.salonce.discordQuizBot.QuestionsConfig;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -12,9 +13,18 @@ public class QuestionRepository {
 
     private final Map<String, List<RawQuestion>> questionMap = new HashMap<>();
 
-    public QuestionRepository() throws IOException {
-        questionMap.put("java", loadQuestionsFromFile("src/main/resources/java.json"));
-//      questionMap.put("docker", loadQuestionsFromFile("src/main/resources/docker.json"));
+//    public QuestionRepository() throws IOException {
+//        questionMap.put("java", loadQuestionsFromFile("src/main/resources/java.json"));
+//    //    questionMap.put("docker", loadQuestionsFromFile("src/main/resources/docker.json"));
+//    }
+
+    public QuestionRepository(QuestionsConfig questionsConfig) throws IOException {
+        for (Map.Entry<String, String> entry : questionsConfig.getFiles().entrySet()) {
+            String questionType = entry.getKey();
+            String filePath = entry.getValue();
+            System.out.println("qtype: " + questionType + ", file path: " + filePath);
+            questionMap.put(questionType, loadQuestionsFromFile(filePath));
+        }
     }
 
     private List<RawQuestion> loadQuestionsFromFile(String filePath) throws IOException {
