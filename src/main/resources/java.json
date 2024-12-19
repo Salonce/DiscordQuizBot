@@ -13,7 +13,7 @@
     },
     {
         "question": "What does classloader dynamically load?",
-        "correctAnswers": ["Classes and interfaces to JVM during the execution of bytecode."],
+        "correctAnswers": ["Classes and interfaces to JVM during execution of bytecode."],
         "incorrectAnswers": ["Classes and interfaces to JDK during compilation process.", "Classes, but not interfaces, during execution of bytecode.", "Classes, but not interfaces, to JDK during compilation process."],
         "explanation": "Java classloader loads classes and interfaces into JVM memory - specifically Class (Method) Area during runtime."
     },
