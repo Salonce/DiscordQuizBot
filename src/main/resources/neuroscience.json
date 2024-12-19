@@ -1,0 +1,44 @@
+[
+    {
+        "question": "When was first IQ made by Alfred Binet created?",
+        "correctAnswers": ["1904"],
+        "incorrectAnswers": ["1900", "1881", "1882", "1903", "1973", "1931", "1932", "1957"],
+        "explanation": "First IQ test was created in 1904."
+    },
+    {
+        "question": "What was the point of creating the first IQ test?",
+        "correctAnswers": ["To find educationally disadvantaged children and help them develop."],
+        "incorrectAnswers": ["To find out gifted children and push them to mastery and innovation.", "To create a way to define cognitive differences between people.", "To categorize people as a result of popular eugenist movements at that time in Europe."],
+        "explanation": "First IQ test was invented for the French government to help find out which children are in need of early, additional help."
+    },
+    {
+        "question": "What percentage of population suffers from schizophrenia?",
+        "correctAnswers": ["Around 0.4% or 1 in 250 people"],
+        "incorrectAnswers": ["Around 1% or 1 in 100 people", "Around 2.5% or 1 in 40 people", "Around 0.7% or 1 in 143 people", "Around 0.1% or 1 in 1000 people", "Around 0.2% or 1 in 500 people", "Around 0.9% or 1 in 111 people"],
+        "explanation": ""
+    },
+    {
+        "question": "What big five personality trait correlates with hard work?",
+        "correctAnswers": ["conscientiousness"],
+        "incorrectAnswers": ["openness", "extraversion", "neuroticism", "agreeableness"],
+        "explanation": ""
+    },
+    {
+        "question": "What is the most commonly used in research personality trait model?",
+        "correctAnswers": ["Big five / Five factor model"],
+        "incorrectAnswers": ["Myers–Briggs Type Indicator", "HEXACO-six-dimensional model", "LIFTED model made in America"],
+        "explanation": ""
+    },
+    {
+        "question": "What is the commonly used personality trait model that is scientifically invalid and considered pseudoscience by academic field?",
+        "correctAnswers": ["Myers–Briggs Type Indicator"],
+        "incorrectAnswers": ["Big five / Five factor model", "HEXACO-six-dimensional model"],
+        "explanation": ""
+    },
+    {
+        "question": "What is one of the most commonly criticized things about MBTI?",
+        "correctAnswers": ["Dichotomies - direction of the preference being more important than the degree of the preference."],
+        "incorrectAnswers": ["Wrong understanding of extraversion.", "It was created too late and scientists don't want to switch models."],
+        "explanation": ""
+    }
+]
