@@ -1,0 +1,110 @@
+[
+    {
+        "question": "Which of the Big Five personality traits is most closely associated with being imaginative, curious, and open to new experiences?",
+        "correctAnswers": ["Openness to experience"],
+        "incorrectAnswers": ["Conscientiousness", "Extraversion", "Agreeableness"],
+        "explanation": "Openness to experience reflects a person's level of creativity and willingness to explore new ideas, contrasting with traits like conscientiousness which focus on order and discipline."
+    },
+    {
+        "question": "Which Big Five trait is characterized by a high level of organization, dependability, and goal-directed behavior?",
+        "correctAnswers": ["Conscientiousness"],
+        "incorrectAnswers": ["Neuroticism", "Openness to experience", "Agreeableness"],
+        "explanation": "Conscientiousness involves being diligent, reliable, and disciplined, making it essential for tasks requiring structured and persistent effort."
+    },
+    {
+        "question": "What does a high score on the Neuroticism trait of the Big Five typically indicate?",
+        "correctAnswers": ["Tendency to experience negative emotions like anxiety and depression"],
+        "incorrectAnswers": ["A preference for social interaction and excitement", "A tendency to trust and cooperate with others", "A high level of intellectual curiosity"],
+        "explanation": "Neuroticism is associated with emotional instability and proneness to stress, contrasting with traits like extraversion or agreeableness."
+    },
+    {
+        "question": "Which Big Five trait is most strongly linked to sociability, talkativeness, and a preference for group activities?",
+        "correctAnswers": ["Extraversion"],
+        "incorrectAnswers": ["Agreeableness", "Openness to experience", "Conscientiousness"],
+        "explanation": "Extraversion measures how outgoing and energetic someone is, making them more likely to enjoy being around others and engaging in group settings."
+    },
+    {
+        "question": "Which of the Big Five traits is characterized by empathy, cooperation, and a willingness to help others?",
+        "correctAnswers": ["Agreeableness"],
+        "incorrectAnswers": ["Openness to experience", "Conscientiousness", "Extraversion"],
+        "explanation": "Agreeableness reflects the extent to which a person is warm, compassionate, and cooperative, as opposed to being antagonistic or skeptical."
+    },
+    {
+        "question": "Which Big Five personality trait is most likely to predict academic success through both effort and long-term planning?",
+        "correctAnswers": ["Conscientiousness"],
+        "incorrectAnswers": ["Openness to Experience", "Neuroticism", "Agreeableness"],
+        "explanation": "While Openness can enhance learning curiosity, Conscientiousness uniquely predicts academic success due to its emphasis on discipline, goal-setting, and persistence."
+    },
+    {
+        "question": "Which subtrait of Neuroticism specifically involves an individual's sensitivity to perceived threats or dangers in their environment?",
+        "correctAnswers": ["Neuroticism: Anxiety"],
+        "incorrectAnswers": ["Neuroticism: Depression", "Agreeableness: Compliance", "Extraversion: Excitement-Seeking"],
+        "explanation": "Anxiety as a subtrait reflects hypervigilance and a tendency to anticipate harm, differentiating it from emotional states like sadness or impulsivity."
+    },
+    {
+        "question": "A person who scores high in 'Politeness' but low in 'Compassion' would most likely behave how?",
+        "correctAnswers": ["Respect social norms but show limited emotional support for others"],
+        "incorrectAnswers": ["Challenge authority but demonstrate strong empathy", "Avoid social interaction altogether", "Show high levels of energy and sociability in helping others"],
+        "explanation": "Politeness is part of Agreeableness and relates to respecting rules and authority, while Compassion involves emotional connection to others' needs."
+    },
+    {
+        "question": "Which Big Five trait combination is most likely to be found in individuals who are both highly creative and emotionally resilient?",
+        "correctAnswers": ["High Openness and low Neuroticism"],
+        "incorrectAnswers": ["High Extraversion and high Agreeableness", "High Conscientiousness and low Openness", "High Neuroticism and high Conscientiousness"],
+        "explanation": "High Openness fosters creativity, while low Neuroticism contributes to emotional stability, making this combination ideal for adaptive creativity."
+    },
+    {
+        "question": "Which subtrait of Conscientiousness predicts avoiding impulsive decisions and carefully weighing consequences before acting?",
+        "correctAnswers": ["Conscientiousness: Deliberation"],
+        "incorrectAnswers": ["Conscientiousness: Dutifulness", "Neuroticism: Impulsiveness", "Openness: Intellect"],
+        "explanation": "Deliberation reflects the tendency to think through decisions thoroughly, differing from Dutifulness, which emphasizes obligation and adherence to rules."
+    },
+    {
+        "question": "What makes the 'Excitement-Seeking' subtrait of Extraversion distinct from 'Activity Level' within the same trait?",
+        "correctAnswers": ["It focuses on the pursuit of stimulation and risk, not just energy output."],
+        "incorrectAnswers": ["It predicts sustained effort over time rather than short bursts of energy.", "It relates to curiosity rather than sociability.", "It measures openness to abstract ideas rather than physical behaviors."],
+        "explanation": "Excitement-Seeking relates to thrill and adventure, while Activity Level captures physical energy and engagement in various tasks."
+    },
+    {
+        "question": "Which of the following scenarios best illustrates low Agreeableness paired with high Conscientiousness?",
+        "correctAnswers": ["A person strictly enforces workplace rules even if it creates conflict with coworkers."],
+        "incorrectAnswers": ["A person is flexible with workplace rules to maintain harmony.", "A person refuses to follow workplace rules due to a preference for autonomy.", "A person prioritizes social interaction over completing tasks."],
+        "explanation": "Low Agreeableness reduces concern for harmony, while high Conscientiousness prioritizes rules and structure, making this a likely behavioral pattern."
+    },
+    {
+        "question": "In the context of personality subtraits, what does 'Emotionality' within Openness encompass?",
+        "correctAnswers": ["Sensitivity to feelings and appreciation of emotional depth in experiences"],
+        "incorrectAnswers": ["A tendency to become easily overwhelmed by stress", "A preference for abstract intellectual exploration", "A focus on maintaining social harmony"],
+        "explanation": "Emotionality in Openness reflects a nuanced awareness and appreciation of emotions, distinguishing it from Neuroticism's emotional instability."
+    },
+    {
+        "question": "What distinguishes individuals high in 'Assertiveness' from those high in 'Friendliness' within Extraversion?",
+        "correctAnswers": ["Assertive individuals influence others, while friendly individuals prioritize warmth in relationships."],
+        "incorrectAnswers": ["Assertive individuals seek solitude, while friendly individuals enjoy group activities.", "Assertive individuals are more likely to display emotional stability.", "Friendly individuals focus on goal-setting, while assertive individuals focus on emotional connection."],
+        "explanation": "Assertiveness reflects leadership and social dominance, while Friendliness emphasizes interpersonal warmth and connection."
+    },
+    {
+        "question": "Which Big Five trait is least influenced by cultural norms and more biologically rooted in temperament?",
+        "correctAnswers": ["Neuroticism"],
+        "incorrectAnswers": ["Agreeableness", "Conscientiousness", "Openness to Experience"],
+        "explanation": "Neuroticism has a strong biological basis tied to emotional regulation and stress response, making it less influenced by cultural factors compared to traits like Agreeableness."
+    },
+    {
+        "question": "A person who scores high on 'Volatility' but low on 'Withdrawal' in Neuroticism is likely to exhibit what behavior?",
+        "correctAnswers": ["Frequent emotional outbursts without avoiding stressful situations."],
+        "incorrectAnswers": ["Calm reactions to stress but a tendency to withdraw socially.", "High resilience and a lack of emotional reactivity.", "Tendency to avoid conflict and show consistent emotional restraint."],
+        "explanation": "Volatility reflects emotional instability and reactivity, while low Withdrawal suggests less avoidance of challenging situations."
+    },
+    {
+        "question": "Which Big Five trait most strongly predicts engagement in volunteer activities and prosocial behaviors?",
+        "correctAnswers": ["Agreeableness"],
+        "incorrectAnswers": ["Openness to Experience", "Extraversion", "Conscientiousness"],
+        "explanation": "Agreeableness emphasizes empathy and concern for others, which directly predicts prosocial behaviors like volunteering."
+    },
+    {
+        "question": "Why might high Openness not always predict higher job performance in structured environments?",
+        "correctAnswers": ["Openness can lead to preference for flexibility and novelty, which may conflict with rigid job requirements."],
+        "incorrectAnswers": ["Openness correlates with low conscientiousness, reducing task efficiency.", "Openness increases emotional instability in high-pressure roles.", "Openness reduces the ability to work collaboratively with others."],
+        "explanation": "High Openness is linked to creativity and adaptability, which may not align with the demands of highly structured or routine jobs."
+    }
+]
