@@ -3,7 +3,6 @@ package dev.salonce.discordQuizBot.Core.Questions;
 import lombok.Getter;
 
 import java.util.List;
-import java.util.stream.IntStream;
 
 //can be a record class
 @Getter
@@ -28,8 +27,8 @@ public class Question {
     public String getCorrectAnswerString(){
         int corAns = getCorrectAnswerInt();
         if (corAns != -1)
-            return answers.get(corAns).answer();
-        return "No correct answer";
+            return answers.get(corAns).text();
+        return "No correct text";
     }
 
     public int getCorrectAnswerInt(){
@@ -48,12 +47,20 @@ public class Question {
         return null;
     }
 
-    public String getStringAnswers(){
+    public String getStringAnswers(boolean showAnswers){
         StringBuilder sb = new StringBuilder();
         char letter = 'A';
         for (Answer answer : answers){
-            sb.append(letter + ") " + answer.answer() + "\n");
+            if (showAnswers && answer.correctness()) sb.append("**");
+            //if (showAnswers && !answer.correctness()) sb.append("~~");
+            sb.append(letter + ") " + answer.text());
             letter++;
+            //if (showAnswers && !answer.correctness()) sb.append("~~");
+           // if (showAnswers && !answer.correctness()) sb.append(" ✗ ❌");
+            //if (showAnswers && answer.correctness()) sb.append(" ✔ ✅**");
+            if (showAnswers && !answer.correctness()) sb.append(" ❌");
+            if (showAnswers && answer.correctness()) sb.append("** ✅");
+            sb.append("\n");
         }
         return sb.toString();
     }

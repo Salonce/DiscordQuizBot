@@ -22,7 +22,7 @@ public class RawQuestion {
 
     public Question generateQuestion(){
 
-        //make an answer list
+        //make an text list
         List<Answer> answers = new ArrayList<>();
 
         //add correct answers

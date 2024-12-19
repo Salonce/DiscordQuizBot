@@ -21,7 +21,7 @@ public class ButtonInteractionData {
             String[] parts = buttonId.split("-");
             buttonType = "Answer";
 
-            // Convert letter to answer number (A=0, B=1, C=2, D=3)
+            // Convert letter to text number (A=0, B=1, C=2, D=3)
             char letterPart = parts[1].charAt(0);
             answerNumber = letterPart - 'A';
 
