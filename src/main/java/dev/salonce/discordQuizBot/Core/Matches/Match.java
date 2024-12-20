@@ -34,8 +34,9 @@ public class Match{
         }
     }
 
+    //sort highest to lowest scores -> b - a
     public String getScoreboard(){
-        return getPlayers().entrySet().stream().sorted((a, b) -> (a.getValue().getPoints() - b.getValue().getPoints())).map(entry -> "<@" + entry.getKey().getId().asString() + ">" + ": " + entry.getValue().getPoints()).collect(Collectors.joining("\n"));
+        return getPlayers().entrySet().stream().sorted((a, b) -> (b.getValue().getPoints() - a.getValue().getPoints())).map(entry -> "<@" + entry.getKey().getId().asString() + ">" + ": " + entry.getValue().getPoints()).collect(Collectors.joining("\n"));
     }
 
     public String getWinners() {
