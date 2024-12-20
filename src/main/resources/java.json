@@ -1,51 +1,426 @@
-[
+[  
     {
-        "question": "Which of the following components is included in the JDK but not in the JRE?",
-        "correctAnswers": ["Debugger", "Compiler", "Document creator", "Java Archive Tool", "Java Disassembler", "Java Dependency Analysis Tool", "Java Packager"],
-        "incorrectAnswers": ["Java Virtual Machine", "Integrated Development Environment", "Garbage Collector", "Memory Management tools", "Plugin manager", "JavaFX", "Application Server", "Web server"],
-        "explanation": "JDK development tools, that are not part of JRE: Compiler, Debugger, Javadoc, Java Archive Tool, Java Disssembler, Java Dependency Analysis Tool and Java Packager."
+        "question": "What is the main purpose of the JVM in Java?",
+        "correctAnswers": ["To execute Java bytecode"],
+        "incorrectAnswers": [
+        "To compile Java code to machine code",
+        "To manage memory allocation manually",
+        "To create executables",
+        "To handle database connections",
+        "To optimize operating system performance",
+        "To generate Java source code",
+        "To interpret Python scripts",
+        "To manage multi-threading automatically",
+        "To create HTML files",
+        "To configure network connections"
+        ],
+        "explanation": "The JVM (Java Virtual Machine) is responsible for executing Java bytecode, enabling platform independence."
     },
     {
-        "question": "What truly makes Java platform independent?",
-        "correctAnswers": ["Bytecode"],
-        "incorrectAnswers": ["Native Code Compilation", "Java Runtime Environment (JRE)", "Java Development Kit", "Class Loader"],
-        "explanation": "Bytecode into which java source code is compiled makes Java platform independent, because it can be executed on any system with compatible JVM."
+        "question": "Which access modifier allows access only within the same class?",
+        "correctAnswers": ["Private"],
+        "incorrectAnswers": [
+        "Public",
+        "Protected",
+        "Default",
+        "Internal",
+        "Static",
+        "Abstract",
+        "Final",
+        "Package",
+        "Virtual",
+        "Transient"
+        ],
+        "explanation": "The 'private' modifier restricts access to members of the same class only."
     },
     {
-        "question": "What does classloader dynamically load?",
-        "correctAnswers": ["Classes and interfaces to JVM during execution of bytecode."],
-        "incorrectAnswers": ["Classes and interfaces to JDK during compilation process.", "Classes, but not interfaces, during execution of bytecode.", "Classes, but not interfaces, to JDK during compilation process."],
-        "explanation": "Java classloader loads classes and interfaces into JVM memory - specifically Class (Method) Area during runtime."
+        "question": "What is the output of the expression `3 + 4 * 2` in Java?",
+        "correctAnswers": ["11"],
+        "incorrectAnswers": [
+        "14",
+        "9",
+        "6",
+        "7",
+        "8",
+        "10",
+        "3",
+        "5",
+        "12",
+        "13"
+        ],
+        "explanation": "In Java, the multiplication operator (*) has a higher precedence than addition (+), so the expression evaluates to 3 + (4 * 2) = 11."
     },
     {
-        "question": "What does Just-in-Time (JIT) do?",
-        "correctAnswers": ["Compiles bytecode to source code.", "Increases performace of the program at runtime."],
-        "incorrectAnswers": ["Compiles source code to bytecode.", "Reclaims objects' memory before memory storage is full.", "Loads java classes into memory before execution."],
-        "explanation": "During runtime JIT compiler compiles often recurring parts of the program's bytecode into machine code to increase performance."
+        "question": "Which keyword in Java is used to inherit a class?",
+        "correctAnswers": ["extends"],
+        "incorrectAnswers": [
+        "implements",
+        "inherits",
+        "super",
+        "final",
+        "abstract",
+        "static",
+        "public",
+        "protected",
+        "this",
+        "return"
+        ],
+        "explanation": "The 'extends' keyword is used in Java to indicate that a class is inheriting from a parent class."
     },
     {
-        "question": "Which one is NOT a name of a java memory storage?",
-        "correctAnswers": ["Object Area", "Data Queue", "Binary Storage Tree", "Solid memory", "References register"],
-        "incorrectAnswers": ["Class (Method) Area", "Heap", "Stack", "PC Register", "Native Method Stack"],
-        "explanation": "Java memory storages: Class(method) Area, Heap, Stack, Program Counter Register, Native Method Stack."
+        "question": "Which collection in Java guarantees no duplicate elements?",
+        "correctAnswers": ["Set"],
+        "incorrectAnswers": [
+        "List",
+        "Queue",
+        "ArrayList",
+        "Vector",
+        "Stack",
+        "Deque",
+        "Map",
+        "Hashtable",
+        "PriorityQueue",
+        "HashMap"
+        ],
+        "explanation": "The 'Set' interface in Java ensures that no duplicate elements are stored in the collection."
     },
     {
-        "question": "Is Java Virtual Machine (JVM) platform independent?",
-        "correctAnswers": ["No"],
-        "incorrectAnswers": ["Yes"],
-        "explanation": "Java Virtual Machine has different implementations for each operating system, therefore is platform independent."
+        "question": "What is the default value of an instance variable of type `int` in Java?",
+        "correctAnswers": ["0"],
+        "incorrectAnswers": [
+        "null",
+        "-1",
+        "1",
+        "undefined",
+        "NaN",
+        "true",
+        "false",
+        "MAX_VALUE",
+        "MIN_VALUE",
+        "uninitialized"
+        ],
+        "explanation": "The default value for an instance variable of primitive type 'int' in Java is 0."
     },
     {
-        "question": "Is Java language platform independent?",
-        "correctAnswers": ["Yes"],
-        "incorrectAnswers": ["No"],
-        "explanation": "Java language is platform independent. Compiled bytecode is available to various implementations of JVM."
+        "question": "Which Java feature allows you to execute code even if an exception is thrown?",
+        "correctAnswers": ["try-catch-finally"],
+        "incorrectAnswers": [
+        "if-else",
+        "switch",
+        "loop",
+        "assert",
+        "throw",
+        "break",
+        "continue",
+        "synchronized",
+        "goto",
+        "interface"
+        ],
+        "explanation": "The 'try-catch-finally' block in Java allows exception handling and ensures that the code in 'finally' is always executed."
     },
     {
-        "question": "Is protected access modifier more restrictive than no modifier?",
-        "correctAnswers": ["No"],
-        "incorrectAnswers": ["Yes"],
-        "explanation": "Protected fields have higher visibility. They are visible in subclasses, while fields without modifiers aren't."
-    }
-
+        "question": "Which package is automatically imported in all Java programs?",
+        "correctAnswers": ["java.lang"],
+        "incorrectAnswers": [
+        "java.util",
+        "java.io",
+        "java.net",
+        "javax.swing",
+        "java.sql",
+        "java.nio",
+        "java.applet",
+        "java.time",
+        "java.security",
+        "org.junit"
+        ],
+        "explanation": "The 'java.lang' package is automatically imported in every Java program as it contains essential classes such as String and Math."
+    },
+    {
+        "question": "What is the size of a `boolean` in Java?",
+        "correctAnswers": ["It is JVM dependent"],
+        "incorrectAnswers": [
+        "1 byte",
+        "2 bytes",
+        "4 bytes",
+        "8 bytes",
+        "16 bytes",
+        "32 bytes",
+        "1 bit",
+        "2 bits",
+        "3 bytes",
+        "Depends on the compiler"
+        ],
+        "explanation": "The size of a 'boolean' in Java is JVM dependent as it is not explicitly defined in the Java specification."
+    },
+    {
+        "question": "What is the method used to start a thread in Java?",
+        "correctAnswers": ["start()"],
+        "incorrectAnswers": [
+        "run()",
+        "init()",
+        "begin()",
+        "execute()",
+        "call()",
+        "launch()",
+        "startThread()",
+        "startRun()",
+        "startProcess()",
+        "new()"
+        ],
+        "explanation": "The 'start()' method of the Thread class is used to begin the execution of a thread in Java."
+    },
+    {
+        "question": "Which interface provides a blueprint for collections in Java?",
+        "correctAnswers": ["Collection"],
+        "incorrectAnswers": [
+            "Array",
+            "Set",
+            "Map",
+            "ArrayList",
+            "HashMap",
+            "Vector",
+            "Hashtable",
+            "PriorityQueue",
+            "LinkedList",
+            "Stack"
+        ],
+        "explanation": "The 'Collection' interface is the root interface in the Java Collections Framework, providing a common blueprint for all collections."
+        },
+        {
+        "question": "Which method in Java is used to find the length of a string?",
+        "correctAnswers": ["length()"],
+        "incorrectAnswers": [
+            "size()",
+            "getLength()",
+            "count()",
+            "len()",
+            "measure()",
+            "stringLength()",
+            "totalLength()",
+            "chars()",
+            "capacity()",
+            "calcLength()"
+        ],
+        "explanation": "The 'length()' method of the String class returns the number of characters in a string."
+        },
+        {
+        "question": "Which design pattern is implemented by the `Runtime` class to ensure a single instance?",
+        "correctAnswers": ["Singleton pattern"],
+        "incorrectAnswers": [
+            "Factory pattern",
+            "Builder pattern",
+            "Observer pattern",
+            "Adapter pattern",
+            "Decorator pattern",
+            "Proxy pattern",
+            "Command pattern",
+            "Strategy pattern",
+            "Prototype pattern",
+            "Mediator pattern"
+        ],
+        "explanation": "The Singleton pattern ensures that a class has only one instance and provides a global point of access to it, as seen in the `Runtime` class."
+        },
+        {
+        "question": "What is the main advantage of using `StringBuilder` over `String` in Java?",
+        "correctAnswers": ["Mutability"],
+        "incorrectAnswers": [
+            "Immutability",
+            "Faster garbage collection",
+            "Thread safety",
+            "More secure",
+            "Lower memory usage",
+            "Automatic synchronization",
+            "Inheritance support",
+            "Compile-time type checking",
+            "Unicode handling",
+            "Faster loading of classes"
+        ],
+        "explanation": "Unlike Strings, which are immutable, the `StringBuilder` class allows modification of its content without creating new objects, improving performance."
+        },
+        {
+        "question": "Which keyword is used to declare a constant in Java?",
+        "correctAnswers": ["final"],
+        "incorrectAnswers": [
+            "const",
+            "static",
+            "immutable",
+            "constant",
+            "var",
+            "let",
+            "def",
+            "readonly",
+            "constantValue",
+            "permanent"
+        ],
+        "explanation": "The 'final' keyword in Java is used to declare constants, ensuring that the value cannot be changed once assigned."
+        },
+        {
+        "question": "What does the `hashCode()` method in Java return?",
+        "correctAnswers": ["An integer representation of the object"],
+        "incorrectAnswers": [
+            "A string representation of the object",
+            "The object's memory address",
+            "The object's state",
+            "The class name",
+            "A unique identifier",
+            "The object's ID",
+            "The object's size in memory",
+            "The object's parent class",
+            "The default toString() value"
+        ],
+        "explanation": "The 'hashCode()' method in Java returns an integer value, which is the hash code representation of the object."
+        },
+        {
+        "question": "What happens when you divide a number by zero in Java for integer division?",
+        "correctAnswers": ["ArithmeticException is thrown"],
+        "incorrectAnswers": [
+            "Returns 0",
+            "Returns infinity",
+            "Returns NaN",
+            "Compiler error",
+            "Logical error",
+            "RuntimeWarning",
+            "System crash",
+            "Returns MAX_VALUE",
+            "Returns MIN_VALUE",
+            "No action is performed"
+        ],
+        "explanation": "Dividing by zero in Java using integers results in an 'ArithmeticException' being thrown at runtime."
+        },
+        {
+        "question": "Which loop in Java evaluates its condition after executing the loop body?",
+        "correctAnswers": ["do-while"],
+        "incorrectAnswers": [
+            "for",
+            "while",
+            "for-each",
+            "infinite loop",
+            "foreach",
+            "parallel loop",
+            "break loop",
+            "goto",
+            "nested loop",
+            "thread loop"
+        ],
+        "explanation": "The 'do-while' loop evaluates its condition after executing the loop body, ensuring the body is executed at least once."
+        },
+        {
+        "question": "What is the default value of a boolean array element in Java?",
+        "correctAnswers": ["false"],
+        "incorrectAnswers": [
+            "true",
+            "null",
+            "undefined",
+            "0",
+            "1",
+            "NaN",
+            "empty",
+            "Boolean.FALSE",
+            "Boolean.TRUE",
+            "uninitialized"
+        ],
+        "explanation": "The default value of a boolean array element in Java is 'false', as per the language specification."
+        },
+        {
+        "question": "Which class in Java allows creation of objects that cannot be extended?",
+        "correctAnswers": ["final classes"],
+        "incorrectAnswers": [
+            "abstract classes",
+            "static classes",
+            "private classes",
+            "protected classes",
+            "constant classes",
+            "default classes",
+            "locked classes",
+            "singleton classes",
+            "interface",
+            "sealed classes"
+        ],
+        "explanation": "Classes declared as 'final' in Java cannot be extended, ensuring their behavior remains unchanged in derived classes."
+        },
+        {
+        "question": "What does the `super` keyword in Java refer to?",
+        "correctAnswers": ["The immediate parent class"],
+        "incorrectAnswers": [
+            "The current class",
+            "The child class",
+            "A static method",
+            "A private method",
+            "The interface",
+            "A constant",
+            "The package",
+            "The root class",
+            "The JVM",
+            "A constructor"
+        ],
+        "explanation": "The 'super' keyword in Java is used to refer to the immediate parent class of the current object."
+        },
+        {
+        "question": "Which exception is thrown when an invalid array index is accessed in Java?",
+        "correctAnswers": ["ArrayIndexOutOfBoundsException"],
+        "incorrectAnswers": [
+            "NullPointerException",
+            "IllegalArgumentException",
+            "ClassCastException",
+            "IndexOutOfBoundsException",
+            "NumberFormatException",
+            "ArithmeticException",
+            "IOException",
+            "ClassNotFoundException",
+            "UnsupportedOperationException",
+            "IllegalAccessException"
+        ],
+        "explanation": "An 'ArrayIndexOutOfBoundsException' is thrown when attempting to access an array with an invalid index in Java."
+        },
+        {
+        "question": "Which method is used to convert an object into a byte stream in Java?",
+        "correctAnswers": ["serialize()"],
+        "incorrectAnswers": [
+            "toString()",
+            "save()",
+            "encode()",
+            "stream()",
+            "convert()",
+            "marshal()",
+            "transfer()",
+            "output()",
+            "send()",
+            "pack()"
+        ],
+        "explanation": "Serialization in Java converts an object into a byte stream using the serialize method, which is commonly implemented in the Serializable interface."
+        },
+        {
+        "question": "Which keyword is used to explicitly release resources in Java?",
+        "correctAnswers": ["try-with-resources"],
+        "incorrectAnswers": [
+            "finalize",
+            "delete",
+            "free",
+            "dispose",
+            "destroy",
+            "recycle",
+            "close",
+            "shutdown",
+            "terminate",
+            "reset"
+        ],
+        "explanation": "The 'try-with-resources' statement in Java ensures that resources are closed automatically after the try block is executed."
+        },
+        {
+        "question": "Which statement is used to terminate a loop in Java?",
+        "correctAnswers": ["break"],
+        "incorrectAnswers": [
+            "continue",
+            "exit",
+            "stop",
+            "terminate",
+            "return",
+            "end",
+            "halt",
+            "close",
+            "finalize",
+            "yield"
+        ],
+        "explanation": "The 'break' statement is used in Java to exit a loop immediately, skipping any remaining iterations."
+        }
 ]

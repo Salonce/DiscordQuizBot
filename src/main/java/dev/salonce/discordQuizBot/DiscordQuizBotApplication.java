@@ -79,7 +79,7 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 						else if (answerInteractionEnum == AnswerInteractionEnum.TOO_LATE)
 							answer = "Your text came too late!";
 						else if (answerInteractionEnum == AnswerInteractionEnum.VALID){
-							answer = "Your text: " + (char)('A' + (buttonInteractionData.getAnswerNumber())) + ".";
+							answer = "Your answer: " + (char)('A' + (buttonInteractionData.getAnswerNumber())) + ".";
 						}
 						else answer = "Something went wrong.";
 						yield event.reply(answer).withEphemeral(true);

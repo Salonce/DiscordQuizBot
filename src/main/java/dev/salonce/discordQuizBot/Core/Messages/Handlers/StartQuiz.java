@@ -40,31 +40,4 @@ public class StartQuiz implements MessageHandler {
         return false;
     }
 
-
-//        if (message[0].equals("qq") && message[1].equals("quiz") && message[2].equals("memory")){
-//            MessageChannel messageChannel = discordMessage.getChannel();
-//            quizManager.addMatch(messageChannel, matchFactory.makeMatch("memory"));
-//            return true;
-//        }
-//
-//        if (message[0].equals("qq") && message[1].equals("quiz") && message[2].equals("java")) {
-//            MessageChannel messageChannel = discordMessage.getChannel();
-//            quizManager.addMatch(messageChannel, matchFactory.makeMatch("java"));
-//            return true;
-//        }
-
-
-//    public Mono<Message> sendSpecMessage(MessageChannel messageChannel){
-//        EmbedCreateSpec embed = EmbedCreateSpec.builder()
-//                .title("Java quiz")
-//                .description("Click the button to participate.")
-//                .build();
-//
-//        MessageCreateSpec spec = MessageCreateSpec.builder()
-//                .addComponent(ActionRow.of(Button.success("Join", "Join!"), Button.success("Join not", "Don't join.")))
-//                .addEmbed(embed)
-//                .build();
-//
-//        return messageChannel.createMessage(spec);
-//    }
 }
