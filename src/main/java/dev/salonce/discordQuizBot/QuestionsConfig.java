@@ -18,6 +18,6 @@ public class QuestionsConfig {
 
     @PostConstruct
     public void logFiles() {
-        files.forEach((key, value) -> System.out.println("Type: " + key + ", Path: " + value));
+        files.forEach((key, value) -> System.out.println("Loaded questions file: type: " + key + ", path: " + value));
     }
 }

@@ -1,0 +1,616 @@
+[
+    {
+        "question": "What is the primary purpose of Docker containers?",
+        "correctAnswers": ["To package and run applications in isolated environments."],
+        "incorrectAnswers": [
+            "To manage virtual machines.",
+            "To create network configurations.",
+            "To build source code.",
+            "To manage cloud resources.",
+            "To replace Kubernetes.",
+            "To manage databases.",
+            "To configure host servers.",
+            "To create user accounts."
+        ],
+        "explanation": "Docker containers encapsulate applications and their dependencies, allowing them to run consistently in any environment."
+    },
+    {
+        "question": "Which command shows detailed information about a running container?",
+        "correctAnswers": ["docker inspect <container_id>"],
+        "incorrectAnswers": [
+            "docker describe <container_id>",
+            "docker logs <container_id>",
+            "docker show <container_id>",
+            "docker detail <container_id>",
+            "docker info <container_id>",
+            "docker scan <container_id>",
+            "docker stats <container_id>",
+            "docker state <container_id>"
+        ],
+        "explanation": "The 'docker inspect' command returns JSON-formatted data about the container, such as configuration and state."
+    },
+    {
+        "question": "Which storage driver is recommended for most modern Linux distributions?",
+        "correctAnswers": ["overlay2"],
+        "incorrectAnswers": [
+            "aufs",
+            "devicemapper",
+            "zfs",
+            "ext4",
+            "xfs",
+            "btrfs",
+            "ntfs",
+            "none"
+        ],
+        "explanation": "The 'overlay2' storage driver is the default and recommended driver for modern Linux systems due to its efficiency."
+    },
+    {
+        "question": "What does 'docker-compose up' do?",
+        "correctAnswers": ["Starts and runs all services defined in a Compose file."],
+        "incorrectAnswers": [
+            "Stops all services defined in a Compose file.",
+            "Deletes all containers.",
+            "Builds Docker images without running containers.",
+            "Creates only volumes for the services.",
+            "Shuts down running containers.",
+            "Displays logs of all services.",
+            "Exports containers to tar archives.",
+            "Rebuilds the Compose file."
+        ],
+        "explanation": "'docker-compose up' starts and runs containers for services defined in the 'docker-compose.yml' file."
+    },
+    {
+        "question": "Which Docker network driver is used to connect multiple hosts together?",
+        "correctAnswers": ["overlay"],
+        "incorrectAnswers": [
+            "bridge",
+            "host",
+            "none",
+            "local",
+            "swarm",
+            "global",
+            "external",
+            "default"
+        ],
+        "explanation": "The 'overlay' network driver enables communication between containers on different Docker hosts in a Swarm cluster."
+    },
+    {
+        "question": "What is the purpose of the '--no-cache' option in 'docker build'?",
+        "correctAnswers": ["To ignore the build cache and rebuild all layers from scratch."],
+        "incorrectAnswers": [
+            "To clear all stopped containers.",
+            "To save logs from the build process.",
+            "To skip copying files to the container.",
+            "To disable the creation of intermediate images.",
+            "To prevent caching image layers.",
+            "To bypass volume mounting.",
+            "To exclude the Dockerfile.",
+            "To remove temporary files."
+        ],
+        "explanation": "'docker build --no-cache' ensures that no cached layers are used and forces Docker to rebuild each layer."
+    },
+    {
+        "question": "Which command lists all networks on a Docker host?",
+        "correctAnswers": ["docker network ls"],
+        "incorrectAnswers": [
+            "docker ls networks",
+            "docker show networks",
+            "docker info networks",
+            "docker network show",
+            "docker net ls",
+            "docker networks",
+            "docker net-list",
+            "docker view networks"
+        ],
+        "explanation": "'docker network ls' lists all available Docker networks, including their names, IDs, and drivers."
+    },
+    {
+        "question": "What is the purpose of the 'WORKDIR' instruction in a Dockerfile?",
+        "correctAnswers": ["To set the working directory inside the container."],
+        "incorrectAnswers": [
+            "To specify the location of the Dockerfile.",
+            "To set environment variables.",
+            "To copy files into the container.",
+            "To define the main process to run.",
+            "To expose ports for networking.",
+            "To build the container's image.",
+            "To set permissions for files.",
+            "To mount external volumes."
+        ],
+        "explanation": "The 'WORKDIR' instruction sets the working directory for RUN, CMD, ENTRYPOINT, COPY, and ADD instructions."
+    },
+    {
+        "question": "Which tool can be used to scan Docker images for vulnerabilities?",
+        "correctAnswers": ["Docker Scan"],
+        "incorrectAnswers": [
+            "Docker Secure",
+            "Docker Check",
+            "Docker Shield",
+            "Docker Inspector",
+            "Docker Protect",
+            "Image Scanner",
+            "Container Defender",
+            "Docker Guard"
+        ],
+        "explanation": "'Docker Scan' integrates security scanning to detect vulnerabilities in Docker images."
+    },
+    {
+        "question": "What is the primary difference between 'COPY' and 'ADD' in a Dockerfile?",
+        "correctAnswers": ["'ADD' can fetch files from remote URLs, while 'COPY' cannot."],
+        "incorrectAnswers": [
+            "'COPY' is deprecated while 'ADD' is not.",
+            "'ADD' cannot copy directories.",
+            "'COPY' compresses files, while 'ADD' does not.",
+            "'ADD' can only be used with text files.",
+            "'COPY' requires a build argument.",
+            "'ADD' cannot overwrite existing files.",
+            "'COPY' supports remote file paths.",
+            "'ADD' is used for debugging."
+        ],
+        "explanation": "'ADD' offers additional functionality, such as unpacking archives and downloading files from URLs, whereas 'COPY' is simpler."
+    },
+    {
+        "question": "What does the 'docker service scale' command do?",
+        "correctAnswers": ["Adjusts the number of replicas for a service."],
+        "incorrectAnswers": [
+            "Increases the memory allocated to a service.",
+            "Changes the network driver for the service.",
+            "Rebuilds the Docker image.",
+            "Deletes existing replicas.",
+            "Updates environment variables.",
+            "Restarts all replicas.",
+            "Exports service logs.",
+            "Disables scaling for the service."
+        ],
+        "explanation": "'docker service scale' modifies the number of instances (replicas) for a Docker service in a Swarm."
+    },
+    {
+        "question": "Which instruction is used in a Dockerfile to execute commands while building an image?",
+        "correctAnswers": ["RUN"],
+        "incorrectAnswers": [
+            "CMD",
+            "EXEC",
+            "EXE",
+            "BUILD",
+            "DO",
+            "EXECUTE",
+            "INSTALL",
+            "PROCESS"
+        ],
+        "explanation": "'RUN' executes commands in the shell during the image build process."
+    },
+    {
+        "question": "What is the default file name for Docker Compose configuration?",
+        "correctAnswers": ["docker-compose.yml"],
+        "incorrectAnswers": [
+            "compose.yml",
+            "docker-compose.yaml",
+            "docker-compose.json",
+            "docker-file.yml",
+            "compose-config.yml",
+            "docker.yaml",
+            "docker-file.yaml",
+            "docker-service.yml"
+        ],
+        "explanation": "The default Docker Compose file is named 'docker-compose.yml', though other names can be specified with the '-f' flag."
+    },
+    {
+        "question": "What is the primary function of 'docker swarm init'?",
+        "correctAnswers": ["To initialize a Docker Swarm cluster on the current node."],
+        "incorrectAnswers": [
+            "To create a new service in Swarm mode.",
+            "To deploy a container on a Swarm.",
+            "To enable Docker Compose.",
+            "To configure Docker networking.",
+            "To set up Docker volumes.",
+            "To remove existing Swarm configurations.",
+            "To list all nodes in the Swarm.",
+            "To update a Swarm node."
+        ],
+        "explanation": "'docker swarm init' initializes the Docker daemon on a host to act as a Swarm manager."
+    },
+    {
+        "question": "Which Dockerfile instruction is used to specify the base image?",
+        "correctAnswers": ["FROM"],
+        "incorrectAnswers": [
+            "BASE",
+            "IMAGE",
+            "START",
+            "INIT",
+            "DEFAULT",
+            "LOAD",
+            "IMPORT",
+            "CONTAINER"
+        ],
+        "explanation": "'FROM' sets the base image for subsequent instructions in the Dockerfile."
+    },
+    {
+        "question": "What is the purpose of Docker's 'docker-compose.yml' file?",
+        "correctAnswers": ["To define and manage multi-container applications."],
+        "incorrectAnswers": [
+            "To configure Docker Swarm clusters.",
+            "To create Docker images from scratch.",
+            "To manage container logs.",
+            "To build Docker images without caching.",
+            "To define a container's runtime environment.",
+            "To set up Dockerfile configurations.",
+            "To install Docker plugins.",
+            "To monitor resource usage for containers."
+        ],
+        "explanation": "The 'docker-compose.yml' file allows users to define services, networks, and volumes for multi-container applications."
+    },
+    {
+        "question": "Which Docker command is used to restart a container?",
+        "correctAnswers": ["docker restart <container_id>"],
+        "incorrectAnswers": [
+            "docker reboot <container_id>",
+            "docker refresh <container_id>",
+            "docker start --restart <container_id>",
+            "docker reset <container_id>",
+            "docker reinitialize <container_id>",
+            "docker reload <container_id>",
+            "docker relaunch <container_id>",
+            "docker stop-start <container_id>"
+        ],
+        "explanation": "The 'docker restart' command stops and then starts a container with a single command."
+    },
+    {
+        "question": "What is the function of the '--entrypoint' flag in 'docker run'?",
+        "correctAnswers": ["Overrides the default entrypoint specified in the image."],
+        "incorrectAnswers": [
+            "Specifies the CMD instruction in the image.",
+            "Sets the working directory for the container.",
+            "Configures networking for the container.",
+            "Runs the container in detached mode.",
+            "Adds environment variables to the container.",
+            "Starts a shell in the container.",
+            "Mounts a volume to the container.",
+            "Limits CPU usage for the container."
+        ],
+        "explanation": "The '--entrypoint' flag replaces the default ENTRYPOINT instruction from the Dockerfile for the specified container."
+    },
+    {
+        "question": "What does the 'docker logs' command display?",
+        "correctAnswers": ["The logs generated by a running or stopped container."],
+        "incorrectAnswers": [
+            "System-wide Docker logs.",
+            "All logs from the Docker host.",
+            "Logs from Docker volumes.",
+            "Only error logs from the container.",
+            "Network activity logs for a container.",
+            "Resource usage logs for a container.",
+            "Build logs for the image.",
+            "Healthcheck results for the container."
+        ],
+        "explanation": "The 'docker logs' command shows the standard output (stdout) and standard error (stderr) streams of a container."
+    },
+    {
+        "question": "What is the default location of the Docker configuration file on Linux?",
+        "correctAnswers": ["/etc/docker/daemon.json"],
+        "incorrectAnswers": [
+            "/var/docker/config.json",
+            "/usr/lib/docker/docker.conf",
+            "/etc/docker/dockerfile",
+            "/opt/docker/settings.json",
+            "/home/docker/config",
+            "/var/lib/docker/settings.conf",
+            "/usr/local/docker/daemon.cfg",
+            "/etc/docker/docker.cfg"
+        ],
+        "explanation": "The Docker configuration file 'daemon.json' is located at '/etc/docker/' on Linux systems."
+    },
+    {
+        "question": "What is Docker's default logging driver?",
+        "correctAnswers": ["json-file"],
+        "incorrectAnswers": [
+            "syslog",
+            "journald",
+            "none",
+            "fluentd",
+            "logstash",
+            "kafka",
+            "elasticsearch",
+            "text-file"
+        ],
+        "explanation": "By default, Docker uses the 'json-file' logging driver to store logs in JSON format on the local filesystem."
+    },
+    {
+        "question": "Which of these commands is used to copy files from the host to a running container?",
+        "correctAnswers": ["docker cp <source_path> <container_id>:<destination_path>"],
+        "incorrectAnswers": [
+            "docker transfer <source_path> <container_id>:<destination_path>",
+            "docker move <source_path> <container_id>:<destination_path>",
+            "docker push <source_path> <container_id>:<destination_path>",
+            "docker copy <source_path> <container_id>:<destination_path>",
+            "docker put <source_path> <container_id>:<destination_path>",
+            "docker sync <source_path> <container_id>:<destination_path>",
+            "docker attach <source_path> <container_id>:<destination_path>",
+            "docker send <source_path> <container_id>:<destination_path>"
+        ],
+        "explanation": "The 'docker cp' command allows copying files between the host and a container, or vice versa."
+    },
+    {
+        "question": "What is the difference between the 'docker kill' and 'docker stop' commands?",
+        "correctAnswers": ["'docker kill' immediately stops the container, while 'docker stop' shuts it down gracefully."],
+        "incorrectAnswers": [
+            "'docker stop' terminates all processes immediately, while 'docker kill' sends a termination signal.",
+            "'docker kill' pauses the container, while 'docker stop' removes it.",
+            "'docker stop' works only on exited containers, while 'docker kill' works on running containers.",
+            "'docker kill' restarts the container, while 'docker stop' stops it permanently.",
+            "'docker stop' removes associated volumes, while 'docker kill' does not.",
+            "'docker stop' triggers a health check, while 'docker kill' does not.",
+            "'docker kill' sends an interrupt signal, while 'docker stop' deletes the container.",
+            "'docker stop' creates an image backup, while 'docker kill' discards data."
+        ],
+        "explanation": "'docker kill' forcibly stops a container by sending a SIGKILL signal, while 'docker stop' sends a SIGTERM signal for graceful termination."
+    },
+    {
+        "question": "Which of these is a valid Docker object?",
+        "correctAnswers": ["Volume"],
+        "incorrectAnswers": [
+            "Kernel",
+            "Host",
+            "Thread",
+            "Cluster",
+            "Snapshot",
+            "Pod",
+            "Group",
+            "Server"
+        ],
+        "explanation": "Docker objects include containers, images, networks, and volumes, which are core components of Docker's functionality."
+    },
+    {
+        "question": "What is the primary role of the Dockerfile 'LABEL' instruction?",
+        "correctAnswers": ["To add metadata to an image."],
+        "incorrectAnswers": [
+            "To specify the base image for the container.",
+            "To define the command executed when the container starts.",
+            "To expose ports for networking.",
+            "To copy files from the host to the container.",
+            "To specify environment variables.",
+            "To set the container’s default entrypoint.",
+            "To configure resource limits for the container.",
+            "To initialize the container's network settings."
+        ],
+        "explanation": "'LABEL' is used to add metadata (key-value pairs) to a Docker image, such as authorship or versioning information."
+    },
+    {
+        "question": "What is the purpose of the '--rm' flag in 'docker run'?",
+        "correctAnswers": ["Automatically removes the container after it stops."],
+        "incorrectAnswers": [
+            "Restarts the container automatically after stopping.",
+            "Removes the container's logs after stopping.",
+            "Deletes associated Docker images.",
+            "Deletes all volumes mounted by the container.",
+            "Prevents the container from writing to the host filesystem.",
+            "Disables logging for the container.",
+            "Sets the container to paused mode after stopping.",
+            "Removes stopped containers every 10 minutes."
+        ],
+        "explanation": "The '--rm' flag ensures that the container is automatically removed after it exits."
+    },
+    {
+        "question": "Which command is used to create a tar archive of a Docker image?",
+        "correctAnswers": ["docker save <image_name> -o <file_name>.tar"],
+        "incorrectAnswers": [
+            "docker export <image_name> -o <file_name>.tar",
+            "docker compress <image_name> -o <file_name>.tar",
+            "docker backup <image_name> -o <file_name>.tar",
+            "docker archive <image_name> -o <file_name>.tar",
+            "docker copy <image_name> <file_name>.tar",
+            "docker transfer <image_name> <file_name>.tar",
+            "docker secure <image_name> <file_name>.tar",
+            "docker store <image_name> -o <file_name>.tar"
+        ],
+        "explanation": "The 'docker save' command saves a Docker image and its layers as a tarball for portability or backup."
+    },
+    "question": "What does the 'docker history' command display?",
+            "correctAnswers": ["A list of layers in a Docker image along with their metadata."],
+            "incorrectAnswers": [
+                "A list of all commands executed in a container.",
+                "The change log for the Docker Engine.",
+                "The build history of Docker Compose services.",
+                "A record of all images downloaded.",
+                "The log history of a container.",
+                "The changes made to Docker volumes.",
+                "Networking activity history for containers.",
+                "The command history for the Docker CLI."
+            ],
+            "explanation": "'docker history' displays the creation history of an image, including size, creation time, and associated commands."
+        },
+        {
+            "question": "Which of the following is a valid Dockerfile instruction?",
+            "correctAnswers": ["RUN"],
+            "incorrectAnswers": [
+                "EXEC",
+                "START",
+                "PROCESS",
+                "INSTALL",
+                "PERFORM",
+                "LAUNCH",
+                "BUILD",
+                "INITIATE"
+            ],
+            "explanation": "'RUN' is a valid Dockerfile instruction used to execute commands during the build process."
+        },
+        {
+            "question": "What does the 'docker diff' command do?",
+            "correctAnswers": ["Displays changes made to a container’s filesystem."],
+            "incorrectAnswers": [
+                "Shows differences between two Docker images.",
+                "Compares two Dockerfiles.",
+                "Displays the network configuration of a container.",
+                "Lists all stopped containers.",
+                "Shows changes in Docker Compose services.",
+                "Displays differences between container logs.",
+                "Compares container memory usage.",
+                "Lists differences in Docker settings."
+            ],
+            "explanation": "'docker diff' inspects and shows changes made to the filesystem of a specific container."
+        },
+        {
+            "question": "What is the purpose of the '--cpu-shares' flag in 'docker run'?",
+            "correctAnswers": ["To specify relative CPU weight for containers."],
+            "incorrectAnswers": [
+                "To set a hard limit on CPU usage.",
+                "To specify the maximum memory usage for the container.",
+                "To assign exclusive CPUs to the container.",
+                "To enable real-time priority for the container.",
+                "To allow the container to share host memory.",
+                "To disable CPU throttling for the container.",
+                "To limit the number of processes in the container.",
+                "To reserve specific CPU cores for Docker Engine."
+            ],
+            "explanation": "'--cpu-shares' assigns relative CPU weight to a container compared to others running on the host."
+        },
+        {
+            "question": "What is the default mode of Docker service replication?",
+            "correctAnswers": ["Replicated mode."],
+            "incorrectAnswers": [
+                "Global mode.",
+                "Cluster mode.",
+                "Orchestrated mode.",
+                "Distributed mode.",
+                "Centralized mode.",
+                "Fixed mode.",
+                "Dynamic mode.",
+                "Manual mode."
+            ],
+            "explanation": "In 'Replicated mode,' a service scales by creating a specified number of replicas across the Swarm cluster."
+        },
+        {
+            "question": "What is the purpose of Docker's 'restart policies'?",
+            "correctAnswers": ["To automatically restart containers under specific conditions."],
+            "incorrectAnswers": [
+                "To reset container logs periodically.",
+                "To create backups of container images.",
+                "To configure container health checks.",
+                "To allow containers to scale dynamically.",
+                "To limit container CPU usage.",
+                "To synchronize data across containers.",
+                "To enable continuous deployment pipelines.",
+                "To schedule container updates automatically."
+            ],
+            "explanation": "Restart policies control when a container should automatically restart, e.g., on-failure or always."
+        },
+        {
+            "question": "What does the 'docker events' command do?",
+            "correctAnswers": ["Streams real-time events from the Docker daemon."],
+            "incorrectAnswers": [
+                "Monitors container resource usage.",
+                "Logs container restart events.",
+                "Lists all current containers.",
+                "Displays changes in Docker images.",
+                "Shows network traffic statistics.",
+                "Tracks volume changes.",
+                "Generates a report of Docker activity.",
+                "Inspects system-level Docker logs."
+            ],
+            "explanation": "'docker events' streams real-time notifications from the Docker daemon about container and image changes."
+        },
+        {
+            "question": "Which command lists all running and stopped containers?",
+            "correctAnswers": ["docker ps -a"],
+            "incorrectAnswers": [
+                "docker containers",
+                "docker list --all",
+                "docker show all",
+                "docker ps --stopped",
+                "docker logs --all",
+                "docker inspect containers",
+                "docker view containers",
+                "docker ls --stopped"
+            ],
+            "explanation": "The 'docker ps -a' command lists all containers, including both running and stopped ones."
+        },
+        {
+            "question": "What does the 'EXPOSE' instruction in a Dockerfile do?",
+            "correctAnswers": ["Specifies the ports on which the container will listen."],
+            "incorrectAnswers": [
+                "Publishes container ports to the host.",
+                "Allows external access to the container.",
+                "Enables secure communication between containers.",
+                "Starts a network service inside the container.",
+                "Defines firewall rules for the container.",
+                "Creates virtual networks for the container.",
+                "Enables NAT for the container.",
+                "Disables container port security."
+            ],
+            "explanation": "'EXPOSE' indicates the ports that a container listens on at runtime but does not publish them automatically."
+        },
+        {
+            "question": "What does the 'docker system df' command display?",
+            "correctAnswers": ["The disk usage by Docker images, containers, and volumes."],
+            "incorrectAnswers": [
+                "The total memory usage of running containers.",
+                "The size of the Docker configuration file.",
+                "The network traffic statistics of containers.",
+                "The CPU usage of running containers.",
+                "The health status of all Docker services.",
+                "The storage driver settings of the Docker daemon.",
+                "The available disk space on the host.",
+                "The logs generated by the Docker engine."
+            ],
+            "explanation": "'docker system df' shows disk space usage and reclaimable space for images, containers, and volumes managed by Docker."
+        },
+        {
+            "question": "What is a Docker namespace?",
+            "correctAnswers": ["A mechanism for isolating system resources for containers."],
+            "incorrectAnswers": [
+                "A way to assign unique IDs to containers.",
+                "A feature for grouping containers by application.",
+                "A layer used for container networking.",
+                "A tool for managing container logs.",
+                "A protocol for sharing volumes.",
+                "A configuration file for Swarm mode.",
+                "A framework for scaling services.",
+                "A method for securing container images."
+            ],
+            "explanation": "Docker namespaces provide resource isolation, such as process IDs, network interfaces, and filesystems, for containers."
+        },
+        {
+            "question": "Which command is used to update an existing Docker service?",
+            "correctAnswers": ["docker service update <service_name>"],
+            "incorrectAnswers": [
+                "docker service modify <service_name>",
+                "docker update <service_name>",
+                "docker service change <service_name>",
+                "docker edit-service <service_name>",
+                "docker service configure <service_name>",
+                "docker alter <service_name>",
+                "docker change-service <service_name>",
+                "docker edit <service_name>"
+            ],
+            "explanation": "The 'docker service update' command modifies an existing Docker service's configuration, such as replicas or image version."
+        },
+        {
+            "question": "What does the '--publish' or '-p' flag do in 'docker run'?",
+            "correctAnswers": ["Maps container ports to host ports."],
+            "incorrectAnswers": [
+                "Enables public access to the container.",
+                "Publishes logs of the container.",
+                "Uploads the container's data to a registry.",
+                "Starts a service for the container.",
+                "Creates a Docker network.",
+                "Runs the container in interactive mode.",
+                "Configures security rules for container ports.",
+                "Disables port forwarding for the container."
+            ],
+            "explanation": "The '--publish' or '-p' flag maps a container's internal port to a specific port on the host machine."
+        },
+        {
+            "question": "What is the main function of Docker's 'healthcheck' instruction?",
+            "correctAnswers": ["To monitor and report on the health of a container."],
+            "incorrectAnswers": [
+                "To configure network settings for containers.",
+                "To create backups of container data.",
+                "To schedule updates for container images.",
+                "To limit resource usage of the container.",
+                "To restart containers if they fail.",
+                "To ensure containers scale properly.",
+                "To diagnose Docker host issues.",
+                "To clean up unused containers automatically."
+            ],
+            "explanation": "The 'HEALTHCHECK' instruction in a Dockerfile defines a command that checks the status of a container periodically."
+        }
+]

@@ -1,9 +1,6 @@
 package dev.salonce.discordQuizBot.Core.Matches;
 
-import dev.salonce.discordQuizBot.AnswerInteractionEnum;
-import dev.salonce.discordQuizBot.ButtonInteraction;
-import dev.salonce.discordQuizBot.ButtonInteractionData;
-import dev.salonce.discordQuizBot.QuestionsConfig;
+import dev.salonce.discordQuizBot.*;
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
 import discord4j.core.object.entity.Message;
@@ -14,6 +11,7 @@ import discord4j.core.spec.MessageCreateSpec;
 import discord4j.core.spec.MessageEditSpec;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -25,17 +23,15 @@ import java.util.stream.Collectors;
 @Service
 public class QuizManager {
 
-    private final int timeToJoinQuiz = 5; // testing is 5, default is 60
-    private final int timeForQuizToStart = 5; // testing is 5, default is 10
-    private final int timeToAnswerQuestion = 30; //default is 30, test is 5
-    private final int timeForNewQuestionToAppear = 8; //default is 8, test is 3
+    private final Timers timers;
 
     private final Map<MessageChannel, Match> quizzes;
     private final QuestionsConfig questionsConfig;
 
-    public QuizManager(QuestionsConfig questionsConfig){
+    public QuizManager(QuestionsConfig questionsConfig, @Qualifier("testingTimers") Timers timers){
         quizzes = new HashMap<>();
         this.questionsConfig = questionsConfig;
+        this.timers = timers;
     }
 
 
@@ -47,10 +43,10 @@ public class QuizManager {
             quizzes.put(messageChannel, match);
             //System.out.println("Initial participants: " + match.getUserNames());
             createStartQuizMessage(messageChannel)
-                    .delayElement(Duration.ofSeconds(timeToJoinQuiz))
+                    .delayElement(Duration.ofSeconds(timers.getTimeToJoinQuiz()))
                     .flatMap(message -> editStartQuizMessage2(message, messageChannel))
                     //.then(Mono.defer(() -> createStartingMatchMessage(messageChannel)))
-                    .delayElement(Duration.ofSeconds(timeForQuizToStart))
+                    .delayElement(Duration.ofSeconds(timers.getTimeForQuizToStart()))
                     .then(Mono.defer(() -> createQuestionMessages(messageChannel)))
                     .then(Mono.defer(() -> createMatchResultsMessage(messageChannel)))
                     .then(Mono.defer(() -> Mono.just(quizzes.remove(messageChannel))))
@@ -73,11 +69,11 @@ public class QuizManager {
                     return createQuestionMessage(messageChannel, index)
                             .flatMap(message -> Mono.just(message)
                                     .then(Mono.defer(() -> openAnswering(messageChannel)))
-                                    .then(Mono.delay(Duration.ofSeconds(timeToAnswerQuestion)))
+                                    .then(Mono.delay(Duration.ofSeconds(timers.getTimeToAnswerQuestion())))
                                     .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
                                     .then(Mono.defer(() -> closeAnswering(messageChannel)))
                                     .then(Mono.defer(() -> editQuestionMessage(messageChannel, message, index)))
-                                    .then(Mono.delay(Duration.ofSeconds(timeForNewQuestionToAppear)))
+                                    .then(Mono.delay(Duration.ofSeconds(timers.getTimeForNewQuestionToAppear())))
                                     .then(Mono.defer(() -> moveToNextQuestion(match)))
                             );
                         }
@@ -151,7 +147,7 @@ public class QuizManager {
 
     public Mono<Message> createStartQuizMessage(MessageChannel messageChannel){
         Match match = quizzes.get(messageChannel);
-        int timeToJoinQuizRefreshed = timeToJoinQuiz;
+        int timeToJoinQuizRefreshed = timers.getTimeToJoinQuiz();
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 //.title("\uD83C\uDFC1 Java Quiz")
@@ -171,7 +167,7 @@ public class QuizManager {
 
     private Mono<Message> editStartQuizMessage(Message message, MessageChannel messageChannel){
         Match match = quizzes.get(messageChannel);
-        int timeToJoinQuizRefreshed = timeToJoinQuiz;
+        int timeToJoinQuizRefreshed = timers.getTimeToJoinQuiz();
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 //.title("\uD83C\uDFC1 Java Quiz")
@@ -189,7 +185,7 @@ public class QuizManager {
 
     private Mono<Message> editStartQuizMessage2(Message message, MessageChannel messageChannel){
         Match match = quizzes.get(messageChannel);
-        int timeToJoinQuizRefreshed = timeToJoinQuiz;
+        int timeToJoinQuizRefreshed = timers.getTimeToJoinQuiz();
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 //.title("\uD83C\uDFC1 Java Quiz")
@@ -300,21 +296,3 @@ public class QuizManager {
         return messageChannel.createMessage(embed);
     }
 }
-
-
-//    private Mono<Message> createAnswerMessage(MessageChannel messageChannel){
-//        Match match = quizzes.get(messageChannel);
-//
-//        EmbedCreateSpec embed = EmbedCreateSpec.builder()
-//                .color(Color.of(255, 99, 71))
-//                .title("Answer " + match.getQuestionNumber() + ": ")
-//                .description("**" + match.getQuestion().getQuestion() + "**")
-//                .addField("", "Correct text: " + match.getQuestion().getCorrectAnswer() + " - " + match.getQuestion().getCorrectAnswerString(), true)
-//                .addField("", "Explanation: " + match.getQuestion().getExplanation(), false)
-//                .addField("", "Answers:\n" + match.getUsersAnswers(), false)
-//                .addField("", "Scoreboard:\n" + match.getScoreboard(), false)
-//                //.addField("", "Scoreboard:\n" + match.getScoreBoard(), false)
-//                .build();
-//
-//        return messageChannel.createMessage(embed);
-//    }

@@ -5,15 +5,19 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
 @RequiredArgsConstructor
 public class MessageHandlerChain {
     private final List<MessageHandler> messageHandlers;
 
     public void handle(DiscordMessage discordMessage){
-        for (MessageHandler messageHandler : messageHandlers){
-            if (messageHandler.handleMessage(discordMessage))
+        for(int i = 0; i < messageHandlers.size(); i++){
+            if (messageHandlers.get(i).handleMessage(discordMessage))
                 break;
         }
+
+//        for (MessageHandler messageHandler : messageHandlers){
+//            if (messageHandler.handleMessage(discordMessage))
+//                break;
+//        }
     }
 }
