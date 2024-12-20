@@ -1,18 +1,25 @@
 package dev.salonce.discordQuizBot;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class TimersConfig {
 
-    @Bean("testingTimers")
-    public Timers standardTimers(){
-        return new Timers(7, 2, 5, 3);
-    }
+    @Value("${mode}")
+    private String mode;
 
-    @Bean("standardTimers")
-    public Timers testingTimers(){
-        return new Timers(30, 5, 35, 10);
+    @Bean
+
+    public Timers getTimers(){
+        if (mode.equals("testing"))
+            return new Timers(7, 2, 5, 3);
+        else if (mode.equals("standard"))
+            return new Timers(30, 5, 35, 10);
+        else{
+            System.out.println("ERROR! Mode " + mode + " doesn't exist! Check your application.yaml file for mode configuration.");
+            return null;
+        }
     }
 }

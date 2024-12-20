@@ -60,7 +60,7 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 					return null;
 				ButtonInteractionData buttonInteractionData = new ButtonInteractionData(buttonId);
 
-				System.out.println("Button clicked type:" + buttonInteractionData.getButtonType());
+				//System.out.println("Button clicked type:" + buttonInteractionData.getButtonType());
 				return switch (buttonInteractionData.getButtonType()) {
 
 					case "joinQuiz" -> {

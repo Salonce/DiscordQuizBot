@@ -28,7 +28,7 @@ public class QuizManager {
     private final Map<MessageChannel, Match> quizzes;
     private final QuestionsConfig questionsConfig;
 
-    public QuizManager(QuestionsConfig questionsConfig, @Qualifier("testingTimers") Timers timers){
+    public QuizManager(QuestionsConfig questionsConfig, Timers timers){
         quizzes = new HashMap<>();
         this.questionsConfig = questionsConfig;
         this.timers = timers;
@@ -233,7 +233,7 @@ public class QuizManager {
 
         if (quizzes.containsKey(messageChannel)){
             if (quizzes.get(messageChannel).addPlayer(user, questionsNumber)) {
-                System.out.println("Participants after adding: " + quizzes.get(messageChannel).getUserNames());
+                //System.out.println("Participants: " + quizzes.get(messageChannel).getUserNames());
                 editStartQuizMessage(message, messageChannel).subscribe();
             }
         }
