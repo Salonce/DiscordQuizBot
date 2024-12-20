@@ -20,6 +20,20 @@ public class Match{
     @Setter
     private boolean enrolment;
 
+    private String name;
+
+    public Match(List<Question> questions, String type){
+        this.questions = questions;
+        this.players = new HashMap<>();
+        this.enrolment = true;
+        this.questionNumber = 0;
+
+        if (type != null) {
+            String capitalized = type.substring(0, 1).toUpperCase() + type.substring(1);
+            this.name = capitalized;
+        }
+    }
+
     public String getScoreboard(){
         return getPlayers().entrySet().stream().sorted((a, b) -> (a.getValue().getPoints() - b.getValue().getPoints())).map(entry -> "<@" + entry.getKey().getId().asString() + ">" + ": " + entry.getValue().getPoints()).collect(Collectors.joining("\n"));
     }
@@ -109,13 +123,6 @@ public class Match{
                 //.map(User::getUsername)
                 .map(user -> "<@" + user.getId().asString() + ">")
                 .collect(Collectors.joining(", "));
-    }
-
-    public Match(List<Question> questions){
-        this.questions = questions;
-        this.players = new HashMap<>();
-        this.enrolment = true;
-        this.questionNumber = 0;
     }
 
     public boolean addPlayer(User user, int questionsNumber){

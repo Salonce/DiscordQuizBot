@@ -63,8 +63,8 @@ public class QuizManager {
 
     private Mono<Void> createQuestionMessagesSequentially(MessageChannel messageChannel) {
         Match match = quizzes.get(messageChannel);
-        int newQuestionWait = 5; //default is 10, test is 5
-        int AnswerTimeWait = 5; //default is 30, test is 5
+        int newQuestionWait = 8; //default is 10, test is 5
+        int AnswerTimeWait = 30; //default is 30, test is 5
 
         return Flux.generate(sink -> {
                     if (match.questionExists())
@@ -160,7 +160,8 @@ public class QuizManager {
         Match match = quizzes.get(messageChannel);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("\uD83C\uDFC1 Java Quiz")
+                //.title("\uD83C\uDFC1 Java Quiz")
+                .title("\uD83C\uDFC1" + match.getName() + " quiz")
                 .addField("", "Questions: " + match.getQuestions().size(), false)
                 .addField("", "Participants: " + match.getUserNames(), false)
                 .addField("", "You have " + participationTimeWait + " seconds to join.", false)
@@ -178,7 +179,8 @@ public class QuizManager {
         Match match = quizzes.get(messageChannel);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("\uD83C\uDFC1 Java Quiz")
+                //.title("\uD83C\uDFC1 Java Quiz")
+                .title("\uD83C\uDFC1" + match.getName() + " quiz")
                 .addField("", "Questions: " + match.getQuestions().size(), false)
                 .addField("", "Participants: " + match.getUserNames(), false)
                 .addField("", "You have " + participationTimeWait + " seconds to join.", false)
@@ -194,7 +196,8 @@ public class QuizManager {
         Match match = quizzes.get(messageChannel);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("\uD83C\uDFC1 Java Quiz")
+                //.title("\uD83C\uDFC1 Java Quiz")
+                .title("\uD83C\uDFC1" + match.getName() + " quiz")
                 .addField("", "Questions: " + match.getQuestions().size(), false)
                 .addField("", "Participants: " + match.getUserNames(), false)
                 .addField("", "Starting in " + preparationTime + " seconds.", false)
