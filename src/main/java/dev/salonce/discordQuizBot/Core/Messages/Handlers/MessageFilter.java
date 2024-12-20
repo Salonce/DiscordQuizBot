@@ -15,23 +15,25 @@ public class MessageFilter implements MessageHandler {
 
     @Override
     public boolean handleMessage(DiscordMessage discordMessage){
+
+        //if empty message - ignore and end chain
         if (discordMessage.getContent() == null){
             return true;
         }
-        else if (discordMessage.getContent().equalsIgnoreCase("qq")) {
 
-            messageSender.sendMessage(discordMessage, "Empty request").subscribe();
-//            Mono.just(discordMessage).publishOn(Schedulers.boundedElastic())
-//                            .doOnEach(message -> messageSender.sendMessage(discordMessage, "Empty request"));
-//
-//            //messageSender.sendMessage(discordMessage, "Empty request");
-//            try{
-//                sleep(3000);
-//            } catch (InterruptedException e) {
-//                System.out.println("Interrupted exception");
-//            }
+        String[] message = discordMessage.getContent().split(" ");
+
+        //if too short message - ignore and end chain
+        if (message.length < 2)
             return true;
-        }
+
+        //this doesn't do anything now because of previous condition
+//        else if (discordMessage.getContent().equalsIgnoreCase("qq")) {
+//            messageSender.sendMessage(discordMessage, "Empty request").subscribe();
+//            return true;
+//        }
+
+        //conditions not met - move on to next chain piece
         return false;
     }
 }

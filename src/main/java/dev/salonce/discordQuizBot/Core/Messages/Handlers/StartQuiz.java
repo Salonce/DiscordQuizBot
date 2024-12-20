@@ -22,17 +22,20 @@ public class StartQuiz implements MessageHandler {
     @Override
     public boolean handleMessage(DiscordMessage discordMessage) {
         String[] message = discordMessage.getContent().split(" ");
-        if (message.length < 2)
-            return false;
 
         if (message[0].equals("qq") && message[1].equals("quiz")){
+            if (message.length < 3)
+                return true; // too short command. end chain
             String lastMsg = message[2];
             if (questionsConfig.getFiles().containsKey(lastMsg)){
                 MessageChannel messageChannel = discordMessage.getChannel();
                 quizManager.addMatch(messageChannel, matchFactory.makeMatch(lastMsg));
                 return true;
             }
-            return true; // qq quiz exists but do nothing
+            else{
+                //write that the key - type of quiz - doesn't exist
+                //return true;
+            }
         }
         return false;
     }
