@@ -15,7 +15,7 @@ public class MatchFactory {
 
     public Match makeMatch(String type){
         List<Question> questions = questionFactory.generateQuestions(type);
-        return new Match(questions);
+        return new Match(questions, type);
     }
 
 //    public Match javaMatch(){

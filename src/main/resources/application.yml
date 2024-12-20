@@ -10,3 +10,6 @@ questions:
   files:
     java: src/main/resources/java.json
     memory: src/main/resources/memory.json
+    personality: src/main/resources/personality.json
+    art_history: src/main/resources/art_history.json
+    python: src/main/resources/python.json

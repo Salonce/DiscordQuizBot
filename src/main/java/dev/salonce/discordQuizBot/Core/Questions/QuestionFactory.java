@@ -18,7 +18,7 @@ public class QuestionFactory {
     public List<Question> generateQuestions(String type){
         List<RawQuestion> rawQuestions = questionRepository.getQuestions(type);
         List<Question> questions = new ArrayList<>();
-        for(int i = 0; i < 5; i++){
+        for(int i = 0; i < 10; i++){
             int next = rand.nextInt(rawQuestions.size());
             questions.add(rawQuestions.get(next).generateQuestion());
             rawQuestions.remove(next);

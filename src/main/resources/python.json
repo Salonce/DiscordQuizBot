@@ -1,0 +1,1280 @@
+[
+    {
+        "question": "What is the difference between deep copy and shallow copy in Python?",
+        "correctAnswers": ["Shallow copy creates a new object but inserts references to the objects in the original collection.", "Deep copy creates a new object and recursively copies all objects found in the original."],
+        "incorrectAnswers": ["Shallow copy is slower than deep copy.", "Deep copy only works on primitive types.", "Shallow copy and deep copy are identical."],
+        "explanation": "Shallow copy duplicates the structure but not the elements, whereas deep copy duplicates both the structure and elements."
+    },
+    {
+        "question": "What is the purpose of the Python Global Interpreter Lock (GIL)?",
+        "correctAnswers": ["Ensures that only one thread executes Python bytecode at a time."],
+        "incorrectAnswers": ["Allows multiple threads to execute Python bytecode simultaneously.", "Handles Python's garbage collection.", "Improves multithreading performance in Python."],
+        "explanation": "The GIL is a mutex that protects access to Python objects, preventing multiple threads from executing Python code simultaneously."
+    },
+    {
+        "question": "What are Python's key data types for collections?",
+        "correctAnswers": ["List", "Tuple", "Set", "Dictionary"],
+        "incorrectAnswers": ["Array", "LinkedList", "HashMap", "Queue"],
+        "explanation": "Python provides List, Tuple, Set, and Dictionary for collections. Arrays and LinkedLists are not native data types in Python."
+    },
+    {
+        "question": "Which of the following methods is used to read an entire file in Python?",
+        "correctAnswers": ["read()"],
+        "incorrectAnswers": ["readline()", "readlines()", "fetch()"],
+        "explanation": "The read() method reads the entire contents of a file as a string."
+    },
+    {
+        "question": "What is the result of 3 * 'abc' in Python?",
+        "correctAnswers": ["'abcabcabc'"],
+        "incorrectAnswers": ["'abcabc'", "'abc*abc*abc'", "An error is raised"],
+        "explanation": "Multiplying a string by an integer in Python repeats the string that many times."
+    },
+    {
+        "question": "How do you open a file for both reading and writing in Python?",
+        "correctAnswers": ["Using the mode 'r+'."],
+        "incorrectAnswers": ["Using the mode 'rw'.", "Using the mode 'w+' for reading and writing.", "Using the mode 'a+' for reading and writing."],
+        "explanation": "'r+' mode allows both reading and writing to a file, without truncating it."
+    },
+    {
+        "question": "What is the purpose of Python's @staticmethod decorator?",
+        "correctAnswers": ["Defines a method that does not operate on an instance or class level."],
+        "incorrectAnswers": ["Defines a method that operates only on an instance level.", "Defines a method that operates only on a class level.", "Defines a method that operates on both instance and class levels."],
+        "explanation": "@staticmethod is used to define a method that does not require access to the instance (self) or class (cls)."
+    },
+    {
+        "question": "What is the difference between is and == in Python?",
+        "correctAnswers": ["'is' checks for identity, while '==' checks for equality."],
+        "incorrectAnswers": ["'is' checks for equality, while '==' checks for identity.", "'is' and '==' are interchangeable.", "'is' checks type equality, while '==' checks value equality."],
+        "explanation": "'is' compares memory addresses, whereas '==' compares the values of objects."
+    },
+    {
+        "question": "Which of the following are mutable in Python?",
+        "correctAnswers": ["List", "Dictionary", "Set"],
+        "incorrectAnswers": ["Tuple", "String", "Int", "Float"],
+        "explanation": "Mutable objects can be modified after creation. List, Dictionary, and Set are mutable, while Tuple and String are immutable."
+    },
+    {
+        "question": "How do you create a virtual environment in Python?",
+        "correctAnswers": ["Using the command `python -m venv <env_name>`."],
+        "incorrectAnswers": ["Using the command `python createenv <env_name>`.", "Using the command `virtualize <env_name>`.", "Using the command `python envsetup <env_name>`."],
+        "explanation": "The `venv` module is used to create a lightweight virtual environment."
+    },
+    {
+        "question": "What is the difference between range() and xrange() in Python?",
+        "correctAnswers": ["range() returns a list, while xrange() returns a generator (in Python 2)."],
+        "incorrectAnswers": ["range() works for integers, while xrange() works for floats.", "range() is faster than xrange().", "xrange() is used for iteration over dictionaries."],
+        "explanation": "In Python 2, range() creates a list, while xrange() creates an iterator for memory efficiency. In Python 3, xrange() is removed, and range() behaves like xrange()."
+    },
+    {
+        "question": "How does Python handle arguments in functions?",
+        "correctAnswers": ["Arguments are passed by object reference."],
+        "incorrectAnswers": ["Arguments are passed by value.", "Arguments are passed by reference.", "Arguments are passed by a mix of value and reference."],
+        "explanation": "Python's function arguments are passed by object reference, meaning mutable objects can be modified in-place."
+    },
+    {
+        "question": "What is the purpose of Python's super() function?",
+        "correctAnswers": ["Access methods of a parent class in a subclass."],
+        "incorrectAnswers": ["Override parent class methods in a subclass.", "Call a method from a sibling class.", "Create a new object of the parent class."],
+        "explanation": "super() allows you to call a parent class's method directly from a child class."
+    },
+    {
+        "question": "Which statement about Python's garbage collection is true?",
+        "correctAnswers": ["Python uses reference counting and garbage collection for memory management."],
+        "incorrectAnswers": ["Python only uses reference counting.", "Python does not have garbage collection.", "Python relies solely on manual memory management."],
+        "explanation": "Python uses reference counting as the primary mechanism, supplemented by garbage collection for cyclic references."
+    },
+    {
+        "question": "What is the output of `print(bool(0))` in Python?",
+        "correctAnswers": ["False"],
+        "incorrectAnswers": ["True", "0", "An error is raised."],
+        "explanation": "In Python, 0 is considered a falsy value, so bool(0) returns False."
+    },
+    {
+        "question": "What is a Python generator?",
+        "correctAnswers": ["A function that yields values one at a time using the yield keyword."],
+        "incorrectAnswers": ["A function that returns a list of values.", "A special class in Python.", "An iterator that always returns a constant value."],
+        "explanation": "Generators use the `yield` keyword to produce values lazily, pausing execution between yields."
+    },
+    {
+        "question": "What is the output of `print(type([]) is list)`?",
+        "correctAnswers": ["True"],
+        "incorrectAnswers": ["False", "None", "An error is raised."],
+        "explanation": "The type of an empty list `[]` is `list`, and the `is` operator checks for object identity, which is true in this case."
+    },
+    {
+        "question": "What is the difference between 'del' and 'remove()' when working with lists?",
+        "correctAnswers": ["'del' removes an item by index, 'remove()' removes an item by value."],
+        "incorrectAnswers": ["Both remove items by value.", "'del' removes items by value, 'remove()' removes by index.", "They are interchangeable."],
+        "explanation": "The 'del' keyword removes an item or slice by index, while 'remove()' searches for a value and removes it."
+    },
+    {
+        "question": "What is a lambda function in Python?",
+        "correctAnswers": ["A single-line anonymous function defined using the lambda keyword."],
+        "incorrectAnswers": ["A function that can only take one argument.", "A recursive function.", "A function for manipulating lists only."],
+        "explanation": "Lambda functions are single-expression functions that do not require a name and are defined using the `lambda` keyword."
+    },
+    {
+        "question": "What does the 'with' statement do in Python?",
+        "correctAnswers": ["Simplifies exception handling by automatically closing resources."],
+        "incorrectAnswers": ["Creates a new context for execution.", "Only works for file handling.", "Replaces the try-except block entirely."],
+        "explanation": "The 'with' statement ensures proper acquisition and release of resources, like closing files automatically."
+    },
+    {
+        "question": "Which Python module is used for working with regular expressions?",
+        "correctAnswers": ["re"],
+        "incorrectAnswers": ["regex", "regexp", "match"],
+        "explanation": "The 're' module provides functions for working with regular expressions in Python."
+    },
+    {
+        "question": "What is the output of `print(3 < 4 < 5)`?",
+        "correctAnswers": ["True"],
+        "incorrectAnswers": ["False", "An error is raised.", "None"],
+        "explanation": "Python supports chained comparisons. Here, it checks `3 < 4` and `4 < 5`, both of which are true."
+    },
+    {
+        "question": "What is the purpose of Python's 'map()' function?",
+        "correctAnswers": ["Applies a given function to all items in an iterable and returns a map object."],
+        "incorrectAnswers": ["Iterates over a dictionary.", "Filters elements of an iterable.", "Sorts the elements of a list."],
+        "explanation": "The 'map()' function applies the specified function to each item in an iterable, such as a list or tuple."
+    },
+    {
+        "question": "How can you define a private variable in a Python class?",
+        "correctAnswers": ["By prefixing the variable name with two underscores, e.g., `__var`."],
+        "incorrectAnswers": ["By prefixing with a single underscore, e.g., `_var`.", "By using the `private` keyword.", "By declaring it inside a private method."],
+        "explanation": "Private variables are indicated by a double underscore prefix. This invokes name mangling to restrict access."
+    },
+    {
+        "question": "What does the 'yield' keyword do in Python?",
+        "correctAnswers": ["It pauses a function and returns a value, resuming from where it left off when called again."],
+        "incorrectAnswers": ["It returns a value and exits the function permanently.", "It stops the execution of a generator permanently.", "It works like a return statement for normal functions."],
+        "explanation": "'yield' is used in generator functions to produce a series of values lazily."
+    },
+    {
+        "question": "What is the difference between 'isinstance()' and 'type()'?",
+        "correctAnswers": ["'isinstance()' checks for an instance of a class or its subclasses, 'type()' checks for exact type match."],
+        "incorrectAnswers": ["'type()' is faster than 'isinstance()'.", "'isinstance()' checks type only, not inheritance.", "They are interchangeable."],
+        "explanation": "'isinstance()' is more flexible as it considers inheritance, while 'type()' is strict and checks the exact type."
+    },
+    {
+        "question": "What is the output of `print(list(range(0, 10, -1)))`?",
+        "correctAnswers": ["[]"],
+        "incorrectAnswers": ["[10, 9, ..., 0]", "[0, 1, 2, ..., 10]", "An error is raised."],
+        "explanation": "The 'range()' function with a negative step cannot generate numbers when the start is less than the stop."
+    },
+    {
+        "question": "What is the difference between a tuple and a list in Python?",
+        "correctAnswers": ["Tuples are immutable, while lists are mutable."],
+        "incorrectAnswers": ["Tuples are faster than lists.", "Lists can store only homogeneous data, while tuples can store heterogeneous data.", "Tuples are a subset of lists."],
+        "explanation": "Tuples are immutable collections, meaning they cannot be modified after creation. Lists are mutable and can be altered."
+    },
+    {
+        "question": "What is the purpose of the `zip()` function in Python?",
+        "correctAnswers": ["Combines two or more iterables element-wise into tuples."],
+        "incorrectAnswers": ["Concatenates strings.", "Combines elements of one iterable into a dictionary.", "Creates a Cartesian product of two iterables."],
+        "explanation": "The `zip()` function creates an iterator of tuples, where the i-th tuple contains the i-th element from each input iterable."
+    },
+    {
+        "question": "What is the purpose of Python's 'setdefault()' method in dictionaries?",
+        "correctAnswers": ["Returns the value of a key if it exists, or sets it to a default value if it does not exist."],
+        "incorrectAnswers": ["Updates the value of a key.", "Deletes a key if it does not exist.", "Returns an error if the key does not exist."],
+        "explanation": "The 'setdefault()' method ensures a key is present in the dictionary with a default value if not already present."
+    },
+    {
+        "question": "What does the `@classmethod` decorator do?",
+        "correctAnswers": ["Defines a method that takes the class itself as the first parameter."],
+        "incorrectAnswers": ["Defines a method that takes no arguments.", "Defines a method that only works on instance variables.", "Defines a method that can only modify instance-level attributes."],
+        "explanation": "A class method receives the class itself (`cls`) as the first argument, allowing it to modify class-level attributes."
+    },
+    {
+        "question": "What is the result of `print(bool('False'))`?",
+        "correctAnswers": ["True"],
+        "incorrectAnswers": ["False", "An error is raised.", "None"],
+        "explanation": "Non-empty strings are truthy in Python, so `bool('False')` evaluates to `True`."
+    },
+    {
+        "question": "What is the purpose of Python's '__init__.py' file in a package?",
+        "correctAnswers": ["It marks the directory as a Python package."],
+        "incorrectAnswers": ["It initializes variables for the module.", "It must contain all functions used in the package.", "It is optional and has no specific purpose."],
+        "explanation": "The `__init__.py` file signals to Python that the directory should be treated as a package."
+    },
+    {
+        "question": "What is a Python metaclass?",
+        "correctAnswers": ["A class that defines how other classes behave."],
+        "incorrectAnswers": ["A special decorator for methods.", "A class used only for inheritance.", "A module for managing class methods."],
+        "explanation": "Metaclasses define the behavior and structure of classes, often by modifying their creation or attributes."
+    },
+    {
+        "question": "Which Python module is used for serializing and deserializing data?",
+        "correctAnswers": ["pickle"],
+        "incorrectAnswers": ["json", "yaml", "marshal"],
+        "explanation": "The `pickle` module allows Python objects to be serialized and deserialized. JSON is used for a text-based format."
+    },
+    {
+        "question": "What is the result of `print((1, 2) + (3, 4))`?",
+        "correctAnswers": ["(1, 2, 3, 4)"],
+        "incorrectAnswers": ["(4, 6)", "(1, 2, 3)", "An error is raised."],
+        "explanation": "The `+` operator concatenates tuples in Python."
+    },
+    {
+        "question": "What is the difference between mutable and immutable types in Python?",
+        "correctAnswers": ["Mutable types can be changed after creation, immutable types cannot."],
+        "incorrectAnswers": ["Immutable types are faster than mutable types.", "Mutable types are immutable during runtime.", "Mutable types can only contain numbers."],
+        "explanation": "Lists, dictionaries, and sets are mutable, while strings, tuples, and integers are immutable in Python."
+    },
+    {
+        "question": "What does the `enumerate()` function do in Python?",
+        "correctAnswers": ["Adds a counter to an iterable and returns it as an enumerate object."],
+        "incorrectAnswers": ["Sorts the elements of an iterable.", "Groups elements into tuples.", "Filters elements from an iterable."],
+        "explanation": "`enumerate()` provides both the index and value of items in an iterable."
+    },
+    {
+        "question": "What is the purpose of Python's `sys.argv`?",
+        "correctAnswers": ["To retrieve command-line arguments passed to a script."],
+        "incorrectAnswers": ["To execute shell commands from Python.", "To get the Python version.", "To interact with system-level processes."],
+        "explanation": "`sys.argv` stores command-line arguments as a list, with the script name as the first element."
+    },
+    {
+        "question": "What is the purpose of Python's `itertools` module?",
+        "correctAnswers": ["Provides functions for creating iterators for efficient looping."],
+        "incorrectAnswers": ["Provides functions for working with lists.", "Provides functions for recursion.", "Provides functions for handling strings."],
+        "explanation": "`itertools` includes tools for creating iterators like `count()`, `cycle()`, and `combinations()`."
+    },
+    {
+        "question": "What is the difference between `@staticmethod` and `@classmethod`?",
+        "correctAnswers": ["@staticmethod does not take any instance or class argument, @classmethod takes the class as its first argument."],
+        "incorrectAnswers": ["Both are the same.", "@classmethod does not take any arguments.", "@staticmethod takes the instance as its first argument."],
+        "explanation": "`@staticmethod` defines a static method, while `@classmethod` is used to access and modify class-level data."
+    },
+    {
+        "question": "What is the output of `print('10' * 2)`?",
+        "correctAnswers": ["1010"],
+        "incorrectAnswers": ["20", "An error is raised.", "None"],
+        "explanation": "Multiplying a string by an integer repeats the string. Here, `'10'` is repeated twice."
+    },
+    {
+        "question": "How can you copy an object in Python?",
+        "correctAnswers": ["Using the `copy` module's `copy()` and `deepcopy()` functions."],
+        "incorrectAnswers": ["Using the `clone()` function.", "Using the assignment operator.", "Using the `copy` keyword."],
+        "explanation": "The `copy` module provides functions to perform shallow (`copy`) and deep (`deepcopy`) copies of objects."
+    },
+    {
+        "question": "What is the difference between `remove()` and `pop()` in a list?",
+        "correctAnswers": ["`remove()` removes an element by value, `pop()` removes an element by index."],
+        "incorrectAnswers": ["Both remove elements by index.", "`pop()` removes by value, `remove()` removes by index.", "`remove()` is faster than `pop()`."],
+        "explanation": "`remove()` searches for a value and removes it, while `pop()` removes an item at a given index and returns it."
+    },
+    {
+        "question": "What is Python's `__name__` variable used for?",
+        "correctAnswers": ["To check whether a script is being run directly or imported as a module."],
+        "incorrectAnswers": ["To store the script's file name.", "To define the main function.", "To store the name of a variable."],
+        "explanation": "`__name__` equals `__main__` if the script is run directly; otherwise, it holds the module name."
+    },
+    {
+        "question": "What does Python's `join()` method do?",
+        "correctAnswers": ["Concatenates a list of strings into a single string, using a specified separator."],
+        "incorrectAnswers": ["Concatenates integers into a string.", "Concatenates a dictionary into a string.", "Concatenates a tuple into a single list."],
+        "explanation": "The `join()` method is called on a string (separator) and combines elements of an iterable into a single string."
+    },
+    {
+        "question": "What is the purpose of Python's `collections.Counter`?",
+        "correctAnswers": ["Counts the occurrences of elements in an iterable and stores them in a dictionary-like object."],
+        "incorrectAnswers": ["Sorts elements in descending order.", "Filters unique elements in an iterable.", "Provides a sorted list of dictionary keys."],
+        "explanation": "`collections.Counter` counts elements and stores the results as key-value pairs."
+    },
+    {
+        "question": "What is Python's default encoding for strings?",
+        "correctAnswers": ["UTF-8"],
+        "incorrectAnswers": ["ASCII", "ISO-8859-1", "Unicode"],
+        "explanation": "Python uses UTF-8 as the default encoding for strings."
+    },
+    {
+        "question": "What is the output of `print([1, 2, 3] * 2)`?",
+        "correctAnswers": ["[1, 2, 3, 1, 2, 3]"],
+        "incorrectAnswers": ["[1, 4, 9]", "[1, 2, 3, 2, 3, 1]", "An error is raised."],
+        "explanation": "Multiplying a list by an integer repeats the list elements that many times."
+    },
+    {
+        "question": "How does Python's `in` operator work with strings?",
+        "correctAnswers": ["Checks if a substring exists within a string."],
+        "incorrectAnswers": ["Checks if two strings are equal.", "Checks if a string starts with a character.", "Checks the length of a string."],
+        "explanation": "The `in` operator checks for membership and returns True if the substring exists."
+    },
+    {
+        "question": "What is the purpose of Python's `filter()` function?",
+        "correctAnswers": ["Filters elements of an iterable based on a function and returns an iterator."],
+        "incorrectAnswers": ["Sorts elements of an iterable.", "Removes duplicates from an iterable.", "Applies a function to all elements of an iterable."],
+        "explanation": "`filter()` takes a function and an iterable, returning only the elements for which the function returns True."
+    },
+    {
+        "question": "What is the difference between `is` and `==` for string comparison?",
+        "correctAnswers": ["`is` checks identity, `==` checks value equality."],
+        "incorrectAnswers": ["`is` checks value equality, `==` checks identity.", "`is` is faster than `==`.", "`==` is slower for strings."],
+        "explanation": "`is` checks memory addresses, while `==` compares the values of the strings."
+    },
+    {
+        "question": "What is the purpose of Python's `@property` decorator?",
+        "correctAnswers": ["Defines a method that can be accessed like an attribute."],
+        "incorrectAnswers": ["Makes a variable private.", "Creates a read-only attribute.", "Sets default values for attributes."],
+        "explanation": "`@property` allows methods to be accessed like attributes, typically for getter functionality."
+    },
+    {
+        "question": "What is the result of `len({'a': 1, 'b': 2, 'c': 3})`?",
+        "correctAnswers": ["3"],
+        "incorrectAnswers": ["2", "6", "An error is raised."],
+        "explanation": "`len()` returns the number of keys in a dictionary."
+    },
+    {
+        "question": "What does the `all()` function do in Python?",
+        "correctAnswers": ["Returns True if all elements in an iterable are truthy."],
+        "incorrectAnswers": ["Returns False if all elements are truthy.", "Returns True if any element is truthy.", "Returns the first truthy element."],
+        "explanation": "`all()` evaluates elements in an iterable and returns True only if all are truthy."
+    },
+    {
+        "question": "What is the purpose of Python's `zip()` function?",
+        "correctAnswers": ["Combines two or more iterables element-wise into tuples."],
+        "incorrectAnswers": ["Concatenates strings.", "Creates a Cartesian product.", "Sorts the elements of iterables."],
+        "explanation": "`zip()` is used for combining elements of iterables into tuples."
+    },
+    {
+        "question": "What is the purpose of Python's `__repr__` method?",
+        "correctAnswers": ["Provides a developer-friendly string representation of an object."],
+        "incorrectAnswers": ["Provides a user-friendly string representation of an object.", "Overrides the `print()` behavior.", "Converts an object to a dictionary."],
+        "explanation": "The `__repr__` method is meant to provide a detailed string representation of an object for debugging and development purposes."
+    },
+    {
+        "question": "What does the `isinstance()` function do in Python?",
+        "correctAnswers": ["Checks if an object is an instance of a specified class or its subclass."],
+        "incorrectAnswers": ["Checks the type of an object strictly.", "Returns the class name of an object.", "Checks if an object is mutable."],
+        "explanation": "`isinstance()` is used for type checking, and it also considers class inheritance."
+    },
+    {
+        "question": "What is a Python decorator?",
+        "correctAnswers": ["A function that modifies the behavior of another function or method."],
+        "incorrectAnswers": ["A class that modifies another class.", "A variable that decorates strings.", "A function that defines private methods."],
+        "explanation": "Decorators are higher-order functions that wrap another function or method, adding or altering its behavior."
+    },
+    {
+        "question": "What is the purpose of Python's `yield from` statement?",
+        "correctAnswers": ["Delegates part of a generator’s operations to another generator."],
+        "incorrectAnswers": ["Starts a generator.", "Stops a generator.", "Converts a generator into a list."],
+        "explanation": "`yield from` allows a generator to yield all values from another iterable or generator."
+    },
+    {
+        "question": "What does the `zip(*iterables)` pattern do?",
+        "correctAnswers": ["Unzips a zipped object into separate iterables."],
+        "incorrectAnswers": ["Creates a Cartesian product of iterables.", "Sorts the elements of iterables.", "Combines the iterables into a dictionary."],
+        "explanation": "The `zip(*iterables)` pattern is used to unzip a zipped object, effectively reversing `zip()`."
+    },
+    {
+        "question": "What is Python's `functools.lru_cache` used for?",
+        "correctAnswers": ["Caches the results of function calls to avoid redundant computations."],
+        "incorrectAnswers": ["Limits the memory usage of a program.", "Optimizes recursive calls by stopping infinite loops.", "Tracks function calls for debugging."],
+        "explanation": "`functools.lru_cache` memoizes function outputs to improve performance, especially in recursive algorithms."
+    },
+    {
+        "question": "What is a metaclass in Python?",
+        "correctAnswers": ["A class that defines the behavior of other classes."],
+        "incorrectAnswers": ["A class used only for inheritance.", "A class with no methods.", "A special type of decorator."],
+        "explanation": "Metaclasses control the creation and behavior of classes, allowing advanced customization of class definitions."
+    },
+    {
+        "question": "What is the output of `print(type(lambda x: x))`?",
+        "correctAnswers": ["<class 'function'>"],
+        "incorrectAnswers": ["<class 'lambda'>", "<class 'object'>", "An error is raised."],
+        "explanation": "Lambda functions are treated as regular functions in Python, so their type is `<class 'function'>`."
+    },
+    {
+        "question": "What is the primary purpose of Python's `__slots__` attribute?",
+        "correctAnswers": ["Restricts the creation of dynamic attributes for instances."],
+        "incorrectAnswers": ["Makes classes immutable.", "Defines the memory layout of a class.", "Improves multithreading performance."],
+        "explanation": "`__slots__` is used to define a fixed set of attributes, reducing memory overhead by preventing the creation of `__dict__`."
+    },
+    {
+        "question": "What is the result of `sorted(['abc', '123', 'def'], key=str.isdigit)`?",
+        "correctAnswers": ["['123', 'abc', 'def']"],
+        "incorrectAnswers": ["['abc', '123', 'def']", "['123', 'def', 'abc']", "['abc', 'def', '123']"],
+        "explanation": "`str.isdigit` is used as the key, which sorts strings with numeric content (`'123'`) first."
+    },
+    {
+        "question": "What does the `dir()` function return?",
+        "correctAnswers": ["A list of attributes and methods of an object."],
+        "incorrectAnswers": ["The documentation of a class.", "The directory structure of a file system.", "A list of all modules in Python."],
+        "explanation": "`dir()` returns a list of valid attributes for the given object or scope."
+    },
+    {
+        "question": "What is the purpose of Python's `super()` function?",
+        "correctAnswers": ["Allows a subclass to access methods from its parent class."],
+        "incorrectAnswers": ["Overrides methods of a parent class.", "Defines new methods in a subclass.", "Creates a new object from the parent class."],
+        "explanation": "`super()` is used to call parent class methods and constructors from a child class."
+    },
+    {
+        "question": "What is the difference between `assert` and raising an exception?",
+        "correctAnswers": ["`assert` is used for debugging, while exceptions handle runtime errors."],
+        "incorrectAnswers": ["Both are the same.", "`assert` is faster than exceptions.", "Exceptions only work in interactive mode."],
+        "explanation": "`assert` checks conditions during development, and exceptions handle errors dynamically in production code."
+    },
+    {
+        "question": "What is the output of `print(len({1: 'a', 2: 'b', 3: 'c'}))`?",
+        "correctAnswers": ["3"],
+        "incorrectAnswers": ["2", "1", "An error is raised."],
+        "explanation": "`len()` returns the number of keys in a dictionary."
+    },
+    {
+        "question": "What is the purpose of Python's `glob` module?",
+        "correctAnswers": ["Performs pattern matching for file paths."],
+        "incorrectAnswers": ["Handles global variables.", "Manages file permissions.", "Combines multiple files into one."],
+        "explanation": "The `glob` module is used to find files or directories matching a specified pattern."
+    },
+    {
+        "question": "What does the `any()` function do in Python?",
+        "correctAnswers": ["Returns True if any element in an iterable is truthy."],
+        "incorrectAnswers": ["Returns False if all elements are truthy.", "Returns True if all elements are truthy.", "Returns the first truthy element."],
+        "explanation": "`any()` evaluates elements in an iterable and returns True if at least one is truthy."
+    },
+    {
+        "question": "What is the output of `print('Python'[::-1])`?",
+        "correctAnswers": ["nohtyP"],
+        "incorrectAnswers": ["Python", "P", "An error is raised."],
+        "explanation": "The slicing operation with `[::-1]` reverses the string."
+    },
+    {
+        "question": "What is the purpose of Python's `os` module?",
+        "correctAnswers": ["Provides functions to interact with the operating system."],
+        "incorrectAnswers": ["Handles mathematical operations.", "Manages Python packages.", "Creates GUI applications."],
+        "explanation": "The `os` module allows interaction with the operating system, such as file handling and environment management."
+    },
+    {
+        "question": "What is the purpose of Python's `str.zfill()` method?",
+        "correctAnswers": ["Pads a string with zeros on the left until it reaches a specified width."],
+        "incorrectAnswers": ["Pads a string with spaces on the right.", "Trims leading zeros from a string.", "Converts a string to an integer."],
+        "explanation": "`zfill()` pads a string with zeros on the left to ensure a minimum length."
+    },
+    {
+        "question": "What is the result of `print(max({1: 'a', 2: 'b', 3: 'c'}))`?",
+        "correctAnswers": ["3"],
+        "incorrectAnswers": ["'c'", "'b'", "An error is raised."],
+        "explanation": "`max()` applied to a dictionary operates on its keys by default."
+    },
+    {
+        "question": "What does the `re.match()` function in Python do?",
+        "correctAnswers": ["Checks for a match only at the beginning of a string."],
+        "incorrectAnswers": ["Finds all matches in a string.", "Matches patterns anywhere in the string.", "Returns all matching substrings."],
+        "explanation": "`re.match()` checks if the pattern matches at the start of the string."
+    },
+    {
+        "question": "What is the difference between `split()` and `rsplit()` methods in Python strings?",
+        "correctAnswers": ["`split()` splits from the left, while `rsplit()` splits from the right."],
+        "incorrectAnswers": ["They are identical.", "`rsplit()` splits only on spaces.", "`split()` removes trailing whitespace, while `rsplit()` does not."],
+        "explanation": "`rsplit()` allows splitting from the right, useful when limiting splits from the end of a string."
+    },
+    {
+        "question": "What is the purpose of Python's `islice` from the `itertools` module?",
+        "correctAnswers": ["Allows slicing an iterator without converting it to a list."],
+        "incorrectAnswers": ["Converts an iterator to a list.", "Creates a slice object.", "Filters elements based on a condition."],
+        "explanation": "`islice` is used for efficient slicing of iterators without converting them into lists."
+    },
+    {
+        "question": "What does the `next()` function do in Python?",
+        "correctAnswers": ["Retrieves the next item from an iterator."],
+        "incorrectAnswers": ["Creates a new iterator.", "Repeats the current item in an iterator.", "Returns all remaining items from an iterator."],
+        "explanation": "`next()` fetches the next item from an iterator or raises `StopIteration` if no items are left."
+    },
+    {
+        "question": "What is the purpose of Python's `inspect` module?",
+        "correctAnswers": ["Provides functions for introspection of live objects."],
+        "incorrectAnswers": ["Handles exceptions during runtime.", "Optimizes Python bytecode.", "Manages environment variables."],
+        "explanation": "The `inspect` module allows you to examine live objects like modules, classes, and functions."
+    },
+    {
+        "question": "What is the result of `print(int('101', 2))`?",
+        "correctAnswers": ["5"],
+        "incorrectAnswers": ["101", "2", "An error is raised."],
+        "explanation": "The `int()` function can convert a string from a given base to an integer. Here, `'101'` in binary (base 2) equals 5 in decimal."
+    },
+    {
+        "question": "What is a Python module?",
+        "correctAnswers": ["A file containing Python definitions and statements."],
+        "incorrectAnswers": ["A compiled Python program.", "A collection of Python packages.", "A built-in Python library."],
+        "explanation": "Modules are individual `.py` files that can contain functions, classes, and variables for reuse."
+    },
+    {
+        "question": "What is the purpose of the `os.path.join()` function?",
+        "correctAnswers": ["Joins one or more path components into a single path."],
+        "incorrectAnswers": ["Lists all files in a directory.", "Splits a file path into components.", "Normalizes file paths."],
+        "explanation": "`os.path.join()` is used to concatenate paths in an OS-independent way."
+    },
+    {
+        "question": "What is the output of `print('hello'.capitalize())`?",
+        "correctAnswers": ["Hello"],
+        "incorrectAnswers": ["hello", "HELLO", "An error is raised."],
+        "explanation": "`capitalize()` returns the string with its first character in uppercase and the rest in lowercase."
+    },
+    {
+        "question": "What is the purpose of the `os.environ` dictionary in Python?",
+        "correctAnswers": ["Provides access to environment variables."],
+        "incorrectAnswers": ["Manages operating system configurations.", "Stores system-level error messages.", "Contains runtime metadata for Python scripts."],
+        "explanation": "`os.environ` is a mapping object for accessing and modifying environment variables."
+    },
+    {
+        "question": "What does the `str.startswith()` method do?",
+        "correctAnswers": ["Checks if a string starts with a specified substring."],
+        "incorrectAnswers": ["Checks if a string ends with a specified substring.", "Reverses the string.", "Finds the position of a substring in a string."],
+        "explanation": "`startswith()` returns True if the string starts with the given prefix."
+    },
+    {
+        "question": "What is the purpose of Python's `uuid` module?",
+        "correctAnswers": ["Generates universally unique identifiers."],
+        "incorrectAnswers": ["Creates unique session tokens.", "Generates random integers.", "Manages user authentication."],
+        "explanation": "The `uuid` module is used for creating unique IDs suitable for distributed systems."
+    },
+    {
+        "question": "What is the result of `print(list('python'))`?",
+        "correctAnswers": ["['p', 'y', 't', 'h', 'o', 'n']"],
+        "incorrectAnswers": ["['python']", "['p', 'y', 't', 'h', 'o', 'n', '']","An error is raised."],
+        "explanation": "When passed to `list()`, a string is split into a list of its individual characters."
+    },
+    {
+        "question": "What does the `bool()` function return when applied to an empty list?",
+        "correctAnswers": ["False"],
+        "incorrectAnswers": ["True", "None", "An error is raised."],
+        "explanation": "Empty collections (e.g., lists, dictionaries, sets) are considered falsy in Python."
+    },
+    {
+        "question": "What is the result of `print('PYTHON'.lower())`?",
+        "correctAnswers": ["python"],
+        "incorrectAnswers": ["PYTHON", "Python", "An error is raised."],
+        "explanation": "`lower()` converts all characters in a string to lowercase."
+    },
+    {
+        "question": "What does Python's `math.ceil()` function do?",
+        "correctAnswers": ["Returns the smallest integer greater than or equal to a given number."],
+        "incorrectAnswers": ["Rounds a number to the nearest integer.", "Returns the largest integer less than or equal to a number.", "Converts a float to an integer."],
+        "explanation": "`math.ceil()` rounds a number up to the nearest integer."
+    },
+    {
+        "question": "What is the purpose of Python's `random.shuffle()`?",
+        "correctAnswers": ["Randomly shuffles the elements of a list in place."],
+        "incorrectAnswers": ["Generates a random permutation of a list.", "Returns a sorted list in random order.", "Selects a random element from a list."],
+        "explanation": "`random.shuffle()` modifies the list directly to randomly rearrange its elements."
+    },
+    {
+        "question": "What is the output of `print([i for i in range(5)])`?",
+        "correctAnswers": ["[0, 1, 2, 3, 4]"],
+        "incorrectAnswers": ["[1, 2, 3, 4, 5]", "[0, 1, 2, 3, 4, 5]", "An error is raised."],
+        "explanation": "The range(5) generates numbers from 0 to 4, which are collected in a list using a list comprehension."
+    },
+    {
+        "question": "What is the purpose of the `strip()` method in Python strings?",
+        "correctAnswers": ["Removes leading and trailing whitespace from a string."],
+        "incorrectAnswers": ["Removes all spaces in a string.", "Removes characters from the middle of a string.", "Returns a substring without the first character."],
+        "explanation": "`strip()` removes whitespace (or specified characters) from both ends of a string."
+    },
+    {
+        "question": "What is the purpose of the `any()` function in Python?",
+        "correctAnswers": ["Returns True if at least one element in an iterable is truthy."],
+        "incorrectAnswers": ["Returns True if all elements are truthy.", "Returns the first truthy element.", "Checks if the iterable is empty."],
+        "explanation": "`any()` evaluates each element and returns True if any of them is truthy."
+    },
+    {
+        "question": "What does the `os.makedirs()` function do in Python?",
+        "correctAnswers": ["Creates a directory and all its parent directories if they do not exist."],
+        "incorrectAnswers": ["Deletes directories recursively.", "Lists all directories in a path.", "Renames a directory."],
+        "explanation": "`os.makedirs()` creates nested directories, unlike `os.mkdir()`, which creates only a single directory."
+    },
+    {
+        "question": "What is the result of `print((3 > 2) and (2 < 5))`?",
+        "correctAnswers": ["True"],
+        "incorrectAnswers": ["False", "None", "An error is raised."],
+        "explanation": "Both conditions `(3 > 2)` and `(2 < 5)` are True, so the `and` operator evaluates to True."
+    },
+    {
+        "question": "What is the purpose of the `frozenset` in Python?",
+        "correctAnswers": ["Creates an immutable set."],
+        "incorrectAnswers": ["Creates a sorted set.", "Converts a set to a dictionary.", "Freezes a set for garbage collection."],
+        "explanation": "`frozenset` is a set that cannot be modified after creation, making it hashable and suitable for use as dictionary keys."
+    },
+    {
+        "question": "What does Python's `getattr()` function do?",
+        "correctAnswers": ["Retrieves the value of an attribute from an object."],
+        "incorrectAnswers": ["Checks if an attribute exists.", "Sets a value to an attribute.", "Deletes an attribute from an object."],
+        "explanation": "`getattr(object, attribute)` fetches the value of the specified attribute. It raises an `AttributeError` if the attribute doesn't exist unless a default value is provided."
+    },
+    {
+        "question": "What is the purpose of Python's `filter()` function?",
+        "correctAnswers": ["Filters elements of an iterable based on a function and returns an iterator."],
+        "incorrectAnswers": ["Applies a function to all elements of an iterable.", "Sorts the elements of an iterable.", "Converts an iterable into a set."],
+        "explanation": "`filter()` applies a function to each item and includes only those for which the function returns `True`."
+    },
+    {
+        "question": "What is the difference between `remove()` and `discard()` in sets?",
+        "correctAnswers": ["`remove()` raises an error if the element is not found, while `discard()` does not."],
+        "incorrectAnswers": ["Both raise an error if the element is not found.", "`discard()` removes multiple elements, while `remove()` removes only one.", "They are identical in functionality."],
+        "explanation": "`discard()` safely removes an element from a set without raising an error, whereas `remove()` raises a `KeyError` if the element doesn't exist."
+    },
+    {
+        "question": "What is the result of `print({1, 2, 3}.union({3, 4}))`?",
+        "correctAnswers": ["{1, 2, 3, 4}"],
+        "incorrectAnswers": ["{1, 2, 3}", "{3, 4}", "An error is raised."],
+        "explanation": "The `union()` method combines all unique elements from both sets into a new set."
+    },
+    {
+        "question": "What does the `zip_longest()` function from `itertools` do?",
+        "correctAnswers": ["Combines iterables into tuples, padding the shorter iterable with a specified value."],
+        "incorrectAnswers": ["Combines iterables into tuples, truncating the longer one.", "Creates Cartesian product of iterables.", "Sorts elements of multiple iterables."],
+        "explanation": "`zip_longest()` pairs elements from the longest iterable, filling missing values with the specified `fillvalue`."
+    },
+    {
+        "question": "What is the purpose of the `__getitem__` method in Python?",
+        "correctAnswers": ["Defines behavior for accessing elements using square brackets."],
+        "incorrectAnswers": ["Defines behavior for modifying elements.", "Creates an iterable from a collection.", "Checks for element existence."],
+        "explanation": "`__getitem__(key)` is called when accessing an element using square bracket notation, e.g., `obj[key]`."
+    },
+    {
+        "question": "What is the output of `print(10 // 3)` in Python?",
+        "correctAnswers": ["3"],
+        "incorrectAnswers": ["3.33", "4", "An error is raised."],
+        "explanation": "`//` is the floor division operator, which returns the largest integer less than or equal to the division result."
+    },
+    {
+        "question": "What is a Python namespace?",
+        "correctAnswers": ["A container that holds names and their corresponding objects."],
+        "incorrectAnswers": ["A type of module.", "A collection of unique variables.", "An advanced Python library."],
+        "explanation": "Namespaces map variable names to objects and are implemented as dictionaries."
+    },
+    {
+        "question": "What is the difference between `is` and `==`?",
+        "correctAnswers": ["`is` checks for object identity, while `==` checks for value equality."],
+        "incorrectAnswers": ["`is` is faster than `==`.", "`is` checks for type equality, while `==` compares values.", "`is` is used for primitive types only."],
+        "explanation": "`is` verifies if two references point to the same object in memory, whereas `==` compares their values."
+    },
+    {
+        "question": "What does Python's `ord()` function do?",
+        "correctAnswers": ["Returns the Unicode code point of a given character."],
+        "incorrectAnswers": ["Converts a string to an integer.", "Returns the ASCII value of a number.", "Checks the order of characters in a string."],
+        "explanation": "`ord(char)` converts a character to its corresponding Unicode code point."
+    },
+    {
+        "question": "What is the purpose of Python's `del` statement?",
+        "correctAnswers": ["Deletes objects, variables, or elements from a collection."],
+        "incorrectAnswers": ["Clears the contents of a variable.", "Marks a variable as private.", "Makes variables immutable."],
+        "explanation": "`del` removes variables, elements, or attributes from memory."
+    },
+    {
+        "question": "What is the result of `print({1, 2, 3}.intersection({2, 3, 4}))`?",
+        "correctAnswers": ["{2, 3}"],
+        "incorrectAnswers": ["{1, 2, 3, 4}", "{1}", "An error is raised."],
+        "explanation": "`intersection()` returns elements common to both sets."
+    },
+    {
+        "question": "What does the `re.findall()` function do?",
+        "correctAnswers": ["Returns all matches of a pattern in a string as a list."],
+        "incorrectAnswers": ["Finds the first match only.", "Replaces matches with a specified string.", "Splits a string based on a pattern."],
+        "explanation": "`re.findall()` returns all non-overlapping matches of a pattern in a string."
+    },
+    {
+        "question": "What is the purpose of the `@staticmethod` decorator?",
+        "correctAnswers": ["Defines a method that does not require access to instance or class variables."],
+        "incorrectAnswers": ["Defines a method that only works on class variables.", "Creates a class-level constant.", "Makes a method private."],
+        "explanation": "`@staticmethod` is used for defining methods that do not depend on the class or instance context."
+    },
+    {
+        "question": "What does the `isalpha()` string method do?",
+        "correctAnswers": ["Checks if a string contains only alphabetic characters."],
+        "incorrectAnswers": ["Checks if a string contains both alphabets and numbers.", "Checks if a string starts with an alphabet.", "Checks if a string contains uppercase letters only."],
+        "explanation": "`isalpha()` returns `True` if all characters in the string are alphabetic."
+    },
+    {
+        "question": "What is the result of `print([1, 2, 3][3:])`?",
+        "correctAnswers": ["[]"],
+        "incorrectAnswers": ["[3]", "[None]", "An error is raised."],
+        "explanation": "If the start index in slicing exceeds the list length, an empty list is returned."
+    },
+    {
+        "question": "What is the result of `print('Python'.replace('Py', 'My'))`?",
+        "correctAnswers": ["Mython"],
+        "incorrectAnswers": ["Python", "Mthon", "An error is raised."],
+        "explanation": "`replace()` substitutes all occurrences of the specified substring."
+    },
+    {
+        "question": "What does the `all()` function do in Python?",
+        "correctAnswers": ["Returns True if all elements in an iterable are truthy."],
+        "incorrectAnswers": ["Returns True if any element is truthy.", "Returns the first truthy element.", "Checks if the iterable is empty."],
+        "explanation": "`all()` evaluates elements in an iterable and returns `True` if all are truthy."
+    },
+    {
+        "question": "What is the purpose of Python's `hash()` function?",
+        "correctAnswers": ["Returns the hash value of an object if it is hashable."],
+        "incorrectAnswers": ["Hashes strings for encryption.", "Returns a unique identifier for every object.", "Converts objects to integers."],
+        "explanation": "`hash()` computes a hash value for hashable objects like strings, numbers, and tuples."
+    },
+    {
+        "question": "What is the result of `print((lambda x: x**2)(3))`?",
+        "correctAnswers": ["9"],
+        "incorrectAnswers": ["3", "6", "An error is raised."],
+        "explanation": "The lambda function squares its input. Here, it returns `3**2 = 9`."
+    },
+    {
+        "question": "What does Python's `enumerate()` function do?",
+        "correctAnswers": ["Adds a counter to an iterable and returns an enumerate object."],
+        "incorrectAnswers": ["Counts the elements in an iterable.", "Filters elements from an iterable.", "Sorts the elements of an iterable."],
+        "explanation": "`enumerate()` returns tuples containing indices and elements from the input iterable."
+    },
+    {
+        "question": "What is the result of `print('   Hello   '.strip())`?",
+        "correctAnswers": ["Hello"],
+        "incorrectAnswers": ["   Hello   ", "Hello   ", "An error is raised."],
+        "explanation": "`strip()` removes leading and trailing whitespace from the string."
+    },
+    {
+        "question": "What does the `setdefault()` method in dictionaries do?",
+        "correctAnswers": ["Gets the value of a key, or sets it to a default value if it does not exist."],
+        "incorrectAnswers": ["Adds a key-value pair if the key exists.", "Deletes a key-value pair.", "Replaces the value of a key with a default."],
+        "explanation": "`setdefault()` ensures a key exists in the dictionary and assigns a default value if not present."
+    },
+    {
+        "question": "What does the `re.split()` function do in Python?",
+        "correctAnswers": ["Splits a string by the occurrences of a pattern."],
+        "incorrectAnswers": ["Splits a string by whitespace.", "Replaces occurrences of a pattern with a string.", "Finds the first match of a pattern in a string."],
+        "explanation": "`re.split()` uses a regex pattern to determine where the string should be split."
+    },
+    {
+        "question": "What is the result of `print(2 ** 3 ** 2)`?",
+        "correctAnswers": ["512"],
+        "incorrectAnswers": ["64", "256", "An error is raised."],
+        "explanation": "Exponentiation is evaluated from right to left, so the expression is equivalent to `2 ** (3 ** 2)`."
+    },
+    {
+        "question": "What is the difference between `append()` and `extend()` in Python lists?",
+        "correctAnswers": ["`append()` adds an item, `extend()` adds elements from an iterable."],
+        "incorrectAnswers": ["Both add items to a list.", "`extend()` works only with strings.", "`append()` merges two lists."],
+        "explanation": "`append()` treats the entire argument as a single item, while `extend()` iterates over it and adds each element."
+    },
+    {
+        "question": "What does the `collections.defaultdict` do?",
+        "correctAnswers": ["Provides a default value for keys that do not exist."],
+        "incorrectAnswers": ["Creates a dictionary with sorted keys.", "Ensures dictionary keys are immutable.", "Generates random keys for a dictionary."],
+        "explanation": "`defaultdict` assigns a default factory function to produce values for missing keys."
+    },
+    {
+        "question": "What is the purpose of Python's `itertools.product()`?",
+        "correctAnswers": ["Computes the Cartesian product of input iterables."],
+        "incorrectAnswers": ["Combines iterables into pairs.", "Sorts elements of multiple iterables.", "Finds common elements in iterables."],
+        "explanation": "`itertools.product()` generates all combinations of elements from the input iterables."
+    },
+    {
+        "question": "What does the `strip(chars)` method do in strings?",
+        "correctAnswers": ["Removes leading and trailing characters specified in `chars`."],
+        "incorrectAnswers": ["Removes all occurrences of `chars`.", "Replaces `chars` with whitespace.", "Removes characters only from the start of a string."],
+        "explanation": "`strip(chars)` removes any of the specified characters from both ends of the string."
+    },
+    {
+        "question": "What is the difference between `isupper()` and `upper()`?",
+        "correctAnswers": ["`isupper()` checks if all characters are uppercase, `upper()` converts characters to uppercase."],
+        "incorrectAnswers": ["Both convert strings to uppercase.", "`isupper()` only works on digits.", "They are identical in functionality."],
+        "explanation": "`isupper()` returns a boolean, while `upper()` transforms the string to uppercase."
+    },
+    {
+        "question": "What does the `pprint` module do?",
+        "correctAnswers": ["Formats and prints complex data structures in a readable way."],
+        "incorrectAnswers": ["Prints data structures in reverse order.", "Adds colors to output text.", "Converts data structures to strings."],
+        "explanation": "`pprint` (Pretty Print) formats nested data structures like lists and dictionaries for better readability."
+    },
+    {
+        "question": "What is the output of `print([i * i for i in range(3)])`?",
+        "correctAnswers": ["[0, 1, 4]"],
+        "incorrectAnswers": ["[1, 4, 9]", "[0, 1, 4, 9]", "An error is raised."],
+        "explanation": "The list comprehension squares each number in the range 0, 1, 2, producing `[0, 1, 4]`."
+    },
+    {
+        "question": "What does the `math.gcd()` function do?",
+        "correctAnswers": ["Finds the greatest common divisor of two numbers."],
+        "incorrectAnswers": ["Calculates the least common multiple.", "Computes the square root of a number.", "Checks if a number is a prime."],
+        "explanation": "`math.gcd(a, b)` computes the greatest integer that divides both `a` and `b`."
+    },
+    {
+        "question": "What is the result of `print(''.join(['A', 'B', 'C']))`?",
+        "correctAnswers": ["ABC"],
+        "incorrectAnswers": ["['A', 'B', 'C']", "A B C", "An error is raised."],
+        "explanation": "`join()` concatenates elements of the list into a single string with no separator."
+    },
+    {
+        "question": "What is the result of `print('Python'.count('o'))`?",
+        "correctAnswers": ["1"],
+        "incorrectAnswers": ["0", "2", "An error is raised."],
+        "explanation": "`count()` counts occurrences of the substring `'o'` in `'Python'`, which is 1."
+    },
+    {
+        "question": "What is the purpose of `heapq` in Python?",
+        "correctAnswers": ["Implements a min-heap queue for efficient priority-based operations."],
+        "incorrectAnswers": ["Sorts a list.", "Implements a max-heap by default.", "Manages stack operations."],
+        "explanation": "`heapq` provides heap-based queue operations, primarily for managing minimum elements efficiently."
+    },
+    {
+        "question": "What does the `Counter.most_common()` method do?",
+        "correctAnswers": ["Returns the n most common elements and their counts from a Counter."],
+        "incorrectAnswers": ["Sorts the Counter in ascending order.", "Removes uncommon elements.", "Returns only unique elements."],
+        "explanation": "`most_common(n)` lists elements in descending order of frequency."
+    },
+    {
+        "question": "What is the difference between `bytes` and `bytearray` in Python?",
+        "correctAnswers": ["`bytes` is immutable, while `bytearray` is mutable."],
+        "incorrectAnswers": ["`bytes` is faster than `bytearray`.", "`bytearray` is immutable, while `bytes` is mutable.", "They are interchangeable."],
+        "explanation": "`bytes` objects cannot be changed after creation, while `bytearray` objects can be modified."
+    },
+    {
+        "question": "What is the output of `print('apple'.find('p'))`?",
+        "correctAnswers": ["1"],
+        "incorrectAnswers": ["2", "-1", "An error is raised."],
+        "explanation": "`find()` returns the index of the first occurrence of the substring, which is 1 for `'p'` in `'apple'`."
+    },
+    {
+        "question": "What is the purpose of `os.walk()`?",
+        "correctAnswers": ["Generates file names and directories in a directory tree."],
+        "incorrectAnswers": ["Removes files from a directory.", "Combines files into a directory.", "Sorts files alphabetically."],
+        "explanation": "`os.walk()` traverses a directory tree, yielding tuples for each directory it visits."
+    },
+    {
+        "question": "What is the difference between `max()` and `min()`?",
+        "correctAnswers": ["`max()` returns the largest element, while `min()` returns the smallest."],
+        "incorrectAnswers": ["`max()` works on numbers, `min()` works on strings.", "`min()` is faster than `max()`.", "They are interchangeable."],
+        "explanation": "`max()` and `min()` are used to find the largest and smallest elements, respectively, in an iterable."
+    },
+    {
+        "question": "What does the `list.index(value)` method do?",
+        "correctAnswers": ["Returns the first index of the specified value in the list."],
+        "incorrectAnswers": ["Returns all indices of the value in the list.", "Adds a value at a specific index.", "Sorts the list."],
+        "explanation": "`index(value)` searches for the first occurrence of the value in the list and returns its index."
+    },
+    {
+        "question": "What does the `os.rename()` function do?",
+        "correctAnswers": ["Renames a file or directory."],
+        "incorrectAnswers": ["Copies a file to another location.", "Deletes a file.", "Moves a file to a different directory."],
+        "explanation": "`os.rename()` changes the name of a file or directory."
+    },
+    {
+        "question": "What does the `rstrip()` method do?",
+        "correctAnswers": ["Removes trailing characters (whitespace by default) from a string."],
+        "incorrectAnswers": ["Removes characters from both ends of a string.", "Replaces characters with whitespace.", "Removes leading characters."],
+        "explanation": "`rstrip()` removes any specified characters from the end of a string."
+    },
+    {
+        "question": "What is the purpose of Python's `hashlib` module?",
+        "correctAnswers": ["Implements secure hash functions like MD5 and SHA."],
+        "incorrectAnswers": ["Encrypts data for secure storage.", "Generates random numbers.", "Compresses files."],
+        "explanation": "`hashlib` provides hash algorithms for creating message digests, commonly used for data integrity."
+    },
+    {
+        "question": "What is the result of `print(bool('False'))`?",
+        "correctAnswers": ["True"],
+        "incorrectAnswers": ["False", "None", "An error is raised."],
+        "explanation": "Non-empty strings are considered truthy in Python, even if the string content is `'False'`."
+    },
+    {
+        "question": "What does the `re.sub()` function do in Python?",
+        "correctAnswers": ["Replaces occurrences of a pattern with a specified string."],
+        "incorrectAnswers": ["Splits a string based on a pattern.", "Finds the first match of a pattern.", "Counts occurrences of a pattern in a string."],
+        "explanation": "`re.sub()` substitutes all matches of the pattern with the given replacement string."
+    },
+    {
+        "question": "What is the purpose of Python's `itertools.chain()`?",
+        "correctAnswers": ["Combines multiple iterables into a single iterable."],
+        "incorrectAnswers": ["Creates Cartesian products of iterables.", "Finds unique elements across iterables.", "Splits an iterable into multiple parts."],
+        "explanation": "`itertools.chain()` is used to iterate through multiple iterables as if they were one."
+    },
+    {
+        "question": "What is the output of `print(bool([]))`?",
+        "correctAnswers": ["False"],
+        "incorrectAnswers": ["True", "None", "An error is raised."],
+        "explanation": "Empty collections, such as lists, are considered falsy in Python."
+    },
+    {
+        "question": "What does the `len()` function return when applied to a dictionary?",
+        "correctAnswers": ["The number of keys in the dictionary."],
+        "incorrectAnswers": ["The sum of all values.", "The number of unique values.", "The size of the dictionary in bytes."],
+        "explanation": "`len()` on a dictionary returns the count of its keys."
+    },
+    {
+        "question": "What is the purpose of Python's `sorted()` function?",
+        "correctAnswers": ["Returns a new sorted list from an iterable."],
+        "incorrectAnswers": ["Sorts the iterable in place.", "Filters duplicates from an iterable.", "Reverses the elements of an iterable."],
+        "explanation": "`sorted()` creates a new sorted list and does not modify the original iterable."
+    },
+    {
+        "question": "What does the `dir()` function do?",
+        "correctAnswers": ["Returns a list of attributes and methods of an object."],
+        "incorrectAnswers": ["Lists all files in a directory.", "Checks if an attribute exists in an object.", "Returns the memory address of an object."],
+        "explanation": "`dir()` is used to inspect the namespace of an object or the current scope."
+    },
+    {
+        "question": "What does `None` represent in Python?",
+        "correctAnswers": ["An absence of a value or a null value."],
+        "incorrectAnswers": ["A placeholder for integers.", "A special character.", "A keyword for empty strings."],
+        "explanation": "`None` is a singleton object used to signify the absence of a value."
+    },
+    {
+        "question": "What is the difference between `deepcopy` and `copy` from the `copy` module?",
+        "correctAnswers": ["`deepcopy` recursively copies objects, `copy` creates a shallow copy."],
+        "incorrectAnswers": ["`deepcopy` works only on dictionaries.", "`copy` copies nested objects by default.", "`copy` and `deepcopy` are identical."],
+        "explanation": "A shallow copy (`copy`) copies only references for nested objects, whereas a deep copy (`deepcopy`) duplicates everything."
+    },
+    {
+        "question": "What is the result of `print([1, 2, 3][-1])`?",
+        "correctAnswers": ["3"],
+        "incorrectAnswers": ["2", "An error is raised.", "[3]"],
+        "explanation": "Negative indices access elements from the end of a list. `-1` refers to the last element."
+    },
+    {
+        "question": "What does Python's `time.sleep()` function do?",
+        "correctAnswers": ["Pauses the execution of the program for a specified duration."],
+        "incorrectAnswers": ["Stops the execution permanently.", "Resumes a paused thread.", "Runs a function at a scheduled time."],
+        "explanation": "`time.sleep(seconds)` pauses the program for the specified number of seconds."
+    },
+    {
+        "question": "What is the output of `print(type(1j))`?",
+        "correctAnswers": ["<class 'complex'>"],
+        "incorrectAnswers": ["<class 'float'>", "<class 'int'>", "An error is raised."],
+        "explanation": "`1j` is a complex number with a real part of `0` and an imaginary part of `1`."
+    },
+    {
+        "question": "What does the `enumerate()` function return?",
+        "correctAnswers": ["An iterator of tuples containing indices and elements from the iterable."],
+        "incorrectAnswers": ["A list of indices.", "A dictionary mapping indices to elements.", "An iterator of element pairs."],
+        "explanation": "`enumerate()` generates tuples of index and corresponding element for an iterable."
+    },
+    {
+        "question": "What is the purpose of Python's `pathlib` module?",
+        "correctAnswers": ["Provides an object-oriented interface for file system paths."],
+        "incorrectAnswers": ["Manages environment variables.", "Encrypts file contents.", "Handles HTTP requests."],
+        "explanation": "`pathlib` simplifies file path manipulation with a high-level API."
+    },
+    {
+        "question": "What does the `str.zfill()` method do?",
+        "correctAnswers": ["Pads a string with zeros on the left until it reaches a specified width."],
+        "incorrectAnswers": ["Removes leading zeros from a string.", "Pads a string with zeros on the right.", "Converts a string to a number."],
+        "explanation": "`zfill()` is used to pad strings with zeros for a fixed width."
+    },
+    {
+        "question": "What is the purpose of Python's `abc` module?",
+        "correctAnswers": ["Defines abstract base classes for object-oriented programming."],
+        "incorrectAnswers": ["Handles asynchronous programming.", "Implements binary conversion.", "Provides functions for handling strings."],
+        "explanation": "`abc` is used to define abstract classes and enforce method implementation in subclasses."
+    },
+    {
+        "question": "What does the `startswith()` method do in strings?",
+        "correctAnswers": ["Checks if a string starts with the specified prefix."],
+        "incorrectAnswers": ["Finds the position of a substring.", "Reverses the string.", "Replaces the prefix with another substring."],
+        "explanation": "`startswith()` returns `True` if the string starts with the specified prefix."
+    },
+    {
+        "question": "What is the output of `print(type((1,)))`?",
+        "correctAnswers": ["<class 'tuple'>"],
+        "incorrectAnswers": ["<class 'int'>", "<class 'list'>", "An error is raised."],
+        "explanation": "A tuple with one element requires a trailing comma to distinguish it from a regular parenthetical expression."
+    },
+    {
+        "question": "What does the `__repr__` method do in Python?",
+        "correctAnswers": ["Provides a string representation of an object for debugging purposes."],
+        "incorrectAnswers": ["Provides a string representation for user-facing purposes.", "Generates a unique identifier for an object.", "Creates a hash value for an object."],
+        "explanation": "`__repr__` is intended to produce an unambiguous representation of an object for developers."
+    },
+    {
+        "question": "What does Python's `any()` function do?",
+        "correctAnswers": ["Returns `True` if any element in an iterable is truthy."],
+        "incorrectAnswers": ["Returns `True` if all elements are truthy.", "Returns the first truthy element.", "Checks if the iterable is not empty."],
+        "explanation": "`any()` evaluates each element and returns `True` if at least one is truthy."
+    },
+    {
+        "question": "What is the result of `print({'a': 1, 'b': 2}.get('c', 0))`?",
+        "correctAnswers": ["0"],
+        "incorrectAnswers": ["None", "An error is raised.", "1"],
+        "explanation": "`dict.get(key, default)` returns the default value if the key does not exist."
+    },
+    {
+        "question": "What does the `re.escape()` function do?",
+        "correctAnswers": ["Escapes all non-alphanumeric characters in a string for use in regex patterns."],
+        "incorrectAnswers": ["Removes all special characters from a string.", "Counts special characters in a string.", "Splits a string based on special characters."],
+        "explanation": "`re.escape()` ensures that special characters in a string are treated as literals in regex."
+    },
+    {
+        "question": "What is the purpose of Python's `reversed()` function?",
+        "correctAnswers": ["Returns a reverse iterator over the elements of an iterable."],
+        "incorrectAnswers": ["Sorts an iterable in reverse order.", "Reverses the iterable in place.", "Removes duplicates and reverses an iterable."],
+        "explanation": "`reversed()` returns an iterator that accesses the elements in reverse order."
+    },
+    {
+        "question": "What does the `hash()` function return?",
+        "correctAnswers": ["An integer hash value for a hashable object."],
+        "incorrectAnswers": ["A unique string identifier.", "The memory address of the object.", "A boolean indicating object mutability."],
+        "explanation": "`hash()` generates an integer hash value for hashable types like strings and tuples."
+    },
+    {
+        "question": "What does Python's `set.difference()` method do?",
+        "correctAnswers": ["Returns a set containing elements that are in the first set but not in the others."],
+        "incorrectAnswers": ["Returns elements common to both sets.", "Removes duplicates from a set.", "Returns the symmetric difference of two sets."],
+        "explanation": "`set.difference()` finds elements present in the first set but absent in other sets."
+    },
+    {
+        "question": "What is the purpose of Python's `functools.reduce()`?",
+        "correctAnswers": ["Applies a function cumulatively to the items of an iterable, reducing it to a single value."],
+        "incorrectAnswers": ["Maps a function to every element of an iterable.", "Filters elements of an iterable.", "Sorts an iterable based on a function."],
+        "explanation": "`reduce()` takes a binary function and an iterable, reducing the iterable to a single value."
+    },
+    {
+        "question": "What is the output of `print((lambda x: x + 1)(5))`?",
+        "correctAnswers": ["6"],
+        "incorrectAnswers": ["5", "1", "An error is raised."],
+        "explanation": "The lambda function adds 1 to its input. Here, `5 + 1 = 6`."
+    },
+    {
+        "question": "What does Python's `zip()` function do?",
+        "correctAnswers": ["Combines elements from multiple iterables into tuples."],
+        "incorrectAnswers": ["Sorts elements from multiple iterables.", "Filters common elements from iterables.", "Finds the Cartesian product of iterables."],
+        "explanation": "`zip()` pairs elements from input iterables into tuples."
+    },
+    {
+        "question": "What does the `max()` function do when used with a key argument?",
+        "correctAnswers": ["Finds the maximum element based on the value returned by the key function."],
+        "incorrectAnswers": ["Finds the maximum element of the key values.", "Finds the minimum element instead.", "Throws an error if the key is not unique."],
+        "explanation": "`max(iterable, key=function)` finds the maximum element based on the result of applying the key function."
+    },
+    {
+        "question": "What does the `str.isdigit()` method check?",
+        "correctAnswers": ["Checks if a string contains only numeric characters."],
+        "incorrectAnswers": ["Checks if a string contains only integers.", "Checks if a string contains both digits and letters.", "Checks if a string starts with a digit."],
+        "explanation": "`isdigit()` returns `True` if all characters in the string are numeric."
+    },
+    {
+        "question": "What does the `join()` string method do?",
+        "correctAnswers": ["Concatenates elements of an iterable into a single string, separated by the string calling `join()`."],
+        "incorrectAnswers": ["Combines strings into a list.", "Replaces characters in a string.", "Splits a string into a list."],
+        "explanation": "`join()` takes an iterable and concatenates its elements using the string as a separator."
+    },
+    {
+        "question": "What does the `range()` function return?",
+        "correctAnswers": ["An immutable sequence of numbers from start to stop."],
+        "incorrectAnswers": ["A list of numbers.", "A generator object.", "A tuple of numbers."],
+        "explanation": "`range()` creates an immutable sequence that generates numbers lazily."
+    },
+    {
+        "question": "What is the purpose of Python's `globals()` function?",
+        "correctAnswers": ["Returns a dictionary of the current global symbol table."],
+        "incorrectAnswers": ["Returns a list of global variables.", "Clears global variables.", "Lists imported modules."],
+        "explanation": "`globals()` provides access to the global namespace as a dictionary."
+    },
+    {
+        "question": "What is the purpose of Python's `filter()` function?",
+        "correctAnswers": ["Filters elements of an iterable based on a function and returns an iterator."],
+        "incorrectAnswers": ["Sorts elements in an iterable.", "Applies a function to every element of an iterable.", "Converts an iterable into a set."],
+        "explanation": "`filter(function, iterable)` returns only the elements where the function evaluates to `True`."
+    },
+    {
+        "question": "What does Python's `str.splitlines()` do?",
+        "correctAnswers": ["Splits a string into a list of lines, breaking at line boundaries."],
+        "incorrectAnswers": ["Splits a string into individual characters.", "Splits a string into words.", "Removes all newline characters."],
+        "explanation": "`splitlines()` splits a string at line breaks, creating a list of lines."
+    },
+    {
+        "question": "What is the result of `print('a' * 5)`?",
+        "correctAnswers": ["aaaaa"],
+        "incorrectAnswers": ["aaaa", "a5", "An error is raised."],
+        "explanation": "Multiplying a string by an integer repeats the string that many times."
+    },
+    {
+        "question": "What does Python's `random.randint(a, b)` return?",
+        "correctAnswers": ["A random integer between `a` and `b`, inclusive."],
+        "incorrectAnswers": ["A random integer between `a` and `b`, exclusive.", "A random float between `a` and `b`.", "A random integer from 0 to `a`."],
+        "explanation": "`randint(a, b)` generates a random integer between `a` and `b`, including both endpoints."
+    },
+    {
+        "question": "What is the purpose of Python's `@staticmethod` decorator?",
+        "correctAnswers": ["Defines a method that does not access or modify class or instance attributes."],
+        "incorrectAnswers": ["Defines a method that can only access class attributes.", "Defines a method that modifies instance attributes.", "Creates a private method."],
+        "explanation": "`@staticmethod` defines methods that are independent of instance or class-level data."
+    },
+    {
+        "question": "What is the purpose of Python's `@property` decorator?",
+        "correctAnswers": ["Allows a method to be accessed as if it were an attribute."],
+        "incorrectAnswers": ["Marks a method as private.", "Defines a class-level constant.", "Makes a method immutable."],
+        "explanation": "`@property` is used to create getter methods that can be accessed like attributes."
+    },
+    {
+        "question": "What does the `Counter` class in `collections` do?",
+        "correctAnswers": ["Counts occurrences of elements in an iterable."],
+        "incorrectAnswers": ["Sorts elements in descending order.", "Removes duplicates from an iterable.", "Creates a dictionary of unique elements."],
+        "explanation": "`Counter` provides a dictionary-like structure to count occurrences of elements."
+    },
+    {
+        "question": "What is the result of `print(type({}))`?",
+        "correctAnswers": ["<class 'dict'>"],
+        "incorrectAnswers": ["<class 'set'>", "<class 'list'>", "An error is raised."],
+        "explanation": "Empty curly braces `{}` create an empty dictionary in Python."
+    },
+    {
+        "question": "What is the purpose of Python's `round()` function?",
+        "correctAnswers": ["Rounds a number to a specified number of decimal places."],
+        "incorrectAnswers": ["Truncates a number to an integer.", "Returns the ceiling of a number.", "Returns the floor of a number."],
+        "explanation": "`round()` rounds a number to the nearest value, optionally keeping a specified number of decimal places."
+    },
+    {
+        "question": "What does Python's `str.islower()` check?",
+        "correctAnswers": ["Checks if all cased characters in the string are lowercase."],
+        "incorrectAnswers": ["Checks if the string contains only alphabetic characters.", "Converts the string to lowercase.", "Checks if the first character is lowercase."],
+        "explanation": "`islower()` returns `True` if all cased characters in the string are lowercase."
+    },
+    {
+        "question": "What is the result of `print(type(3.0))`?",
+        "correctAnswers": ["<class 'float'>"],
+        "incorrectAnswers": ["<class 'int'>", "<class 'double'>", "An error is raised."],
+        "explanation": "`3.0` is a floating-point number in Python, and its type is `<class 'float'>`."
+    },
+    {
+        "question": "What does Python's `frozenset` represent?",
+        "correctAnswers": ["An immutable set."],
+        "incorrectAnswers": ["A sorted set.", "A set with duplicate elements.", "A set that can only contain numbers."],
+        "explanation": "`frozenset` is an immutable and hashable version of a set."
+    },
+    {
+        "question": "What does Python's `sum()` function do?",
+        "correctAnswers": ["Adds all elements in an iterable."],
+        "incorrectAnswers": ["Calculates the product of elements in an iterable.", "Finds the maximum value in an iterable.", "Finds the average of elements in an iterable."],
+        "explanation": "`sum(iterable)` computes the total of all numeric elements in the iterable."
+    },
+    {
+        "question": "What does the `str.strip()` method do?",
+        "correctAnswers": ["Removes leading and trailing whitespace from a string."],
+        "incorrectAnswers": ["Removes all spaces from a string.", "Removes whitespace only from the start of the string.", "Replaces spaces with underscores."],
+        "explanation": "`strip()` removes whitespace or specified characters from both ends of a string."
+    },
+    {
+        "question": "What is the purpose of Python's `assert` statement?",
+        "correctAnswers": ["Checks a condition and raises an AssertionError if the condition is False."],
+        "incorrectAnswers": ["Handles exceptions during runtime.", "Ensures a function is called correctly.", "Logs debug information."],
+        "explanation": "The `assert` statement is used for debugging by testing conditions in the code."
+    },
+    {
+        "question": "What does the `os.getcwd()` function do?",
+        "correctAnswers": ["Returns the current working directory."],
+        "incorrectAnswers": ["Changes the current working directory.", "Creates a new directory.", "Lists all files in the current directory."],
+        "explanation": "`os.getcwd()` retrieves the path of the current working directory."
+    },
+    {
+        "question": "What is the output of `print(10 % 3)`?",
+        "correctAnswers": ["1"],
+        "incorrectAnswers": ["3", "0", "An error is raised."],
+        "explanation": "`%` is the modulus operator, which returns the remainder of the division."
+    },
+    {
+        "question": "What does the `str.swapcase()` method do?",
+        "correctAnswers": ["Converts uppercase characters to lowercase and vice versa."],
+        "incorrectAnswers": ["Reverses the string.", "Swaps the first and last characters.", "Removes case information from the string."],
+        "explanation": "`swapcase()` toggles the case of all alphabetic characters in the string."
+    },
+    {
+        "question": "What does the `os.remove()` function do?",
+        "correctAnswers": ["Deletes a file."],
+        "incorrectAnswers": ["Deletes a directory.", "Renames a file.", "Copies a file to another location."],
+        "explanation": "`os.remove()` deletes the specified file. For directories, `os.rmdir()` is used."
+    },
+    {
+        "question": "What is the purpose of the `__init__.py` file in Python packages?",
+        "correctAnswers": ["Marks a directory as a Python package."],
+        "incorrectAnswers": ["Initializes variables for the module.", "Must contain all package functions.", "Loads the package dependencies."],
+        "explanation": "`__init__.py` indicates that a directory should be treated as a Python package."
+    },
+    {
+        "question": "What is the difference between `pop()` and `del` in Python lists?",
+        "correctAnswers": ["`pop()` removes and returns an item by index, `del` removes an item without returning it."],
+        "incorrectAnswers": ["`del` works only on dictionaries.", "`pop()` is faster than `del`.", "`pop()` removes items by value, `del` removes by index."],
+        "explanation": "`pop()` retrieves and removes an item, while `del` only removes it."
+    },
+    {
+        "question": "What does Python's `all()` function do?",
+        "correctAnswers": ["Returns True if all elements in an iterable are truthy."],
+        "incorrectAnswers": ["Returns True if any element is truthy.", "Returns the first truthy element.", "Checks if an iterable is empty."],
+        "explanation": "`all()` returns True only if every element in the iterable evaluates to True."
+    },
+    {
+        "question": "What is the purpose of Python's `isinstance()` function?",
+        "correctAnswers": ["Checks if an object is an instance of a specified class or its subclass."],
+        "incorrectAnswers": ["Checks the type of an object strictly.", "Returns the memory address of an object.", "Converts an object to the specified type."],
+        "explanation": "`isinstance()` is used for type checking, and it supports inheritance."
+    },
+    {
+        "question": "What is the output of `print('python'.capitalize())`?",
+        "correctAnswers": ["Python"],
+        "incorrectAnswers": ["python", "PYTHON", "An error is raised."],
+        "explanation": "`capitalize()` converts the first character to uppercase and the rest to lowercase."
+    },
+    {
+        "question": "What is the difference between `remove()` and `pop()` in Python sets?",
+        "correctAnswers": ["`remove()` removes a specified element, `pop()` removes and returns an arbitrary element."],
+        "incorrectAnswers": ["`pop()` removes by index, `remove()` removes by value.", "Both remove elements by index.", "`remove()` raises no error if the element is absent."],
+        "explanation": "`pop()` removes an arbitrary element, while `remove()` requires the element to be specified."
+    },
+    {
+        "question": "What is a Python generator?",
+        "correctAnswers": ["A function that produces items one at a time using the `yield` keyword."],
+        "incorrectAnswers": ["A function that generates random numbers.", "A class for handling iterables.", "A type of decorator."],
+        "explanation": "Generators yield values lazily, producing them one at a time upon request."
+    },
+    {
+        "question": "What does the `@classmethod` decorator do?",
+        "correctAnswers": ["Defines a method that takes the class as its first argument."],
+        "incorrectAnswers": ["Defines a method that takes the instance as its first argument.", "Defines a method that is private to the class.", "Defines a static method."],
+        "explanation": "`@classmethod` is used to define methods that operate on the class itself rather than instances."
+    },
+    {
+        "question": "What is the result of `print(bool(''))`?",
+        "correctAnswers": ["False"],
+        "incorrectAnswers": ["True", "None", "An error is raised."],
+        "explanation": "Empty strings are considered falsy in Python."
+    },
+    {
+        "question": "What is the purpose of Python's `collections.deque`?",
+        "correctAnswers": ["Implements a double-ended queue that allows adding and removing elements from both ends."],
+        "incorrectAnswers": ["Implements a stack.", "Sorts elements in a list.", "Handles key-value pairs."],
+        "explanation": "`deque` is an efficient double-ended queue supporting O(1) appends and pops from both ends."
+    },
+    {
+        "question": "What is the output of `print(type(()))`?",
+        "correctAnswers": ["<class 'tuple'>"],
+        "incorrectAnswers": ["<class 'list'>", "<class 'set'>", "An error is raised."],
+        "explanation": "An empty tuple is represented by `()` and its type is `<class 'tuple'>`."
+    },
+    {
+        "question": "What does Python's `os.path.exists()` function do?",
+        "correctAnswers": ["Checks if a specified path exists."],
+        "incorrectAnswers": ["Creates a file at the specified path.", "Deletes a file at the specified path.", "Checks if a file is empty."],
+        "explanation": "`os.path.exists(path)` returns `True` if the path exists and `False` otherwise."
+    },
+    {
+        "question": "What is the purpose of Python's `re.findall()`?",
+        "correctAnswers": ["Returns all non-overlapping matches of a pattern in a string as a list."],
+        "incorrectAnswers": ["Returns the first match of a pattern in a string.", "Splits a string based on a pattern.", "Counts the occurrences of a pattern in a string."],
+        "explanation": "`re.findall()` retrieves all matches of the pattern in the input string."
+    },
+    {
+        "question": "What does Python's `str.find()` method do?",
+        "correctAnswers": ["Returns the lowest index of the substring if found, or -1 if not found."],
+        "incorrectAnswers": ["Raises an error if the substring is not found.", "Returns the highest index of the substring.", "Counts the occurrences of the substring."],
+        "explanation": "`find()` locates the first occurrence of the substring and returns its index."
+    },
+    {
+        "question": "What is the output of `print([0] * 5)`?",
+        "correctAnswers": ["[0, 0, 0, 0, 0]"],
+        "incorrectAnswers": ["[5]", "[0, 5]", "An error is raised."],
+        "explanation": "Multiplying a list by an integer replicates its elements that many times."
+    },
+    {
+        "question": "What is the difference between `break` and `continue`?",
+        "correctAnswers": ["`break` exits the loop, while `continue` skips to the next iteration."],
+        "incorrectAnswers": ["`continue` exits the loop, while `break` skips iterations.", "`break` works only in for loops.", "`continue` repeats the current iteration."],
+        "explanation": "`break` terminates the loop, whereas `continue` skips the remaining code for the current iteration."
+    },
+    {
+        "question": "What is the purpose of Python's `re.compile()`?",
+        "correctAnswers": ["Compiles a regex pattern into a regex object for reuse."],
+        "incorrectAnswers": ["Executes a regex pattern.", "Splits a string using a regex pattern.", "Counts the matches of a regex pattern."],
+        "explanation": "`re.compile()` creates a regex object, which can be reused for multiple matches."
+    }
+]
