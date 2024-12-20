@@ -3,6 +3,7 @@ package dev.salonce.discordQuizBot.Core.Matches;
 import dev.salonce.discordQuizBot.AnswerInteractionEnum;
 import dev.salonce.discordQuizBot.ButtonInteraction;
 import dev.salonce.discordQuizBot.ButtonInteractionData;
+import dev.salonce.discordQuizBot.QuestionsConfig;
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
 import discord4j.core.object.entity.Message;
@@ -12,18 +13,16 @@ import discord4j.core.spec.EmbedCreateSpec;
 import discord4j.core.spec.MessageCreateSpec;
 import discord4j.core.spec.MessageEditSpec;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
 public class QuizManager {
 
     private final int timeToJoinQuiz = 5; // testing is 5, default is 60
@@ -32,9 +31,11 @@ public class QuizManager {
     private final int timeForNewQuestionToAppear = 8; //default is 8, test is 3
 
     private final Map<MessageChannel, Match> quizzes;
+    private final QuestionsConfig questionsConfig;
 
-    public QuizManager(){
+    public QuizManager(QuestionsConfig questionsConfig){
         quizzes = new HashMap<>();
+        this.questionsConfig = questionsConfig;
     }
 
 
@@ -284,6 +285,18 @@ public class QuizManager {
     public Mono<Void> addPlayerPoints(MessageChannel messageChannel){
         quizzes.get(messageChannel).addPlayerPoints();
         return Mono.empty();
+    }
+
+    public Mono<Message> sendHelpMessage(MessageChannel messageChannel) {
+        Match match = quizzes.get(messageChannel);
+
+        EmbedCreateSpec embed = EmbedCreateSpec.builder()
+                .title("Quiz bot." )
+                .addField("Example use", "**qq quiz memory** - starts a quiz about human memory.", false)
+                .addField("Available quizzes", questionsConfig.getFiles().keySet().stream().sorted(String::compareTo).collect(Collectors.joining(", ")) + ".", false)
+                .build();
+
+        return messageChannel.createMessage(embed);
     }
 }
 
