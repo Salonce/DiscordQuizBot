@@ -4,6 +4,7 @@ import dev.salonce.discordQuizBot.Core.Messages.DiscordMessage;
 import dev.salonce.discordQuizBot.Core.Matches.MatchFactory;
 import dev.salonce.discordQuizBot.Core.Matches.QuizManager;
 import dev.salonce.discordQuizBot.Core.Messages.MessageHandler;
+import dev.salonce.discordQuizBot.QuestionsConfig;
 import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -15,24 +16,40 @@ public class StartQuiz implements MessageHandler {
     private final MatchFactory matchFactory;
     private final QuizManager quizManager;
 
+    private final QuestionsConfig questionsConfig;
+
+
     @Override
     public boolean handleMessage(DiscordMessage discordMessage) {
         String[] message = discordMessage.getContent().split(" ");
         if (message.length < 2)
             return false;
-        if (message[0].equals("qq") && message[1].equals("quiz") && message[2].equals("memory")){
-            MessageChannel messageChannel = discordMessage.getChannel();
-            quizManager.addMatch(messageChannel, matchFactory.memoryMatch());
-            return true;
-        }
 
-        if (discordMessage.getContent().equalsIgnoreCase("qq quiz java")) {
-            MessageChannel messageChannel = discordMessage.getChannel();
-            quizManager.addMatch(messageChannel, matchFactory.javaMatch());
-            return true;
+        if (message[0].equals("qq") && message[1].equals("quiz")){
+            String lastMsg = message[2];
+            if (questionsConfig.getFiles().containsKey(lastMsg)){
+                MessageChannel messageChannel = discordMessage.getChannel();
+                quizManager.addMatch(messageChannel, matchFactory.makeMatch(lastMsg));
+                return true;
+            }
+            return true; // qq quiz exists but do nothing
         }
         return false;
     }
+
+
+//        if (message[0].equals("qq") && message[1].equals("quiz") && message[2].equals("memory")){
+//            MessageChannel messageChannel = discordMessage.getChannel();
+//            quizManager.addMatch(messageChannel, matchFactory.makeMatch("memory"));
+//            return true;
+//        }
+//
+//        if (message[0].equals("qq") && message[1].equals("quiz") && message[2].equals("java")) {
+//            MessageChannel messageChannel = discordMessage.getChannel();
+//            quizManager.addMatch(messageChannel, matchFactory.makeMatch("java"));
+//            return true;
+//        }
+
 
 //    public Mono<Message> sendSpecMessage(MessageChannel messageChannel){
 //        EmbedCreateSpec embed = EmbedCreateSpec.builder()

@@ -13,13 +13,18 @@ public class MatchFactory {
 
     private final QuestionFactory questionFactory;
 
-    public Match javaMatch(){
-        List<Question> questions = questionFactory.generateQuestions("java");
+    public Match makeMatch(String type){
+        List<Question> questions = questionFactory.generateQuestions(type);
         return new Match(questions);
     }
 
-    public Match memoryMatch(){
-        List<Question> questions = questionFactory.generateQuestions("memory");
-        return new Match(questions);
-    }
+//    public Match javaMatch(){
+//        List<Question> questions = questionFactory.generateQuestions("java");
+//        return new Match(questions);
+//    }
+//
+//    public Match memoryMatch(){
+//        List<Question> questions = questionFactory.generateQuestions("memory");
+//        return new Match(questions);
+//    }
 }
