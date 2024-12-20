@@ -291,9 +291,10 @@ public class QuizManager {
         Match match = quizzes.get(messageChannel);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("Quiz bot." )
-                .addField("Example use", "**qq quiz memory** - starts a quiz about human memory.", false)
-                .addField("Available quizzes", questionsConfig.getFiles().keySet().stream().sorted(String::compareTo).collect(Collectors.joining(", ")) + ".", false)
+                .title("Help" )
+                .addField("Categories", questionsConfig.getFiles().keySet().stream().sorted(String::compareTo).collect(Collectors.joining(", ")), false)
+                //.addField("Syntax", "**qq quiz *category***", false)
+                .addField("Example", "To start memory quiz, type: **qq quiz *memory***.", false)
                 .build();
 
         return messageChannel.createMessage(embed);
