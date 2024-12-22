@@ -68,6 +68,7 @@ public class QuizManager {
                             long index = tuple.getT1();
                     return createQuestionMessage(messageChannel, index, timers.getTimeToAnswerQuestion())
                             .flatMap(message -> {
+                                openAnswering(messageChannel);
                                 int totalTime = timers.getTimeToAnswerQuestion();
                                 return Flux.interval(Duration.ofSeconds(1)) // Emit every 5 seconds
                                         .take(totalTime - 1) // Number of updates
@@ -75,18 +76,15 @@ public class QuizManager {
                                             int timeLeft = totalTime - interval.intValue(); // Calculate remaining time
                                             return editQuestionMessageTime(messageChannel, message, index, timeLeft);
                                         })
-                                        .then(Mono.defer(() -> {
-                                            // Edit for the final 5 seconds
-                                            return Mono.defer(() -> openAnswering(messageChannel))
-                                                    .then(Mono.delay(Duration.ofSeconds(totalTime)))
-                                                    .then(Mono.defer(() -> editQuestionMessageInitial(messageChannel, message, index)))
-                                                    .then(Mono.delay(Duration.ofSeconds(1)))
-                                                    .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
-                                                    .then(Mono.defer(() -> closeAnswering(messageChannel)))
-                                                    .then(Mono.defer(() -> editQuestionMessage(messageChannel, message, index)))
-                                                    .then(Mono.delay(Duration.ofSeconds(timers.getTimeForNewQuestionToAppear())))
-                                                    .then(Mono.defer(() -> moveToNextQuestion(match)));
-                                        }));
+                                        //.then(Mono.defer(() -> openAnswering(messageChannel)))
+                                        //.then(Mono.delay(Duration.ofSeconds(totalTime)))
+                                        .then(Mono.defer(() -> editQuestionMessageInitial(messageChannel, message, index)))
+                                        .then(Mono.delay(Duration.ofSeconds(1)))
+                                        .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
+                                        .then(Mono.defer(() -> closeAnswering(messageChannel)))
+                                        .then(Mono.defer(() -> editQuestionMessage(messageChannel, message, index)))
+                                        .then(Mono.delay(Duration.ofSeconds(timers.getTimeForNewQuestionToAppear())))
+                                        .then(Mono.defer(() -> moveToNextQuestion(match)));
                             });
                         }
                 )
