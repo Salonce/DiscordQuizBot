@@ -9,9 +9,6 @@ import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.spec.EmbedCreateSpec;
 import discord4j.core.spec.MessageCreateSpec;
 import discord4j.core.spec.MessageEditSpec;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -37,6 +34,7 @@ public class QuizManager {
 
     public void addMatch(MessageChannel messageChannel, Match match) {
         int totalTimeToJoinLeft = timers.getTimeToJoinQuiz();
+        int totalTimeToStartLeft = timers.getTimeToStartMatch();
 
         if (quizzes.containsKey(messageChannel)){
             //send message that starting a match is impossible because there is already one
@@ -54,10 +52,15 @@ public class QuizManager {
                             })
                             .then(Mono.just(message))
                     )
-                    //.delayElement(Duration.ofSeconds(timers.getTimeToJoinQuiz()))
-                    .flatMap(message -> editStartQuizMessage2(message, messageChannel))
-                    //.then(Mono.defer(() -> createStartingMatchMessage(messageChannel)))
-                    .delayElement(Duration.ofSeconds(timers.getTimeForQuizToStart()))
+                    .flatMap(message ->
+                        Flux.interval(Duration.ofSeconds(1))
+                            .take(totalTimeToStartLeft + 1)
+                            .flatMap(interval -> {
+                                Long timeLeft = (long) (totalTimeToStartLeft - interval.intValue());
+                                return editStartQuizMessage2(message, messageChannel, timeLeft);
+                            })
+                            .then(Mono.just(message))
+                    )
                     .then(Mono.defer(() -> createQuestionMessages(messageChannel)))
                     .then(Mono.defer(() -> createMatchResultsMessage(messageChannel)))
                     .then(Mono.defer(() -> Mono.just(quizzes.remove(messageChannel))))
@@ -77,10 +80,10 @@ public class QuizManager {
                 .index()
                 .concatMap(tuple -> {
                             long index = tuple.getT1();
-                    return createQuestionMessage(messageChannel, index, timers.getTimeToAnswerQuestion())
+                    return createQuestionMessage(messageChannel, index, timers.getTimeToPickAnswer())
                             .flatMap(message -> {
                                 openAnswering(messageChannel);
-                                int totalTime = timers.getTimeToAnswerQuestion();
+                                int totalTime = timers.getTimeToPickAnswer();
                                 return Flux.interval(Duration.ofSeconds(1)) // Emit every 5 seconds
                                         .take(totalTime) // Number of updates
                                         .flatMap(interval -> {
@@ -251,16 +254,15 @@ public class QuizManager {
                 .build());
     }
 
-    private Mono<Message> editStartQuizMessage2(Message message, MessageChannel messageChannel){
+    private Mono<Message> editStartQuizMessage2(Message message, MessageChannel messageChannel, Long timeToStartLeft){
         Match match = quizzes.get(messageChannel);
-        int timeToJoinLeft = timers.getTimeToJoinQuiz();
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 //.title("\uD83C\uDFC1 Java Quiz")
                 .title("\uD83C\uDFC1" + match.getName() + " quiz")
                 .addField("", "Questions: " + match.getQuestions().size(), false)
                 .addField("", "Participants: " + match.getUserNames(), false)
-                .addField("", "Starting in " + timeToJoinLeft + " seconds.", false)
+                .addField("", "Starting in " + timeToStartLeft + " seconds.", false)
                 .build();
 
         return message.edit(MessageEditSpec.builder()
