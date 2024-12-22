@@ -36,14 +36,25 @@ public class QuizManager {
 
 
     public void addMatch(MessageChannel messageChannel, Match match) {
+        int totalTimeToJoinLeft = timers.getTimeToJoinQuiz();
+
         if (quizzes.containsKey(messageChannel)){
             //send message that starting a match is impossible because there is already one
         }
         else{
             quizzes.put(messageChannel, match);
             //System.out.println("Initial participants: " + match.getUserNames());
-            createStartQuizMessage(messageChannel)
-                    .delayElement(Duration.ofSeconds(timers.getTimeToJoinQuiz()))
+            createStartQuizMessage(messageChannel, totalTimeToJoinLeft)
+                    .flatMap(message ->
+                        Flux.interval(Duration.ofSeconds(1))
+                            .take(totalTimeToJoinLeft)
+                            .flatMap(interval -> {
+                                Long timeLeft = (long) (totalTimeToJoinLeft - interval.intValue() - 1);
+                                return editStartQuizMessage(message, messageChannel, timeLeft);
+                            })
+                            .then(Mono.just(message))
+                    )
+                    //.delayElement(Duration.ofSeconds(timers.getTimeToJoinQuiz()))
                     .flatMap(message -> editStartQuizMessage2(message, messageChannel))
                     //.then(Mono.defer(() -> createStartingMatchMessage(messageChannel)))
                     .delayElement(Duration.ofSeconds(timers.getTimeForQuizToStart()))
@@ -204,9 +215,8 @@ public class QuizManager {
                 .build());
     }
 
-    public Mono<Message> createStartQuizMessage(MessageChannel messageChannel){
+    public Mono<Message> createStartQuizMessage(MessageChannel messageChannel, int timeToJoinLeft){
         Match match = quizzes.get(messageChannel);
-        int timeToJoinLeft = timers.getTimeToJoinQuiz();
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 //.title("\uD83C\uDFC1 Java Quiz")
@@ -224,9 +234,8 @@ public class QuizManager {
         return messageChannel.createMessage(spec);
     }
 
-    private Mono<Message> editStartQuizMessage(Message message, MessageChannel messageChannel){
+    private Mono<Message> editStartQuizMessage(Message message, MessageChannel messageChannel, Long timeToJoinLeft){
         Match match = quizzes.get(messageChannel);
-        int timeToJoinLeft = timers.getTimeToJoinQuiz();
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 //.title("\uD83C\uDFC1 Java Quiz")
@@ -291,10 +300,10 @@ public class QuizManager {
         int questionsNumber = match.getQuestions().size();
 
         if (quizzes.containsKey(messageChannel)){
-            if (quizzes.get(messageChannel).addPlayer(user, questionsNumber)) {
-                //System.out.println("Participants: " + quizzes.get(messageChannel).getUserNames());
-                editStartQuizMessage(message, messageChannel).subscribe();
-            }
+            quizzes.get(messageChannel).addPlayer(user, questionsNumber);
+        }
+        else{
+            //change message to the message channel that interaction failed because the match doesn't exist
         }
     }
 
@@ -303,15 +312,10 @@ public class QuizManager {
         Message message = buttonInteraction.getMessage();
         MessageChannel messageChannel = buttonInteraction.getMessageChannel();
 
-        if (quizzes.containsKey(messageChannel)){
-            if (quizzes.get(messageChannel).removePlayer(user)) {
-                editStartQuizMessage(message, messageChannel).subscribe();
-                //messageChannel.createMessage()
-                //change message to the message channel that user is removed
-            }
-            else{
-                //change message to the message channel that interaction failed because the match doesn't exist
-            }
+        if (quizzes.containsKey(messageChannel))
+            quizzes.get(messageChannel).removePlayer(user);
+        else{
+            //change message to the message channel that interaction failed because the match doesn't exist
         }
     }
 
