@@ -66,18 +66,28 @@ public class QuizManager {
                 .index()
                 .concatMap(tuple -> {
                             long index = tuple.getT1();
-                    return createQuestionMessage(messageChannel, index)
-                            .flatMap(message -> Mono.just(message)
-                                    .then(Mono.defer(() -> openAnswering(messageChannel)))
-                                    .then(Mono.delay(Duration.ofSeconds(timers.getTimeToAnswerQuestion())))
-                                    .then(Mono.defer(() -> editQuestionMessageInitial(messageChannel, message, index)))
-                                    .then(Mono.delay(Duration.ofSeconds(1)))
-                                    .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
-                                    .then(Mono.defer(() -> closeAnswering(messageChannel)))
-                                    .then(Mono.defer(() -> editQuestionMessage(messageChannel, message, index)))
-                                    .then(Mono.delay(Duration.ofSeconds(timers.getTimeForNewQuestionToAppear())))
-                                    .then(Mono.defer(() -> moveToNextQuestion(match)))
-                            );
+                    return createQuestionMessage(messageChannel, index, timers.getTimeToAnswerQuestion())
+                            .flatMap(message -> {
+                                int totalTime = timers.getTimeToAnswerQuestion();
+                                return Flux.interval(Duration.ofSeconds(1)) // Emit every 5 seconds
+                                        .take(totalTime - 1) // Number of updates
+                                        .flatMap(interval -> {
+                                            int timeLeft = totalTime - interval.intValue(); // Calculate remaining time
+                                            return editQuestionMessageTime(messageChannel, message, index, timeLeft);
+                                        })
+                                        .then(Mono.defer(() -> {
+                                            // Edit for the final 5 seconds
+                                            return Mono.defer(() -> openAnswering(messageChannel))
+                                                    .then(Mono.delay(Duration.ofSeconds(totalTime)))
+                                                    .then(Mono.defer(() -> editQuestionMessageInitial(messageChannel, message, index)))
+                                                    .then(Mono.delay(Duration.ofSeconds(1)))
+                                                    .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
+                                                    .then(Mono.defer(() -> closeAnswering(messageChannel)))
+                                                    .then(Mono.defer(() -> editQuestionMessage(messageChannel, message, index)))
+                                                    .then(Mono.delay(Duration.ofSeconds(timers.getTimeForNewQuestionToAppear())))
+                                                    .then(Mono.defer(() -> moveToNextQuestion(match)));
+                                        }));
+                            });
                         }
                 )
                 .then();
@@ -96,7 +106,7 @@ public class QuizManager {
     }
 
 
-    private Mono<Message> createQuestionMessage(MessageChannel messageChannel, Long questionNumber){
+    private Mono<Message> createQuestionMessage(MessageChannel messageChannel, Long questionNumber, int timeLeft){
         Match match = quizzes.get(messageChannel);
         String questionsAnswers = match.getQuestion().getStringAnswers(false);
         int answersSize = match.getQuestion().getAnswers().size();
@@ -111,6 +121,7 @@ public class QuizManager {
                 .title("#" + (match.getQuestionNumber() + 1) + " **" + match.getQuestion().getQuestion() + "**")
                 //.description("**" + match.getQuestion().getQuestion() + "**")
                 .addField("\n", questionsAnswers + "\n", false)
+                .addField("\n", "You have fewer than " + timeLeft + "s to answer." + "\n", false)
                 .build();
 
         MessageCreateSpec spec = MessageCreateSpec.builder()
@@ -119,6 +130,30 @@ public class QuizManager {
                 .build();
 
         return messageChannel.createMessage(spec);
+    }
+
+    private Mono<Message> editQuestionMessageTime(MessageChannel messageChannel, Message message, Long questionNumber, int timeLeft){
+        Match match = quizzes.get(messageChannel);
+        String questionsAnswers = match.getQuestion().getStringAnswers(false);
+        int answersSize = match.getQuestion().getAnswers().size();
+
+        List<Button> buttons = new ArrayList<>();
+        for (int i = 0; i < answersSize; i++) {
+            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))));
+            //System.out.println("Creating button of id:" + "Answer-" + (char)('A' + i) + "-" + questionNumber.toString());
+        }
+
+        EmbedCreateSpec embed = EmbedCreateSpec.builder()
+                .title("#" + (match.getQuestionNumber() + 1) + " **" + match.getQuestion().getQuestion() + "**")
+                //.description("**" + match.getQuestion().getQuestion() + "**")
+                .addField("\n", questionsAnswers + "\n", false)
+                .addField("\n", "You have fewer than " + timeLeft + "s to answer." + "\n", false)
+                .build();
+
+        return message.edit(MessageEditSpec.builder()
+                .addComponent(ActionRow.of(buttons))
+                .addEmbed(embed)
+                .build());
     }
 
     private Mono<Message> editQuestionMessageInitial(MessageChannel messageChannel, Message message, Long questionNumber){

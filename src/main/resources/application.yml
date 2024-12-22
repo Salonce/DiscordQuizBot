@@ -16,4 +16,4 @@ questions:
     painting_techniques: src/main/resources/painting_techniques.json
 
 #mode - 'standard' or 'testing'
-mode: testing
+mode: testing2
