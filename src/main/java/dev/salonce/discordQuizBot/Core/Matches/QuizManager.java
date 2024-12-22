@@ -71,9 +71,9 @@ public class QuizManager {
                                 openAnswering(messageChannel);
                                 int totalTime = timers.getTimeToAnswerQuestion();
                                 return Flux.interval(Duration.ofSeconds(1)) // Emit every 5 seconds
-                                        .take(totalTime - 1) // Number of updates
+                                        .take(totalTime) // Number of updates
                                         .flatMap(interval -> {
-                                            int timeLeft = totalTime - interval.intValue(); // Calculate remaining time
+                                            int timeLeft = totalTime - (interval.intValue() + 1); // Calculate remaining time
                                             return editQuestionMessageTime(messageChannel, message, index, timeLeft);
                                         })
                                         //.then(Mono.defer(() -> openAnswering(messageChannel)))
@@ -119,7 +119,7 @@ public class QuizManager {
                 .title("#" + (match.getQuestionNumber() + 1) + " **" + match.getQuestion().getQuestion() + "**")
                 //.description("**" + match.getQuestion().getQuestion() + "**")
                 .addField("\n", questionsAnswers + "\n", false)
-                .addField("\n", "You have fewer than " + timeLeft + "s to answer." + "\n", false)
+                .addField("\n", "You have " + timeLeft + "s to answer." + "\n", false)
                 .build();
 
         MessageCreateSpec spec = MessageCreateSpec.builder()
@@ -145,7 +145,7 @@ public class QuizManager {
                 .title("#" + (match.getQuestionNumber() + 1) + " **" + match.getQuestion().getQuestion() + "**")
                 //.description("**" + match.getQuestion().getQuestion() + "**")
                 .addField("\n", questionsAnswers + "\n", false)
-                .addField("\n", "You have fewer than " + timeLeft + "s to answer." + "\n", false)
+                .addField("\n", "You have " + timeLeft + "s to answer." + "\n", false)
                 .build();
 
         return message.edit(MessageEditSpec.builder()
