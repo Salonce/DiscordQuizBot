@@ -70,6 +70,8 @@ public class QuizManager {
                             .flatMap(message -> Mono.just(message)
                                     .then(Mono.defer(() -> openAnswering(messageChannel)))
                                     .then(Mono.delay(Duration.ofSeconds(timers.getTimeToAnswerQuestion())))
+                                    .then(Mono.defer(() -> editQuestionMessageInitial(messageChannel, message, index)))
+                                    .then(Mono.delay(Duration.ofSeconds(1)))
                                     .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
                                     .then(Mono.defer(() -> closeAnswering(messageChannel)))
                                     .then(Mono.defer(() -> editQuestionMessage(messageChannel, message, index)))
@@ -118,6 +120,30 @@ public class QuizManager {
 
         return messageChannel.createMessage(spec);
     }
+
+    private Mono<Message> editQuestionMessageInitial(MessageChannel messageChannel, Message message, Long questionNumber){
+        Match match = quizzes.get(messageChannel);
+        String questionsAnswers = match.getQuestion().getStringAnswers(false);
+        int answersSize = match.getQuestion().getAnswers().size();
+
+        List<Button> buttons = new ArrayList<>();
+        for (int i = 0; i < answersSize; i++) {
+            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))).disabled());
+            //System.out.println("Creating button of id:" + "Answer-" + (char)('A' + i) + "-" + questionNumber.toString());
+        }
+
+        EmbedCreateSpec embed = EmbedCreateSpec.builder()
+                .title("#" + (match.getQuestionNumber() + 1) + " **" + match.getQuestion().getQuestion() + "**")
+                //.description("**" + match.getQuestion().getQuestion() + "**")
+                .addField("\n", questionsAnswers + "\n", false)
+                .build();
+
+        return message.edit(MessageEditSpec.builder()
+                .addComponent(ActionRow.of(buttons))
+                .addEmbed(embed)
+                .build());
+    }
+
 
     private Mono<Message> editQuestionMessage(MessageChannel messageChannel, Message message, Long questionNumber){
         Match match = quizzes.get(messageChannel);

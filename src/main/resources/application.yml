@@ -13,6 +13,7 @@ questions:
     personality: src/main/resources/personality.json
     art_history: src/main/resources/art_history.json
     python: src/main/resources/python.json
+    painting_techniques: src/main/resources/painting_techniques.json
 
-#mode - standard or test
-mode: standard
+#mode - 'standard' or 'testing'
+mode: testing

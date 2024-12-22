@@ -53,12 +53,19 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 					.subscribe();
 
 			gateway.on(ButtonInteractionEvent.class, event -> {
+				//if button interaction failed right before disabling, there is no message sent even at the beginning of buttonInteraction event,
+				// which means it just fails right before the blocking and i can't work on that
 				// maybe also check event interaction date to not process anything too old
+				System.out.println("Button event clicked.");
 				String buttonId = event.getCustomId();
+				System.out.println("1button id: " + buttonId);
 				ButtonInteraction buttonInteraction = new ButtonInteraction(event);
 				if (!buttonInteraction.buttonEventValid())
 					return null;
 				ButtonInteractionData buttonInteractionData = new ButtonInteractionData(buttonId);
+
+				System.out.println("2button id: " + buttonId);
+				System.out.println("2button type: " + buttonInteractionData.getButtonType());
 
 				//System.out.println("Button clicked type:" + buttonInteractionData.getButtonType());
 				return switch (buttonInteractionData.getButtonType()) {
@@ -77,7 +84,7 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 						if (answerInteractionEnum == AnswerInteractionEnum.NOT_IN_MATCH)
 							answer = "You are not in the match.";
 						else if (answerInteractionEnum == AnswerInteractionEnum.TOO_LATE)
-							answer = "Your text came too late!";
+							answer = "Your answer came too late!";
 						else if (answerInteractionEnum == AnswerInteractionEnum.VALID){
 							answer = "Your answer: " + (char)('A' + (buttonInteractionData.getAnswerNumber())) + ".";
 						}
