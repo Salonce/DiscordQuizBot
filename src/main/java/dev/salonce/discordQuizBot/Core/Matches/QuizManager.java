@@ -230,7 +230,7 @@ public class QuizManager {
                 .build();
 
         MessageCreateSpec spec = MessageCreateSpec.builder()
-                .addComponent(ActionRow.of(Button.success("joinQuiz", "Join"), Button.success("leaveQuiz", "Leave")))
+                .addComponent(ActionRow.of(Button.success("joinQuiz", "Join"), Button.success("leaveQuiz", "Leave"), Button.danger("cancelQuiz", "Cancel")))
                 .addEmbed(embed)
                 .build();
 
@@ -249,7 +249,7 @@ public class QuizManager {
                 .build();
 
         return message.edit(MessageEditSpec.builder()
-                .addComponent(ActionRow.of(Button.success("joinQuiz", "Join"), Button.success("leaveQuiz", "Leave")))
+                .addComponent(ActionRow.of(Button.success("joinQuiz", "Join"), Button.success("leaveQuiz", "Leave"), Button.danger("cancelQuiz", "Cancel")))
                 .addEmbed(embed)
                 .build());
     }
@@ -266,7 +266,7 @@ public class QuizManager {
                 .build();
 
         return message.edit(MessageEditSpec.builder()
-                .addComponent(ActionRow.of(Button.success("joinQuiz", "Join").disabled(), Button.success("leaveQuiz", "Leave").disabled()))
+                .addComponent(ActionRow.of(Button.success("joinQuiz", "Join").disabled(), Button.success("leaveQuiz", "Leave").disabled(), Button.danger("cancelQuiz", "Cancel")))
                 .addEmbed(embed)
                 .build());
     }
