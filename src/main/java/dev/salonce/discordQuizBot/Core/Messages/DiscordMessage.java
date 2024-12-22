@@ -12,7 +12,7 @@ public class DiscordMessage {
     public DiscordMessage(Message message) {
         try {
             //author, maybe change optional and throw
-            this.id = message.getAuthor().get().getId().asLong();
+            this.usernameIdLong = message.getAuthor().get().getId().asLong();
             this.userNameId = "<@" + message.getAuthor().get().getId().asString() + ">";
             this.userAvatarUrl = message.getAuthor().get().getAvatarUrl();
             this.userName = message.getAuthor().get().getUsername();
@@ -27,7 +27,7 @@ public class DiscordMessage {
         }
     }
 
-    private Long id;
+    private Long usernameIdLong;
     private String content;
     private MessageChannel channel;
     private String userName;

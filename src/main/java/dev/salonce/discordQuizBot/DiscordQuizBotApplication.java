@@ -1,41 +1,37 @@
 package dev.salonce.discordQuizBot;
 
-import dev.salonce.discordQuizBot.Core.Matches.QuizManager;
+import dev.salonce.discordQuizBot.Buttons.AnswerInteractionEnum;
+import dev.salonce.discordQuizBot.Buttons.ButtonInteraction;
+import dev.salonce.discordQuizBot.Buttons.ButtonInteractionData;
 import dev.salonce.discordQuizBot.Core.Messages.DiscordMessage;
-import dev.salonce.discordQuizBot.Core.Questions.RawQuestion;
 import dev.salonce.discordQuizBot.Core.Messages.MessageHandlerChain;
 import discord4j.core.DiscordClient;
 import discord4j.core.GatewayDiscordClient;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import discord4j.core.event.domain.message.MessageCreateEvent;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.IOException;
-import java.util.List;
 
 
 @SpringBootApplication
 public class DiscordQuizBotApplication implements CommandLineRunner {
 
-	public DiscordQuizBotApplication(MessageHandlerChain messageHandlerChain, @Qualifier("javaQuestions") List<RawQuestion> javaQuestions, QuizManager quizManager){
+	public DiscordQuizBotApplication(MessageHandlerChain messageHandlerChain, QuizManager quizManager){
 		this.messageHandlerChain = messageHandlerChain;
-		this.javaQuestions = javaQuestions;
 		this.quizManager = quizManager;
 	}
 
 	private final MessageHandlerChain messageHandlerChain;
-	private final List<RawQuestion> javaQuestions;
 	private final QuizManager quizManager;
 
 	@Value("${discord.bot.token}")
 	private String discordBotToken;
 
 	public static void main(String[] args) throws IOException {
-
 		SpringApplication.run(DiscordQuizBotApplication.class, args);
 	}
 
@@ -56,9 +52,9 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 				//if button interaction failed right before disabling, there is no message sent even at the beginning of buttonInteraction event,
 				// which means it just fails right before the blocking and i can't work on that
 				// maybe also check event interaction date to not process anything too old
-				System.out.println("Button event clicked.");
+				//System.out.println("Button event clicked.");
 				String buttonId = event.getCustomId();
-				System.out.println("1button id: " + buttonId);
+				//System.out.println("1button id: " + buttonId);
 				ButtonInteraction buttonInteraction = new ButtonInteraction(event);
 				if (!buttonInteraction.buttonEventValid())
 					return null;
@@ -78,6 +74,14 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 						quizManager.removeUserFromMatch(buttonInteraction);
 						yield event.reply("You've left the quiz.").withEphemeral(true);
 					}
+					case "cancelQuiz" -> {
+						boolean canceled = quizManager.cancelQuiz(buttonInteraction);
+						String text;
+						if (canceled) text = "You've canceled the quiz.";
+						else text = "Only matchmaker can cancel the quiz.";
+						yield event.reply(text).withEphemeral(true);
+					}
+					
 					case "Answer" -> {
 						AnswerInteractionEnum answerInteractionEnum = quizManager.setPlayerAnswer(buttonInteraction, buttonInteractionData);
 						String answer;

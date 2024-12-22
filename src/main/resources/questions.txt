@@ -1,3 +1,0 @@
-, so during execution of the bytecode and not during the compilation process
-
-1. What is the difference between runtime and compile time?

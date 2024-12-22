@@ -13,9 +13,9 @@ public class MatchFactory {
 
     private final QuestionFactory questionFactory;
 
-    public Match makeMatch(String type){
+    public Match makeMatch(String type, Long ownerId){
         List<Question> questions = questionFactory.generateQuestions(type);
-        return new Match(questions, type);
+        return new Match(questions, type, ownerId);
     }
 
 //    public Match javaMatch(){

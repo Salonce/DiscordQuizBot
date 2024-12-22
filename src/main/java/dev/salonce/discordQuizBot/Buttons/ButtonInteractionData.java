@@ -1,4 +1,4 @@
-package dev.salonce.discordQuizBot;
+package dev.salonce.discordQuizBot.Buttons;
 
 import lombok.Getter;
 
@@ -15,6 +15,10 @@ public class ButtonInteractionData {
             answerNumber = -1;
         } else if (buttonId.equals("leaveQuiz")) {
             buttonType = "leaveQuiz";
+            questionNumber = -1;
+            answerNumber = -1;
+        } else if (buttonId.equals("cancelQuiz")) {
+            buttonType = "cancelQuiz";
             questionNumber = -1;
             answerNumber = -1;
         } else if (buttonId.matches("Answer-[A-D]-\\d+")) {

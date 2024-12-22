@@ -1,4 +1,4 @@
-package dev.salonce.discordQuizBot;
+package dev.salonce.discordQuizBot.Buttons;
 
 public enum AnswerInteractionEnum {
     VALID,
