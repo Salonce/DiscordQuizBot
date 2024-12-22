@@ -206,14 +206,14 @@ public class QuizManager {
 
     public Mono<Message> createStartQuizMessage(MessageChannel messageChannel){
         Match match = quizzes.get(messageChannel);
-        int timeToJoinQuizRefreshed = timers.getTimeToJoinQuiz();
+        int timeToJoinLeft = timers.getTimeToJoinQuiz();
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 //.title("\uD83C\uDFC1 Java Quiz")
                 .title("\uD83C\uDFC1" + match.getName() + " quiz")
                 .addField("", "Questions: " + match.getQuestions().size(), false)
                 .addField("", "Participants: " + match.getUserNames(), false)
-                .addField("", "You have " + timeToJoinQuizRefreshed + " seconds to join.", false)
+                .addField("", "You have " + timeToJoinLeft + " seconds to join.", false)
                 .build();
 
         MessageCreateSpec spec = MessageCreateSpec.builder()
@@ -226,14 +226,14 @@ public class QuizManager {
 
     private Mono<Message> editStartQuizMessage(Message message, MessageChannel messageChannel){
         Match match = quizzes.get(messageChannel);
-        int timeToJoinQuizRefreshed = timers.getTimeToJoinQuiz();
+        int timeToJoinLeft = timers.getTimeToJoinQuiz();
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 //.title("\uD83C\uDFC1 Java Quiz")
                 .title("\uD83C\uDFC1" + match.getName() + " quiz")
                 .addField("", "Questions: " + match.getQuestions().size(), false)
                 .addField("", "Participants: " + match.getUserNames(), false)
-                .addField("", "You have " + timeToJoinQuizRefreshed + " seconds to join.", false)
+                .addField("", "You have " + timeToJoinLeft + " seconds to join.", false)
                 .build();
 
         return message.edit(MessageEditSpec.builder()
@@ -244,14 +244,14 @@ public class QuizManager {
 
     private Mono<Message> editStartQuizMessage2(Message message, MessageChannel messageChannel){
         Match match = quizzes.get(messageChannel);
-        int timeToJoinQuizRefreshed = timers.getTimeToJoinQuiz();
+        int timeToJoinLeft = timers.getTimeToJoinQuiz();
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 //.title("\uD83C\uDFC1 Java Quiz")
                 .title("\uD83C\uDFC1" + match.getName() + " quiz")
                 .addField("", "Questions: " + match.getQuestions().size(), false)
                 .addField("", "Participants: " + match.getUserNames(), false)
-                .addField("", "Starting in " + timeToJoinQuizRefreshed + " seconds.", false)
+                .addField("", "Starting in " + timeToJoinLeft + " seconds.", false)
                 .build();
 
         return message.edit(MessageEditSpec.builder()
