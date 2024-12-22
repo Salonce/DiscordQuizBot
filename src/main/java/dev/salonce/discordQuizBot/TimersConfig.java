@@ -15,6 +15,8 @@ public class TimersConfig {
     public Timers getTimers(){
         if (mode.equals("testing"))
             return new Timers(7, 2, 5, 3);
+        else if (mode.equals("testing2"))
+            return new Timers(5, 5, 30, 3);
         else if (mode.equals("standard"))
             return new Timers(30, 5, 35, 10);
         else{

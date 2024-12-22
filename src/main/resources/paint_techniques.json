@@ -1,0 +1,884 @@
+[
+    {
+        "question": "What painting technique involves applying thick layers of paint to create texture on the surface?",
+        "correctAnswers": ["Impasto"],
+        "incorrectAnswers": ["Glazing", "Wash", "Sgraffito", "Scumbling", "Pointillism", "Encaustic", "Stippling", "Sponging"],
+        "explanation": "Impasto is a technique where paint is applied in thick layers, often leaving visible brushstrokes or palette knife marks, creating a textured effect."
+    },
+    {
+        "question": "Which technique is characterized by applying small, distinct dots of color to form an image?",
+        "correctAnswers": ["Pointillism"],
+        "incorrectAnswers": ["Impasto", "Glazing", "Frottage", "Scumbling", "Grisaille", "Wash", "Dry Brush", "Scratching"],
+        "explanation": "Pointillism involves placing small dots of pure color in patterns to form images, relying on the viewer's eye to blend the colors."
+    },
+    {
+        "question": "What is the term for creating a gradient or gradual transition of color in painting?",
+        "correctAnswers": ["Blending"],
+        "incorrectAnswers": ["Impasto", "Sgraffito", "Stippling", "Glazing", "Crosshatching", "Pointillism", "Dry Brush", "Hatching"],
+        "explanation": "Blending refers to the smooth transition of colors or tones, often used to create realistic shading and depth."
+    },
+    {
+        "question": "Which painting technique uses diluted pigments to achieve a translucent effect?",
+        "correctAnswers": ["Glazing"],
+        "incorrectAnswers": ["Impasto", "Dry Brush", "Scumbling", "Sgraffito", "Wash", "Pointillism", "Encaustic", "Grisaille"],
+        "explanation": "Glazing involves applying thin, transparent layers of paint over a dried layer, often to enhance luminosity and depth."
+    },
+    {
+        "question": "What term describes a method where wax is used as a binder for pigments?",
+        "correctAnswers": ["Encaustic"],
+        "incorrectAnswers": ["Acrylic", "Tempera", "Oil", "Fresco", "Watercolor", "Pastel", "Gouache", "Casein"],
+        "explanation": "Encaustic painting involves mixing pigments with hot wax and applying the mixture to a surface, resulting in a durable and luminous finish."
+    },
+    {
+        "question": "What drawing technique involves creating texture by rubbing a medium over a surface with a raised pattern underneath?",
+        "correctAnswers": ["Frottage"],
+        "incorrectAnswers": ["Hatching", "Crosshatching", "Scumbling", "Grisaille", "Dry Brush", "Stippling", "Sponging", "Blending"],
+        "explanation": "Frottage is a technique of rubbing to transfer the texture of a surface onto paper or canvas, often used for its creative and abstract effects."
+    },
+    {
+        "question": "Which painting technique involves scratching through a top layer to reveal the layer underneath?",
+        "correctAnswers": ["Sgraffito"],
+        "incorrectAnswers": ["Glazing", "Impasto", "Scumbling", "Stippling", "Pointillism", "Wash", "Blending", "Grisaille"],
+        "explanation": "Sgraffito is a decorative technique where a top layer of paint or plaster is scratched away to expose the surface beneath, creating patterns or textures."
+    },
+    {
+        "question": "What is the process of painting on freshly applied, wet plaster called?",
+        "correctAnswers": ["Fresco"],
+        "incorrectAnswers": ["Encaustic", "Tempera", "Oil", "Acrylic", "Gouache", "Pastel", "Casein", "Watercolor"],
+        "explanation": "Fresco involves painting onto freshly laid wet plaster so that the pigments chemically bond with the surface as it dries."
+    },
+    {
+        "question": "Which technique uses a dry brush to apply paint for a scratchy and textured effect?",
+        "correctAnswers": ["Dry Brush"],
+        "incorrectAnswers": ["Blending", "Scumbling", "Glazing", "Impasto", "Pointillism", "Stippling", "Wash", "Crosshatching"],
+        "explanation": "Dry brush technique involves using minimal paint on a dry brush, creating a scratchy, textured appearance."
+    },
+    {
+        "question": "What is the technique of creating a monochromatic painting using shades of gray?",
+        "correctAnswers": ["Grisaille"],
+        "incorrectAnswers": ["Wash", "Impasto", "Glazing", "Frottage", "Sgraffito", "Stippling", "Blending", "Pointillism"],
+        "explanation": "Grisaille is a method of painting in shades of gray, often used as a preliminary underpainting or as a standalone artwork."
+    },
+    {
+        "question": "Which technique involves using small, repetitive strokes to create texture or detail?",
+        "correctAnswers": ["Stippling"],
+        "incorrectAnswers": ["Scumbling", "Glazing", "Dry Brush", "Blending", "Crosshatching", "Hatching", "Sgraffito", "Pointillism"],
+        "explanation": "Stippling involves creating texture and detail through the use of small, repetitive dots or strokes."
+    },
+    {
+        "question": "What term refers to the method of painting with pigments mixed with egg yolk?",
+        "correctAnswers": ["Tempera"],
+        "incorrectAnswers": ["Oil", "Acrylic", "Watercolor", "Gouache", "Encaustic", "Casein", "Pastel", "Fresco"],
+        "explanation": "Tempera painting uses pigments mixed with egg yolk, creating a fast-drying and durable medium historically used in early Renaissance works."
+    },
+    {
+        "question": "What technique uses a sponge to apply or remove paint for texture?",
+        "correctAnswers": ["Sponging"],
+        "incorrectAnswers": ["Scumbling", "Blending", "Glazing", "Sgraffito", "Dry Brush", "Pointillism", "Wash", "Impasto"],
+        "explanation": "Sponging is a technique where a sponge is used to apply or lift paint, often creating a natural, textured effect."
+    },
+    {
+        "question": "Which painting style involves using layers of wax-resin that are heated to fuse them together?",
+        "correctAnswers": ["Encaustic"],
+        "incorrectAnswers": ["Impasto", "Tempera", "Acrylic", "Fresco", "Gouache", "Pastel", "Glazing", "Casein"],
+        "explanation": "Encaustic painting uses heated wax-resin layers that are fused to create durable, vibrant works of art."
+    },
+    {
+        "question": "What term describes the painting technique of layering opaque paint to soften or blur edges?",
+        "correctAnswers": ["Scumbling"],
+        "incorrectAnswers": ["Blending", "Glazing", "Dry Brush", "Stippling", "Sgraffito", "Pointillism", "Frottage", "Wash"],
+        "explanation": "Scumbling is a technique that involves using a dry or lightly loaded brush to soften edges or add texture by layering opaque paint."
+    },
+    {
+        "question": "What painting technique involves applying thick layers of paint to create texture on the surface?",
+        "correctAnswers": ["Impasto"],
+        "incorrectAnswers": ["Glazing", "Wash", "Sgraffito", "Scumbling", "Pointillism", "Encaustic", "Stippling", "Sponging"],
+        "explanation": "Impasto is a technique where paint is applied in thick layers, often leaving visible brushstrokes or palette knife marks, creating a textured effect."
+    },
+    {
+        "question": "Which technique is characterized by applying small, distinct dots of color to form an image?",
+        "correctAnswers": ["Pointillism"],
+        "incorrectAnswers": ["Impasto", "Glazing", "Frottage", "Scumbling", "Grisaille", "Wash", "Dry Brush", "Scratching"],
+        "explanation": "Pointillism involves placing small dots of pure color in patterns to form images, relying on the viewer's eye to blend the colors."
+    },
+    {
+        "question": "What is the term for creating a gradient or gradual transition of color in painting?",
+        "correctAnswers": ["Blending"],
+        "incorrectAnswers": ["Impasto", "Sgraffito", "Stippling", "Glazing", "Crosshatching", "Pointillism", "Dry Brush", "Hatching"],
+        "explanation": "Blending refers to the smooth transition of colors or tones, often used to create realistic shading and depth."
+    },
+    {
+        "question": "Which painting technique uses diluted pigments to achieve a translucent effect?",
+        "correctAnswers": ["Glazing"],
+        "incorrectAnswers": ["Impasto", "Dry Brush", "Scumbling", "Sgraffito", "Wash", "Pointillism", "Encaustic", "Grisaille"],
+        "explanation": "Glazing involves applying thin, transparent layers of paint over a dried layer, often to enhance luminosity and depth."
+    },
+    {
+        "question": "What term describes a method where wax is used as a binder for pigments?",
+        "correctAnswers": ["Encaustic"],
+        "incorrectAnswers": ["Acrylic", "Tempera", "Oil", "Fresco", "Watercolor", "Pastel", "Gouache", "Casein"],
+        "explanation": "Encaustic painting involves mixing pigments with hot wax and applying the mixture to a surface, resulting in a durable and luminous finish."
+    },
+    {
+        "question": "What drawing technique involves creating texture by rubbing a medium over a surface with a raised pattern underneath?",
+        "correctAnswers": ["Frottage"],
+        "incorrectAnswers": ["Hatching", "Crosshatching", "Scumbling", "Grisaille", "Dry Brush", "Stippling", "Sponging", "Blending"],
+        "explanation": "Frottage is a technique of rubbing to transfer the texture of a surface onto paper or canvas, often used for its creative and abstract effects."
+    },
+    {
+        "question": "Which painting technique involves scratching through a top layer to reveal the layer underneath?",
+        "correctAnswers": ["Sgraffito"],
+        "incorrectAnswers": ["Glazing", "Impasto", "Scumbling", "Stippling", "Pointillism", "Wash", "Blending", "Grisaille"],
+        "explanation": "Sgraffito is a decorative technique where a top layer of paint or plaster is scratched away to expose the surface beneath, creating patterns or textures."
+    },
+    {
+        "question": "What is the process of painting on freshly applied, wet plaster called?",
+        "correctAnswers": ["Fresco"],
+        "incorrectAnswers": ["Encaustic", "Tempera", "Oil", "Acrylic", "Gouache", "Pastel", "Casein", "Watercolor"],
+        "explanation": "Fresco involves painting onto freshly laid wet plaster so that the pigments chemically bond with the surface as it dries."
+    },
+    {
+        "question": "Which technique uses a dry brush to apply paint for a scratchy and textured effect?",
+        "correctAnswers": ["Dry Brush"],
+        "incorrectAnswers": ["Blending", "Scumbling", "Glazing", "Impasto", "Pointillism", "Stippling", "Wash", "Crosshatching"],
+        "explanation": "Dry brush technique involves using minimal paint on a dry brush, creating a scratchy, textured appearance."
+    },
+    {
+        "question": "What is the technique of creating a monochromatic painting using shades of gray?",
+        "correctAnswers": ["Grisaille"],
+        "incorrectAnswers": ["Wash", "Impasto", "Glazing", "Frottage", "Sgraffito", "Stippling", "Blending", "Pointillism"],
+        "explanation": "Grisaille is a method of painting in shades of gray, often used as a preliminary underpainting or as a standalone artwork."
+    },
+    {
+        "question": "Which technique involves using small, repetitive strokes to create texture or detail?",
+        "correctAnswers": ["Stippling"],
+        "incorrectAnswers": ["Scumbling", "Glazing", "Dry Brush", "Blending", "Crosshatching", "Hatching", "Sgraffito", "Pointillism"],
+        "explanation": "Stippling involves creating texture and detail through the use of small, repetitive dots or strokes."
+    },
+    {
+        "question": "What term refers to the method of painting with pigments mixed with egg yolk?",
+        "correctAnswers": ["Tempera"],
+        "incorrectAnswers": ["Oil", "Acrylic", "Watercolor", "Gouache", "Encaustic", "Casein", "Pastel", "Fresco"],
+        "explanation": "Tempera painting uses pigments mixed with egg yolk, creating a fast-drying and durable medium historically used in early Renaissance works."
+    },
+    {
+        "question": "What technique uses a sponge to apply or remove paint for texture?",
+        "correctAnswers": ["Sponging"],
+        "incorrectAnswers": ["Scumbling", "Blending", "Glazing", "Sgraffito", "Dry Brush", "Pointillism", "Wash", "Impasto"],
+        "explanation": "Sponging is a technique where a sponge is used to apply or lift paint, often creating a natural, textured effect."
+    },
+    {
+        "question": "Which painting style involves using layers of wax-resin that are heated to fuse them together?",
+        "correctAnswers": ["Encaustic"],
+        "incorrectAnswers": ["Impasto", "Tempera", "Acrylic", "Fresco", "Gouache", "Pastel", "Glazing", "Casein"],
+        "explanation": "Encaustic painting uses heated wax-resin layers that are fused to create durable, vibrant works of art."
+    },
+    {
+        "question": "What term describes the painting technique of layering opaque paint to soften or blur edges?",
+        "correctAnswers": ["Scumbling"],
+        "incorrectAnswers": ["Blending", "Glazing", "Dry Brush", "Stippling", "Sgraffito", "Pointillism", "Frottage", "Wash"],
+        "explanation": "Scumbling is a technique that involves using a dry or lightly loaded brush to soften edges or add texture by layering opaque paint."
+    },
+    {
+        "question": "Which drawing technique involves creating the illusion of volume with gradual shading?",
+        "correctAnswers": ["Shading"],
+        "incorrectAnswers": ["Hatching", "Crosshatching", "Stippling", "Frottage", "Smudging", "Blending", "Scumbling", "Scratching"],
+        "explanation": "Shading is a technique that uses changes in light and dark tones to create the appearance of depth and volume in a drawing."
+    },
+    {
+        "question": "What painting method involves creating texture by dabbing paint onto the canvas with a stiff-bristled brush?",
+        "correctAnswers": ["Scumbling"],
+        "incorrectAnswers": ["Dry Brush", "Impasto", "Blending", "Pointillism", "Sponging", "Glazing", "Sgraffito", "Stippling"],
+        "explanation": "Scumbling is a method where paint is applied with a dry or lightly loaded brush to create a textured or softened effect."
+    },
+    {
+        "question": "What term refers to an underpainting typically done in a monochromatic color scheme to establish values?",
+        "correctAnswers": ["Grisaille"],
+        "incorrectAnswers": ["Glazing", "Blending", "Wash", "Impasto", "Sgraffito", "Pointillism", "Stippling", "Dry Brush"],
+        "explanation": "Grisaille is an underpainting technique using shades of gray or a monochromatic palette to define the tonal values before adding color layers."
+    },
+    {
+        "question": "Which technique involves pressing an object coated in paint onto a surface to create a print?",
+        "correctAnswers": ["Stamping"],
+        "incorrectAnswers": ["Etching", "Monoprinting", "Screen Printing", "Lithography", "Frottage", "Drypoint", "Relief Printing", "Stencil"],
+        "explanation": "Stamping involves applying paint or ink to an object and pressing it onto a surface to create a repeated design or pattern."
+    },
+    {
+        "question": "What technique involves applying layers of pastel and then blending them with a finger or tool?",
+        "correctAnswers": ["Pastel Blending"],
+        "incorrectAnswers": ["Smudging", "Scumbling", "Dry Brush", "Stippling", "Pointillism", "Impasto", "Glazing", "Scratching"],
+        "explanation": "Pastel blending involves combining pastel layers by using tools or fingers, creating smooth transitions between colors."
+    },
+    {
+        "question": "Which sculptural technique involves carving material away to create the desired form?",
+        "correctAnswers": ["Subtractive Sculpture"],
+        "incorrectAnswers": ["Additive Sculpture", "Casting", "Modeling", "Assemblage", "Relief", "Collage", "Inlay", "Marquetry"],
+        "explanation": "Subtractive sculpture is the process of removing material, such as carving wood or stone, to reveal the intended shape."
+    },
+    {
+        "question": "What painting technique involves applying paint in sweeping, expressive strokes to convey energy?",
+        "correctAnswers": ["Brushwork"],
+        "incorrectAnswers": ["Impasto", "Dry Brush", "Scumbling", "Pointillism", "Stippling", "Blending", "Glazing", "Sgraffito"],
+        "explanation": "Brushwork refers to the visible strokes of a brush, often used expressively to add movement and texture to a painting."
+    },
+    {
+        "question": "Which technique involves creating patterns by folding fabric and dyeing it in sections?",
+        "correctAnswers": ["Tie-Dye"],
+        "incorrectAnswers": ["Marbling", "Batik", "Stamping", "Stencil", "Overlaying", "Screen Printing", "Block Printing", "Collage"],
+        "explanation": "Tie-dye is a fabric-dyeing technique where the fabric is tied in sections before being dyed, resulting in distinctive patterns."
+    },
+    {
+        "question": "What term describes the use of multiple textures in an artwork by combining various materials?",
+        "correctAnswers": ["Mixed Media"],
+        "incorrectAnswers": ["Collage", "Assemblage", "Relief", "Inlay", "Frottage", "Impasto", "Layering", "Overlaying"],
+        "explanation": "Mixed media refers to combining different materials and techniques in a single artwork to create diverse textures and effects."
+    },
+    {
+        "question": "Which technique uses a mesh screen to transfer ink onto a surface, blocking parts to create a design?",
+        "correctAnswers": ["Screen Printing"],
+        "incorrectAnswers": ["Stencil", "Relief Printing", "Etching", "Monoprinting", "Lithography", "Drypoint", "Woodcut", "Intaglio"],
+        "explanation": "Screen printing involves transferring ink through a mesh screen onto a surface, with blocked areas creating the design."
+    },
+    {
+        "question": "What term refers to the use of heated wax to create patterns that resist dye on fabric?",
+        "correctAnswers": ["Batik"],
+        "incorrectAnswers": ["Tie-Dye", "Marbling", "Stamping", "Relief Printing", "Stencil", "Screen Printing", "Overlaying", "Etching"],
+        "explanation": "Batik is a fabric-dyeing technique that uses wax to resist dye, creating intricate patterns."
+    },
+    {
+        "question": "What drawing method involves creating quick sketches to capture movement or form?",
+        "correctAnswers": ["Gesture Drawing"],
+        "incorrectAnswers": ["Contour Drawing", "Hatching", "Crosshatching", "Stippling", "Blending", "Smudging", "Scumbling", "Scratching"],
+        "explanation": "Gesture drawing focuses on capturing the movement, form, and essence of a subject quickly and fluidly."
+    },
+    {
+        "question": "Which technique involves carefully outlining the edges of a subject without looking at the paper?",
+        "correctAnswers": ["Blind Contour Drawing"],
+        "incorrectAnswers": ["Gesture Drawing", "Contour Drawing", "Stippling", "Hatching", "Crosshatching", "Smudging", "Scratching", "Blending"],
+        "explanation": "Blind contour drawing involves drawing the outline of a subject without looking at the paper, enhancing observational skills."
+    },
+    {
+        "question": "What term describes the process of adding light tones to emphasize highlights in artwork?",
+        "correctAnswers": ["Highlighting"],
+        "incorrectAnswers": ["Shading", "Blending", "Hatching", "Crosshatching", "Scratching", "Smudging", "Pointillism", "Stippling"],
+        "explanation": "Highlighting involves applying lighter tones to an artwork to emphasize areas where light hits the surface."
+    },
+    {
+        "question": "Which technique involves arranging and fixing photographs or printed materials on a surface?",
+        "correctAnswers": ["Collage"],
+        "incorrectAnswers": ["Assemblage", "Overlaying", "Relief", "Marquetry", "Frottage", "Mixed Media", "Inlay", "Montage"],
+        "explanation": "Collage is an artistic technique where photographs, printed materials, or other objects are arranged and adhered to a surface."
+    },
+    {
+        "question": "What is the process of rolling ink onto a raised surface and pressing it onto paper to create a print?",
+        "correctAnswers": ["Relief Printing"],
+        "incorrectAnswers": ["Intaglio", "Etching", "Drypoint", "Screen Printing", "Lithography", "Monoprinting", "Stencil", "Engraving"],
+        "explanation": "Relief printing involves rolling ink onto raised surfaces and transferring the design onto paper through pressure."
+    },
+    {
+        "question": "Which sculptural method involves assembling and joining different materials into a single piece?",
+        "correctAnswers": ["Assemblage"],
+        "incorrectAnswers": ["Additive Sculpture", "Subtractive Sculpture", "Relief", "Collage", "Modeling", "Casting", "Marquetry", "Inlay"],
+        "explanation": "Assemblage is a sculptural technique where various materials are combined into a unified composition."
+    },
+    {
+        "question": "What technique uses a pointed tool to engrave a design into a surface for printmaking?",
+        "correctAnswers": ["Engraving"],
+        "incorrectAnswers": ["Etching", "Drypoint", "Relief Printing", "Screen Printing", "Intaglio", "Monoprinting", "Woodcut", "Lithography"],
+        "explanation": "Engraving involves using a sharp tool to carve designs into a surface, often for creating prints."
+    },
+    {
+        "question": "Which technique involves layering colors to create subtle tonal transitions in artwork?",
+        "correctAnswers": ["Layering"],
+        "incorrectAnswers": ["Blending", "Scumbling", "Glazing", "Sgraffito", "Smudging", "Pointillism", "Stippling", "Dry Brush"],
+        "explanation": "Layering involves applying multiple transparent or opaque layers of color to create depth and tonal variation."
+    },
+    {
+        "question": "What is the term for the process of applying gold leaf to a surface for decoration?",
+        "correctAnswers": ["Gilding"],
+        "incorrectAnswers": ["Encaustic", "Marquetry", "Inlay", "Overlaying", "Foiling", "Embossing", "Stamping", "Etching"],
+        "explanation": "Gilding is the application of gold leaf or gold paint to a surface, often used for decorative purposes in art and architecture."
+    },
+    {
+        "question": "Which method involves burning wood or leather to create a design?",
+        "correctAnswers": ["Pyrography"],
+        "incorrectAnswers": ["Carving", "Engraving", "Embossing", "Inlay", "Relief", "Etching", "Marquetry", "Casting"],
+        "explanation": "Pyrography is the art of using heat to burn designs into surfaces like wood or leather, often creating detailed patterns or imagery."
+    },
+    {
+        "question": "What term describes a technique of scraping away layers of paint or ink to reveal the surface beneath?",
+        "correctAnswers": ["Scraping"],
+        "incorrectAnswers": ["Sgraffito", "Scumbling", "Scratching", "Frottage", "Etching", "Drypoint", "Engraving", "Burnishing"],
+        "explanation": "Scraping involves removing layers of paint or other materials to expose the underlying surface, often for texture or contrast."
+    },
+    {
+        "question": "What technique is used to create smooth transitions in shading by smearing or blending mediums like charcoal?",
+        "correctAnswers": ["Smudging"],
+        "incorrectAnswers": ["Blending", "Shading", "Hatching", "Stippling", "Crosshatching", "Sgraffito", "Pointillism", "Dry Brush"],
+        "explanation": "Smudging is the process of using tools or fingers to soften lines or create smooth gradations in charcoal, graphite, or pastel."
+    },
+    {
+        "question": "What is the term for the technique of painting with fast-drying, water-based pigments mixed with polymer emulsion?",
+        "correctAnswers": ["Acrylic Painting"],
+        "incorrectAnswers": ["Tempera", "Oil Painting", "Watercolor", "Gouache", "Encaustic", "Fresco", "Pastel", "Casein"],
+        "explanation": "Acrylic painting uses water-based pigments that dry quickly and form a durable, plastic-like layer on the surface."
+    },
+    {
+        "question": "Which sculptural technique involves pouring liquid material into a mold to form a shape?",
+        "correctAnswers": ["Casting"],
+        "incorrectAnswers": ["Modeling", "Carving", "Relief", "Assemblage", "Additive Sculpture", "Inlay", "Marquetry", "Welding"],
+        "explanation": "Casting is a process where liquid material, such as molten metal or plaster, is poured into a mold and allowed to harden into the desired shape."
+    },
+    {
+        "question": "What is the technique of applying color to wet plaster so the paint becomes part of the wall surface?",
+        "correctAnswers": ["Fresco"],
+        "incorrectAnswers": ["Encaustic", "Tempera", "Acrylic", "Oil Painting", "Gouache", "Pastel", "Watercolor", "Casein"],
+        "explanation": "Fresco involves painting onto freshly laid wet plaster, allowing the pigments to chemically bond with the surface as it dries."
+    },
+    {
+        "question": "What term describes creating patterns or textures by pressing objects into clay or soft materials?",
+        "correctAnswers": ["Impression"],
+        "incorrectAnswers": ["Stamping", "Embossing", "Relief", "Etching", "Carving", "Frottage", "Burnishing", "Casting"],
+        "explanation": "Impression is a technique where objects are pressed into pliable materials to create patterns, textures, or designs."
+    },
+    {
+        "question": "Which technique involves attaching small pieces of paper, fabric, or photographs to create an artwork?",
+        "correctAnswers": ["Collage"],
+        "incorrectAnswers": ["Assemblage", "Montage", "Mixed Media", "Marquetry", "Relief", "Layering", "Overlaying", "Inlay"],
+        "explanation": "Collage is a method of assembling various materials, such as paper or photographs, to create a unified artistic composition."
+    },
+    {
+        "question": "What is the term for creating raised designs on a surface by hammering from the reverse side?",
+        "correctAnswers": ["Repoussé"],
+        "incorrectAnswers": ["Embossing", "Engraving", "Etching", "Relief", "Burnishing", "Casting", "Carving", "Inlay"],
+        "explanation": "Repoussé is a technique of hammering metal from the back to create raised patterns or designs on the front."
+    },
+    {
+        "question": "Which painting method involves using diluted pigments to allow light to pass through the layers?",
+        "correctAnswers": ["Watercolor"],
+        "incorrectAnswers": ["Acrylic", "Gouache", "Tempera", "Oil Painting", "Fresco", "Casein", "Encaustic", "Pastel"],
+        "explanation": "Watercolor is a painting technique that uses water-soluble pigments applied in transparent layers, allowing light to reflect through the color."
+    },
+    {
+        "question": "What drawing technique uses closely spaced lines to create tonal effects?",
+        "correctAnswers": ["Hatching"],
+        "incorrectAnswers": ["Crosshatching", "Blending", "Stippling", "Shading", "Pointillism", "Scratching", "Scumbling", "Smudging"],
+        "explanation": "Hatching is a method of using parallel lines placed close together to create shading and depth in a drawing."
+    },
+    {
+        "question": "What is the term for cutting intricate designs into wood or metal for decorative purposes?",
+        "correctAnswers": ["Marquetry"],
+        "incorrectAnswers": ["Inlay", "Engraving", "Etching", "Relief", "Casting", "Carving", "Sgraffito", "Assemblage"],
+        "explanation": "Marquetry is the art of creating decorative patterns or images by cutting and fitting pieces of wood, metal, or other materials together."
+    },
+    {
+        "question": "Which drawing method involves outlining a subject with a single, continuous line?",
+        "correctAnswers": ["Contour Drawing"],
+        "incorrectAnswers": ["Gesture Drawing", "Blind Contour", "Hatching", "Crosshatching", "Stippling", "Blending", "Smudging", "Scumbling"],
+        "explanation": "Contour drawing focuses on capturing the edges and outlines of a subject using a continuous line, emphasizing form and proportion."
+    },
+    {
+        "question": "What technique uses wax crayons or oil pastels to resist water-based paint applied on top?",
+        "correctAnswers": ["Resist Painting"],
+        "incorrectAnswers": ["Batik", "Overlaying", "Glazing", "Dry Brush", "Scraping", "Sponging", "Impasto", "Marbling"],
+        "explanation": "Resist painting involves using a wax-based medium to create areas that repel water-based paint, forming patterns and textures."
+    },
+    {
+        "question": "What term refers to the practice of layering thin sheets of metal for artistic effects?",
+        "correctAnswers": ["Foiling"],
+        "incorrectAnswers": ["Gilding", "Marquetry", "Inlay", "Embossing", "Casting", "Burnishing", "Overlaying", "Repoussé"],
+        "explanation": "Foiling involves applying thin sheets of metal, such as gold or silver, to a surface for decorative or reflective effects."
+    },
+    {
+        "question": "Which printmaking method uses stone or metal plates with an oil-and-water-based process?",
+        "correctAnswers": ["Lithography"],
+        "incorrectAnswers": ["Screen Printing", "Relief Printing", "Intaglio", "Etching", "Drypoint", "Engraving", "Stencil", "Woodcut"],
+        "explanation": "Lithography is a printmaking technique that uses the immiscibility of oil and water to create designs on stone or metal plates."
+    },
+    {
+        "question": "What technique involves twisting wire to create sculptures or decorative objects?",
+        "correctAnswers": ["Wire Sculpture"],
+        "incorrectAnswers": ["Casting", "Assemblage", "Carving", "Modeling", "Additive Sculpture", "Relief", "Inlay", "Welding"],
+        "explanation": "Wire sculpture involves bending, twisting, and shaping wire into three-dimensional forms or decorative elements."
+    },
+    {
+        "question": "What is the term for applying pigments mixed with glue to create luminous, fast-drying artworks?",
+        "correctAnswers": ["Casein Painting"],
+        "incorrectAnswers": ["Tempera", "Acrylic", "Oil Painting", "Watercolor", "Fresco", "Pastel", "Encaustic", "Gouache"],
+        "explanation": "Casein painting uses pigments mixed with a milk protein binder, producing vibrant and fast-drying artworks."
+    },
+    {
+        "question": "Which technique involves scratching through a dark coating to reveal a lighter surface beneath?",
+        "correctAnswers": ["Scratchboard"],
+        "incorrectAnswers": ["Sgraffito", "Scraping", "Etching", "Drypoint", "Frottage", "Scumbling", "Scratching", "Pointillism"],
+        "explanation": "Scratchboard is a technique where the artist scratches away a dark surface to reveal a lighter layer underneath, creating detailed images."
+    },
+    {
+        "question": "What method involves carving into woodblocks to create a print design?",
+        "correctAnswers": ["Woodcut"],
+        "incorrectAnswers": ["Etching", "Drypoint", "Relief Printing", "Intaglio", "Engraving", "Lithography", "Stencil", "Screen Printing"],
+        "explanation": "Woodcut is a relief printmaking technique where designs are carved into woodblocks, leaving raised areas that transfer ink to paper."
+    },
+    {
+        "question": "What painting technique creates a speckled effect by flicking paint onto a surface?",
+        "correctAnswers": ["Splattering"],
+        "incorrectAnswers": ["Drip Painting", "Impasto", "Sponging", "Glazing", "Sgraffito", "Pointillism", "Stippling", "Dry Brush"],
+        "explanation": "Splattering is a technique in which paint is flicked or thrown onto a surface to create a random, speckled texture."
+    },
+    {
+        "question": "Which technique involves melting crayon wax on canvas to create abstract patterns?",
+        "correctAnswers": ["Wax Melting"],
+        "incorrectAnswers": ["Encaustic", "Batik", "Drip Painting", "Marbling", "Resist Painting", "Gouache", "Impasto", "Glazing"],
+        "explanation": "Wax melting involves heating and manipulating crayon wax on a surface to create colorful, abstract designs."
+    },
+    {
+        "question": "What technique uses a mesh screen and stencils to apply layers of ink for vibrant prints?",
+        "correctAnswers": ["Silkscreen Printing"],
+        "incorrectAnswers": ["Screen Printing", "Relief Printing", "Intaglio", "Lithography", "Stencil", "Engraving", "Etching", "Drypoint"],
+        "explanation": "Silkscreen printing involves using a mesh screen and stencils to apply ink in layers, creating bold and vibrant images."
+    },
+    {
+        "question": "What method involves folding, dyeing, and sewing fabric to create geometric patterns?",
+        "correctAnswers": ["Shibori"],
+        "incorrectAnswers": ["Tie-Dye", "Batik", "Marbling", "Block Printing", "Screen Printing", "Relief Printing", "Stencil", "Collage"],
+        "explanation": "Shibori is a traditional Japanese fabric dyeing technique that uses folding, twisting, and binding to create geometric patterns."
+    },
+    {
+        "question": "Which technique involves embedding objects like glass or stone into plaster or cement to create a pattern?",
+        "correctAnswers": ["Mosaic"],
+        "incorrectAnswers": ["Collage", "Assemblage", "Relief", "Marquetry", "Inlay", "Sgraffito", "Scraping", "Casting"],
+        "explanation": "Mosaic is an art form that involves embedding small pieces of colored glass, stone, or other materials into a surface to create decorative designs."
+    },
+    {
+        "question": "What technique uses thin sheets of metal, such as gold or silver, to decorate surfaces?",
+        "correctAnswers": ["Gilding"],
+        "incorrectAnswers": ["Foiling", "Embossing", "Repoussé", "Marquetry", "Inlay", "Burnishing", "Engraving", "Casting"],
+        "explanation": "Gilding involves applying thin sheets of metal, typically gold or silver, to a surface for a luxurious and decorative finish."
+    },
+    {
+        "question": "Which printmaking method involves carving lines into a metal plate to hold ink?",
+        "correctAnswers": ["Intaglio"],
+        "incorrectAnswers": ["Relief Printing", "Etching", "Engraving", "Drypoint", "Lithography", "Screen Printing", "Monoprinting", "Woodcut"],
+        "explanation": "Intaglio is a printmaking technique where lines are incised into a metal plate, and the grooves hold the ink that is transferred to paper."
+    },
+    {
+        "question": "What painting style emphasizes the use of light and shadow to create dramatic contrast?",
+        "correctAnswers": ["Chiaroscuro"],
+        "incorrectAnswers": ["Tenebrism", "Grisaille", "Monochrome", "Blending", "Layering", "Pointillism", "Dry Brush", "Sgraffito"],
+        "explanation": "Chiaroscuro is an artistic technique that uses light and shadow contrasts to create a sense of volume and drama in paintings."
+    },
+    {
+        "question": "Which drawing technique focuses on quick sketches to capture the essence of movement?",
+        "correctAnswers": ["Gesture Drawing"],
+        "incorrectAnswers": ["Contour Drawing", "Blind Contour Drawing", "Hatching", "Crosshatching", "Stippling", "Blending", "Smudging", "Scumbling"],
+        "explanation": "Gesture drawing is a rapid sketching technique used to capture the movement and essence of a subject rather than precise details."
+    },
+    {
+        "question": "What sculptural technique involves shaping material like clay with hands or tools?",
+        "correctAnswers": ["Modeling"],
+        "incorrectAnswers": ["Casting", "Carving", "Assemblage", "Relief", "Additive Sculpture", "Subtractive Sculpture", "Inlay", "Burnishing"],
+        "explanation": "Modeling is a sculptural technique where pliable materials like clay or wax are shaped and formed using hands or tools."
+    },
+    {
+        "question": "What term describes a method of arranging photos, drawings, and text into a cohesive artwork?",
+        "correctAnswers": ["Montage"],
+        "incorrectAnswers": ["Collage", "Assemblage", "Mixed Media", "Inlay", "Marquetry", "Foiling", "Relief", "Scraping"],
+        "explanation": "Montage is a technique of assembling various elements such as photographs, drawings, or text into a cohesive visual composition."
+    },
+    {
+        "question": "Which painting medium uses finely ground pigment and a water-based gum as a binder?",
+        "correctAnswers": ["Gouache"],
+        "incorrectAnswers": ["Watercolor", "Acrylic", "Tempera", "Oil Painting", "Fresco", "Casein", "Pastel", "Encaustic"],
+        "explanation": "Gouache is an opaque water-based paint that uses gum as a binder, creating vibrant and matte finishes."
+    },
+    {
+        "question": "What method uses layers of translucent material to create depth and dimension in an artwork?",
+        "correctAnswers": ["Overlaying"],
+        "incorrectAnswers": ["Glazing", "Blending", "Scumbling", "Layering", "Dry Brush", "Impasto", "Pointillism", "Sponging"],
+        "explanation": "Overlaying involves stacking translucent materials or layers to add depth and visual complexity to an artwork."
+    },
+    {
+        "question": "Which technique involves dripping or pouring paint onto a canvas placed on the ground?",
+        "correctAnswers": ["Action Painting"],
+        "incorrectAnswers": ["Drip Painting", "Splattering", "Glazing", "Impasto", "Dry Brush", "Scumbling", "Pointillism", "Sgraffito"],
+        "explanation": "Action painting is a style of abstract expressionism where paint is dripped or poured onto a canvas to capture dynamic movement and spontaneity."
+    },
+    {
+        "question": "What is the term for a thin layer of wax applied to artwork to protect and add shine?",
+        "correctAnswers": ["Burnishing"],
+        "incorrectAnswers": ["Polishing", "Foiling", "Gilding", "Encaustic", "Varnishing", "Sealing", "Inlay", "Marquetry"],
+        "explanation": "Burnishing involves applying and buffing a layer of wax onto a surface to protect the artwork and enhance its sheen."
+    },
+    {
+        "question": "What technique combines drawing, painting, and collage to create an integrated artwork?",
+        "correctAnswers": ["Mixed Media"],
+        "incorrectAnswers": ["Collage", "Assemblage", "Montage", "Layering", "Overlaying", "Relief", "Inlay", "Marquetry"],
+        "explanation": "Mixed media refers to combining multiple art forms, such as painting, drawing, and collage, to create a unified artistic piece."
+    },
+    {
+        "question": "What process involves using acid to carve a design into a metal surface for printmaking?",
+        "correctAnswers": ["Etching"],
+        "incorrectAnswers": ["Engraving", "Drypoint", "Intaglio", "Lithography", "Relief Printing", "Screen Printing", "Woodcut", "Stencil"],
+        "explanation": "Etching involves using acid to bite into a metal plate, creating grooves that hold ink for the printmaking process."
+    },
+    {
+        "question": "Which method uses thick layers of paint to create a highly textured surface?",
+        "correctAnswers": ["Impasto"],
+        "incorrectAnswers": ["Scumbling", "Dry Brush", "Blending", "Pointillism", "Sgraffito", "Glazing", "Splattering", "Drip Painting"],
+        "explanation": "Impasto is a painting technique where thick paint is applied to create texture, often leaving visible brush or knife marks."
+    },
+    {
+        "question": "What drawing method involves using dots to create gradients or tonal shading?",
+        "correctAnswers": ["Stippling"],
+        "incorrectAnswers": ["Pointillism", "Hatching", "Crosshatching", "Blending", "Scumbling", "Scratching", "Smudging", "Layering"],
+        "explanation": "Stippling is a technique that uses small, closely spaced dots to create gradients, texture, and shading in a drawing."
+    },
+    {
+        "question": "What technique involves painting directly onto a surface without preparatory sketches or underdrawings?",
+        "correctAnswers": ["Alla Prima"],
+        "incorrectAnswers": ["Impasto", "Glazing", "Grisaille", "Scumbling", "Dry Brush", "Pointillism", "Stippling", "Wash"],
+        "explanation": "Alla Prima, or 'wet-on-wet,' is a painting technique in which layers of paint are applied without allowing earlier layers to dry, often completed in a single session."
+    },
+    {
+        "question": "Which drawing technique focuses on using parallel or crisscrossed lines to suggest shadows and volume?",
+        "correctAnswers": ["Crosshatching"],
+        "incorrectAnswers": ["Hatching", "Blending", "Stippling", "Scumbling", "Smudging", "Sgraffito", "Scratching", "Grisaille"],
+        "explanation": "Crosshatching involves layering intersecting sets of parallel lines to create depth, texture, and tonal variations in a drawing."
+    },
+    {
+        "question": "What is the name of the art form that creates images using small colored tiles, glass, or stones?",
+        "correctAnswers": ["Mosaic"],
+        "incorrectAnswers": ["Collage", "Inlay", "Marquetry", "Assemblage", "Relief", "Layering", "Foiling", "Gilding"],
+        "explanation": "Mosaic art involves arranging small colored pieces of materials like glass or stones into patterns or images, often for decorative purposes."
+    },
+    {
+        "question": "Which technique uses brushes dipped in paint to flick or scatter it onto a canvas?",
+        "correctAnswers": ["Splattering"],
+        "incorrectAnswers": ["Drip Painting", "Sponging", "Stippling", "Pointillism", "Dry Brush", "Scumbling", "Wash", "Impasto"],
+        "explanation": "Splattering is a method where paint is flicked or thrown onto a canvas to create a random, speckled effect."
+    },
+    {
+        "question": "What term describes the use of light and shadow to give the illusion of three-dimensionality in artwork?",
+        "correctAnswers": ["Chiaroscuro"],
+        "incorrectAnswers": ["Tenebrism", "Grisaille", "Sfumato", "Shading", "Hatching", "Blending", "Smudging", "Highlighting"],
+        "explanation": "Chiaroscuro is an artistic technique that contrasts light and dark areas to create depth and three-dimensionality in paintings and drawings."
+    },
+    {
+        "question": "Which method involves creating designs by applying and removing layers of wax to resist dye?",
+        "correctAnswers": ["Batik"],
+        "incorrectAnswers": ["Tie-Dye", "Marbling", "Stamping", "Screen Printing", "Stencil", "Embossing", "Foiling", "Layering"],
+        "explanation": "Batik is a fabric-dyeing technique where wax is used to create patterns by resisting dye penetration in specific areas."
+    },
+    {
+        "question": "What is the technique of layering light, translucent colors over dry opaque layers to add depth?",
+        "correctAnswers": ["Glazing"],
+        "incorrectAnswers": ["Impasto", "Scumbling", "Blending", "Dry Brush", "Pointillism", "Wash", "Grisaille", "Stippling"],
+        "explanation": "Glazing involves applying thin, translucent layers of paint over an opaque base to create depth and luminosity in artwork."
+    },
+    {
+        "question": "What sculptural technique uses soft materials like clay or wax to shape and form objects?",
+        "correctAnswers": ["Modeling"],
+        "incorrectAnswers": ["Carving", "Casting", "Assemblage", "Subtractive Sculpture", "Relief", "Burnishing", "Gilding", "Inlay"],
+        "explanation": "Modeling is a sculptural process that involves shaping pliable materials, such as clay or wax, to create three-dimensional forms."
+    },
+    {
+        "question": "Which painting technique blends colors softly to create a hazy or smoky effect?",
+        "correctAnswers": ["Sfumato"],
+        "incorrectAnswers": ["Blending", "Glazing", "Chiaroscuro", "Grisaille", "Scumbling", "Dry Brush", "Impasto", "Pointillism"],
+        "explanation": "Sfumato is a technique that softens transitions between colors and tones, often used to create a dreamy or atmospheric effect."
+    },
+    {
+        "question": "What printmaking technique involves scratching directly onto a plate with a sharp tool?",
+        "correctAnswers": ["Drypoint"],
+        "incorrectAnswers": ["Etching", "Engraving", "Relief Printing", "Lithography", "Screen Printing", "Stencil", "Woodcut", "Intaglio"],
+        "explanation": "Drypoint is a printmaking method in which a sharp tool scratches lines into a plate, creating burrs that hold ink and produce rich, velvety lines."
+    },
+    {
+        "question": "What method uses a palette knife to apply thick, textured layers of paint to a canvas?",
+        "correctAnswers": ["Knife Painting"],
+        "incorrectAnswers": ["Impasto", "Scumbling", "Blending", "Dry Brush", "Splattering", "Pointillism", "Glazing", "Wash"],
+        "explanation": "Knife painting involves applying paint with a palette knife, resulting in bold, textured strokes that add depth to the artwork."
+    },
+    {
+        "question": "Which drawing technique involves using small, repetitive dots to create texture or shading?",
+        "correctAnswers": ["Stippling"],
+        "incorrectAnswers": ["Pointillism", "Hatching", "Crosshatching", "Blending", "Scumbling", "Smudging", "Scratching", "Shading"],
+        "explanation": "Stippling is a method of drawing where small dots are used to create gradients and textures, giving a detailed and precise effect."
+    },
+    {
+        "question": "Which technique uses finely ground pigments suspended in water to produce a matte finish?",
+        "correctAnswers": ["Gouache"],
+        "incorrectAnswers": ["Watercolor", "Acrylic", "Tempera", "Fresco", "Casein", "Pastel", "Oil Painting", "Encaustic"],
+        "explanation": "Gouache is an opaque water-based paint that provides a smooth, matte finish and is often used in illustrations and design."
+    },
+    {
+        "question": "What term refers to engraving or incising a design onto metal or wood for decorative purposes?",
+        "correctAnswers": ["Engraving"],
+        "incorrectAnswers": ["Etching", "Drypoint", "Relief Printing", "Intaglio", "Inlay", "Marquetry", "Carving", "Foiling"],
+        "explanation": "Engraving is a technique where designs are incised or cut into a hard surface to create detailed and intricate patterns."
+    },
+    {
+        "question": "What is the name of the process of creating a raised design on paper or metal using pressure?",
+        "correctAnswers": ["Embossing"],
+        "incorrectAnswers": ["Engraving", "Repoussé", "Burnishing", "Inlay", "Stamping", "Relief", "Foiling", "Casting"],
+        "explanation": "Embossing is a decorative technique that raises patterns or designs on materials like paper, metal, or leather by applying pressure."
+    },
+    {
+        "question": "Which technique involves scratching into a layer of paint or plaster to reveal the underlying surface?",
+        "correctAnswers": ["Sgraffito"],
+        "incorrectAnswers": ["Scratching", "Scraping", "Etching", "Scumbling", "Grisaille", "Drypoint", "Glazing", "Burnishing"],
+        "explanation": "Sgraffito is a decorative method where a surface layer is scratched to reveal a contrasting layer underneath, often for patterns or textures."
+    },
+    {
+        "question": "What sculptural process involves removing material to reveal the desired shape?",
+        "correctAnswers": ["Subtractive Sculpture"],
+        "incorrectAnswers": ["Additive Sculpture", "Modeling", "Casting", "Assemblage", "Relief", "Inlay", "Burnishing", "Foiling"],
+        "explanation": "Subtractive sculpture is a technique where material is carved or removed from a larger block to create the intended form."
+    },
+    {
+        "question": "What painting method uses colored beeswax melted and applied to a surface?",
+        "correctAnswers": ["Encaustic"],
+        "incorrectAnswers": ["Acrylic", "Tempera", "Oil Painting", "Watercolor", "Fresco", "Pastel", "Casein", "Gouache"],
+        "explanation": "Encaustic painting involves using colored beeswax that is melted and applied to a surface, resulting in vibrant and durable works."
+    },
+    {
+        "question": "What technique creates textured patterns by rubbing a crayon or pencil over paper placed on a textured surface?",
+        "correctAnswers": ["Frottage"],
+        "incorrectAnswers": ["Rubbing", "Hatching", "Crosshatching", "Scumbling", "Stippling", "Pointillism", "Blending", "Scratching"],
+        "explanation": "Frottage is a technique where a textured surface is transferred to paper by rubbing over it with a crayon or pencil."
+    },
+    {
+        "question": "What technique involves creating smooth tonal transitions by carefully smearing or softening edges?",
+        "correctAnswers": ["Blending"],
+        "incorrectAnswers": ["Hatching", "Crosshatching", "Stippling", "Scumbling", "Smudging", "Shading", "Pointillism", "Dry Brush"],
+        "explanation": "Blending is a method where colors or tones are softened and smoothed to create seamless transitions in shading or color."
+    },
+    {
+        "question": "What is the process of transferring an image or design from one surface to another using pressure?",
+        "correctAnswers": ["Transfer Printing"],
+        "incorrectAnswers": ["Screen Printing", "Relief Printing", "Monoprinting", "Lithography", "Etching", "Intaglio", "Drypoint", "Woodcut"],
+        "explanation": "Transfer printing involves moving an image or design from one surface to another, often through rubbing or applying pressure."
+    },
+    {
+        "question": "Which drawing technique involves creating an image by erasing parts of a pre-shaded surface?",
+        "correctAnswers": ["Subtractive Drawing"],
+        "incorrectAnswers": ["Additive Drawing", "Blending", "Smudging", "Scratching", "Crosshatching", "Scumbling", "Sgraffito", "Hatching"],
+        "explanation": "Subtractive drawing involves removing material, such as erasing parts of a charcoal or graphite surface, to reveal highlights or create forms."
+    },
+    {
+        "question": "What painting technique uses small, distinct brushstrokes to represent light and color as seen in nature?",
+        "correctAnswers": ["Impressionism"],
+        "incorrectAnswers": ["Pointillism", "Scumbling", "Blending", "Glazing", "Dry Brush", "Stippling", "Sgraffito", "Wash"],
+        "explanation": "Impressionism is characterized by small, visible brushstrokes that capture the effects of light and color in a scene."
+    },
+    {
+        "question": "Which drawing method involves carefully tracing the edges of a subject to create an outline?",
+        "correctAnswers": ["Contour Drawing"],
+        "incorrectAnswers": ["Blind Contour Drawing", "Gesture Drawing", "Crosshatching", "Hatching", "Smudging", "Blending", "Stippling"],
+        "explanation": "Contour drawing focuses on drawing the outlines of a subject to emphasize its form and structure without shading or texture."
+    },
+    {
+        "question": "What is the technique of pressing a textured material onto a wet medium to create patterns?",
+        "correctAnswers": ["Texturizing"],
+        "incorrectAnswers": ["Frottage", "Stamping", "Relief", "Embossing", "Sgraffito", "Burnishing", "Glazing", "Impasto"],
+        "explanation": "Texturizing involves pressing objects like fabric, leaves, or tools onto wet paint, clay, or plaster to transfer patterns and textures."
+    },
+    {
+        "question": "Which process involves designing an artwork by arranging and adhering small cut-out materials onto a surface?",
+        "correctAnswers": ["Collage"],
+        "incorrectAnswers": ["Assemblage", "Mosaic", "Montage", "Marquetry", "Inlay", "Layering", "Foiling", "Gilding"],
+        "explanation": "Collage is the technique of creating artwork by assembling various materials, such as paper or fabric, onto a flat surface."
+    },
+    {
+        "question": "What is the art of shaping glass using heat to create sculptures or vessels?",
+        "correctAnswers": ["Glassblowing"],
+        "incorrectAnswers": ["Casting", "Carving", "Modeling", "Assemblage", "Additive Sculpture", "Relief", "Engraving", "Inlay"],
+        "explanation": "Glassblowing involves heating and shaping molten glass into forms like sculptures, vessels, or decorative objects using blowing techniques."
+    },
+    {
+        "question": "Which technique involves drawing with a tool dipped in ink, often used for fine line work?",
+        "correctAnswers": ["Pen and Ink Drawing"],
+        "incorrectAnswers": ["Charcoal Drawing", "Graphite Drawing", "Stippling", "Pointillism", "Crosshatching", "Hatching", "Blending", "Dry Brush"],
+        "explanation": "Pen and ink drawing uses pens or nibs dipped in ink to create precise lines, textures, and detailed illustrations."
+    },
+    {
+        "question": "What technique uses overlapping layers of materials to create depth and complexity in an artwork?",
+        "correctAnswers": ["Layering"],
+        "incorrectAnswers": ["Overlaying", "Glazing", "Blending", "Scumbling", "Pointillism", "Impasto", "Dry Brush", "Stippling"],
+        "explanation": "Layering involves applying multiple layers of materials or mediums, such as paint or paper, to add dimension and complexity to a piece."
+    },
+    {
+        "question": "What sculptural technique combines found objects into a three-dimensional artwork?",
+        "correctAnswers": ["Assemblage"],
+        "incorrectAnswers": ["Collage", "Montage", "Relief", "Inlay", "Additive Sculpture", "Carving", "Casting", "Marquetry"],
+        "explanation": "Assemblage involves combining found or repurposed objects into a cohesive three-dimensional artwork, emphasizing creative juxtaposition."
+    },
+    {
+        "question": "Which painting method involves creating designs on fabric by blocking dye with stencils or screens?",
+        "correctAnswers": ["Screen Printing"],
+        "incorrectAnswers": ["Stamping", "Relief Printing", "Tie-Dye", "Batik", "Stencil", "Marbling", "Overlaying", "Impression"],
+        "explanation": "Screen printing uses a mesh screen to transfer ink or dye onto fabric or other surfaces, often through the use of stencils."
+    },
+    {
+        "question": "What is the technique of adding highlights to a drawing by using a white pencil or chalk?",
+        "correctAnswers": ["Highlighting"],
+        "incorrectAnswers": ["Shading", "Blending", "Smudging", "Scumbling", "Hatching", "Pointillism", "Crosshatching", "Grisaille"],
+        "explanation": "Highlighting involves adding light tones with a white medium to emphasize the brightest areas of an artwork and create contrast."
+    },
+    {
+        "question": "Which painting style uses bold, expressive strokes to convey emotion or movement?",
+        "correctAnswers": ["Expressionism"],
+        "incorrectAnswers": ["Impressionism", "Abstract Art", "Realism", "Pointillism", "Cubism", "Surrealism", "Minimalism", "Baroque"],
+        "explanation": "Expressionism emphasizes emotional intensity and movement through bold, dynamic brushstrokes and vivid colors."
+    },
+    {
+        "question": "What method uses a sponge to apply paint for creating textured or mottled effects?",
+        "correctAnswers": ["Sponging"],
+        "incorrectAnswers": ["Blending", "Dry Brush", "Stippling", "Pointillism", "Scumbling", "Glazing", "Impasto", "Frottage"],
+        "explanation": "Sponging involves applying or removing paint with a sponge to create unique textures and patterns on a surface."
+    },
+    {
+        "question": "Which sculptural process involves assembling flat pieces of material into a three-dimensional form?",
+        "correctAnswers": ["Relief"],
+        "incorrectAnswers": ["Assemblage", "Carving", "Casting", "Modeling", "Additive Sculpture", "Subtractive Sculpture", "Inlay", "Marquetry"],
+        "explanation": "Relief sculpture involves shaping a flat material so that its design projects slightly or significantly from the background."
+    },
+    {
+        "question": "What painting technique uses translucent layers to create soft, luminous effects?",
+        "correctAnswers": ["Glazing"],
+        "incorrectAnswers": ["Blending", "Scumbling", "Wash", "Impasto", "Dry Brush", "Pointillism", "Layering", "Sgraffito"],
+        "explanation": "Glazing involves applying thin, transparent layers of paint to create depth, luminosity, and subtle tonal variations in an artwork."
+    },
+    {
+        "question": "Which technique involves engraving designs into a soft ground before applying ink and printing?",
+        "correctAnswers": ["Etching"],
+        "incorrectAnswers": ["Engraving", "Drypoint", "Relief Printing", "Screen Printing", "Lithography", "Stencil", "Woodcut", "Intaglio"],
+        "explanation": "Etching is a printmaking process where a design is incised into a metal plate covered with an acid-resistant ground, then etched using acid."
+    },
+    {
+        "question": "What is the process of creating a tonal image by rubbing a tool over a textured surface beneath paper?",
+        "correctAnswers": ["Frottage"],
+        "incorrectAnswers": ["Stamping", "Burnishing", "Texturizing", "Rubbing", "Scumbling", "Embossing", "Sgraffito", "Scratching"],
+        "explanation": "Frottage involves rubbing a crayon, pencil, or other medium over paper placed atop a textured surface to transfer its pattern."
+    },
+    {
+        "question": "Which method uses geometric shapes and fragmented forms to depict subjects in an abstract way?",
+        "correctAnswers": ["Cubism"],
+        "incorrectAnswers": ["Abstract Expressionism", "Impressionism", "Surrealism", "Realism", "Expressionism", "Minimalism", "Fauvism"],
+        "explanation": "Cubism is an art movement characterized by the use of geometric shapes and fragmented perspectives to represent subjects abstractly."
+    },
+    {
+        "question": "What drawing method involves creating highlights by scraping off layers of a dark medium?",
+        "correctAnswers": ["Scratchboard"],
+        "incorrectAnswers": ["Sgraffito", "Etching", "Scraping", "Engraving", "Scumbling", "Hatching", "Stippling", "Crosshatching"],
+        "explanation": "Scratchboard is a technique where the artist scratches through a dark surface to reveal a lighter layer underneath, often creating highly detailed images."
+    },
+    {
+        "question": "Which sculptural process involves pouring molten metal into a mold to form a shape?",
+        "correctAnswers": ["Casting"],
+        "incorrectAnswers": ["Carving", "Modeling", "Assemblage", "Additive Sculpture", "Relief", "Engraving", "Inlay", "Repoussé"],
+        "explanation": "Casting is a process in which molten material, such as metal or plaster, is poured into a mold and allowed to cool, forming the desired shape."
+    },
+    {
+        "question": "What painting technique involves drawing or painting over a dried layer to alter or add to the composition?",
+        "correctAnswers": ["Overpainting"],
+        "incorrectAnswers": ["Glazing", "Layering", "Scumbling", "Blending", "Impasto", "Dry Brush", "Wash", "Grisaille"],
+        "explanation": "Overpainting refers to applying new paint layers on top of dried ones to refine, correct, or enhance the artwork."
+    },
+    {
+        "question": "Which process uses acid to bite into a metal plate to create recessed areas for printmaking?",
+        "correctAnswers": ["Etching"],
+        "incorrectAnswers": ["Engraving", "Drypoint", "Intaglio", "Relief Printing", "Lithography", "Stencil", "Screen Printing", "Woodcut"],
+        "explanation": "Etching involves coating a metal plate with an acid-resistant layer, drawing a design, and using acid to create grooves that hold ink."
+    },
+    {
+        "question": "What is the method of arranging pieces of wood, ivory, or metal into a flat surface for decoration?",
+        "correctAnswers": ["Inlay"],
+        "incorrectAnswers": ["Marquetry", "Mosaic", "Assemblage", "Relief", "Layering", "Foiling", "Gilding", "Texturizing"],
+        "explanation": "Inlay is a decorative technique where materials like wood or metal are embedded into a base surface to create intricate designs."
+    },
+    {
+        "question": "Which painting technique involves layering colors and blending them while the paint is still wet?",
+        "correctAnswers": ["Wet-on-Wet"],
+        "incorrectAnswers": ["Dry Brush", "Scumbling", "Glazing", "Blending", "Layering", "Impasto", "Alla Prima", "Wash"],
+        "explanation": "Wet-on-wet is a painting technique where colors are applied and blended directly on the canvas before the paint dries, often creating soft transitions."
+    },
+    {
+        "question": "What is the name of the technique that uses heated metal tools to create raised patterns on leather?",
+        "correctAnswers": ["Tooling"],
+        "incorrectAnswers": ["Embossing", "Engraving", "Repoussé", "Burnishing", "Stamping", "Marquetry", "Casting", "Inlay"],
+        "explanation": "Tooling is a decorative method where heated tools are pressed into leather to create raised patterns or designs."
+    },
+    {
+        "question": "Which process involves cutting and assembling thin sheets of wood into intricate patterns?",
+        "correctAnswers": ["Marquetry"],
+        "incorrectAnswers": ["Inlay", "Mosaic", "Relief", "Engraving", "Texturizing", "Foiling", "Collage", "Assemblage"],
+        "explanation": "Marquetry is the art of creating decorative patterns by fitting together thin pieces of wood veneer on a flat surface."
+    },
+    {
+        "question": "What term describes the application of a thin coat of varnish or glaze to unify the surface of a painting?",
+        "correctAnswers": ["Finishing"],
+        "incorrectAnswers": ["Burnishing", "Glazing", "Layering", "Overpainting", "Blending", "Varnishing", "Sealing", "Priming"],
+        "explanation": "Finishing involves applying a final coat, such as varnish or glaze, to protect the artwork and unify its appearance."
+    },
+    {
+        "question": "Which drawing technique involves rapidly sketching to capture movement and form?",
+        "correctAnswers": ["Gesture Drawing"],
+        "incorrectAnswers": ["Contour Drawing", "Blind Contour Drawing", "Crosshatching", "Hatching", "Stippling", "Smudging", "Blending", "Highlighting"],
+        "explanation": "Gesture drawing is a fast and fluid sketching method used to capture the essence of movement and the overall form of a subject."
+    },
+    {
+        "question": "What term refers to the method of using small dots of color that visually blend in the viewer's eye?",
+        "correctAnswers": ["Pointillism"],
+        "incorrectAnswers": ["Stippling", "Blending", "Scumbling", "Crosshatching", "Sgraffito", "Dry Brush", "Wash", "Splattering"],
+        "explanation": "Pointillism is a painting technique that uses small, distinct dots of color to create an image, relying on optical blending."
+    },
+    {
+        "question": "Which printing method uses a flat stone or metal plate treated to repel ink on certain areas?",
+        "correctAnswers": ["Lithography"],
+        "incorrectAnswers": ["Etching", "Screen Printing", "Relief Printing", "Woodcut", "Drypoint", "Stencil", "Intaglio", "Engraving"],
+        "explanation": "Lithography is a printmaking process where oil-based ink adheres to treated areas of a flat surface, while untreated areas repel the ink."
+    },
+    {
+        "question": "What is the term for a sculptural technique where a design is raised from a flat surface?",
+        "correctAnswers": ["Relief"],
+        "incorrectAnswers": ["Assemblage", "Carving", "Casting", "Modeling", "Additive Sculpture", "Subtractive Sculpture", "Engraving", "Inlay"],
+        "explanation": "Relief sculpture involves carving or modeling a design that projects from a flat background, creating a raised surface."
+    },
+    {
+        "question": "Which painting process involves mixing pigments with water and applying them to wet plaster?",
+        "correctAnswers": ["Fresco"],
+        "incorrectAnswers": ["Tempera", "Watercolor", "Encaustic", "Acrylic", "Oil Painting", "Gouache", "Casein", "Pastel"],
+        "explanation": "Fresco painting involves applying pigments mixed with water onto freshly laid wet plaster, allowing the pigments to bond with the surface."
+    },
+    {
+        "question": "What technique involves scratching through a top layer to reveal a contrasting layer underneath?",
+        "correctAnswers": ["Sgraffito"],
+        "incorrectAnswers": ["Scratchboard", "Engraving", "Etching", "Scraping", "Burnishing", "Scumbling", "Drypoint", "Texturizing"],
+        "explanation": "Sgraffito is a decorative method where the top layer of paint, plaster, or ceramic glaze is scratched away to reveal a contrasting layer below."
+    },
+    {
+        "question": "What drawing technique uses varying line thickness and pressure to create depth and interest?",
+        "correctAnswers": ["Line Weight"],
+        "incorrectAnswers": ["Hatching", "Crosshatching", "Stippling", "Smudging", "Blending", "Scratching", "Scumbling", "Highlighting"],
+        "explanation": "Line weight refers to the use of varying thicknesses in lines to create depth, emphasis, and visual interest in a drawing."
+    },
+    {
+        "question": "Which painting method involves applying paint in a quick and spontaneous manner, often emphasizing emotion?",
+        "correctAnswers": ["Action Painting"],
+        "incorrectAnswers": ["Expressionism", "Splattering", "Drip Painting", "Blending", "Scumbling", "Dry Brush", "Impasto", "Pointillism"],
+        "explanation": "Action painting is a style of abstract expressionism characterized by spontaneous, gestural application of paint to convey emotion and energy."
+    },
+    {
+        "question": "What is the term for creating a decorative surface by hammering from the reverse side?",
+        "correctAnswers": ["Repoussé"],
+        "incorrectAnswers": ["Embossing", "Engraving", "Tooling", "Burnishing", "Inlay", "Casting", "Carving", "Marquetry"],
+        "explanation": "Repoussé is a technique where metal is hammered from the reverse side to create a raised design on the front."
+    },
+    {
+        "question": "Which method uses a sharp tool to carve designs into linoleum for printmaking?",
+        "correctAnswers": ["Linocut"],
+        "incorrectAnswers": ["Woodcut", "Relief Printing", "Engraving", "Etching", "Drypoint", "Intaglio", "Screen Printing", "Stencil"],
+        "explanation": "Linocut is a printmaking technique where designs are carved into linoleum, which is then inked and pressed onto paper to create prints."
+    }
+]
