@@ -117,7 +117,6 @@ public class QuizManager {
         return Mono.empty();
     }
 
-
     private Mono<Message> createQuestionMessage(MessageChannel messageChannel, Long questionNumber, int timeLeft){
         Match match = quizzes.get(messageChannel);
         String questionsAnswers = match.getQuestion().getStringAnswers(false);
@@ -292,6 +291,14 @@ public class QuizManager {
                 .build();
 
         return messageChannel.createMessage(embed);
+    }
+
+    public boolean cancelQuiz(ButtonInteraction buttonInteraction) {
+        User user = buttonInteraction.getUser();
+        Message message = buttonInteraction.getMessage();
+        MessageChannel messageChannel = buttonInteraction.getMessageChannel();
+        Match match = quizzes.get(messageChannel);
+        return false;
     }
 
     public void addUserToMatch(ButtonInteraction buttonInteraction){

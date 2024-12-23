@@ -15,23 +15,35 @@ public class Match{
     private final List<Question> questions;
     private int questionNumber;
 
+    private boolean isClosed;
     @Setter
     private boolean answeringOpen;
     @Setter
     private boolean enrolment;
+    @Setter
+    private Long ownerId;
 
     private String name;
 
-    public Match(List<Question> questions, String type){
+    public Match(List<Question> questions, String type, Long ownerId){
         this.questions = questions;
         this.players = new HashMap<>();
         this.enrolment = true;
         this.questionNumber = 0;
+        this.isClosed = false;
 
         if (type != null) {
             String capitalized = type.substring(0, 1).toUpperCase() + type.substring(1);
             this.name = capitalized;
         }
+    }
+
+    public boolean closeMatch(Long ownerId){
+        if (this.ownerId.equals(ownerId)){
+            isClosed = true;
+            return true;
+        }
+        return false;
     }
 
     //sort highest to lowest scores -> b - a
