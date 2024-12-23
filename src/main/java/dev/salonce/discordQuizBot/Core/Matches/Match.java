@@ -31,6 +31,7 @@ public class Match{
         this.enrolment = true;
         this.questionNumber = 0;
         this.isClosed = false;
+        this.ownerId = ownerId;
 
         if (type != null) {
             String capitalized = type.substring(0, 1).toUpperCase() + type.substring(1);

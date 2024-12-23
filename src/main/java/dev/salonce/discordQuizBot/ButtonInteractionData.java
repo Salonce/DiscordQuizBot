@@ -17,6 +17,10 @@ public class ButtonInteractionData {
             buttonType = "leaveQuiz";
             questionNumber = -1;
             answerNumber = -1;
+        } else if (buttonId.equals("cancelQuiz")) {
+            buttonType = "cancelQuiz";
+            questionNumber = -1;
+            answerNumber = -1;
         } else if (buttonId.matches("Answer-[A-D]-\\d+")) {
             String[] parts = buttonId.split("-");
             buttonType = "Answer";

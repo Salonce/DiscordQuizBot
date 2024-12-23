@@ -295,10 +295,10 @@ public class QuizManager {
 
     public boolean cancelQuiz(ButtonInteraction buttonInteraction) {
         User user = buttonInteraction.getUser();
-        Message message = buttonInteraction.getMessage();
+//      Message message = buttonInteraction.getMessage();
         MessageChannel messageChannel = buttonInteraction.getMessageChannel();
         Match match = quizzes.get(messageChannel);
-        return false;
+        return match.closeMatch(user.getId().asLong());
     }
 
     public void addUserToMatch(ButtonInteraction buttonInteraction){

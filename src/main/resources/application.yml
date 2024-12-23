@@ -17,4 +17,4 @@ questions:
     nihilism: src/main/resources/nihilism.json
 
 #mode - 'standard' or 'testing' or 'testing2' or 'eureka'
-mode: eureka
+mode: testing
