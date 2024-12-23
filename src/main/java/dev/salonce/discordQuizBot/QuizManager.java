@@ -74,12 +74,19 @@ public void addMatch(MessageChannel messageChannel, Match match) {
                 .flatMap(message ->
                         Mono.defer(() -> {
                             if (match.isClosed()) {
-                                return Mono.empty(); // Skip question messages if closed
+                                return Mono.just(message); // Skip question messages if closed
                             }
                             return createQuestionMessages(messageChannel);
                         })
                 )
-                .then(Mono.defer(() -> createMatchResultsMessage(messageChannel)))
+                .flatMap(message ->
+                        Mono.defer(() -> {
+                            if (match.isClosed()) {
+                                return createCanceledMatchMessage(messageChannel);
+                            }
+                            return createMatchResultsMessage(messageChannel);
+                        })
+                )
                 .then(Mono.defer(() -> Mono.just(quizzes.remove(messageChannel))))
                 .subscribe();
     }
@@ -346,6 +353,16 @@ public void addMatch(MessageChannel messageChannel, Match match) {
                 .title("Final scoreboard: " )
                 .description(match.getScoreboard())
                 .addField("", "The winners are: " + match.getWinners(), false)
+                .build();
+
+        return messageChannel.createMessage(embed);
+    }
+
+    private Mono<Message> createCanceledMatchMessage(MessageChannel messageChannel){
+        Match match = quizzes.get(messageChannel);
+
+        EmbedCreateSpec embed = EmbedCreateSpec.builder()
+                .title("Match has been cancelled by the owner." )
                 .build();
 
         return messageChannel.createMessage(embed);
