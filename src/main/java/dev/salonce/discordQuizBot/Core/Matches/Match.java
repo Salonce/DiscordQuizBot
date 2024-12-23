@@ -103,7 +103,10 @@ public class Match{
         StringBuilder sb = new StringBuilder();
         for (int i = 1; i < playersAnswers.size(); i++){
             if (i != 1) sb.append("\n");
-            sb.append((char)('A' + i - 1)).append(": ");
+            if (getQuestion().getCorrectAnswerInt() == i - 1)
+                sb.append("✅ ").append("**").append((char)('A' + i - 1)).append("**: ");
+            else
+                sb.append("❌ ").append((char)('A' + i - 1)).append(": ");
             for (int j = 0; j < playersAnswers.get(i).size(); j++){
                 if (j != 0) sb.append(", ");
                 sb.append(playersAnswers.get(i).get(j));
