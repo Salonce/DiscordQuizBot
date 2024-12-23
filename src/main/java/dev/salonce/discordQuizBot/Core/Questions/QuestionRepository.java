@@ -1,7 +1,7 @@
 package dev.salonce.discordQuizBot.Core.Questions;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.salonce.discordQuizBot.QuestionsConfig;
+import dev.salonce.discordQuizBot.Configs.QuestionsConfig;
 import org.springframework.stereotype.Component;
 
 import java.io.File;

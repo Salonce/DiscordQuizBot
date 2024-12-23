@@ -1,21 +1,20 @@
 package dev.salonce.discordQuizBot;
 
-import dev.salonce.discordQuizBot.Core.Matches.QuizManager;
+import dev.salonce.discordQuizBot.Buttons.AnswerInteractionEnum;
+import dev.salonce.discordQuizBot.Buttons.ButtonInteraction;
+import dev.salonce.discordQuizBot.Buttons.ButtonInteractionData;
 import dev.salonce.discordQuizBot.Core.Messages.DiscordMessage;
-import dev.salonce.discordQuizBot.Core.Questions.RawQuestion;
 import dev.salonce.discordQuizBot.Core.Messages.MessageHandlerChain;
 import discord4j.core.DiscordClient;
 import discord4j.core.GatewayDiscordClient;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import discord4j.core.event.domain.message.MessageCreateEvent;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.IOException;
-import java.util.List;
 
 
 @SpringBootApplication
@@ -33,7 +32,6 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 	private String discordBotToken;
 
 	public static void main(String[] args) throws IOException {
-
 		SpringApplication.run(DiscordQuizBotApplication.class, args);
 	}
 

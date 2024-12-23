@@ -2,9 +2,9 @@ package dev.salonce.discordQuizBot.Core.Messages.Handlers;
 
 import dev.salonce.discordQuizBot.Core.Messages.DiscordMessage;
 import dev.salonce.discordQuizBot.Core.Matches.MatchFactory;
-import dev.salonce.discordQuizBot.Core.Matches.QuizManager;
+import dev.salonce.discordQuizBot.QuizManager;
 import dev.salonce.discordQuizBot.Core.Messages.MessageHandler;
-import dev.salonce.discordQuizBot.QuestionsConfig;
+import dev.salonce.discordQuizBot.Configs.QuestionsConfig;
 import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
