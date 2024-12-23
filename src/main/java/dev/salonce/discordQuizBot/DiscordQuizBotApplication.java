@@ -21,14 +21,12 @@ import java.util.List;
 @SpringBootApplication
 public class DiscordQuizBotApplication implements CommandLineRunner {
 
-	public DiscordQuizBotApplication(MessageHandlerChain messageHandlerChain, @Qualifier("javaQuestions") List<RawQuestion> javaQuestions, QuizManager quizManager){
+	public DiscordQuizBotApplication(MessageHandlerChain messageHandlerChain, QuizManager quizManager){
 		this.messageHandlerChain = messageHandlerChain;
-		this.javaQuestions = javaQuestions;
 		this.quizManager = quizManager;
 	}
 
 	private final MessageHandlerChain messageHandlerChain;
-	private final List<RawQuestion> javaQuestions;
 	private final QuizManager quizManager;
 
 	@Value("${discord.bot.token}")
