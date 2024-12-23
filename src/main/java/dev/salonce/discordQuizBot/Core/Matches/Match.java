@@ -112,7 +112,7 @@ public class Match{
                 sb.append(playersAnswers.get(i).get(j));
             }
         }
-        sb.append("\nNone: ");
+        sb.append("\n❌ ").append("None: ");
         for (int j = 0; j < playersAnswers.get(0).size(); j++){
             if (j != 0) sb.append(", ");
             sb.append(playersAnswers.get(0).get(j));
