@@ -15,6 +15,10 @@ questions:
     python: src/main/resources/python.json
     painting_techniques: src/main/resources/painting_techniques.json
     nihilism: src/main/resources/nihilism.json
+    programming:
+    - src/main/resources/programming_oop.json
+    - src/main/resources/programming_concurrency.json
+
 
 #mode - 'standard' or 'testing' or 'testing2' or 'eureka'
 mode: testing

@@ -19,10 +19,16 @@ public class QuestionRepository {
 //    }
 
     public QuestionRepository(QuestionsConfig questionsConfig) throws IOException {
-        for (Map.Entry<String, String> entry : questionsConfig.getFiles().entrySet()) {
+        for (Map.Entry<String, List<String>> entry : questionsConfig.getFiles().entrySet()) {
             String questionType = entry.getKey();
-            String filePath = entry.getValue();
-            questionMap.put(questionType, loadQuestionsFromFile(filePath));
+            List<RawQuestion> allQuestionsForType = new ArrayList<>();
+
+            for (String filePath : entry.getValue()) {
+                System.out.println("Load key: " + questionType + ". Load filepath: " + filePath);
+                allQuestionsForType.addAll(loadQuestionsFromFile(filePath));
+            }
+
+            questionMap.put(questionType, allQuestionsForType);
         }
     }
 
