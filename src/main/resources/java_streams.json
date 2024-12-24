@@ -238,5 +238,125 @@
         "correctAnswers": ["Files.lines()"],
         "incorrectAnswers": ["Stream.fileLines()", "lineStream()", "File.toStream()"],
         "explanation": "Files.lines() is a utility method for creating a Stream where each element represents a line from the file."
+    },
+    {
+        "question": "Which Stream method converts elements to lowercase strings?",
+        "correctAnswers": ["map(String::toLowerCase)"],
+        "incorrectAnswers": ["convertToLower()", "filterLowerCase()", "Stream.toLowerCase()"],
+        "explanation": "The map(String::toLowerCase) method is used to transform elements into lowercase strings in a Stream."
+    },
+    {
+        "question": "What does the mapToInt() method return?",
+        "correctAnswers": ["An IntStream"],
+        "incorrectAnswers": ["A Stream of Integers", "A List of int values", "A Stream of Long values"],
+        "explanation": "The mapToInt() method is used to produce an IntStream from a Stream by applying a mapping function."
+    },
+    {
+        "question": "Which method aggregates Stream elements into a Set?",
+        "correctAnswers": ["collect(Collectors.toSet())"],
+        "incorrectAnswers": ["streamToSet()", "convertToSet()", "aggregateToSet()"],
+        "explanation": "The collect(Collectors.toSet()) method collects Stream elements into a Set."
+    },
+    {
+        "question": "What does the Stream.ofNullable() method do?",
+        "correctAnswers": ["Creates a Stream of one element or an empty Stream if the element is null"],
+        "incorrectAnswers": ["Creates a nullable Stream", "Filters out null elements from a Stream", "Converts a Stream to an Optional"],
+        "explanation": "Stream.ofNullable() either returns a Stream containing a single element or an empty Stream if the element is null."
+    },
+    {
+        "question": "Which method is used to sort Stream elements in descending order?",
+        "correctAnswers": ["sorted(Comparator.reverseOrder())"],
+        "incorrectAnswers": ["sortDescending()", "reverseSort()", "Stream.sortDescending()"],
+        "explanation": "The sorted(Comparator.reverseOrder()) method sorts Stream elements in descending order."
+    },
+    {
+        "question": "What does the takeWhile() method do?",
+        "correctAnswers": ["Returns elements while a condition is true"],
+        "incorrectAnswers": ["Filters elements by a predicate", "Skips elements until a condition is true", "Groups elements based on a condition"],
+        "explanation": "The takeWhile() method returns a Stream containing elements from the start until the predicate evaluates to false."
+    },
+    {
+        "question": "What does the dropWhile() method do?",
+        "correctAnswers": ["Skips elements while a condition is true"],
+        "incorrectAnswers": ["Filters elements based on a condition", "Returns elements after the condition is false", "Stops processing when the condition is met"],
+        "explanation": "The dropWhile() method skips elements while the predicate evaluates to true and returns a Stream of the remaining elements."
+    },
+    {
+        "question": "What does the Stream.generate() method require as a parameter?",
+        "correctAnswers": ["A Supplier"],
+        "incorrectAnswers": ["A Comparator", "A Predicate", "A Function"],
+        "explanation": "The generate() method uses a Supplier to provide elements for an infinite Stream."
+    },
+    {
+        "question": "Which terminal operation can be used to check the presence of an element in a Stream?",
+        "correctAnswers": ["anyMatch()"],
+        "incorrectAnswers": ["allMatch()", "filter()", "findFirst()"],
+        "explanation": "anyMatch() checks if at least one element in the Stream matches the given predicate."
+    },
+    {
+        "question": "Which method can combine a Stream of Streams into a single Stream?",
+        "correctAnswers": ["flatMap()"],
+        "incorrectAnswers": ["map()", "merge()", "concat()"],
+        "explanation": "The flatMap() method is used to flatten a Stream of Streams into a single Stream."
+    },
+    {
+        "question": "What is the result of calling IntStream.rangeClosed(1, 5)?",
+        "correctAnswers": ["A Stream containing 1, 2, 3, 4, 5"],
+        "incorrectAnswers": ["A Stream containing 1, 2, 3, 4", "A Stream containing 2, 3, 4, 5", "An empty Stream"],
+        "explanation": "IntStream.rangeClosed(1, 5) generates a Stream including both the start and end values."
+    },
+    {
+        "question": "What does the method unordered() do?",
+        "correctAnswers": ["Removes the encounter order of a Stream"],
+        "incorrectAnswers": ["Sorts elements in natural order", "Creates a parallel Stream", "Filters out duplicates"],
+        "explanation": "unordered() is an intermediate operation that removes the order imposed by the source or a previous operation."
+    },
+    {
+        "question": "What is the purpose of the builder() method in the Stream API?",
+        "correctAnswers": ["To create a Stream step by step using the Stream.Builder"],
+        "incorrectAnswers": ["To build a parallel Stream", "To convert Collections to Streams", "To sort elements in a Stream"],
+        "explanation": "Stream.builder() provides a way to build a Stream incrementally by adding elements through the builder pattern."
+    },
+    {
+        "question": "Which method is used to remove null elements from a Stream?",
+        "correctAnswers": ["filter(Objects::nonNull)"],
+        "incorrectAnswers": ["removeNull()", "nullFilter()", "streamWithoutNulls()"],
+        "explanation": "The filter(Objects::nonNull) method filters out null elements from a Stream."
+    },
+    {
+        "question": "What does Stream.limit() do if the Stream has fewer elements than specified?",
+        "correctAnswers": ["Returns all available elements"],
+        "incorrectAnswers": ["Throws an exception", "Returns a Stream with nulls filling the rest", "Creates an empty Stream"],
+        "explanation": "limit() returns all available elements if the Stream contains fewer elements than the specified limit."
+    },
+    {
+        "question": "What is the key difference between parallelStream() and stream()?",
+        "correctAnswers": ["parallelStream() processes elements in parallel, while stream() processes sequentially"],
+        "incorrectAnswers": ["parallelStream() sorts elements, while stream() does not", "parallelStream() uses fewer resources than stream()", "stream() is faster than parallelStream()"],
+        "explanation": "parallelStream() enables parallel processing of elements, whereas stream() processes elements sequentially."
+    },
+    {
+        "question": "What does the findFirst() method return when the Stream is empty?",
+        "correctAnswers": ["An empty Optional"],
+        "incorrectAnswers": ["A null value", "Throws an exception", "An Optional containing null"],
+        "explanation": "findFirst() returns an empty Optional if the Stream has no elements."
+    },
+    {
+        "question": "Which Collectors method combines multiple Streams into a single List?",
+        "correctAnswers": ["Collectors.flatMapping()"],
+        "incorrectAnswers": ["Collectors.mapping()", "Collectors.groupingBy()", "Collectors.joining()"],
+        "explanation": "Collectors.flatMapping() combines multiple Streams and collects the results into a single List."
+    },
+    {
+        "question": "Which method converts a Stream of key-value pairs into a Map?",
+        "correctAnswers": ["Collectors.toMap()"],
+        "incorrectAnswers": ["mapToKey()", "Stream.toMap()", "Collectors.groupBy()"],
+        "explanation": "Collectors.toMap() converts Stream elements into a Map based on key-value mapping functions."
+    },
+    {
+        "question": "Which method is used to log each element in a Stream without consuming it?",
+        "correctAnswers": ["peek()"],
+        "incorrectAnswers": ["log()", "inspect()", "trace()"],
+        "explanation": "peek() is an intermediate operation that allows inspection of each element without modifying the Stream."
     }
 ]

@@ -592,5 +592,479 @@
         "correctAnswers": ["Overcoming meaninglessness through creating new values"],
         "incorrectAnswers": ["Passively accepting life's purposelessness", "Rejecting all forms of philosophical inquiry", "Embracing religious dogmatism"],
         "explanation": "Active nihilism, as described by Nietzsche, involves rejecting old values and creating new, life-affirming ones to overcome meaninglessness."
+    },
+    {
+        "question": "What is a common theme explored by nihilistic philosophers?",
+        "correctAnswers": ["The rejection of absolute meaning or purpose"],
+        "incorrectAnswers": ["The promotion of universal ethical systems", "The establishment of scientific positivism", "The affirmation of divine truths"],
+        "explanation": "Nihilistic philosophers often explore themes related to the absence of inherent meaning, purpose, or absolute values."
+    },
+    {
+        "question": "What does moral nihilism claim about ethics?",
+        "correctAnswers": ["They are human constructs without objective basis"],
+        "incorrectAnswers": ["They are dictated by natural laws", "They are essential for societal progress", "They are absolute truths"],
+        "explanation": "Moral nihilism argues that ethical principles are human-made and lack any objective or universal foundation."
+    },
+    {
+        "question": "Which philosophical stance is most aligned with nihilism’s rejection of inherent truth?",
+        "correctAnswers": ["Skepticism"],
+        "incorrectAnswers": ["Rationalism", "Empiricism", "Phenomenology"],
+        "explanation": "Skepticism, which questions the certainty of knowledge and truth, shares a foundational alignment with nihilism’s rejection of inherent truths."
+    },
+    {
+        "question": "Which philosophical idea contrasts with nihilism by affirming life's intrinsic value?",
+        "correctAnswers": ["Humanism"],
+        "incorrectAnswers": ["Materialism", "Utilitarianism", "Absurdism"],
+        "explanation": "Humanism emphasizes the intrinsic value and dignity of human life, standing in contrast to nihilistic perspectives."
+    },
+    {
+        "question": "What is one of nihilism’s implications for human achievement?",
+        "correctAnswers": ["Human achievements lack ultimate significance"],
+        "incorrectAnswers": ["Human achievements define universal truths", "Human achievements validate moral principles", "Human achievements demonstrate divine purpose"],
+        "explanation": "Nihilism implies that, while human achievements may have temporary value, they lack ultimate or inherent significance."
+    },
+    {
+        "question": "What is the connection between nihilism and postmodernism?",
+        "correctAnswers": ["Postmodernism critiques grand narratives similar to nihilism’s rejection of absolute truths"],
+        "incorrectAnswers": ["Postmodernism seeks to restore universal values", "Postmodernism denies cultural diversity", "Postmodernism promotes absolute scientific truths"],
+        "explanation": "Postmodernism often aligns with nihilism in its critique of grand narratives and universal claims of truth or meaning."
+    },
+    {
+        "question": "Which of the following best describes the existentialist response to nihilism?",
+        "correctAnswers": ["The creation of personal meaning through individual freedom"],
+        "incorrectAnswers": ["The rejection of all moral systems", "The adoption of religious doctrine", "The denial of human creativity"],
+        "explanation": "Existentialism counters nihilism by emphasizing the individual’s freedom and responsibility to create personal meaning."
+    },
+    {
+        "question": "Which type of nihilism argues that all knowledge claims are inherently meaningless?",
+        "correctAnswers": ["Epistemological nihilism"],
+        "incorrectAnswers": ["Ontological nihilism", "Moral nihilism", "Existential nihilism"],
+        "explanation": "Epistemological nihilism questions the validity and meaning of all knowledge claims, asserting their inherent lack of truth."
+    },
+    {
+        "question": "What does political nihilism reject?",
+        "correctAnswers": ["The legitimacy of political authority and structures"],
+        "incorrectAnswers": ["The need for ethical principles", "The pursuit of individual freedom", "The existence of metaphysical truths"],
+        "explanation": "Political nihilism denies the inherent legitimacy of political authority and systems, advocating for their rejection."
+    },
+    {
+        "question": "Which novel by Fyodor Dostoevsky directly critiques nihilism?",
+        "correctAnswers": ["Demons"],
+        "incorrectAnswers": ["The Idiot", "The Brothers Karamazov", "Crime and Punishment"],
+        "explanation": "In 'Demons,' Dostoevsky critiques nihilism by exploring its destructive influence on individuals and society."
+    },
+    {
+        "question": "What does Nietzsche’s concept of the Übermensch aim to address?",
+        "correctAnswers": ["The need to overcome nihilism by creating new values"],
+        "incorrectAnswers": ["The justification of traditional morality", "The rejection of all philosophical inquiry", "The pursuit of hedonistic pleasures"],
+        "explanation": "The Übermensch represents Nietzsche’s vision of a person who overcomes nihilism by establishing new, self-created values."
+    },
+    {
+        "question": "Which work by Friedrich Nietzsche extensively discusses the concept of nihilism?",
+        "correctAnswers": ["The Will to Power"],
+        "incorrectAnswers": ["Beyond Good and Evil", "Ecce Homo", "The Gay Science"],
+        "explanation": "'The Will to Power' contains Nietzsche's most detailed examination of nihilism and its cultural implications."
+    },
+    {
+        "question": "What does existential nihilism propose about life’s meaning?",
+        "correctAnswers": ["Life has no inherent meaning or purpose"],
+        "incorrectAnswers": ["Life’s meaning is dictated by cultural norms", "Life is inherently tied to divine purpose", "Life’s meaning is found through scientific progress"],
+        "explanation": "Existential nihilism argues that life lacks inherent meaning, emphasizing the absence of ultimate purpose."
+    },
+    {
+        "question": "What is a primary critique of nihilism by critics like Dostoevsky?",
+        "correctAnswers": ["It undermines moral responsibility and social cohesion"],
+        "incorrectAnswers": ["It promotes scientific materialism", "It denies personal freedom", "It aligns too closely with religious traditions"],
+        "explanation": "Critics such as Dostoevsky argue that nihilism erodes the foundations of moral responsibility and societal stability."
+    },
+    {
+        "question": "What does passive nihilism entail?",
+        "correctAnswers": ["A resigned acceptance of meaninglessness"],
+        "incorrectAnswers": ["Active rebellion against traditional values", "The creation of new ethical frameworks", "The embrace of religious salvation"],
+        "explanation": "Passive nihilism involves a resigned and apathetic acceptance of life’s lack of inherent meaning."
+    },
+    {
+        "question": "Which form of nihilism claims that objects and entities lack inherent existence?",
+        "correctAnswers": ["Ontological nihilism"],
+        "incorrectAnswers": ["Moral nihilism", "Existential nihilism", "Political nihilism"],
+        "explanation": "Ontological nihilism argues that objects and entities lack inherent existence or ultimate reality."
+    },
+    {
+        "question": "Which philosophy contrasts with nihilism by emphasizing duty and moral absolutes?",
+        "correctAnswers": ["Kantian ethics"],
+        "incorrectAnswers": ["Existentialism", "Absurdism", "Utilitarianism"],
+        "explanation": "Kantian ethics stands in opposition to nihilism by emphasizing duty, universal moral principles, and the categorical imperative."
+    },
+    {
+        "question": "What is one criticism of nihilism’s approach to morality?",
+        "correctAnswers": ["It may lead to moral relativism and ethical apathy"],
+        "incorrectAnswers": ["It promotes strict adherence to outdated values", "It relies too heavily on scientific principles", "It rejects all forms of philosophical inquiry"],
+        "explanation": "Critics argue that nihilism’s denial of absolute moral truths can lead to moral relativism and ethical apathy."
+    },
+    {
+        "question": "How do absurdism and nihilism fundamentally differ?",
+        "correctAnswers": ["Absurdism finds joy in defying meaninglessness"],
+        "incorrectAnswers": ["Absurdism affirms universal values", "Absurdism denies all forms of agency", "Absurdism advocates for traditional morality"],
+        "explanation": "While nihilism denies meaning entirely, absurdism embraces the tension between the lack of inherent meaning and humanity’s search for purpose."
+    },
+    {
+        "question": "What does nihilism suggest about the concept of human progress?",
+        "correctAnswers": ["It is devoid of inherent meaning or purpose"],
+        "incorrectAnswers": ["It is essential for moral advancement", "It is driven by divine intention", "It is the foundation of universal truth"],
+        "explanation": "Nihilism views human progress as lacking inherent meaning or ultimate significance."
+    },
+    {
+        "question": "What does nihilism assert about the nature of universal truths?",
+        "correctAnswers": ["They do not exist as objective realities"],
+        "incorrectAnswers": ["They are essential for moral guidance", "They are revealed through religious doctrine", "They are defined by cultural norms"],
+        "explanation": "Nihilism rejects the existence of universal truths, asserting that they are subjective or non-existent."
+    },
+    {
+        "question": "Which aspect of human existence is most questioned by existential nihilism?",
+        "correctAnswers": ["The inherent meaning of life"],
+        "incorrectAnswers": ["The pursuit of knowledge", "The value of scientific discovery", "The role of emotional connections"],
+        "explanation": "Existential nihilism focuses on questioning whether life has any inherent meaning or purpose."
+    },
+    {
+        "question": "Which term best describes the belief that moral judgments lack any objective basis?",
+        "correctAnswers": ["Moral nihilism"],
+        "incorrectAnswers": ["Ethical absolutism", "Cultural relativism", "Social constructivism"],
+        "explanation": "Moral nihilism holds that moral values and judgments have no objective or universal foundation."
+    },
+    {
+        "question": "What does Nietzsche identify as the root cause of the rise of nihilism in Western culture?",
+        "correctAnswers": ["The decline of religious and metaphysical beliefs"],
+        "incorrectAnswers": ["The failure of democratic institutions", "The overemphasis on artistic traditions", "The dominance of scientific materialism"],
+        "explanation": "Nietzsche argued that nihilism arose from the decline of religious and metaphysical frameworks that once provided meaning."
+    },
+    {
+        "question": "Which modern thinker is known for applying nihilism to contemporary political theory?",
+        "correctAnswers": ["Michel Foucault"],
+        "incorrectAnswers": ["Karl Marx", "Immanuel Kant", "John Rawls"],
+        "explanation": "Michel Foucault explored nihilistic themes in his critique of power structures and traditional political theories."
+    },
+    {
+        "question": "What distinguishes moral relativism from moral nihilism?",
+        "correctAnswers": ["Relativism accepts culturally dependent morals, while nihilism denies all moral values"],
+        "incorrectAnswers": ["Relativism rejects all moral judgments, while nihilism affirms them", "Relativism promotes universal ethics, while nihilism opposes them", "Relativism aligns with religious values, while nihilism does not"],
+        "explanation": "Moral relativism accepts that morality is culturally dependent, whereas moral nihilism denies the existence of moral values altogether."
+    },
+    {
+        "question": "What is a common emotional response associated with nihilistic beliefs?",
+        "correctAnswers": ["A sense of despair or apathy"],
+        "incorrectAnswers": ["An overwhelming desire for knowledge", "A drive to embrace tradition", "A focus on religious salvation"],
+        "explanation": "Nihilism’s rejection of meaning and purpose often leads to emotional responses like despair or apathy."
+    },
+    {
+        "question": "How does nihilism typically view traditional ethical systems?",
+        "correctAnswers": ["As constructs without inherent validity"],
+        "incorrectAnswers": ["As necessary for social harmony", "As universally applicable across cultures", "As rooted in divine law"],
+        "explanation": "Nihilism regards traditional ethical systems as human-made constructs without inherent validity or universal applicability."
+    },
+    {
+        "question": "What does political nihilism specifically challenge?",
+        "correctAnswers": ["The legitimacy of authority and political systems"],
+        "incorrectAnswers": ["The value of personal freedom", "The necessity of moral principles", "The role of scientific discovery"],
+        "explanation": "Political nihilism rejects the legitimacy of authority and established political systems, advocating for their dismantling."
+    },
+    {
+        "question": "Which philosophical stance contrasts with nihilism by emphasizing progress and improvement?",
+        "correctAnswers": ["Optimism"],
+        "incorrectAnswers": ["Skepticism", "Absurdism", "Relativism"],
+        "explanation": "Optimism stands in contrast to nihilism by focusing on progress, hope, and the potential for improvement in human life."
+    },
+    {
+        "question": "Which branch of nihilism denies the existence of inherent reality?",
+        "correctAnswers": ["Metaphysical nihilism"],
+        "incorrectAnswers": ["Moral nihilism", "Epistemological nihilism", "Existential nihilism"],
+        "explanation": "Metaphysical nihilism denies the existence of inherent reality or substance in the world."
+    },
+    {
+        "question": "What does nihilism suggest about the universe’s attitude toward humanity?",
+        "correctAnswers": ["The universe is indifferent to human existence"],
+        "incorrectAnswers": ["The universe actively opposes human progress", "The universe is inherently supportive of human life", "The universe seeks to guide humanity toward enlightenment"],
+        "explanation": "Nihilism posits that the universe is indifferent, neither supporting nor opposing human existence or endeavors."
+    },
+    {
+        "question": "What is Nietzsche’s view on overcoming nihilism?",
+        "correctAnswers": ["Creating new values through individual will"],
+        "incorrectAnswers": ["Returning to religious faith", "Rejecting all cultural innovation", "Embracing scientific determinism"],
+        "explanation": "Nietzsche believed that individuals must overcome nihilism by creating their own values through the exercise of will and creativity."
+    },
+    {
+        "question": "Which artistic movement often reflected themes of nihilism and existential despair?",
+        "correctAnswers": ["Dadaism"],
+        "incorrectAnswers": ["Baroque", "Impressionism", "Surrealism"],
+        "explanation": "Dadaism embraced themes of nihilism and existential despair, rejecting traditional artistic and cultural norms."
+    },
+    {
+        "question": "How does absurdism, as discussed by Camus, respond to nihilism?",
+        "correctAnswers": ["By embracing life despite its lack of inherent meaning"],
+        "incorrectAnswers": ["By rejecting all philosophical inquiry", "By promoting universal moral values", "By denying the existence of free will"],
+        "explanation": "Absurdism, as articulated by Albert Camus, accepts the lack of inherent meaning but advocates for embracing life and defying despair."
+    },
+    {
+        "question": "Which of the following is a common critique of nihilism?",
+        "correctAnswers": ["It can lead to moral apathy and social stagnation"],
+        "incorrectAnswers": ["It undermines scientific progress", "It overemphasizes religious doctrine", "It promotes excessive individualism"],
+        "explanation": "A frequent critique of nihilism is that it can foster moral apathy and hinder social or personal growth."
+    },
+    {
+        "question": "Which work by Jean-Paul Sartre addresses the conflict between freedom and nihilism?",
+        "correctAnswers": ["Being and Nothingness"],
+        "incorrectAnswers": ["The Myth of Sisyphus", "Existentialism is a Humanism", "The Stranger"],
+        "explanation": "In 'Being and Nothingness,' Sartre explores the tension between human freedom and the nihilistic denial of inherent meaning."
+    },
+    {
+        "question": "What is one possible benefit of nihilistic thought, as seen by some philosophers?",
+        "correctAnswers": ["Freedom from imposed structures and beliefs"],
+        "incorrectAnswers": ["A commitment to moral absolutism", "The promotion of societal traditions", "A deeper connection to religious values"],
+        "explanation": "Nihilistic thought can be seen as liberating, allowing individuals to discard imposed structures and create their own values."
+    },
+    {
+        "question": "How does nihilism challenge the concept of justice?",
+        "correctAnswers": ["By denying its existence as an objective principle"],
+        "incorrectAnswers": ["By promoting strict adherence to tradition", "By equating justice with divine will", "By viewing justice as a universal truth"],
+        "explanation": "Nihilism challenges justice by rejecting its existence as an objective, universal principle, instead viewing it as a human construct."
+    },
+    {
+        "question": "What is the existentialist view on nihilism’s rejection of meaning?",
+        "correctAnswers": ["It sees the rejection as an opportunity to create individual purpose"],
+        "incorrectAnswers": ["It advocates for abandoning philosophical inquiry", "It views the rejection as a universal truth", "It aligns with traditional religious beliefs"],
+        "explanation": "Existentialists see nihilism’s rejection of meaning as a starting point for individuals to define and create their own purpose."
+    },
+    {
+        "question": "What does existential nihilism assert about the significance of individual lives?",
+        "correctAnswers": ["They lack inherent meaning or ultimate significance"],
+        "incorrectAnswers": ["They are universally meaningful", "They are defined by divine purpose", "They are inherently tied to societal norms"],
+        "explanation": "Existential nihilism argues that individual lives lack inherent meaning or ultimate significance."
+    },
+    {
+        "question": "Which 19th-century philosophical movement is closely tied to the origins of nihilism?",
+        "correctAnswers": ["German Romanticism"],
+        "incorrectAnswers": ["Enlightenment Rationalism", "British Empiricism", "French Positivism"],
+        "explanation": "German Romanticism's exploration of the limits of reason and tradition helped pave the way for nihilistic thought."
+    },
+    {
+        "question": "How does moral nihilism view the basis of ethical principles?",
+        "correctAnswers": ["As human constructs without objective authority"],
+        "incorrectAnswers": ["As rooted in universal truths", "As essential for personal freedom", "As derived from scientific reasoning"],
+        "explanation": "Moral nihilism rejects the idea of objective authority behind ethical principles, viewing them as human-made constructs."
+    },
+    {
+        "question": "Which literary work explores the consequences of nihilism in a societal context?",
+        "correctAnswers": ["Demons by Fyodor Dostoevsky"],
+        "incorrectAnswers": ["Candide by Voltaire", "Notes from Underground by Dostoevsky", "The Trial by Franz Kafka"],
+        "explanation": "In 'Demons,' Dostoevsky critiques nihilism by depicting its destructive impact on individuals and society."
+    },
+    {
+        "question": "Which type of nihilism denies the meaningfulness of all human knowledge and truth claims?",
+        "correctAnswers": ["Epistemological nihilism"],
+        "incorrectAnswers": ["Existential nihilism", "Metaphysical nihilism", "Political nihilism"],
+        "explanation": "Epistemological nihilism questions the validity and meaningfulness of all human knowledge and truth claims."
+    },
+    {
+        "question": "What is Nietzsche’s proposed solution to the cultural crisis caused by nihilism?",
+        "correctAnswers": ["Creating new values through individual will"],
+        "incorrectAnswers": ["Reaffirming religious dogma", "Embracing scientific determinism", "Rejecting all forms of creativity"],
+        "explanation": "Nietzsche suggested that individuals should overcome nihilism by creating new values through their will and creativity."
+    },
+    {
+        "question": "What does nihilism suggest about human institutions such as government or religion?",
+        "correctAnswers": ["They are arbitrary and lack inherent value"],
+        "incorrectAnswers": ["They are essential for human progress", "They are universally applicable structures", "They are necessary for ethical behavior"],
+        "explanation": "Nihilism often views human institutions like government and religion as arbitrary constructs without inherent value or legitimacy."
+    },
+    {
+        "question": "What is a frequent critique of nihilism as a worldview?",
+        "correctAnswers": ["It can lead to apathy and moral stagnation"],
+        "incorrectAnswers": ["It provides too many rigid guidelines", "It undermines scientific inquiry", "It promotes excessive optimism"],
+        "explanation": "Critics argue that nihilism's rejection of meaning and values can lead to apathy and a lack of motivation."
+    },
+    {
+        "question": "Which philosopher wrote extensively about the idea of the 'death of God'?",
+        "correctAnswers": ["Friedrich Nietzsche"],
+        "incorrectAnswers": ["Arthur Schopenhauer", "Søren Kierkegaard", "Jean-Paul Sartre"],
+        "explanation": "Nietzsche famously wrote about the 'death of God,' symbolizing the cultural loss of absolute values in Western society."
+    },
+    {
+        "question": "How does absurdism, as developed by Albert Camus, differ from nihilism?",
+        "correctAnswers": ["Absurdism embraces life despite its lack of inherent meaning"],
+        "incorrectAnswers": ["Absurdism denies all philosophical inquiry", "Absurdism upholds universal moral values", "Absurdism emphasizes divine intervention"],
+        "explanation": "Albert Camus' absurdism differs from nihilism by advocating for an embrace of life and defiance of despair despite the lack of inherent meaning."
+    },
+    {
+        "question": "What role does nihilism often play in existential crises?",
+        "correctAnswers": ["It exacerbates feelings of meaninglessness and doubt"],
+        "incorrectAnswers": ["It resolves doubts about personal freedom", "It provides a clear ethical framework", "It reinforces traditional societal values"],
+        "explanation": "Nihilism often deepens existential crises by highlighting the absence of inherent meaning and value in life."
+    },
+    {
+        "question": "What is a potential positive interpretation of nihilism?",
+        "correctAnswers": ["It frees individuals to create their own values and purpose"],
+        "incorrectAnswers": ["It enforces strict adherence to tradition", "It emphasizes divine purpose in life", "It provides a rigid ethical framework"],
+        "explanation": "Some view nihilism as liberating, allowing individuals to discard imposed structures and create their own values and purpose."
+    },
+    {
+        "question": "Which philosophical tradition often opposes nihilism by asserting the existence of intrinsic meaning?",
+        "correctAnswers": ["Existentialism"],
+        "incorrectAnswers": ["Skepticism", "Relativism", "Materialism"],
+        "explanation": "Existentialism often opposes nihilism by emphasizing the possibility of individuals creating their own intrinsic meaning and purpose."
+    },
+    {
+        "question": "What is the primary focus of political nihilism?",
+        "correctAnswers": ["The rejection of political authority and legitimacy"],
+        "incorrectAnswers": ["The denial of all personal responsibility", "The promotion of universal ethical principles", "The embrace of religious traditions"],
+        "explanation": "Political nihilism focuses on rejecting the legitimacy and necessity of established political systems and authority."
+    },
+    {
+        "question": "Which concept is central to existentialist critiques of nihilism?",
+        "correctAnswers": ["Personal freedom and responsibility"],
+        "incorrectAnswers": ["Objective moral laws", "Divine intervention", "The inevitability of fate"],
+        "explanation": "Existentialists critique nihilism by emphasizing the importance of personal freedom and responsibility in creating meaning."
+    },
+    {
+        "question": "Which 20th-century literary work heavily reflects themes of nihilism and existential doubt?",
+        "correctAnswers": ["The Stranger by Albert Camus"],
+        "incorrectAnswers": ["1984 by George Orwell", "The Great Gatsby by F. Scott Fitzgerald", "Brave New World by Aldous Huxley"],
+        "explanation": "Albert Camus’ 'The Stranger' explores themes of nihilism and existential doubt through the indifferent worldview of its protagonist."
+    },
+    {
+        "question": "How does moral nihilism differ from moral relativism?",
+        "correctAnswers": ["Nihilism denies morality entirely, while relativism sees morality as culturally dependent"],
+        "incorrectAnswers": ["Nihilism affirms universal truths, while relativism rejects them", "Nihilism promotes ethical behavior, while relativism denies it", "Nihilism supports religious values, while relativism opposes them"],
+        "explanation": "Moral nihilism denies morality entirely, while moral relativism acknowledges that moral principles vary across cultures."
+    },
+    {
+        "question": "What does ontological nihilism claim about the existence of objects?",
+        "correctAnswers": ["Objects do not inherently exist in a fundamental sense"],
+        "incorrectAnswers": ["Objects derive their existence from divine will", "Objects exist universally with intrinsic value", "Objects exist to reflect human purpose"],
+        "explanation": "Ontological nihilism asserts that objects do not inherently exist or possess any fundamental reality."
+    },
+    {
+        "question": "Which 19th-century philosopher’s work on pessimism influenced the rise of nihilistic thought?",
+        "correctAnswers": ["Arthur Schopenhauer"],
+        "incorrectAnswers": ["John Stuart Mill", "Immanuel Kant", "David Hume"],
+        "explanation": "Arthur Schopenhauer's philosophical pessimism, focusing on the futility of desire and suffering, influenced the development of nihilistic thought."
+    },
+    {
+        "question": "Which of the following best summarizes the primary claim of existential nihilism?",
+        "correctAnswers": ["Life lacks inherent meaning or purpose"],
+        "incorrectAnswers": ["Morality is universally binding", "Humanity is inherently virtuous", "The universe revolves around human existence"],
+        "explanation": "Existential nihilism argues that life inherently lacks meaning or purpose, leaving individuals to confront this absence."
+    },
+    {
+        "question": "What does nihilism assert about the foundations of human morality?",
+        "correctAnswers": ["Morality is a human construct without objective basis"],
+        "incorrectAnswers": ["Morality is universal and immutable", "Morality is derived from divine law", "Morality is dictated by societal norms"],
+        "explanation": "Nihilism claims that morality is a human-made construct, lacking any objective or universal foundation."
+    },
+    {
+        "question": "Which philosophical figure is credited with coining the term 'nihilism' in the 19th century?",
+        "correctAnswers": ["Friedrich Heinrich Jacobi"],
+        "incorrectAnswers": ["Friedrich Nietzsche", "Arthur Schopenhauer", "Søren Kierkegaard"],
+        "explanation": "Friedrich Heinrich Jacobi introduced the term 'nihilism' in philosophical discourse, describing the consequences of Enlightenment rationalism."
+    },
+    {
+        "question": "What does political nihilism reject as meaningless?",
+        "correctAnswers": ["The legitimacy of political systems and authority"],
+        "incorrectAnswers": ["The existence of free will", "The value of personal relationships", "The pursuit of scientific knowledge"],
+        "explanation": "Political nihilism focuses on rejecting the legitimacy of political systems and authority, considering them arbitrary and baseless."
+    },
+    {
+        "question": "What is one possible psychological outcome of embracing nihilistic beliefs?",
+        "correctAnswers": ["Feelings of despair or apathy"],
+        "incorrectAnswers": ["A heightened sense of purpose", "An unwavering moral framework", "A commitment to religious principles"],
+        "explanation": "Nihilism's rejection of inherent meaning can lead to feelings of despair or apathy, as individuals grapple with meaninglessness."
+    },
+    {
+        "question": "Which type of nihilism claims that human knowledge and truth are unattainable?",
+        "correctAnswers": ["Epistemological nihilism"],
+        "incorrectAnswers": ["Ontological nihilism", "Moral nihilism", "Existential nihilism"],
+        "explanation": "Epistemological nihilism asserts that human knowledge and truth are either unattainable or inherently meaningless."
+    },
+    {
+        "question": "What does Nietzsche’s concept of the 'eternal recurrence' aim to address in the context of nihilism?",
+        "correctAnswers": ["The affirmation of life in a meaningless universe"],
+        "incorrectAnswers": ["The rejection of individual freedom", "The establishment of universal truths", "The pursuit of religious salvation"],
+        "explanation": "Nietzsche’s 'eternal recurrence' challenges individuals to affirm their lives and choices as if they were to repeat eternally, despite the lack of inherent meaning."
+    },
+    {
+        "question": "Which philosophical movement often grapples with nihilistic themes while emphasizing human freedom?",
+        "correctAnswers": ["Existentialism"],
+        "incorrectAnswers": ["Materialism", "Empiricism", "Rationalism"],
+        "explanation": "Existentialism explores nihilistic themes but emphasizes human freedom and the ability to create meaning."
+    },
+    {
+        "question": "Which Russian author explored nihilistic themes in his novel 'Fathers and Sons'?",
+        "correctAnswers": ["Ivan Turgenev"],
+        "incorrectAnswers": ["Leo Tolstoy", "Fyodor Dostoevsky", "Anton Chekhov"],
+        "explanation": "Ivan Turgenev’s 'Fathers and Sons' examines the rise of nihilistic thought through the character of Bazarov, a nihilist."
+    },
+    {
+        "question": "How does absurdism, as developed by Albert Camus, challenge nihilism?",
+        "correctAnswers": ["By embracing life despite its lack of inherent meaning"],
+        "incorrectAnswers": ["By affirming universal truths", "By advocating for religious faith", "By denying human freedom entirely"],
+        "explanation": "Camus' absurdism defies nihilism by encouraging individuals to embrace life and create joy despite its lack of inherent meaning."
+    },
+    {
+        "question": "What does moral nihilism deny about ethical principles?",
+        "correctAnswers": ["That they possess any objective or universal foundation"],
+        "incorrectAnswers": ["That they apply within certain cultures", "That they require societal endorsement", "That they are subject to personal interpretation"],
+        "explanation": "Moral nihilism denies that ethical principles have any objective or universal foundation, viewing them as human constructs."
+    },
+    {
+        "question": "What does ontological nihilism suggest about the existence of entities?",
+        "correctAnswers": ["That entities lack inherent existence or significance"],
+        "incorrectAnswers": ["That entities derive meaning from divine purpose", "That entities are universally valuable", "That entities exist solely within moral frameworks"],
+        "explanation": "Ontological nihilism posits that entities lack inherent existence or ultimate significance, challenging traditional metaphysical assumptions."
+    },
+    {
+        "question": "Which work by Dostoevsky critiques the dangers of nihilism through the character Raskolnikov?",
+        "correctAnswers": ["Crime and Punishment"],
+        "incorrectAnswers": ["Demons", "The Brothers Karamazov", "Notes from Underground"],
+        "explanation": "'Crime and Punishment' explores the dangers of nihilism, particularly through Raskolnikov’s struggles with moral and existential questions."
+    },
+    {
+        "question": "How does nihilism often interpret the concept of free will?",
+        "correctAnswers": ["As irrelevant in a purposeless universe"],
+        "incorrectAnswers": ["As essential for creating universal meaning", "As a divine gift for ethical behavior", "As foundational for societal progress"],
+        "explanation": "Nihilism questions the relevance of free will, arguing that in a purposeless universe, it loses its significance."
+    },
+    {
+        "question": "Which of the following is an existentialist critique of nihilism?",
+        "correctAnswers": ["It overlooks the ability to create individual meaning"],
+        "incorrectAnswers": ["It places too much emphasis on universal ethics", "It aligns too closely with religious doctrines", "It ignores the importance of tradition"],
+        "explanation": "Existentialists critique nihilism for failing to recognize the potential for individuals to create their own meaning and values."
+    },
+    {
+        "question": "Which philosophical term describes the rejection of all political and societal structures?",
+        "correctAnswers": ["Political nihilism"],
+        "incorrectAnswers": ["Moral nihilism", "Existential nihilism", "Metaphysical nihilism"],
+        "explanation": "Political nihilism refers to the rejection of political and societal structures as meaningless or illegitimate."
+    },
+    {
+        "question": "What is one way nihilism is often misinterpreted by its critics?",
+        "correctAnswers": ["As promoting destruction and chaos"],
+        "incorrectAnswers": ["As advocating for universal moral truths", "As supporting religious salvation", "As dismissing all forms of art"],
+        "explanation": "Nihilism is often misinterpreted as promoting destruction and chaos, though it primarily critiques the foundations of meaning and values."
+    },
+    {
+        "question": "What does Nietzsche mean by 'God is dead' in the context of nihilism?",
+        "correctAnswers": ["The loss of absolute values in modern society"],
+        "incorrectAnswers": ["The end of religious practices globally", "The rejection of human creativity", "The denial of natural laws"],
+        "explanation": "Nietzsche’s statement 'God is dead' symbolizes the cultural loss of absolute values and the resulting rise of nihilism."
+    },
+    {
+        "question": "Which 20th-century philosophical movement often aligns with nihilism in rejecting grand narratives?",
+        "correctAnswers": ["Postmodernism"],
+        "incorrectAnswers": ["Empiricism", "Idealism", "Pragmatism"],
+        "explanation": "Postmodernism aligns with nihilism in rejecting grand narratives and questioning universal truths."
+    },
+    {
+        "question": "What does existential nihilism suggest about the human quest for purpose?",
+        "correctAnswers": ["That it is ultimately futile in a purposeless universe"],
+        "incorrectAnswers": ["That it leads to universal enlightenment", "That it creates harmony with divine will", "That it ensures moral responsibility"],
+        "explanation": "Existential nihilism argues that the human quest for purpose is futile, as life lacks inherent meaning."
     }
 ]
