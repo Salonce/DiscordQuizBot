@@ -194,6 +194,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
             buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))));
             //System.out.println("Creating button of id:" + "Answer-" + (char)('A' + i) + "-" + questionNumber.toString());
         }
+        buttons.add(Button.danger("cancelQuiz", "Cancel"));
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("#" + (match.getQuestionNumber() + 1) + " **" + match.getQuestion().getQuestion() + "**")
@@ -220,6 +221,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
             buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))));
             //System.out.println("Creating button of id:" + "Answer-" + (char)('A' + i) + "-" + questionNumber.toString());
         }
+        buttons.add(Button.danger("cancelQuiz", "Cancel"));
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("#" + (match.getQuestionNumber() + 1) + " **" + match.getQuestion().getQuestion() + "**")
@@ -244,6 +246,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
             buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))).disabled());
             //System.out.println("Creating button of id:" + "Answer-" + (char)('A' + i) + "-" + questionNumber.toString());
         }
+        buttons.add(Button.danger("cancelQuiz", "Cancel"));
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("#" + (match.getQuestionNumber() + 1) + " **" + match.getQuestion().getQuestion() + "**")
@@ -268,6 +271,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
             buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))).disabled());
             //System.out.println("Creating button of id:" + "Answer-" + (char)('A' + i) + "-" + questionNumber.toString());
         }
+        buttons.add(Button.danger("cancelQuiz", "Cancel"));
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("#" + (match.getQuestionNumber() + 1) + " **" + match.getQuestion().getQuestion() + "**")
