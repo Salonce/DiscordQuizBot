@@ -21,4 +21,4 @@ questions:
 
 
 #mode - 'standard' or 'testing' or 'testing2' or 'eureka'
-mode: testing
+mode: eureka
