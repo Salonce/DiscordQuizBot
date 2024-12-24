@@ -15,10 +15,14 @@ import java.util.Map;
 @ConfigurationProperties(prefix = "questions")
 public class QuestionsConfig {
 
-    private Map<String, String> files;
+    private Map<String, List<String>> files;
 
     @PostConstruct
     public void logFiles() {
-        files.forEach((key, value) -> System.out.println("Loaded questions file: type: " + key + ", path: " + value));
+        files.forEach((key, value) ->{
+            for (String path : value){
+                System.out.println("Loaded questions file: type: " + key + ", path: " + path);
+            }
+        });
     }
 }
