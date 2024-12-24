@@ -135,6 +135,43 @@ public void addMatch(MessageChannel messageChannel, Match match) {
 //        }
 //    }
 
+//    private Mono<Void> createQuestionMessagesSequentially(MessageChannel messageChannel) {
+//        Match match = quizzes.get(messageChannel);
+//
+//        return Flux.generate(sink -> {
+//                    if (match.questionExists())
+//                        sink.next(match.getQuestion());
+//                    else
+//                        sink.complete();
+//                })
+//                .index()
+//                .concatMap(tuple -> {
+//                            long index = tuple.getT1();
+//                    return createQuestionMessage(messageChannel, index, timers.getTimeToPickAnswer())
+//                            .flatMap(message -> {
+//                                openAnswering(messageChannel);
+//                                int totalTime = timers.getTimeToPickAnswer();
+//                                return Flux.interval(Duration.ofSeconds(1)) // Emit every 5 seconds
+//                                        .take(totalTime) // Number of updates
+//                                        .flatMap(interval -> {
+//                                            int timeLeft = totalTime - (interval.intValue() + 1); // Calculate remaining time
+//                                            return editQuestionMessageTime(messageChannel, message, index, timeLeft);
+//                                        })
+//                                        //.then(Mono.defer(() -> openAnswering(messageChannel)))
+//                                        //.then(Mono.delay(Duration.ofSeconds(totalTime)))
+//                                        .then(Mono.defer(() -> editQuestionMessageInitial(messageChannel, message, index)))
+//                                        .then(Mono.delay(Duration.ofSeconds(1)))
+//                                        .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
+//                                        .then(Mono.defer(() -> closeAnswering(messageChannel)))
+//                                        .then(Mono.defer(() -> editQuestionMessage(messageChannel, message, index)))
+//                                        .then(Mono.delay(Duration.ofSeconds(timers.getTimeForNewQuestionToAppear())))
+//                                        .then(Mono.defer(() -> moveToNextQuestion(match)));
+//                            });
+//                        }
+//                )
+//                .then();
+//    }
+
     private Mono<Void> createQuestionMessagesSequentially(MessageChannel messageChannel) {
         Match match = quizzes.get(messageChannel);
 
@@ -144,33 +181,48 @@ public void addMatch(MessageChannel messageChannel, Match match) {
                     else
                         sink.complete();
                 })
+                .takeWhile(question -> !match.isClosed())
                 .index()
                 .concatMap(tuple -> {
                             long index = tuple.getT1();
-                    return createQuestionMessage(messageChannel, index, timers.getTimeToPickAnswer())
-                            .flatMap(message -> {
-                                openAnswering(messageChannel);
-                                int totalTime = timers.getTimeToPickAnswer();
-                                return Flux.interval(Duration.ofSeconds(1)) // Emit every 5 seconds
-                                        .take(totalTime) // Number of updates
-                                        .flatMap(interval -> {
-                                            int timeLeft = totalTime - (interval.intValue() + 1); // Calculate remaining time
-                                            return editQuestionMessageTime(messageChannel, message, index, timeLeft);
-                                        })
-                                        //.then(Mono.defer(() -> openAnswering(messageChannel)))
-                                        //.then(Mono.delay(Duration.ofSeconds(totalTime)))
-                                        .then(Mono.defer(() -> editQuestionMessageInitial(messageChannel, message, index)))
-                                        .then(Mono.delay(Duration.ofSeconds(1)))
-                                        .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
-                                        .then(Mono.defer(() -> closeAnswering(messageChannel)))
-                                        .then(Mono.defer(() -> editQuestionMessage(messageChannel, message, index)))
-                                        .then(Mono.delay(Duration.ofSeconds(timers.getTimeForNewQuestionToAppear())))
-                                        .then(Mono.defer(() -> moveToNextQuestion(match)));
-                            });
+                            return createQuestionMessage(messageChannel, index, timers.getTimeToPickAnswer())
+                                    .flatMap(message -> {
+                                        openAnswering(messageChannel);
+                                        int totalTime = timers.getTimeToPickAnswer();
+                                        return Flux.interval(Duration.ofSeconds(1)) // Emit every second
+                                                .take(totalTime)// Number of updates
+                                                .takeUntil(interval -> match.isClosed())
+                                                .flatMap(interval -> {
+                                                    int timeLeft = totalTime - (interval.intValue() + 1); // Calculate remaining time
+                                                    return editQuestionMessageTime(messageChannel, message, index, timeLeft);
+                                                })
+                                                //.then(Mono.defer(() -> openAnswering(messageChannel)))
+                                                //.then(Mono.delay(Duration.ofSeconds(totalTime)))
+                                                .then(Mono.defer(() -> editQuestionMessageInitial(messageChannel, message, index)))
+                                                .then(Mono.delay(Duration.ofSeconds(1)))
+                                                .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
+                                                .then(Mono.defer(() -> closeAnswering(messageChannel)))
+                                                .then(Mono.defer(() -> editQuestionMessage(messageChannel, message, index)))
+                                                .then(Mono.delay(Duration.ofSeconds(timers.getTimeForNewQuestionToAppear())))
+                                                .then(Mono.defer(() -> moveToNextQuestion(match)));
+                                    });
                         }
                 )
                 .then();
     }
+
+
+// .then(Mono.defer(() -> {
+//        if (match.isClosed()) {
+//            System.out.println("createCanceledMatchMessage");
+//            return createCanceledMatchMessage(messageChannel);
+//        }
+//        System.out.println("createMatchResultsMsg");
+//        return createMatchResultsMessage(messageChannel);
+//    })
+//            )
+
+
 
     private Mono<Void> closeAnswering(MessageChannel messageChannel){
         Match match = quizzes.get(messageChannel);
@@ -194,6 +246,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
             buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))));
             //System.out.println("Creating button of id:" + "Answer-" + (char)('A' + i) + "-" + questionNumber.toString());
         }
+        buttons.add(Button.danger("cancelQuiz", "Cancel"));
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("#" + (match.getQuestionNumber() + 1) + " **" + match.getQuestion().getQuestion() + "**")
@@ -220,6 +273,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
             buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))));
             //System.out.println("Creating button of id:" + "Answer-" + (char)('A' + i) + "-" + questionNumber.toString());
         }
+        buttons.add(Button.danger("cancelQuiz", "Cancel"));
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("#" + (match.getQuestionNumber() + 1) + " **" + match.getQuestion().getQuestion() + "**")
@@ -244,6 +298,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
             buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))).disabled());
             //System.out.println("Creating button of id:" + "Answer-" + (char)('A' + i) + "-" + questionNumber.toString());
         }
+        buttons.add(Button.danger("cancelQuiz", "Cancel"));
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("#" + (match.getQuestionNumber() + 1) + " **" + match.getQuestion().getQuestion() + "**")
@@ -268,6 +323,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
             buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))).disabled());
             //System.out.println("Creating button of id:" + "Answer-" + (char)('A' + i) + "-" + questionNumber.toString());
         }
+        buttons.add(Button.danger("cancelQuiz", "Cancel"));
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("#" + (match.getQuestionNumber() + 1) + " **" + match.getQuestion().getQuestion() + "**")
