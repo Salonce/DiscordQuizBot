@@ -76,14 +76,16 @@ public void addMatch(MessageChannel messageChannel, Match match) {
                             if (match.isClosed()) {
                                 return Mono.just(message); // Skip question messages if closed
                             }
+                            System.out.println("before it creates q messages");
                             return createQuestionMessages(messageChannel);
                         })
                 )
-                .flatMap(message ->
-                        Mono.defer(() -> {
+                .then(Mono.defer(() -> {
                             if (match.isClosed()) {
+                                System.out.println("createCanceledMatchMessage");
                                 return createCanceledMatchMessage(messageChannel);
                             }
+                            System.out.println("createMatchResultsMsg");
                             return createMatchResultsMessage(messageChannel);
                         })
                 )
@@ -336,9 +338,9 @@ public void addMatch(MessageChannel messageChannel, Match match) {
     }
 
     private Mono<Void> createQuestionMessages(MessageChannel messageChannel) {
-        return createQuestionMessagesSequentially(messageChannel) // Process all questions sequentially
+        return createQuestionMessagesSequentially(messageChannel); // Process all questions sequentially
                 //.then(Mono.delay(Duration.ofSeconds(2))) // add time after last question?
-                .then();
+
     }
 
     private Mono<Void> moveToNextQuestion(Match match){
@@ -352,7 +354,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("Final scoreboard: " )
                 .description(match.getScoreboard())
-                .addField("", "The winners are: " + match.getWinners(), false)
+                .addField("\uD83C\uDFC6", "The winners are: " + match.getWinners(), false)
                 .build();
 
         return messageChannel.createMessage(embed);
