@@ -17,6 +17,7 @@ public class Match{
     private int questionNumber;
     private int noAnswerCount;
 
+
     private boolean isClosed;
     @Setter
     private boolean answeringOpen;
@@ -27,9 +28,9 @@ public class Match{
 
     private String name;
 
-    private final QuizConfig quizConfig;
+    private int unasweredQuestionsLimit;
 
-    public Match(List<Question> questions, String type, Long ownerId, QuizConfig quizConfig){
+    public Match(List<Question> questions, String type, Long ownerId, int unasweredQuestionsLimit){
         this.questions = questions;
         this.players = new HashMap<>();
         this.enrolment = true;
@@ -37,7 +38,7 @@ public class Match{
         this.isClosed = false;
         this.ownerId = ownerId;
         this.noAnswerCount = 0;
-        this.quizConfig = quizConfig;
+        this.unasweredQuestionsLimit = unasweredQuestionsLimit;
 
         if (type != null) {
             String capitalized = type.substring(0, 1).toUpperCase() + type.substring(1);
@@ -56,7 +57,7 @@ public class Match{
 
         if (noAnswersCount == players.size()) {
             noAnswerCount++;
-            if (noAnswerCount >= quizConfig.getUnansweredLimit())
+            if (noAnswerCount >= unasweredQuestionsLimit)
                 isClosed = true;
         }
         else
