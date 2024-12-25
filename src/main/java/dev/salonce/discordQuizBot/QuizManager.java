@@ -203,6 +203,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
                                                 .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
                                                 .then(Mono.defer(() -> closeAnswering(messageChannel)))
                                                 .then(Mono.defer(() -> editQuestionMessage(messageChannel, message, index)))
+                                                .then(Mono.defer(() -> setNoAnswerCountAndCloseMatchIfLimit(messageChannel)))
                                                 .then(Mono.delay(Duration.ofSeconds(timers.getTimeForNewQuestionToAppear())))
                                                 .then(Mono.defer(() -> moveToNextQuestion(match)));
                                     });
@@ -222,7 +223,11 @@ public void addMatch(MessageChannel messageChannel, Match match) {
 //    })
 //            )
 
-
+    private Mono<Void> setNoAnswerCountAndCloseMatchIfLimit(MessageChannel messageChannel){
+        Match match = quizzes.get(messageChannel);
+        match.setNoAnswerCountAndCloseMatchIfLimit();
+        return Mono.empty();
+    }
 
     private Mono<Void> closeAnswering(MessageChannel messageChannel){
         Match match = quizzes.get(messageChannel);

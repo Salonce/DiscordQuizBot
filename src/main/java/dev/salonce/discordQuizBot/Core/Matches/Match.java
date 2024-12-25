@@ -11,9 +11,12 @@ import java.util.stream.Collectors;
 @Getter
 public class Match{
 
+    private final int NO_ANSWER_MAX_COUNT = 3;
+
     private final Map<User, Player> players;
     private final List<Question> questions;
     private int questionNumber;
+    private int noAnswerCount;
 
     private boolean isClosed;
     @Setter
@@ -32,11 +35,30 @@ public class Match{
         this.questionNumber = 0;
         this.isClosed = false;
         this.ownerId = ownerId;
+        this.noAnswerCount = 0;
 
         if (type != null) {
             String capitalized = type.substring(0, 1).toUpperCase() + type.substring(1);
             this.name = capitalized;
         }
+    }
+
+    public void setNoAnswerCountAndCloseMatchIfLimit(){
+        int noAnswersCount = 0;
+        for (Player player : players.values()){
+            int intAnswer = player.getAnswersList().get(questionNumber);
+            if (intAnswer == -1)
+                noAnswersCount++;
+            else break;
+        }
+
+        if (noAnswersCount == players.size()) {
+            noAnswerCount++;
+            if (noAnswerCount >= NO_ANSWER_MAX_COUNT)
+                isClosed = true;
+        }
+        else
+            noAnswerCount = 0;
     }
 
     public boolean closeMatch(Long ownerId){
