@@ -6,6 +6,7 @@ import dev.salonce.discordQuizBot.Buttons.ButtonInteraction;
 import dev.salonce.discordQuizBot.Buttons.ButtonInteractionData;
 import dev.salonce.discordQuizBot.Configs.QuizConfig;
 import dev.salonce.discordQuizBot.Core.Matches.Match;
+import dev.salonce.discordQuizBot.Core.Matches.MatchClosed;
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
 import discord4j.core.object.entity.Message;
@@ -94,84 +95,6 @@ public void addMatch(MessageChannel messageChannel, Match match) {
     }
 }
 
-
-
-//    public void addMatch(MessageChannel messageChannel, Match match) {
-//        int totalTimeToJoinLeft = timers.getTimeToJoinQuiz();
-//        int totalTimeToStartLeft = timers.getTimeToStartMatch();
-//
-//        if (quizzes.containsKey(messageChannel)){
-//            //send message that starting a match is impossible because there is already one
-//        }
-//        else{
-//            quizzes.put(messageChannel, match);
-//            //System.out.println("Initial participants: " + match.getUserNames());
-//            createStartQuizMessage(messageChannel, totalTimeToJoinLeft)
-//                    //first starting message - countdown to join
-//                .flatMap(message ->
-//                    Flux.interval(Duration.ofSeconds(1))
-//                        .take(totalTimeToJoinLeft)
-//                        .flatMap(interval -> {
-//                            //match.isClosed();
-//                            Long timeLeft = (long) (totalTimeToJoinLeft - interval.intValue() - 1);
-//                            return editStartQuizMessage(message, messageChannel, timeLeft);
-//                        })
-//                        .then(Mono.just(message))
-//                )
-//                    //second starting message edit - countdown to match
-//                .flatMap(message ->
-//                    Flux.interval(Duration.ofSeconds(1))
-//                        .take(totalTimeToStartLeft + 1)
-//                        .flatMap(interval -> {
-//                            Long timeLeft = (long) (totalTimeToStartLeft - interval.intValue());
-//                            return editStartQuizMessage2(message, messageChannel, timeLeft);
-//                        })
-//                        .then(Mono.just(message))
-//                )
-//                .then(Mono.defer(() -> createQuestionMessages(messageChannel)))
-//                .then(Mono.defer(() -> createMatchResultsMessage(messageChannel)))
-//                .then(Mono.defer(() -> Mono.just(quizzes.remove(messageChannel))))
-//                .subscribe();
-//        }
-//    }
-
-//    private Mono<Void> createQuestionMessagesSequentially(MessageChannel messageChannel) {
-//        Match match = quizzes.get(messageChannel);
-//
-//        return Flux.generate(sink -> {
-//                    if (match.questionExists())
-//                        sink.next(match.getQuestion());
-//                    else
-//                        sink.complete();
-//                })
-//                .index()
-//                .concatMap(tuple -> {
-//                            long index = tuple.getT1();
-//                    return createQuestionMessage(messageChannel, index, timers.getTimeToPickAnswer())
-//                            .flatMap(message -> {
-//                                openAnswering(messageChannel);
-//                                int totalTime = timers.getTimeToPickAnswer();
-//                                return Flux.interval(Duration.ofSeconds(1)) // Emit every 5 seconds
-//                                        .take(totalTime) // Number of updates
-//                                        .flatMap(interval -> {
-//                                            int timeLeft = totalTime - (interval.intValue() + 1); // Calculate remaining time
-//                                            return editQuestionMessageTime(messageChannel, message, index, timeLeft);
-//                                        })
-//                                        //.then(Mono.defer(() -> openAnswering(messageChannel)))
-//                                        //.then(Mono.delay(Duration.ofSeconds(totalTime)))
-//                                        .then(Mono.defer(() -> editQuestionMessageInitial(messageChannel, message, index)))
-//                                        .then(Mono.delay(Duration.ofSeconds(1)))
-//                                        .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
-//                                        .then(Mono.defer(() -> closeAnswering(messageChannel)))
-//                                        .then(Mono.defer(() -> editQuestionMessage(messageChannel, message, index)))
-//                                        .then(Mono.delay(Duration.ofSeconds(timers.getTimeForNewQuestionToAppear())))
-//                                        .then(Mono.defer(() -> moveToNextQuestion(match)));
-//                            });
-//                        }
-//                )
-//                .then();
-//    }
-
     private Mono<Void> createQuestionMessagesSequentially(MessageChannel messageChannel) {
         Match match = quizzes.get(messageChannel);
 
@@ -211,17 +134,6 @@ public void addMatch(MessageChannel messageChannel, Match match) {
                 )
                 .then();
     }
-
-
-// .then(Mono.defer(() -> {
-//        if (match.isClosed()) {
-//            System.out.println("createCanceledMatchMessage");
-//            return createCanceledMatchMessage(messageChannel);
-//        }
-//        System.out.println("createMatchResultsMsg");
-//        return createMatchResultsMessage(messageChannel);
-//    })
-//            )
 
     private Mono<Void> setNoAnswerCountAndCloseMatchIfLimit(MessageChannel messageChannel){
         Match match = quizzes.get(messageChannel);
@@ -423,9 +335,14 @@ public void addMatch(MessageChannel messageChannel, Match match) {
 
     private Mono<Message> createCanceledMatchMessage(MessageChannel messageChannel){
         Match match = quizzes.get(messageChannel);
+        String text = "Match has been closed.";
+        if (match.getMatchClosed() == MatchClosed.BY_AUTOCLOSE)
+            text = "Match has been autoclosed.";
+        else if (match.getMatchClosed() == MatchClosed.BY_OWNER)
+            text = "Match has been closed by owner.";
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("Match has been cancelled by the owner." )
+                .title(text )
                 .build();
 
         return messageChannel.createMessage(embed);

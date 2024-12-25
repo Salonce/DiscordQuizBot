@@ -1,24 +1,21 @@
 package dev.salonce.discordQuizBot.Core.Matches;
 
-import dev.salonce.discordQuizBot.Configs.QuizConfig;
 import dev.salonce.discordQuizBot.Core.Questions.Question;
 import discord4j.core.object.entity.User;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Getter
 public class Match{
-
     private final Map<User, Player> players;
     private final List<Question> questions;
+    private final int unasweredQuestionsLimit;
     private int questionNumber;
     private int noAnswerCount;
 
-
-    private boolean isClosed;
+    private MatchClosed matchClosed;
     @Setter
     private boolean answeringOpen;
     @Setter
@@ -28,17 +25,19 @@ public class Match{
 
     private String name;
 
-    private int unasweredQuestionsLimit;
+    public boolean isClosed(){
+        return matchClosed != MatchClosed.NOT_CLOSED;
+    }
 
     public Match(List<Question> questions, String type, Long ownerId, int unasweredQuestionsLimit){
         this.questions = questions;
         this.players = new HashMap<>();
         this.enrolment = true;
         this.questionNumber = 0;
-        this.isClosed = false;
-        this.ownerId = ownerId;
         this.noAnswerCount = 0;
+        this.ownerId = ownerId;
         this.unasweredQuestionsLimit = unasweredQuestionsLimit;
+        this.matchClosed = MatchClosed.NOT_CLOSED;
 
         if (type != null) {
             String capitalized = type.substring(0, 1).toUpperCase() + type.substring(1);
@@ -57,8 +56,9 @@ public class Match{
 
         if (noAnswersCount == players.size()) {
             noAnswerCount++;
-            if (noAnswerCount >= unasweredQuestionsLimit)
-                isClosed = true;
+            if (noAnswerCount >= unasweredQuestionsLimit) {
+                matchClosed = MatchClosed.BY_AUTOCLOSE;
+            }
         }
         else
             noAnswerCount = 0;
@@ -66,7 +66,7 @@ public class Match{
 
     public boolean closeMatch(Long ownerId){
         if (this.ownerId.equals(ownerId)){
-            isClosed = true;
+            matchClosed = MatchClosed.BY_OWNER;
             return true;
         }
         return false;
@@ -188,7 +188,4 @@ public class Match{
             return false;
         }
     }
-
-
-
 }
