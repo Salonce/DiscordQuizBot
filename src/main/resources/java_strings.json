@@ -1,0 +1,363 @@
+[
+    {
+      "question": "What method is used to compare two strings for equality in Java?",
+      "correctAnswers": ["equals()"],
+      "incorrectAnswers": ["compare()", "isEqual()", "equalsIgnoreCase()"],
+      "explanation": "The equals() method compares the content of two strings for equality."
+    },
+    {
+      "question": "How can you find the length of a string in Java?",
+      "correctAnswers": ["length()"],
+      "incorrectAnswers": ["size()", "getLength()", "count()"],
+      "explanation": "The length() method returns the number of characters in the string."
+    },
+    {
+      "question": "Which method converts all characters in a string to lowercase?",
+      "correctAnswers": ["toLowerCase()"],
+      "incorrectAnswers": ["toLower()", "makeLowerCase()", "lowerCase()"],
+      "explanation": "The toLowerCase() method transforms all characters in the string to lowercase."
+    },
+    {
+      "question": "What is the result of the expression \"Java\".concat(\"Script\")?",
+      "correctAnswers": ["JavaScript"],
+      "incorrectAnswers": ["Java Script", "Java", "ScriptJava"],
+      "explanation": "The concat() method joins two strings, producing \"JavaScript\"."
+    },
+    {
+      "question": "Which method checks whether a string contains a specific sequence of characters?",
+      "correctAnswers": ["contains()"],
+      "incorrectAnswers": ["find()", "checkContains()", "matches()"],
+      "explanation": "The contains() method checks if a specific sequence of characters is present in the string."
+    },
+    {
+      "question": "Which method replaces all occurrences of a character in a string with another character?",
+      "correctAnswers": ["replace()"],
+      "incorrectAnswers": ["substitute()", "swap()", "change()"],
+      "explanation": "The replace() method replaces every occurrence of a specific character with another."
+    },
+    {
+      "question": "What is the starting index of characters in a Java string?",
+      "correctAnswers": ["0"],
+      "incorrectAnswers": ["1", "-1", "Depends on the implementation"],
+      "explanation": "In Java, strings are zero-indexed, so the first character has an index of 0."
+    },
+    {
+      "question": "Which method extracts a substring from a string?",
+      "correctAnswers": ["substring()"],
+      "incorrectAnswers": ["extract()", "getSubstring()", "slice()"],
+      "explanation": "The substring() method returns a part of the string based on the specified range."
+    },
+    {
+      "question": "What does the trim() method do?",
+      "correctAnswers": ["Removes leading and trailing whitespace"],
+      "incorrectAnswers": ["Removes all whitespace", "Trims the string to a fixed length", "Cuts the string from the middle"],
+      "explanation": "The trim() method removes leading and trailing whitespace but does not affect spaces in between."
+    },
+    {
+      "question": "How do you check if a string starts with a specific prefix?",
+      "correctAnswers": ["startsWith()"],
+      "incorrectAnswers": ["beginsWith()", "checkStart()", "prefixOf()"],
+      "explanation": "The startsWith() method checks if the string begins with the specified prefix."
+    },
+    {
+      "question": "Which method checks if a string ends with a specific suffix?",
+      "correctAnswers": ["endsWith()"],
+      "incorrectAnswers": ["finishWith()", "checkEnd()", "suffixOf()"],
+      "explanation": "The endsWith() method checks if the string ends with the specified suffix."
+    },
+    {
+      "question": "Which class is immutable in Java?",
+      "correctAnswers": ["String"],
+      "incorrectAnswers": ["StringBuilder", "StringBuffer", "CharSequence"],
+      "explanation": "The String class in Java is immutable, meaning its value cannot be changed after creation."
+    },
+    {
+      "question": "How can you join two strings with a delimiter in Java?",
+      "correctAnswers": ["String.join()"],
+      "incorrectAnswers": ["concat()", "append()", "combine()"],
+      "explanation": "The String.join() method combines strings with a specified delimiter."
+    },
+    {
+      "question": "Which method converts a string to an array of characters?",
+      "correctAnswers": ["toCharArray()"],
+      "incorrectAnswers": ["charArray()", "getChars()", "splitToChars()"],
+      "explanation": "The toCharArray() method converts the string into an array of characters."
+    },
+    {
+      "question": "How do you compare two strings lexicographically in Java?",
+      "correctAnswers": ["compareTo()"],
+      "incorrectAnswers": ["compareStrings()", "isGreater()", "compareLexicographically()"],
+      "explanation": "The compareTo() method compares two strings lexicographically."
+    },
+    {
+      "question": "What is the purpose of the intern() method?",
+      "correctAnswers": ["To return a canonical representation of a string"],
+      "incorrectAnswers": ["To compress strings", "To remove duplicates", "To store strings in a list"],
+      "explanation": "The intern() method ensures that all identical strings are stored as a single instance in the string pool."
+    },
+    {
+      "question": "Which method checks if two strings are identical, ignoring case?",
+      "correctAnswers": ["equalsIgnoreCase()"],
+      "incorrectAnswers": ["equalsCaseInsensitive()", "compareIgnoreCase()", "matchesIgnoreCase()"],
+      "explanation": "The equalsIgnoreCase() method compares strings for equality while ignoring their case."
+    },
+    {
+      "question": "What does the split() method return?",
+      "correctAnswers": ["An array of strings"],
+      "incorrectAnswers": ["A single string", "A list of strings", "A character array"],
+      "explanation": "The split() method splits a string based on a regex and returns an array of substrings."
+    },
+    {
+      "question": "How can you format a string in Java?",
+      "correctAnswers": ["String.format()"],
+      "incorrectAnswers": ["StringFormat()", "formatString()", "setFormat()"],
+      "explanation": "The String.format() method allows for formatted output, similar to printf."
+    },
+    {
+      "question": "What does the charAt() method do?",
+      "correctAnswers": ["Returns the character at a specified index"],
+      "incorrectAnswers": ["Returns a substring", "Replaces a character", "Converts to a char array"],
+      "explanation": "The charAt() method retrieves the character at the specified index in a string."
+    },
+    {
+        "question": "Which of the following classes is thread-safe for string manipulation?",
+        "correctAnswers": ["StringBuffer"],
+        "incorrectAnswers": ["String", "StringBuilder", "CharSequence"],
+        "explanation": "StringBuffer is designed to be thread-safe, meaning its methods are synchronized."
+    },
+    {
+        "question": "Which class provides a mutable sequence of characters and is not thread-safe?",
+        "correctAnswers": ["StringBuilder"],
+        "incorrectAnswers": ["StringBuffer", "String", "CharSequence"],
+        "explanation": "StringBuilder is a mutable class for string manipulation, but it is not synchronized."
+    },
+    {
+        "question": "What is the main difference between StringBuilder and StringBuffer?",
+        "correctAnswers": ["StringBuffer is synchronized, StringBuilder is not"],
+        "incorrectAnswers": ["StringBuilder is synchronized, StringBuffer is not", "StringBuilder is immutable, StringBuffer is mutable", "StringBuffer is faster than StringBuilder"],
+        "explanation": "StringBuffer is synchronized and thread-safe, while StringBuilder is not synchronized but faster in single-threaded contexts."
+    },
+    {
+        "question": "What happens when you try to modify a String object in Java?",
+        "correctAnswers": ["A new String object is created"],
+        "incorrectAnswers": ["The original string is modified", "An exception is thrown", "The string is converted to a StringBuffer"],
+        "explanation": "String objects are immutable; modifying a string creates a new object."
+    },
+    {
+        "question": "Which method appends data to the end of a StringBuilder object?",
+        "correctAnswers": ["append()"],
+        "incorrectAnswers": ["add()", "concat()", "insert()"],
+        "explanation": "The append() method appends the specified data to the StringBuilder."
+    },
+    {
+        "question": "How can you reverse the characters in a StringBuilder object?",
+        "correctAnswers": ["reverse()"],
+        "incorrectAnswers": ["invert()", "flip()", "revert()"],
+        "explanation": "The reverse() method reverses the sequence of characters in a StringBuilder object."
+    },
+    {
+        "question": "Which of the following is a mutable class in Java?",
+        "correctAnswers": ["StringBuilder"],
+        "incorrectAnswers": ["String", "Integer", "Double"],
+        "explanation": "StringBuilder is mutable, meaning its contents can be modified after creation."
+    },
+    {
+        "question": "What method is used to delete characters from a StringBuilder?",
+        "correctAnswers": ["delete()"],
+        "incorrectAnswers": ["remove()", "erase()", "clear()"],
+        "explanation": "The delete() method removes characters within a specified range in a StringBuilder."
+    },
+    {
+        "question": "Which method replaces a substring within a StringBuilder object?",
+        "correctAnswers": ["replace()"],
+        "incorrectAnswers": ["substitute()", "swap()", "modify()"],
+        "explanation": "The replace() method replaces a sequence of characters in a StringBuilder object."
+    },
+    {
+        "question": "What method can be used to ensure the capacity of a StringBuilder object?",
+        "correctAnswers": ["ensureCapacity()"],
+        "incorrectAnswers": ["reserveCapacity()", "setCapacity()", "initializeCapacity()"],
+        "explanation": "The ensureCapacity() method ensures that the StringBuilder object has a minimum capacity."
+    },
+    {
+        "question": "Which method is used to insert data at a specific index in a StringBuilder?",
+        "correctAnswers": ["insert()"],
+        "incorrectAnswers": ["addAt()", "put()", "appendAt()"],
+        "explanation": "The insert() method allows you to insert data at a specified index in a StringBuilder."
+    },
+    {
+        "question": "What happens when the capacity of a StringBuilder is exceeded?",
+        "correctAnswers": ["The capacity is automatically increased"],
+        "incorrectAnswers": ["An exception is thrown", "The StringBuilder is truncated", "The operation is ignored"],
+        "explanation": "StringBuilder automatically increases its capacity when needed."
+    },
+    {
+        "question": "Which method is used to find the capacity of a StringBuilder?",
+        "correctAnswers": ["capacity()"],
+        "incorrectAnswers": ["getCapacity()", "size()", "lengthCapacity()"],
+        "explanation": "The capacity() method returns the current capacity of a StringBuilder object."
+    },
+    {
+        "question": "Which method in StringBuffer is used to insert characters at a specific position?",
+        "correctAnswers": ["insert()"],
+        "incorrectAnswers": ["append()", "setCharAt()", "insertAt()"],
+        "explanation": "The insert() method in StringBuffer inserts characters at the specified position."
+    },
+    {
+        "question": "What is the default capacity of a StringBuilder when it is created with no arguments?",
+        "correctAnswers": ["16"],
+        "incorrectAnswers": ["8", "32", "64"],
+        "explanation": "When a StringBuilder is created without arguments, it has a default capacity of 16."
+    },
+    {
+        "question": "Which method appends the string representation of an object to a StringBuilder?",
+        "correctAnswers": ["append()"],
+        "incorrectAnswers": ["concat()", "insert()", "toString()"],
+        "explanation": "The append() method appends the string representation of the object to a StringBuilder."
+    },
+    {
+        "question": "What method is used to set the length of a StringBuilder?",
+        "correctAnswers": ["setLength()"],
+        "incorrectAnswers": ["length()", "resize()", "adjustLength()"],
+        "explanation": "The setLength() method sets the length of a StringBuilder object."
+    },
+    {
+        "question": "Which method in StringBuilder deletes a character at a specified position?",
+        "correctAnswers": ["deleteCharAt()"],
+        "incorrectAnswers": ["removeCharAt()", "eraseCharAt()", "clearCharAt()"],
+        "explanation": "The deleteCharAt() method deletes the character at the specified position in a StringBuilder."
+    },
+    {
+        "question": "How does StringBuilder differ from StringBuffer in terms of performance?",
+        "correctAnswers": ["StringBuilder is faster in single-threaded operations"],
+        "incorrectAnswers": ["StringBuffer is faster in single-threaded operations", "Both have the same performance", "StringBuilder is always slower than StringBuffer"],
+        "explanation": "StringBuilder is faster because it is not synchronized, making it more efficient in single-threaded scenarios."
+    },
+    {
+        "question": "Which of these classes cannot be subclassed?",
+        "correctAnswers": ["String"],
+        "incorrectAnswers": ["StringBuilder", "StringBuffer", "StringTokenizer"],
+        "explanation": "The String class is final, meaning it cannot be subclassed."
+    },
+    {
+        "question": "What does the capacity() method in StringBuilder return?",
+        "correctAnswers": ["The current storage capacity of the object"],
+        "incorrectAnswers": ["The length of the string", "The number of characters appended", "The remaining space available"],
+        "explanation": "The capacity() method returns the current capacity of the StringBuilder, not the actual length of the string."
+    },
+    {
+        "question": "What is the default value of an empty String in Java?",
+        "correctAnswers": ["\"\""],
+        "incorrectAnswers": ["null", "\" \"", "undefined"],
+        "explanation": "An empty String in Java is represented as \"\", which has a length of 0."
+    },
+    {
+        "question": "Which class is immutable in Java?",
+        "correctAnswers": ["String"],
+        "incorrectAnswers": ["StringBuilder", "StringBuffer", "StringTokenizer"],
+        "explanation": "The String class is immutable, meaning its content cannot be changed after it's created."
+    },
+    {
+        "question": "Which method removes a specified range of characters in StringBuilder?",
+        "correctAnswers": ["delete()"],
+        "incorrectAnswers": ["remove()", "eraseRange()", "truncate()"],
+        "explanation": "The delete() method removes characters within a specified range in a StringBuilder object."
+    },
+    {
+        "question": "What does the charAt() method do for strings?",
+        "correctAnswers": ["Returns the character at a specified index"],
+        "incorrectAnswers": ["Deletes a character at an index", "Replaces a character in the string", "Converts the string to a char array"],
+        "explanation": "The charAt() method retrieves the character located at the specified index in the string."
+    },
+    {
+        "question": "How do you check if two strings have the same content in Java?",
+        "correctAnswers": ["Using equals() method"],
+        "incorrectAnswers": ["Using == operator", "Using compareTo() method", "Using match() method"],
+        "explanation": "The equals() method compares the content of two strings for equality, while == checks for reference equality."
+    },
+    {
+        "question": "Which method appends a string to a StringBuffer object?",
+        "correctAnswers": ["append()"],
+        "incorrectAnswers": ["concat()", "join()", "add()"],
+        "explanation": "The append() method in StringBuffer adds the specified string to the end of the existing content."
+    },
+    {
+        "question": "How is a String object created in Java?",
+        "correctAnswers": ["Using string literals or the new keyword"],
+        "incorrectAnswers": ["Only using string literals", "Only using the new keyword", "Using the StringBuilder class"],
+        "explanation": "String objects can be created either by using string literals (e.g., \"Hello\") or by using the new keyword (e.g., new String(\"Hello\"))."
+    },
+    {
+        "question": "Which method returns the length of a StringBuilder object?",
+        "correctAnswers": ["length()"],
+        "incorrectAnswers": ["size()", "count()", "capacity()"],
+        "explanation": "The length() method returns the number of characters in a StringBuilder object."
+    },
+    {
+        "question": "What does the ensureCapacity() method do in StringBuilder?",
+        "correctAnswers": ["Ensures the object has at least the specified capacity"],
+        "incorrectAnswers": ["Increases the length of the string", "Resets the capacity to its default value", "Deletes unused capacity"],
+        "explanation": "The ensureCapacity() method increases the capacity of the StringBuilder object if the specified minimum capacity is greater than its current capacity."
+    },
+    {
+        "question": "What happens when you modify a String in Java?",
+        "correctAnswers": ["A new String object is created"],
+        "incorrectAnswers": ["The original string is changed", "The string is converted to StringBuilder", "An exception is thrown"],
+        "explanation": "Strings in Java are immutable, so modifying a string creates a new object while leaving the original string unchanged."
+    },
+    {
+        "question": "Which of the following methods does StringBuffer support but not String?",
+        "correctAnswers": ["reverse()"],
+        "incorrectAnswers": ["equals()", "hashCode()", "compareTo()"],
+        "explanation": "StringBuffer supports methods like reverse(), which are not available for the immutable String class."
+    },
+    {
+        "question": "What is the main purpose of the toString() method in StringBuilder?",
+        "correctAnswers": ["Converts the content to a String object"],
+        "incorrectAnswers": ["Appends a string", "Resets the content", "Deletes unused capacity"],
+        "explanation": "The toString() method converts the mutable content of StringBuilder to an immutable String object."
+    },
+    {
+        "question": "Which of these classes implements CharSequence?",
+        "correctAnswers": ["String"],
+        "incorrectAnswers": ["File", "Integer", "ArrayList"],
+        "explanation": "The String class implements CharSequence, which represents a readable sequence of characters."
+    },
+    {
+        "question": "Which method in StringBuffer inserts data at a specific index?",
+        "correctAnswers": ["insert()"],
+        "incorrectAnswers": ["append()", "put()", "prepend()"],
+        "explanation": "The insert() method in StringBuffer allows inserting data at the specified index."
+    },
+    {
+        "question": "What does the substring() method return?",
+        "correctAnswers": ["A new String containing a portion of the original string"],
+        "incorrectAnswers": ["A reference to the original string", "The length of the substring", "The index of the substring"],
+        "explanation": "The substring() method extracts a portion of the original string and returns it as a new String."
+    },
+    {
+        "question": "How does StringBuilder handle capacity when appending new characters?",
+        "correctAnswers": ["It doubles the capacity when exceeded"],
+        "incorrectAnswers": ["It throws an exception", "It truncates the existing string", "It resets the capacity to a fixed value"],
+        "explanation": "When the capacity of a StringBuilder is exceeded, it automatically doubles to accommodate new characters."
+    },
+    {
+        "question": "What is the result of calling reverse() on a StringBuilder containing \"abc\"?",
+        "correctAnswers": ["\"cba\""],
+        "incorrectAnswers": ["\"abc\"", "\"bac\"", "\"cab\""],
+        "explanation": "The reverse() method in StringBuilder reverses the sequence of characters, resulting in \"cba\"."
+    },
+    {
+        "question": "What does the indexOf() method in String return?",
+        "correctAnswers": ["The index of the first occurrence of the specified substring"],
+        "incorrectAnswers": ["The index of the last occurrence", "The length of the substring", "A boolean indicating presence"],
+        "explanation": "The indexOf() method returns the index of the first occurrence of the specified substring in the string."
+    },
+    {
+        "question": "How is StringBuffer different from StringBuilder?",
+        "correctAnswers": ["StringBuffer is synchronized, StringBuilder is not"],
+        "incorrectAnswers": ["StringBuilder is synchronized, StringBuffer is not", "StringBuffer is immutable, StringBuilder is mutable", "StringBuffer is faster in single-threaded operations"],
+        "explanation": "StringBuffer is synchronized and thread-safe, while StringBuilder is not synchronized but faster in single-threaded contexts."
+    }
+]
+  

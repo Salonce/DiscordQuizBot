@@ -240,7 +240,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
             buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))).disabled());
             //System.out.println("Creating button of id:" + "Answer-" + (char)('A' + i) + "-" + questionNumber.toString());
         }
-        buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
+        buttons.add(Button.danger("cancelQuiz", "Abort quiz").disabled());
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("#" + (match.getQuestionNumber() + 1) + " **" + match.getQuestion().getQuestion() + "**")
@@ -305,7 +305,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
                 .build();
 
         return message.edit(MessageEditSpec.builder()
-                .addComponent(ActionRow.of(Button.success("joinQuiz", "Join").disabled(), Button.success("leaveQuiz", "Leave").disabled(), Button.danger("cancelQuiz", "Cancel")))
+                .addComponent(ActionRow.of(Button.success("joinQuiz", "Join").disabled(), Button.success("leaveQuiz", "Leave").disabled(), Button.danger("cancelQuiz", "Cancel").disabled()))
                 .addEmbed(embed)
                 .build());
     }
@@ -339,7 +339,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         if (match.getEnumMatchClosed() == EnumMatchClosed.BY_AUTOCLOSE)
             text = "Match has been autoclosed.";
         else if (match.getEnumMatchClosed() == EnumMatchClosed.BY_OWNER)
-            text = "Match has been closed by owner.";
+            text = "Match has been closed by the owner.";
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title(text )

@@ -126,12 +126,6 @@
         "explanation": "The Baroque style emphasizes movement, emotion, and dramatic lighting, exemplified by Caravaggio's paintings."
     },
     {
-        "question": "Who created the sculpture 'The Thinker,' an iconic work of modern sculpture?",
-        "correctAnswers": ["Auguste Rodin"],
-        "incorrectAnswers": ["Constantin Brâncuși", "Alberto Giacometti", "Henry Moore"],
-        "explanation": "'The Thinker' by Rodin symbolizes intellectual contemplation and human creativity."
-    },
-    {
         "question": "What term refers to paintings of everyday scenes and subjects, often associated with Dutch Golden Age artists like Vermeer?",
         "correctAnswers": ["Genre painting"],
         "incorrectAnswers": ["Still life", "Portraiture", "History painting"],

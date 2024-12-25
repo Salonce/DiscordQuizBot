@@ -1,0 +1,593 @@
+[
+    {
+      "question": "Which of the following is used to manage dependencies in Java projects?",
+      "correctAnswers": ["Maven"],
+      "incorrectAnswers": ["Ant", "Gradle", "Jenkins"],
+      "explanation": "Maven is a build automation tool used primarily for dependency management in Java projects."
+    },
+    {
+      "question": "What does JDK stand for in Java programming?",
+      "correctAnswers": ["Java Development Kit"],
+      "incorrectAnswers": ["Java Domain Kit", "Java Debugging Kit", "Java Distribution Kit"],
+      "explanation": "The JDK (Java Development Kit) provides the necessary tools for developing Java applications, including the compiler and runtime environment."
+    },
+    {
+      "question": "Which Java IDE is known for its strong refactoring support?",
+      "correctAnswers": ["IntelliJ IDEA"],
+      "incorrectAnswers": ["Eclipse", "NetBeans", "JDeveloper"],
+      "explanation": "IntelliJ IDEA is renowned for its advanced refactoring tools, making it a popular choice among Java developers."
+    },
+    {
+      "question": "What is the purpose of the Java Runtime Environment (JRE)?",
+      "correctAnswers": ["To run Java applications"],
+      "incorrectAnswers": ["To compile Java source code", "To manage Java dependencies", "To debug Java programs"],
+      "explanation": "The JRE provides the environment necessary for running Java applications but does not include the tools for compiling Java source code."
+    },
+    {
+      "question": "Which of these is the default Java garbage collector in modern JVM versions?",
+      "correctAnswers": ["G1 Garbage Collector"],
+      "incorrectAnswers": ["Parallel Garbage Collector", "Serial Garbage Collector", "CMS Garbage Collector"],
+      "explanation": "The G1 Garbage Collector is the default garbage collector in many recent versions of the JVM."
+    },
+    {
+      "question": "Which file extension is typically used for compiled Java classes?",
+      "correctAnswers": [".class"],
+      "incorrectAnswers": [".java", ".byte", ".jar"],
+      "explanation": "Java class files are compiled with the .class extension, containing bytecode for the JVM to execute."
+    },
+    {
+      "question": "Which command is used to compile a Java file from the command line?",
+      "correctAnswers": ["javac"],
+      "incorrectAnswers": ["java", "javap", "jar"],
+      "explanation": "The `javac` command is used to compile Java source files into bytecode files (.class)."
+    },
+    {
+      "question": "Which version of Java introduced the 'var' keyword for local variable type inference?",
+      "correctAnswers": ["Java 10"],
+      "incorrectAnswers": ["Java 8", "Java 12", "Java 15"],
+      "explanation": "The 'var' keyword was introduced in Java 10 to allow local variables to be inferred without explicit type declaration."
+    },
+    {
+      "question": "Which Java tool is used to package applications into executable JAR files?",
+      "correctAnswers": ["jar"],
+      "incorrectAnswers": ["javac", "java", "javadoc"],
+      "explanation": "The `jar` tool is used to package Java classes and related resources into a JAR (Java ARchive) file."
+    },
+    {
+      "question": "What is the purpose of the 'public static void main' method in a Java program?",
+      "correctAnswers": ["It serves as the entry point for Java applications"],
+      "incorrectAnswers": ["It defines the program's global variables", "It compiles the program", "It executes all functions in the program"],
+      "explanation": "The 'public static void main' method is the entry point where execution of a Java application begins."
+    },
+    {
+      "question": "Which Java framework is widely used for building web applications?",
+      "correctAnswers": ["Spring Framework"],
+      "incorrectAnswers": ["Hibernate", "JPA", "Struts"],
+      "explanation": "The Spring Framework is a popular choice for building robust, scalable web applications in Java."
+    },
+    {
+      "question": "Which Java version introduced the 'lambda expressions' feature?",
+      "correctAnswers": ["Java 8"],
+      "incorrectAnswers": ["Java 7", "Java 9", "Java 10"],
+      "explanation": "Lambda expressions were introduced in Java 8 to enable functional programming features and make code more concise."
+    },
+    {
+      "question": "What is the primary use of the 'jdk/bin/java' command?",
+      "correctAnswers": ["To run Java programs"],
+      "incorrectAnswers": ["To compile Java programs", "To generate Java documentation", "To install Java libraries"],
+      "explanation": "The 'java' command in the JDK bin directory is used to execute Java applications."
+    },
+    {
+      "question": "Which of the following tools is used for Java documentation generation?",
+      "correctAnswers": ["Javadoc"],
+      "incorrectAnswers": ["JavaDocGen", "JDoc", "Doclet"],
+      "explanation": "Javadoc is a tool that generates API documentation from Java source code."
+    },
+    {
+      "question": "Which of these is a feature introduced in Java 9?",
+      "correctAnswers": ["Modules"],
+      "incorrectAnswers": ["Lambda expressions", "Var keyword", "Stream API"],
+      "explanation": "Java 9 introduced the module system, which helps organize code into modules for better maintainability."
+    },
+    {
+      "question": "Which Java command is used to launch a JAR file?",
+      "correctAnswers": ["java -jar"],
+      "incorrectAnswers": ["javac -jar", "java -run", "jar -run"],
+      "explanation": "The command `java -jar` is used to run executable JAR files."
+    },
+    {
+      "question": "Which IDE is widely used for Android app development with Java?",
+      "correctAnswers": ["Android Studio"],
+      "incorrectAnswers": ["NetBeans", "IntelliJ IDEA", "Eclipse"],
+      "explanation": "Android Studio is the official IDE for Android app development, supporting Java and Kotlin."
+    },
+    {
+      "question": "What is the purpose of 'public' in the 'public static void main' method declaration?",
+      "correctAnswers": ["It makes the method accessible from outside the class"],
+      "incorrectAnswers": ["It specifies the method's return type", "It marks the method as static", "It initializes the class"],
+      "explanation": "'Public' allows the method to be accessible from outside the class, enabling the JVM to invoke it when the program starts."
+    },
+    {
+      "question": "Which of the following is the default package in a Java project if no package is specified?",
+      "correctAnswers": ["Unnamed package"],
+      "incorrectAnswers": ["Default package", "Main package", "Root package"],
+      "explanation": "In Java, if no package is specified, the class belongs to the unnamed package."
+    },
+    {
+      "question": "What is the purpose of the 'static' keyword in Java?",
+      "correctAnswers": ["To define class-level members that are shared by all instances"],
+      "incorrectAnswers": ["To make a method private", "To define an abstract class", "To create a constant variable"],
+      "explanation": "The 'static' keyword allows variables and methods to be associated with the class itself rather than instances of the class."
+    },
+    {
+        "question": "What is the purpose of the `javap` command in the Java Development Kit?",
+        "correctAnswers": ["To disassemble compiled Java bytecode"],
+        "incorrectAnswers": ["To compile Java source code", "To execute Java applications", "To generate Javadoc documentation"],
+        "explanation": "The `javap` command disassembles Java bytecode into a human-readable form, useful for analyzing compiled code."
+    },
+    {
+        "question": "Which of the following is a core feature of the Java Virtual Machine (JVM)?",
+        "correctAnswers": ["Platform independence"],
+        "incorrectAnswers": ["Memory management", "Dependency injection", "Network communication"],
+        "explanation": "The JVM's primary feature is platform independence, allowing Java applications to run on any system with a compatible JVM."
+    },
+    {
+        "question": "Which file extension is used for Java archive files containing compiled code and resources?",
+        "correctAnswers": [".jar"],
+        "incorrectAnswers": [".war", ".ear", ".java"],
+        "explanation": "A .jar file is a Java ARchive that packages Java classes and associated resources into a single file for distribution."
+    },
+    {
+        "question": "What does the 'main' method signature in Java look like?",
+        "correctAnswers": ["public static void main(String[] args)"],
+        "incorrectAnswers": ["public void main(String[] args)", "public static void main()", "private static void main(String[] args)"],
+        "explanation": "The correct method signature for the entry point of a Java application is 'public static void main(String[] args)'."
+    },
+    {
+        "question": "Which tool is commonly used to manage Java project dependencies and build processes?",
+        "correctAnswers": ["Maven"],
+        "incorrectAnswers": ["Eclipse", "Gradle", "Git"],
+        "explanation": "Maven is a build automation tool that manages dependencies and simplifies the build process for Java projects."
+    },
+    {
+        "question": "What does the Java keyword 'extends' indicate in a class declaration?",
+        "correctAnswers": ["Inheritance from a superclass"],
+        "incorrectAnswers": ["Access control", "Final class definition", "Method overloading"],
+        "explanation": "'extends' is used in Java to indicate that a class is inheriting from a superclass, allowing it to access the superclass's properties and methods."
+    },
+    {
+        "question": "Which method in the Object class is used to compare two objects for equality in Java?",
+        "correctAnswers": ["equals()"],
+        "incorrectAnswers": ["compare()", "compareTo()", "isEqual()"],
+        "explanation": "The `equals()` method is used to compare two objects for equality, determining if their state is equivalent."
+    },
+    {
+        "question": "Which version of Java introduced the `Stream` API for functional-style programming?",
+        "correctAnswers": ["Java 8"],
+        "incorrectAnswers": ["Java 7", "Java 10", "Java 9"],
+        "explanation": "Java 8 introduced the `Stream` API, which allows for processing collections of objects in a functional style."
+    },
+    {
+        "question": "What does the 'volatile' keyword indicate in Java?",
+        "correctAnswers": ["It ensures visibility of changes to variables across threads"],
+        "incorrectAnswers": ["It prevents method overloading", "It ensures the variable is constant", "It forces a variable to be synchronized"],
+        "explanation": "The `volatile` keyword ensures that changes to a variable are visible to all threads, preventing caching by individual threads."
+    },
+    {
+        "question": "Which of these is used to declare a method in Java that does not return a value?",
+        "correctAnswers": ["void"],
+        "incorrectAnswers": ["null", "empty", "none"],
+        "explanation": "In Java, the keyword `void` is used to declare a method that does not return a value."
+    },
+    {
+        "question": "What is the primary function of the Java Development Kit (JDK)?",
+        "correctAnswers": ["It provides tools for developing Java applications"],
+        "incorrectAnswers": ["It is used to run Java applications", "It manages Java dependencies", "It generates documentation for Java code"],
+        "explanation": "The JDK contains all the tools necessary for developing Java applications, including compilers and debuggers."
+    },
+    {
+        "question": "Which Java keyword is used to define a class that cannot be subclassed?",
+        "correctAnswers": ["final"],
+        "incorrectAnswers": ["static", "abstract", "private"],
+        "explanation": "The `final` keyword in Java is used to define a class that cannot be subclassed, making it a concrete class."
+    },
+    {
+        "question": "What is the purpose of the `super` keyword in Java?",
+        "correctAnswers": ["To refer to the superclass of the current object"],
+        "incorrectAnswers": ["To define static methods", "To initialize object variables", "To create a new object instance"],
+        "explanation": "The `super` keyword refers to the superclass of the current object, often used to call superclass methods or constructors."
+    },
+    {
+        "question": "Which Java feature allows multiple methods to have the same name but different parameters?",
+        "correctAnswers": ["Method overloading"],
+        "incorrectAnswers": ["Method overriding", "Polymorphism", "Method delegation"],
+        "explanation": "Method overloading in Java allows multiple methods to have the same name, as long as their parameter lists differ."
+    },
+    {
+        "question": "What does the Java `try-catch` block handle?",
+        "correctAnswers": ["Exceptions"],
+        "incorrectAnswers": ["Threads", "Memory leaks", "Variable declarations"],
+        "explanation": "The `try-catch` block is used to handle exceptions, allowing the program to catch errors and handle them gracefully."
+    },
+    {
+        "question": "Which class is the root of the Java class hierarchy?",
+        "correctAnswers": ["Object"],
+        "incorrectAnswers": ["Class", "Thread", "String"],
+        "explanation": "In Java, all classes are subclasses of the `Object` class, which serves as the root of the class hierarchy."
+    },
+    {
+        "question": "What is the Java Collection Framework primarily used for?",
+        "correctAnswers": ["Storing and manipulating groups of objects"],
+        "incorrectAnswers": ["Networking", "Thread management", "Database access"],
+        "explanation": "The Java Collection Framework provides classes and interfaces to store and manipulate groups of objects, like lists and sets."
+    },
+    {
+        "question": "Which of the following is an immutable class in Java?",
+        "correctAnswers": ["String"],
+        "incorrectAnswers": ["StringBuilder", "ArrayList", "HashMap"],
+        "explanation": "The `String` class in Java is immutable, meaning once an object of this class is created, its value cannot be changed."
+    },
+    {
+        "question": "Which annotation is used in Java to mark a method as a unit test?",
+        "correctAnswers": ["@Test"],
+        "incorrectAnswers": ["@Main", "@Function", "@UnitTest"],
+        "explanation": "In Java, the `@Test` annotation from JUnit is used to mark methods as unit tests, allowing them to be executed as part of a test suite."
+    },
+    {
+        "question": "Which Java interface is used for handling events in the GUI?",
+        "correctAnswers": ["ActionListener"],
+        "incorrectAnswers": ["Runnable", "Serializable", "Comparable"],
+        "explanation": "The `ActionListener` interface is used to handle action events like button presses in Java GUI programming."
+    },
+    {
+        "question": "Which method is used to start a thread in Java?",
+        "correctAnswers": ["start()"],
+        "incorrectAnswers": ["run()", "execute()", "launch()"],
+        "explanation": "The `start()` method is used to begin the execution of a thread in Java, triggering the `run()` method to execute."
+    },
+
+    {
+        "question": "What is the main function of the Java compiler?",
+        "correctAnswers": ["To translate Java source code into bytecode"],
+        "incorrectAnswers": ["To execute Java programs", "To compile Java bytecode into machine code", "To manage Java dependencies"],
+        "explanation": "The Java compiler (`javac`) converts Java source code into bytecode, which can be executed by the JVM."
+    },
+    {
+        "question": "Which Java version introduced the `var` keyword for local variable type inference?",
+        "correctAnswers": ["Java 10"],
+        "incorrectAnswers": ["Java 8", "Java 7", "Java 9"],
+        "explanation": "Java 10 introduced the `var` keyword, allowing local variables to be declared without explicitly specifying their type."
+    },
+    {
+        "question": "What is the primary function of the Java `HashMap` class?",
+        "correctAnswers": ["To store key-value pairs with fast retrieval"],
+        "incorrectAnswers": ["To store ordered lists of objects", "To implement synchronized data storage", "To store a set of unique elements"],
+        "explanation": "A `HashMap` is a collection class in Java that stores key-value pairs and allows fast retrieval of values based on keys."
+    },
+    {
+        "question": "Which Java keyword is used to create an instance of a class?",
+        "correctAnswers": ["new"],
+        "incorrectAnswers": ["create", "instance", "construct"],
+        "explanation": "The `new` keyword is used in Java to create an instance of a class and allocate memory for it."
+    },
+    {
+        "question": "Which statement is true about Java's `synchronized` keyword?",
+        "correctAnswers": ["It ensures that only one thread can execute a block of code at a time"],
+        "incorrectAnswers": ["It prevents method overriding", "It makes a class thread-safe", "It increases the performance of multi-threading"],
+        "explanation": "The `synchronized` keyword in Java is used to ensure that a method or block of code is accessed by only one thread at a time, ensuring thread safety."
+    },
+    {
+        "question": "Which of the following methods belongs to the Java `Object` class?",
+        "correctAnswers": ["clone()"],
+        "incorrectAnswers": ["serialize()", "copy()", "deepClone()"],
+        "explanation": "The `clone()` method is a method of the `Object` class, used to create a copy of an object."
+    },
+    {
+        "question": "Which feature was introduced in Java 9 to manage project dependencies?",
+        "correctAnswers": ["The module system"],
+        "incorrectAnswers": ["The stream API", "The lambda expressions", "The `var` keyword"],
+        "explanation": "Java 9 introduced the module system, allowing developers to organize code into modules for better dependency management."
+    },
+    {
+        "question": "Which method is used to check if a collection is empty in Java?",
+        "correctAnswers": ["isEmpty()"],
+        "incorrectAnswers": ["empty()", "contains()", "clear()"],
+        "explanation": "The `isEmpty()` method is used to check if a collection contains no elements."
+    },
+    {
+        "question": "Which class is used to read data from files in Java?",
+        "correctAnswers": ["FileReader"],
+        "incorrectAnswers": ["BufferedReader", "Scanner", "FileWriter"],
+        "explanation": "The `FileReader` class is used to read data from files, while other classes like `BufferedReader` and `Scanner` provide enhanced functionality for reading data."
+    },
+    {
+        "question": "What does the `final` keyword do when applied to a method?",
+        "correctAnswers": ["It prevents the method from being overridden"],
+        "incorrectAnswers": ["It makes the method abstract", "It makes the method static", "It indicates the method will not return a value"],
+        "explanation": "When applied to a method, the `final` keyword prevents the method from being overridden in subclasses."
+    },
+    {
+        "question": "Which of the following is used to handle multiple exceptions in a single `catch` block in Java?",
+        "correctAnswers": ["The `|` operator"],
+        "incorrectAnswers": ["The `&` operator", "The `throw` keyword", "The `throws` clause"],
+        "explanation": "The `|` operator allows multiple exceptions to be caught in a single `catch` block, reducing code duplication."
+    },
+    {
+        "question": "Which Java class is used to represent a fixed-size, ordered collection of elements?",
+        "correctAnswers": ["ArrayList"],
+        "incorrectAnswers": ["HashSet", "LinkedList", "TreeMap"],
+        "explanation": "The `ArrayList` class in Java is a dynamic array implementation that allows for ordered collection of elements with resizing functionality."
+    },
+    {
+        "question": "Which of the following is true about the Java `StringBuilder` class?",
+        "correctAnswers": ["It is mutable and allows modifying strings without creating new objects"],
+        "incorrectAnswers": ["It is immutable", "It is thread-safe", "It only supports appending strings"],
+        "explanation": "The `StringBuilder` class is mutable, meaning it allows modification of strings without creating new string objects, making it more efficient than `String` for concatenation."
+    },
+    {
+        "question": "Which method is used to convert a string to an integer in Java?",
+        "correctAnswers": ["parseInt()"],
+        "incorrectAnswers": ["toInteger()", "convertInt()", "stringToInt()"],
+        "explanation": "The `parseInt()` method is used to convert a string into an integer in Java."
+    },
+    {
+        "question": "Which Java class is commonly used to represent an immutable collection of key-value pairs?",
+        "correctAnswers": ["Map"],
+        "incorrectAnswers": ["List", "Set", "Queue"],
+        "explanation": "The `Map` interface in Java is used to represent key-value pairs, where each key maps to a value, and it can be implemented by classes like `HashMap` or `TreeMap`."
+    },
+    {
+        "question": "Which of the following interfaces is implemented by the Java `ArrayList` class?",
+        "correctAnswers": ["List"],
+        "incorrectAnswers": ["Set", "Map", "Queue"],
+        "explanation": "The `ArrayList` class implements the `List` interface, allowing for ordered collection with index-based access."
+    },
+    {
+        "question": "What is the default value of an uninitialized local variable in Java?",
+        "correctAnswers": ["It is undefined"],
+        "incorrectAnswers": ["null", "0", "false"],
+        "explanation": "Local variables in Java are not automatically assigned default values, and attempting to use an uninitialized local variable results in a compilation error."
+    },
+    {
+        "question": "Which of the following is a characteristic of a Java `static` method?",
+        "correctAnswers": ["It belongs to the class rather than an instance"],
+        "incorrectAnswers": ["It can only access instance variables", "It requires object instantiation", "It cannot be overridden"],
+        "explanation": "A `static` method belongs to the class itself, rather than to any particular instance, and can be called without creating an instance of the class."
+    },
+    {
+        "question": "Which method can be used to obtain a substring from a string in Java?",
+        "correctAnswers": ["substring()"],
+        "incorrectAnswers": ["slice()", "substr()", "getSubstring()"],
+        "explanation": "The `substring()` method is used to extract a portion of a string in Java, based on specified indices."
+    },
+    {
+        "question": "Which of the following is true about Java's `ArrayList` class?",
+        "correctAnswers": ["It dynamically resizes as elements are added or removed"],
+        "incorrectAnswers": ["It has a fixed size once created", "It supports only primitive types", "It is synchronized by default"],
+        "explanation": "The `ArrayList` class in Java dynamically resizes when elements are added or removed, making it more flexible than traditional arrays."
+    },
+    {
+        "question": "Which method is used to check if a Java thread is alive?",
+        "correctAnswers": ["isAlive()"],
+        "incorrectAnswers": ["isRunning()", "isActive()", "checkStatus()"],
+        "explanation": "The `isAlive()` method in Java is used to determine whether a thread is currently alive (i.e., has started but has not yet terminated)."
+    },
+    {
+        "question": "What does the `throws` keyword in Java indicate?",
+        "correctAnswers": ["It declares the exceptions a method can throw"],
+        "incorrectAnswers": ["It handles exceptions within a method", "It catches exceptions thrown by a method", "It defines a new exception class"],
+        "explanation": "The `throws` keyword is used in a method signature to declare which exceptions that method may throw during execution."
+    },
+    {
+        "question": "Which of the following is true about the `final` keyword when used with variables in Java?",
+        "correctAnswers": ["It makes the variable's value constant after initialization"],
+        "incorrectAnswers": ["It makes the variable static", "It makes the variable private", "It prevents the variable from being used in expressions"],
+        "explanation": "When the `final` keyword is applied to a variable, it makes the variable's value immutable after it has been initialized."
+    },
+    {
+        "question": "Which collection class is part of the Java Collections Framework and implements the `Set` interface?",
+        "correctAnswers": ["HashSet"],
+        "incorrectAnswers": ["ArrayList", "LinkedList", "PriorityQueue"],
+        "explanation": "The `HashSet` class implements the `Set` interface and is used to store unique elements without maintaining any specific order."
+    },
+    {
+        "question": "What does the `continue` keyword do in a Java loop?",
+        "correctAnswers": ["It skips the current iteration and proceeds to the next iteration"],
+        "incorrectAnswers": ["It terminates the loop immediately", "It exits the program", "It pauses the loop for a certain time"],
+        "explanation": "The `continue` keyword is used within a loop to skip the rest of the current iteration and continue with the next iteration."
+    },
+    {
+        "question": "Which of the following is true about the Java `String` class?",
+        "correctAnswers": ["It is immutable"],
+        "incorrectAnswers": ["It is mutable", "It supports modification through reflection", "It allows direct memory manipulation"],
+        "explanation": "The `String` class in Java is immutable, meaning its value cannot be changed once it is created."
+    },
+    {
+        "question": "Which interface does the `LinkedList` class implement in Java?",
+        "correctAnswers": ["List"],
+        "incorrectAnswers": ["Set", "Map", "Queue"],
+        "explanation": "The `LinkedList` class implements the `List` interface, providing ordered collection functionality with index-based access."
+    },
+    {
+        "question": "What is the primary purpose of Java's `Thread.sleep()` method?",
+        "correctAnswers": ["To pause the execution of the current thread for a specified duration"],
+        "incorrectAnswers": ["To stop the current thread", "To yield the thread's remaining time slice", "To allow other threads to execute"],
+        "explanation": "The `Thread.sleep()` method is used to pause the execution of the current thread for a specified amount of time, allowing other threads to execute."
+    },
+    {
+        "question": "Which class is used to store a collection of key-value pairs in Java?",
+        "correctAnswers": ["HashMap"],
+        "incorrectAnswers": ["ArrayList", "TreeSet", "Stack"],
+        "explanation": "The `HashMap` class in Java is used to store key-value pairs, where each key maps to a value, providing fast retrieval."
+    },
+    {
+        "question": "Which of the following methods is used to remove an element from a Java `List`?",
+        "correctAnswers": ["remove()"],
+        "incorrectAnswers": ["delete()", "erase()", "clear()"],
+        "explanation": "The `remove()` method in Java is used to remove an element from a `List` by specifying the index or element."
+    },
+    {
+        "question": "Which of the following is a valid Java annotation used for method overriding?",
+        "correctAnswers": ["@Override"],
+        "incorrectAnswers": ["@OverrideMethod", "@MethodOverride", "@OverrideFunction"],
+        "explanation": "The `@Override` annotation is used to indicate that a method is intended to override a method in a superclass."
+    },
+    {
+        "question": "Which statement is true about the Java `volatile` keyword?",
+        "correctAnswers": ["It ensures that a variable's value is always read from main memory, not from the cache"],
+        "incorrectAnswers": ["It makes a variable immutable", "It ensures that the variable can be used only within synchronized blocks", "It marks the variable as a constant"],
+        "explanation": "The `volatile` keyword ensures that the value of a variable is always read from main memory, which is essential in multithreading environments."
+    },
+    {
+        "question": "Which Java method is used to obtain the length of an array?",
+        "correctAnswers": ["length"],
+        "incorrectAnswers": ["size()", "lengthOf()", "getLength()"],
+        "explanation": "In Java, arrays have a built-in `length` attribute that provides the number of elements in the array."
+    },
+    {
+        "question": "Which of the following is true about the Java `main()` method?",
+        "correctAnswers": ["It is the entry point for a Java application"],
+        "incorrectAnswers": ["It is executed before the constructor", "It can only be used in the `public` class", "It must return an integer value"],
+        "explanation": "The `main()` method is the entry point of a Java application and is executed when the program starts."
+    },
+    {
+        "question": "Which Java interface represents a collection that can hold elements in a specific order?",
+        "correctAnswers": ["Queue"],
+        "incorrectAnswers": ["Set", "List", "Map"],
+        "explanation": "The `Queue` interface represents a collection designed to hold elements in a specific order, typically in a first-in, first-out (FIFO) manner."
+    },
+    {
+        "question": "What does the `default` keyword in Java interfaces do?",
+        "correctAnswers": ["It allows an interface to have method implementations"],
+        "incorrectAnswers": ["It defines a constant in the interface", "It makes the method static", "It indicates that the method is abstract"],
+        "explanation": "The `default` keyword allows interfaces to provide default method implementations, making them more flexible for evolving APIs."
+    },
+    {
+        "question": "What is the purpose of the `super` keyword in Java?",
+        "correctAnswers": ["It refers to the superclass of the current object"],
+        "incorrectAnswers": ["It refers to the current object", "It invokes a static method", "It defines an abstract class"],
+        "explanation": "The `super` keyword is used to refer to the superclass of the current object, allowing access to superclass methods and constructors."
+    },
+    {
+        "question": "Which class is used to handle input from the console in Java?",
+        "correctAnswers": ["Scanner"],
+        "incorrectAnswers": ["BufferedReader", "InputStreamReader", "ConsoleReader"],
+        "explanation": "The `Scanner` class is used to read input from various sources, including the console, and is commonly used for handling user input."
+    },
+    {
+        "question": "Which of the following statements is true about Java's `ArrayList` class?",
+        "correctAnswers": ["It allows dynamic resizing of the array as elements are added or removed"],
+        "incorrectAnswers": ["It has a fixed size once created", "It only stores primitive data types", "It is synchronized by default"],
+        "explanation": "The `ArrayList` class in Java is a dynamic array that automatically resizes as elements are added or removed."
+    },
+    {
+        "question": "Which of the following is a correct way to declare a constant in Java?",
+        "correctAnswers": ["final int MAX_VALUE = 100;"],
+        "incorrectAnswers": ["int final MAX_VALUE = 100;", "final const int MAX_VALUE = 100;", "MAX_VALUE = 100;"],
+        "explanation": "In Java, constants are declared using the `final` keyword, indicating that the value cannot be changed after initialization."
+    },
+    {
+        "question": "What does the `static` keyword do in Java?",
+        "correctAnswers": ["It allows a method or variable to be accessed without creating an instance of the class"],
+        "incorrectAnswers": ["It makes the method or variable private", "It ensures the method is executed at compile time", "It forces the method to be inherited"],
+        "explanation": "The `static` keyword in Java is used to indicate that a method or variable belongs to the class rather than to instances of the class."
+    },
+    {
+        "question": "Which of the following is a feature of Java's exception handling?",
+        "correctAnswers": ["Exceptions can be caught using try-catch blocks"],
+        "incorrectAnswers": ["Exceptions are always fatal", "Exceptions must be handled with a switch statement", "Java does not support user-defined exceptions"],
+        "explanation": "In Java, exceptions are typically caught using try-catch blocks, allowing for controlled error handling during program execution."
+    },
+    {
+        "question": "What is the purpose of the `finalize()` method in Java?",
+        "correctAnswers": ["It allows an object to clean up resources before it is garbage collected"],
+        "incorrectAnswers": ["It prevents an object from being garbage collected", "It immediately deletes an object from memory", "It starts the garbage collection process"],
+        "explanation": "The `finalize()` method is used to perform cleanup operations before an object is garbage collected, although it is not always guaranteed to be called."
+    },
+    {
+        "question": "Which class is part of the Java standard library for working with dates and times?",
+        "correctAnswers": ["LocalDate"],
+        "incorrectAnswers": ["DateTime", "Calendar", "TimeStamp"],
+        "explanation": "The `LocalDate` class in Java is part of the java.time package and is used to represent dates without time zone information."
+    },
+    {
+        "question": "Which access modifier allows a class or method to be accessible from any class?",
+        "correctAnswers": ["public"],
+        "incorrectAnswers": ["private", "protected", "default"],
+        "explanation": "The `public` access modifier allows classes, methods, and variables to be accessed from any other class in any package."
+    },
+    {
+        "question": "What does the `instanceof` keyword do in Java?",
+        "correctAnswers": ["It checks if an object is an instance of a specified class or implements a specified interface"],
+        "incorrectAnswers": ["It creates a new instance of a class", "It checks if a variable is null", "It casts an object to another type"],
+        "explanation": "The `instanceof` keyword in Java is used to test whether an object is an instance of a specific class or implements a specified interface."
+    },
+    {
+        "question": "Which method is used to compare two objects for equality in Java?",
+        "correctAnswers": ["equals()"],
+        "incorrectAnswers": ["compareTo()", "compare()", "isEqual()"],
+        "explanation": "The `equals()` method is used to compare two objects for equality in Java, ensuring that they are logically equivalent based on their content."
+    },
+    {
+        "question": "What does the `super()` constructor call do in Java?",
+        "correctAnswers": ["It calls the constructor of the superclass"],
+        "incorrectAnswers": ["It calls the constructor of the current class", "It creates a new instance of the superclass", "It initializes the superclass's static variables"],
+        "explanation": "The `super()` keyword is used in a subclass constructor to invoke the constructor of its superclass."
+    },
+    {
+        "question": "Which interface is used to represent a collection of elements that does not allow duplicates in Java?",
+        "correctAnswers": ["Set"],
+        "incorrectAnswers": ["List", "Queue", "Map"],
+        "explanation": "The `Set` interface in Java is used to represent a collection that does not allow duplicate elements."
+    },
+    {
+        "question": "Which method is used to add an element to a `List` in Java?",
+        "correctAnswers": ["add()"],
+        "incorrectAnswers": ["insert()", "push()", "append()"],
+        "explanation": "The `add()` method is used to add an element to a `List` in Java, allowing elements to be inserted at the end of the list."
+    },
+    {
+        "question": "What is the purpose of the `hashCode()` method in Java?",
+        "correctAnswers": ["It returns an integer hash code for an object"],
+        "incorrectAnswers": ["It returns a string representation of an object", "It calculates the memory address of an object", "It converts an object into a byte stream"],
+        "explanation": "The `hashCode()` method in Java returns a hash code that is used by hash-based collections like `HashMap` to efficiently locate objects."
+    },
+    {
+        "question": "Which of the following is used for multi-threading in Java?",
+        "correctAnswers": ["ExecutorService"],
+        "incorrectAnswers": ["ThreadPool", "ThreadExecutor", "MultiThread"],
+        "explanation": "The `ExecutorService` interface in Java provides a higher-level replacement for the `Thread` class, allowing for better management of threads and thread pools."
+    },
+    {
+        "question": "What is the primary difference between a `StringBuilder` and a `StringBuffer` in Java?",
+        "correctAnswers": ["StringBuffer is thread-safe, while StringBuilder is not"],
+        "incorrectAnswers": ["StringBuilder is faster than StringBuffer", "StringBuffer can only store characters, not other data types", "StringBuilder is immutable, while StringBuffer is mutable"],
+        "explanation": "The primary difference is that `StringBuffer` is thread-safe, making it suitable for use in multi-threaded environments, while `StringBuilder` is not synchronized and generally faster."
+    },
+    {
+        "question": "Which method is used to determine the number of elements in a collection in Java?",
+        "correctAnswers": ["size()"],
+        "incorrectAnswers": ["length()", "count()", "getSize()"],
+        "explanation": "The `size()` method is used in Java to return the number of elements in a collection, such as a `List` or `Set`."
+    },
+    {
+        "question": "Which of the following Java collections are ordered and allow duplicate elements?",
+        "correctAnswers": ["List"],
+        "incorrectAnswers": ["Set", "Queue", "Map"],
+        "explanation": "The `List` interface in Java allows duplicate elements and maintains the order in which elements are inserted."
+    },
+    {
+        "question": "What is the purpose of the `transient` keyword in Java?",
+        "correctAnswers": ["It prevents a field from being serialized"],
+        "incorrectAnswers": ["It marks a field as static", "It makes a field volatile", "It defines a constant field"],
+        "explanation": "The `transient` keyword is used to indicate that a field should not be serialized when an object is converted into a byte stream."
+    },
+    {
+        "question": "Which statement about Java's `synchronized` keyword is true?",
+        "correctAnswers": ["It ensures that only one thread can access a method or block of code at a time"],
+        "incorrectAnswers": ["It makes a method or block of code run asynchronously", "It allows multiple threads to access the same method concurrently", "It makes the method static"],
+        "explanation": "The `synchronized` keyword is used to control access to a method or block of code, ensuring that only one thread can execute it at a time."
+    }
+]
+        
+
