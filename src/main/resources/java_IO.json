@@ -1,0 +1,470 @@
+[
+    {
+        "question": "Which class is used to read characters from a file in Java?",
+        "correctAnswers": [
+            "FileReader"
+        ],
+        "incorrectAnswers": [
+            "FileInputStream",
+            "BufferedReader",
+            "Scanner"
+        ],
+        "explanation": "The FileReader class is used to read characters from a file, while FileInputStream reads bytes."
+    },
+    {
+        "question": "What method is used to write data to a file in Java?",
+        "correctAnswers": [
+            "write()"
+        ],
+        "incorrectAnswers": [
+            "print()",
+            "append()",
+            "flush()"
+        ],
+        "explanation": "The write() method is used to write data to a file in output streams or writers."
+    },
+    {
+        "question": "Which class provides the functionality to read bytes from a file?",
+        "correctAnswers": [
+            "FileInputStream"
+        ],
+        "incorrectAnswers": [
+            "FileReader",
+            "BufferedReader",
+            "DataInputStream"
+        ],
+        "explanation": "FileInputStream is used to read bytes from a file, while FileReader reads characters."
+    },
+    {
+        "question": "What is the purpose of the BufferedReader class in Java?",
+        "correctAnswers": [
+            "To read text from a character-based input stream efficiently"
+        ],
+        "incorrectAnswers": [
+            "To write text to a file",
+            "To handle byte-based data",
+            "To process binary data"
+        ],
+        "explanation": "BufferedReader is used to read text from a character input stream more efficiently by buffering the input."
+    },
+    {
+        "question": "Which method of the OutputStream class is used to flush the stream?",
+        "correctAnswers": [
+            "flush()"
+        ],
+        "incorrectAnswers": [
+            "close()",
+            "write()",
+            "open()"
+        ],
+        "explanation": "The flush() method is used to flush the buffer of the output stream and ensure that all data is written."
+    },
+    {
+        "question": "Which class can be used to write primitive data types to a file?",
+        "correctAnswers": [
+            "DataOutputStream"
+        ],
+        "incorrectAnswers": [
+            "FileWriter",
+            "PrintWriter",
+            "BufferedWriter"
+        ],
+        "explanation": "DataOutputStream is used to write primitive data types in a machine-independent way."
+    },
+    {
+        "question": "Which method is used to read a single byte from a file in Java?",
+        "correctAnswers": [
+            "read()"
+        ],
+        "incorrectAnswers": [
+            "next()",
+            "readByte()",
+            "get()"
+        ],
+        "explanation": "The read() method reads a single byte of data from an input stream in Java."
+    },
+    {
+        "question": "What does the PrintWriter class allow you to do?",
+        "correctAnswers": [
+            "Print formatted text to a file"
+        ],
+        "incorrectAnswers": [
+            "Read text from a file",
+            "Write binary data",
+            "Read formatted text from a file"
+        ],
+        "explanation": "PrintWriter is used for writing formatted text to a file, often with automatic line flushing."
+    },
+    {
+        "question": "Which interface is implemented by classes for reading data from a file byte by byte?",
+        "correctAnswers": [
+            "InputStream"
+        ],
+        "incorrectAnswers": [
+            "Reader",
+            "Writer",
+            "OutputStream"
+        ],
+        "explanation": "InputStream is the superclass for all byte-based input classes in Java."
+    },
+    {
+        "question": "Which class is used to convert characters into bytes in Java?",
+        "correctAnswers": [
+            "OutputStreamWriter"
+        ],
+        "incorrectAnswers": [
+            "FileOutputStream",
+            "BufferedWriter",
+            "DataOutputStream"
+        ],
+        "explanation": "OutputStreamWriter is used to convert characters to bytes for writing to an output stream."
+    },
+    {
+        "question": "Which exception is thrown when an I/O operation fails in Java?",
+        "correctAnswers": [
+            "IOException"
+        ],
+        "incorrectAnswers": [
+            "FileNotFoundException",
+            "NullPointerException",
+            "SQLException"
+        ],
+        "explanation": "IOException is a general exception thrown for I/O failures such as file access issues."
+    },
+    {
+        "question": "What is the function of the File class in Java?",
+        "correctAnswers": [
+            "To represent and manipulate file and directory pathnames"
+        ],
+        "incorrectAnswers": [
+            "To read files",
+            "To write files",
+            "To perform network operations"
+        ],
+        "explanation": "The File class represents the file or directory pathnames and provides methods for manipulating file and directory properties."
+    },
+    {
+        "question": "Which method is used to check if a file exists in Java?",
+        "correctAnswers": [
+            "exists()"
+        ],
+        "incorrectAnswers": [
+            "isFile()",
+            "isDirectory()",
+            "isAvailable()"
+        ],
+        "explanation": "The exists() method of the File class checks if a file or directory exists."
+    },
+    {
+        "question": "Which method of the Files class is used to copy a file in Java?",
+        "correctAnswers": [
+            "copy()"
+        ],
+        "incorrectAnswers": [
+            "move()",
+            "rename()",
+            "duplicate()"
+        ],
+        "explanation": "The copy() method in the Files class is used to copy files from one location to another."
+    },
+    {
+        "question": "Which class is used to write bytes to a file in Java?",
+        "correctAnswers": [
+            "FileOutputStream"
+        ],
+        "incorrectAnswers": [
+            "FileWriter",
+            "BufferedWriter",
+            "PrintWriter"
+        ],
+        "explanation": "FileOutputStream is used to write bytes to a file, while FileWriter is for character-based streams."
+    },
+    {
+        "question": "What does the FileReader class read from a file in Java?",
+        "correctAnswers": [
+            "Characters"
+        ],
+        "incorrectAnswers": [
+            "Bytes",
+            "Strings",
+            "Booleans"
+        ],
+        "explanation": "FileReader is specifically designed to read character data from files, unlike FileInputStream which reads bytes."
+    },
+    {
+        "question": "Which class in Java supports reading both bytes and characters?",
+        "correctAnswers": [
+            "RandomAccessFile"
+        ],
+        "incorrectAnswers": [
+            "FileReader",
+            "FileInputStream",
+            "BufferedReader"
+        ],
+        "explanation": "RandomAccessFile can read both bytes and characters from a file, allowing random access."
+    },
+    {
+        "question": "Which method of the BufferedWriter class is used to flush data to a file?",
+        "correctAnswers": [
+            "flush()"
+        ],
+        "incorrectAnswers": [
+            "close()",
+            "write()",
+            "clear()"
+        ],
+        "explanation": "The flush() method ensures any buffered data is written out to the file."
+    },
+    {
+        "question": "Which class in Java is used for file and directory manipulation without using streams?",
+        "correctAnswers": [
+            "Files"
+        ],
+        "incorrectAnswers": [
+            "File",
+            "Path",
+            "FileSystem"
+        ],
+        "explanation": "The Files class provides static methods for file and directory manipulation without using streams."
+    },
+    {
+        "question": "Which method of the InputStream class is used to read multiple bytes from a file at once?",
+        "correctAnswers": [
+            "read(byte[] b)"
+        ],
+        "incorrectAnswers": [
+            "read()",
+            "next()",
+            "readLine()"
+        ],
+        "explanation": "The read(byte[] b) method reads multiple bytes from an input stream and stores them in the provided byte array."
+    },
+    {
+        "question": "Which class is used for reading data from a file line by line?",
+        "correctAnswers": [
+            "BufferedReader"
+        ],
+        "incorrectAnswers": [
+            "Scanner",
+            "FileReader",
+            "DataInputStream"
+        ],
+        "explanation": "BufferedReader allows reading text from a file line by line, making it efficient for large files."
+    },
+    {
+        "question": "What is the purpose of the FileOutputStream class in Java?",
+        "correctAnswers": [
+            "To write byte data to a file"
+        ],
+        "incorrectAnswers": [
+            "To read byte data from a file",
+            "To append data to a file",
+            "To write text to a file"
+        ],
+        "explanation": "FileOutputStream is used for writing raw byte data to a file."
+    },
+    {
+        "question": "What does the FileInputStream class read from a file in Java?",
+        "correctAnswers": [
+            "Bytes"
+        ],
+        "incorrectAnswers": [
+            "Characters",
+            "Lines",
+            "Strings"
+        ],
+        "explanation": "FileInputStream is designed to read raw byte data from a file."
+    },
+    {
+        "question": "Which method is used to close a stream in Java?",
+        "correctAnswers": [
+            "close()"
+        ],
+        "incorrectAnswers": [
+            "end()",
+            "shutdown()",
+            "terminate()"
+        ],
+        "explanation": "The close() method is used to close a stream and release any associated resources."
+    },
+    {
+        "question": "What is the primary purpose of the ObjectInputStream class in Java?",
+        "correctAnswers": [
+            "To deserialize objects from a byte stream"
+        ],
+        "incorrectAnswers": [
+            "To serialize objects to a byte stream",
+            "To read text from a file",
+            "To write bytes to a file"
+        ],
+        "explanation": "ObjectInputStream is used to read objects from an input stream, effectively deserializing them."
+    },
+    {
+        "question": "Which class is used to write primitive data types to an output stream in Java?",
+        "correctAnswers": [
+            "DataOutputStream"
+        ],
+        "incorrectAnswers": [
+            "FileOutputStream",
+            "ObjectOutputStream",
+            "BufferedWriter"
+        ],
+        "explanation": "DataOutputStream is used to write primitive data types like int, float, and long to an output stream."
+    },
+    {
+        "question": "What method of the PrintWriter class is used to print formatted text to a file?",
+        "correctAnswers": [
+            "printf()"
+        ],
+        "incorrectAnswers": [
+            "print()",
+            "write()",
+            "flush()"
+        ],
+        "explanation": "The printf() method allows formatted text output to a file using a format string."
+    },
+    {
+        "question": "Which class provides functionality to copy a file in Java?",
+        "correctAnswers": [
+            "Files"
+        ],
+        "incorrectAnswers": [
+            "File",
+            "FileWriter",
+            "Path"
+        ],
+        "explanation": "The Files class provides utility methods for file operations, including file copying."
+    },
+    {
+        "question": "Which method of the File class is used to create a new directory in Java?",
+        "correctAnswers": [
+            "mkdir()"
+        ],
+        "incorrectAnswers": [
+            "createDirectory()",
+            "newDirectory()",
+            "makeDirectory()"
+        ],
+        "explanation": "The mkdir() method creates a new directory, if it doesn't already exist."
+    },
+    {
+        "question": "Which class is used to read binary data from a file in Java?",
+        "correctAnswers": [
+            "DataInputStream"
+        ],
+        "incorrectAnswers": [
+            "FileReader",
+            "BufferedReader",
+            "FileInputStream"
+        ],
+        "explanation": "DataInputStream is used to read primitive types and binary data from a file."
+    },
+    {
+        "question": "Which method in the Files class is used to delete a file in Java?",
+        "correctAnswers": [
+            "delete()"
+        ],
+        "incorrectAnswers": [
+            "remove()",
+            "destroy()",
+            "erase()"
+        ],
+        "explanation": "The delete() method in the Files class is used to delete a file or directory."
+    },
+    {
+        "question": "What type of data does the Scanner class read in Java?",
+        "correctAnswers": [
+            "Text"
+        ],
+        "incorrectAnswers": [
+            "Bytes",
+            "Objects",
+            "Binary data"
+        ],
+        "explanation": "Scanner is used for reading text input, such as from the console or a file."
+    },
+    {
+        "question": "Which class provides methods for file path manipulation in Java?",
+        "correctAnswers": [
+            "Paths"
+        ],
+        "incorrectAnswers": [
+            "Files",
+            "File",
+            "Pathname"
+        ],
+        "explanation": "The Paths class provides methods to manipulate file paths, such as joining and resolving paths."
+    },
+    {
+        "question": "Which class is used for buffering data while writing to a file in Java?",
+        "correctAnswers": [
+            "BufferedWriter"
+        ],
+        "incorrectAnswers": [
+            "FileWriter",
+            "PrintWriter",
+            "BufferedReader"
+        ],
+        "explanation": "BufferedWriter is used for efficient writing of characters to a file by buffering the data."
+    },
+    {
+        "question": "What method of the InputStream class is used to read the next byte of data?",
+        "correctAnswers": [
+            "read()"
+        ],
+        "incorrectAnswers": [
+            "nextByte()",
+            "getNext()",
+            "readByte()"
+        ],
+        "explanation": "The read() method of InputStream reads the next byte of data from the stream."
+    },
+    {
+        "question": "Which class in Java is used for file system operations like renaming or moving files?",
+        "correctAnswers": [
+            "Files"
+        ],
+        "incorrectAnswers": [
+            "File",
+            "FileSystem",
+            "Path"
+        ],
+        "explanation": "The Files class offers static methods for file system operations, including renaming and moving files."
+    },
+    {
+        "question": "Which method in the BufferedReader class is used to read the next line from a file?",
+        "correctAnswers": [
+            "readLine()"
+        ],
+        "incorrectAnswers": [
+            "nextLine()",
+            "readNext()",
+            "getLine()"
+        ],
+        "explanation": "The readLine() method is used to read the next line of text from a file."
+    },
+    {
+        "question": "Which method of the OutputStream class is used to write an array of bytes to a file?",
+        "correctAnswers": [
+            "write(byte[] b)"
+        ],
+        "incorrectAnswers": [
+            "write()",
+            "append()",
+            "flush()"
+        ],
+        "explanation": "The write(byte[] b) method is used to write an array of bytes to an output stream."
+    },
+    {
+        "question": "Which exception is thrown if an error occurs while closing a stream in Java?",
+        "correctAnswers": [
+            "IOException"
+        ],
+        "incorrectAnswers": [
+            "FileNotFoundException",
+            "NullPointerException",
+            "StreamClosedException"
+        ],
+        "explanation": "IOException is thrown if an error occurs during I/O operations, including closing streams."
+    }
+]

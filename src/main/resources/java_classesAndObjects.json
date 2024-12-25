@@ -80,7 +80,7 @@
     {
       "question": "Which of the following allows you to define multiple methods with the same name in a class?",
       "correctAnswers": ["Method overloading"],
-      "incorrectAnswers": ["Method overriding", "Polymorphism", "Constructor chaining"],
+      "incorrectAnswers": ["Method overriding", "Encapsulation", "Constructor chaining"],
       "explanation": "Method overloading allows a class to have multiple methods with the same name but different parameter lists."
     },
     {
