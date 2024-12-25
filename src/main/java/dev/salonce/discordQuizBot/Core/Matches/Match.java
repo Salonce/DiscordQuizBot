@@ -11,11 +11,11 @@ import java.util.stream.Collectors;
 public class Match{
     private final Map<User, Player> players;
     private final List<Question> questions;
-    private final int unasweredQuestionsLimit;
+    private final int unansweredQuestionsLimit;
     private int questionNumber;
     private int noAnswerCount;
 
-    private MatchClosed matchClosed;
+    private EnumMatchClosed enumMatchClosed;
     @Setter
     private boolean answeringOpen;
     @Setter
@@ -26,18 +26,18 @@ public class Match{
     private String name;
 
     public boolean isClosed(){
-        return matchClosed != MatchClosed.NOT_CLOSED;
+        return enumMatchClosed != EnumMatchClosed.NOT_CLOSED;
     }
 
-    public Match(List<Question> questions, String type, Long ownerId, int unasweredQuestionsLimit){
+    public Match(List<Question> questions, String type, Long ownerId, int unansweredQuestionsLimit){
         this.questions = questions;
         this.players = new HashMap<>();
         this.enrolment = true;
         this.questionNumber = 0;
         this.noAnswerCount = 0;
         this.ownerId = ownerId;
-        this.unasweredQuestionsLimit = unasweredQuestionsLimit;
-        this.matchClosed = MatchClosed.NOT_CLOSED;
+        this.unansweredQuestionsLimit = unansweredQuestionsLimit;
+        this.enumMatchClosed = EnumMatchClosed.NOT_CLOSED;
 
         if (type != null) {
             String capitalized = type.substring(0, 1).toUpperCase() + type.substring(1);
@@ -56,8 +56,8 @@ public class Match{
 
         if (noAnswersCount == players.size()) {
             noAnswerCount++;
-            if (noAnswerCount >= unasweredQuestionsLimit) {
-                matchClosed = MatchClosed.BY_AUTOCLOSE;
+            if (noAnswerCount >= unansweredQuestionsLimit) {
+                enumMatchClosed = EnumMatchClosed.BY_AUTOCLOSE;
             }
         }
         else
@@ -66,7 +66,7 @@ public class Match{
 
     public boolean closeMatch(Long ownerId){
         if (this.ownerId.equals(ownerId)){
-            matchClosed = MatchClosed.BY_OWNER;
+            enumMatchClosed = EnumMatchClosed.BY_OWNER;
             return true;
         }
         return false;
