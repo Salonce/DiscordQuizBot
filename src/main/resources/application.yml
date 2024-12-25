@@ -8,9 +8,12 @@ discord:
 
 questions:
   files:
-    java: src/main/resources/java.json
-    memory: src/main/resources/memory.json
-    personality: src/main/resources/personality.json
+    java:
+    - src/main/resources/java_arrays.json
+    - src/main/resources/java_classesAndObjects.json
+    - src/main/resources/java_interfacesAndAbstractClasses.json
+    human_memory: src/main/resources/human_memory.json
+    big-five: src/main/resources/big-five.json
     art_history: src/main/resources/art_history.json
     python: src/main/resources/python.json
     painting_techniques: src/main/resources/painting_techniques.json

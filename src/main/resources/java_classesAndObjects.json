@@ -1,0 +1,363 @@
+[
+    {
+      "question": "What is the main purpose of a class in Java?",
+      "correctAnswers": ["To define the blueprint for objects"],
+      "incorrectAnswers": ["To execute the main program logic", "To store collections of data", "To implement Java interfaces"],
+      "explanation": "A class in Java acts as a blueprint for creating objects and defines their properties and behaviors."
+    },
+    {
+      "question": "Which keyword is used to create an object in Java?",
+      "correctAnswers": ["new"],
+      "incorrectAnswers": ["object", "create", "instance"],
+      "explanation": "The 'new' keyword is used to create a new instance of a class, initializing an object."
+    },
+    {
+      "question": "What does the term 'object' refer to in Java?",
+      "correctAnswers": ["An instance of a class"],
+      "incorrectAnswers": ["A blueprint for data", "A method within a class", "A reserved keyword"],
+      "explanation": "An object is a runtime entity and represents an instance of a class, containing its data and methods."
+    },
+    {
+      "question": "What is a constructor in a Java class?",
+      "correctAnswers": ["A special method to initialize an object"],
+      "incorrectAnswers": ["A method to destroy an object", "A static method for class utilities", "A method to define a class blueprint"],
+      "explanation": "A constructor is a special method used to initialize an object when it is created."
+    },
+    {
+      "question": "Which access modifier allows access only within the same package?",
+      "correctAnswers": ["Default"],
+      "incorrectAnswers": ["Private", "Protected", "Public"],
+      "explanation": "The default access modifier, when no access specifier is defined, allows access only within the same package."
+    },
+    {
+      "question": "What is the purpose of the 'this' keyword in Java?",
+      "correctAnswers": ["To refer to the current object"],
+      "incorrectAnswers": ["To create a new instance", "To define a static context", "To declare a method as final"],
+      "explanation": "The 'this' keyword refers to the current object and is commonly used in constructors and methods."
+    },
+    {
+      "question": "Which method in a Java class is called automatically when an object is created?",
+      "correctAnswers": ["Constructor"],
+      "incorrectAnswers": ["Main method", "Init method", "Setup method"],
+      "explanation": "The constructor method is automatically called when an object of a class is created."
+    },
+    {
+      "question": "What is the term for binding data and methods together in a single unit in Java?",
+      "correctAnswers": ["Encapsulation"],
+      "incorrectAnswers": ["Inheritance", "Abstraction", "Polymorphism"],
+      "explanation": "Encapsulation binds together the data and methods that operate on the data into a single unit."
+    },
+    {
+      "question": "Which keyword is used to inherit a class in Java?",
+      "correctAnswers": ["extends"],
+      "incorrectAnswers": ["inherits", "super", "implement"],
+      "explanation": "The 'extends' keyword is used to indicate that a class is inheriting from a superclass."
+    },
+    {
+      "question": "What is the term for defining a method in a subclass with the same signature as in its superclass?",
+      "correctAnswers": ["Method overriding"],
+      "incorrectAnswers": ["Method overloading", "Constructor chaining", "Dynamic dispatch"],
+      "explanation": "Method overriding occurs when a subclass provides a specific implementation of a method declared in its superclass."
+    },
+    {
+      "question": "Which keyword is used to prevent a class from being subclassed?",
+      "correctAnswers": ["final"],
+      "incorrectAnswers": ["static", "private", "abstract"],
+      "explanation": "The 'final' keyword is used to declare a class that cannot be extended or subclassed."
+    },
+    {
+      "question": "Which method is used to compare two objects for equality in Java?",
+      "correctAnswers": ["equals"],
+      "incorrectAnswers": ["compareTo", "hashCode", "toString"],
+      "explanation": "The 'equals' method is used to compare two objects for equality based on their contents."
+    },
+    {
+      "question": "What is the purpose of the 'static' keyword in Java?",
+      "correctAnswers": ["To define members that belong to the class rather than any object"],
+      "incorrectAnswers": ["To make variables private", "To create immutable objects", "To initialize variables with default values"],
+      "explanation": "Static members are shared among all instances of a class and belong to the class itself."
+    },
+    {
+      "question": "Which of the following allows you to define multiple methods with the same name in a class?",
+      "correctAnswers": ["Method overloading"],
+      "incorrectAnswers": ["Method overriding", "Polymorphism", "Constructor chaining"],
+      "explanation": "Method overloading allows a class to have multiple methods with the same name but different parameter lists."
+    },
+    {
+      "question": "What is the term for hiding internal details and showing only the functionality?",
+      "correctAnswers": ["Abstraction"],
+      "incorrectAnswers": ["Encapsulation", "Inheritance", "Polymorphism"],
+      "explanation": "Abstraction involves hiding internal implementation details and exposing only the necessary features."
+    },
+    {
+      "question": "Which operator is used to check the type of an object in Java?",
+      "correctAnswers": ["instanceof"],
+      "incorrectAnswers": ["typeof", "cast", "classof"],
+      "explanation": "The 'instanceof' operator is used to test whether an object is an instance of a specific class."
+    },
+    {
+      "question": "What is the default value of an object reference variable in Java?",
+      "correctAnswers": ["null"],
+      "incorrectAnswers": ["0", "undefined", "empty"],
+      "explanation": "If an object reference variable is declared but not initialized, it has a default value of 'null'."
+    },
+    {
+      "question": "Which type of method cannot be overridden in a subclass?",
+      "correctAnswers": ["final method"],
+      "incorrectAnswers": ["static method", "private method", "protected method"],
+      "explanation": "A 'final' method cannot be overridden by a subclass."
+    },
+    {
+      "question": "What is the purpose of the 'super' keyword in Java?",
+      "correctAnswers": ["To refer to the parent class"],
+      "incorrectAnswers": ["To define a static context", "To create an instance of a superclass", "To handle exceptions"],
+      "explanation": "The 'super' keyword is used to access the methods or constructors of a parent class."
+    },
+    {
+      "question": "What is the term for creating an object with no specific type until runtime?",
+      "correctAnswers": ["Polymorphism"],
+      "incorrectAnswers": ["Encapsulation", "Abstraction", "Inheritance"],
+      "explanation": "Polymorphism allows an object to take on many forms and be treated as its superclass type during runtime."
+    },
+    {
+        "question": "What is the purpose of the 'private' access modifier in Java?",
+        "correctAnswers": ["To restrict access to members within the same class"],
+        "incorrectAnswers": ["To allow access from any class", "To restrict access to subclasses only", "To allow access within the same package"],
+        "explanation": "The 'private' access modifier ensures that members can only be accessed within the same class."
+    },
+    {
+        "question": "What is the name of the process where one class acquires the properties of another?",
+        "correctAnswers": ["Inheritance"],
+        "incorrectAnswers": ["Encapsulation", "Abstraction", "Aggregation"],
+        "explanation": "Inheritance allows a class to acquire properties and behaviors from another class."
+    },
+    {
+        "question": "Which method is automatically called before an object is garbage collected?",
+        "correctAnswers": ["finalize"],
+        "incorrectAnswers": ["destroy", "terminate", "dispose"],
+        "explanation": "The 'finalize' method is called by the garbage collector before it destroys an object."
+    },
+    {
+        "question": "Which keyword is used to declare a constant in Java?",
+        "correctAnswers": ["final"],
+        "incorrectAnswers": ["static", "const", "readonly"],
+        "explanation": "The 'final' keyword is used to declare constants in Java, preventing modification after initialization."
+    },
+    {
+        "question": "What is the term for two or more methods with the same name but different parameter lists?",
+        "correctAnswers": ["Method overloading"],
+        "incorrectAnswers": ["Method overriding", "Dynamic binding", "Constructor overloading"],
+        "explanation": "Method overloading allows a class to have multiple methods with the same name but different parameter types or counts."
+    },
+    {
+        "question": "Which keyword is used to declare an abstract method in Java?",
+        "correctAnswers": ["abstract"],
+        "incorrectAnswers": ["virtual", "static", "final"],
+        "explanation": "The 'abstract' keyword is used to declare a method without an implementation in an abstract class."
+    },
+    {
+        "question": "Which concept allows objects to be treated as instances of their parent class?",
+        "correctAnswers": ["Polymorphism"],
+        "incorrectAnswers": ["Abstraction", "Encapsulation", "Aggregation"],
+        "explanation": "Polymorphism enables a subclass object to be treated as if it were an instance of its parent class."
+    },
+    {
+        "question": "What does the term 'instance variable' refer to in Java?",
+        "correctAnswers": ["A variable that belongs to an object"],
+        "incorrectAnswers": ["A variable shared among all objects", "A variable that belongs to a method", "A variable declared inside a method"],
+        "explanation": "Instance variables are variables that belong to individual objects and are defined at the class level."
+    },
+    {
+        "question": "Which of these is not a characteristic of an abstract class in Java?",
+        "correctAnswers": ["It can be instantiated"],
+        "incorrectAnswers": ["It can have abstract methods", "It can have concrete methods", "It can be extended by subclasses"],
+        "explanation": "Abstract classes cannot be instantiated; they must be extended by subclasses."
+    },
+    {
+        "question": "What is the term for combining multiple objects into a single unit?",
+        "correctAnswers": ["Aggregation"],
+        "incorrectAnswers": ["Inheritance", "Encapsulation", "Polymorphism"],
+        "explanation": "Aggregation is a relationship where one class contains references to other classes, forming a single unit."
+    },
+    {
+        "question": "Which keyword is used to call a parent class's constructor in Java?",
+        "correctAnswers": ["super"],
+        "incorrectAnswers": ["this", "parent", "base"],
+        "explanation": "The 'super' keyword is used to call the constructor of the parent class from a subclass."
+    },
+    {
+        "question": "What happens if a class does not have a constructor?",
+        "correctAnswers": ["The compiler provides a default constructor"],
+        "incorrectAnswers": ["The class cannot be instantiated", "The class automatically becomes abstract", "The class must use static methods only"],
+        "explanation": "If no constructor is provided, the compiler generates a default constructor with no arguments."
+    },
+    {
+        "question": "What is the primary benefit of encapsulation in Java?",
+        "correctAnswers": ["To hide internal implementation details"],
+        "incorrectAnswers": ["To enable code reuse", "To increase performance", "To simplify method overriding"],
+        "explanation": "Encapsulation hides the internal implementation details of a class, exposing only necessary functionality."
+    },
+    {
+        "question": "What is the role of the 'protected' access modifier?",
+        "correctAnswers": ["To allow access within the same package and by subclasses"],
+        "incorrectAnswers": ["To restrict access to the class only", "To allow access from any class", "To allow access only within the same class"],
+        "explanation": "The 'protected' modifier allows access to members within the same package and by subclasses in other packages."
+    },
+    {
+        "question": "What is the result of attempting to override a private method in Java?",
+        "correctAnswers": ["It is not allowed because private methods are not inherited"],
+        "incorrectAnswers": ["It results in a compilation error", "It overrides the private method in the superclass", "It allows method overriding only within the same class"],
+        "explanation": "Private methods are not inherited, so they cannot be overridden in subclasses."
+    },
+    {
+        "question": "Which method is inherited by all Java objects?",
+        "correctAnswers": ["toString"],
+        "incorrectAnswers": ["print", "display", "show"],
+        "explanation": "The 'toString' method is defined in the Object class and is inherited by all Java objects."
+    },
+    {
+        "question": "What does the 'final' keyword signify when applied to a method?",
+        "correctAnswers": ["The method cannot be overridden"],
+        "incorrectAnswers": ["The method cannot be called", "The method must be static", "The method cannot have parameters"],
+        "explanation": "A 'final' method cannot be overridden by subclasses."
+    },
+    {
+        "question": "Which of the following is true about static methods?",
+        "correctAnswers": ["They belong to the class rather than any object"],
+        "incorrectAnswers": ["They cannot access static variables", "They must be overridden", "They can be called only after object creation"],
+        "explanation": "Static methods belong to the class and can be called without creating an object."
+    },
+    {
+        "question": "What is an interface in Java?",
+        "correctAnswers": ["A blueprint of a class with only abstract methods"],
+        "incorrectAnswers": ["A class with only static methods", "A class with no constructors", "A class that cannot be extended"],
+        "explanation": "An interface is a blueprint for a class, containing abstract methods and constants."
+    },
+    {
+        "question": "What is the purpose of the 'hashCode' method in Java?",
+        "correctAnswers": ["To provide a hash value for an object"],
+        "incorrectAnswers": ["To compare two objects for equality", "To serialize an object", "To create a copy of an object"],
+        "explanation": "The 'hashCode' method generates a hash value used for object comparison and storage in collections like HashMap."
+    },
+    {
+        "question": "What is the term for combining fields and methods into a single entity in Java?",
+        "correctAnswers": ["Encapsulation"],
+        "incorrectAnswers": ["Inheritance", "Polymorphism", "Aggregation"],
+        "explanation": "Encapsulation combines data fields and methods into a single entity, ensuring better control over data access."
+    },
+    {
+        "question": "Which of the following is not a feature of objects in Java?",
+        "correctAnswers": ["They can directly modify private fields of other objects"],
+        "incorrectAnswers": ["They encapsulate data and behavior", "They can interact with other objects", "They are instances of a class"],
+        "explanation": "Objects in Java cannot directly modify private fields of other objects; access is controlled through encapsulation."
+    },
+    {
+        "question": "Which access modifier allows access to members from any other class?",
+        "correctAnswers": ["public"],
+        "incorrectAnswers": ["private", "protected", "default"],
+        "explanation": "The 'public' access modifier allows unrestricted access to members from any class."
+    },
+    {
+        "question": "What is the purpose of a getter method in Java?",
+        "correctAnswers": ["To retrieve the value of a private field"],
+        "incorrectAnswers": ["To set the value of a private field", "To initialize class-level variables", "To provide runtime type information"],
+        "explanation": "Getter methods retrieve the value of a private field, adhering to the principle of encapsulation."
+    },
+    {
+        "question": "What is the purpose of a setter method in Java?",
+        "correctAnswers": ["To update the value of a private field"],
+        "incorrectAnswers": ["To access static fields", "To create objects of a class", "To define abstract methods"],
+        "explanation": "Setter methods allow controlled updates to private fields, maintaining encapsulation."
+    },
+    {
+        "question": "What happens if a subclass does not override an abstract method from its superclass?",
+        "correctAnswers": ["The subclass must be declared abstract"],
+        "incorrectAnswers": ["The program compiles without errors", "The superclass method is automatically implemented", "The method is converted to private"],
+        "explanation": "If a subclass does not override an abstract method, it must also be declared abstract."
+    },
+    {
+        "question": "Which keyword prevents a class from being extended?",
+        "correctAnswers": ["final"],
+        "incorrectAnswers": ["static", "protected", "abstract"],
+        "explanation": "The 'final' keyword prevents a class from being subclassed."
+    },
+    {
+        "question": "Which keyword is used to define a class within another class?",
+        "correctAnswers": ["class"],
+        "incorrectAnswers": ["static", "inner", "nested"],
+        "explanation": "The 'class' keyword is used to define a class, including nested or inner classes."
+    },
+    {
+        "question": "Which of the following is a characteristic of an interface in Java?",
+        "correctAnswers": ["It can have static methods with implementations"],
+        "incorrectAnswers": ["It allows constructors", "It cannot have any methods", "It allows multiple inheritance with classes"],
+        "explanation": "Interfaces in Java can include static methods with implementations starting from Java 8."
+    },
+    {
+        "question": "What is the purpose of the 'toString' method in Java?",
+        "correctAnswers": ["To return a string representation of an object"],
+        "incorrectAnswers": ["To compare objects for equality", "To initialize object fields", "To execute final cleanup before garbage collection"],
+        "explanation": "The 'toString' method is used to return a human-readable string representation of an object."
+    },
+    {
+        "question": "Which method is commonly overridden to improve the functionality of collections like HashSet?",
+        "correctAnswers": ["hashCode"],
+        "incorrectAnswers": ["finalize", "toString", "notify"],
+        "explanation": "The 'hashCode' method is overridden to ensure proper functioning of collections like HashSet and HashMap."
+    },
+    {
+        "question": "What is the difference between an abstract class and an interface?",
+        "correctAnswers": ["An abstract class can have instance methods, but an interface cannot"],
+        "incorrectAnswers": ["An interface can have instance fields, but an abstract class cannot", "An interface can be instantiated, but an abstract class cannot", "An abstract class can be inherited by multiple classes, but an interface cannot"],
+        "explanation": "An abstract class can have instance methods and fields, while an interface cannot (prior to Java 8)."
+    },
+    {
+        "question": "What is the purpose of a constructor in Java?",
+        "correctAnswers": ["To initialize objects of a class"],
+        "incorrectAnswers": ["To define static methods", "To enforce encapsulation", "To override superclass methods"],
+        "explanation": "A constructor is used to initialize objects of a class, setting initial values for fields."
+    },
+    {
+        "question": "Which access modifier ensures that a method cannot be accessed outside its class?",
+        "correctAnswers": ["private"],
+        "incorrectAnswers": ["public", "protected", "default"],
+        "explanation": "The 'private' access modifier ensures that a method is accessible only within its own class."
+    },
+    {
+        "question": "What is the role of a default constructor in Java?",
+        "correctAnswers": ["To provide a no-argument constructor if none is defined"],
+        "incorrectAnswers": ["To initialize static variables", "To create singleton objects", "To call superclass constructors only"],
+        "explanation": "The default constructor is automatically generated by the compiler if no constructors are explicitly defined."
+    },
+    {
+        "question": "What is the main advantage of using method overloading?",
+        "correctAnswers": ["To define multiple methods with the same name but different parameters"],
+        "incorrectAnswers": ["To reduce the number of methods in a class", "To override methods from a superclass", "To create immutable objects"],
+        "explanation": "Method overloading allows defining multiple methods with the same name but varying parameter lists."
+    },
+    {
+        "question": "What is the term for creating multiple constructors in a class?",
+        "correctAnswers": ["Constructor overloading"],
+        "incorrectAnswers": ["Constructor chaining", "Method overloading", "Dynamic binding"],
+        "explanation": "Constructor overloading refers to defining multiple constructors with different parameter lists in the same class."
+    },
+    {
+        "question": "What is a static block in Java?",
+        "correctAnswers": ["A block of code executed once when the class is loaded"],
+        "incorrectAnswers": ["A block of code inside a static method", "A block executed when an object is created", "A block used to define static variables"],
+        "explanation": "A static block is executed only once, when the class is loaded into memory, to initialize static members."
+    },
+    {
+        "question": "What is the significance of the 'instanceof' operator?",
+        "correctAnswers": ["To check if an object is an instance of a specific class"],
+        "incorrectAnswers": ["To create a new instance of a class", "To cast an object to a different type", "To compare objects for equality"],
+        "explanation": "The 'instanceof' operator is used to test if an object is an instance of a particular class or its subclass."
+    },
+    {
+        "question": "What is the purpose of the 'abstract' keyword in Java?",
+        "correctAnswers": ["To declare a class or method without full implementation"],
+        "incorrectAnswers": ["To create immutable objects", "To prevent inheritance of a class", "To define static members"],
+        "explanation": "The 'abstract' keyword is used to declare a class that cannot be instantiated or a method without implementation."
+    }
+]
+  
