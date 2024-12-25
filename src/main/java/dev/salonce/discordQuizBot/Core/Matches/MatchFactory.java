@@ -1,5 +1,6 @@
 package dev.salonce.discordQuizBot.Core.Matches;
 
+import dev.salonce.discordQuizBot.Configs.QuizConfig;
 import dev.salonce.discordQuizBot.Core.Questions.Question;
 import dev.salonce.discordQuizBot.Core.Questions.QuestionFactory;
 import lombok.RequiredArgsConstructor;
@@ -11,20 +12,11 @@ import java.util.List;
 @Component
 public class MatchFactory {
 
+    private final QuizConfig quizConfig;
     private final QuestionFactory questionFactory;
 
     public Match makeMatch(String type, Long ownerId){
-        List<Question> questions = questionFactory.generateQuestions(type);
-        return new Match(questions, type, ownerId);
+        List<Question> questions = questionFactory.generateQuestions(type, quizConfig.getNoOfQuestions());
+        return new Match(questions, type, ownerId, quizConfig);
     }
-
-//    public Match javaMatch(){
-//        List<Question> questions = questionFactory.generateQuestions("java");
-//        return new Match(questions);
-//    }
-//
-//    public Match memoryMatch(){
-//        List<Question> questions = questionFactory.generateQuestions("memory");
-//        return new Match(questions);
-//    }
 }

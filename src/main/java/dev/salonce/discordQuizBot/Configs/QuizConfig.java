@@ -7,7 +7,10 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Getter
-public class Timers {
+public class QuizConfig {
+
+    private final int noOfQuestions;
+    private final int unansweredLimit;
 
     private final int timeToJoinQuiz;
     private final int timeToStartMatch;

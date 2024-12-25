@@ -15,10 +15,10 @@ public class QuestionFactory {
     private final QuestionRepository questionRepository;
 
     //add logic to eliminate <5 questions by throwing exceptions
-    public List<Question> generateQuestions(String type){
+    public List<Question> generateQuestions(String type, int NoQuestions){
         List<RawQuestion> rawQuestions = questionRepository.getQuestions(type);
         List<Question> questions = new ArrayList<>();
-        for(int i = 0; i < 10; i++){
+        for(int i = 0; i < NoQuestions; i++){
             int next = rand.nextInt(rawQuestions.size());
             questions.add(rawQuestions.get(next).generateQuestion());
             rawQuestions.remove(next);
