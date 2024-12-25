@@ -6,7 +6,7 @@ import dev.salonce.discordQuizBot.Buttons.ButtonInteraction;
 import dev.salonce.discordQuizBot.Buttons.ButtonInteractionData;
 import dev.salonce.discordQuizBot.Configs.QuizConfig;
 import dev.salonce.discordQuizBot.Core.Matches.Match;
-import dev.salonce.discordQuizBot.Core.Matches.MatchClosed;
+import dev.salonce.discordQuizBot.Core.Matches.EnumMatchClosed;
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
 import discord4j.core.object.entity.Message;
@@ -336,9 +336,9 @@ public void addMatch(MessageChannel messageChannel, Match match) {
     private Mono<Message> createCanceledMatchMessage(MessageChannel messageChannel){
         Match match = quizzes.get(messageChannel);
         String text = "Match has been closed.";
-        if (match.getMatchClosed() == MatchClosed.BY_AUTOCLOSE)
+        if (match.getEnumMatchClosed() == EnumMatchClosed.BY_AUTOCLOSE)
             text = "Match has been autoclosed.";
-        else if (match.getMatchClosed() == MatchClosed.BY_OWNER)
+        else if (match.getEnumMatchClosed() == EnumMatchClosed.BY_OWNER)
             text = "Match has been closed by owner.";
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()

@@ -1,6 +1,6 @@
 package dev.salonce.discordQuizBot.Core.Matches;
 
-public enum MatchClosed {
+public enum EnumMatchClosed {
     BY_OWNER,
     BY_AUTOCLOSE,
     NOT_CLOSED
