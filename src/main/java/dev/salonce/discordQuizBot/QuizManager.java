@@ -1,10 +1,10 @@
 package dev.salonce.discordQuizBot;
 
-import dev.salonce.discordQuizBot.Configs.QuestionsConfig;
+import dev.salonce.discordQuizBot.Configs.QuestionSetsConfig;
 import dev.salonce.discordQuizBot.Buttons.AnswerInteractionEnum;
 import dev.salonce.discordQuizBot.Buttons.ButtonInteraction;
 import dev.salonce.discordQuizBot.Buttons.ButtonInteractionData;
-import dev.salonce.discordQuizBot.Configs.Timers;
+import dev.salonce.discordQuizBot.Configs.QuizConfig;
 import dev.salonce.discordQuizBot.Core.Matches.Match;
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
@@ -25,20 +25,20 @@ import java.util.stream.Collectors;
 @Service
 public class QuizManager {
 
-    private final Timers timers;
+    private final QuizConfig quizConfig;
 
     private final Map<MessageChannel, Match> quizzes;
-    private final QuestionsConfig questionsConfig;
+    private final QuestionSetsConfig questionSetsConfig;
 
-    public QuizManager(QuestionsConfig questionsConfig, Timers timers){
+    public QuizManager(QuestionSetsConfig questionSetsConfig, QuizConfig quizConfig){
         quizzes = new HashMap<>();
-        this.questionsConfig = questionsConfig;
-        this.timers = timers;
+        this.questionSetsConfig = questionSetsConfig;
+        this.quizConfig = quizConfig;
     }
 
 public void addMatch(MessageChannel messageChannel, Match match) {
-    int totalTimeToJoinLeft = timers.getTimeToJoinQuiz();
-    int totalTimeToStartLeft = timers.getTimeToStartMatch();
+    int totalTimeToJoinLeft = quizConfig.getTimeToJoinQuiz();
+    int totalTimeToStartLeft = quizConfig.getTimeToStartMatch();
 
     if (quizzes.containsKey(messageChannel)) {
         //send message that starting a match is impossible because there is already one
@@ -185,10 +185,10 @@ public void addMatch(MessageChannel messageChannel, Match match) {
                 .index()
                 .concatMap(tuple -> {
                             long index = tuple.getT1();
-                            return createQuestionMessage(messageChannel, index, timers.getTimeToPickAnswer())
+                            return createQuestionMessage(messageChannel, index, quizConfig.getTimeToPickAnswer())
                                     .flatMap(message -> {
                                         openAnswering(messageChannel);
-                                        int totalTime = timers.getTimeToPickAnswer();
+                                        int totalTime = quizConfig.getTimeToPickAnswer();
                                         return Flux.interval(Duration.ofSeconds(1)) // Emit every second
                                                 .take(totalTime)// Number of updates
                                                 .takeUntil(interval -> match.isClosed())
@@ -204,7 +204,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
                                                 .then(Mono.defer(() -> closeAnswering(messageChannel)))
                                                 .then(Mono.defer(() -> editQuestionMessage(messageChannel, message, index)))
                                                 .then(Mono.defer(() -> setNoAnswerCountAndCloseMatchIfLimit(messageChannel)))
-                                                .then(Mono.delay(Duration.ofSeconds(timers.getTimeForNewQuestionToAppear())))
+                                                .then(Mono.delay(Duration.ofSeconds(quizConfig.getTimeForNewQuestionToAppear())))
                                                 .then(Mono.defer(() -> moveToNextQuestion(match)));
                                     });
                         }
@@ -498,7 +498,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("Help" )
-                .addField("Categories", questionsConfig.getFiles().keySet().stream().sorted(String::compareTo).collect(Collectors.joining(", ")), false)
+                .addField("Categories", questionSetsConfig.getFiles().keySet().stream().sorted(String::compareTo).collect(Collectors.joining(", ")), false)
                 //.addField("Syntax", "**qq quiz *category***", false)
                 .addField("Example", "To start memory quiz, type: **qq quiz *memory***.", false)
                 .build();

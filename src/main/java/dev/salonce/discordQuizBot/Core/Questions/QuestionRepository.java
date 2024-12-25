@@ -1,7 +1,7 @@
 package dev.salonce.discordQuizBot.Core.Questions;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.salonce.discordQuizBot.Configs.QuestionsConfig;
+import dev.salonce.discordQuizBot.Configs.QuestionSetsConfig;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -18,8 +18,8 @@ public class QuestionRepository {
 //    //    questionMap.put("docker", loadQuestionsFromFile("src/main/resources/docker.json"));
 //    }
 
-    public QuestionRepository(QuestionsConfig questionsConfig) throws IOException {
-        for (Map.Entry<String, List<String>> entry : questionsConfig.getFiles().entrySet()) {
+    public QuestionRepository(QuestionSetsConfig questionSetsConfig) throws IOException {
+        for (Map.Entry<String, List<String>> entry : questionSetsConfig.getFiles().entrySet()) {
             String questionType = entry.getKey();
             List<RawQuestion> allQuestionsForType = new ArrayList<>();
 

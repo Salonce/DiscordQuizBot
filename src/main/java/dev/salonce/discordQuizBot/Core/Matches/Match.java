@@ -1,5 +1,6 @@
 package dev.salonce.discordQuizBot.Core.Matches;
 
+import dev.salonce.discordQuizBot.Configs.QuizConfig;
 import dev.salonce.discordQuizBot.Core.Questions.Question;
 import discord4j.core.object.entity.User;
 import lombok.Getter;
@@ -10,8 +11,6 @@ import java.util.stream.Collectors;
 
 @Getter
 public class Match{
-
-    private final int NO_ANSWER_MAX_COUNT = 3;
 
     private final Map<User, Player> players;
     private final List<Question> questions;
@@ -28,7 +27,9 @@ public class Match{
 
     private String name;
 
-    public Match(List<Question> questions, String type, Long ownerId){
+    private final QuizConfig quizConfig;
+
+    public Match(List<Question> questions, String type, Long ownerId, QuizConfig quizConfig){
         this.questions = questions;
         this.players = new HashMap<>();
         this.enrolment = true;
@@ -36,6 +37,7 @@ public class Match{
         this.isClosed = false;
         this.ownerId = ownerId;
         this.noAnswerCount = 0;
+        this.quizConfig = quizConfig;
 
         if (type != null) {
             String capitalized = type.substring(0, 1).toUpperCase() + type.substring(1);
@@ -54,7 +56,7 @@ public class Match{
 
         if (noAnswersCount == players.size()) {
             noAnswerCount++;
-            if (noAnswerCount >= NO_ANSWER_MAX_COUNT)
+            if (noAnswerCount >= quizConfig.getUnansweredLimit())
                 isClosed = true;
         }
         else

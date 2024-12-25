@@ -13,7 +13,7 @@ import java.util.Map;
 @Getter
 @Component
 @ConfigurationProperties(prefix = "questions")
-public class QuestionsConfig {
+public class QuestionSetsConfig {
 
     private Map<String, List<String>> files;
 
