@@ -1,0 +1,398 @@
+[
+    {
+    "question": "Who is considered the founder of Stoicism?",
+    "correctAnswers": ["Zeno of Citium"],
+    "incorrectAnswers": ["Aristotle", "Socrates", "Plato"],
+    "explanation": "Zeno of Citium founded Stoicism around 300 BCE in Athens, promoting the idea that virtue is based on knowledge and the wise live in harmony with nature."
+  },
+  {
+    "question": "Which of the following is a central tenet of Stoicism?",
+    "correctAnswers": ["Virtue is the only good"],
+    "incorrectAnswers": ["Pleasure is the highest good", "Material wealth is essential for happiness", "Revenge is justified when wronged"],
+    "explanation": "Stoicism teaches that virtue, not external goods like pleasure or wealth, is the only true good, and that living in accordance with virtue leads to happiness."
+  },
+  {
+    "question": "Which of the following Stoic philosophers is known for writing 'Meditations'?",
+    "correctAnswers": ["Marcus Aurelius"],
+    "incorrectAnswers": ["Epictetus", "Seneca", "Zeno of Citium"],
+    "explanation": "Marcus Aurelius, a Roman emperor, wrote 'Meditations' as a personal reflection on his Stoic beliefs and how to apply them in daily life."
+  },
+  {
+    "question": "According to Stoicism, what is the key to achieving inner peace?",
+    "correctAnswers": ["Acceptance of things outside of our control"],
+    "incorrectAnswers": ["Accumulation of wealth and power", "Avoiding all forms of discomfort", "Pursuit of pleasure and luxury"],
+    "explanation": "Stoicism teaches that inner peace comes from recognizing what is within our control and accepting what is not, while focusing on developing our virtues."
+  },
+  {
+    "question": "What is the Stoic concept of 'apatheia'?",
+    "correctAnswers": ["Freedom from passion and emotional disturbance"],
+    "incorrectAnswers": ["Living without any emotions", "A complete lack of desire", "The pursuit of self-interest"],
+    "explanation": "'Apatheia' refers to a state of being free from emotional disturbances or overwhelming passions, achieved by mastering one's reactions to external events."
+  },
+  {
+    "question": "Which Stoic philosopher is known for his writings on ethics, especially in 'Letters from a Stoic'?",
+    "correctAnswers": ["Seneca"],
+    "incorrectAnswers": ["Epictetus", "Marcus Aurelius", "Zeno of Citium"],
+    "explanation": "Seneca, a Roman philosopher, wrote extensively on Stoic ethics, including the 'Letters from a Stoic', offering practical advice on how to live a virtuous life."
+  },
+  {
+    "question": "What does Stoicism say about external events and their impact on our emotions?",
+    "correctAnswers": ["External events are neutral; our reactions to them determine our emotional state"],
+    "incorrectAnswers": ["External events directly cause our emotions", "Emotions are meaningless and should be avoided", "Emotions are a sign of weakness"],
+    "explanation": "According to Stoicism, external events themselves are neutral, and it is our judgment and reactions to these events that shape our emotional responses."
+  },
+  {
+    "question": "Which of the following is NOT a principle of Stoicism?",
+    "correctAnswers": ["Seeking pleasure at all costs"],
+    "incorrectAnswers": ["Focus on controlling what you can", "Live in accordance with nature", "Cultivate virtues like wisdom and courage"],
+    "explanation": "Stoicism advocates for living according to reason and virtue, not seeking pleasure as the highest goal. It teaches that we should focus on what we can control and accept what we cannot."
+  },
+  {
+    "question": "What does Stoicism teach about the nature of suffering?",
+    "correctAnswers": ["Suffering arises from our attachment to things beyond our control"],
+    "incorrectAnswers": ["Suffering is inevitable and should be avoided", "Suffering is a punishment for wrongdoing", "Suffering is a result of not acquiring enough material wealth"],
+    "explanation": "Stoicism teaches that suffering comes from our attachment to things outside our control. By focusing on what we can control and letting go of attachment, we reduce suffering."
+  },
+  {
+    "question": "What is the Stoic view on death?",
+    "correctAnswers": ["Death is a natural part of life, not to be feared"],
+    "incorrectAnswers": ["Death is the ultimate punishment", "Death is to be avoided at all costs", "Death is something to be feared and resisted"],
+    "explanation": "Stoicism teaches that death is a natural and inevitable part of life, and we should not fear it. Instead, we should live virtuously and accept death when it comes."
+  },
+  {
+    "question": "In Stoicism, what is considered the most important virtue?",
+    "correctAnswers": ["Wisdom"],
+    "incorrectAnswers": ["Courage", "Temperance", "Justice"],
+    "explanation": "In Stoic philosophy, wisdom is the most important virtue, as it allows individuals to discern what is within their control and how to live in accordance with nature."
+  },
+  {
+    "question": "What is the Stoic practice of 'premeditatio malorum'?",
+    "correctAnswers": ["The practice of mentally preparing for potential challenges or misfortunes"],
+    "incorrectAnswers": ["Avoiding all forms of hardship", "Seeking out challenges to test one's resilience", "Denying the existence of challenges in life"],
+    "explanation": "'Premeditatio malorum' is the Stoic practice of imagining and preparing for possible misfortunes, helping to reduce fear and anxiety when facing adversity."
+  },
+  {
+    "question": "What did Epictetus believe about the things we can control?",
+    "correctAnswers": ["We can only control our own thoughts, actions, and judgments"],
+    "incorrectAnswers": ["We can control the actions of others", "We can control the external circumstances of our lives", "We can control the outcomes of all our efforts"],
+    "explanation": "Epictetus, a Stoic philosopher, emphasized that the only things we can truly control are our thoughts, actions, and judgments, not external events or other people's behavior."
+  },
+  {
+    "question": "What is the Stoic approach to emotions?",
+    "correctAnswers": ["Emotions are natural but should be controlled and guided by reason"],
+    "incorrectAnswers": ["Emotions should be completely suppressed", "Emotions are irrelevant and should be ignored", "Emotions should be fully expressed without restraint"],
+    "explanation": "Stoicism teaches that emotions are natural but should be controlled and guided by reason. Emotions should not dominate our actions, and we should strive to maintain calmness and composure."
+  },
+  {
+    "question": "How does Stoicism view the concept of fortune or luck?",
+    "correctAnswers": ["Fortune is beyond our control, and we should focus on how we respond to it"],
+    "incorrectAnswers": ["Fortune is the primary determinant of success", "Fortune is something we can control with enough effort", "Fortune should be avoided at all costs"],
+    "explanation": "Stoicism teaches that fortune is beyond our control and that we should focus on how we respond to life's ups and downs, aiming to maintain virtue and inner peace regardless of circumstances."
+  },
+  {
+    "question": "What is the Stoic belief about personal happiness?",
+    "correctAnswers": ["Happiness is found through living virtuously, not by pursuing external goods"],
+    "incorrectAnswers": ["Happiness is found in material wealth and pleasure", "Happiness is a fleeting emotion that should be avoided", "Happiness depends on achieving fame and recognition"],
+    "explanation": "Stoicism teaches that true happiness comes from living in accordance with virtue, focusing on what we can control, and cultivating wisdom, courage, justice, and temperance."
+  },
+  {
+    "question": "Which Stoic philosopher said, 'We suffer more in imagination than in reality'?",
+    "correctAnswers": ["Seneca"],
+    "incorrectAnswers": ["Epictetus", "Marcus Aurelius", "Zeno of Citium"],
+    "explanation": "Seneca famously said, 'We suffer more in imagination than in reality,' reflecting the Stoic belief that much of our suffering is due to our perceptions and anticipations, rather than actual events."
+  },
+  {
+    "question": "What does the Stoic concept of 'eudaimonia' refer to?",
+    "correctAnswers": ["A life of flourishing through virtue and wisdom"],
+    "incorrectAnswers": ["A life focused on achieving wealth and power", "A life of hedonistic pleasure", "A life of passive contentment without effort"],
+    "explanation": "'Eudaimonia' refers to the Stoic concept of living a flourishing life through the cultivation of virtues like wisdom, courage, and temperance."
+  },
+  {
+    "question": "What is the Stoic perspective on external rewards like wealth or fame?",
+    "correctAnswers": ["External rewards are not the true source of happiness and should not be the focus of life"],
+    "incorrectAnswers": ["External rewards are the ultimate goals of life", "External rewards guarantee a virtuous life", "External rewards are necessary for achieving inner peace"],
+    "explanation": "Stoicism teaches that external rewards, such as wealth and fame, do not lead to true happiness or fulfillment. Instead, virtue and wisdom are the true sources of a good life."
+  },
+  {
+    "question": "What does Stoicism teach about external circumstances and happiness?",
+    "correctAnswers": ["Happiness is independent of external circumstances"],
+    "incorrectAnswers": ["Happiness depends on acquiring wealth and status", "Happiness is achieved by avoiding all challenges", "Happiness requires constant social approval"],
+    "explanation": "Stoicism teaches that true happiness comes from within and is not dependent on external factors such as wealth or status, but on living virtuously."
+  },
+  {
+    "question": "Which Stoic philosopher is known for his teachings on the importance of personal freedom?",
+    "correctAnswers": ["Epictetus"],
+    "incorrectAnswers": ["Seneca", "Marcus Aurelius", "Zeno of Citium"],
+    "explanation": "Epictetus is known for emphasizing that true freedom comes from controlling our own thoughts, actions, and responses, rather than external circumstances."
+  },
+  {
+    "question": "What is the Stoic view on pleasure and pain?",
+    "correctAnswers": ["Pleasure and pain are indifferent and should not be pursued or avoided excessively"],
+    "incorrectAnswers": ["Pleasure should be sought at all costs", "Pain should be avoided at all costs", "Pleasure is the most important goal in life"],
+    "explanation": "In Stoicism, pleasure and pain are seen as indifferent; the wise person does not seek pleasure or avoid pain, but focuses on living virtuously."
+  },
+  {
+    "question": "According to Stoicism, what role do negative emotions play in our lives?",
+    "correctAnswers": ["Negative emotions are signals that our judgments or desires need to be adjusted"],
+    "incorrectAnswers": ["Negative emotions should be completely suppressed", "Negative emotions are signs of failure", "Negative emotions should be indulged to release tension"],
+    "explanation": "Stoicism teaches that negative emotions like anger or fear arise from faulty judgments or desires, and can be used as signals to reassess our reactions and beliefs."
+  },
+  {
+    "question": "What is the Stoic attitude toward personal success and failure?",
+    "correctAnswers": ["Success and failure are beyond our control; we should focus on how we respond to them"],
+    "incorrectAnswers": ["Success is the only measure of a good life", "Failure is always to be avoided", "Success and failure define our worth as individuals"],
+    "explanation": "Stoicism teaches that while we cannot control success or failure, we can control our responses to them, maintaining equanimity in the face of both."
+  },
+  {
+    "question": "Which of the following best describes the Stoic concept of 'stoic joy'?",
+    "correctAnswers": ["A state of contentment achieved by living in accordance with virtue"],
+    "incorrectAnswers": ["A constant state of excitement and pleasure", "A form of happiness derived from material wealth", "Joy achieved through external validation and recognition"],
+    "explanation": "Stoic joy is not based on external conditions but arises from living virtuously and accepting the natural order of things with tranquility."
+  },
+  {
+    "question": "What is the Stoic view on human nature?",
+    "correctAnswers": ["Humans are rational beings who should live in accordance with nature and reason"],
+    "incorrectAnswers": ["Humans are naturally driven by desires and instincts", "Humans should avoid reasoning and focus on passions", "Humans are inherently selfish and must suppress compassion"],
+    "explanation": "Stoicism teaches that humans are rational by nature and that they should align their actions with reason and the natural world to live a good life."
+  },
+  {
+    "question": "What does the Stoic concept of 'logos' refer to?",
+    "correctAnswers": ["The rational principle governing the universe"],
+    "incorrectAnswers": ["A specific set of ethical rules for behavior", "An emotional response to external stimuli", "A form of personal desire that guides actions"],
+    "explanation": "In Stoicism, 'logos' is the rational, divine order of the universe that humans should strive to understand and align their actions with."
+  },
+  {
+    "question": "Which of the following best represents Stoic advice for dealing with hardship?",
+    "correctAnswers": ["Accept hardship as a natural part of life and focus on your response to it"],
+    "incorrectAnswers": ["Avoid hardship at all costs", "Seek revenge against those who cause hardship", "Endure hardship without ever questioning it"],
+    "explanation": "Stoicism teaches that hardship is inevitable and beyond our control. What matters is how we respond, maintaining virtue and composure in adversity."
+  },
+  {
+    "question": "What is the Stoic perspective on attachment to material goods?",
+    "correctAnswers": ["Material goods are not essential for happiness and should be treated as indifferent"],
+    "incorrectAnswers": ["Material goods are essential for happiness", "Attachment to material goods is the key to living a good life", "Material goods should be avoided at all costs"],
+    "explanation": "Stoicism teaches that material goods, while not inherently bad, should not be the source of our happiness. True fulfillment comes from virtue and wisdom."
+  },
+  {
+    "question": "How does Stoicism approach the concept of fate?",
+    "correctAnswers": ["Fate is beyond our control, but we can control how we respond to it"],
+    "incorrectAnswers": ["Fate is predetermined and cannot be changed", "Fate should be resisted at all costs", "Fate is something we can manipulate through force of will"],
+    "explanation": "Stoicism teaches that fate, or the events of life, is beyond our control, but we can always control our response, aiming to live virtuously regardless of external circumstances."
+  },
+  {
+    "question": "Which of the following is a practice recommended by Stoicism to develop resilience?",
+    "correctAnswers": ["Negative visualization, or imagining the worst-case scenario to prepare mentally"],
+    "incorrectAnswers": ["Avoiding all negative thoughts and focusing on positive affirmations", "Engaging in physical challenges to build endurance", "Indulging in pleasures to balance hardship"],
+    "explanation": "Negative visualization is a Stoic technique where individuals imagine the worst-case scenarios to reduce fear and prepare emotionally for life's challenges."
+  },
+  {
+    "question": "What is the Stoic view on anger?",
+    "correctAnswers": ["Anger is a destructive emotion that should be controlled and not acted upon impulsively"],
+    "incorrectAnswers": ["Anger is a natural and necessary response to injustice", "Anger should be expressed freely to release tension", "Anger is a sign of moral superiority"],
+    "explanation": "Stoicism teaches that anger is a destructive emotion that arises from irrational judgments and should be controlled through reason and self-discipline."
+  },
+  {
+    "question": "What is the Stoic perspective on social relationships?",
+    "correctAnswers": ["Social relationships should be based on virtue, not external rewards or pleasure"],
+    "incorrectAnswers": ["Social relationships are unimportant and should be avoided", "Social relationships are necessary for happiness and fulfillment", "Social relationships should only be based on shared interests or material gain"],
+    "explanation": "In Stoicism, social relationships are important but should be grounded in virtue and reason, rather than seeking external rewards or fleeting pleasures."
+  },
+  {
+    "question": "What did Marcus Aurelius believe about our thoughts and reality?",
+    "correctAnswers": ["Our thoughts shape our experience of reality, and we must cultivate the right mindset"],
+    "incorrectAnswers": ["Our thoughts are irrelevant to our experience of reality", "Reality is completely shaped by external events", "Only external circumstances determine our experience of life"],
+    "explanation": "Marcus Aurelius, in his 'Meditations', emphasized the power of our thoughts and beliefs in shaping our experience of reality and urged people to cultivate a rational and virtuous mindset."
+  },
+  {
+    "question": "Which of the following best describes Stoic ethics?",
+    "correctAnswers": ["Living in accordance with nature and virtue, focusing on what is within our control"],
+    "incorrectAnswers": ["Seeking pleasure as the ultimate goal", "Focusing on external rewards to measure success", "Avoiding all forms of hardship and discomfort"],
+    "explanation": "Stoic ethics focuses on living in accordance with nature and virtue, cultivating wisdom and self-control, and focusing on what is within our control rather than external factors."
+  },
+  {
+    "question": "How does Stoicism suggest we approach challenges in life?",
+    "correctAnswers": ["Challenges are opportunities to practice virtue and strengthen character"],
+    "incorrectAnswers": ["Challenges should be avoided whenever possible", "Challenges are obstacles that lead to failure", "Challenges are signs that we are not living correctly"],
+    "explanation": "Stoicism teaches that challenges are inevitable and should be embraced as opportunities to practice virtues like courage, wisdom, and temperance."
+  },
+  {
+    "question": "What is the Stoic perspective on the pursuit of wealth?",
+    "correctAnswers": ["Wealth is indifferent and should not be the primary goal in life"],
+    "incorrectAnswers": ["Wealth is the most important pursuit in life", "Wealth should be accumulated at all costs", "Wealth brings lasting happiness"],
+    "explanation": "Stoicism teaches that wealth is neither good nor bad in itself, and that true happiness is not dependent on material wealth but on living virtuously."
+  },
+  {
+    "question": "What does the Stoic concept of 'ataraxia' refer to?",
+    "correctAnswers": ["A state of tranquility and freedom from emotional disturbance"],
+    "incorrectAnswers": ["A form of physical pleasure", "A state of constant excitement", "A state of emotional attachment to outcomes"],
+    "explanation": "'Ataraxia' in Stoicism refers to the peace of mind that comes from not being disturbed by emotions, desires, or external circumstances."
+  },
+  {
+    "question": "Which Stoic philosopher is known for writing 'Letters from a Stoic'?",
+    "correctAnswers": ["Seneca"],
+    "incorrectAnswers": ["Marcus Aurelius", "Epictetus", "Zeno of Citium"],
+    "explanation": "Seneca, a Roman Stoic philosopher, wrote 'Letters from a Stoic', a collection of letters that discuss Stoic philosophy and its application to life."
+  },
+  {
+    "question": "How does Stoicism view the concept of death?",
+    "correctAnswers": ["Death is a natural part of life and should not be feared"],
+    "incorrectAnswers": ["Death should be avoided at all costs", "Death marks the end of existence and brings suffering", "Death is an unnatural event that should be resisted"],
+    "explanation": "In Stoicism, death is viewed as a natural and inevitable part of life. Instead of fearing it, Stoics believe in accepting it and focusing on living virtuously in the present."
+  },
+  {
+    "question": "What is the Stoic approach to personal desires?",
+    "correctAnswers": ["Desires should be controlled and kept in alignment with reason"],
+    "incorrectAnswers": ["Desires should be followed as they arise", "Desires are the key to living a fulfilling life", "Desires should be suppressed completely"],
+    "explanation": "Stoicism teaches that desires should not govern our actions, and instead we should use reason to guide our behavior and align our desires with virtue."
+  },
+  {
+    "question": "Which of the following is a key concept in Stoic ethics?",
+    "correctAnswers": ["Virtue is the highest good"],
+    "incorrectAnswers": ["Pleasure is the highest good", "Material wealth is the highest good", "Power and control are the highest goods"],
+    "explanation": "In Stoic ethics, virtue—living in accordance with wisdom, courage, justice, and temperance—is considered the highest good, rather than external factors like pleasure or wealth."
+  },
+  {
+    "question": "What does Stoicism say about emotions like anger and jealousy?",
+    "correctAnswers": ["They are irrational and should be controlled through reason"],
+    "incorrectAnswers": ["They are necessary for a full and meaningful life", "They should be expressed freely to release tension", "They reflect natural instincts that should be embraced"],
+    "explanation": "Stoicism teaches that negative emotions like anger and jealousy arise from faulty judgments, and that we should control them by applying reason and understanding."
+  },
+  {
+    "question": "What is the Stoic concept of 'dichotomy of control'?",
+    "correctAnswers": ["The idea that some things are within our control and others are not"],
+    "incorrectAnswers": ["Everything is within our control if we try hard enough", "Nothing is within our control, so we should stop trying", "We can control everything except our own thoughts"],
+    "explanation": "The 'dichotomy of control' is the Stoic principle that some things, such as our thoughts and actions, are within our control, while others, like external events, are not."
+  },
+  {
+    "question": "According to Stoicism, how should we deal with insults or criticism?",
+    "correctAnswers": ["We should assess them calmly and respond with virtue, if necessary"],
+    "incorrectAnswers": ["We should ignore all criticism and avoid reflection", "We should retaliate to defend our honor", "We should always take criticism personally and feel offended"],
+    "explanation": "Stoicism advises that we respond to insults and criticism calmly, assessing whether they are valid and responding with wisdom and virtue, rather than reacting impulsively."
+  },
+  {
+    "question": "What is the Stoic perspective on change?",
+    "correctAnswers": ["Change is a natural part of life and should be accepted with equanimity"],
+    "incorrectAnswers": ["Change is to be feared and avoided at all costs", "Change is a sign of failure", "Change is something we should resist to maintain stability"],
+    "explanation": "In Stoicism, change is seen as inevitable and part of the natural order. Stoics believe we should accept change calmly and focus on how we respond to it."
+  },
+  {
+    "question": "What did Marcus Aurelius emphasize in his 'Meditations'?",
+    "correctAnswers": ["The importance of focusing on what we can control and accepting what we cannot"],
+    "incorrectAnswers": ["The need to always seek pleasure and avoid pain", "The importance of ruling with absolute power", "The idea that external circumstances define our happiness"],
+    "explanation": "In his 'Meditations', Marcus Aurelius emphasizes the Stoic idea of focusing on our own actions and thoughts, accepting external events as beyond our control, and maintaining virtue."
+  },
+  {
+    "question": "What does Stoicism say about the role of fortune in our lives?",
+    "correctAnswers": ["Fortune is unpredictable and beyond our control, so we should not rely on it for happiness"],
+    "incorrectAnswers": ["Fortune is a sign of merit and should be pursued", "Fortune is always a reward for virtuous living", "Fortune is the primary determinant of our success in life"],
+    "explanation": "Stoicism teaches that while fortune is beyond our control, true happiness comes from virtue, not from external circumstances like wealth or status."
+  },
+  {
+    "question": "What is the Stoic concept of 'virtue'?",
+    "correctAnswers": ["Virtue is the quality of living in accordance with reason and moral principles"],
+    "incorrectAnswers": ["Virtue is a matter of following social norms", "Virtue is about achieving external success", "Virtue is about feeling good about oneself"],
+    "explanation": "For Stoics, virtue means living a life guided by wisdom, courage, justice, and temperance, all of which are based on rational thought and moral principles."
+  },
+  {
+    "question": "How should a Stoic respond to a difficult situation?",
+    "correctAnswers": ["With calmness and a focus on what can be controlled"],
+    "incorrectAnswers": ["With anger and frustration", "By avoiding the situation entirely", "By seeking revenge or justice immediately"],
+    "explanation": "Stoicism teaches that in difficult situations, we should maintain calmness, focus on what we can control, and approach the situation with virtue and wisdom."
+  },
+  {
+    "question": "What is the Stoic view on pleasure and suffering?",
+    "correctAnswers": ["Pleasure and suffering are indifferent and should not dictate our actions"],
+    "incorrectAnswers": ["Pleasure should be the ultimate goal", "Suffering should be avoided at all costs", "Pleasure is the source of all happiness"],
+    "explanation": "In Stoicism, pleasure and suffering are seen as external factors that do not affect our inner peace. The Stoic goal is to cultivate virtue regardless of external circumstances."
+  },
+  {
+    "question": "What is the Stoic view on external events?",
+    "correctAnswers": ["External events are beyond our control and should be accepted as they come"],
+    "incorrectAnswers": ["External events determine our happiness and must be controlled", "We should avoid all external events to maintain peace", "External events are signs of personal failure or success"],
+    "explanation": "Stoicism teaches that we should focus on how we react to external events rather than trying to control them, as they are beyond our influence."
+  },
+  {
+    "question": "Which Stoic philosopher emphasized the importance of self-control and mindfulness?",
+    "correctAnswers": ["Epictetus"],
+    "incorrectAnswers": ["Seneca", "Zeno of Citium", "Marcus Aurelius"],
+    "explanation": "Epictetus is known for his teachings on the importance of controlling our thoughts and reactions, emphasizing mindfulness in everyday life."
+  },
+  {
+    "question": "How does Stoicism define 'happiness'?",
+    "correctAnswers": ["Happiness is found in living virtuously and in accordance with reason"],
+    "incorrectAnswers": ["Happiness is the pursuit of pleasure and material success", "Happiness comes from avoiding all hardship and discomfort", "Happiness is dependent on the approval of others"],
+    "explanation": "Stoicism teaches that true happiness comes from living a virtuous life guided by wisdom, courage, and temperance, rather than seeking external rewards."
+  },
+  {
+    "question": "What is the Stoic perspective on pain and suffering?",
+    "correctAnswers": ["Pain and suffering are natural but should not be allowed to disturb our inner peace"],
+    "incorrectAnswers": ["Pain and suffering are signs of moral failure", "Pain and suffering should be avoided at all costs", "Pain and suffering define our worth as individuals"],
+    "explanation": "Stoicism views pain and suffering as part of life, but believes that we should maintain control over our reactions and focus on our inner strength."
+  },
+  {
+    "question": "Which Stoic philosopher wrote 'The Enchiridion'?",
+    "correctAnswers": ["Epictetus"],
+    "incorrectAnswers": ["Seneca", "Marcus Aurelius", "Zeno of Citium"],
+    "explanation": "Epictetus wrote 'The Enchiridion', a handbook of Stoic principles and practical advice on how to live a virtuous life."
+  },
+  {
+    "question": "What is the role of virtue in Stoic ethics?",
+    "correctAnswers": ["Virtue is the only true good and the key to a fulfilling life"],
+    "incorrectAnswers": ["Virtue is secondary to achieving pleasure", "Virtue is irrelevant to achieving external success", "Virtue is only important for social approval"],
+    "explanation": "In Stoic ethics, virtue—living in accordance with wisdom, courage, justice, and temperance—is considered the highest good and essential for happiness."
+  },
+  {
+    "question": "How does Stoicism view the concept of 'fate'?",
+    "correctAnswers": ["Fate is beyond our control, and we should accept it with equanimity"],
+    "incorrectAnswers": ["Fate is something we can change with enough effort", "Fate is a personal failure if things go wrong", "Fate is irrelevant to our actions and choices"],
+    "explanation": "Stoicism teaches that fate or external circumstances are beyond our control, and we should focus on our response to them rather than trying to change them."
+  },
+  {
+    "question": "What does Stoicism say about the role of emotions in decision-making?",
+    "correctAnswers": ["Emotions should be recognized but controlled by reason"],
+    "incorrectAnswers": ["Emotions should always be followed as guides to action", "Emotions are a sign of weakness and should be ignored", "Emotions are the most reliable guide to making decisions"],
+    "explanation": "Stoicism teaches that emotions should not dictate our actions. Instead, we should use reason to control our emotions and make virtuous decisions."
+  },
+  {
+    "question": "What is the Stoic approach to dealing with setbacks or failure?",
+    "correctAnswers": ["We should learn from setbacks and focus on what is within our control"],
+    "incorrectAnswers": ["We should avoid setbacks by never taking risks", "We should feel despair and give up after failure", "We should blame others for our failures"],
+    "explanation": "Stoicism encourages viewing setbacks as opportunities for growth, emphasizing that we should focus on our actions and responses rather than external outcomes."
+  },
+  {
+    "question": "According to Stoicism, how should we view the opinions of others?",
+    "correctAnswers": ["The opinions of others should be disregarded if they conflict with our virtuous principles"],
+    "incorrectAnswers": ["The opinions of others should define our self-worth", "We should seek approval from others to be happy", "The opinions of others are the most important factor in decision-making"],
+    "explanation": "Stoicism teaches that our worth should not be based on the opinions of others, and we should instead focus on living virtuously according to our own principles."
+  },
+  {
+    "question": "What is the Stoic approach to ambition?",
+    "correctAnswers": ["Ambition should be directed towards achieving virtue rather than external success"],
+    "incorrectAnswers": ["Ambition is the highest goal in life", "Ambition is a sign of moral weakness", "Ambition should be abandoned in favor of comfort"],
+    "explanation": "Stoicism teaches that ambition should be focused on cultivating virtue and living a moral life, not on pursuing external rewards or status."
+  },
+  {
+    "question": "How does Stoicism view the concept of freedom?",
+    "correctAnswers": ["True freedom comes from mastering our desires and reactions, not from external circumstances"],
+    "incorrectAnswers": ["Freedom is the ability to do whatever we want without consequences", "Freedom means complete control over external events", "Freedom is achieved by pursuing wealth and power"],
+    "explanation": "In Stoicism, true freedom is found in self-mastery, where we control our thoughts and actions, regardless of external circumstances."
+  },
+  {
+    "question": "What is the main goal of Stoic philosophy?",
+    "correctAnswers": ["To live in harmony with nature and cultivate virtue"],
+    "incorrectAnswers": ["To accumulate wealth and power", "To seek constant pleasure and avoid pain", "To withdraw from society and live in isolation"],
+    "explanation": "The main goal of Stoicism is to live a life in accordance with nature, guided by virtue, wisdom, and reason, while accepting external circumstances beyond our control."
+  },
+  {
+    "question": "What does the Stoic concept of 'the obstacle is the way' mean?",
+    "correctAnswers": ["Challenges and obstacles can be opportunities for growth and virtue"],
+    "incorrectAnswers": ["Obstacles should be avoided at all costs", "Obstacles are a sign of failure", "Obstacles are to be feared and resisted"],
+    "explanation": "The Stoic concept 'the obstacle is the way' teaches that challenges in life can provide opportunities to develop resilience, wisdom, and virtue."
+  },
+  {
+    "question": "How should Stoics approach relationships with others?",
+    "correctAnswers": ["With respect, compassion, and an understanding of their own and others' limitations"],
+    "incorrectAnswers": ["By seeking to dominate and control others", "By avoiding all emotional attachment to others", "By only associating with people who agree with us"],
+    "explanation": "Stoicism encourages treating others with respect and kindness, recognizing that we cannot control others' actions, only our own responses."
+  }
+]  

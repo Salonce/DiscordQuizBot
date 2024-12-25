@@ -1,0 +1,465 @@
+[
+    {
+      "question": "Which philosopher is most commonly associated with the development of rationalism?",
+      "correctAnswers": ["René Descartes"],
+      "incorrectAnswers": ["Immanuel Kant", "John Locke", "David Hume"],
+      "explanation": "René Descartes is widely regarded as the father of modern rationalism, emphasizing reason as the path to knowledge."
+    },
+    {
+      "question": "Which of the following is a core idea in rationalist philosophy?",
+      "correctAnswers": ["Knowledge is gained primarily through reason"],
+      "incorrectAnswers": ["Knowledge is gained through sensory experience", "Knowledge is purely subjective", "Truth is relative to culture"],
+      "explanation": "Rationalism holds that knowledge comes from reason and intellectual deduction, rather than sensory experience."
+    },
+    {
+      "question": "What is the key difference between rationalism and empiricism?",
+      "correctAnswers": ["Rationalism values reason over sensory experience"],
+      "incorrectAnswers": ["Empiricism values reason over sensory experience", "Rationalism focuses on subjective feelings", "Empiricism argues that reality is constructed by the mind"],
+      "explanation": "Rationalism emphasizes the role of reason in acquiring knowledge, while empiricism prioritizes sensory experience."
+    },
+    {
+      "question": "Which rationalist concept argues that certain truths are innate and not learned through experience?",
+      "correctAnswers": ["Innate ideas"],
+      "incorrectAnswers": ["Tabula rasa", "Empirical knowledge", "Constructivism"],
+      "explanation": "Rationalists like Descartes believed in innate ideas, which are inherent in the mind and do not come from experience."
+    },
+    {
+      "question": "Who argued that 'Cogito, ergo sum' ('I think, therefore I am') as a foundation for knowledge?",
+      "correctAnswers": ["René Descartes"],
+      "incorrectAnswers": ["Baruch Spinoza", "Gottfried Leibniz", "David Hume"],
+      "explanation": "Descartes' famous declaration 'Cogito, ergo sum' establishes thinking as the fundamental proof of existence."
+    },
+    {
+      "question": "Which rationalist thinker developed the idea of 'monism,' which suggests the unity of mind and body?",
+      "correctAnswers": ["Baruch Spinoza"],
+      "incorrectAnswers": ["René Descartes", "John Locke", "Gottfried Leibniz"],
+      "explanation": "Spinoza’s philosophy advocated for a single substance, linking mind and body in a unified system."
+    },
+    {
+      "question": "Which rationalist philosopher proposed a theory of pre-established harmony between mind and body?",
+      "correctAnswers": ["Gottfried Leibniz"],
+      "incorrectAnswers": ["Baruch Spinoza", "René Descartes", "David Hume"],
+      "explanation": "Leibniz introduced the idea of pre-established harmony, where the mind and body are coordinated by God without direct interaction."
+    },
+    {
+      "question": "What term describes the belief that reason alone can lead to knowledge of the world, independent of sensory experience?",
+      "correctAnswers": ["Rationalism"],
+      "incorrectAnswers": ["Empiricism", "Phenomenalism", "Pragmatism"],
+      "explanation": "Rationalism asserts that reason is the primary source of knowledge, while empiricism emphasizes sensory experience."
+    },
+    {
+      "question": "Which of the following philosophers is known for challenging rationalism by emphasizing the role of experience in knowledge acquisition?",
+      "correctAnswers": ["John Locke"],
+      "incorrectAnswers": ["René Descartes", "Baruch Spinoza", "Gottfried Leibniz"],
+      "explanation": "John Locke, an empiricist, argued that knowledge comes from sensory experience, in contrast to rationalist thinkers."
+    },
+    {
+      "question": "Which concept is central to the rationalist idea that certain knowledge is independent of sensory input?",
+      "correctAnswers": ["A priori knowledge"],
+      "incorrectAnswers": ["A posteriori knowledge", "Empirical knowledge", "Constructivist knowledge"],
+      "explanation": "A priori knowledge, which exists independently of sensory experience, is a key concept in rationalism."
+    },
+    {
+      "question": "How do rationalists typically view the role of sensory experience in acquiring knowledge?",
+      "correctAnswers": ["Sensory experience is secondary to reason"],
+      "incorrectAnswers": ["Sensory experience is the only valid source of knowledge", "Sensory experience is irrelevant to all knowledge", "Sensory experience is the primary method for understanding reality"],
+      "explanation": "Rationalists argue that reason, not sensory experience, is the primary means of obtaining true knowledge."
+    },
+    {
+      "question": "What did René Descartes believe was the most certain foundation for knowledge?",
+      "correctAnswers": ["The existence of the self as a thinking being"],
+      "incorrectAnswers": ["The existence of the physical world", "The existence of God", "The senses as a reliable source of information"],
+      "explanation": "Descartes’ famous statement 'Cogito, ergo sum' emphasized the certainty of the self’s existence as a thinking being."
+    },
+    {
+      "question": "Which of the following philosophers is associated with the idea that reality consists of 'monads'—simple substances that make up the universe?",
+      "correctAnswers": ["Gottfried Leibniz"],
+      "incorrectAnswers": ["René Descartes", "Baruch Spinoza", "David Hume"],
+      "explanation": "Leibniz believed that the universe was made up of monads, indivisible, simple substances that mirror the universe."
+    },
+    {
+      "question": "Which branch of philosophy focuses on the role of reason in understanding knowledge and existence?",
+      "correctAnswers": ["Epistemology"],
+      "incorrectAnswers": ["Metaphysics", "Ethics", "Aesthetics"],
+      "explanation": "Epistemology is concerned with the nature of knowledge, including how it is acquired and its limits, particularly through reason in rationalism."
+    },
+    {
+      "question": "Which philosopher argued that knowledge of the external world could be obtained through reason, without direct sensory experience?",
+      "correctAnswers": ["René Descartes"],
+      "incorrectAnswers": ["David Hume", "Immanuel Kant", "Baruch Spinoza"],
+      "explanation": "Descartes believed that through reason, one could attain certain knowledge, even about the external world."
+    },
+    {
+      "question": "What is a key characteristic of rationalism regarding the origins of knowledge?",
+      "correctAnswers": ["It believes that some knowledge is innate and not derived from experience"],
+      "incorrectAnswers": ["It believes all knowledge is learned through sensory experience", "It asserts that knowledge is purely subjective", "It denies the existence of innate ideas"],
+      "explanation": "Rationalism argues that certain knowledge is innate, existing in the mind independent of sensory experience."
+    },
+    {
+      "question": "Which rationalist philosopher argued that the mind and body are separate substances that interact in the pineal gland?",
+      "correctAnswers": ["René Descartes"],
+      "incorrectAnswers": ["John Locke", "Baruch Spinoza", "David Hume"],
+      "explanation": "Descartes proposed that the mind and body are distinct substances, with interaction occurring through the pineal gland."
+    },
+    {
+      "question": "Which concept refers to the knowledge that we can gain through experience, in contrast to rationalist theories?",
+      "correctAnswers": ["A posteriori knowledge"],
+      "incorrectAnswers": ["A priori knowledge", "Rationalist knowledge", "Constructivist knowledge"],
+      "explanation": "A posteriori knowledge is knowledge gained through sensory experience, contrasting with a priori knowledge that comes from reason."
+    },
+    {
+      "question": "What was John Locke’s view on the mind at birth?",
+      "correctAnswers": ["The mind is a blank slate (tabula rasa)"],
+      "incorrectAnswers": ["The mind contains innate ideas", "The mind is filled with pre-existing knowledge", "The mind is inherently capable of reason without experience"],
+      "explanation": "Locke believed that the mind at birth is a blank slate, and all knowledge comes from sensory experience."
+    },
+    {
+        "question": "Which philosophical approach emphasizes the role of reason in acquiring knowledge?",
+        "correctAnswers": ["Rationalism"],
+        "incorrectAnswers": ["Empiricism", "Pragmatism", "Relativism"],
+        "explanation": "Rationalism asserts that reason is the chief source of knowledge, in contrast to empiricism, which values sensory experience."
+      },
+      {
+        "question": "What is the term for knowledge that exists prior to sensory experience, according to rationalism?",
+        "correctAnswers": ["A priori knowledge"],
+        "incorrectAnswers": ["A posteriori knowledge", "Empirical knowledge", "Subjective knowledge"],
+        "explanation": "A priori knowledge is knowledge that is independent of sensory experience, based on reason alone."
+      },
+      {
+        "question": "Which philosopher is known for his skepticism about the external world and the certainty of sensory knowledge?",
+        "correctAnswers": ["René Descartes"],
+        "incorrectAnswers": ["Baruch Spinoza", "David Hume", "Gottfried Leibniz"],
+        "explanation": "Descartes doubted the reliability of sensory perception, leading him to seek certainty through reason."
+      },
+      {
+        "question": "Which of these concepts is central to rationalist philosophy, implying that some knowledge is built into the human mind?",
+        "correctAnswers": ["Innate ideas"],
+        "incorrectAnswers": ["Tabula rasa", "Empirical knowledge", "Perceptual knowledge"],
+        "explanation": "Rationalists believe in innate ideas, which are pre-existing knowledge within the mind, rather than knowledge gained through experience."
+      },
+      {
+        "question": "Which philosopher famously said 'Cogito, ergo sum' ('I think, therefore I am') to affirm existence through thought?",
+        "correctAnswers": ["René Descartes"],
+        "incorrectAnswers": ["Gottfried Leibniz", "Baruch Spinoza", "David Hume"],
+        "explanation": "Descartes' statement 'Cogito, ergo sum' asserts that the act of thinking proves one’s existence as a thinking being."
+      },
+      {
+        "question": "Which of the following philosophers is associated with the development of metaphysical dualism, where mind and body are distinct?",
+        "correctAnswers": ["René Descartes"],
+        "incorrectAnswers": ["Gottfried Leibniz", "Baruch Spinoza", "David Hume"],
+        "explanation": "Descartes proposed that mind and body are separate substances, a view known as dualism."
+      },
+      {
+        "question": "Which philosopher argued that the physical world could be understood through reason and mathematical principles?",
+        "correctAnswers": ["René Descartes"],
+        "incorrectAnswers": ["David Hume", "John Locke", "Baruch Spinoza"],
+        "explanation": "Descartes emphasized the importance of mathematics and reason in understanding the physical world."
+      },
+      {
+        "question": "Which rationalist philosopher proposed a system in which the mind is an active participant in the formation of knowledge?",
+        "correctAnswers": ["Gottfried Leibniz"],
+        "incorrectAnswers": ["John Locke", "René Descartes", "David Hume"],
+        "explanation": "Leibniz believed the mind actively organizes sensory input to form knowledge, emphasizing the role of pre-established harmony."
+      },
+      {
+        "question": "What philosophical view opposes rationalism by asserting that all knowledge comes from sensory experience?",
+        "correctAnswers": ["Empiricism"],
+        "incorrectAnswers": ["Rationalism", "Idealism", "Phenomenalism"],
+        "explanation": "Empiricism claims that knowledge is primarily derived from sensory experience, in contrast to the rationalist belief in reason."
+      },
+      {
+        "question": "Which concept, central to rationalism, argues that certain truths about the world can be deduced purely through reason?",
+        "correctAnswers": ["Necessary truths"],
+        "incorrectAnswers": ["Contingent truths", "Empirical truths", "Relative truths"],
+        "explanation": "Necessary truths are those that are true by definition and do not depend on empirical observation or experience."
+      },
+      {
+        "question": "Which philosopher proposed that the mind and body are connected through the pineal gland, a physical point of interaction?",
+        "correctAnswers": ["René Descartes"],
+        "incorrectAnswers": ["Baruch Spinoza", "John Locke", "Gottfried Leibniz"],
+        "explanation": "Descartes suggested that the mind and body interact via the pineal gland, a point of connection between the physical and mental realms."
+      },
+      {
+        "question": "Which philosopher's work is most closely associated with the idea of 'pre-established harmony' between mind and body?",
+        "correctAnswers": ["Gottfried Leibniz"],
+        "incorrectAnswers": ["René Descartes", "Baruch Spinoza", "David Hume"],
+        "explanation": "Leibniz developed the theory of pre-established harmony, where the mind and body are coordinated by God without direct interaction."
+      },
+      {
+        "question": "What did John Locke famously argue regarding the mind at birth?",
+        "correctAnswers": ["The mind is a blank slate (tabula rasa)"],
+        "incorrectAnswers": ["The mind contains innate ideas", "The mind is filled with pre-existing knowledge", "The mind is naturally rational from birth"],
+        "explanation": "Locke argued that the mind at birth is like a blank slate, and all knowledge comes from sensory experience."
+      },
+      {
+        "question": "Which philosopher believed that ideas are the result of the mind's interaction with the world through experience?",
+        "correctAnswers": ["John Locke"],
+        "incorrectAnswers": ["René Descartes", "Baruch Spinoza", "David Hume"],
+        "explanation": "Locke was an empiricist who argued that ideas are formed through the mind’s interaction with sensory experience."
+      },
+      {
+        "question": "What is the philosophical term for knowledge that is acquired through sensory experience and observation?",
+        "correctAnswers": ["A posteriori knowledge"],
+        "incorrectAnswers": ["A priori knowledge", "Empirical knowledge", "Rational knowledge"],
+        "explanation": "A posteriori knowledge refers to knowledge gained through sensory experience, as opposed to a priori knowledge, which is independent of experience."
+      },
+      {
+        "question": "What did Baruch Spinoza argue about the nature of substance and the universe?",
+        "correctAnswers": ["Everything is a part of one substance, God or Nature"],
+        "incorrectAnswers": ["There are two distinct substances: mind and body", "The universe is made of indivisible atoms", "Reality is fundamentally unknowable"],
+        "explanation": "Spinoza argued that everything in the universe is part of one substance, which he identified with God or Nature."
+      },
+      {
+        "question": "Which of the following concepts does rationalism assert about human cognition?",
+        "correctAnswers": ["Reason is the primary source of knowledge"],
+        "incorrectAnswers": ["Knowledge is solely derived from sensory experience", "Humans are born with no cognitive abilities", "The mind is passive in acquiring knowledge"],
+        "explanation": "Rationalism holds that reason, rather than sensory experience, is the primary means by which humans acquire knowledge."
+      },
+      {
+        "question": "Which philosopher is known for his critique of empiricism, particularly in relation to the nature of cause and effect?",
+        "correctAnswers": ["David Hume"],
+        "incorrectAnswers": ["René Descartes", "Baruch Spinoza", "John Locke"],
+        "explanation": "Hume challenged the empirical view by questioning how we can know causality through sensory experience, arguing that we only observe constant conjunctions."
+      },
+      {
+        "question": "Which concept is central to Descartes' philosophy, arguing that only doubt can lead to certain knowledge?",
+        "correctAnswers": ["Methodical skepticism"],
+        "incorrectAnswers": ["Empirical observation", "Pragmatic reasoning", "Phenomenological analysis"],
+        "explanation": "Descartes used methodical skepticism as a way to doubt everything except for the certainty of his own existence as a thinking being."
+      },
+      {
+        "question": "Which rationalist philosopher believed that reason could provide an objective understanding of morality and ethics?",
+        "correctAnswers": ["Gottfried Leibniz"],
+        "incorrectAnswers": ["David Hume", "Immanuel Kant", "Baruch Spinoza"],
+        "explanation": "Leibniz believed that reason could help humans understand objective moral truths, based on logical deductions."
+      },
+      {
+        "question": "What did Immanuel Kant critique about rationalism in his work 'Critique of Pure Reason'?",
+        "correctAnswers": ["He argued that reason alone cannot lead to knowledge of the external world"],
+        "incorrectAnswers": ["He rejected the concept of innate ideas", "He believed that sensory experience is unnecessary for knowledge", "He thought empirical knowledge was inherently unreliable"],
+        "explanation": "Kant critiqued rationalism by arguing that while reason is essential, it cannot provide knowledge of the external world without the mediation of sensory experience."
+      },
+      {
+        "question": "Which rationalist philosopher is known for his work on the philosophy of mind and for proposing that the mind is distinct from the body?",
+        "correctAnswers": ["René Descartes"],
+        "incorrectAnswers": ["Baruch Spinoza", "David Hume", "Gottfried Leibniz"],
+        "explanation": "Descartes is famous for his theory of dualism, asserting that the mind and body are two distinct substances."
+      },
+      {
+        "question": "Which philosopher argued that the human mind is capable of knowledge independent of sensory experience?",
+        "correctAnswers": ["René Descartes"],
+        "incorrectAnswers": ["John Locke", "David Hume", "Baruch Spinoza"],
+        "explanation": "Descartes believed in the power of reason as the primary source of knowledge, independent of sensory experience."
+      },
+      {
+        "question": "Which of the following describes the rationalist view on the origins of knowledge?",
+        "correctAnswers": ["Knowledge is innate and can be discovered through reason"],
+        "incorrectAnswers": ["Knowledge is gained solely through sensory experience", "Knowledge comes from an external divine source", "Knowledge is based purely on cultural influence"],
+        "explanation": "Rationalists believe that knowledge exists within the mind and can be accessed through reasoning, not just through sensory experience."
+      },
+      {
+        "question": "Which rationalist philosopher argued for the existence of a pre-established harmony between mind and body?",
+        "correctAnswers": ["Gottfried Leibniz"],
+        "incorrectAnswers": ["René Descartes", "David Hume", "John Locke"],
+        "explanation": "Leibniz's theory of pre-established harmony posits that the mind and body are coordinated by God without interacting directly."
+      },
+      {
+        "question": "What is the term for knowledge that comes from experience, according to empiricists?",
+        "correctAnswers": ["A posteriori knowledge"],
+        "incorrectAnswers": ["A priori knowledge", "Rational knowledge", "Innate knowledge"],
+        "explanation": "A posteriori knowledge is derived from sensory experience, in contrast to a priori knowledge, which is independent of experience."
+      },
+      {
+        "question": "What does the term 'tabula rasa' refer to in the context of empiricism?",
+        "correctAnswers": ["The mind is a blank slate at birth"],
+        "incorrectAnswers": ["The mind contains innate ideas", "Knowledge is given by divine revelation", "The mind is naturally rational from birth"],
+        "explanation": "Tabula rasa refers to the idea that the mind is like a blank slate at birth, and all knowledge comes from sensory experience."
+      },
+      {
+        "question": "Which philosopher is known for his criticism of the rationalist emphasis on innate ideas?",
+        "correctAnswers": ["John Locke"],
+        "incorrectAnswers": ["René Descartes", "Baruch Spinoza", "Gottfried Leibniz"],
+        "explanation": "Locke opposed the notion of innate ideas, arguing that all knowledge comes from experience, especially sensory perception."
+      },
+      {
+        "question": "Which philosopher believed that all knowledge comes from the mind's active interaction with the world, rather than from passive experience?",
+        "correctAnswers": ["Immanuel Kant"],
+        "incorrectAnswers": ["John Locke", "David Hume", "René Descartes"],
+        "explanation": "Kant argued that while experience is necessary, the mind actively structures and interprets that experience to form knowledge."
+      },
+      {
+        "question": "Which rationalist philosopher proposed that reality is fundamentally composed of two substances: thought and extension?",
+        "correctAnswers": ["Baruch Spinoza"],
+        "incorrectAnswers": ["René Descartes", "David Hume", "Gottfried Leibniz"],
+        "explanation": "Spinoza believed that all of reality is composed of one substance, God or Nature, which has two aspects: thought and extension."
+      },
+      {
+        "question": "Which of the following philosophers believed that human knowledge can be derived from the principles of logic and reason alone, without reliance on sensory experience?",
+        "correctAnswers": ["Gottfried Leibniz"],
+        "incorrectAnswers": ["David Hume", "John Locke", "Baruch Spinoza"],
+        "explanation": "Leibniz believed that human knowledge can be deduced through reason and logic, rather than being based on empirical observation."
+      },
+      {
+        "question": "What is the philosophical view that opposes rationalism by asserting that knowledge is primarily derived from experience?",
+        "correctAnswers": ["Empiricism"],
+        "incorrectAnswers": ["Rationalism", "Idealism", "Realism"],
+        "explanation": "Empiricism argues that knowledge comes from sensory experience, unlike rationalism, which asserts that reason is the primary source of knowledge."
+      },
+      {
+        "question": "Which of these concepts is central to the philosophy of Immanuel Kant, who critiqued both rationalism and empiricism?",
+        "correctAnswers": ["Synthetic a priori knowledge"],
+        "incorrectAnswers": ["A posteriori knowledge", "Empirical observation", "Pragmatic reasoning"],
+        "explanation": "Kant introduced the idea of synthetic a priori knowledge, which combines elements of both sensory experience and rational deduction."
+      },
+      {
+        "question": "Which rationalist philosopher developed a system of philosophy that emphasized the importance of mathematical reasoning and logic?",
+        "correctAnswers": ["René Descartes"],
+        "incorrectAnswers": ["David Hume", "Gottfried Leibniz", "John Locke"],
+        "explanation": "Descartes is known for using mathematics and logic as fundamental tools for understanding reality and acquiring knowledge."
+      },
+      {
+        "question": "Which of the following philosophers is associated with the development of the concept of 'substance monism', where everything is made of a single substance?",
+        "correctAnswers": ["Baruch Spinoza"],
+        "incorrectAnswers": ["René Descartes", "David Hume", "John Locke"],
+        "explanation": "Spinoza developed substance monism, the idea that everything in existence is part of one unified substance, which he identified as God or Nature."
+      },
+      {
+        "question": "Which philosopher argued that sensory experience alone is not enough to explain the full scope of human knowledge?",
+        "correctAnswers": ["Immanuel Kant"],
+        "incorrectAnswers": ["John Locke", "David Hume", "René Descartes"],
+        "explanation": "Kant argued that while sensory experience is essential, the mind actively structures this experience to generate knowledge."
+      },
+      {
+        "question": "What does the term 'a priori' refer to in rationalism?",
+        "correctAnswers": ["Knowledge that is independent of experience"],
+        "incorrectAnswers": ["Knowledge gained through sensory observation", "Knowledge derived from logical deduction", "Knowledge that requires empirical evidence"],
+        "explanation": "A priori knowledge is knowledge that is independent of sensory experience and can be known through reason alone."
+      },
+      {
+        "question": "Which philosopher is known for his work on the relationship between mind and body, particularly his famous theory of dualism?",
+        "correctAnswers": ["René Descartes"],
+        "incorrectAnswers": ["David Hume", "John Locke", "Baruch Spinoza"],
+        "explanation": "Descartes' dualism theory posits that the mind and body are distinct substances that interact but are separate in nature."
+      },
+      {
+        "question": "Which philosopher is known for his skepticism about the concept of causality, asserting that we cannot directly observe causal relationships?",
+        "correctAnswers": ["David Hume"],
+        "incorrectAnswers": ["René Descartes", "Baruch Spinoza", "Gottfried Leibniz"],
+        "explanation": "Hume questioned the certainty of causality, arguing that our understanding of cause and effect is based on habit, not direct observation."
+      },
+      {
+        "question": "Which rationalist philosopher believed that knowledge could be derived from an understanding of the laws of logic and mathematics?",
+        "correctAnswers": ["Gottfried Leibniz"],
+        "incorrectAnswers": ["David Hume", "John Locke", "René Descartes"],
+        "explanation": "Leibniz emphasized the importance of mathematics and logic in understanding the world and deriving knowledge."
+      },
+      {
+        "question": "Which philosopher is known for formulating the method of doubt, which doubted the certainty of everything except one's own existence?",
+        "correctAnswers": ["René Descartes"],
+        "incorrectAnswers": ["John Locke", "Baruch Spinoza", "David Hume"],
+        "explanation": "Descartes used the method of doubt to question the reliability of sensory experience and believed that the only indubitable truth is 'I think, therefore I am.'"
+      },
+      {
+        "question": "Which philosopher argued that reason alone could prove the existence of God?",
+        "correctAnswers": ["René Descartes"],
+        "incorrectAnswers": ["David Hume", "Immanuel Kant", "John Locke"],
+        "explanation": "Descartes used reason to argue that the existence of a perfect being, God, is evident through the idea of perfection itself."
+      },
+      {
+        "question": "Which philosopher believed that the mind and body were separate but interacted with one another through the pineal gland?",
+        "correctAnswers": ["René Descartes"],
+        "incorrectAnswers": ["Baruch Spinoza", "David Hume", "John Locke"],
+        "explanation": "Descartes proposed that the mind and body are distinct substances, with the pineal gland acting as the interface between the two."
+      },
+      {
+        "question": "Which philosopher believed that reason alone could lead to a perfect understanding of reality, beyond what is perceived by the senses?",
+        "correctAnswers": ["Gottfried Leibniz"],
+        "incorrectAnswers": ["John Locke", "David Hume", "Baruch Spinoza"],
+        "explanation": "Leibniz emphasized that the use of reason and logic allows one to uncover the truths of reality, independent of sensory input."
+      },
+      {
+        "question": "Which rationalist philosopher developed the theory of 'substance monism' where everything is composed of one single substance?",
+        "correctAnswers": ["Baruch Spinoza"],
+        "incorrectAnswers": ["René Descartes", "John Locke", "David Hume"],
+        "explanation": "Spinoza believed that all of reality was part of one substance, which he identified with God or Nature, making him a monist."
+      },
+      {
+        "question": "Which rationalist philosopher is associated with the concept of 'pre-established harmony' between the mind and the body?",
+        "correctAnswers": ["Gottfried Leibniz"],
+        "incorrectAnswers": ["René Descartes", "John Locke", "Baruch Spinoza"],
+        "explanation": "Leibniz proposed that God created the mind and body in such a way that they are perfectly coordinated, but not directly interacting."
+      },
+      {
+        "question": "Which philosopher argued that all knowledge is based on sense experience and that the mind is a blank slate at birth?",
+        "correctAnswers": ["John Locke"],
+        "incorrectAnswers": ["René Descartes", "Baruch Spinoza", "David Hume"],
+        "explanation": "Locke is famous for his theory of the mind as a tabula rasa, where knowledge is acquired through experience, not innate ideas."
+      },
+      {
+        "question": "Which philosopher believed that reason was the only reliable source of knowledge, and that sensory experience was often deceptive?",
+        "correctAnswers": ["René Descartes"],
+        "incorrectAnswers": ["David Hume", "Immanuel Kant", "John Locke"],
+        "explanation": "Descartes believed that sensory experience could deceive, and that reason alone could lead to certain knowledge."
+      },
+      {
+        "question": "Which philosopher's work laid the groundwork for the development of modern logic and mathematics, emphasizing the importance of reason?",
+        "correctAnswers": ["Gottfried Leibniz"],
+        "incorrectAnswers": ["René Descartes", "Baruch Spinoza", "David Hume"],
+        "explanation": "Leibniz's contributions to logic and mathematics, particularly through the development of binary arithmetic, were essential for the later development of modern computing."
+      },
+      {
+        "question": "Which rationalist philosopher's writings laid the foundation for the development of analytic geometry?",
+        "correctAnswers": ["René Descartes"],
+        "incorrectAnswers": ["John Locke", "Gottfried Leibniz", "Baruch Spinoza"],
+        "explanation": "Descartes is credited with developing analytic geometry, which uses algebra to describe geometric shapes."
+      },
+      {
+        "question": "Which philosopher is known for the 'cogito ergo sum' argument, asserting that thinking is proof of existence?",
+        "correctAnswers": ["René Descartes"],
+        "incorrectAnswers": ["Immanuel Kant", "David Hume", "Baruch Spinoza"],
+        "explanation": "Descartes' famous phrase 'Cogito, ergo sum' ('I think, therefore I am') emphasizes the certainty of one's existence based on the act of thinking."
+      },
+      {
+        "question": "Which rationalist philosopher developed the idea of 'substance dualism,' the concept that mind and body are separate entities?",
+        "correctAnswers": ["René Descartes"],
+        "incorrectAnswers": ["David Hume", "John Locke", "Baruch Spinoza"],
+        "explanation": "Descartes is well known for his theory of substance dualism, which posits that the mind and body are two distinct substances."
+      },
+      {
+        "question": "Which philosopher is famous for his argument that the mind is structured by a priori categories that shape our experiences?",
+        "correctAnswers": ["Immanuel Kant"],
+        "incorrectAnswers": ["John Locke", "David Hume", "René Descartes"],
+        "explanation": "Kant proposed that the mind imposes a priori categories on sensory experience, thus shaping our perception of the world."
+      },
+      {
+        "question": "Which philosopher claimed that certain knowledge could be attained through pure reason and that the physical world was ultimately an illusion?",
+        "correctAnswers": ["Baruch Spinoza"],
+        "incorrectAnswers": ["René Descartes", "John Locke", "Gottfried Leibniz"],
+        "explanation": "Spinoza believed that reason could lead to knowledge of the true nature of reality, and that the physical world was merely a manifestation of a deeper substance."
+      },
+      {
+        "question": "Which philosopher is credited with the development of 'monads,' indivisible substances that make up the universe?",
+        "correctAnswers": ["Gottfried Leibniz"],
+        "incorrectAnswers": ["René Descartes", "Baruch Spinoza", "David Hume"],
+        "explanation": "Leibniz introduced the concept of monads, which are simple substances that he believed make up the fabric of the universe."
+      },
+      {
+        "question": "Which philosopher believed that the external world is not directly knowable, and that we can only be certain of our own mental states?",
+        "correctAnswers": ["René Descartes"],
+        "incorrectAnswers": ["David Hume", "Immanuel Kant", "John Locke"],
+        "explanation": "Descartes argued that while we can doubt the existence of the external world, we can be certain of our own mental existence through the act of thinking."
+      },
+      {
+        "question": "Which philosopher is known for his concept of 'phenomenal reality,' distinguishing between the way things appear and the way they really are?",
+        "correctAnswers": ["Immanuel Kant"],
+        "incorrectAnswers": ["David Hume", "René Descartes", "Baruch Spinoza"],
+        "explanation": "Kant distinguished between the phenomenal world (the world as we experience it) and the noumenal world (the world as it truly is), which is unknowable."
+      },
+      {
+        "question": "Which philosopher argued that the nature of reality could only be fully understood through rational deduction and not through sensory observation?",
+        "correctAnswers": ["Gottfried Leibniz"],
+        "incorrectAnswers": ["René Descartes", "David Hume", "John Locke"],
+        "explanation": "Leibniz believed that knowledge could be gained through pure reason and logic, not by relying on the deceptive nature of the senses."
+      }
+  ]
+  

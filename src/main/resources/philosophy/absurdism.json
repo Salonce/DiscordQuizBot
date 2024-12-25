@@ -1,0 +1,429 @@
+[
+    {
+      "question": "Who is considered the father of Absurdist philosophy?",
+      "correctAnswers": ["Albert Camus"],
+      "incorrectAnswers": ["Jean-Paul Sartre", "Friedrich Nietzsche", "Simone de Beauvoir"],
+      "explanation": "Albert Camus is widely regarded as the father of Absurdist philosophy, particularly through works like 'The Myth of Sisyphus.'"
+    },
+    {
+      "question": "What is the central theme of Camus' work 'The Myth of Sisyphus'?",
+      "correctAnswers": ["The absurdity of life and the search for meaning"],
+      "incorrectAnswers": ["The futility of reason", "The importance of societal structures", "The necessity of despair"],
+      "explanation": "In 'The Myth of Sisyphus,' Camus explores the idea that life is inherently absurd, but humans must continue to search for meaning despite this."
+    },
+    {
+      "question": "What is the Absurd according to Camus?",
+      "correctAnswers": ["The conflict between the human desire for meaning and the universe's indifference"],
+      "incorrectAnswers": ["The inevitable failure of reason", "The idea that life has no purpose", "The struggle for survival in an indifferent universe"],
+      "explanation": "Camus defines the Absurd as the tension between humans seeking meaning and the universe's lack of any inherent purpose."
+    },
+    {
+      "question": "Which existential theme is most closely associated with Absurdism?",
+      "correctAnswers": ["The search for meaning in an indifferent universe"],
+      "incorrectAnswers": ["The focus on self-actualization", "The necessity of a moral code", "The quest for scientific truth"],
+      "explanation": "Absurdism emphasizes the human struggle to find meaning in a universe that does not provide it."
+    },
+    {
+      "question": "What is Camus' response to the Absurd?",
+      "correctAnswers": ["Revolt against the absurdity of existence"],
+      "incorrectAnswers": ["Surrender to despair", "Seek religious salvation", "Ignore the contradiction"],
+      "explanation": "Camus advocates for revolt, where individuals continue to live fully and embrace life despite its inherent absurdity."
+    },
+    {
+      "question": "Which novel by Camus is a key exploration of Absurdist themes?",
+      "correctAnswers": ["The Stranger"],
+      "incorrectAnswers": ["The Fall", "The Plague", "No Exit"],
+      "explanation": "In 'The Stranger,' Camus illustrates the Absurd through the character of Meursault, whose indifference to life's meaning reflects Absurdist philosophy."
+    },
+    {
+      "question": "Which philosopher is often contrasted with Camus in the context of Absurdism?",
+      "correctAnswers": ["Jean-Paul Sartre"],
+      "incorrectAnswers": ["Friedrich Nietzsche", "Martin Heidegger", "Immanuel Kant"],
+      "explanation": "Sartre, with his focus on existentialism, is often contrasted with Camus, who focused more on the Absurd rather than creating meaning."
+    },
+    {
+      "question": "In Absurdist philosophy, how is the concept of suicide viewed?",
+      "correctAnswers": ["As an escape from the absurd, which Camus rejects"],
+      "incorrectAnswers": ["As a necessary act of liberation", "As a rational response to life's meaninglessness", "As an unavoidable consequence of despair"],
+      "explanation": "Camus argues that suicide is an escape from the Absurd, but it fails to confront the challenge of living despite meaninglessness."
+    },
+    {
+      "question": "Which existentialist concept is most connected to Absurdism?",
+      "correctAnswers": ["The idea that life has no inherent meaning"],
+      "incorrectAnswers": ["The need for social solidarity", "The objective truth of existence", "The pursuit of absolute freedom"],
+      "explanation": "Absurdism shares with existentialism the idea that life has no inherent meaning and humans must confront that reality."
+    },
+    {
+      "question": "In 'The Myth of Sisyphus,' how does Camus portray the character of Sisyphus?",
+      "correctAnswers": ["As a symbol of defiance in the face of the Absurd"],
+      "incorrectAnswers": ["As a tragic figure defeated by the Absurd", "As a foolish hero doomed to fail", "As a passive victim of fate"],
+      "explanation": "Camus presents Sisyphus as a symbol of human defiance, continuing his task despite the absurdity of his endless labor."
+    },
+    {
+      "question": "What is the Absurd hero, according to Camus?",
+      "correctAnswers": ["Someone who continues to live fully despite the lack of meaning in life"],
+      "incorrectAnswers": ["Someone who seeks meaning in religious beliefs", "Someone who surrenders to despair", "Someone who denies the existence of the Absurd"],
+      "explanation": "The Absurd hero persists in life with full awareness of the Absurd, choosing to live authentically despite the lack of meaning."
+    },
+    {
+      "question": "Which work of fiction is NOT an example of Absurdist literature?",
+      "correctAnswers": ["Moby Dick"],
+      "incorrectAnswers": ["Waiting for Godot", "The Metamorphosis", "The Outsider"],
+      "explanation": "'Moby Dick' is not typically classified as Absurdist, while the other works explore themes related to Absurdism and existentialism."
+    },
+    {
+      "question": "What does Camus mean by 'The Absurd' in literature?",
+      "correctAnswers": ["The recognition of life's meaninglessness and the human struggle against it"],
+      "incorrectAnswers": ["The acceptance of life's inevitable conclusion", "The discovery of divine meaning in human life", "The emphasis on rationality and order"],
+      "explanation": "The Absurd in literature refers to the tension between the human desire for meaning and the universe's indifference, often leading to existential struggles."
+    },
+    {
+      "question": "Which of the following is a common motif in Absurdist plays?",
+      "correctAnswers": ["Repetition and the meaningless cycle of existence"],
+      "incorrectAnswers": ["Tragic heroes seeking redemption", "A clear moral resolution", "Characters finding divine purpose"],
+      "explanation": "Absurdist plays often feature repetitive actions or situations that highlight the meaningless and cyclical nature of existence."
+    },
+    {
+      "question": "What is one reason Camus rejects traditional religion in the face of the Absurd?",
+      "correctAnswers": ["It offers false hope and escapes the confrontation with life's meaninglessness"],
+      "incorrectAnswers": ["It offers the only true meaning", "It provides a logical answer to the Absurd", "It encourages moral living"],
+      "explanation": "Camus believes that religious answers avoid the challenge of confronting the Absurd and do not allow individuals to fully embrace the human experience."
+    },
+    {
+      "question": "What genre of philosophy is Absurdism typically associated with?",
+      "correctAnswers": ["Existentialism"],
+      "incorrectAnswers": ["Rationalism", "Nihilism", "Utilitarianism"],
+      "explanation": "Absurdism is often considered a subset of existentialism, focusing on the human confrontation with the meaninglessness of existence."
+    },
+    {
+      "question": "Which concept in Absurdism is illustrated by the character of Meursault in 'The Stranger'?",
+      "correctAnswers": ["The indifference of the universe to human existence"],
+      "incorrectAnswers": ["The search for a higher moral purpose", "The pursuit of absolute freedom", "The need for social acceptance"],
+      "explanation": "Meursault's indifference to his mother's death and his trial reflects the Absurd, showing the universe's lack of inherent meaning."
+    },
+    {
+      "question": "Which of the following best represents the tone of Absurdist works?",
+      "correctAnswers": ["A sense of existential despair mixed with humor"],
+      "incorrectAnswers": ["Optimism and hope for a better future", "Darkness and hopelessness", "Clarity and rational explanation"],
+      "explanation": "Absurdist works often mix existential despair with humor, highlighting the contradictions inherent in human existence."
+    },
+    {
+      "question": "Which major existential concept does Absurdism share with existentialism?",
+      "correctAnswers": ["The idea that individuals must create their own meaning in an indifferent universe"],
+      "incorrectAnswers": ["The belief in predetermined fate", "The search for universal truth", "The denial of freedom of choice"],
+      "explanation": "Both Absurdism and existentialism emphasize that individuals must create meaning in an indifferent, meaningless universe."
+    },
+    {
+      "question": "Which work by Samuel Beckett is considered a hallmark of Absurdist theater?",
+      "correctAnswers": ["Waiting for Godot"],
+      "incorrectAnswers": ["Endgame", "The Caretaker", "The Birthday Party"],
+      "explanation": "'Waiting for Godot' is a quintessential Absurdist play, exploring the themes of waiting, meaninglessness, and the human condition."
+    },
+    {
+        "question": "What does Absurdism primarily focus on?",
+        "correctAnswers": ["The conflict between human desire for meaning and the meaninglessness of the universe"],
+        "incorrectAnswers": ["The need for moral guidance in society", "The quest for spiritual enlightenment", "The search for universal truth"],
+        "explanation": "Absurdism focuses on the tension between humans seeking meaning and the universe's indifference, often portraying life's inherent meaninglessness."
+      },
+      {
+        "question": "Which Absurdist idea is illustrated through Camus' concept of 'The Myth of Sisyphus'?",
+        "correctAnswers": ["The struggle to find meaning in a meaningless existence"],
+        "incorrectAnswers": ["The pursuit of happiness in the face of suffering", "The importance of rational thought in human life", "The rejection of human freedom"],
+        "explanation": "Camus' 'The Myth of Sisyphus' demonstrates how humans must continue to search for meaning even though life itself is inherently meaningless."
+      },
+      {
+        "question": "Which Absurdist playwright is known for the play 'Waiting for Godot'?",
+        "correctAnswers": ["Samuel Beckett"],
+        "incorrectAnswers": ["Eugène Ionesco", "Harold Pinter", "Tom Stoppard"],
+        "explanation": "Samuel Beckett is known for 'Waiting for Godot,' a defining play of Absurdist theater that explores themes of meaninglessness and the passage of time."
+      },
+      {
+        "question": "What does Camus argue in his essay 'The Myth of Sisyphus' about life's absurdity?",
+        "correctAnswers": ["That we must continue to live fully despite the absurdity of existence"],
+        "incorrectAnswers": ["That life’s absurdity should lead to despair", "That we should seek religious salvation to escape the absurd", "That humans should give up searching for meaning"],
+        "explanation": "Camus argues that we should revolt against the absurd by living fully, even though life is meaningless."
+      },
+      {
+        "question": "Which of the following is a characteristic of Absurdist fiction?",
+        "correctAnswers": ["A sense of existential questioning without resolution"],
+        "incorrectAnswers": ["A clear moral resolution to the conflict", "An exploration of spiritual transcendence", "An emphasis on rational problem-solving"],
+        "explanation": "Absurdist fiction often presents existential dilemmas without clear resolutions, leaving the conflict of meaning unanswered."
+      },
+      {
+        "question": "What does Absurdist philosophy suggest about the search for meaning in life?",
+        "correctAnswers": ["It is a futile endeavor because life is inherently meaningless"],
+        "incorrectAnswers": ["It leads to the discovery of universal truths", "It brings individuals closer to spiritual fulfillment", "It offers hope through the power of reason"],
+        "explanation": "Absurdist philosophy suggests that the search for meaning is futile because the universe offers no inherent purpose or meaning."
+      },
+      {
+        "question": "Which existential concept is central to Absurdism?",
+        "correctAnswers": ["The confrontation between human beings and the absurdity of existence"],
+        "incorrectAnswers": ["The importance of social structure and order", "The quest for absolute moral truth", "The search for universal human rights"],
+        "explanation": "Absurdism deals with the confrontation of humans with the absurdity of existence, focusing on the lack of meaning in life."
+      },
+      {
+        "question": "How does Camus view the role of rebellion in Absurdism?",
+        "correctAnswers": ["Rebellion is a way to confront the Absurd and live authentically despite it"],
+        "incorrectAnswers": ["Rebellion leads to the destruction of meaning", "Rebellion should be avoided to find peace", "Rebellion is only possible through religious faith"],
+        "explanation": "Camus believes rebellion against the Absurd is a way to live authentically, embracing life despite its meaninglessness."
+      },
+      {
+        "question": "Which of the following Absurdist works by Camus explores the theme of a plague in a town?",
+        "correctAnswers": ["The Plague"],
+        "incorrectAnswers": ["The Fall", "The Outsider", "The Myth of Sisyphus"],
+        "explanation": "'The Plague' by Camus explores how humans react to a deadly outbreak, reflecting Absurdist themes of suffering, survival, and meaninglessness."
+      },
+      {
+        "question": "What does Camus mean by the 'Absurd Hero'?",
+        "correctAnswers": ["A person who continues to live fully despite the meaninglessness of existence"],
+        "incorrectAnswers": ["A person who seeks meaning in religious faith", "A person who completely abandons hope", "A person who seeks absolute truth and knowledge"],
+        "explanation": "The Absurd Hero continues to live authentically in defiance of the Absurd, embracing life despite its inherent lack of meaning."
+      },
+      {
+        "question": "What does Camus argue about suicide in relation to the Absurd?",
+        "correctAnswers": ["Suicide is an escape from the Absurd and should be rejected as a solution"],
+        "incorrectAnswers": ["Suicide is the only logical conclusion to life’s meaninglessness", "Suicide offers freedom from existential suffering", "Suicide is a path to spiritual enlightenment"],
+        "explanation": "Camus rejects suicide as a solution to the Absurd, arguing that it is an escape rather than a confrontation with life's meaninglessness."
+      },
+      {
+        "question": "Which of the following themes is explored in Absurdist literature?",
+        "correctAnswers": ["The meaninglessness of existence and the human struggle to find meaning"],
+        "incorrectAnswers": ["The search for a perfect society", "The exploration of absolute truth", "The pursuit of social justice as a primary goal"],
+        "explanation": "Absurdist literature often focuses on the realization that life has no inherent meaning, and the human struggle to confront this truth."
+      },
+      {
+        "question": "What is Camus’ stance on rationalism in the context of Absurdism?",
+        "correctAnswers": ["He views rationalism as inadequate to solve the Absurd"],
+        "incorrectAnswers": ["He believes rationalism can provide all the answers to life’s questions", "He argues that reason is the key to finding meaning", "He advocates for the elimination of reason in human life"],
+        "explanation": "Camus views rationalism as inadequate in addressing the Absurd, as the human quest for meaning cannot be resolved through reason alone."
+      },
+      {
+        "question": "Which philosopher is most associated with the idea of 'existentialism' alongside Absurdism?",
+        "correctAnswers": ["Jean-Paul Sartre"],
+        "incorrectAnswers": ["Friedrich Nietzsche", "Martin Heidegger", "Simone de Beauvoir"],
+        "explanation": "Jean-Paul Sartre is closely linked to existentialism, a philosophy related to Absurdism, emphasizing the freedom of individuals to create meaning."
+      },
+      {
+        "question": "In which of the following plays do characters engage in futile and repetitive actions to highlight Absurdism?",
+        "correctAnswers": ["Waiting for Godot"],
+        "incorrectAnswers": ["A Streetcar Named Desire", "Death of a Salesman", "The Glass Menagerie"],
+        "explanation": "In 'Waiting for Godot,' the characters engage in repetitive, seemingly pointless actions, emphasizing the Absurd nature of existence."
+      },
+      {
+        "question": "What does Absurdist philosophy suggest about human freedom?",
+        "correctAnswers": ["Freedom exists, but it is meaningless in an absurd universe"],
+        "incorrectAnswers": ["Freedom is an illusion and cannot be experienced", "Freedom is the key to resolving the Absurd", "Freedom leads to the discovery of universal truths"],
+        "explanation": "In Absurdism, freedom exists but is seen as meaningless in a universe devoid of inherent purpose or meaning."
+      },
+      {
+        "question": "Which Absurdist concept did Camus introduce in response to the absurdity of life?",
+        "correctAnswers": ["Revolt"],
+        "incorrectAnswers": ["Denial", "Surrender", "Acceptance"],
+        "explanation": "Camus introduced the concept of revolt, urging individuals to live fully and authentically in defiance of life's inherent meaninglessness."
+      },
+      {
+        "question": "Which of the following characters is a representation of the Absurd Hero in Camus’ works?",
+        "correctAnswers": ["Meursault from 'The Stranger'"],
+        "incorrectAnswers": ["Raskolnikov from 'Crime and Punishment'", "Hamlet from 'Hamlet'", "Willy Loman from 'Death of a Salesman'"],
+        "explanation": "Meursault in 'The Stranger' embodies the Absurd Hero, living in an indifferent universe without seeking meaning or moral justification."
+      },
+      {
+        "question": "Which concept does Absurdism share with nihilism?",
+        "correctAnswers": ["The rejection of inherent meaning in life"],
+        "incorrectAnswers": ["The belief in a greater cosmic purpose", "The focus on finding moral values", "The quest for individual enlightenment"],
+        "explanation": "Both Absurdism and nihilism reject the idea that life has inherent meaning, though Absurdism encourages embracing life despite this."
+      },
+      {
+        "question": "Which of the following best defines the Absurdist perspective on human existence?",
+        "correctAnswers": ["The search for meaning in an indifferent, meaningless universe"],
+        "incorrectAnswers": ["The belief that humans are inherently evil and doomed", "The idea that life has a predetermined purpose", "The notion that happiness is the ultimate goal of life"],
+        "explanation": "Absurdism asserts that humans struggle to find meaning in a universe that is indifferent to their existence, and this search itself is inherently futile."
+      },
+      {
+        "question": "What is the central theme of Camus' 'The Myth of Sisyphus'?",
+        "correctAnswers": ["The idea that humans must continue their search for meaning despite its futility"],
+        "incorrectAnswers": ["The importance of achieving happiness in life", "The need to transcend the physical world through spirituality", "The inevitability of human suffering and despair"],
+        "explanation": "'The Myth of Sisyphus' explores the idea that even though life is meaningless, one must continue to live authentically and revolt against the absurd."
+      },
+      {
+        "question": "How does Absurdism view traditional religious or metaphysical explanations of life?",
+        "correctAnswers": ["It sees them as attempts to impose false meaning on an indifferent universe"],
+        "incorrectAnswers": ["It embraces them as valid explanations of life’s purpose", "It considers them to be the only source of meaning", "It seeks to find universal truths in religious doctrines"],
+        "explanation": "Absurdism rejects religious and metaphysical explanations, arguing that they are human attempts to create meaning in a world that lacks inherent purpose."
+      },
+      {
+        "question": "What does Camus argue about happiness in relation to Absurdism?",
+        "correctAnswers": ["Happiness is not the ultimate goal, but rather a byproduct of living authentically despite the absurd"],
+        "incorrectAnswers": ["Happiness is the only valid reason to live", "Happiness is irrelevant in an absurd world", "Happiness can be achieved only by understanding the Absurd"],
+        "explanation": "For Camus, happiness is a natural part of living authentically, even though life itself is meaningless."
+      },
+      {
+        "question": "In Absurdist thought, how is suffering viewed?",
+        "correctAnswers": ["Suffering is an unavoidable part of existence, but it doesn't provide meaning"],
+        "incorrectAnswers": ["Suffering is a punishment for human wrongdoing", "Suffering leads to spiritual enlightenment", "Suffering is necessary to find life's true meaning"],
+        "explanation": "Absurdism acknowledges suffering as a fundamental part of life but does not attribute it with any inherent meaning or purpose."
+      },
+      {
+        "question": "Which of the following does Absurdism encourage in response to the lack of meaning in the universe?",
+        "correctAnswers": ["Living authentically and embracing the freedom that comes with the absurd"],
+        "incorrectAnswers": ["Resigning to despair and inaction", "Seeking comfort in religious beliefs", "Striving for eternal life beyond the physical world"],
+        "explanation": "Absurdism advocates for embracing life's meaninglessness and living fully in the face of it, rather than seeking external sources of meaning."
+      },
+      {
+        "question": "How does Absurdism define the concept of 'the absurd'?",
+        "correctAnswers": ["The conflict between humans' search for meaning and the universe's lack of inherent meaning"],
+        "incorrectAnswers": ["The feeling of hopelessness in a suffering world", "The inability to find happiness despite efforts", "The search for truth through scientific inquiry"],
+        "explanation": "'The absurd' refers to the tension between humans’ desire for purpose and the universe's indifference to that desire."
+      },
+      {
+        "question": "In Absurdist literature, what is the significance of repetitive or futile actions?",
+        "correctAnswers": ["They highlight the futility of human efforts to create meaning in an indifferent world"],
+        "incorrectAnswers": ["They represent the triumph of human perseverance over adversity", "They show the importance of ritual and tradition in human life", "They reflect the endless pursuit of knowledge and truth"],
+        "explanation": "Repetitive actions in Absurdist literature emphasize the meaninglessness of human effort in a universe that offers no inherent purpose."
+      },
+      {
+        "question": "Which of the following authors is considered a central figure in Absurdist literature?",
+        "correctAnswers": ["Albert Camus"],
+        "incorrectAnswers": ["Fyodor Dostoevsky", "George Orwell", "Franz Kafka"],
+        "explanation": "Albert Camus is a key figure in Absurdist literature, particularly for his exploration of the Absurd in works like 'The Myth of Sisyphus' and 'The Stranger.'"
+      },
+      {
+        "question": "What does Camus believe about the role of reason in confronting the Absurd?",
+        "correctAnswers": ["Reason is insufficient to resolve the Absurd, but it can help us confront it"],
+        "incorrectAnswers": ["Reason can provide a definitive answer to life's meaning", "Reason leads to the ultimate realization of the Absurd's futility", "Reason should be rejected as a tool for understanding the world"],
+        "explanation": "Camus suggests that while reason cannot provide answers to life's meaning, it can help us face the Absurd without resorting to false comforts."
+      },
+      {
+        "question": "What does Absurdist philosophy suggest about the idea of a final purpose in life?",
+        "correctAnswers": ["There is no final purpose or meaning inherent in life"],
+        "incorrectAnswers": ["Life’s purpose is to achieve spiritual enlightenment", "Life’s purpose is determined by individual goals and ambitions", "Life’s purpose is to find happiness and success"],
+        "explanation": "Absurdism asserts that life has no ultimate purpose, and the search for one is futile in an indifferent universe."
+      },
+      {
+        "question": "How does Absurdism relate to existentialism?",
+        "correctAnswers": ["Both focus on human freedom, responsibility, and the search for meaning in a meaningless world"],
+        "incorrectAnswers": ["Absurdism is a form of nihilism that rejects all human values", "Existentialism believes in a clear meaning to life, unlike Absurdism", "Existentialism is primarily concerned with societal structures and laws"],
+        "explanation": "Absurdism shares many themes with existentialism, particularly the emphasis on human freedom and the challenge of finding meaning in a meaningless world."
+      },
+      {
+        "question": "What is the central dilemma in Absurdist philosophy?",
+        "correctAnswers": ["The tension between humans’ search for meaning and the universe’s inherent meaninglessness"],
+        "incorrectAnswers": ["The need to reconcile individual freedom with societal norms", "The struggle between good and evil in the human experience", "The pursuit of knowledge and scientific discovery"],
+        "explanation": "Absurdism centers on the conflict between the human desire for meaning and the universe’s indifference to that quest."
+      },
+      {
+        "question": "What does Absurdism suggest about the possibility of ultimate happiness?",
+        "correctAnswers": ["Ultimate happiness is not possible in an absurd world, but moments of joy are still meaningful"],
+        "incorrectAnswers": ["Ultimate happiness can be found by accepting the absurd and transcending it", "Happiness is a delusion created by human minds", "True happiness is attainable only through spiritual awakening"],
+        "explanation": "Absurdism rejects the idea of ultimate happiness in a meaningless world but still recognizes that moments of joy are worth experiencing."
+      },
+      {
+        "question": "Which philosophical approach is closest to Absurdism's view on human existence?",
+        "correctAnswers": ["Nihilism"],
+        "incorrectAnswers": ["Hedonism", "Utilitarianism", "Rationalism"],
+        "explanation": "Nihilism, like Absurdism, suggests that life has no inherent meaning, though Absurdism emphasizes the need to live authentically despite this lack of meaning."
+      },
+      {
+        "question": "In Absurdist thought, how should humans respond to the realization that life is meaningless?",
+        "correctAnswers": ["By embracing the absurd and continuing to live fully despite it"],
+        "incorrectAnswers": ["By resigning to despair and giving up on life", "By finding solace in religious or metaphysical beliefs", "By seeking to escape the human condition through technology or science"],
+        "explanation": "Absurdism suggests that humans should embrace the absurdity of existence and live fully, without seeking false meaning."
+      },
+      {
+        "question": "What is the Absurdist interpretation of death?",
+        "correctAnswers": ["Death is the ultimate reminder of life’s inherent meaninglessness, but it does not negate the value of living authentically"],
+        "incorrectAnswers": ["Death is a final escape from the absurdity of existence", "Death provides a way to achieve eternal peace and understanding", "Death is irrelevant in the search for meaning"],
+        "explanation": "Absurdism views death as a reminder of life’s futility, but it encourages embracing life fully in defiance of this truth."
+      },
+      {
+        "question": "What does Absurdism say about the human desire for meaning?",
+        "correctAnswers": ["It is a natural response to a universe that offers no inherent meaning"],
+        "incorrectAnswers": ["It is an illusion that humans should overcome", "It is a source of personal fulfillment and joy", "It is an unnatural impulse that leads to suffering"],
+        "explanation": "Absurdism acknowledges that humans naturally seek meaning, but asserts that the universe is indifferent to this search."
+      },
+      {
+        "question": "Which of the following describes the Absurdist approach to life’s challenges?",
+        "correctAnswers": ["Confronting them directly without relying on false hopes or meanings"],
+        "incorrectAnswers": ["Avoiding them by seeking comfort in religion", "Ignoring them as unimportant", "Transcending them through technological advancements"],
+        "explanation": "Absurdism advocates for facing life’s challenges head-on, acknowledging their futility but continuing to live authentically."
+      },
+      {
+        "question": "What does Camus argue about suicide in relation to the Absurd?",
+        "correctAnswers": ["It is a response to the Absurd, but it avoids confronting life’s meaninglessness"],
+        "incorrectAnswers": ["It is a valid escape from the pain of existence", "It is the only rational choice when facing the Absurd", "It is the ultimate form of rebellion against the universe"],
+        "explanation": "Camus argues that suicide is a way of escaping the Absurd rather than confronting it, and that living in defiance of the Absurd is a more meaningful response."
+      },
+      {
+        "question": "How does Absurdism address the human search for truth?",
+        "correctAnswers": ["It recognizes that truth is elusive and ultimately unattainable, but that the search itself is vital"],
+        "incorrectAnswers": ["It rejects the importance of truth, as it is irrelevant to human existence", "It believes truth can be fully discovered through reason and logic", "It teaches that truth is found only in religious or metaphysical doctrines"],
+        "explanation": "Absurdism suggests that while truth may be unattainable, the act of searching for it is an essential part of human existence."
+      },
+      {
+        "question": "Which of the following best represents the Absurdist view of human freedom?",
+        "correctAnswers": ["Freedom exists within the context of an absurd and meaningless world, and humans must choose to live authentically"],
+        "incorrectAnswers": ["Freedom is an illusion created by society", "True freedom can only be achieved by transcending the physical world", "Freedom is a denial of the reality of the Absurd"],
+        "explanation": "Absurdism emphasizes the freedom humans have to live authentically, despite the recognition that life has no inherent meaning."
+      },
+      {
+        "question": "In the context of Absurdism, what role does rebellion play?",
+        "correctAnswers": ["Rebellion is the act of continuing to live authentically and search for meaning, despite the Absurd"],
+        "incorrectAnswers": ["Rebellion involves rejecting all societal norms and values", "Rebellion is a denial of the reality of the Absurd", "Rebellion is an attempt to escape the Absurd through violence or destruction"],
+        "explanation": "For Camus, rebellion is about acknowledging the Absurd and still choosing to live fully in defiance of it."
+      },
+      {
+        "question": "Which of the following best describes Camus’ concept of the ‘revolt’ in Absurdism?",
+        "correctAnswers": ["It is the conscious decision to keep living and seeking meaning despite knowing life is absurd"],
+        "incorrectAnswers": ["It is the rejection of all social systems and rules", "It is a form of spiritual enlightenment that transcends the Absurd", "It is the act of embracing nihilism and surrendering to despair"],
+        "explanation": "The revolt is Camus' metaphor for the ongoing struggle to live meaningfully in an absurd world without seeking false solace."
+      },
+      {
+        "question": "In Absurdist philosophy, what does the term 'futility' refer to?",
+        "correctAnswers": ["The idea that human efforts to create meaning are ultimately pointless in an indifferent universe"],
+        "incorrectAnswers": ["The belief that human actions are always harmful and destructive", "The inability to achieve happiness or fulfillment", "The idea that all actions should be avoided to escape suffering"],
+        "explanation": "Futility in Absurdism refers to the idea that no matter how hard we try, we cannot find inherent meaning in the universe."
+      },
+      {
+        "question": "How does Absurdism view the human need for coherence and order in life?",
+        "correctAnswers": ["It sees it as a natural response to the chaos of an indifferent universe, but one that cannot provide true meaning"],
+        "incorrectAnswers": ["It rejects the need for order and coherence entirely", "It believes that order is essential for finding meaning in life", "It views order as the primary way to escape the Absurd"],
+        "explanation": "Absurdism acknowledges that humans crave order, but argues that this quest does not resolve the inherent meaninglessness of the universe."
+      },
+      {
+        "question": "What is the Absurdist perspective on love and relationships?",
+        "correctAnswers": ["Love is one of the few experiences that offer temporary relief from the Absurd, but it does not resolve it"],
+        "incorrectAnswers": ["Love provides the ultimate meaning in life", "Relationships are futile and should be avoided", "Love is the key to transcending the Absurd and finding ultimate fulfillment"],
+        "explanation": "While love may offer moments of connection, Absurdism does not see it as a solution to the meaninglessness of existence."
+      },
+      {
+        "question": "What is the significance of 'The Stranger' in Absurdist literature?",
+        "correctAnswers": ["It explores the idea of living authentically in an indifferent and meaningless world"],
+        "incorrectAnswers": ["It represents the journey to spiritual enlightenment", "It demonstrates the inevitability of human suffering and despair", "It shows how an individual can escape the Absurd by following social norms"],
+        "explanation": "In 'The Stranger,' Camus illustrates how a man lives authentically despite being detached from society’s conventions, embodying Absurdist principles."
+      },
+      {
+        "question": "Which of the following best describes the Absurdist response to the search for existential meaning?",
+        "correctAnswers": ["Accepting the absurdity of existence and continuing to live without the expectation of finding meaning"],
+        "incorrectAnswers": ["Rejecting the search for meaning as unnecessary and harmful", "Believing that meaning can only be found through spiritual awakening", "Searching for meaning in material success and achievements"],
+        "explanation": "Absurdism encourages acknowledging the meaninglessness of existence but still choosing to live authentically and without false hopes."
+      },
+      {
+        "question": "What does Camus mean by 'the absurd hero'?",
+        "correctAnswers": ["A person who continues to search for meaning and live authentically despite the knowledge that life is meaningless"],
+        "incorrectAnswers": ["A person who rejects all societal values and lives in complete isolation", "A person who finds peace by accepting a religious explanation for life’s meaning", "A person who transcends the physical world to find ultimate truth"],
+        "explanation": "The absurd hero is someone who lives fully and authentically, despite the knowledge that their search for meaning is ultimately futile."
+      },
+      {
+        "question": "Which of the following authors is associated with Absurdist drama?",
+        "correctAnswers": ["Samuel Beckett"],
+        "incorrectAnswers": ["William Shakespeare", "Anton Chekhov", "Henrik Ibsen"],
+        "explanation": "Samuel Beckett is one of the central figures in Absurdist drama, particularly known for his play 'Waiting for Godot,' which explores the themes of meaninglessness and existential struggle."
+      },
+      {
+        "question": "In Absurdist philosophy, what does the rejection of traditional narratives about life’s meaning lead to?",
+        "correctAnswers": ["The possibility of living authentically without relying on illusions or false meanings"],
+        "incorrectAnswers": ["The acceptance of nihilism and total despair", "The discovery of a deeper, more transcendent purpose", "The end of human freedom and responsibility"],
+        "explanation": "Rejecting traditional narratives opens the door to living authentically, acknowledging the Absurd while continuing to act freely."
+      }
+  ]
+  

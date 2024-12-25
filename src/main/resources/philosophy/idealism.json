@@ -1,0 +1,399 @@
+[
+{
+    "question": "What is the core belief of idealism in philosophy?",
+    "correctAnswers": ["Reality is mentally constructed or immaterial"],
+    "incorrectAnswers": ["Reality exists independently of the mind", "Knowledge is based solely on sensory experience", "Truth is determined by logical deduction"],
+    "explanation": "Idealism holds that the nature of reality is fundamentally mental or immaterial, and that our perceptions and experiences shape reality."
+  },
+  {
+    "question": "Which philosopher is best known for advocating a form of idealism that reality consists only of minds and their ideas?",
+    "correctAnswers": ["George Berkeley"],
+    "incorrectAnswers": ["Immanuel Kant", "René Descartes", "David Hume"],
+    "explanation": "George Berkeley is famous for his idealist philosophy, which argues that objects only exist as perceptions in the mind."
+  },
+  {
+    "question": "Which of the following is a key feature of transcendental idealism?",
+    "correctAnswers": ["The belief that the mind shapes our experiences of the world"],
+    "incorrectAnswers": ["The rejection of subjective experience in favor of objective reality", "The belief that everything is material and physical", "The idea that reality is entirely independent of human perception"],
+    "explanation": "Transcendental idealism, as presented by Immanuel Kant, argues that the mind actively shapes how we experience and understand the world."
+  },
+  {
+    "question": "Which of the following best describes Berkeley's principle of 'esse est percipi'?",
+    "correctAnswers": ["To be is to be perceived"],
+    "incorrectAnswers": ["Objects exist whether or not they are perceived", "Reality is defined by our sensory impressions", "Objects exist independently of the human mind"],
+    "explanation": "Berkeley’s principle means that objects do not exist independently of our perception of them; their existence is based on being perceived."
+  },
+  {
+    "question": "How do idealists view the relationship between mind and matter?",
+    "correctAnswers": ["They believe that mind is the fundamental reality, and matter depends on mind"],
+    "incorrectAnswers": ["They believe that matter is independent of the mind", "They view mind and matter as two separate, independent entities", "They argue that matter is more fundamental than mind"],
+    "explanation": "Idealists hold that mind is the fundamental reality and that material objects are a product or reflection of the mind's activity."
+  },
+  {
+    "question": "What did Immanuel Kant argue about the nature of human experience?",
+    "correctAnswers": ["Human experience is shaped by both sensory input and innate categories of the mind"],
+    "incorrectAnswers": ["Experience is entirely shaped by sensory perception alone", "Knowledge comes only from reason, not experience", "All knowledge is based on subjective feelings and not sensory input"],
+    "explanation": "Kant proposed that while sensory input plays a role, the mind actively structures and shapes our experiences through innate categories."
+  },
+  {
+    "question": "What is the term for the idea that the external world is dependent on the perceiving mind in idealist philosophy?",
+    "correctAnswers": ["Idealism"],
+    "incorrectAnswers": ["Realism", "Materialism", "Empiricism"],
+    "explanation": "Idealism asserts that reality is dependent on the mind and cannot exist independent of perception."
+  },
+  {
+    "question": "In the context of idealism, how is 'reality' typically understood?",
+    "correctAnswers": ["As a mental construct or a product of perception"],
+    "incorrectAnswers": ["As an objective and independent entity", "As a purely physical and material existence", "As an illusion that does not exist in any form"],
+    "explanation": "In idealism, reality is not considered independent of our mental experiences but is instead a result of our perception and understanding."
+  },
+  {
+    "question": "Which philosopher is known for his assertion that all objects are ideas in the mind of God?",
+    "correctAnswers": ["George Berkeley"],
+    "incorrectAnswers": ["René Descartes", "John Locke", "David Hume"],
+    "explanation": "Berkeley argued that objects exist only as perceptions in the mind, and that even the existence of objects is maintained by the mind of God."
+  },
+  {
+    "question": "What does the phrase 'objective reality' mean in the context of idealism?",
+    "correctAnswers": ["It is an experience or idea that exists only as a mental phenomenon"],
+    "incorrectAnswers": ["It refers to reality as it exists independent of human perception", "It describes the material world that exists outside of human understanding", "It refers to the shared, physical world that exists outside of individual minds"],
+    "explanation": "Idealists argue that objective reality is not something independent of perception, but a product of mental or sensory experience."
+  },
+  {
+    "question": "How do idealists view the existence of physical objects?",
+    "correctAnswers": ["They view physical objects as existing only in the mind or as perceptions"],
+    "incorrectAnswers": ["They believe physical objects exist independently of perception", "They argue physical objects are irrelevant to understanding reality", "They deny the existence of physical objects entirely"],
+    "explanation": "Idealists assert that the reality of physical objects is dependent on the mind's perception or ideas."
+  },
+  {
+    "question": "What does Kant’s concept of the 'noumenon' refer to in idealist philosophy?",
+    "correctAnswers": ["The thing-in-itself, which is beyond human perception and understanding"],
+    "incorrectAnswers": ["The mind's ability to understand everything directly", "The sensory experience of the external world", "The relationship between physical objects and perceptions"],
+    "explanation": "Kant’s 'noumenon' refers to the reality that exists independently of our perceptions, which we cannot fully comprehend."
+  },
+  {
+    "question": "Which of the following is a central idea of idealism in the philosophy of mind?",
+    "correctAnswers": ["The mind plays a fundamental role in creating reality"],
+    "incorrectAnswers": ["The mind is merely a passive receiver of sensory input", "Reality is entirely external to the mind", "The mind only processes material facts without creating them"],
+    "explanation": "Idealism holds that the mind is central to the formation of reality, with reality being shaped by mental processes."
+  },
+  {
+    "question": "Which of the following does not align with the idealist view of knowledge?",
+    "correctAnswers": ["Knowledge is primarily constructed by the mind, not discovered from the external world"],
+    "incorrectAnswers": ["Knowledge is based on sensory experience and perception", "Knowledge depends on the active engagement of the mind with the world", "Knowledge is shaped by social and cultural influences"],
+    "explanation": "Idealists argue that knowledge is not discovered from an external, independent reality, but instead constructed by the mind."
+  },
+  {
+    "question": "What is the main focus of subjective idealism?",
+    "correctAnswers": ["The belief that reality is dependent on individual perception"],
+    "incorrectAnswers": ["The belief that reality exists independently of perception", "The idea that reality is a shared experience by all minds", "The belief that reality is purely material and physical"],
+    "explanation": "Subjective idealism argues that individual perception is the basis of reality, and that external objects only exist as we perceive them."
+  },
+  {
+    "question": "How does idealism differ from materialism in philosophy?",
+    "correctAnswers": ["Idealism holds that reality is shaped by the mind, while materialism asserts that reality exists independently of mind"],
+    "incorrectAnswers": ["Idealism and materialism both agree that mind is the fundamental aspect of reality", "Idealism dismisses the role of perception, while materialism focuses on mind", "Idealism argues that physical objects are more important than mental experiences"],
+    "explanation": "Materialism asserts that physical reality exists independently of the mind, while idealism holds that reality is fundamentally shaped by mental processes."
+  },
+  {
+    "question": "What role does 'God' play in Berkeley's version of idealism?",
+    "correctAnswers": ["God is the ultimate perceiver who ensures the continued existence of objects"],
+    "incorrectAnswers": ["God is irrelevant to the existence of objects", "God is a passive observer with no influence on reality", "God created the world and then left it to function independently"],
+    "explanation": "In Berkeley's idealism, God plays a central role in ensuring that objects continue to exist even when they are not perceived by humans."
+  },
+  {
+    "question": "What does idealism argue about the nature of the physical world?",
+    "correctAnswers": ["It is a mental construction or dependent on the mind"],
+    "incorrectAnswers": ["It exists independently of the mind", "It is purely material and not influenced by perception", "It is only an illusion with no real existence"],
+    "explanation": "Idealism argues that the physical world is shaped by the mind and does not exist independently from our perception or ideas."
+  },
+  {
+    "question": "How does Hegel's idealism differ from other forms of idealism?",
+    "correctAnswers": ["Hegel’s idealism emphasizes the development of reality through a dialectical process"],
+    "incorrectAnswers": ["Hegel's idealism focuses solely on individual perception", "Hegel’s idealism denies the existence of external objects", "Hegel’s idealism rejects the role of the mind in shaping reality"],
+    "explanation": "Hegel’s idealism views reality as a dynamic process of development through contradictions and resolutions, known as the dialectic."
+  },
+  {
+    "question": "Which philosopher is associated with the development of absolute idealism?",
+    "correctAnswers": ["Georg Wilhelm Friedrich Hegel"],
+    "incorrectAnswers": ["René Descartes", "Baruch Spinoza", "John Locke"],
+    "explanation": "Georg Wilhelm Friedrich Hegel developed absolute idealism, where reality is seen as a unified whole that evolves through dialectical processes."
+  },
+  {
+    "question": "What does Kant's 'phenomenon' refer to in idealism?",
+    "correctAnswers": ["The world as we experience it, shaped by our mental faculties"],
+    "incorrectAnswers": ["The objective reality that exists outside human perception", "The material world, independent of the mind", "The essence of objects beyond human understanding"],
+    "explanation": "For Kant, the 'phenomenon' refers to the way the world is experienced, which is structured by our mental categories."
+  },
+  {
+    "question": "Which of the following statements would an idealist likely agree with?",
+    "correctAnswers": ["Reality is shaped by the mind, and there is no existence outside of perception"],
+    "incorrectAnswers": ["The world exists independently of the mind", "Knowledge is obtained solely through sensory experience", "Objects continue to exist regardless of whether anyone perceives them"],
+    "explanation": "Idealism asserts that reality cannot exist apart from the mind and is entirely shaped by perception and mental processes."
+  },
+  {
+    "question": "Which term is used to describe the view that only mental substances or ideas are real?",
+    "correctAnswers": ["Idealism"],
+    "incorrectAnswers": ["Materialism", "Dualism", "Empiricism"],
+    "explanation": "Idealism holds that only the mind and its ideas are real, and everything else, including the physical world, is a mental construct."
+  },
+  {
+    "question": "What did Berkeley argue about the existence of objects when they are not perceived?",
+    "correctAnswers": ["They continue to exist because they are perceived by God"],
+    "incorrectAnswers": ["They cease to exist", "They only exist if someone perceives them", "They only exist in the mind of the observer"],
+    "explanation": "For Berkeley, objects continue to exist even when not perceived by humans because God, as the ultimate perceiver, keeps them in existence."
+  },
+  {
+    "question": "What is the central tenet of subjective idealism?",
+    "correctAnswers": ["Reality is dependent on the individual perceiver"],
+    "incorrectAnswers": ["Reality exists independently of perception", "The mind is a passive receiver of external reality", "Perception is not necessary for the existence of objects"],
+    "explanation": "Subjective idealism holds that reality depends on individual perception and that objects only exist as they are perceived."
+  },
+  {
+    "question": "In the context of idealism, how is 'mind' typically understood?",
+    "correctAnswers": ["As the fundamental substance that shapes reality"],
+    "incorrectAnswers": ["As a passive receiver of sensory data", "As a material object within the physical world", "As a mere reflection of external reality"],
+    "explanation": "Idealism emphasizes that mind is not a passive receiver, but an active force that shapes and creates reality."
+  },
+  {
+    "question": "How does idealism challenge the concept of an objective, material reality?",
+    "correctAnswers": ["It argues that material reality is a construct of the mind, not independent of perception"],
+    "incorrectAnswers": ["It claims material reality is the only true form of existence", "It asserts that reality can be fully understood without considering perception", "It denies the existence of material objects entirely"],
+    "explanation": "Idealism challenges materialism by asserting that reality is fundamentally mental and cannot exist apart from perception."
+  },
+  {
+    "question": "What is the primary difference between idealism and realism in philosophy?",
+    "correctAnswers": ["Idealism argues that reality is mentally constructed, while realism asserts it exists independently of the mind"],
+    "incorrectAnswers": ["Idealism rejects the existence of physical objects, while realism accepts their existence", "Idealism focuses only on subjective experience, while realism ignores it", "Idealism sees truth as relative, while realism sees it as fixed and objective"],
+    "explanation": "Idealism holds that reality depends on the mind, while realism asserts that the external world exists independently of human perception."
+  },
+  {
+    "question": "What does 'mentalism' refer to in relation to idealism?",
+    "correctAnswers": ["The view that only mental states or processes are real"],
+    "incorrectAnswers": ["The view that the material world is more important than the mind", "The belief that human thoughts are irrelevant to understanding reality", "The view that the mind cannot affect the external world"],
+    "explanation": "Mentalism is a term often associated with idealism, emphasizing that mental states or ideas are the fundamental aspects of reality."
+  },
+  {
+    "question": "What does the term 'absolute idealism' mean in the philosophy of Hegel?",
+    "correctAnswers": ["It refers to the belief that reality is an interconnected whole that evolves through dialectical processes"],
+    "incorrectAnswers": ["It suggests that reality consists only of subjective mental ideas", "It denies any objective truth and focuses only on perception", "It claims that reality is static and unchanging"],
+    "explanation": "Hegel’s absolute idealism sees reality as a dynamic, evolving whole, where opposites are reconciled through a dialectical process."
+  },
+  {
+    "question": "What is the idealist perspective on knowledge and perception?",
+    "correctAnswers": ["Knowledge is shaped by perception and mental processes, not by an objective reality"],
+    "incorrectAnswers": ["Knowledge is based solely on empirical observation of the external world", "Knowledge exists independently of human perception", "Knowledge is determined by logical reasoning alone"],
+    "explanation": "Idealists argue that knowledge and perception are intertwined and shaped by the mind, with no objective reality existing apart from the mind."
+  },
+  {
+    "question": "Which concept describes the idea that reality can be fully understood through mental categories?",
+    "correctAnswers": ["Transcendental idealism"],
+    "incorrectAnswers": ["Empiricism", "Materialism", "Phenomenalism"],
+    "explanation": "Transcendental idealism, as introduced by Kant, argues that reality is structured by innate mental categories, shaping how we experience the world."
+  },
+  {
+    "question": "What is the role of 'perception' in Berkeley’s idealism?",
+    "correctAnswers": ["Perception is the basis for the existence of objects in the world"],
+    "incorrectAnswers": ["Perception is irrelevant to the existence of objects", "Perception only affects subjective experiences, not reality", "Perception is an illusion that distorts reality"],
+    "explanation": "For Berkeley, objects only exist as they are perceived, and their continued existence depends on being perceived, even by God."
+  },
+  {
+    "question": "How does idealism impact the understanding of human consciousness?",
+    "correctAnswers": ["It suggests that consciousness is central to the formation of reality"],
+    "incorrectAnswers": ["It argues that consciousness is an incidental aspect of reality", "It claims that consciousness is separate from the material world", "It denies the existence of consciousness as a distinct phenomenon"],
+    "explanation": "Idealism asserts that consciousness plays a fundamental role in creating and shaping reality, rather than being a passive observer."
+  },
+  {
+    "question": "What is the primary focus of subjective idealism?",
+    "correctAnswers": ["The belief that reality is dependent on individual perception"],
+    "incorrectAnswers": ["The view that reality exists independently of the mind", "The idea that all perception is inaccurate", "The belief that objects have no meaning unless perceived by society"],
+    "explanation": "Subjective idealism posits that the nature of reality is shaped by the perceptions and consciousness of individual observers."
+  },
+  {
+    "question": "Which of the following best describes the idealist view of material objects?",
+    "correctAnswers": ["They exist only in relation to the mind's perception of them"],
+    "incorrectAnswers": ["They exist independently of any perceiving mind", "They have a fixed, objective nature regardless of perception", "They are mere illusions with no real existence"],
+    "explanation": "Idealism asserts that material objects do not exist apart from perception, as their existence depends on being perceived."
+  },
+  {
+    "question": "What is the role of 'the mind' in idealism?",
+    "correctAnswers": ["The mind is the foundation of reality and shapes all that exists"],
+    "incorrectAnswers": ["The mind is a passive receiver of external stimuli", "The mind is irrelevant in understanding the external world", "The mind is a temporary phenomenon with no influence on reality"],
+    "explanation": "In idealism, the mind is considered the active force that constructs reality, rather than merely receiving sensory input from the outside world."
+  },
+  {
+    "question": "Which philosopher is known for the idealist theory of 'immaterialism'?",
+    "correctAnswers": ["George Berkeley"],
+    "incorrectAnswers": ["Immanuel Kant", "René Descartes", "David Hume"],
+    "explanation": "George Berkeley proposed immaterialism, asserting that physical objects only exist as ideas in the minds of perceivers."
+  },
+  {
+    "question": "What does 'phenomenalism' suggest in relation to idealism?",
+    "correctAnswers": ["That physical objects only exist as sensory experiences and are not independent of perception"],
+    "incorrectAnswers": ["That objects exist whether or not anyone perceives them", "That the mind can only perceive physical reality objectively", "That objects are purely mental constructions without any relation to reality"],
+    "explanation": "Phenomenalism, a form of idealism, asserts that the physical world is only a collection of phenomena that exist in our perceptions."
+  },
+  {
+    "question": "How does Kant's 'noumenon' differ from the 'phenomenon' in his idealism?",
+    "correctAnswers": ["The noumenon represents the thing-in-itself, which exists beyond our perception, while the phenomenon is the way we experience it"],
+    "incorrectAnswers": ["The noumenon is the subjective experience of reality, while the phenomenon is objective", "The noumenon is an illusion that cannot be perceived", "The noumenon is the only true form of reality, while the phenomenon is unimportant"],
+    "explanation": "For Kant, the 'noumenon' is the thing as it exists independently of human perception, whereas the 'phenomenon' is the world as we experience it through our senses."
+  },
+  {
+    "question": "Which of the following would an idealist most likely deny?",
+    "correctAnswers": ["The existence of a reality independent of human perception"],
+    "incorrectAnswers": ["The influence of perception on reality", "The role of mental constructs in shaping reality", "The possibility of knowledge beyond perception"],
+    "explanation": "Idealism denies that there is a reality that exists independently of human minds and perceptions."
+  },
+  {
+    "question": "Which branch of philosophy does idealism fall under?",
+    "correctAnswers": ["Metaphysics"],
+    "incorrectAnswers": ["Epistemology", "Ethics", "Aesthetics"],
+    "explanation": "Idealism is a metaphysical theory concerned with the nature of reality and the mind's role in shaping it."
+  },
+  {
+    "question": "What was a central critique of idealism by philosophers such as David Hume?",
+    "correctAnswers": ["That idealism does not adequately explain the continuity of objects when not perceived"],
+    "incorrectAnswers": ["That idealism overlooks the importance of experience and empiricism", "That idealism contradicts the existence of a mind-independent reality", "That idealism places too much emphasis on human perception"],
+    "explanation": "Hume, along with other empiricists, critiqued idealism for its inability to account for the continued existence of objects when not perceived."
+  },
+  {
+    "question": "Which aspect of reality does idealism emphasize as central to its understanding?",
+    "correctAnswers": ["The mental or spiritual aspect of existence"],
+    "incorrectAnswers": ["The material or physical substance of objects", "The sensory data received by the brain", "The objective, independent reality of the external world"],
+    "explanation": "Idealism emphasizes that the mental or spiritual dimension is central to understanding the nature of reality."
+  },
+  {
+    "question": "What is the key idea of 'absolute idealism' as proposed by Hegel?",
+    "correctAnswers": ["That reality is a unified whole, evolving through dialectical processes of change and development"],
+    "incorrectAnswers": ["That reality is fragmented and consists only of individual perceptions", "That all objects exist independently of mind", "That the mind plays no role in shaping reality"],
+    "explanation": "Hegel’s absolute idealism holds that reality is a dynamic, interconnected whole that evolves through the dialectical reconciliation of opposites."
+  },
+  {
+    "question": "How does the idealist view of truth differ from that of realism?",
+    "correctAnswers": ["Truth is seen as dependent on the mind and perception in idealism, whereas realism views it as independent of the mind"],
+    "incorrectAnswers": ["Truth is always relative in idealism, whereas realism believes in absolute truth", "Truth can only be perceived in idealism, while realism denies any perception of truth", "Truth is irrelevant in both idealism and realism"],
+    "explanation": "Idealism holds that truth is dependent on perception and mental processes, while realism asserts that truth exists independently of human perception."
+  },
+  {
+    "question": "Which philosopher is known for his critique of idealism and focus on empiricism?",
+    "correctAnswers": ["David Hume"],
+    "incorrectAnswers": ["Baruch Spinoza", "John Locke", "Friedrich Nietzsche"],
+    "explanation": "David Hume was a key figure in empiricism, arguing against idealism and emphasizing the role of sensory experience in forming knowledge."
+  },
+  {
+    "question": "What does 'transcendental idealism' argue about the nature of knowledge?",
+    "correctAnswers": ["It argues that knowledge is shaped by the way our mind organizes sensory input"],
+    "incorrectAnswers": ["It argues that knowledge is purely a passive reflection of the objective world", "It denies the importance of mental categories in shaping knowledge", "It asserts that reality can be fully known through sense perception alone"],
+    "explanation": "Transcendental idealism, developed by Kant, posits that our knowledge of the world is shaped by the mental categories and structures we apply to sensory experience."
+  },
+  {
+    "question": "Which of the following statements best represents the idealist view on the mind and body?",
+    "correctAnswers": ["The mind and body are inseparable, with the mind shaping the physical world"],
+    "incorrectAnswers": ["The mind is entirely separate from the physical world", "The body has no influence on the mind", "The mind is merely a byproduct of physical processes"],
+    "explanation": "Idealism emphasizes that the mind plays a fundamental role in shaping reality, including the physical world."
+  },
+  {
+    "question": "What is the main difference between objective idealism and subjective idealism?",
+    "correctAnswers": ["Objective idealism suggests that reality is shaped by a universal mind, while subjective idealism holds that reality is dependent on individual perception"],
+    "incorrectAnswers": ["Objective idealism denies the existence of any mental constructs", "Subjective idealism claims that reality is purely material", "Objective idealism argues that there is no mind or consciousness involved in shaping reality"],
+    "explanation": "Objective idealism asserts that a universal mind shapes reality, while subjective idealism argues that individual minds create their own realities."
+  },
+  {
+    "question": "Which of the following philosophers is most associated with 'transcendental idealism'?",
+    "correctAnswers": ["Immanuel Kant"],
+    "incorrectAnswers": ["Friedrich Nietzsche", "Karl Marx", "René Descartes"],
+    "explanation": "Immanuel Kant is the philosopher known for developing transcendental idealism, which asserts that knowledge is shaped by the way our mind organizes sensory input."
+  },
+  {
+    "question": "In idealism, what is the relationship between the mind and physical reality?",
+    "correctAnswers": ["The mind is fundamental in shaping or constructing physical reality"],
+    "incorrectAnswers": ["The mind has no influence on physical reality", "Physical reality exists independently of the mind", "Physical reality is an illusion created by the mind"],
+    "explanation": "Idealism holds that the mind plays a primary role in shaping or constructing the physical reality we experience."
+  },
+  {
+    "question": "Which of the following concepts is central to the philosophy of idealism?",
+    "correctAnswers": ["The belief that reality is mentally constructed or dependent on perception"],
+    "incorrectAnswers": ["The view that material objects exist independently of the mind", "The idea that reality is purely material and external", "The belief that sensory data is the sole source of knowledge"],
+    "explanation": "Idealism focuses on the idea that reality is mentally constructed or dependent on perception, with the mind playing an active role."
+  },
+  {
+    "question": "What is a major criticism of idealism from materialist perspectives?",
+    "correctAnswers": ["It denies the existence of an objective, mind-independent reality"],
+    "incorrectAnswers": ["It fails to account for subjective experience", "It overemphasizes the role of perception in shaping knowledge", "It assumes that the mind cannot influence the physical world"],
+    "explanation": "Materialist critics argue that idealism fails to acknowledge the existence of an objective reality that exists independently of the mind."
+  },
+  {
+    "question": "How does Hegel's idealism differ from Berkeley's idealism?",
+    "correctAnswers": ["Hegel's idealism views reality as an evolving, dialectical process, whereas Berkeley's idealism focuses on perception and the existence of objects as ideas in the mind"],
+    "incorrectAnswers": ["Hegel believes reality is purely material, while Berkeley emphasizes mental processes", "Berkeley argues that reality evolves over time, while Hegel sees it as static", "Hegel and Berkeley both reject the role of perception in shaping reality"],
+    "explanation": "Hegel's idealism sees reality as evolving through a dialectical process, while Berkeley's idealism focuses on the idea that objects only exist as ideas in the mind."
+  },
+  {
+    "question": "What does 'idealism' suggest about the existence of the external world?",
+    "correctAnswers": ["It exists only insofar as it is perceived by the mind"],
+    "incorrectAnswers": ["It exists independently of any mind or perception", "It is an illusion without any real existence", "It can be known through objective, material observation"],
+    "explanation": "Idealism posits that the external world exists only insofar as it is perceived by the mind, with reality dependent on mental constructs."
+  },
+  {
+    "question": "In idealism, what role does perception play in the formation of reality?",
+    "correctAnswers": ["Perception is central to the formation of reality, as reality is shaped by the mind's experiences"],
+    "incorrectAnswers": ["Perception is irrelevant, as reality exists independently of any observer", "Perception only reflects an objective reality that exists outside the mind", "Perception is purely a passive process with no influence on reality"],
+    "explanation": "Idealism asserts that perception actively shapes and contributes to the formation of reality, making it central to understanding existence."
+  },
+  {
+    "question": "Which of the following is a key feature of 'absolute idealism' as presented by Hegel?",
+    "correctAnswers": ["The belief that all reality is interconnected and evolves through dialectical processes"],
+    "incorrectAnswers": ["The view that reality is static and unchanging", "The idea that the mind has no influence on reality", "The belief that only individual perception determines the nature of reality"],
+    "explanation": "Absolute idealism, proposed by Hegel, asserts that all of reality is interconnected and evolves through dialectical processes of change and development."
+  },
+  {
+    "question": "Which idea did George Berkeley argue regarding the existence of material objects?",
+    "correctAnswers": ["Material objects only exist as ideas in the mind of a perceiver"],
+    "incorrectAnswers": ["Material objects exist independently of perception", "Material objects are entirely separate from the mind", "Material objects are illusions that don't affect reality"],
+    "explanation": "Berkeley argued that material objects do not exist apart from the perception of them and that their existence is dependent on being perceived."
+  },
+  {
+    "question": "What does the 'idealistic' view of knowledge suggest?",
+    "correctAnswers": ["Knowledge is shaped by the mind and its interpretations of sensory data"],
+    "incorrectAnswers": ["Knowledge is a direct reflection of an objective, external reality", "Knowledge is independent of any mental or sensory processes", "Knowledge is purely an emotional response to the world"],
+    "explanation": "Idealism holds that knowledge is shaped by the mind, and it is influenced by the mental processes through which sensory data is interpreted."
+  },
+  {
+    "question": "What is the core belief of 'subjective idealism'?",
+    "correctAnswers": ["Reality is dependent on the perception of individual minds"],
+    "incorrectAnswers": ["Reality exists independently of any mind or perception", "Reality is an illusion without any true existence", "Reality is a purely physical and material phenomenon"],
+    "explanation": "Subjective idealism asserts that reality is dependent on the perceptions and consciousness of individual minds."
+  },
+  {
+    "question": "Which philosopher argued that 'to be is to be perceived'?",
+    "correctAnswers": ["George Berkeley"],
+    "incorrectAnswers": ["Immanuel Kant", "Friedrich Hegel", "David Hume"],
+    "explanation": "George Berkeley famously argued that 'to be is to be perceived,' meaning that objects exist only insofar as they are perceived by the mind."
+  },
+  {
+    "question": "What is one criticism of idealism related to its explanation of knowledge?",
+    "correctAnswers": ["It can be seen as ignoring the role of empirical evidence in shaping knowledge"],
+    "incorrectAnswers": ["It overemphasizes the importance of sense perception", "It fails to explain the mind's role in shaping knowledge", "It assumes all knowledge is purely emotional or subjective"],
+    "explanation": "Critics of idealism often argue that it overlooks the importance of empirical evidence and sensory data in shaping knowledge."
+  },
+  {
+    "question": "In Kant's transcendental idealism, what is the relationship between the 'noumenon' and the 'phenomenon'?",
+    "correctAnswers": ["The noumenon represents the thing-in-itself, while the phenomenon is the way we experience it through our senses"],
+    "incorrectAnswers": ["The noumenon and phenomenon are the same, as both represent the mind's interpretation of reality", "The noumenon is a purely mental construct, while the phenomenon is an objective reality", "The noumenon is irrelevant to human experience, as only phenomena are known to us"],
+    "explanation": "In Kant's transcendental idealism, the 'noumenon' refers to the thing as it exists independently of our perception, while the 'phenomenon' is the world as we experience it."
+  },
+  {
+    "question": "What is one argument for idealism from a metaphysical perspective?",
+    "correctAnswers": ["Idealism provides a unified explanation for the mind and reality's interconnectedness"],
+    "incorrectAnswers": ["Idealism provides a way to prove the objective existence of physical reality", "Idealism denies the importance of perception in shaping reality", "Idealism supports the idea that reality is purely material and independent of the mind"],
+    "explanation": "Idealism argues that reality and the mind are fundamentally interconnected, offering a unified explanation of the relationship between consciousness and the external world."
+  },
+  {
+    "question": "Which view aligns with 'epistemological idealism'?",
+    "correctAnswers": ["Knowledge is a result of the mind's organization and interpretation of sensory experience"],
+    "incorrectAnswers": ["Knowledge is an external truth that exists independently of the mind", "Knowledge is purely subjective and unrelated to reality", "Knowledge is limited to sensory data and cannot involve mental processes"],
+    "explanation": "Epistemological idealism suggests that knowledge is not simply a reflection of reality, but a product of the mind's organization of sensory experience."
+  }
+]  
+  

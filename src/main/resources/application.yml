@@ -32,7 +32,20 @@ questions:
     - src/main/resources/programming_oop.json
     - src/main/resources/programming_concurrency.json
     - src/main/resources/programming_designPatterns.json
-
+    philosophy:
+    - src/main/resources/philosophy/absurdism.json
+    - src/main/resources/philosophy/determinism.json
+    - src/main/resources/philosophy/empiricism.json
+    - src/main/resources/philosophy/existentialism.json
+    - src/main/resources/philosophy/idealism.json
+    - src/main/resources/philosophy/materialism.json
+    - src/main/resources/philosophy/naturalism.json
+    - src/main/resources/philosophy/nihilism.json
+    - src/main/resources/philosophy/rationalism.json
+    - src/main/resources/philosophy/relativism.json
+    - src/main/resources/philosophy/stoicism.json
+    wealth_inequality: src/main/resources/wealth_inequality.json
+    modern_democracy: src/main/resources/modern_democracy.json
 
 #mode - 'standard' or 'testing' or 'testing2' or 'eureka'
 mode: standard
