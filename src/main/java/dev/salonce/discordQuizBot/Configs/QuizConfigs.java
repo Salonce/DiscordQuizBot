@@ -14,7 +14,7 @@ public class QuizConfigs {
 
     public QuizConfig getTimers(){
         if (mode.equals("testing"))
-            return new QuizConfig(5, 10, 7, 2, 5, 3);
+            return new QuizConfig(5, 3, 7, 2, 5, 3);
         else if (mode.equals("testing2"))
             return new QuizConfig(5, 2, 5, 5, 30, 3);
         else if (mode.equals("standard"))
