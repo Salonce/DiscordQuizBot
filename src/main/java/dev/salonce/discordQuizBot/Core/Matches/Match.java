@@ -165,10 +165,21 @@ public class Match{
 
     public String getUserNames() {
         return players.keySet().stream()
-                //.map(User::getUsername)
-                .map(user -> "<@" + user.getId().asString() + ">")
+                .sorted((u1, u2) -> {
+                    if (u1 == owner) return -1;
+                    if (u2 == owner) return 1;
+                    return 0;  // Keep original order for non-owners
+                })
+                .map(user -> "<@" + user.getId().asString() + ">" +
+                        (user == owner ? " (owner)" : ""))
                 .collect(Collectors.joining(", "));
     }
+
+//    public String getUserNames() {
+//        return players.keySet().stream()
+//                .map(user -> "<@" + user.getId().asString() + ">")
+//                .collect(Collectors.joining(", "));
+//    }
 
     public String addPlayer(User user, int questionsNumber){
         if (!isEnrollment()){
