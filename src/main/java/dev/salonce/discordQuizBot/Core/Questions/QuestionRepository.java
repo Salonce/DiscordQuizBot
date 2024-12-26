@@ -5,6 +5,7 @@ import dev.salonce.discordQuizBot.Configs.QuestionSetsConfig;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 
@@ -24,18 +25,26 @@ public class QuestionRepository {
             List<RawQuestion> allQuestionsForType = new ArrayList<>();
 
             for (String filePath : entry.getValue()) {
-                System.out.println("Load key: " + questionType + ". Load filepath: " + filePath);
                 allQuestionsForType.addAll(loadQuestionsFromFile(filePath));
+                System.out.println("Loaded key: " + questionType + ". Loaded filepath: " + filePath);
             }
 
             questionMap.put(questionType, allQuestionsForType);
         }
     }
 
-    private List<RawQuestion> loadQuestionsFromFile(String filePath) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        File file = new File(filePath);
-        return Arrays.asList(mapper.readValue(file, RawQuestion[].class));
+    private List<RawQuestion> loadQuestionsFromFile(String filePath){
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            File file = new File(filePath);
+            return Arrays.asList(mapper.readValue(file, RawQuestion[].class));
+        }
+        catch(Exception e){
+            System.out.println("Couldn't load file: " + filePath);
+            System.out.println("Reason: " + e.getMessage());
+            System.exit(1);
+            return new ArrayList<>();
+        }
     }
 
     public List<RawQuestion> getQuestions(String type) {

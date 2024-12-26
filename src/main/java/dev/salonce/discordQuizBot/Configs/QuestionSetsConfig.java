@@ -21,7 +21,7 @@ public class QuestionSetsConfig {
     public void logFiles() {
         files.forEach((key, value) ->{
             for (String path : value){
-                System.out.println("Loaded questions file: type: " + key + ", path: " + path);
+                System.out.println("Loaded question strings, type: " + key + ", path: " + path);
             }
         });
     }
