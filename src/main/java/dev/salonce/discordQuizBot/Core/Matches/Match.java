@@ -168,30 +168,28 @@ public class Match{
     }
 
     public String addPlayer(User user, int questionsNumber){
+        if (!isEnrollment()){
+            return "Can't do that! You can join the match only during enrollment phase.";
+        }
         if (players.containsKey(user)) {
-            //System.out.println("User is already on player list.");
             return "You've already joined the match.";
         }
-        else if(isEnrollment()) {
+        else {
             players.put(user, new Player(questionsNumber));
             return "You've joined the match.";
-        }
-        else {
-            return "Can't do that! You can join the match only during enrollment phase.";
         }
     }
 
     public String removePlayer(User user){
+        if (!isEnrollment()){
+            return "Can't do that! You can leave the match only during enrollment phase.";
+        }
         if (isEnrollment() && players.containsKey(user)) {
             players.remove(user);
             return "You've left the match.";
         }
-        else if(isEnrollment()){
-            //System.out.println("User is not on the player list.");
+        else {
             return "You are not in the match to leave it.";
-        }
-        else{
-            return "Can't do that! You can leave the match only during enrollment phase.";
         }
     }
 }
