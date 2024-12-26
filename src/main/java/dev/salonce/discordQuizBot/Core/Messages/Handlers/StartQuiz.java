@@ -5,6 +5,7 @@ import dev.salonce.discordQuizBot.Core.Matches.MatchFactory;
 import dev.salonce.discordQuizBot.QuizManager;
 import dev.salonce.discordQuizBot.Core.Messages.MessageHandler;
 import dev.salonce.discordQuizBot.Configs.QuestionSetsConfig;
+import discord4j.core.object.entity.User;
 import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -28,9 +29,10 @@ public class StartQuiz implements MessageHandler {
                 return true; // too short command. end chain
             String lastMsg = message[2];
             if (questionSetsConfig.getFiles().containsKey(lastMsg)){
-                Long ownerId = discordMessage.getUsernameIdLong();
+                User user = discordMessage.getUser();
+                //Long ownerId = discordMessage.getUsernameIdLong();
                 MessageChannel messageChannel = discordMessage.getChannel();
-                quizManager.addMatch(messageChannel, matchFactory.makeMatch(lastMsg, ownerId));
+                quizManager.addMatch(messageChannel, matchFactory.makeMatch(lastMsg, user));
                 return true;
             }
             else{

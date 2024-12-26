@@ -1,6 +1,7 @@
 package dev.salonce.discordQuizBot.Core.Messages;
 
 import discord4j.core.object.entity.Message;
+import discord4j.core.object.entity.User;
 import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.Getter;
 
@@ -12,6 +13,7 @@ public class DiscordMessage {
     public DiscordMessage(Message message) {
         try {
             //author, maybe change optional and throw
+            this.user = message.getAuthor().get();
             this.usernameIdLong = message.getAuthor().get().getId().asLong();
             this.userNameId = "<@" + message.getAuthor().get().getId().asString() + ">";
             this.userAvatarUrl = message.getAuthor().get().getAvatarUrl();
@@ -33,5 +35,6 @@ public class DiscordMessage {
     private String userName;
     private String userNameId;
     private String userAvatarUrl;
+    private User user;
 }
 

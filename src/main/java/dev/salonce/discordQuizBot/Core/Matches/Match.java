@@ -12,7 +12,7 @@ public class Match{
     private final Map<User, Player> players;
     private final List<Question> questions;
     private final int unansweredQuestionsLimit;
-    private int questionNumber;
+    private int currentQuestionNum;
     private int noAnswerCount;
 
     private EnumMatchClosed enumMatchClosed;
@@ -21,7 +21,7 @@ public class Match{
     @Setter
     private boolean enrollment;
     @Setter
-    private Long ownerId;
+    private User owner;
 
     private String name;
 
@@ -29,13 +29,13 @@ public class Match{
         return enumMatchClosed != EnumMatchClosed.NOT_CLOSED;
     }
 
-    public Match(List<Question> questions, String type, Long ownerId, int unansweredQuestionsLimit){
+    public Match(List<Question> questions, String type, User owner, int unansweredQuestionsLimit){
         this.questions = questions;
         this.players = new HashMap<>();
         this.enrollment = true;
-        this.questionNumber = 0;
+        this.currentQuestionNum = 0;
         this.noAnswerCount = 0;
-        this.ownerId = ownerId;
+        this.owner = owner;
         this.unansweredQuestionsLimit = unansweredQuestionsLimit;
         this.enumMatchClosed = EnumMatchClosed.NOT_CLOSED;
 
@@ -43,12 +43,14 @@ public class Match{
             String capitalized = type.substring(0, 1).toUpperCase() + type.substring(1);
             this.name = capitalized;
         }
+
+        players.put(owner, new Player(questions.size()));
     }
 
     public void setNoAnswerCountAndCloseMatchIfLimit(){
         int noAnswersCount = 0;
         for (Player player : players.values()){
-            int intAnswer = player.getAnswersList().get(questionNumber);
+            int intAnswer = player.getAnswersList().get(currentQuestionNum);
             if (intAnswer == -1)
                 noAnswersCount++;
             else break;
@@ -65,7 +67,8 @@ public class Match{
     }
 
     public boolean closeMatch(Long ownerId){
-        if (this.ownerId.equals(ownerId)){
+        long matchOwnerId = this.owner.getId().asLong();
+        if (matchOwnerId == ownerId){
             enumMatchClosed = EnumMatchClosed.BY_OWNER;
             return true;
         }
@@ -94,7 +97,7 @@ public class Match{
 
     public void addPlayerPoints(){
         for (Player player : players.values()){
-            if (player.getAnswersList().get(questionNumber) == getQuestionCorrectAnswerInt())
+            if (player.getAnswersList().get(currentQuestionNum) == getQuestionCorrectAnswerInt())
                 player.addPoint();
 //            if (player.getCurrentAnswerNum() == getQuestionCorrectAnswerInt())
 //                player.addPoint();
@@ -102,11 +105,11 @@ public class Match{
     }
 
     private int getQuestionCorrectAnswerInt(){
-        return questions.get(questionNumber).getCorrectAnswerInt();
+        return questions.get(currentQuestionNum).getCorrectAnswerInt();
     }
 
     private String getQuestionCorrectAnswerString(){
-        return questions.get(questionNumber).getCorrectAnswerString();
+        return questions.get(currentQuestionNum).getCorrectAnswerString();
     }
 
     public void cleanPlayersAnswers(){
@@ -117,11 +120,11 @@ public class Match{
 
     public String getUsersAnswers(){
         List<List<String>> playersAnswers = new ArrayList<>();
-        for (int i = 0; i < questions.get(questionNumber).getAnswers().size() + 1; i++){
+        for (int i = 0; i < questions.get(currentQuestionNum).getAnswers().size() + 1; i++){
             playersAnswers.add(new ArrayList<>());
         }
         for (Map.Entry<User, Player> entry : players.entrySet()){
-            int intAnswer = entry.getValue().getAnswersList().get(questionNumber) + 1;
+            int intAnswer = entry.getValue().getAnswersList().get(currentQuestionNum) + 1;
             //int intAnswer = entry.getValue().getCurrentAnswerNum() + 1;
             playersAnswers.get(intAnswer).add("<@" + entry.getKey().getId().asString() + ">");
         }
@@ -146,18 +149,18 @@ public class Match{
     }
 
     public boolean questionExists(){
-        return questionNumber < questions.size();
+        return currentQuestionNum < questions.size();
     }
 
     public Question getQuestion(){
-        if (questionNumber < questions.size())
-            return questions.get(questionNumber);
+        if (currentQuestionNum < questions.size())
+            return questions.get(currentQuestionNum);
         else
             return null;
     }
 
     public void nextQuestion(){
-        questionNumber++;
+        currentQuestionNum++;
     }
 
     public String getUserNames() {
@@ -176,6 +179,9 @@ public class Match{
         }
         else {
             players.put(user, new Player(questionsNumber));
+            if (players.size() == 1) {
+                this.owner = user;
+            }
             return "You've joined the match.";
         }
     }
@@ -186,6 +192,17 @@ public class Match{
         }
         if (isEnrollment() && players.containsKey(user)) {
             players.remove(user);
+            //if player was the owner, remove his ownership
+            if (this.owner != null && user.getId().asLong() == this.owner.getId().asLong()){
+                //if there are players get a random user to be the new owner
+                if (!players.isEmpty()){
+                    this.owner = players.entrySet().iterator().next().getKey();
+                }
+                //if no players set owner to null
+                else {
+                    this.owner = null;
+                }
+            }
             return "You've left the match.";
         }
         else {
