@@ -356,7 +356,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         return match.closeMatch(user.getId().asLong());
     }
 
-    public void addUserToMatch(ButtonInteraction buttonInteraction){
+    public String addUserToMatch(ButtonInteraction buttonInteraction){
         User user = buttonInteraction.getUser();
         Message message = buttonInteraction.getMessage();
         MessageChannel messageChannel = buttonInteraction.getMessageChannel();
@@ -364,10 +364,10 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         int questionsNumber = match.getQuestions().size();
 
         if (quizzes.containsKey(messageChannel)){
-            quizzes.get(messageChannel).addPlayer(user, questionsNumber);
+            return quizzes.get(messageChannel).addPlayer(user, questionsNumber);
         }
         else{
-            //change message to the message channel that interaction failed because the match doesn't exist
+            return "This match doesn't exist anymore.";
         }
     }
 

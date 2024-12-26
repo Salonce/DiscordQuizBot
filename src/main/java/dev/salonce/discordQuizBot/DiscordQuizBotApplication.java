@@ -67,8 +67,8 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 				return switch (buttonInteractionData.getButtonType()) {
 
 					case "joinQuiz" -> {
-						quizManager.addUserToMatch(buttonInteraction);
-						yield event.reply("You've joined the quiz.").withEphemeral(true);
+						String joiningText = quizManager.addUserToMatch(buttonInteraction);
+						yield event.reply(joiningText).withEphemeral(true);
 					}
 					case "leaveQuiz" -> {
 						quizManager.removeUserFromMatch(buttonInteraction);

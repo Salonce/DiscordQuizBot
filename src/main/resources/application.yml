@@ -19,7 +19,7 @@ questions:
     - src/main/resources/java/exceptions.json
     - src/main/resources/java/functionalInterfacesLambdas.json
     - src/main/resources/java/io.json
-    - src/main/resources/java/abspringBootCore.json
+    - src/main/resources/java/springBootCore.json
     human_memory: src/main/resources/human_memory.json
     big-five: src/main/resources/big-five.json
     art_history: src/main/resources/art_history.json
@@ -46,4 +46,4 @@ questions:
     modern_democracy: src/main/resources/modern_democracy.json
 
 #mode - 'standard' or 'testing' or 'testing2' or 'eureka'
-mode: standard
+mode: testing
