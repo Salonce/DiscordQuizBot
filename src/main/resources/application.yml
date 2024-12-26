@@ -9,19 +9,17 @@ discord:
 questions:
   files:
     java:
-    - src/main/resources/java_arrays.json
-    - src/main/resources/java_classesAndObjects.json
-    - src/main/resources/java_interfacesAndAbstractClasses.json
-    - src/main/resources/java_springBootCore.json
-    - src/main/resources/java_strings.json
-    - src/main/resources/java_accessModifiers.json
-    - src/main/resources/java_developmentEnvironment.json
-    - src/main/resources/java_exceptions.json
-    - src/main/resources/java_functionalInterfacesLambdas.json
-    - src/main/resources/java_io.json
-    - src/main/resources/java_springBootCore.json
-    spring_boot:
-    - src/main/resources/java_springBootCore.json
+    - src/main/resources/java/arrays.json
+    - src/main/resources/java/classesAndObjects.json
+    - src/main/resources/java/interfacesAndAbstractClasses.json
+    - src/main/resources/java/springBootCore.json
+    - src/main/resources/java/strings.json
+    - src/main/resources/java/accessModifiers.json
+    - src/main/resources/java/developmentEnvironment.json
+    - src/main/resources/java/exceptions.json
+    - src/main/resources/java/functionalInterfacesLambdas.json
+    - src/main/resources/java/io.json
+    - src/main/resources/java/abspringBootCore.json
     human_memory: src/main/resources/human_memory.json
     big-five: src/main/resources/big-five.json
     art_history: src/main/resources/art_history.json
@@ -29,9 +27,9 @@ questions:
     painting_techniques: src/main/resources/painting_techniques.json
     nihilism: src/main/resources/nihilism.json
     programming:
-    - src/main/resources/programming_oop.json
-    - src/main/resources/programming_concurrency.json
-    - src/main/resources/programming_designPatterns.json
+    - src/main/resources/general_programming/oop.json
+    - src/main/resources/general_programming/concurrency.json
+    - src/main/resources/general_programming/designPatterns.json
     philosophy:
     - src/main/resources/philosophy/absurdism.json
     - src/main/resources/philosophy/determinism.json
