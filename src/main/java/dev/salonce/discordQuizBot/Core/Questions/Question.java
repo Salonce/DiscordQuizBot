@@ -56,7 +56,7 @@ public class Question {
             sb.append(letter + ") " + answer.text());
             letter++;
             //if (showAnswers && !answer.correctness()) sb.append("~~");
-           // if (showAnswers && !answer.correctness()) sb.append(" ✗ ❌");
+            //if (showAnswers && !answer.correctness()) sb.append(" ✗ ❌");
             //if (showAnswers && answer.correctness()) sb.append(" ✔ ✅**");
             if (showAnswers && !answer.correctness()) sb.append(" ❌");
             if (showAnswers && answer.correctness()) sb.append("** ✅");

@@ -19,7 +19,7 @@ public class Match{
     @Setter
     private boolean answeringOpen;
     @Setter
-    private boolean enrolment;
+    private boolean enrollment;
     @Setter
     private Long ownerId;
 
@@ -32,7 +32,7 @@ public class Match{
     public Match(List<Question> questions, String type, Long ownerId, int unansweredQuestionsLimit){
         this.questions = questions;
         this.players = new HashMap<>();
-        this.enrolment = true;
+        this.enrollment = true;
         this.questionNumber = 0;
         this.noAnswerCount = 0;
         this.ownerId = ownerId;
@@ -167,14 +167,17 @@ public class Match{
                 .collect(Collectors.joining(", "));
     }
 
-    public boolean addPlayer(User user, int questionsNumber){
+    public String addPlayer(User user, int questionsNumber){
         if (players.containsKey(user)) {
             //System.out.println("User is already on player list.");
-            return false;
+            return "You've already joined the match.";
+        }
+        else if(isEnrollment()) {
+            players.put(user, new Player(questionsNumber));
+            return "You've joined the match.";
         }
         else {
-            players.put(user, new Player(questionsNumber));
-            return true;
+            return "Can't do that! You can join the match only during enrollment phase.";
         }
     }
 

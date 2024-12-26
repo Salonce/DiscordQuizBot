@@ -50,8 +50,4 @@ public class QuestionRepository {
     public List<RawQuestion> getQuestions(String type) {
         return new ArrayList<>(questionMap.getOrDefault(type, Collections.emptyList()));
     }
-
-//    public List<RawQuestion> getDockerQuestions() {
-//        return questionMap.getOrDefault("docker", Collections.emptyList());
-//    }
 }
