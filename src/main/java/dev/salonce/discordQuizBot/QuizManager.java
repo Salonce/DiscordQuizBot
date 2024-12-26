@@ -57,6 +57,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
                                 })
                                 .then(Mono.just(message))
                 )
+                .flatMap(message -> closeEnrollment(message, match))
                 .flatMap(message ->
                         Mono.defer(() -> {
                             if (match.isClosed()) {
@@ -94,6 +95,12 @@ public void addMatch(MessageChannel messageChannel, Match match) {
                 .subscribe();
     }
 }
+
+    private Mono<Message> closeEnrollment(Message monoMessage, Match match){
+        match.setEnrollment(false);
+        System.out.println("enrollment closed");
+        return Mono.just(monoMessage);
+    }
 
     private Mono<Void> createQuestionMessagesSequentially(MessageChannel messageChannel) {
         Match match = quizzes.get(messageChannel);
@@ -371,15 +378,15 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         }
     }
 
-    public void removeUserFromMatch(ButtonInteraction buttonInteraction){
+    public String removeUserFromMatch(ButtonInteraction buttonInteraction){
         User user = buttonInteraction.getUser();
         Message message = buttonInteraction.getMessage();
         MessageChannel messageChannel = buttonInteraction.getMessageChannel();
 
         if (quizzes.containsKey(messageChannel))
-            quizzes.get(messageChannel).removePlayer(user);
+            return quizzes.get(messageChannel).removePlayer(user);
         else{
-            //change message to the message channel that interaction failed because the match doesn't exist
+            return "This match doesn't exist anymore.";
         }
     }
 

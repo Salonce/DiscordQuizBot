@@ -181,14 +181,17 @@ public class Match{
         }
     }
 
-    public boolean removePlayer(User user){
-        if (players.containsKey(user)) {
+    public String removePlayer(User user){
+        if (isEnrollment() && players.containsKey(user)) {
             players.remove(user);
-            return true;
+            return "You've left the match.";
         }
-        else {
+        else if(isEnrollment()){
             //System.out.println("User is not on the player list.");
-            return false;
+            return "You are not in the match to leave it.";
+        }
+        else{
+            return "Can't do that! You can leave the match only during enrollment phase.";
         }
     }
 }

@@ -71,8 +71,8 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 						yield event.reply(joiningText).withEphemeral(true);
 					}
 					case "leaveQuiz" -> {
-						quizManager.removeUserFromMatch(buttonInteraction);
-						yield event.reply("You've left the quiz.").withEphemeral(true);
+						String leavingText = quizManager.removeUserFromMatch(buttonInteraction);
+						yield event.reply(leavingText).withEphemeral(true);
 					}
 					case "cancelQuiz" -> {
 						boolean canceled = quizManager.cancelQuiz(buttonInteraction);
