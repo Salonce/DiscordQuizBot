@@ -1,0 +1,116 @@
+[
+    {
+        "question": "What is the primary purpose of the Prototype design pattern?",
+        "correctAnswers": ["To create new objects by copying an existing object"],
+        "incorrectAnswers": ["To create a class hierarchy", "To manage object creation in a factory", "To optimize object serialization and deserialization"],
+        "explanation": "The Prototype pattern allows for creating new objects by copying an existing prototype, thus avoiding the overhead of creating new instances from scratch."
+    },
+    {
+        "question": "In the Prototype design pattern, which method is usually responsible for cloning an object?",
+        "correctAnswers": ["Clone method"],
+        "incorrectAnswers": ["Create method", "Instantiate method", "Copy method"],
+        "explanation": "The Prototype pattern typically uses the 'clone' method to duplicate objects, allowing for efficient creation of new instances based on an existing object."
+    },
+    {
+        "question": "Which of the following is true about the Prototype design pattern?",
+        "correctAnswers": ["It reduces the need for subclassing in object creation"],
+        "incorrectAnswers": ["It creates new classes for each object type", "It always involves deep cloning of objects", "It requires objects to be created only via constructors"],
+        "explanation": "By cloning objects, the Prototype pattern reduces the need for subclassing, as it allows for object creation through cloning rather than inheritance."
+    },
+    {
+        "question": "In the Prototype pattern, what kind of cloning involves creating a new object with a copy of the original object’s state?",
+        "correctAnswers": ["Shallow cloning"],
+        "incorrectAnswers": ["Deep cloning", "Copy constructor cloning", "Object factory cloning"],
+        "explanation": "Shallow cloning creates a new object with a copy of the original's state but does not clone complex nested objects, while deep cloning fully duplicates all objects."
+    },
+    {
+        "question": "Which of the following is NOT typically part of the Prototype design pattern?",
+        "correctAnswers": ["Object serialization for network transmission"],
+        "incorrectAnswers": ["Prototype interface", "Cloneable interface", "Concrete prototype classes"],
+        "explanation": "Object serialization for network transmission is not a core part of the Prototype pattern, which focuses on cloning objects through prototypes."
+    },
+    {
+        "question": "In the Prototype pattern, what role does the client typically play?",
+        "correctAnswers": ["The client requests cloned objects from a prototype"],
+        "incorrectAnswers": ["The client defines the prototypes to be used", "The client manages object construction directly", "The client creates deep copies of objects manually"],
+        "explanation": "In the Prototype pattern, the client typically interacts with the prototype to request cloned objects rather than managing object creation directly."
+    },
+    {
+        "question": "What is an advantage of using the Prototype pattern?",
+        "correctAnswers": ["It can reduce the complexity of object creation"],
+        "incorrectAnswers": ["It prevents changes to the object's structure", "It requires only one class for all objects", "It ensures objects are always unique"],
+        "explanation": "The Prototype pattern can reduce object creation complexity by reusing an existing prototype instead of constructing objects from scratch."
+    },
+    {
+        "question": "What is the relationship between prototypes in the Prototype pattern?",
+        "correctAnswers": ["Prototypes are typically related through inheritance or interfaces"],
+        "incorrectAnswers": ["Prototypes are not related to each other", "Prototypes share common constructors", "Prototypes create objects from random types"],
+        "explanation": "Prototypes in the Prototype pattern often share a common interface or base class, allowing them to be cloned and used interchangeably."
+    },
+    {
+        "question": "What is deep cloning in the context of the Prototype pattern?",
+        "correctAnswers": ["Creating a new object along with recursively copying all nested objects"],
+        "incorrectAnswers": ["Duplicating only the top-level object", "Copying references rather than objects", "Cloning only primitive data fields"],
+        "explanation": "Deep cloning creates a new object and recursively clones all nested objects, ensuring that the original and the clone do not share references to internal objects."
+    },
+    {
+        "question": "In which scenario would the Prototype design pattern be most useful?",
+        "correctAnswers": ["When object creation is costly or complex"],
+        "incorrectAnswers": ["When multiple objects share identical behavior", "When objects are simple and don't require cloning", "When objects need to be dynamically instantiated at runtime"],
+        "explanation": "The Prototype pattern is most beneficial when object creation is expensive or complex, as cloning an existing object is more efficient."
+    },
+    {
+        "question": "Which design principle does the Prototype pattern primarily promote?",
+        "correctAnswers": ["Code reusability"],
+        "incorrectAnswers": ["Encapsulation", "Inheritance", "Polymorphism"],
+        "explanation": "By allowing objects to be cloned rather than created from scratch, the Prototype pattern promotes code reusability and avoids redundant object construction."
+    },
+    {
+        "question": "What is one key difference between shallow and deep cloning in the Prototype pattern?",
+        "correctAnswers": ["Shallow cloning copies references to nested objects, while deep cloning copies the objects themselves"],
+        "incorrectAnswers": ["Shallow cloning is faster than deep cloning", "Shallow cloning requires more memory than deep cloning", "Deep cloning is less common in practice than shallow cloning"],
+        "explanation": "Shallow cloning copies references to nested objects, while deep cloning creates new objects for nested items, ensuring a full duplicate."
+    },
+    {
+        "question": "What problem does the Prototype design pattern solve?",
+        "correctAnswers": ["It eliminates the need to create new objects from scratch every time"],
+        "incorrectAnswers": ["It manages object persistence", "It creates large object hierarchies", "It limits the number of objects created in the system"],
+        "explanation": "The Prototype pattern solves the problem of repeatedly creating objects by allowing the reuse of existing objects through cloning."
+    },
+    {
+        "question": "Which of the following is a limitation of the Prototype design pattern?",
+        "correctAnswers": ["It may not be suitable when objects are highly dynamic or have many interdependencies"],
+        "incorrectAnswers": ["It requires all objects to be shallow copies", "It can only be used for small systems", "It always requires a deep copy to function correctly"],
+        "explanation": "The Prototype pattern may not be ideal for highly dynamic objects with complex dependencies, as cloning could lead to unexpected behavior."
+    },
+    {
+        "question": "What is the common interface or class used for prototypes in the Prototype pattern?",
+        "correctAnswers": ["Prototype interface"],
+        "incorrectAnswers": ["Cloneable interface", "Builder interface", "Factory interface"],
+        "explanation": "The Prototype pattern often uses a common 'Prototype' interface that defines the cloning method for objects to be duplicated."
+    },
+    {
+        "question": "What is an example of a real-world application of the Prototype pattern?",
+        "correctAnswers": ["Creating new game characters from a template character"],
+        "incorrectAnswers": ["Building user interface components dynamically", "Managing database connections", "Handling user input events in real time"],
+        "explanation": "In video games, characters or items can be cloned from a prototype to create new instances with similar attributes, avoiding redundant creation processes."
+    },
+    {
+        "question": "What design pattern is often used in conjunction with the Prototype pattern to handle complex object creation?",
+        "correctAnswers": ["Builder pattern"],
+        "incorrectAnswers": ["Singleton pattern", "Observer pattern", "Factory method pattern"],
+        "explanation": "The Builder pattern is often used with the Prototype pattern when constructing complex objects, as it provides a step-by-step approach to object creation."
+    },
+    {
+        "question": "Which of the following does NOT necessarily need to be considered when implementing the Prototype pattern?",
+        "correctAnswers": ["Serialization of objects"],
+        "incorrectAnswers": ["Object cloning", "Prototype interface design", "Cloning deep vs shallow objects"],
+        "explanation": "While object cloning and interface design are core to the Prototype pattern, serialization is not inherently part of its implementation."
+    },
+    {
+        "question": "How does the Prototype pattern contribute to flexibility in object creation?",
+        "correctAnswers": ["It allows for easy customization by modifying prototypes before cloning"],
+        "incorrectAnswers": ["It enforces strict object creation rules", "It limits the types of objects that can be created", "It prevents modifications to existing objects"],
+        "explanation": "By cloning prototypes, the Prototype pattern provides flexibility, allowing modifications to the prototype before cloning to produce varied results."
+    }
+]

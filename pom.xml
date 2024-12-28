@@ -58,6 +58,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<finalName>discord_quiz</finalName>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>

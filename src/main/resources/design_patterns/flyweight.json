@@ -1,0 +1,122 @@
+[
+    {
+        "question": "What is the primary purpose of the Flyweight Design Pattern?",
+        "correctAnswers": ["To minimize memory usage by sharing objects"],
+        "incorrectAnswers": ["To centralize communication between objects", "To encapsulate object instantiation logic", "To allow dynamic behavior modification at runtime"],
+        "explanation": "The Flyweight Design Pattern focuses on minimizing memory usage by sharing objects that have a common state."
+    },
+    {
+        "question": "Which type of state does the Flyweight Design Pattern aim to externalize?",
+        "correctAnswers": ["Extrinsic state"],
+        "incorrectAnswers": ["Intrinsic state", "Dependent state", "Shared state"],
+        "explanation": "The Flyweight Pattern externalizes extrinsic state, which is stored outside the shared object to maintain lightweight instances."
+    },
+    {
+        "question": "What is a key feature of the Flyweight Pattern?",
+        "correctAnswers": ["Objects share common intrinsic state"],
+        "incorrectAnswers": ["Objects communicate directly via a mediator", "Each object has its own independent state", "Objects implement multiple algorithms dynamically"],
+        "explanation": "The Flyweight Pattern ensures that shared objects use common intrinsic state to save memory."
+    },
+    {
+        "question": "What kind of objects does the Flyweight Pattern aim to create?",
+        "correctAnswers": ["Lightweight objects with shared data"],
+        "incorrectAnswers": ["Complex objects with many attributes", "Unique objects with dynamic properties", "Abstract objects with reusable algorithms"],
+        "explanation": "The Flyweight Pattern is used to create lightweight objects that share data to reduce memory consumption."
+    },
+    {
+        "question": "Which design problem is the Flyweight Pattern intended to solve?",
+        "correctAnswers": ["High memory consumption from a large number of similar objects"],
+        "incorrectAnswers": ["Tightly coupled object dependencies", "Difficulty in managing communication between objects", "Limited flexibility in object construction"],
+        "explanation": "The Flyweight Pattern addresses excessive memory usage by sharing similar object data among multiple instances."
+    },
+    {
+        "question": "How does the Flyweight Pattern achieve memory optimization?",
+        "correctAnswers": ["By sharing intrinsic state among multiple objects"],
+        "incorrectAnswers": ["By encapsulating complex object interactions", "By dynamically changing object behavior", "By centralizing object creation in a single factory"],
+        "explanation": "The Flyweight Pattern optimizes memory by sharing intrinsic state that remains the same across many objects."
+    },
+    {
+        "question": "Which of the following is a characteristic of the Flyweight Pattern?",
+        "correctAnswers": ["Shared intrinsic state"],
+        "incorrectAnswers": ["Decoupled communication", "Object cloning", "Dynamic algorithm selection"],
+        "explanation": "The Flyweight Pattern relies on shared intrinsic state to minimize the number of unique objects created."
+    },
+    {
+        "question": "What is an example of a real-world use case for the Flyweight Pattern?",
+        "correctAnswers": ["A text editor storing repeated characters as shared objects"],
+        "incorrectAnswers": ["A traffic control system managing airplane routes", "A chat application coordinating user messages", "A game rendering unique, independent player models"],
+        "explanation": "A text editor uses the Flyweight Pattern by storing repeated characters as shared objects to reduce memory usage."
+    },
+    {
+        "question": "Which design principle does the Flyweight Pattern adhere to?",
+        "correctAnswers": ["Separate intrinsic and extrinsic state"],
+        "incorrectAnswers": ["Encapsulate communication between objects", "Ensure a single instance of a class", "Define the structure of an algorithm"],
+        "explanation": "The Flyweight Pattern adheres to the principle of separating intrinsic (shared) and extrinsic (external) state for efficiency."
+    },
+    {
+        "question": "What type of factory is often used in the Flyweight Pattern?",
+        "correctAnswers": ["Flyweight factory to manage shared objects"],
+        "incorrectAnswers": ["Abstract factory for creating object families", "Builder factory for step-by-step construction", "Prototype factory for object cloning"],
+        "explanation": "The Flyweight Pattern typically uses a Flyweight factory to manage and reuse shared objects efficiently."
+    },
+    {
+        "question": "What kind of state is stored inside a flyweight object?",
+        "correctAnswers": ["Intrinsic state that is shared among instances"],
+        "incorrectAnswers": ["Extrinsic state managed externally", "Unique state for each object instance", "Derived state calculated dynamically"],
+        "explanation": "A flyweight object stores intrinsic state, which is common across many instances and does not change."
+    },
+    {
+        "question": "Which of the following is NOT a benefit of the Flyweight Pattern?",
+        "correctAnswers": ["Simplifies object interaction logic"],
+        "incorrectAnswers": ["Reduces memory usage", "Supports a large number of similar objects", "Improves system performance in memory-constrained environments"],
+        "explanation": "The Flyweight Pattern focuses on memory optimization, not simplifying object interaction logic."
+    },
+    {
+        "question": "How does the Flyweight Pattern handle extrinsic state?",
+        "correctAnswers": ["It is stored outside the flyweight object and passed in when needed"],
+        "incorrectAnswers": ["It is shared among all flyweight objects", "It is dynamically created within the object", "It is managed exclusively by a central mediator"],
+        "explanation": "Extrinsic state is stored externally and provided to the flyweight object as needed, keeping the object lightweight."
+    },
+    {
+        "question": "Which scenario is ideal for using the Flyweight Pattern?",
+        "correctAnswers": ["Rendering a forest with millions of trees sharing common data"],
+        "incorrectAnswers": ["A banking system cloning user profiles", "A notification system routing messages", "A machine learning pipeline dynamically training models"],
+        "explanation": "The Flyweight Pattern is well-suited for scenarios with many similar objects, such as rendering millions of trees."
+    },
+    {
+        "question": "What does the Flyweight Pattern rely on to reduce object creation?",
+        "correctAnswers": ["Reusing shared objects with intrinsic state"],
+        "incorrectAnswers": ["Managing state transitions dynamically", "Deferring object instantiation to subclasses", "Reducing method calls between objects"],
+        "explanation": "The Flyweight Pattern reduces object creation by reusing shared objects with intrinsic state common to multiple instances."
+    },
+    {
+        "question": "Which problem does the Flyweight Pattern aim to solve in graphical applications?",
+        "correctAnswers": ["Rendering many similar graphical elements efficiently"],
+        "incorrectAnswers": ["Implementing complex animation logic", "Simulating realistic object physics", "Creating dynamic, unique object behaviors"],
+        "explanation": "In graphical applications, the Flyweight Pattern is used to efficiently render many similar elements, such as shapes or characters."
+    },
+    {
+        "question": "What is a potential drawback of using the Flyweight Pattern?",
+        "correctAnswers": ["Managing extrinsic state can add complexity"],
+        "incorrectAnswers": ["Increased memory consumption", "Difficulty in object creation", "Tighter coupling between objects"],
+        "explanation": "While the Flyweight Pattern saves memory, managing extrinsic state outside the object can increase complexity."
+    },
+    {
+        "question": "How does the Flyweight Pattern improve performance?",
+        "correctAnswers": ["By reducing memory usage and increasing object reuse"],
+        "incorrectAnswers": ["By simplifying algorithm complexity", "By centralizing communication logic", "By enabling dynamic modification of behaviors"],
+        "explanation": "The Flyweight Pattern improves performance by reducing memory consumption through object reuse and shared intrinsic state."
+    },
+    {
+        "question": "Which design pattern is similar to the Flyweight Pattern but focuses on behavior instead of shared state?",
+        "correctAnswers": ["Strategy Pattern"],
+        "incorrectAnswers": ["Builder Pattern", "Prototype Pattern", "Singleton Pattern"],
+        "explanation": "The Strategy Pattern is similar in separating concerns but focuses on interchangeable behaviors, unlike the Flyweight Pattern's shared state."
+    },
+    {
+        "question": "Which feature of the Flyweight Pattern makes it memory-efficient?",
+        "correctAnswers": ["Sharing intrinsic state among multiple objects"],
+        "incorrectAnswers": ["Encapsulation of object creation logic", "Centralized object communication", "Dynamic state management at runtime"],
+        "explanation": "The Flyweight Pattern achieves memory efficiency by sharing intrinsic state across multiple objects to reduce duplication."
+    }
+]

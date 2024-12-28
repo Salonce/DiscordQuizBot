@@ -1,0 +1,117 @@
+[
+    {
+      "question": "What is the primary purpose of the Abstract Factory design pattern?",
+      "correctAnswers": ["To create families of related objects without specifying their concrete classes"],
+      "incorrectAnswers": ["To ensure a single instance of a class is created", "To provide a mechanism for object creation based on runtime conditions", "To allow direct interaction with low-level objects"],
+      "explanation": "The Abstract Factory pattern provides an interface for creating families of related or dependent objects without specifying their concrete classes."
+    },
+    {
+      "question": "Which of the following is a key feature of an Abstract Factory?",
+      "correctAnswers": ["It provides an interface for creating related objects"],
+      "incorrectAnswers": ["It enforces the creation of only one object per class", "It uses concrete methods to create objects", "It implements factory methods for each product type"],
+      "explanation": "An Abstract Factory defines an interface for creating related objects, often with multiple concrete factories implementing the interface."
+    },
+    {
+      "question": "In the Abstract Factory pattern, what does a client interact with to create objects?",
+      "correctAnswers": ["The abstract factory interface"],
+      "incorrectAnswers": ["Concrete product classes", "Individual product objects", "The factory method"],
+      "explanation": "In the Abstract Factory pattern, the client interacts with the abstract factory interface to create product families."
+    },
+    {
+      "question": "Which of the following patterns is commonly used in combination with the Abstract Factory pattern?",
+      "correctAnswers": ["Factory Method"],
+      "incorrectAnswers": ["Singleton", "Adapter", "Decorator"],
+      "explanation": "The Abstract Factory pattern often uses the Factory Method pattern to create the individual product objects in a family."
+    },
+    {
+      "question": "How does the Abstract Factory pattern differ from the Factory Method pattern?",
+      "correctAnswers": ["It provides a way to create families of related objects, while the Factory Method creates a single object"],
+      "incorrectAnswers": ["The Abstract Factory uses inheritance while Factory Method uses composition", "The Factory Method involves abstract classes, while the Abstract Factory does not", "The Abstract Factory pattern cannot be used with polymorphism, unlike Factory Method"],
+      "explanation": "The Abstract Factory pattern creates families of related objects, while the Factory Method is focused on creating a single object."
+    },
+    {
+      "question": "What is an example of a real-world scenario where the Abstract Factory pattern might be applied?",
+      "correctAnswers": ["Creating different UI components (buttons, checkboxes) for different operating systems"],
+      "incorrectAnswers": ["Building a logging system with different output formats", "Generating database connections depending on the database type", "Managing the lifecycle of multiple background threads"],
+      "explanation": "The Abstract Factory pattern can be applied to create families of related UI components that are specific to different operating systems."
+    },
+    {
+      "question": "Which of the following is true about the products in an Abstract Factory?",
+      "correctAnswers": ["They are related by a common theme or category"],
+      "incorrectAnswers": ["They are randomly selected based on the client's preference", "Each product must be derived from the same class", "All products are instantiated in a single method call"],
+      "explanation": "The products in an Abstract Factory are related and typically fall into a specific family of objects."
+    },
+    {
+      "question": "Which type of object does an Abstract Factory typically return?",
+      "correctAnswers": ["Concrete product objects"],
+      "incorrectAnswers": ["Abstract product objects", "Factory objects", "Prototype objects"],
+      "explanation": "An Abstract Factory typically returns concrete instances of products that adhere to the abstract product interface."
+    },
+    {
+      "question": "What role does the Abstract Factory play in the context of the design patterns?",
+      "correctAnswers": ["It decouples the client from the concrete classes of objects it uses"],
+      "incorrectAnswers": ["It maintains a reference to a single instance of a product", "It ensures that products are always created in a specific sequence", "It enforces strict dependency injection of all object instances"],
+      "explanation": "The Abstract Factory pattern decouples the client from the concrete classes of objects by providing an abstraction layer."
+    },
+    {
+      "question": "What is the key benefit of using the Abstract Factory pattern?",
+      "correctAnswers": ["It allows for easy swapping of families of related products"],
+      "incorrectAnswers": ["It improves performance by caching product instances", "It reduces memory usage by limiting object creation", "It ensures that all objects are created in parallel"],
+      "explanation": "The key benefit of using the Abstract Factory pattern is the ability to easily swap families of related products without affecting the client."
+    },
+    {
+      "question": "Which of the following describes an abstract product in the Abstract Factory pattern?",
+      "correctAnswers": ["An interface or abstract class that defines the operations for a family of related products"],
+      "incorrectAnswers": ["A concrete class that implements the operations of a product", "A class that handles the instantiation of all related products", "A singleton that guarantees only one product exists"],
+      "explanation": "An abstract product defines the operations for a family of related products, allowing for flexibility and extension."
+    },
+    {
+      "question": "What is the role of a concrete factory in the Abstract Factory pattern?",
+      "correctAnswers": ["It implements the abstract factory interface and creates concrete product families"],
+      "incorrectAnswers": ["It defines abstract methods for creating product objects", "It stores references to product objects", "It acts as a singleton for product creation"],
+      "explanation": "A concrete factory implements the abstract factory interface and creates concrete instances of related products."
+    },
+    {
+      "question": "Which of the following is a potential disadvantage of the Abstract Factory pattern?",
+      "correctAnswers": ["It can lead to an increase in the number of classes in the system"],
+      "incorrectAnswers": ["It limits the ability to extend the system with new products", "It makes it difficult to modify the family of related products", "It enforces strict rules for creating products at runtime"],
+      "explanation": "A disadvantage of the Abstract Factory pattern is that it can lead to an increase in the number of classes due to the introduction of multiple factory and product classes."
+    },
+    {
+      "question": "In which situation would the Abstract Factory pattern be least appropriate?",
+      "correctAnswers": ["When you only need to create one type of object"],
+      "incorrectAnswers": ["When you need to work with a family of related objects", "When you are using polymorphism in the system", "When the products need to be highly customizable"],
+      "explanation": "The Abstract Factory pattern is not suitable when only one type of object is needed, as it is designed to manage families of related objects."
+    },
+    {
+      "question": "What is a possible use case for having multiple concrete factories in the Abstract Factory pattern?",
+      "correctAnswers": ["Creating different product families for different platforms (e.g., Windows, Mac, Linux)"],
+      "incorrectAnswers": ["Creating a single product family across multiple platforms", "Creating product instances based on user input during runtime", "Managing database connections for different systems"],
+      "explanation": "Multiple concrete factories can be used to create different families of related products for different platforms or environments."
+    },
+    {
+      "question": "What is the relationship between the Abstract Factory and Abstract Product in the pattern?",
+      "correctAnswers": ["The Abstract Factory creates abstract products that are implemented by concrete products"],
+      "incorrectAnswers": ["The Abstract Factory directly implements abstract products", "The Abstract Product is an implementation of the Abstract Factory", "The Abstract Factory is responsible for the concrete implementation of all products"],
+      "explanation": "The Abstract Factory creates abstract products, which are then implemented by concrete products. This decouples the client from the specifics of product creation."
+    },
+    {
+      "question": "Which of the following is a characteristic of the Abstract Factory pattern's interface?",
+      "correctAnswers": ["It declares methods for creating abstract products for each product family"],
+      "incorrectAnswers": ["It provides concrete implementations of all product methods", "It manages the lifecycle of all created products", "It creates a single instance of the product family"],
+      "explanation": "The interface of the Abstract Factory pattern declares methods for creating abstract products, allowing concrete factories to implement them."
+    },
+    {
+      "question": "Why would you use an Abstract Factory pattern instead of multiple independent factories?",
+      "correctAnswers": ["To ensure consistency among related products"],
+      "incorrectAnswers": ["To improve performance by caching product objects", "To simplify the class structure by using only one factory", "To reduce the number of classes needed for product creation"],
+      "explanation": "The Abstract Factory pattern ensures consistency among related products by providing a common interface for their creation."
+    },
+    {
+      "question": "What happens if a new product is added to a family in the Abstract Factory pattern?",
+      "correctAnswers": ["A new method must be added to the abstract factory interface to create the new product"],
+      "incorrectAnswers": ["The abstract factory must be refactored to create the product at runtime", "Existing concrete factories will automatically handle the new product", "New factories need to be created for each new product type"],
+      "explanation": "When a new product is added to the family, a new method must be added to the abstract factory interface to support creating the new product."
+    }
+  ]
+  

@@ -1,0 +1,110 @@
+[
+    {
+        "question": "What is the primary purpose of the Factory Method design pattern?",
+        "correctAnswers": ["To define an interface for creating objects, but let subclasses alter the type of objects that will be created."],
+        "incorrectAnswers": ["To create a single object instance for the entire application.", "To ensure that an object is created only once during the program's runtime.", "To directly instantiate objects based on user input."],
+        "explanation": "The Factory Method allows subclasses to decide which class to instantiate, promoting loose coupling between client classes and the classes they instantiate."
+    },
+    {
+        "question": "Which of the following best describes the role of a Factory Method in object creation?",
+        "correctAnswers": ["It defines a method for creating objects, but allows subclasses to change the type of objects that will be created."],
+        "incorrectAnswers": ["It directly constructs objects from a concrete class without allowing for customization.", "It is used to create objects only when they are needed for a specific action.", "It only supports the creation of one type of object throughout the program."],
+        "explanation": "Factory Methods provide a way to instantiate objects without specifying the exact class of object that will be created."
+    },
+    {
+        "question": "In the Factory Method pattern, what is typically responsible for calling the factory method?",
+        "correctAnswers": ["Client code or a creator class."],
+        "incorrectAnswers": ["The concrete object itself.", "A global manager class.", "An external helper class outside the system."],
+        "explanation": "In Factory Method, client code or a creator class calls the factory method to create objects based on the required type."
+    },
+    {
+        "question": "Which statement is true about the Factory Method pattern?",
+        "correctAnswers": ["It promotes loose coupling by allowing the instantiation of different classes at runtime."],
+        "incorrectAnswers": ["It hardcodes the creation logic inside client code.", "It directly ties object creation to specific concrete classes.", "It requires the creation of objects in a single place within the application."],
+        "explanation": "Factory Method allows for flexible object creation without coupling client code to specific classes."
+    },
+    {
+        "question": "In the Factory Method pattern, which of the following is usually overridden in a subclass?",
+        "correctAnswers": ["The factory method itself."],
+        "incorrectAnswers": ["The constructor of the base class.", "The method that initializes dependencies.", "The setter methods for object properties."],
+        "explanation": "In Factory Method, subclasses typically override the factory method to specify which objects they want to create."
+    },
+    {
+        "question": "What is one key advantage of using the Factory Method design pattern?",
+        "correctAnswers": ["It allows a system to be open for extension but closed for modification."],
+        "incorrectAnswers": ["It forces the use of specific concrete classes in all object creation.", "It limits the types of objects that can be created in the system.", "It eliminates the need for object creation code entirely."],
+        "explanation": "The Factory Method provides flexibility by allowing new types of objects to be introduced without modifying existing code."
+    },
+    {
+        "question": "Which of the following is NOT a characteristic of the Factory Method pattern?",
+        "correctAnswers": ["It directly creates objects without subclass involvement."],
+        "incorrectAnswers": ["It allows subclasses to define the type of object that should be created.", "It helps decouple object creation from class instantiation.", "It involves the creation of different types of objects at runtime."],
+        "explanation": "The Factory Method requires subclass involvement in defining the type of object that should be created, contrary to directly creating objects."
+    },
+    {
+        "question": "Which of the following can be considered a common use case for the Factory Method pattern?",
+        "correctAnswers": ["When the system needs to create different types of related objects based on input conditions."],
+        "incorrectAnswers": ["When the system needs to create objects of only one type.", "When object creation is always the same and does not depend on conditions.", "When a system needs to avoid using object creation patterns altogether."],
+        "explanation": "Factory Method is useful when there is a need to create related objects based on conditions or input, without directly specifying the class."
+    },
+    {
+        "question": "What is the relationship between the Creator class and the Factory Method?",
+        "correctAnswers": ["The Creator class defines the Factory Method, and subclasses can override it to create different objects."],
+        "incorrectAnswers": ["The Creator class must implement the Factory Method in its constructor.", "The Creator class has no involvement in the creation process.", "The Factory Method is implemented in a separate utility class rather than the Creator class."],
+        "explanation": "The Creator class typically contains the Factory Method and can delegate object creation to subclasses that implement it."
+    },
+    {
+        "question": "Which of the following is a potential drawback of the Factory Method pattern?",
+        "correctAnswers": ["It can lead to a large number of subclasses if many variations of products are needed."],
+        "incorrectAnswers": ["It requires the use of global variables to manage object creation.", "It directly exposes the creation logic to client code.", "It limits the number of object types that can be created at runtime."],
+        "explanation": "A possible drawback is that as the number of product variations grows, so too can the number of subclasses, increasing complexity."
+    },
+    {
+        "question": "How does the Factory Method pattern enhance code maintainability?",
+        "correctAnswers": ["By centralizing object creation and allowing changes to be made in one place."],
+        "incorrectAnswers": ["By making it mandatory to use a single object throughout the system.", "By removing object creation from the client code and placing it entirely in external services.", "By creating a tightly coupled system that is harder to extend."],
+        "explanation": "Factory Method makes maintenance easier by allowing changes to object creation logic without modifying client code."
+    },
+    {
+        "question": "Which design pattern is commonly used alongside the Factory Method pattern to manage product variations?",
+        "correctAnswers": ["Abstract Factory."],
+        "incorrectAnswers": ["Singleton.", "Prototype.", "Observer."],
+        "explanation": "Abstract Factory is often used with Factory Method when dealing with families of related product objects."
+    },
+    {
+        "question": "What is a key difference between the Factory Method and the Abstract Factory patterns?",
+        "correctAnswers": ["Factory Method deals with the creation of a single product, while Abstract Factory handles families of related products."],
+        "incorrectAnswers": ["Factory Method requires global variables, while Abstract Factory does not.", "Abstract Factory cannot be used for object creation.", "Factory Method can only be used for creating concrete products."],
+        "explanation": "While both patterns involve object creation, Factory Method typically focuses on a single product, whereas Abstract Factory is designed for creating multiple related products."
+    },
+    {
+        "question": "Which of the following is typically true for a method in a class that implements the Factory Method design pattern?",
+        "correctAnswers": ["The method does not specify the exact class of the object to be created."],
+        "incorrectAnswers": ["The method must create an instance of a concrete class.", "The method must return an already existing object.", "The method can only create objects based on hardcoded parameters."],
+        "explanation": "Factory Method focuses on allowing subclasses to decide which class to instantiate, without the client needing to specify the exact class."
+    },
+    {
+        "question": "Which of the following is a typical benefit of using the Factory Method pattern in a large system?",
+        "correctAnswers": ["It improves the system's flexibility by allowing new product types to be added without changing existing code."],
+        "incorrectAnswers": ["It simplifies the system by forcing all objects to be created in the same way.", "It limits the creation of objects to a predefined set of types.", "It makes it difficult to extend the system with new product types."],
+        "explanation": "Factory Method enhances flexibility and scalability by allowing the addition of new product types without modifying existing code."
+    },
+    {
+        "question": "What is typically returned by a Factory Method?",
+        "correctAnswers": ["A product object or a family of related objects."],
+        "incorrectAnswers": ["A configuration object that controls the behavior of the system.", "A raw data structure without any object-oriented behavior.", "A reference to an external class responsible for managing objects."],
+        "explanation": "A Factory Method usually returns an instance of a product or a family of products, depending on the design."
+    },
+    {
+        "question": "How does the Factory Method pattern align with the Open/Closed Principle?",
+        "correctAnswers": ["It allows a class to be open for extension (new product types) but closed for modification (no changes to existing code)."],
+        "incorrectAnswers": ["It forces all product types to be predefined and immutable.", "It requires significant changes to existing code whenever new products are added.", "It leads to tightly coupled code that cannot be easily extended."],
+        "explanation": "The Factory Method allows for new types of products to be created without modifying existing code, adhering to the Open/Closed Principle."
+    },
+    {
+        "question": "In the Factory Method pattern, which of the following is commonly used to ensure flexibility in object creation?",
+        "correctAnswers": ["Polymorphism."],
+        "incorrectAnswers": ["Inheritance of static classes.", "Global variable access.", "Direct object instantiation using constructors."],
+        "explanation": "Polymorphism allows for flexible object creation, as it enables the selection of different product types at runtime."
+    }
+]

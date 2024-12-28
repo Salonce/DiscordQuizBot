@@ -44,6 +44,17 @@ questions:
     - src/main/resources/philosophy/stoicism.json
     wealth_inequality: src/main/resources/wealth_inequality.json
     modern_democracy: src/main/resources/modern_democracy.json
-
+    design_patterns:
+    - src/main/resources/design_patterns/flyweight.json
+    - src/main/resources/design_patterns/mediator.json
+    - src/main/resources/design_patterns/template.json
+    - src/main/resources/design_patterns/factoryMethod.json
+    - src/main/resources/design_patterns/abstractFactory.json
+    - src/main/resources/design_patterns/adapter.json
+    - src/main/resources/design_patterns/decorator.json
+    - src/main/resources/design_patterns/prototype.json
+    - src/main/resources/design_patterns/observer.json
+    - src/main/resources/design_patterns/builder.json
+    #- src/main/resources/design_patterns/prototype.json
 #mode - 'standard' or 'testing' or 'testing2' or 'eureka'
-mode: testing
+mode: standard
