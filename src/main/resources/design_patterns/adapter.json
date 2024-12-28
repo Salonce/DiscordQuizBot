@@ -1,0 +1,111 @@
+[
+    {
+      "question": "What is the primary purpose of the Adapter design pattern?",
+      "correctAnswers": ["To convert one interface into another"],
+      "incorrectAnswers": ["To store and manage data", "To implement object creation", "To reduce memory consumption"],
+      "explanation": "The Adapter pattern allows for the conversion of one interface into another to ensure that incompatible interfaces can work together."
+    },
+    {
+      "question": "Which of the following best describes an adapter class?",
+      "correctAnswers": ["A class that implements the target interface and translates requests to an adaptee"],
+      "incorrectAnswers": ["A class that creates new objects", "A class that maintains a global state", "A class that provides a common interface to all components"],
+      "explanation": "An adapter class implements the target interface and translates the client's request to the adaptee, ensuring compatibility between them."
+    },
+    {
+      "question": "When should you use the Adapter pattern?",
+      "correctAnswers": ["When you need to integrate incompatible systems or classes"],
+      "incorrectAnswers": ["When you need to implement concurrency", "When you want to improve performance", "When you are dealing with a single class implementation"],
+      "explanation": "The Adapter pattern is used when integrating incompatible systems or classes to make them work together without modifying their source code."
+    },
+    {
+      "question": "What is a common use case of the Adapter pattern?",
+      "correctAnswers": ["Adapting legacy code to modern systems"],
+      "incorrectAnswers": ["Implementing new algorithms", "Providing automatic error handling", "Enhancing UI performance"],
+      "explanation": "The Adapter pattern is commonly used to adapt legacy code to work with new systems without altering the legacy code itself."
+    },
+    {
+      "question": "What is the main benefit of using an Adapter pattern?",
+      "correctAnswers": ["It enables reuse of existing code without modification"],
+      "incorrectAnswers": ["It reduces the need for memory management", "It allows direct inheritance between incompatible classes", "It improves the speed of the system"],
+      "explanation": "The main benefit of the Adapter pattern is that it allows you to reuse existing code by making it compatible with new systems without modifying the original code."
+    },
+    {
+      "question": "Which of these is an example of a real-world Adapter?",
+      "correctAnswers": ["A power plug adapter that allows devices from different countries to be plugged into local outlets"],
+      "incorrectAnswers": ["A smartphone charging cable", "A wireless router", "A Bluetooth speaker"],
+      "explanation": "A power plug adapter is a real-world example of the Adapter pattern, as it converts one type of plug interface into another compatible with different sockets."
+    },
+    {
+      "question": "What does the Adapter pattern help avoid?",
+      "correctAnswers": ["Directly modifying the existing classes or systems"],
+      "incorrectAnswers": ["Redundancy in object creation", "Loss of object data", "Code duplication in method implementation"],
+      "explanation": "The Adapter pattern helps avoid directly modifying the existing classes or systems by providing an intermediary that translates requests."
+    },
+    {
+      "question": "Which of the following is a structural design pattern?",
+      "correctAnswers": ["Adapter pattern"],
+      "incorrectAnswers": ["Observer pattern", "Factory method pattern", "Strategy pattern"],
+      "explanation": "The Adapter pattern is one of the structural design patterns that focuses on organizing classes and objects in a way that simplifies their interaction."
+    },
+    {
+      "question": "Which of these is not a key component of the Adapter pattern?",
+      "correctAnswers": ["Proxy object"],
+      "incorrectAnswers": ["Target interface", "Adapter class", "Adaptee class"],
+      "explanation": "A proxy object is not a key component of the Adapter pattern. The key components are the target interface, the adapter class, and the adaptee class."
+    },
+    {
+      "question": "In the Adapter pattern, which component is the client interacting with?",
+      "correctAnswers": ["The target interface"],
+      "incorrectAnswers": ["The adaptee", "The adapter class", "The client’s own implementation"],
+      "explanation": "In the Adapter pattern, the client interacts with the target interface, which is implemented by the adapter class and translates requests to the adaptee."
+    },
+    {
+      "question": "Can the Adapter pattern be used to make incompatible interfaces work together without changing their existing code?",
+      "correctAnswers": ["Yes"],
+      "incorrectAnswers": ["No", "Only for database interfaces", "Only for object-oriented classes"],
+      "explanation": "Yes, the Adapter pattern allows incompatible interfaces to work together without modifying the existing code of the classes involved."
+    },
+    {
+      "question": "What is an adaptee in the Adapter pattern?",
+      "correctAnswers": ["The class with the incompatible interface that needs adaptation"],
+      "incorrectAnswers": ["The new interface created by the adapter", "The client that requests the service", "The adapter class that modifies the interface"],
+      "explanation": "The adaptee is the class with the incompatible interface that needs to be adapted to work with the target interface."
+    },
+    {
+      "question": "How does the Adapter pattern improve code flexibility?",
+      "correctAnswers": ["By allowing systems to work together without modifying their code"],
+      "incorrectAnswers": ["By ensuring all classes share the same interface", "By automatically managing object states", "By introducing global configurations to the system"],
+      "explanation": "The Adapter pattern improves code flexibility by enabling different systems to work together without the need to modify the existing code."
+    },
+    {
+      "question": "Which pattern is often confused with the Adapter pattern due to its similar goal of enabling interoperability?",
+      "correctAnswers": ["Facade pattern"],
+      "incorrectAnswers": ["Decorator pattern", "Command pattern", "Prototype pattern"],
+      "explanation": "The Facade pattern is often confused with the Adapter pattern because both aim to simplify interactions, but they solve different problems and operate at different levels."
+    },
+    {
+      "question": "What is the relationship between the Adapter class and the Adaptee class?",
+      "correctAnswers": ["The Adapter class delegates calls to the Adaptee class"],
+      "incorrectAnswers": ["The Adapter class inherits from the Adaptee class", "The Adaptee class is created by the Adapter class", "The Adapter class replaces the Adaptee class"],
+      "explanation": "The Adapter class delegates calls to the Adaptee class, acting as an intermediary to translate between the target and adaptee interfaces."
+    },
+    {
+      "question": "Can an Adapter pattern be used with classes that share the same interface?",
+      "correctAnswers": ["No, it is used to adapt incompatible interfaces"],
+      "incorrectAnswers": ["Yes, to improve their efficiency", "Yes, to simplify their relationship", "Yes, when objects need to be updated"],
+      "explanation": "The Adapter pattern is specifically used to adapt incompatible interfaces, not classes that already share the same interface."
+    },
+    {
+      "question": "What does an adapter typically implement in the Adapter pattern?",
+      "correctAnswers": ["The target interface"],
+      "incorrectAnswers": ["The adaptee class", "A client interface", "A new method signature"],
+      "explanation": "An adapter implements the target interface, allowing the client to interact with it and receive the expected behavior while delegating the task to the adaptee."
+    },
+    {
+      "question": "How does the Adapter pattern affect the existing classes?",
+      "correctAnswers": ["It does not modify the existing classes directly"],
+      "incorrectAnswers": ["It overwrites methods in the existing classes", "It requires inheritance from the existing classes", "It merges the existing classes into one"],
+      "explanation": "The Adapter pattern does not modify the existing classes directly. Instead, it creates a new class that adapts the interfaces to work together."
+    }
+  ]
+  

@@ -1,0 +1,116 @@
+[
+    {
+        "question": "What is the primary purpose of the builder design pattern?",
+        "correctAnswers": ["To construct complex objects step by step"],
+        "incorrectAnswers": ["To manage object lifecycle", "To create singleton objects", "To simplify method signatures"],
+        "explanation": "The builder pattern is used to construct complex objects by specifying their type and content through a series of method calls."
+    },
+    {
+        "question": "Which of the following is a key benefit of using the builder design pattern?",
+        "correctAnswers": ["Improves code readability by separating construction from representation"],
+        "incorrectAnswers": ["Allows objects to be immutable", "Reduces memory usage during object creation", "Encourages tight coupling of components"],
+        "explanation": "The builder pattern improves readability by separating the object construction logic from its representation, making the code more maintainable."
+    },
+    {
+        "question": "What kind of objects are typically built using the builder design pattern?",
+        "correctAnswers": ["Complex objects with many attributes"],
+        "incorrectAnswers": ["Simple data structures", "Singleton objects", "Objects requiring real-time construction"],
+        "explanation": "Builder pattern is useful for constructing complex objects that have many optional components or require a specific sequence of steps."
+    },
+    {
+        "question": "Which of the following is true about the builder design pattern?",
+        "correctAnswers": ["The builder separates the construction of an object from its representation"],
+        "incorrectAnswers": ["It always requires multiple builders for one object", "It must use a director class", "It allows only one method to build the object"],
+        "explanation": "In the builder pattern, the construction process is abstracted away from the object’s representation, allowing for flexibility."
+    },
+    {
+        "question": "What is the role of a director in the builder pattern?",
+        "correctAnswers": ["To manage the construction process using the builder"],
+        "incorrectAnswers": ["To create the final object without using a builder", "To configure the builder with different strategies", "To directly construct the object step by step"],
+        "explanation": "The director is responsible for controlling the sequence of steps required to construct the object, typically by using the builder."
+    },
+    {
+        "question": "In which of the following scenarios would the builder design pattern be most useful?",
+        "correctAnswers": ["When you need to create an object with many optional parameters"],
+        "incorrectAnswers": ["When creating a simple object with only a few parameters", "When the object needs to be created quickly in one step", "When you want to enforce object immutability after creation"],
+        "explanation": "The builder pattern is ideal for constructing objects with many optional or complex parameters."
+    },
+    {
+        "question": "Which design pattern can be used in conjunction with the builder pattern for complex object construction?",
+        "correctAnswers": ["Abstract factory pattern"],
+        "incorrectAnswers": ["Singleton pattern", "Factory method pattern", "Prototype pattern"],
+        "explanation": "The abstract factory pattern can work alongside the builder pattern to provide an interface for creating related products, enhancing flexibility."
+    },
+    {
+        "question": "How does the builder pattern help in avoiding telescoping constructors?",
+        "correctAnswers": ["By allowing clients to specify only the attributes they need in the object"],
+        "incorrectAnswers": ["By using inheritance to create different object variations", "By forcing clients to specify all attributes through constructors", "By allowing constructors to be overloaded with different parameters"],
+        "explanation": "The builder pattern avoids telescoping constructors by providing a flexible and readable way to construct objects with optional attributes."
+    },
+    {
+        "question": "Which of the following is typically included in the builder pattern?",
+        "correctAnswers": ["A builder class with methods to set individual parts of the object"],
+        "incorrectAnswers": ["A factory class that creates the entire object", "A singleton object that manages object creation", "A single constructor with multiple parameters"],
+        "explanation": "The builder pattern usually includes a builder class that provides methods for setting the different parts or attributes of the object."
+    },
+    {
+        "question": "What does the director class in the builder pattern do?",
+        "correctAnswers": ["It constructs the object step by step using a builder object"],
+        "incorrectAnswers": ["It creates a single builder for all types of objects", "It directly defines the product's attributes", "It checks the object for correctness after construction"],
+        "explanation": "The director class orchestrates the construction process, defining the order in which the builder’s methods are called to construct the object."
+    },
+    {
+        "question": "Which of the following is a common use case for the builder design pattern?",
+        "correctAnswers": ["Building complex configurations for a product"],
+        "incorrectAnswers": ["Creating simple object factories", "Building singletons for shared resources", "Creating objects that do not require many parameters"],
+        "explanation": "The builder pattern is particularly useful when building complex configurations, such as a product with many parts or options."
+    },
+    {
+        "question": "Which of the following statements about the builder pattern is true?",
+        "correctAnswers": ["It allows the construction process to be independent of the object's parts"],
+        "incorrectAnswers": ["It forces the client to specify all object parameters", "It requires a single builder to be used for all objects", "It makes object construction process faster"],
+        "explanation": "The builder pattern enables flexibility by allowing the construction process to be independent of the object's parts, which makes the process more modular."
+    },
+    {
+        "question": "How can the builder pattern support object immutability?",
+        "correctAnswers": ["By using a builder that only allows setting attributes before the object is created"],
+        "incorrectAnswers": ["By using setter methods after object creation", "By allowing direct modification of the object’s attributes", "By forcing all attributes to be set through constructors only"],
+        "explanation": "The builder pattern can support immutability by allowing attributes to be set during the construction process but not after the object is created."
+    },
+    {
+        "question": "Which of the following is a disadvantage of the builder pattern?",
+        "correctAnswers": ["It can lead to more classes and complexity in simple scenarios"],
+        "incorrectAnswers": ["It does not allow for flexible object construction", "It always requires a separate director class", "It creates a new instance every time an object is built"],
+        "explanation": "While the builder pattern is powerful, it can introduce unnecessary complexity in scenarios where a simpler approach would suffice."
+    },
+    {
+        "question": "In the builder pattern, what does the 'product' refer to?",
+        "correctAnswers": ["The complex object being constructed"],
+        "incorrectAnswers": ["The director class managing the construction", "The builder class that defines the construction steps", "The client that uses the builder to construct the object"],
+        "explanation": "In the builder pattern, the product is the final object that results from the construction process managed by the builder and director."
+    },
+    {
+        "question": "How does the builder pattern improve flexibility?",
+        "correctAnswers": ["By allowing different representations of an object using the same construction process"],
+        "incorrectAnswers": ["By creating a single constructor for all types of objects", "By forcing clients to specify object parts in a specific order", "By using only static methods to create objects"],
+        "explanation": "The builder pattern allows flexibility by enabling different representations of an object to be created using the same construction process."
+    },
+    {
+        "question": "What is the relationship between the builder and product in the builder pattern?",
+        "correctAnswers": ["The builder creates the product step by step using its methods"],
+        "incorrectAnswers": ["The product defines how the builder should operate", "The product acts as a factory for the builder", "The builder and product are part of a single class"],
+        "explanation": "The builder is responsible for constructing the product by using its methods to define and set the individual components of the product."
+    },
+    {
+        "question": "Why would you choose the builder pattern over a constructor with many parameters?",
+        "correctAnswers": ["Because the builder pattern improves readability and flexibility for complex objects"],
+        "incorrectAnswers": ["Because it creates simpler constructors", "Because it forces all attributes to be initialized at once", "Because it simplifies code by eliminating factory methods"],
+        "explanation": "The builder pattern is better for complex objects with many optional attributes as it provides flexibility and readability, unlike constructors with many parameters."
+    },
+    {
+        "question": "What is the role of the builder class in the builder design pattern?",
+        "correctAnswers": ["It provides methods for setting the attributes of the product"],
+        "incorrectAnswers": ["It directly constructs the object with a single constructor", "It defines the sequence in which the product is constructed", "It is responsible for managing the object’s lifecycle"],
+        "explanation": "The builder class provides methods that allow the client to set different attributes of the product before the final construction."
+    }
+]
