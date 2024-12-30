@@ -4,7 +4,7 @@ spring:
 
 discord:
   bot:
-    token: ${DISCORD_BOT_TOKEN}
+    token: ${DISCORD_BOT_QUIZZY}
 
 questions:
   files:
@@ -45,16 +45,29 @@ questions:
     wealth_inequality: src/main/resources/wealth_inequality.json
     modern_democracy: src/main/resources/modern_democracy.json
     design_patterns:
-    - src/main/resources/design_patterns/flyweight.json
-    - src/main/resources/design_patterns/mediator.json
-    - src/main/resources/design_patterns/template.json
-    - src/main/resources/design_patterns/factoryMethod.json
     - src/main/resources/design_patterns/abstractFactory.json
     - src/main/resources/design_patterns/adapter.json
-    - src/main/resources/design_patterns/decorator.json
-    - src/main/resources/design_patterns/prototype.json
-    - src/main/resources/design_patterns/observer.json
+    - src/main/resources/design_patterns/bridge.json
     - src/main/resources/design_patterns/builder.json
-    #- src/main/resources/design_patterns/prototype.json
-#mode - 'standard' or 'testing' or 'testing2' or 'eureka'
+    - src/main/resources/design_patterns/chain_of_responsibility.json
+    - src/main/resources/design_patterns/command.json
+    - src/main/resources/design_patterns/composite.json
+    - src/main/resources/design_patterns/decorator.json
+    - src/main/resources/design_patterns/facade.json
+    - src/main/resources/design_patterns/factoryMethod.json
+    - src/main/resources/design_patterns/flyweight.json
+    - src/main/resources/design_patterns/interpreter.json
+    - src/main/resources/design_patterns/iterator.json
+    - src/main/resources/design_patterns/mediator.json
+    - src/main/resources/design_patterns/memento.json
+    - src/main/resources/design_patterns/object_pool.json
+    - src/main/resources/design_patterns/observer.json
+    - src/main/resources/design_patterns/prototype.json
+    - src/main/resources/design_patterns/proxy.json
+    - src/main/resources/design_patterns/singleton.json
+    - src/main/resources/design_patterns/state.json
+    - src/main/resources/design_patterns/strategy.json
+    - src/main/resources/design_patterns/template.json
+
+  #mode - 'standard' or 'testing' or 'testing2' or 'eureka'
 mode: standard

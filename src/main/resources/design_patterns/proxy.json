@@ -1,0 +1,117 @@
+[
+    {
+      "question": "What is the primary purpose of the Proxy design pattern?",
+      "correctAnswers": ["To control access to an object"],
+      "incorrectAnswers": ["To create a new object", "To modify the behavior of an object", "To maintain a reference to the object"],
+      "explanation": "The Proxy pattern is used to control access to an object, typically to add additional functionality such as access control, lazy initialization, or logging."
+    },
+    {
+      "question": "Which type of proxy is used for lazy initialization of an object?",
+      "correctAnswers": ["Virtual proxy"],
+      "incorrectAnswers": ["Remote proxy", "Protective proxy", "Cache proxy"],
+      "explanation": "A Virtual proxy is used to delay the creation of an expensive object until it is needed, improving performance and resource usage."
+    },
+    {
+      "question": "In the Proxy design pattern, the proxy acts as a substitute for which component?",
+      "correctAnswers": ["Real object"],
+      "incorrectAnswers": ["Facade", "Client", "Adapter"],
+      "explanation": "The proxy acts as a surrogate or placeholder for the real object, managing its access and sometimes adding extra functionality."
+    },
+    {
+      "question": "Which of the following types of proxies can be used to provide security checks before accessing a real object?",
+      "correctAnswers": ["Protective proxy"],
+      "incorrectAnswers": ["Virtual proxy", "Remote proxy", "Cache proxy"],
+      "explanation": "A Protective proxy is used to control access to the real object, often implementing security checks, authentication, or authorization before access."
+    },
+    {
+      "question": "Which of the following is a scenario where the Proxy pattern is typically used?",
+      "correctAnswers": ["To delay expensive operations until necessary"],
+      "incorrectAnswers": ["To ensure objects are instantiated only once", "To simplify complex interfaces", "To replace object inheritance with composition"],
+      "explanation": "The Proxy pattern is often used when you want to delay or optimize expensive operations by using a placeholder until the real object is needed."
+    },
+    {
+      "question": "What is a common characteristic of all proxy types?",
+      "correctAnswers": ["They delegate requests to the real object"],
+      "incorrectAnswers": ["They create new objects on demand", "They provide additional functionalities like caching or logging", "They change the interface of the real object"],
+      "explanation": "All proxies delegate requests to the real object but often add additional responsibilities such as caching, logging, or access control."
+    },
+    {
+      "question": "What type of proxy is used when the real object is located on a remote machine?",
+      "correctAnswers": ["Remote proxy"],
+      "incorrectAnswers": ["Virtual proxy", "Protective proxy", "Cache proxy"],
+      "explanation": "A Remote proxy is used when the real object is located on a different machine or in a different address space, and the proxy handles communication with the real object."
+    },
+    {
+      "question": "Which of the following is an advantage of using the Proxy pattern?",
+      "correctAnswers": ["It can improve performance by controlling access to objects"],
+      "incorrectAnswers": ["It simplifies complex interfaces", "It helps in object composition", "It allows for easy object inheritance"],
+      "explanation": "The Proxy pattern can improve performance, especially in situations where access to an object is costly, by controlling its initialization or access."
+    },
+    {
+      "question": "What role does the Proxy object play in relation to the RealObject?",
+      "correctAnswers": ["Acts as a surrogate or placeholder"],
+      "incorrectAnswers": ["Implements the same interface as the RealObject", "Adds new methods to the RealObject", "Extends the RealObject functionality by modifying behavior"],
+      "explanation": "The Proxy object acts as a placeholder or surrogate for the RealObject, often adding additional behaviors like access control or lazy loading."
+    },
+    {
+      "question": "Which of the following is a disadvantage of using the Proxy pattern?",
+      "correctAnswers": ["It introduces additional complexity in managing proxies"],
+      "incorrectAnswers": ["It reduces flexibility in object access", "It requires more memory for storing proxies", "It limits the capabilities of the real object"],
+      "explanation": "Using proxies can introduce additional complexity in managing them, especially when multiple proxy types are involved."
+    },
+    {
+      "question": "How does a Proxy differ from a Decorator pattern?",
+      "correctAnswers": ["A Proxy controls access to an object, while a Decorator adds responsibilities to it"],
+      "incorrectAnswers": ["A Proxy adds new behaviors, while a Decorator only provides access", "A Proxy is used for object creation, while a Decorator is for behavior modification", "A Proxy modifies the object's data, while a Decorator modifies its interface"],
+      "explanation": "A Proxy controls access to the real object, whereas a Decorator adds additional behavior to the object without modifying its interface."
+    },
+    {
+      "question": "Which of the following statements best describes a 'Virtual Proxy'?",
+      "correctAnswers": ["A proxy that controls the creation and access of an object to delay expensive operations"],
+      "incorrectAnswers": ["A proxy that allows for remote communication with an object", "A proxy that adds security features for accessing an object", "A proxy that manages the persistence of an object in a database"],
+      "explanation": "A Virtual Proxy delays the creation and access of an expensive object until it is actually needed, improving performance."
+    },
+    {
+      "question": "Which of the following best describes the role of the client in the Proxy design pattern?",
+      "correctAnswers": ["The client interacts with the proxy, which forwards the request to the real object"],
+      "incorrectAnswers": ["The client communicates directly with the real object", "The client modifies the behavior of the real object", "The client is unaware of the proxy and interacts only with the real object"],
+      "explanation": "In the Proxy pattern, the client typically interacts with the proxy, which in turn forwards requests to the real object."
+    },
+    {
+      "question": "In the context of the Proxy pattern, what does 'lazy initialization' refer to?",
+      "correctAnswers": ["Delaying the creation of an object until it is needed"],
+      "incorrectAnswers": ["Instantiating an object before it is required", "Using caching to store previously created objects", "Initializing the object at the start of the program to avoid delays"],
+      "explanation": "Lazy initialization is a technique used in the Proxy pattern to delay the creation of an object until it is actually needed, improving system performance."
+    },
+    {
+      "question": "Which of the following is true about a Proxy object in relation to the RealObject?",
+      "correctAnswers": ["It implements the same interface as the RealObject"],
+      "incorrectAnswers": ["It adds new methods to the RealObject", "It creates a completely new interface for the RealObject", "It is not involved in forwarding requests to the RealObject"],
+      "explanation": "A Proxy typically implements the same interface as the RealObject to forward requests to it, but it may add additional logic like access control or caching."
+    },
+    {
+      "question": "What is an example of using a Proxy pattern for security purposes?",
+      "correctAnswers": ["A proxy that checks the client's credentials before allowing access to the real object"],
+      "incorrectAnswers": ["A proxy that modifies the behavior of the real object", "A proxy that hides the real object from the client", "A proxy that creates a backup of the real object before usage"],
+      "explanation": "A protective proxy is used to ensure only authorized clients can access the real object, typically by checking credentials or permissions."
+    },
+    {
+      "question": "Which of the following statements about proxies is true?",
+      "correctAnswers": ["A proxy can be used to control access and add functionality to an object"],
+      "incorrectAnswers": ["A proxy creates new instances of the real object", "A proxy replaces the real object with a completely different implementation", "A proxy prevents any interactions with the real object"],
+      "explanation": "Proxies provide an additional layer of functionality, such as access control or lazy loading, while still delegating requests to the real object."
+    },
+    {
+      "question": "Which proxy type would be most appropriate for managing access to an object across a network?",
+      "correctAnswers": ["Remote proxy"],
+      "incorrectAnswers": ["Virtual proxy", "Protective proxy", "Cache proxy"],
+      "explanation": "A Remote proxy is used to represent an object that exists in a different address space or on a different machine, handling network communication."
+    },
+    {
+      "question": "Which of the following is a typical use case for the Proxy pattern?",
+      "correctAnswers": ["When access to an object needs to be controlled or monitored"],
+      "incorrectAnswers": ["When objects need to be composed dynamically", "When a complex object needs to be simplified", "When inheritance needs to be used to extend an object's functionality"],
+      "explanation": "The Proxy pattern is useful when additional control or monitoring over access to an object is needed, such as with logging, security, or lazy initialization."
+    }
+  ]
+  
