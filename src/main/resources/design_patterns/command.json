@@ -1,0 +1,122 @@
+[
+	{
+		"question": "What is the primary purpose of the Command Design Pattern?",
+		"correctAnswers": ["Encapsulating a request as an object"],
+		"incorrectAnswers": ["Separating interface from implementation", "Defining multiple entry points in a program", "Ensuring only one instance of a class exists"],
+		"explanation": "The Command Design Pattern encapsulates a request as an object, allowing the parameterization of clients with different requests and enabling operations like queuing and undo/redo."
+	},
+	{
+		"question": "Which method in the Command interface is typically used to execute an action?",
+		"correctAnswers": ["execute()"],
+		"incorrectAnswers": ["runCommand()", "performAction()", "invokeOperation()"],
+		"explanation": "The `execute()` method is a common standard in the Command interface for executing the encapsulated request."
+	},
+	{
+		"question": "What role does the Invoker play in the Command Design Pattern?",
+		"correctAnswers": ["Stores and executes commands"],
+		"incorrectAnswers": ["Defines the behavior of commands", "Implements the Receiver", "Handles the creation of Command objects"],
+		"explanation": "The Invoker is responsible for storing command objects and invoking their `execute()` method when required."
+	},
+	{
+		"question": "In the Command Design Pattern, what is the Receiver?",
+		"correctAnswers": ["The object that performs the action"],
+		"incorrectAnswers": ["The class managing command queues", "The interface defining the command structure", "The client sending requests"],
+		"explanation": "The Receiver is the actual object that performs the specific operations requested by the command."
+	},
+	{
+		"question": "What is a common use case for the Command Design Pattern?",
+		"correctAnswers": ["Undo/redo functionality in applications"],
+		"incorrectAnswers": ["Managing complex inheritance hierarchies", "Implementing multithreaded programs", "Creating singleton instances"],
+		"explanation": "The Command Design Pattern is often used for implementing undo/redo functionality by storing executed commands."
+	},
+	{
+		"question": "How does the Command Design Pattern support decoupling?",
+		"correctAnswers": ["It separates request sender and executor"],
+		"incorrectAnswers": ["It centralizes all logic in the client", "It uses inheritance to reduce dependencies", "It eliminates the need for a Receiver"],
+		"explanation": "By encapsulating requests as objects, the pattern decouples the sender (Invoker) from the actual executor (Receiver) of the operation."
+	},
+	{
+		"question": "What is a macro command in the context of the Command Design Pattern?",
+		"correctAnswers": ["A command that executes multiple commands"],
+		"incorrectAnswers": ["A command that reduces code complexity", "A command that stores metadata about requests", "A special command used in multi-threading"],
+		"explanation": "A macro command is a composite command that contains a list of commands to execute them sequentially or as a group."
+	},
+	{
+		"question": "Which of the following is NOT an advantage of the Command Design Pattern?",
+		"correctAnswers": ["It eliminates all runtime dependencies"],
+		"incorrectAnswers": ["It allows for undo/redo operations", "It encapsulates requests as objects", "It promotes decoupling between sender and receiver"],
+		"explanation": "While the Command Design Pattern offers many advantages, it does not eliminate all runtime dependencies, as the Receiver and Invoker still interact indirectly."
+	},
+	{
+		"question": "What is the role of the client in the Command Design Pattern?",
+		"correctAnswers": ["It creates and configures commands"],
+		"incorrectAnswers": ["It executes the commands directly", "It defines the Receiver's behavior", "It handles the command queue and storage"],
+		"explanation": "The client is responsible for creating and configuring command objects and associating them with appropriate Receivers."
+	},
+	{
+		"question": "Which of these is an example of a real-world application of the Command Design Pattern?",
+		"correctAnswers": ["GUI button click handling"],
+		"incorrectAnswers": ["Data validation pipelines", "Multithreaded task synchronization", "Complex numerical computations"],
+		"explanation": "GUI button click handling often uses the Command Design Pattern to encapsulate actions associated with buttons, decoupling UI from business logic."
+	},
+	{
+		"question": "What pattern is often combined with the Command Design Pattern for undo functionality?",
+		"correctAnswers": ["Memento Pattern"],
+		"incorrectAnswers": ["Observer Pattern", "Strategy Pattern", "Builder Pattern"],
+		"explanation": "The Memento Pattern is often combined with the Command Design Pattern to save and restore states for undo functionality."
+	},
+	{
+		"question": "How are commands typically stored for undo functionality?",
+		"correctAnswers": ["In a stack"],
+		"incorrectAnswers": ["In a queue", "In a dictionary", "In a sorted list"],
+		"explanation": "A stack is commonly used to store commands for undo functionality, allowing commands to be reversed in the order they were executed."
+	},
+	{
+		"question": "What is the relationship between the Command and Receiver classes?",
+		"correctAnswers": ["The Command invokes methods on the Receiver"],
+		"incorrectAnswers": ["The Receiver inherits from Command", "The Command directly manages Receiver state", "The Receiver encapsulates the Command"],
+		"explanation": "In the Command Design Pattern, the Command object invokes operations on the Receiver to perform specific actions."
+	},
+	{
+		"question": "Which of these is a disadvantage of the Command Design Pattern?",
+		"correctAnswers": ["Increased number of classes"],
+		"incorrectAnswers": ["Difficulty in implementing undo functionality", "Limited flexibility in decoupling", "Tightly coupled components"],
+		"explanation": "One disadvantage of the Command Design Pattern is that it may lead to an increased number of classes, as each command often requires its own class."
+	},
+	{
+		"question": "What type of commands are commonly used in distributed systems?",
+		"correctAnswers": ["Serializable commands"],
+		"incorrectAnswers": ["Asynchronous commands", "Immutable commands", "Concurrent commands"],
+		"explanation": "Serializable commands are used in distributed systems to allow commands to be transferred over a network and executed remotely."
+	},
+	{
+		"question": "Which programming principle is emphasized by the Command Design Pattern?",
+		"correctAnswers": ["Encapsulation"],
+		"incorrectAnswers": ["Inheritance", "Polymorphism", "Concurrency"],
+		"explanation": "The Command Design Pattern emphasizes encapsulating a request as an object, adhering to the principle of encapsulation."
+	},
+	{
+		"question": "What is the benefit of using Command Design Pattern for transaction systems?",
+		"correctAnswers": ["Commands can be queued and executed later"],
+		"incorrectAnswers": ["Commands enforce strict synchronization", "Commands reduce system complexity", "Commands guarantee atomic operations"],
+		"explanation": "The Command Design Pattern allows commands to be queued for delayed execution, making it suitable for transaction systems."
+	},
+	{
+		"question": "How does the Command Design Pattern facilitate extensibility?",
+		"correctAnswers": ["New commands can be added without changing existing code"],
+		"incorrectAnswers": ["It eliminates the need for a Receiver", "It requires no updates to the Invoker", "It automatically adapts to new operations"],
+		"explanation": "New commands can be implemented as separate classes, allowing the system to grow without altering existing components."
+	},
+	{
+		"question": "What is the best way to avoid duplicating command logic across multiple Receivers?",
+		"correctAnswers": ["Use shared command classes"],
+		"incorrectAnswers": ["Create a command hierarchy", "Encapsulate Receivers into Commands", "Implement Receivers as singletons"],
+		"explanation": "Shared command classes can be reused across multiple Receivers, reducing duplication and improving maintainability."
+	},
+	{
+		"question": "Which variant of the Command Pattern avoids storing commands explicitly?",
+		"correctAnswers": ["Callback-based Command"],
+		"incorrectAnswers": ["Stack-based Command", "Factory Command", "Composite Command"],
+		"explanation": "Callback-based Commands rely on function pointers or lambdas to execute actions without explicitly storing command objects."
+	}
+]

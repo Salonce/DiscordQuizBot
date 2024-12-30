@@ -1,0 +1,122 @@
+[
+    {
+        "question": "What is the primary purpose of the state design pattern?",
+        "correctAnswers": ["To allow an object to change behavior when its state changes"],
+        "incorrectAnswers": ["To define multiple classes for similar behavior", "To enforce a single responsibility on objects", "To manage memory more efficiently"],
+        "explanation": "The state design pattern enables an object to change its behavior dynamically based on its internal state."
+    },
+    {
+        "question": "Which of the following best represents the structure of the state design pattern?",
+        "correctAnswers": ["Context and State interfaces with concrete implementations"],
+        "incorrectAnswers": ["Singleton class with static methods", "Multiple classes sharing the same state", "Composite objects sharing behavior"],
+        "explanation": "The state pattern typically involves a Context that interacts with various State interface implementations to alter its behavior dynamically."
+    },
+    {
+        "question": "In the state pattern, where is the current state of the object typically stored?",
+        "correctAnswers": ["In the Context class"],
+        "incorrectAnswers": ["In the State interface", "In a database for persistence", "In a configuration file"],
+        "explanation": "The Context class manages and stores the current state, delegating behavior changes to the state objects."
+    },
+    {
+        "question": "How does the state design pattern handle transitions between states?",
+        "correctAnswers": ["Delegates transitions to the current state"],
+        "incorrectAnswers": ["Transitions are hard-coded into the Context class", "Uses a centralized state manager", "Switches states based on user input alone"],
+        "explanation": "In the state pattern, transitions are often handled by the current state's methods, promoting flexibility and encapsulation."
+    },
+    {
+        "question": "What type of design pattern is the state pattern classified as?",
+        "correctAnswers": ["Behavioral pattern"],
+        "incorrectAnswers": ["Creational pattern", "Structural pattern", "Concurrency pattern"],
+        "explanation": "The state pattern is a behavioral design pattern because it manages how an object behaves in response to internal state changes."
+    },
+    {
+        "question": "Which of the following is a benefit of using the state pattern?",
+        "correctAnswers": ["Encapsulation of state-specific behaviors"],
+        "incorrectAnswers": ["Minimizes memory usage", "Eliminates the need for polymorphism", "Simplifies object initialization"],
+        "explanation": "The state pattern encapsulates behaviors specific to different states, making the design easier to maintain and extend."
+    },
+    {
+        "question": "What is a key characteristic of states in the state pattern?",
+        "correctAnswers": ["Each state implements a common interface"],
+        "incorrectAnswers": ["Each state is hardcoded in the Context", "States must be immutable objects", "State classes require inheritance from the Context"],
+        "explanation": "Each state in the state pattern typically implements a common interface to ensure consistent behavior delegation."
+    },
+    {
+        "question": "In the state pattern, how is behavior change achieved?",
+        "correctAnswers": ["By delegating requests to the current state object"],
+        "incorrectAnswers": ["By using conditional statements", "By creating new objects for each action", "By overriding default methods in the Context class"],
+        "explanation": "The state pattern achieves behavior changes by delegating the request handling to the currently active state object."
+    },
+    {
+        "question": "Which programming principle does the state pattern follow?",
+        "correctAnswers": ["Open/Closed Principle"],
+        "incorrectAnswers": ["Law of Demeter", "Single Responsibility Principle", "Dependency Inversion Principle"],
+        "explanation": "The state pattern adheres to the Open/Closed Principle by allowing new states to be added without altering existing code."
+    },
+    {
+        "question": "What role does the Context class play in the state pattern?",
+        "correctAnswers": ["Maintains a reference to the current state"],
+        "incorrectAnswers": ["Defines all possible states", "Implements state-specific behavior directly", "Manages resource allocation for states"],
+        "explanation": "The Context class holds a reference to the current state and delegates behavior execution to it."
+    },
+    {
+        "question": "How does the state pattern improve code maintainability?",
+        "correctAnswers": ["By separating state-specific logic into different classes"],
+        "incorrectAnswers": ["By reducing the number of classes", "By simplifying the use of if-else statements", "By consolidating all logic into a single class"],
+        "explanation": "By encapsulating state-specific logic in separate classes, the state pattern makes the code easier to maintain and extend."
+    },
+    {
+        "question": "Which of the following describes a drawback of the state pattern?",
+        "correctAnswers": ["Increases the number of classes"],
+        "incorrectAnswers": ["Requires dynamic memory allocation", "Complicates the use of conditionals", "Makes states immutable"],
+        "explanation": "The state pattern can lead to more classes being created, as each state is implemented as a separate class."
+    },
+    {
+        "question": "What type of behavior is most suited for the state pattern?",
+        "correctAnswers": ["Behavior that changes dynamically with state"],
+        "incorrectAnswers": ["Static behavior across all states", "Complex recursive algorithms", "Fixed sequential processes"],
+        "explanation": "The state pattern is best suited for situations where an object's behavior needs to change dynamically based on its state."
+    },
+    {
+        "question": "Which method allows state transitions in the state pattern?",
+        "correctAnswers": ["A method in the state implementation"],
+        "incorrectAnswers": ["A global state manager", "A method in the Context constructor", "An overridden method in all state subclasses"],
+        "explanation": "In the state pattern, state-specific methods handle transitions, ensuring encapsulation and flexibility."
+    },
+    {
+        "question": "How can new states be added to a system using the state pattern?",
+        "correctAnswers": ["By creating a new class implementing the State interface"],
+        "incorrectAnswers": ["By modifying the Context class", "By updating the global state handler", "By redefining all existing states"],
+        "explanation": "New states can be added by simply implementing the State interface, without modifying existing code."
+    },
+    {
+        "question": "Which UML diagram best represents the state pattern?",
+        "correctAnswers": ["Class diagram"],
+        "incorrectAnswers": ["Sequence diagram", "Activity diagram", "Component diagram"],
+        "explanation": "A class diagram effectively represents the relationships between Context, State, and concrete state classes in the state pattern."
+    },
+    {
+        "question": "Which of the following is NOT a part of the state design pattern?",
+        "correctAnswers": ["Observer component"],
+        "incorrectAnswers": ["State interface", "Concrete state classes", "Context class"],
+        "explanation": "The observer component is unrelated to the state pattern, which focuses on managing state transitions and behaviors."
+    },
+    {
+        "question": "What is the relationship between Context and State in the state pattern?",
+        "correctAnswers": ["The Context delegates requests to the State"],
+        "incorrectAnswers": ["The State controls the Context directly", "The Context and State are independent", "The State inherits behavior from the Context"],
+        "explanation": "The Context delegates behavior execution to the current State, promoting encapsulation and reducing dependency."
+    },
+    {
+        "question": "What programming paradigm does the state pattern leverage heavily?",
+        "correctAnswers": ["Polymorphism"],
+        "incorrectAnswers": ["Functional programming", "Recursion", "Event-driven programming"],
+        "explanation": "The state pattern relies on polymorphism to dynamically change behavior by delegating to different state implementations."
+    },
+    {
+        "question": "Which of the following applications would benefit most from the state pattern?",
+        "correctAnswers": ["A media player with play, pause, and stop functionality"],
+        "incorrectAnswers": ["A calculator app performing arithmetic operations", "A static website displaying content", "A logging utility for tracking events"],
+        "explanation": "A media player involves dynamic behavior changes (play, pause, stop) based on state, making it a good candidate for the state pattern."
+    }
+]

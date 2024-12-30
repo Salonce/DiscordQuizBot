@@ -1,0 +1,123 @@
+[
+    {
+      "question": "What is the primary purpose of the Composite design pattern?",
+      "correctAnswers": ["To compose objects into tree structures"],
+      "incorrectAnswers": ["To create a structure for behavior inheritance", "To simplify a system by using just one object", "To combine multiple objects into a single object"],
+      "explanation": "The Composite pattern allows objects to be composed into tree structures to represent part-whole hierarchies, where individual objects and compositions of objects can be treated uniformly."
+    },
+    {
+      "question": "Which class is typically shared by both leaf and composite objects in the Composite pattern?",
+      "correctAnswers": ["Component"],
+      "incorrectAnswers": ["Leaf", "Composite", "AbstractObject"],
+      "explanation": "In the Composite pattern, both leaf and composite objects share a common interface or abstract class called 'Component', allowing them to be treated uniformly."
+    },
+    {
+      "question": "Which type of object in the Composite pattern is responsible for holding child objects?",
+      "correctAnswers": ["Composite"],
+      "incorrectAnswers": ["Leaf", "Node", "Root"],
+      "explanation": "A Composite object is responsible for holding child components, allowing it to contain both leaf objects and other composites, forming a tree structure."
+    },
+    {
+      "question": "Which method is often implemented by the Composite object in the Composite design pattern?",
+      "correctAnswers": ["Add()"],
+      "incorrectAnswers": ["Remove()", "Display()", "Render()"],
+      "explanation": "The Composite class typically implements an 'Add()' method to add child components to itself, enabling the tree structure of the pattern."
+    },
+    {
+      "question": "In the Composite design pattern, what type of objects are the leaf nodes?",
+      "correctAnswers": ["Individual objects"],
+      "incorrectAnswers": ["Composite groups", "Container objects", "Aggregated elements"],
+      "explanation": "In the Composite pattern, leaf nodes are individual objects that do not contain any child objects and are the fundamental building blocks of the structure."
+    },
+    {
+      "question": "What is the benefit of using the Composite design pattern?",
+      "correctAnswers": ["It allows clients to treat individual objects and composites uniformly"],
+      "incorrectAnswers": ["It simplifies inheritance hierarchies", "It ensures components are always loosely coupled", "It minimizes the number of class objects in the system"],
+      "explanation": "The main benefit of the Composite pattern is that it allows clients to treat both individual objects and compositions of objects uniformly, simplifying code that needs to interact with them."
+    },
+    {
+      "question": "Which of the following is an example of a real-world application of the Composite pattern?",
+      "correctAnswers": ["A file system with directories and files"],
+      "incorrectAnswers": ["A strategy for sorting numbers", "A command pattern for user actions", "A singleton instance for logging"],
+      "explanation": "A file system, where directories can contain files and other directories, is a classic example of the Composite pattern, where both files (leaves) and directories (composites) are part of the same tree structure."
+    },
+    {
+      "question": "What happens when a method is called on a leaf object in the Composite pattern?",
+      "correctAnswers": ["It executes the method directly on the leaf object"],
+      "incorrectAnswers": ["It forwards the method to its parent composite", "It triggers a recursion of the method across all child nodes", "It throws an exception indicating it cannot process the method"],
+      "explanation": "When a method is called on a leaf object, it directly executes the method on the leaf, as leaf objects do not have children to delegate the method to."
+    },
+    {
+      "question": "Which of the following is NOT a typical feature of the Composite design pattern?",
+      "correctAnswers": ["Encapsulating all logic in one object"],
+      "incorrectAnswers": ["Recursive composition of objects", "Allowing uniform treatment of individual objects and composites", "Storing child components in a collection"],
+      "explanation": "The Composite pattern does not encapsulate all logic in one object; instead, it divides the logic between leaf and composite objects, allowing for recursive composition."
+    },
+    {
+      "question": "In the Composite pattern, which of the following best describes the Leaf object?",
+      "correctAnswers": ["It is a component that has no children"],
+      "incorrectAnswers": ["It is a component that holds child objects", "It is a subclass of Composite objects", "It is a collection of Composite objects"],
+      "explanation": "Leaf objects are individual components in the pattern that do not have any children. They represent the end points in the structure of the tree."
+    },
+    {
+      "question": "Which design principle does the Composite pattern adhere to?",
+      "correctAnswers": ["Favoring composition over inheritance"],
+      "incorrectAnswers": ["Encapsulating behavior in a single class", "Emphasizing abstraction and generalization", "Favoring inheritance over composition"],
+      "explanation": "The Composite pattern adheres to the principle of favoring composition over inheritance, as it combines objects into a tree structure through composition rather than relying on inheritance."
+    },
+    {
+      "question": "Which of the following scenarios is best suited for using the Composite pattern?",
+      "correctAnswers": ["A structure with objects that can be treated individually or as part of a group"],
+      "incorrectAnswers": ["A system where objects must always act independently", "A scenario that requires high performance and minimal object creation", "A system where objects are grouped but have no interaction"],
+      "explanation": "The Composite pattern is best used in situations where objects need to be treated both individually and as part of a group, such as in tree-like structures."
+    },
+    {
+      "question": "What is the typical relationship between Composite and Leaf objects in the Composite pattern?",
+      "correctAnswers": ["Composite objects can contain Leaf objects"],
+      "incorrectAnswers": ["Leaf objects can contain Composite objects", "Composite objects and Leaf objects are unrelated", "Leaf objects can inherit from Composite objects"],
+      "explanation": "Composite objects can contain Leaf objects or other Composite objects, forming a hierarchical structure in the Composite pattern."
+    },
+    {
+      "question": "What is one potential drawback of the Composite design pattern?",
+      "correctAnswers": ["It can lead to excessive complexity in the system"],
+      "incorrectAnswers": ["It requires too many objects to be created", "It does not scale well with large numbers of components", "It forces all objects to implement the same behavior"],
+      "explanation": "One potential drawback of the Composite pattern is that it can lead to unnecessary complexity, especially when the system involves deep hierarchies of objects."
+    },
+    {
+      "question": "In the Composite pattern, how is client code typically written?",
+      "correctAnswers": ["It treats both Leaf and Composite objects uniformly"],
+      "incorrectAnswers": ["It differentiates between Leaf and Composite objects", "It calls specific methods based on object type", "It avoids using recursion to navigate the tree"],
+      "explanation": "Client code in the Composite pattern typically treats both Leaf and Composite objects in the same way, calling the same methods on both types of objects, which simplifies the code."
+    },
+    {
+      "question": "Which of the following would typically be considered a Composite object in the Composite pattern?",
+      "correctAnswers": ["A directory that contains other directories and files"],
+      "incorrectAnswers": ["A file with no children", "A document with only one section", "A leaf node that doesn't have any children"],
+      "explanation": "A directory that can contain other directories and files is a typical Composite object, as it holds child components (files and subdirectories) and can contain further composites."
+    },
+    {
+      "question": "What happens if a method is called on a Composite object in the Composite design pattern?",
+      "correctAnswers": ["The method is passed to its child components"],
+      "incorrectAnswers": ["The method is ignored", "The method executes on the composite object only", "The method triggers recursion for the entire system"],
+      "explanation": "When a method is called on a Composite object, the method is typically passed down to its child components, which may be other composites or leaf objects."
+    },
+    {
+      "question": "Which of the following is true about the child objects in a Composite design pattern?",
+      "correctAnswers": ["They can be either Leaf or Composite objects"],
+      "incorrectAnswers": ["They can only be Leaf objects", "They can only be Composite objects", "They must all be the same type of object"],
+      "explanation": "In the Composite pattern, child objects can be either Leaf objects or Composite objects, allowing for flexible, recursive composition of components."
+    },
+    {
+      "question": "Which of the following is NOT a benefit of using the Composite design pattern?",
+      "correctAnswers": ["It eliminates the need for recursion in tree structures"],
+      "incorrectAnswers": ["It simplifies the client code", "It allows for flexible tree-like structures", "It enables uniform treatment of individual objects and composites"],
+      "explanation": "While the Composite pattern simplifies client code and enables uniform treatment of components, it does not eliminate the need for recursion, especially when traversing tree-like structures."
+    },
+    {
+      "question": "In the Composite pattern, which method is typically used by Composite objects to interact with child components?",
+      "correctAnswers": ["AddChild()"],
+      "incorrectAnswers": ["RemoveChild()", "AttachChild()", "LinkChild()"],
+      "explanation": "Composite objects typically use an 'AddChild()' method to add child components to the tree structure, enabling recursive composition."
+    }
+  ]
+  

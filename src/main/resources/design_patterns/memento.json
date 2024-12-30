@@ -1,0 +1,123 @@
+[
+    {
+      "question": "What is the primary purpose of the Memento design pattern?",
+      "correctAnswers": ["To save and restore an object's state"],
+      "incorrectAnswers": ["To define a family of algorithms and make them interchangeable", "To encapsulate a request as an object", "To provide a way to access an object's data without exposing its implementation"],
+      "explanation": "The Memento design pattern is used to save and restore an object's state without violating encapsulation."
+    },
+    {
+      "question": "Which class is responsible for storing the state in the Memento pattern?",
+      "correctAnswers": ["Memento"],
+      "incorrectAnswers": ["Originator", "Caretaker", "Observer"],
+      "explanation": "In the Memento pattern, the Memento class stores the internal state of the Originator."
+    },
+    {
+      "question": "What is the role of the Caretaker in the Memento pattern?",
+      "correctAnswers": ["Manages mementos but does not modify them"],
+      "incorrectAnswers": ["Stores the internal state of the Originator", "Encapsulates the logic for state restoration", "Implements the behavior of multiple states"],
+      "explanation": "The Caretaker manages mementos by storing and retrieving them but does not modify the memento's state."
+    },
+    {
+      "question": "Which design principle is upheld by the Memento pattern?",
+      "correctAnswers": ["Encapsulation"],
+      "incorrectAnswers": ["Inheritance", "Polymorphism", "Dependency Inversion"],
+      "explanation": "The Memento pattern preserves encapsulation by not exposing the internal details of the Originator."
+    },
+    {
+      "question": "What does the Originator do in the Memento pattern?",
+      "correctAnswers": ["Creates and restores mementos"],
+      "incorrectAnswers": ["Stores and manages mementos", "Accesses mementos to modify states", "Acts as a mediator for other objects"],
+      "explanation": "The Originator creates a memento to save its state and uses the memento to restore its state when needed."
+    },
+    {
+      "question": "How does the Caretaker interact with the Memento?",
+      "correctAnswers": ["It stores and retrieves Memento objects"],
+      "incorrectAnswers": ["It modifies the internal state of Memento objects", "It validates the state stored in Mementos", "It uses the Memento to alter the Originator directly"],
+      "explanation": "The Caretaker's responsibility is limited to storing and retrieving Memento objects without inspecting or modifying them."
+    },
+    {
+      "question": "Why is the internal state of a Memento typically private?",
+      "correctAnswers": ["To prevent external modification"],
+      "incorrectAnswers": ["To ensure the Originator can use it directly", "To allow only the Caretaker to access it", "To make it compatible with other design patterns"],
+      "explanation": "The internal state of a Memento is kept private to protect the encapsulation of the Originator's state."
+    },
+    {
+      "question": "What type of relationship exists between the Originator and the Memento?",
+      "correctAnswers": ["Close coupling"],
+      "incorrectAnswers": ["Loose coupling", "Mediator", "Inheritance"],
+      "explanation": "The Originator and Memento are closely coupled as the Originator creates and restores state using the Memento."
+    },
+    {
+      "question": "Which pattern is NOT similar to the Memento pattern?",
+      "correctAnswers": ["Observer pattern"],
+      "incorrectAnswers": ["Command pattern", "State pattern", "Prototype pattern"],
+      "explanation": "The Observer pattern deals with notifying changes, whereas the Memento pattern focuses on saving and restoring state."
+    },
+    {
+      "question": "Which component in the Memento pattern should not access the Memento's state?",
+      "correctAnswers": ["Caretaker"],
+      "incorrectAnswers": ["Originator", "Memento itself", "Any object implementing the strategy"],
+      "explanation": "The Caretaker only stores and retrieves mementos without accessing their internal state to maintain encapsulation."
+    },
+    {
+      "question": "What is a common use case for the Memento pattern?",
+      "correctAnswers": ["Undo functionality in applications"],
+      "incorrectAnswers": ["Notification systems", "Behavioral state management", "Implementing factory methods"],
+      "explanation": "The Memento pattern is commonly used for features like undo and rollback by saving snapshots of an object's state."
+    },
+    {
+      "question": "Which of the following is NOT a component of the Memento pattern?",
+      "correctAnswers": ["Singleton"],
+      "incorrectAnswers": ["Caretaker", "Originator", "Memento"],
+      "explanation": "The Memento pattern consists of the Caretaker, Originator, and Memento, but not Singleton."
+    },
+    {
+      "question": "How does the Memento pattern differ from the Prototype pattern?",
+      "correctAnswers": ["Memento stores states; Prototype clones objects"],
+      "incorrectAnswers": ["Memento modifies objects; Prototype creates objects", "Memento creates objects; Prototype modifies states", "Memento relies on inheritance; Prototype does not"],
+      "explanation": "The Memento pattern saves object states, while the Prototype pattern focuses on creating copies of objects."
+    },
+    {
+      "question": "What type of methods does the Originator use to create and apply mementos?",
+      "correctAnswers": ["CreateMemento and RestoreState"],
+      "incorrectAnswers": ["SaveState and LoadState", "Snapshot and Restore", "ExportState and ImportState"],
+      "explanation": "The Originator typically has methods like CreateMemento to save its state and RestoreState to apply it."
+    },
+    {
+      "question": "Why is the Memento pattern considered a behavioral design pattern?",
+      "correctAnswers": ["It focuses on object state management"],
+      "incorrectAnswers": ["It defines object creation strategies", "It structures class hierarchies", "It enhances object communication"],
+      "explanation": "The Memento pattern is classified as behavioral because it handles the behavior of saving and restoring object states."
+    },
+    {
+      "question": "Which design pattern often complements the Memento pattern?",
+      "correctAnswers": ["Command pattern"],
+      "incorrectAnswers": ["Factory pattern", "Observer pattern", "Builder pattern"],
+      "explanation": "The Command pattern complements the Memento pattern by using mementos to support undoable commands."
+    },
+    {
+      "question": "In the Memento pattern, what is a snapshot?",
+      "correctAnswers": ["A saved state of the Originator"],
+      "incorrectAnswers": ["A clone of the Originator object", "A reference to the Originator's current state", "A serialized version of the Caretaker"],
+      "explanation": "A snapshot in the Memento pattern refers to the saved state of the Originator stored in a Memento object."
+    },
+    {
+      "question": "Which object creates the Memento in the Memento pattern?",
+      "correctAnswers": ["Originator"],
+      "incorrectAnswers": ["Caretaker", "Memento itself", "Factory object"],
+      "explanation": "The Originator creates the Memento to capture its current state for later restoration."
+    },
+    {
+      "question": "What responsibility does the Memento have?",
+      "correctAnswers": ["Storing state information securely"],
+      "incorrectAnswers": ["Managing saved states", "Communicating between Caretaker and Originator", "Applying logic for state restoration"],
+      "explanation": "The Memento is solely responsible for securely storing the state information without exposing it."
+    },
+    {
+      "question": "What is a disadvantage of the Memento pattern?",
+      "correctAnswers": ["Increased memory usage for storing states"],
+      "incorrectAnswers": ["Difficulty in implementation", "Tight coupling between all components", "Excessive reliance on polymorphism"],
+      "explanation": "The Memento pattern can lead to increased memory usage when multiple states are stored over time."
+    }
+  ]
+  

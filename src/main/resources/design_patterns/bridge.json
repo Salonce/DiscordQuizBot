@@ -1,0 +1,123 @@
+[
+    {
+      "question": "What is the primary purpose of the Bridge design pattern?",
+      "correctAnswers": ["Decouple abstraction from implementation"],
+      "incorrectAnswers": ["Ensure a single point of modification in code", "Define strict inheritance hierarchies", "Optimize runtime performance for algorithms"],
+      "explanation": "The Bridge pattern separates an abstraction from its implementation so that the two can vary independently."
+    },
+    {
+      "question": "Which principle does the Bridge pattern primarily follow?",
+      "correctAnswers": ["Favor composition over inheritance"],
+      "incorrectAnswers": ["Encapsulation of behavior", "Single responsibility principle", "Dependency inversion principle"],
+      "explanation": "The Bridge pattern emphasizes using composition to combine abstractions and implementations dynamically, instead of rigid inheritance."
+    },
+    {
+      "question": "What role does the 'Abstraction' class play in the Bridge pattern?",
+      "correctAnswers": ["Provides high-level control and delegates implementation details"],
+      "incorrectAnswers": ["Manages all low-level operations directly", "Implements all methods for concrete classes", "Acts as a utility class for implementations"],
+      "explanation": "The Abstraction defines the interface and delegates detailed work to the Implementor."
+    },
+    {
+      "question": "Which component in the Bridge pattern contains the actual implementation?",
+      "correctAnswers": ["Implementor"],
+      "incorrectAnswers": ["Bridge", "Concrete Abstraction", "Strategy"],
+      "explanation": "The Implementor defines the interface for all concrete implementations and handles the detailed work."
+    },
+    {
+      "question": "How does the Bridge pattern promote flexibility?",
+      "correctAnswers": ["By allowing abstraction and implementation to evolve independently"],
+      "incorrectAnswers": ["By enforcing strict object hierarchies", "By making all methods static and reusable", "By centralizing all logic in one class"],
+      "explanation": "The Bridge pattern enables changes in abstraction or implementation without affecting the other, fostering flexibility."
+    },
+    {
+      "question": "Which of the following is a real-world analogy of the Bridge pattern?",
+      "correctAnswers": ["A remote control operating different TV models"],
+      "incorrectAnswers": ["A vending machine dispensing snacks", "A car engine converting fuel to motion", "A smartphone application managing notifications"],
+      "explanation": "A remote control works as the abstraction, while different TV models serve as implementations, demonstrating the Bridge pattern."
+    },
+    {
+      "question": "What type of relationship does the Bridge pattern promote between abstraction and implementation?",
+      "correctAnswers": ["Aggregation"],
+      "incorrectAnswers": ["Inheritance", "Composition only", "Dependency injection"],
+      "explanation": "The Bridge pattern uses aggregation to link the abstraction to its implementation, rather than direct inheritance."
+    },
+    {
+      "question": "When is the Bridge design pattern most beneficial?",
+      "correctAnswers": ["When abstraction and implementation need independent variations"],
+      "incorrectAnswers": ["When you want to centralize control flow", "When multiple inheritance is required", "When runtime efficiency is a top priority"],
+      "explanation": "The Bridge pattern is ideal for scenarios where you need to vary both abstraction and implementation independently."
+    },
+    {
+      "question": "Which design pattern is most similar to the Bridge pattern in concept?",
+      "correctAnswers": ["Adapter"],
+      "incorrectAnswers": ["Singleton", "Factory Method", "Observer"],
+      "explanation": "Both Adapter and Bridge work on decoupling, but Adapter is for adapting interfaces, while Bridge separates abstraction and implementation."
+    },
+    {
+      "question": "What is a drawback of the Bridge pattern?",
+      "correctAnswers": ["Increases complexity with additional layers"],
+      "incorrectAnswers": ["Limits scalability for large projects", "Forces inheritance hierarchies", "Reduces code reusability across modules"],
+      "explanation": "The Bridge pattern introduces complexity by adding abstraction and implementation layers."
+    },
+    {
+      "question": "In the Bridge pattern, what is the relationship between the 'Abstraction' and 'Implementor' interfaces?",
+      "correctAnswers": ["Abstraction uses Implementor"],
+      "incorrectAnswers": ["Abstraction extends Implementor", "Implementor depends on Abstraction", "Implementor aggregates Abstraction"],
+      "explanation": "The Abstraction relies on the Implementor to perform specific tasks, achieving separation of concerns."
+    },
+    {
+      "question": "Which pattern is often confused with the Bridge pattern due to structural similarities?",
+      "correctAnswers": ["Adapter pattern"],
+      "incorrectAnswers": ["Prototype pattern", "Flyweight pattern", "Command pattern"],
+      "explanation": "The Adapter and Bridge patterns share similar structures, but they solve different problems."
+    },
+    {
+      "question": "Which problem does the Bridge pattern solve?",
+      "correctAnswers": ["Avoiding a combinatorial explosion of classes"],
+      "incorrectAnswers": ["Improving real-time system performance", "Optimizing resource allocation", "Implementing multiple interfaces in a single class"],
+      "explanation": "The Bridge pattern helps avoid the explosion of subclasses by separating abstraction from implementation."
+    },
+    {
+      "question": "What type of method does the 'Abstraction' class typically provide?",
+      "correctAnswers": ["High-level methods that use Implementor functionality"],
+      "incorrectAnswers": ["Low-level methods for direct interaction", "Utility methods for static operations", "Factory methods for creating objects"],
+      "explanation": "The Abstraction provides high-level methods and delegates detailed work to the Implementor."
+    },
+    {
+      "question": "Which component is responsible for providing concrete implementations in the Bridge pattern?",
+      "correctAnswers": ["Concrete Implementor"],
+      "incorrectAnswers": ["Concrete Abstraction", "Facade", "Proxy"],
+      "explanation": "The Concrete Implementor defines the actual implementation for the operations declared by the Implementor interface."
+    },
+    {
+      "question": "How does the Bridge pattern differ from inheritance?",
+      "correctAnswers": ["It separates abstraction and implementation using composition"],
+      "incorrectAnswers": ["It relies on polymorphism for reusability", "It eliminates the need for any inheritance", "It enforces strict class hierarchies"],
+      "explanation": "Unlike inheritance, the Bridge pattern uses composition to decouple abstraction from implementation."
+    },
+    {
+      "question": "What is the key benefit of decoupling abstraction and implementation?",
+      "correctAnswers": ["Allows both to change independently"],
+      "incorrectAnswers": ["Improves execution speed", "Simplifies code for small projects", "Ensures single-threaded operations"],
+      "explanation": "Decoupling abstraction and implementation allows for changes in one without impacting the other, enhancing flexibility."
+    },
+    {
+      "question": "Which UML relationship represents the Bridge pattern's structure?",
+      "correctAnswers": ["Aggregation between Abstraction and Implementor"],
+      "incorrectAnswers": ["Generalization of classes", "Association between all components", "Dependency injection into the interface"],
+      "explanation": "The Bridge pattern relies on an aggregation relationship between the abstraction and its implementor."
+    },
+    {
+      "question": "Which keyword best describes the Bridge pattern's approach to object-oriented design?",
+      "correctAnswers": ["Separation"],
+      "incorrectAnswers": ["Inheritance", "Optimization", "Encapsulation"],
+      "explanation": "The Bridge pattern emphasizes the separation of abstraction and implementation to enhance flexibility and scalability."
+    },
+    {
+      "question": "What is the first step in implementing the Bridge pattern?",
+      "correctAnswers": ["Define the abstraction and implementation interfaces"],
+      "incorrectAnswers": ["Create all concrete classes", "Establish a singleton for the implementor", "Use factories to build the abstractions"],
+      "explanation": "The first step in the Bridge pattern is to define the abstraction and implementation interfaces for decoupling."
+    }
+  ]
+  
