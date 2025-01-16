@@ -1,10 +1,11 @@
-FROM maven@sha256:4c50122665c495f188f0072b41d19253c89c3d14d3c0c22a020e53a6ddd9fba7 AS builder
+FROM maven@sha256:cab0e1f1ede6c0f56118b59dff1bf3e12bafa51ed32677afd29f2818890d9fba AS maven
 WORKDIR /app
 COPY pom.xml .
 COPY src src
 RUN mvn clean package -DskipTests
 
-FROM eclipse-temurin@sha256:10ad0bcc8eef2729dac7fe5938ef615c7ac46eac9016163ca01986715df4fcd8
+
+FROM eclipse-temurin@sha256:04ea31625d7771f3272bdc533a2871c00a8268f1a6774528b2a7389515f7b5b1 AS jre
 RUN apk update && apk add --no-cache curl
-COPY --from=builder /app/target/discord_quiz.jar todolist.jar
-ENTRYPOINT ["java", "-jar", "/discord_quiz.jar"]
+COPY --from=maven /app/target/discordQuizBot-0.0.1-SNAPSHOT.jar discord_quizBot.jar
+ENTRYPOINT ["java", "-jar", "discord_quizBot.jar"]
