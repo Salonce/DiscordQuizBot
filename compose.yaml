@@ -1,0 +1,13 @@
+name: discordquizbot
+
+services:
+  discord-quiz-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: discordquizmain:0
+    container_name: discordquizmain
+    environment:
+      discord.bot.token: ${QUIZ_DISCORDBOT_TOKEN}
+    ports:
+      - '8080:8080'
