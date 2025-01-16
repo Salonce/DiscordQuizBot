@@ -7,5 +7,5 @@ RUN mvn clean package -DskipTests
 
 FROM eclipse-temurin@sha256:04ea31625d7771f3272bdc533a2871c00a8268f1a6774528b2a7389515f7b5b1 AS jre
 RUN apk update && apk add --no-cache curl
-COPY --from=maven /app/target/discordQuizBot-0.0.1-SNAPSHOT.jar discord_quizBot.jar
-ENTRYPOINT ["java", "-jar", "discord_quizBot.jar"]
+COPY --from=maven /app/target/discordQuizBot.jar discordQuizBot.jar
+ENTRYPOINT ["java", "-jar", "discordQuizBot.jar"]
