@@ -2,6 +2,7 @@ package dev.salonce.discordQuizBot.Core.Questions;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.salonce.discordQuizBot.Configs.QuestionSetsConfig;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -36,8 +37,8 @@ public class QuestionRepository {
     private List<RawQuestion> loadQuestionsFromFile(String filePath){
         try {
             ObjectMapper mapper = new ObjectMapper();
-            File file = new File(filePath);
-            return Arrays.asList(mapper.readValue(file, RawQuestion[].class));
+            ClassPathResource resource = new ClassPathResource(filePath);
+            return Arrays.asList(mapper.readValue(resource.getInputStream(), RawQuestion[].class));
         }
         catch(Exception e){
             System.out.println("Couldn't load file: " + filePath);
