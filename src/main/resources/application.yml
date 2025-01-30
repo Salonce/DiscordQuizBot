@@ -25,7 +25,6 @@ questions:
     art_history: art_history.json
     python: python.json
     painting_techniques: painting_techniques.json
-    nihilism: nihilism.json
     programming:
     - general_programming/oop.json
     - general_programming/concurrency.json
