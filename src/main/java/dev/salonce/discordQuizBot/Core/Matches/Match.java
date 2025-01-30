@@ -47,6 +47,14 @@ public class Match{
         players.put(owner, new Player(questions.size()));
     }
 
+    public boolean everyoneAnswered(){
+        for (Player player : players.values()){
+            if (player.getAnswersList().get(currentQuestionNum) == -1)
+                return false;
+        }
+        return true;
+    }
+
     public void setNoAnswerCountAndCloseMatchIfLimit(){
         int noAnswersCount = 0;
         for (Player player : players.values()){
@@ -106,16 +114,6 @@ public class Match{
 
     private int getQuestionCorrectAnswerInt(){
         return questions.get(currentQuestionNum).getCorrectAnswerInt();
-    }
-
-    private String getQuestionCorrectAnswerString(){
-        return questions.get(currentQuestionNum).getCorrectAnswerString();
-    }
-
-    public void cleanPlayersAnswers(){
-        for (Player player : players.values()){
-            player.setCurrentAnswerNum(-1);
-        }
     }
 
     public String getUsersAnswers(){
