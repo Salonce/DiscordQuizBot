@@ -418,13 +418,28 @@ public void addMatch(MessageChannel messageChannel, Match match) {
 
     public Mono<Message> sendHelpMessage(MessageChannel messageChannel) {
         Match match = quizzes.get(messageChannel);
+        String example = null;
+        if (!questionSetsConfig.getFiles().keySet().isEmpty())
+            example = questionSetsConfig.getFiles().keySet().iterator().next();
 
-        EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("Help" )
-                .addField("Categories", questionSetsConfig.getFiles().keySet().stream().sorted(String::compareTo).collect(Collectors.joining(", ")), false)
-                //.addField("Syntax", "**qq quiz *category***", false)
-                .addField("Example", "To start memory quiz, type: **qq quiz *memory***.", false)
-                .build();
+        EmbedCreateSpec embed;
+        if (example != null) {
+            EmbedCreateSpec.Builder embedBuilder = EmbedCreateSpec.builder()
+                    .title("Categories");
+
+            List<String> categories = questionSetsConfig.getFiles().keySet().stream().sorted(String::compareTo).toList();
+
+            embed = embedBuilder
+                    .addField("Categories", categories.stream().collect(Collectors.joining("\n")), false)
+                    .addField("Example", "To start **" + example + "** quiz, type: **qq quiz " + example + "**.", false)
+                    .build();
+        }
+        else{
+            embed = EmbedCreateSpec.builder()
+                    .title("No data" )
+                    .addField("", "Sorry. This bot has no available quizzes.", false)
+                    .build();
+        }
 
         return messageChannel.createMessage(embed);
     }
