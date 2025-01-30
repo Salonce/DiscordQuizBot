@@ -425,7 +425,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         EmbedCreateSpec embed;
         if (example != null) {
             EmbedCreateSpec.Builder embedBuilder = EmbedCreateSpec.builder()
-                    .title("Categories");
+                    .title("Help");
 
             List<String> categories = questionSetsConfig.getFiles().keySet().stream().sorted(String::compareTo).toList();
 
