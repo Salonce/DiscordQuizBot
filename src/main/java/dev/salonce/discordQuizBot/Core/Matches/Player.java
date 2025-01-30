@@ -9,6 +9,9 @@ import java.util.List;
 
 @Getter
 public class Player {
+
+    private List<Integer> answersList;
+
     public Player(int numOfAnswers){
         this.points = 0;
         answersList = new ArrayList<>();
@@ -18,14 +21,6 @@ public class Player {
         //this.answersList = new ArrayList<>(Collections.nCopies(numOfAnswers, -1));
     }
     private int points;
-
-    private List<Integer> answersList;
-
-    @Setter
-    private Character currentAnswer = '0';
-
-    @Setter
-    private Integer currentAnswerNum = -1;
 
     public void addPoint(){
         this.points++;

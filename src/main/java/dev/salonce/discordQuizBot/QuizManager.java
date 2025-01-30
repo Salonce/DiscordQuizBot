@@ -121,7 +121,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
                                         int totalTime = quizConfig.getTimeToPickAnswer();
                                         return Flux.interval(Duration.ofSeconds(1)) // Emit every second
                                                 .take(totalTime)// Number of updates
-                                                .takeUntil(interval -> match.isClosed())
+                                                .takeUntil(interval -> match.isClosed() || match.everyoneAnswered())
                                                 .flatMap(interval -> {
                                                     int timeLeft = totalTime - (interval.intValue() + 1); // Calculate remaining time
                                                     return editQuestionMessageTime(messageChannel, message, index, timeLeft);
@@ -405,7 +405,6 @@ public void addMatch(MessageChannel messageChannel, Match match) {
             return AnswerInteractionEnum.TOO_LATE;
 
         if (match.getPlayers().containsKey(user)) {
-            match.getPlayers().get(user).setCurrentAnswerNum(questionNum);
             match.getPlayers().get(user).getAnswersList().set(questionNum, answerNum);
             return AnswerInteractionEnum.VALID;
         }
