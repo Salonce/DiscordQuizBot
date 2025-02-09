@@ -15,6 +15,8 @@ public class Match{
     private int currentQuestionNum;
     private int noAnswerCount;
 
+
+
     private EnumMatchClosed enumMatchClosed;
     @Setter
     private boolean answeringOpen;
@@ -22,6 +24,8 @@ public class Match{
     private boolean enrollment;
     @Setter
     private User owner;
+    @Setter
+    private boolean startNow;
 
     private String name;
 
@@ -38,6 +42,7 @@ public class Match{
         this.owner = owner;
         this.unansweredQuestionsLimit = unansweredQuestionsLimit;
         this.enumMatchClosed = EnumMatchClosed.NOT_CLOSED;
+        this.startNow = false;
 
         if (type != null) {
             String capitalized = type.substring(0, 1).toUpperCase() + type.substring(1);
