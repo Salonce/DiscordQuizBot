@@ -51,6 +51,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
                         Flux.interval(Duration.ofSeconds(1))
                                 .take(totalTimeToJoinLeft)
                                 .takeUntil(interval -> match.isClosed()) // Stop if match is closed
+                                .takeUntil(interval -> match.isStartNow())
                                 .flatMap(interval -> {
                                     Long timeLeft = (long) (totalTimeToJoinLeft - interval.intValue() - 1);
                                     return editStartQuizMessage(message, messageChannel, timeLeft);
@@ -276,7 +277,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
                 .build();
 
         MessageCreateSpec spec = MessageCreateSpec.builder()
-                .addComponent(ActionRow.of(Button.success("joinQuiz", "Join"), Button.success("leaveQuiz", "Leave"), Button.danger("cancelQuiz", "Cancel")))
+                .addComponent(ActionRow.of(Button.primary("startNow", "Start now"), Button.success("joinQuiz", "Join"), Button.success("leaveQuiz", "Leave"), Button.danger("cancelQuiz", "Cancel")))
                 .addEmbed(embed)
                 .build();
 
@@ -295,7 +296,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
                 .build();
 
         return message.edit(MessageEditSpec.builder()
-                .addComponent(ActionRow.of(Button.success("joinQuiz", "Join"), Button.success("leaveQuiz", "Leave"), Button.danger("cancelQuiz", "Cancel")))
+                .addComponent(ActionRow.of(Button.primary("startNow", "Start now"), Button.success("joinQuiz", "Join"), Button.success("leaveQuiz", "Leave"), Button.danger("cancelQuiz", "Cancel")))
                 .addEmbed(embed)
                 .build());
     }
@@ -312,7 +313,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
                 .build();
 
         return message.edit(MessageEditSpec.builder()
-                .addComponent(ActionRow.of(Button.success("joinQuiz", "Join").disabled(), Button.success("leaveQuiz", "Leave").disabled(), Button.danger("cancelQuiz", "Cancel").disabled()))
+                .addComponent(ActionRow.of(Button.primary("startNow", "Start now").disabled(), Button.success("joinQuiz", "Join").disabled(), Button.success("leaveQuiz", "Leave").disabled(), Button.danger("cancelQuiz", "Cancel").disabled()))
                 .addEmbed(embed)
                 .build());
     }
@@ -385,6 +386,24 @@ public void addMatch(MessageChannel messageChannel, Match match) {
 
         if (quizzes.containsKey(messageChannel))
             return quizzes.get(messageChannel).removePlayer(user);
+        else{
+            return "This match doesn't exist anymore.";
+        }
+    }
+
+    public String startNow(ButtonInteraction buttonInteraction){
+        User user = buttonInteraction.getUser();
+        Message message = buttonInteraction.getMessage();
+        MessageChannel messageChannel = buttonInteraction.getMessageChannel();
+
+        if (quizzes.containsKey(messageChannel)){
+            if (!quizzes.get(messageChannel).isStartNow()) {
+                quizzes.get(messageChannel).setStartNow(true);
+                return "Starting immediately";
+            }
+            else
+                return "Already started";
+        }
         else{
             return "This match doesn't exist anymore.";
         }

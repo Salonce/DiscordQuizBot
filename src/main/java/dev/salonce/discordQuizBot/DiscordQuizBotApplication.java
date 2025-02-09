@@ -50,9 +50,6 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 
 			gateway.on(ButtonInteractionEvent.class, event -> {
 				//if button interaction failed right before disabling, there is no message sent even at the beginning of buttonInteraction event,
-				// which means it just fails right before the blocking and i can't work on that
-				// maybe also check event interaction date to not process anything too old
-				//System.out.println("Button event clicked.");
 				String buttonId = event.getCustomId();
 				//System.out.println("1button id: " + buttonId);
 				ButtonInteraction buttonInteraction = new ButtonInteraction(event);
@@ -73,6 +70,10 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 					case "leaveQuiz" -> {
 						String leavingText = quizManager.removeUserFromMatch(buttonInteraction);
 						yield event.reply(leavingText).withEphemeral(true);
+					}
+					case "startNow" -> {
+						String startNowText = quizManager.startNow(buttonInteraction);
+						yield event.reply(startNowText).withEphemeral(true);
 					}
 					case "cancelQuiz" -> {
 						boolean canceled = quizManager.cancelQuiz(buttonInteraction);
