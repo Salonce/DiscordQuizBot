@@ -41,8 +41,6 @@ questions:
     - philosophy/rationalism.json
     - philosophy/relativism.json
     - philosophy/stoicism.json
-    wealth_inequality: wealth_inequality.json
-    modern_democracy: modern_democracy.json
     design_patterns:
     - design_patterns/abstractFactory.json
     - design_patterns/adapter.json
