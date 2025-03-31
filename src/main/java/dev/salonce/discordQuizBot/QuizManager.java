@@ -173,11 +173,13 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         }
         buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
 
+        //String formattedTime = String.format("%02d", timeLeft);
+
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("#" + (match.getCurrentQuestionNum() + 1) + " **" + match.getQuestion().getQuestion() + "**")
                 //.description("**" + match.getQuestion().getQuestion() + "**")
                 .addField("\n", questionsAnswers + "\n", false)
-                .addField("\n", "You have " + timeLeft + "s to answer." + "\n", false)
+                .addField("\n", "```" + timeLeft + " seconds left.```", false)
                 .build();
 
         MessageCreateSpec spec = MessageCreateSpec.builder()
@@ -200,11 +202,13 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         }
         buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
 
+        //String formattedTime = String.format("%02d", timeLeft);
+
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("#" + (match.getCurrentQuestionNum() + 1) + " **" + match.getQuestion().getQuestion() + "**")
                 //.description("**" + match.getQuestion().getQuestion() + "**")
                 .addField("\n", questionsAnswers + "\n", false)
-                .addField("\n", "You have " + timeLeft + "s to answer." + "\n", false)
+                .addField("\n", "```" + timeLeft + " seconds left.```", false)
                 .build();
 
         return message.edit(MessageEditSpec.builder()
@@ -270,10 +274,10 @@ public void addMatch(MessageChannel messageChannel, Match match) {
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 //.title("\uD83C\uDFC1 Java Quiz")
-                .title("\uD83C\uDFC1" + match.getName() + " quiz")
+                .title(match.getName() + " quiz" + " 🧠")
                 .addField("Number of questions", String.valueOf(match.getQuestions().size()), false)
                 .addField("Participants", match.getUserNames(), false)
-                .addField("Time", timeToJoinLeft + " seconds to join.", false)
+                .addField("Time", "```" + timeToJoinLeft + " seconds to join.```", false)
                 .build();
 
         MessageCreateSpec spec = MessageCreateSpec.builder()
@@ -289,10 +293,10 @@ public void addMatch(MessageChannel messageChannel, Match match) {
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 //.title("\uD83C\uDFC1 Java Quiz")
-                .title("\uD83C\uDFC1" + match.getName() + " quiz")
+                .title(match.getName() + " quiz" + " 🧠")
                 .addField("Number of questions", String.valueOf(match.getQuestions().size()), false)
                 .addField("Participants", match.getUserNames(), false)
-                .addField("Time", timeToJoinLeft + " seconds to join.", false)
+                .addField("Time", "```" + timeToJoinLeft + " seconds to join.``` ", false)
                 .build();
 
         return message.edit(MessageEditSpec.builder()
@@ -306,10 +310,10 @@ public void addMatch(MessageChannel messageChannel, Match match) {
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 //.title("\uD83C\uDFC1 Java Quiz")
-                .title("\uD83C\uDFC1" + match.getName() + " quiz")
+                .title(match.getName() + " quiz" + " 🧠")
                 .addField("Number of questions", String.valueOf(match.getQuestions().size()), false)
                 .addField("Participants", match.getUserNames(), false)
-                .addField("Time", timeToStartLeft + " seconds to start.", false)
+                .addField("Time", "```" + timeToStartLeft + " seconds to start.``` ", false)
                 .build();
 
         return message.edit(MessageEditSpec.builder()
@@ -438,19 +442,23 @@ public void addMatch(MessageChannel messageChannel, Match match) {
     public Mono<Message> sendHelpMessage(MessageChannel messageChannel) {
         Match match = quizzes.get(messageChannel);
         String example = null;
-        if (!questionSetsConfig.getFiles().keySet().isEmpty())
-            example = questionSetsConfig.getFiles().keySet().iterator().next();
+        String example2 = null;
+        Iterator <String> iterator = questionSetsConfig.getFiles().keySet().iterator();
+        if (iterator.hasNext())
+            example = iterator.next();
+        if (iterator.hasNext())
+            example2 = iterator.next();
 
         EmbedCreateSpec embed;
-        if (example != null) {
-            EmbedCreateSpec.Builder embedBuilder = EmbedCreateSpec.builder()
-                    .title("Help");
+        if (example != null && example2 != null) {
+            EmbedCreateSpec.Builder embedBuilder = EmbedCreateSpec.builder();
 
             List<String> categories = questionSetsConfig.getFiles().keySet().stream().sorted(String::compareTo).toList();
 
             embed = embedBuilder
-                    .addField("Categories", categories.stream().collect(Collectors.joining("\n")), false)
-                    .addField("Example", "To start **" + example + "** quiz, type: **qq quiz " + example + "**.", false)
+                    .addField("How to start a quiz?", "Choose a category and type: **qq quiz <selected category>**", false)
+                    .addField("Examples", "To start **" + example + "** quiz, type: **qq quiz " + example + "**\n" + "To start **" + example2 + "** quiz, type: **qq quiz " + example2 + "**", false)
+                    .addField("Available categories", categories.stream().collect(Collectors.joining("\n")), false)
                     .build();
         }
         else{
