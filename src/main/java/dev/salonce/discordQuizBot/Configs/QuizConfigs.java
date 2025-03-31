@@ -18,7 +18,7 @@ public class QuizConfigs {
         else if (mode.equals("testing2"))
             return new QuizConfig(5, 2, 5, 5, 30, 3);
         else if (mode.equals("standard"))
-            return new QuizConfig(10, 2, 30, 5, 30, 10);
+            return new QuizConfig(10, 2, 30, 3, 30, 10);
         else if (mode.equals("eureka"))
             return new QuizConfig(10, 2, 15, 2, 15, 7);
         else{
