@@ -1,7 +1,7 @@
 package dev.salonce.discordQuizBot.Core.Messages.Handlers;
 
 import dev.salonce.discordQuizBot.Core.Messages.DiscordMessage;
-import dev.salonce.discordQuizBot.QuizManager;
+import dev.salonce.discordQuizBot.Core.QuizManager;
 import dev.salonce.discordQuizBot.Core.Messages.MessageHandler;
 import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.RequiredArgsConstructor;
