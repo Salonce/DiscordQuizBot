@@ -1,0 +1,374 @@
+[
+    {
+      "question": "Which bone is the longest in the human body?",
+      "correctAnswers": ["Femur"],
+      "incorrectAnswers": ["Tibia", "Humerus", "Fibula"],
+      "explanation": "The femur is the longest and strongest bone in the human body, located in the thigh."
+    },
+    {
+      "question": "What is the name of the bone located in the forearm on the thumb side?",
+      "correctAnswers": ["Radius"],
+      "incorrectAnswers": ["Ulna", "Scaphoid", "Carpal"],
+      "explanation": "The radius is located on the thumb side of the forearm and is involved in wrist movement."
+    },
+    {
+      "question": "Which bone forms the upper jaw?",
+      "correctAnswers": ["Maxilla"],
+      "incorrectAnswers": ["Mandible", "Zygomatic", "Nasal"],
+      "explanation": "The maxilla forms the upper jaw and supports the upper teeth."
+    },
+    {
+      "question": "What bone is known as the collarbone?",
+      "correctAnswers": ["Clavicle"],
+      "incorrectAnswers": ["Scapula", "Sternum", "Rib"],
+      "explanation": "The clavicle, or collarbone, is a long bone that connects the arm to the body."
+    },
+    {
+      "question": "Which bone is found in the skull and forms part of the cheekbone?",
+      "correctAnswers": ["Zygomatic"],
+      "incorrectAnswers": ["Temporal", "Frontal", "Maxilla"],
+      "explanation": "The zygomatic bone forms part of the cheekbone and helps shape the face."
+    },
+    {
+      "question": "Which bone is located in the middle of the chest and connects the ribs?",
+      "correctAnswers": ["Sternum"],
+      "incorrectAnswers": ["Clavicle", "Scapula", "Tibia"],
+      "explanation": "The sternum, or breastbone, is located in the center of the chest and connects to the ribs."
+    },
+    {
+      "question": "What is the name of the bone that forms the base of the skull?",
+      "correctAnswers": ["Occipital bone"],
+      "incorrectAnswers": ["Temporal bone", "Parietal bone", "Frontal bone"],
+      "explanation": "The occipital bone is located at the base of the skull and contains the foramen magnum."
+    },
+    {
+      "question": "Which bone is commonly known as the kneecap?",
+      "correctAnswers": ["Patella"],
+      "incorrectAnswers": ["Tibia", "Fibula", "Femur"],
+      "explanation": "The patella, or kneecap, protects and maintains the knee joint."
+    },
+    {
+      "question": "Which bone forms the lower jaw?",
+      "correctAnswers": ["Mandible"],
+      "incorrectAnswers": ["Maxilla", "Zygomatic", "Temporal"],
+      "explanation": "The mandible forms the lower jaw and is the largest and strongest bone in the face."
+    },
+    {
+      "question": "What is the name of the bone that forms the front of the skull?",
+      "correctAnswers": ["Frontal bone"],
+      "incorrectAnswers": ["Parietal bone", "Temporal bone", "Occipital bone"],
+      "explanation": "The frontal bone forms the front of the skull and is involved in forming the forehead."
+    },
+    {
+      "question": "Which bone is located at the back of the skull?",
+      "correctAnswers": ["Occipital bone"],
+      "incorrectAnswers": ["Parietal bone", "Temporal bone", "Frontal bone"],
+      "explanation": "The occipital bone is located at the back of the skull and contains the foramen magnum for spinal cord passage."
+    },
+    {
+      "question": "Which bone forms the back and side of the skull?",
+      "correctAnswers": ["Parietal bone"],
+      "incorrectAnswers": ["Temporal bone", "Occipital bone", "Frontal bone"],
+      "explanation": "The parietal bone forms the back and sides of the skull and protects the brain."
+    },
+    {
+      "question": "Which bone is commonly referred to as the 'tailbone'?",
+      "correctAnswers": ["Coccyx"],
+      "incorrectAnswers": ["Sacrum", "Pelvis", "Ischium"],
+      "explanation": "The coccyx, or tailbone, is the small triangular bone at the bottom of the vertebral column."
+    },
+    {
+      "question": "Which bone in the hand is known as the thumb bone?",
+      "correctAnswers": ["First metacarpal"],
+      "incorrectAnswers": ["Scaphoid", "Pisiform", "Lunate"],
+      "explanation": "The first metacarpal is the bone in the hand that supports the thumb."
+    },
+    {
+      "question": "What is the name of the bone that connects the foot to the lower leg?",
+      "correctAnswers": ["Talus"],
+      "incorrectAnswers": ["Calcaneus", "Navicular", "Cuboid"],
+      "explanation": "The talus is the bone in the foot that connects the foot to the lower leg and is essential for ankle movement."
+    },
+    {
+      "question": "Which part of the vertebrae is responsible for bearing the weight of the body?",
+      "correctAnswers": ["Body of vertebra"],
+      "incorrectAnswers": ["Spinous process", "Transverse process", "Pedicle"],
+      "explanation": "The body of the vertebra is the main portion of the vertebra that bears weight."
+    },
+    {
+      "question": "What is the name of the bone that forms the back of the throat?",
+      "correctAnswers": ["Hyoid bone"],
+      "incorrectAnswers": ["Mandible", "Maxilla", "Sphenoid"],
+      "explanation": "The hyoid bone is located in the neck and supports the tongue, allowing for swallowing and speech."
+    },
+    {
+      "question": "Which bones form the shoulder girdle?",
+      "correctAnswers": ["Clavicle and scapula"],
+      "incorrectAnswers": ["Humerus and scapula", "Clavicle and radius", "Humerus and clavicle"],
+      "explanation": "The shoulder girdle is formed by the clavicle (collarbone) and the scapula (shoulder blade)."
+    },
+    {
+      "question": "Which bone is known as the 'shinbone'?",
+      "correctAnswers": ["Tibia"],
+      "incorrectAnswers": ["Fibula", "Femur", "Patella"],
+      "explanation": "The tibia, or shinbone, is the larger and stronger of the two bones in the lower leg."
+    },
+    {
+        "question": "Which bone is commonly known as the breastbone?",
+        "correctAnswers": ["Sternum"],
+        "incorrectAnswers": ["Clavicle", "Scapula", "Manubrium"],
+        "explanation": "The sternum is a flat bone located in the center of the chest, connecting the ribs and protecting vital organs."
+    },
+    {
+        "question": "Which bone is located in the upper arm?",
+        "correctAnswers": ["Humerus"],
+        "incorrectAnswers": ["Radius", "Ulna", "Scapula"],
+        "explanation": "The humerus is the bone of the upper arm, connecting the shoulder to the elbow."
+    },
+    {
+        "question": "What is the name of the small bone found in the knee that helps protect the joint?",
+        "correctAnswers": ["Patella"],
+        "incorrectAnswers": ["Fibula", "Tibia", "Sesamoid bone"],
+        "explanation": "The patella, or kneecap, is a sesamoid bone that protects and stabilizes the knee joint."
+    },
+    {
+        "question": "Which bone is located in the lower leg and runs parallel to the tibia?",
+        "correctAnswers": ["Fibula"],
+        "incorrectAnswers": ["Femur", "Patella", "Metatarsal"],
+        "explanation": "The fibula is a slender bone in the lower leg that runs alongside the tibia and provides support."
+    },
+    {
+        "question": "Which bone connects the skull to the spine?",
+        "correctAnswers": ["Atlas"],
+        "incorrectAnswers": ["Axis", "Occipital bone", "Mandible"],
+        "explanation": "The atlas is the first cervical vertebra that supports the skull and allows head movement."
+    },
+    {
+        "question": "Which bone is found in the wrist and connects with the radius?",
+        "correctAnswers": ["Scaphoid"],
+        "incorrectAnswers": ["Lunate", "Trapezium", "Capitate"],
+        "explanation": "The scaphoid is one of the carpal bones in the wrist that articulates with the radius."
+    },
+    {
+        "question": "Which bone forms the heel of the foot?",
+        "correctAnswers": ["Calcaneus"],
+        "incorrectAnswers": ["Talus", "Navicular", "Cuboid"],
+        "explanation": "The calcaneus is the largest tarsal bone and forms the heel of the foot."
+    },
+    {
+        "question": "Which bones make up the fingers?",
+        "correctAnswers": ["Phalanges"],
+        "incorrectAnswers": ["Metacarpals", "Carpals", "Tarsals"],
+        "explanation": "The phalanges are the bones in the fingers and toes, allowing for movement and dexterity."
+    },
+    {
+        "question": "Which vertebra allows the head to rotate?",
+        "correctAnswers": ["Axis"],
+        "incorrectAnswers": ["Atlas", "Cervical vertebra", "Occipital bone"],
+        "explanation": "The axis is the second cervical vertebra that allows rotational movement of the head."
+    },
+    {
+        "question": "What is the name of the bone that forms the side of the skull near the ear?",
+        "correctAnswers": ["Temporal bone"],
+        "incorrectAnswers": ["Parietal bone", "Frontal bone", "Zygomatic bone"],
+        "explanation": "The temporal bone is located on the side of the skull and houses structures of the ear."
+    },
+    {
+        "question": "Which set of bones protects the spinal cord?",
+        "correctAnswers": ["Vertebrae"],
+        "incorrectAnswers": ["Ribs", "Pelvis", "Sternum"],
+        "explanation": "The vertebrae form the spinal column, protecting the spinal cord and supporting body movement."
+    },
+    {
+        "question": "Which bone supports the weight of the body in a seated position?",
+        "correctAnswers": ["Ischium"],
+        "incorrectAnswers": ["Ilium", "Pubis", "Sacrum"],
+        "explanation": "The ischium is part of the pelvis and bears weight when sitting."
+    },
+    {
+        "question": "Which bone is commonly known as the hip bone?",
+        "correctAnswers": ["Ilium"],
+        "incorrectAnswers": ["Pubis", "Ischium", "Sacrum"],
+        "explanation": "The ilium is the largest part of the pelvis and forms the hip bone."
+    },
+    {
+        "question": "Which bones make up the palm of the hand?",
+        "correctAnswers": ["Metacarpals"],
+        "incorrectAnswers": ["Phalanges", "Carpals", "Tarsals"],
+        "explanation": "The metacarpals are the bones in the palm that connect the fingers to the wrist."
+    },
+    {
+        "question": "Which bone contains the foramen magnum, the opening for the spinal cord?",
+        "correctAnswers": ["Occipital bone"],
+        "incorrectAnswers": ["Temporal bone", "Parietal bone", "Sphenoid bone"],
+        "explanation": "The occipital bone is located at the back of the skull and contains the foramen magnum."
+    },
+    {
+        "question": "Which bone forms the front of the lower leg?",
+        "correctAnswers": ["Tibia"],
+        "incorrectAnswers": ["Fibula", "Femur", "Patella"],
+        "explanation": "The tibia, or shinbone, is the larger bone in the lower leg that bears most of the body’s weight."
+    },
+    {
+        "question": "Which bone is found in the neck and supports the tongue?",
+        "correctAnswers": ["Hyoid bone"],
+        "incorrectAnswers": ["Mandible", "Maxilla", "Cervical vertebra"],
+        "explanation": "The hyoid bone is a small, U-shaped bone in the neck that supports the tongue and aids in swallowing."
+    },
+    {
+        "question": "Which bones form the ankle joint?",
+        "correctAnswers": ["Talus and tibia"],
+        "incorrectAnswers": ["Calcaneus and fibula", "Navicular and metatarsals", "Cuboid and tarsals"],
+        "explanation": "The talus and tibia form the main part of the ankle joint, allowing for movement and stability."
+    },
+    {
+        "question": "Which bone structure acts as a shock absorber between vertebrae?",
+        "correctAnswers": ["Intervertebral discs"],
+        "incorrectAnswers": ["Spinal processes", "Vertebral arches", "Pedicles and laminae"],
+        "explanation": "Intervertebral discs are located between vertebrae and help absorb shock and allow flexibility in the spine."
+    },
+    {
+        "question": "Which bone in the skull contains the sinuses?",
+        "correctAnswers": ["Sphenoid bone"],
+        "incorrectAnswers": ["Maxilla", "Temporal bone", "Frontal bone"],
+        "explanation": "The sphenoid bone contains the sphenoid sinuses and is located near the base of the skull."
+    },
+    {
+        "question": "Which bone connects the arms to the trunk of the body?",
+        "correctAnswers": ["Scapula"],
+        "incorrectAnswers": ["Clavicle", "Humerus", "Sternum"],
+        "explanation": "The scapula, or shoulder blade, connects the arms to the torso and aids in arm movement."
+    },
+    {
+        "question": "Which bones protect the lungs and heart?",
+        "correctAnswers": ["Ribs"],
+        "incorrectAnswers": ["Sternum", "Clavicle", "Vertebrae"],
+        "explanation": "The ribs form a protective cage around the heart and lungs."
+    },
+    {
+        "question": "Which bone is located on the little finger side of the forearm?",
+        "correctAnswers": ["Ulna"],
+        "incorrectAnswers": ["Radius", "Humerus", "Metacarpal"],
+        "explanation": "The ulna is one of the two bones in the forearm, running parallel to the radius."
+    },
+    {
+        "question": "Which bone in the human body does not directly connect to any other bone?",
+        "correctAnswers": ["Hyoid bone"],
+        "incorrectAnswers": ["Clavicle", "Patella", "Scapula"],
+        "explanation": "The hyoid bone is located in the throat and supports the tongue but does not directly articulate with any other bones."
+    },
+    {
+        "question": "What is the name of the bone that makes up the heel?",
+        "correctAnswers": ["Calcaneus"],
+        "incorrectAnswers": ["Talus", "Metatarsal", "Navicular"],
+        "explanation": "The calcaneus, or heel bone, is the largest bone in the foot and supports much of the body's weight when standing."
+    },
+    {
+        "question": "Which type of bone is the patella classified as?",
+        "correctAnswers": ["Sesamoid bone"],
+        "incorrectAnswers": ["Flat bone", "Short bone", "Irregular bone"],
+        "explanation": "The patella is a sesamoid bone, meaning it is embedded within a tendon, specifically the quadriceps tendon."
+    },
+    {
+        "question": "Which of the following bones is part of the wrist?",
+        "correctAnswers": ["Scaphoid"],
+        "incorrectAnswers": ["Navicular", "Talus", "Metacarpal"],
+        "explanation": "The scaphoid is one of the eight carpal bones in the wrist, playing a crucial role in movement and stability."
+    },
+    {
+        "question": "Which bone in the lower leg bears the majority of body weight?",
+        "correctAnswers": ["Tibia"],
+        "incorrectAnswers": ["Fibula", "Femur", "Patella"],
+        "explanation": "The tibia, or shin bone, is the primary weight-bearing bone in the lower leg, supporting body movement and posture."
+    },
+    {
+        "question": "Which bone helps form the prominence of the cheek?",
+        "correctAnswers": ["Zygomatic bone"],
+        "incorrectAnswers": ["Maxilla", "Mandible", "Frontal bone"],
+        "explanation": "The zygomatic bone, or cheekbone, contributes to the structure of the face and the eye socket."
+    },
+    {
+        "question": "Which bone is responsible for protecting the spinal cord?",
+        "correctAnswers": ["Vertebrae"],
+        "incorrectAnswers": ["Ribs", "Sternum", "Scapula"],
+        "explanation": "The vertebrae form the spinal column and provide protection for the spinal cord while allowing movement."
+    },
+    {
+        "question": "Which set of ribs attach directly to the sternum?",
+        "correctAnswers": ["True ribs"],
+        "incorrectAnswers": ["False ribs", "Floating ribs", "Costal ribs"],
+        "explanation": "The first seven pairs of ribs are true ribs, as they attach directly to the sternum via costal cartilage."
+    },
+    {
+        "question": "What is the function of the epiphysis in long bones?",
+        "correctAnswers": ["Growth and joint articulation"],
+        "incorrectAnswers": ["Blood production", "Fat storage", "Shock absorption"],
+        "explanation": "The epiphysis is the rounded end of a long bone that helps with joint movement and contains growth plates for bone development."
+    },
+    {
+        "question": "Which structure connects bones to other bones at joints?",
+        "correctAnswers": ["Ligaments"],
+        "incorrectAnswers": ["Tendons", "Cartilage", "Synovial fluid"],
+        "explanation": "Ligaments are fibrous tissues that connect bones at joints, providing stability and support."
+    },
+    {
+        "question": "Which type of joint allows for the greatest range of motion?",
+        "correctAnswers": ["Ball-and-socket joint"],
+        "incorrectAnswers": ["Hinge joint", "Pivot joint", "Gliding joint"],
+        "explanation": "Ball-and-socket joints, like the hip and shoulder joints, allow for rotational movement and the widest range of motion."
+    },
+    {
+        "question": "Which bones form the hard palate of the mouth?",
+        "correctAnswers": ["Maxilla and Palatine bones"],
+        "incorrectAnswers": ["Mandible and Zygomatic bones", "Frontal and Temporal bones", "Ethmoid and Nasal bones"],
+        "explanation": "The maxilla and palatine bones form the hard palate, which separates the oral and nasal cavities."
+    },
+    {
+        "question": "Which bone contains the foramen magnum, the opening for the spinal cord?",
+        "correctAnswers": ["Occipital bone"],
+        "incorrectAnswers": ["Parietal bone", "Frontal bone", "Sphenoid bone"],
+        "explanation": "The occipital bone, located at the base of the skull, contains the foramen magnum, allowing passage for the spinal cord."
+    },
+    {
+        "question": "Which bone articulates with the femur at the knee joint?",
+        "correctAnswers": ["Tibia"],
+        "incorrectAnswers": ["Fibula", "Patella", "Pelvis"],
+        "explanation": "The tibia forms the main weight-bearing connection with the femur at the knee joint."
+    },
+    {
+        "question": "Which bones make up the ankle joint?",
+        "correctAnswers": ["Tibia, Fibula, Talus"],
+        "incorrectAnswers": ["Calcaneus, Tibia, Patella", "Fibula, Scaphoid, Cuboid", "Navicular, Talus, Metatarsals"],
+        "explanation": "The tibia, fibula, and talus form the ankle joint, allowing for movement and stability in the foot."
+    },
+    {
+        "question": "Which type of bone marrow is responsible for blood cell production?",
+        "correctAnswers": ["Red bone marrow"],
+        "incorrectAnswers": ["Yellow bone marrow", "Compact bone marrow", "Cartilaginous bone marrow"],
+        "explanation": "Red bone marrow, found in spongy bones, produces red and white blood cells and platelets."
+    },
+    {
+        "question": "Which part of the sternum is located at the top?",
+        "correctAnswers": ["Manubrium"],
+        "incorrectAnswers": ["Xiphoid process", "Body of sternum", "Clavicle"],
+        "explanation": "The manubrium is the uppermost part of the sternum, connecting with the clavicles and first ribs."
+    },
+    {
+        "question": "What is the name of the hollow cavity inside long bones?",
+        "correctAnswers": ["Medullary cavity"],
+        "incorrectAnswers": ["Epiphyseal plate", "Periosteum", "Trabecular cavity"],
+        "explanation": "The medullary cavity is a hollow space inside long bones that contains bone marrow."
+    },
+    {
+        "question": "Which structure covers the ends of bones in synovial joints?",
+        "correctAnswers": ["Articular cartilage"],
+        "incorrectAnswers": ["Periosteum", "Meniscus", "Tendons"],
+        "explanation": "Articular cartilage reduces friction and absorbs shock at the ends of bones in movable joints."
+    },
+    {
+        "question": "Which bone is commonly used for bone grafting due to its regenerative properties?",
+        "correctAnswers": ["Iliac crest"],
+        "incorrectAnswers": ["Humerus", "Radius", "Tibia"],
+        "explanation": "The iliac crest, part of the pelvis, is often used in bone grafting procedures due to its rich bone marrow supply."
+    }
+  ]

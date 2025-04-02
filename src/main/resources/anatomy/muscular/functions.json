@@ -1,0 +1,374 @@
+[
+  {
+    "question": "What is the primary function of skeletal muscles?",
+    "correctAnswers": ["Movement and Support"],
+    "incorrectAnswers": ["Regulation of Body Temperature", "Production of Hormones", "Storage of Nutrients"],
+    "explanation": "Skeletal muscles are primarily responsible for movement and providing structural support to the body."
+  },
+  {
+    "question": "Which type of muscle is responsible for involuntary movements?",
+    "correctAnswers": ["Smooth Muscle"],
+    "incorrectAnswers": ["Skeletal Muscle", "Cardiac Muscle with Specialized Fibers", "Striated Muscle"],
+    "explanation": "Smooth muscle is responsible for involuntary movements, such as those in the digestive tract."
+  },
+  {
+    "question": "What is the term for the process by which muscles contract?",
+    "correctAnswers": ["Muscle Contraction"],
+    "incorrectAnswers": ["Muscle Relaxation", "Muscle Atrophy", "Muscle Hypertrophy"],
+    "explanation": "Muscle contraction is the process by which muscles shorten and generate force."
+  },
+  {
+    "question": "Which type of muscle fiber is known for endurance and is rich in mitochondria?",
+    "correctAnswers": ["Slow-Twitch Fibers"],
+    "incorrectAnswers": ["Fast-Twitch Fibers", "Intermediate-Twitch Fibers", "Elastic Fibers"],
+    "explanation": "Slow-twitch fibers are known for endurance and are rich in mitochondria, which aids in aerobic respiration."
+  },
+  {
+    "question": "What is the role of agonist muscles in movement?",
+    "correctAnswers": ["Primary Mover"],
+    "incorrectAnswers": ["Stabilizer", "Antagonist", "Synergist Muscle with Reduced Activity"],
+    "explanation": "Agonist muscles are the primary movers responsible for initiating movement."
+  },
+  {
+    "question": "What is the term for a muscle injury caused by overstretching or tearing?",
+    "correctAnswers": ["Strain"],
+    "incorrectAnswers": ["Sprain", "Tendinitis", "Muscle Contusion"],
+    "explanation": "A strain is a muscle injury caused by overstretching or tearing of muscle fibers."
+  },
+  {
+    "question": "What is muscle atrophy?",
+    "correctAnswers": ["Muscle Wasting"],
+    "incorrectAnswers": ["Muscle Hypertrophy", "Muscle Hyperplasia", "Muscle Fibrosis"],
+    "explanation": "Muscle atrophy refers to the wasting or reduction in size of muscle tissue."
+  },
+  {
+    "question": "What is muscle hypertrophy?",
+    "correctAnswers": ["Muscle Growth"],
+    "incorrectAnswers": ["Muscle Atrophy", "Muscle Hyperplasia", "Muscle Fibrosis"],
+    "explanation": "Muscle hypertrophy refers to the growth and increase in size of muscle fibers."
+  },
+  {
+    "question": "What is muscle fatigue?",
+    "correctAnswers": ["Decreased Muscle Performance"],
+    "incorrectAnswers": ["Increased Muscle Strength", "Muscle Relaxation", "Muscle Spasm"],
+    "explanation": "Muscle fatigue is a decrease in muscle performance due to prolonged activity."
+  },
+  {
+    "question": "What is a muscle spasm?",
+    "correctAnswers": ["Sudden Muscle Contraction"],
+    "incorrectAnswers": ["Gradual Muscle Relaxation", "Muscle Atrophy", "Muscle Cramp with No Pain"],
+    "explanation": "A muscle spasm is a sudden, involuntary contraction of muscle fibers."
+  },
+  {
+    "question": "What is a muscle cramp?",
+    "correctAnswers": ["Painful Muscle Spasm"],
+    "incorrectAnswers": ["Painless Muscle Twitch", "Muscle Weakness", "Muscle Atrophy"],
+    "explanation": "A muscle cramp is a painful, involuntary contraction of muscle fibers."
+  },
+  {
+    "question": "What is a muscle twitch?",
+    "correctAnswers": ["Small Muscle Contraction"],
+    "incorrectAnswers": ["Large Muscle Spasm", "Muscle Relaxation", "Muscle Atrophy"],
+    "explanation": "A muscle twitch is a small, involuntary contraction of muscle fibers."
+  },
+  {
+    "question": "What is muscle tonus?",
+    "correctAnswers": ["Muscle Tension at Rest"],
+    "incorrectAnswers": ["Muscle Relaxation", "Muscle Contraction", "Muscle Atrophy"],
+    "explanation": "Muscle tonus refers to the state of muscle tension at rest."
+  },
+  {
+    "question": "What are muscle synergists?",
+    "correctAnswers": ["Muscles Assisting Movement"],
+    "incorrectAnswers": ["Muscles Opposing Movement", "Muscles Stabilizing Joints", "Muscles Reducing Movement"],
+    "explanation": "Muscle synergists are muscles that assist the agonist in movement."
+  },
+  {
+    "question": "What are muscle antagonists?",
+    "correctAnswers": ["Muscles Opposing Movement"],
+    "incorrectAnswers": ["Muscles Assisting Movement", "Muscles Stabilizing Joints", "Muscles Initiating Movement"],
+    "explanation": "Muscle antagonists are muscles that oppose the action of the agonist."
+  },
+  {
+    "question": "What are muscle stabilizers?",
+    "correctAnswers": ["Muscles Maintaining Joint Position"],
+    "incorrectAnswers": ["Muscles Initiating Movement", "Muscles Opposing Movement", "Muscles Reducing Movement"],
+    "explanation": "Muscle stabilizers are muscles that maintain the position of a joint during movement."
+  },
+  {
+    "question": "What is the primary function of cardiac muscle?",
+    "correctAnswers": ["Pumping Blood"],
+    "incorrectAnswers": ["Regulating Body Temperature", "Producing Hormones", "Storing Nutrients"],
+    "explanation": "Cardiac muscle is primarily responsible for pumping blood throughout the body."
+  },
+  {
+    "question": "What is a key function of smooth muscle in the digestive system?",
+    "correctAnswers": ["Peristalsis"],
+    "incorrectAnswers": ["Mastication", "Deglutition", "Digestive Enzyme Production"],
+    "explanation": "Smooth muscle in the digestive system facilitates peristalsis, which aids in moving food through the digestive tract."
+  },
+  {
+    "question": "What is the term for the sense of muscle position and movement?",
+    "correctAnswers": ["Proprioception"],
+    "incorrectAnswers": ["Equilibrioception", "Nociception", "Thermoception"],
+    "explanation": "Proprioception is the sense of muscle position and movement."
+  },
+  {
+    "question": "What is the term for automatic muscle responses to stimuli?",
+    "correctAnswers": ["Reflexes"],
+    "incorrectAnswers": ["Voluntary Movements", "Involuntary Movements without Stimuli", "Muscle Spasms"],
+    "explanation": "Reflexes are automatic muscle responses to specific stimuli."
+  },
+    {
+      "question": "Which type of muscle fiber is best suited for short bursts of speed?",
+      "correctAnswers": ["Fast-Twitch Fibers"],
+      "incorrectAnswers": ["Slow-Twitch Fibers", "Intermediate-Twitch Fibers", "Elastic Fibers"],
+      "explanation": "Fast-twitch fibers are best suited for short bursts of speed due to their high force output."
+    },
+    {
+      "question": "What is the role of muscles in maintaining posture?",
+      "correctAnswers": ["Support and Balance"],
+      "incorrectAnswers": ["Regulating Body Temperature", "Producing Hormones", "Storing Nutrients"],
+      "explanation": "Muscles play a crucial role in maintaining posture by providing support and balance."
+    },
+    {
+      "question": "What is the primary mechanism behind muscle contraction?",
+      "correctAnswers": ["Sliding Filament Theory"],
+      "incorrectAnswers": ["Muscle Fiber Lengthening Theory", "Muscle Fiber Thickening Theory", "Muscle Fiber Shortening Theory"],
+      "explanation": "The sliding filament theory explains how muscles contract by the sliding of actin and myosin filaments."
+    },
+    {
+      "question": "What is a primary energy source for muscle contraction?",
+      "correctAnswers": ["ATP"],
+      "incorrectAnswers": ["Glycogen", "Protein", "Fatty Acids"],
+      "explanation": "ATP is the immediate energy source for muscle contraction."
+    },
+    {
+      "question": "What is the term for the process of muscle relaxation?",
+      "correctAnswers": ["Muscle Relaxation"],
+      "incorrectAnswers": ["Muscle Contraction", "Muscle Atrophy", "Muscle Hypertrophy"],
+      "explanation": "Muscle relaxation is the process by which muscles return to their resting state."
+    },
+    {
+      "question": "Which muscles are primarily involved in respiration?",
+      "correctAnswers": ["Diaphragm and Intercostal Muscles"],
+      "incorrectAnswers": ["Abdominal Muscles", "Pectoral Muscles", "Muscles of the Upper Limb"],
+      "explanation": "The diaphragm and intercostal muscles are primarily involved in the process of breathing."
+    },
+    {
+      "question": "Where is smooth muscle typically found?",
+      "correctAnswers": ["Internal Organs"],
+      "incorrectAnswers": ["Skeletal System", "Cardiovascular System with Specialized Functions", "Musculoskeletal System"],
+      "explanation": "Smooth muscle is typically found in the walls of internal organs such as the digestive tract."
+    },
+    {
+      "question": "How do muscles contribute to thermoregulation?",
+      "correctAnswers": ["Shivering"],
+      "incorrectAnswers": ["Sweating", "Vasodilation", "Vasoconstriction"],
+      "explanation": "Muscles contribute to thermoregulation through shivering, which generates heat."
+    },
+    {
+      "question": "What is a common method for recovering from muscle strains?",
+      "correctAnswers": ["Rest, Ice, Compression, Elevation (RICE)"],
+      "incorrectAnswers": ["Heat Therapy", "Massage Therapy", "Immediate Exercise"],
+      "explanation": "The RICE method is commonly used to recover from muscle strains by reducing inflammation and promoting healing."
+    },
+    {
+      "question": "How do muscles assist in blood circulation?",
+      "correctAnswers": ["Muscle Contraction"],
+      "incorrectAnswers": ["Muscle Relaxation", "Muscle Atrophy", "Muscle Hypertrophy"],
+      "explanation": "Muscle contraction helps push blood through veins back to the heart, assisting in circulation."
+    },
+    {
+      "question": "What is the primary function of cardiac muscle?",
+      "correctAnswers": ["Pumping Blood"],
+      "incorrectAnswers": ["Regulating Body Temperature", "Producing Hormones", "Storing Nutrients"],
+      "explanation": "Cardiac muscle is primarily responsible for pumping blood throughout the body."
+    },
+    {
+      "question": "How do muscle fibers adapt to increased exercise?",
+      "correctAnswers": ["Hypertrophy"],
+      "incorrectAnswers": ["Atrophy", "Hyperplasia", "Fibrosis"],
+      "explanation": "Muscle fibers adapt to increased exercise by undergoing hypertrophy, or growth in size."
+    },
+    {
+      "question": "How do muscles contribute to the immune response?",
+      "correctAnswers": ["Producing Cytokines"],
+      "incorrectAnswers": ["Producing Antibodies", "Activating T-Cells", "Producing Complement Proteins"],
+      "explanation": "Muscles can contribute to the immune response by producing cytokines, which are signaling molecules."
+    },
+    {
+      "question": "What role do muscles play in glucose metabolism?",
+      "correctAnswers": ["Glucose Uptake"],
+      "incorrectAnswers": ["Glucose Production", "Lipid Metabolism", "Protein Synthesis"],
+      "explanation": "Muscles play a significant role in glucose metabolism by taking up glucose from the bloodstream."
+    },
+    {
+      "question": "What is the role of muscles in movement control?",
+      "correctAnswers": ["Initiation and Regulation"],
+      "incorrectAnswers": ["Sensory Perception", "Cognitive Processing", "Emotional Response"],
+      "explanation": "Muscles are responsible for initiating and regulating movement."
+    },
+    {
+      "question": "How do muscles contribute to joint stability?",
+      "correctAnswers": ["Providing Support"],
+      "incorrectAnswers": ["Reducing Movement", "Increasing Flexibility", "Decreasing Strength"],
+      "explanation": "Muscles contribute to joint stability by providing support and maintaining joint alignment."
+    },
+    {
+      "question": "What role do muscles play in maintaining balance?",
+      "correctAnswers": ["Adjusting Posture"],
+      "incorrectAnswers": ["Regulating Vision", "Maintaining Hearing", "Controlling Taste"],
+      "explanation": "Muscles play a crucial role in maintaining balance by adjusting posture and making fine adjustments."
+    },
+    {
+      "question": "Which muscles are involved in speech production?",
+      "correctAnswers": ["Facial and Laryngeal Muscles"],
+      "incorrectAnswers": ["Abdominal Muscles", "Pectoral Muscles", "Muscles of the Upper Limb"],
+      "explanation": "Facial and laryngeal muscles are involved in speech production by controlling articulation and voice modulation."
+    },
+    {
+      "question": "How do muscles aid in digestion?",
+      "correctAnswers": ["Peristalsis"],
+      "incorrectAnswers": ["Mastication", "Deglutition", "Digestive Enzyme Production"],
+      "explanation": "Muscles aid in digestion by facilitating peristalsis, which moves food through the digestive tract."
+    },
+    {
+      "question": "What role do muscles play in waste elimination?",
+      "correctAnswers": ["Defecation and Urination"],
+      "incorrectAnswers": ["Sweating", "Vomiting", "Coughing"],
+      "explanation": "Muscles play a role in waste elimination by controlling the processes of defecation and urination."
+    },
+    {
+      "question": "How do muscles influence hormone regulation?",
+      "correctAnswers": ["Releasing Myokines"],
+      "incorrectAnswers": ["Producing Insulin", "Regulating Thyroid Hormones", "Controlling Adrenaline Release"],
+      "explanation": "Muscles can influence hormone regulation by releasing myokines, which are signaling molecules."
+    },
+    {
+      "question": "What role do muscles play in maintaining bone health?",
+      "correctAnswers": ["Mechanical Stress"],
+      "incorrectAnswers": ["Hormonal Regulation", "Nutrient Absorption", "Waste Removal"],
+      "explanation": "Muscles play a role in maintaining bone health by applying mechanical stress, which stimulates bone growth and density."
+    },
+    {
+      "question": "How do muscles assist in venous return?",
+      "correctAnswers": ["Muscle Pump"],
+      "incorrectAnswers": ["Heartbeat", "Respiratory Movement", "Gravity"],
+      "explanation": "Muscles assist in venous return through the muscle pump mechanism, which helps push blood back to the heart."
+    },
+    {
+      "question": "What role do muscles play in thermogenesis?",
+      "correctAnswers": ["Shivering Thermogenesis"],
+      "incorrectAnswers": ["Non-Shivering Thermogenesis", "Sweating", "Vasodilation"],
+      "explanation": "Muscles play a role in thermogenesis through shivering, which generates heat."
+    },
+    {
+      "question": "How do muscles influence immune cell migration?",
+      "correctAnswers": ["Releasing Chemokines"],
+      "incorrectAnswers": ["Producing Antibodies", "Activating T-Cells", "Producing Complement Proteins"],
+      "explanation": "Muscles can influence immune cell migration by releasing chemokines, which are signaling molecules."
+    },
+    {
+      "question": "What role do muscles play in regulating metabolic rate?",
+      "correctAnswers": ["Thermic Effect of Exercise"],
+      "incorrectAnswers": ["Basal Metabolic Rate", "Diet-Induced Thermogenesis", "Cold-Induced Thermogenesis"],
+      "explanation": "Muscles play a role in regulating metabolic rate through the thermic effect of exercise, which increases energy expenditure."
+    },
+    {
+      "question": "How do muscles contribute to movement precision?",
+      "correctAnswers": ["Fine Motor Control"],
+      "incorrectAnswers": ["Gross Motor Control", "Sensory Perception", "Cognitive Processing"],
+      "explanation": "Muscles contribute to movement precision through fine motor control, allowing for precise movements."
+    },
+    {
+      "question": "What role do muscles play in maintaining joint mobility?",
+      "correctAnswers": ["Flexibility and Range of Motion"],
+      "incorrectAnswers": ["Strength and Power", "Endurance and Stamina", "Balance and Coordination"],
+      "explanation": "Muscles play a role in maintaining joint mobility by contributing to flexibility and range of motion."
+    },
+    {
+      "question": "How do muscles maintain posture during sleep?",
+      "correctAnswers": ["Tonus Reduction"],
+      "incorrectAnswers": ["Increased Muscle Activity", "Enhanced Reflexes", "Improved Balance"],
+      "explanation": "Muscles maintain posture during sleep by reducing tonus, allowing for relaxation."
+    },
+    {
+      "question": "Which muscles are involved in facial expressions?",
+      "correctAnswers": ["Facial Muscles"],
+      "incorrectAnswers": ["Neck Muscles", "Shoulder Muscles", "Upper Limb Muscles"],
+      "explanation": "Facial muscles are involved in creating various facial expressions."
+    },
+    {
+      "question": "What muscles are responsible for voice modulation?",
+      "correctAnswers": ["Laryngeal Muscles"],
+      "incorrectAnswers": ["Pharyngeal Muscles", "Tongue Muscles", "Lip Muscles"],
+      "explanation": "Laryngeal muscles are responsible for voice modulation by controlling pitch and volume."
+    },
+    {
+      "question": "Which muscles control eye movements?",
+      "correctAnswers": ["Extraocular Muscles"],
+      "incorrectAnswers": ["Facial Muscles", "Neck Muscles", "Shoulder Muscles"],
+      "explanation": "Extraocular muscles control the movements of the eyes."
+    },
+    {
+      "question": "What muscles are involved in the process of swallowing?",
+      "correctAnswers": ["Pharyngeal and Esophageal Muscles"],
+      "incorrectAnswers": ["Tongue Muscles", "Lip Muscles", "Jaw Muscles"],
+      "explanation": "Pharyngeal and esophageal muscles are involved in the process of swallowing by propelling food into the esophagus."
+    },
+    {
+      "question": "Which muscles are involved in coughing?",
+      "correctAnswers": ["Diaphragm and Intercostal Muscles"],
+      "incorrectAnswers": ["Abdominal Muscles", "Pectoral Muscles", "Muscles of the Upper Limb"],
+      "explanation": "The diaphragm and intercostal muscles are involved in coughing by rapidly increasing thoracic pressure."
+    },
+    {
+      "question": "What muscles are involved in sneezing?",
+      "correctAnswers": ["Diaphragm and Intercostal Muscles"],
+      "incorrectAnswers": ["Facial Muscles", "Neck Muscles", "Shoulder Muscles"],
+      "explanation": "The diaphragm and intercostal muscles are involved in sneezing by rapidly increasing thoracic pressure."
+    },
+    {
+      "question": "Which muscles control the bladder?",
+      "correctAnswers": ["Detrusor and Sphincter Muscles"],
+      "incorrectAnswers": ["Abdominal Muscles", "Pectoral Muscles", "Muscles of the Upper Limb"],
+      "explanation": "The detrusor and sphincter muscles control the bladder by regulating urine storage and release."
+    },
+    {
+      "question": "What muscles are involved in bowel movements?",
+      "correctAnswers": ["Smooth Muscles of the Intestine"],
+      "incorrectAnswers": ["Skeletal Muscles of the Abdomen", "Muscles of the Upper Limb", "Facial Muscles"],
+      "explanation": "Smooth muscles of the intestine are involved in bowel movements by facilitating peristalsis."
+    },
+    {
+      "question": "How do muscles influence menstrual cycle regulation?",
+      "correctAnswers": ["Releasing Hormones Indirectly"],
+      "incorrectAnswers": ["Producing Estrogen", "Regulating Progesterone Levels", "Controlling Ovulation"],
+      "explanation": "Muscles can indirectly influence menstrual cycle regulation by affecting hormone release through physical activity."
+    },
+    {
+      "question": "What role do muscles play in childbirth?",
+      "correctAnswers": ["Uterine Contractions"],
+      "incorrectAnswers": ["Abdominal Muscle Support", "Back Muscle Stabilization", "Pelvic Floor Relaxation"],
+      "explanation": "Muscles play a crucial role in childbirth through uterine contractions, which help push the baby out."
+    },
+    {
+      "question": "What happens to muscles as people age?",
+      "correctAnswers": ["Muscle Atrophy"],
+      "incorrectAnswers": ["Muscle Hypertrophy", "Muscle Hyperplasia", "Muscle Fibrosis"],
+      "explanation": "As people age, muscles often undergo atrophy, leading to a reduction in muscle mass and strength."
+    },
+    {
+      "question": "How do muscles adapt to regular exercise?",
+      "correctAnswers": ["Increased Strength and Endurance"],
+      "incorrectAnswers": ["Decreased Flexibility", "Reduced Metabolic Rate", "Impaired Coordination"],
+      "explanation": "Muscles adapt to regular exercise by increasing in strength and endurance."
+    },
+    {
+      "question": "What role do muscles play in recovering from injuries?",
+      "correctAnswers": ["Support and Stabilization"],
+      "incorrectAnswers": ["Reducing Inflammation", "Promoting Healing", "Enhancing Mobility"],
+      "explanation": "Muscles play a role in recovering from injuries by providing support and stabilization."
+    }
+]

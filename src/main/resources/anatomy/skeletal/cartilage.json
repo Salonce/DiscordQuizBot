@@ -1,0 +1,350 @@
+[
+    {
+      "question": "What type of cartilage is most commonly found in the rib cage, nose, and joints?",
+      "correctAnswers": ["Hyaline cartilage"],
+      "incorrectAnswers": ["Fibrocartilage", "Elastic cartilage", "Bone cartilage"],
+      "explanation": "Hyaline cartilage is the most common type of cartilage, providing smooth surfaces for joint movement and making up structures like the rib cage and nose."
+    },
+    {
+      "question": "Which type of cartilage is most abundant in the human body?",
+      "correctAnswers": ["Hyaline cartilage"],
+      "incorrectAnswers": ["Elastic cartilage", "Fibrocartilage", "Calcified cartilage"],
+      "explanation": "Hyaline cartilage is the most abundant type in the body, found in areas like the nose, trachea, and ends of long bones."
+    },
+    {
+      "question": "Which cartilage type is found in the external ear and epiglottis?",
+      "correctAnswers": ["Elastic cartilage"],
+      "incorrectAnswers": ["Fibrocartilage", "Hyaline cartilage", "Calcified cartilage"],
+      "explanation": "Elastic cartilage is flexible and is found in structures like the external ear and epiglottis, allowing for shape retention and flexibility."
+    },
+    {
+      "question": "Which type of cartilage is found in intervertebral discs and pubic symphysis?",
+      "correctAnswers": ["Fibrocartilage"],
+      "incorrectAnswers": ["Elastic cartilage", "Hyaline cartilage", "Bone cartilage"],
+      "explanation": "Fibrocartilage is highly durable and found in areas that need to withstand compressive forces, such as intervertebral discs."
+    },
+    {
+      "question": "Which cartilage type helps reduce friction in the joints?",
+      "correctAnswers": ["Hyaline cartilage"],
+      "incorrectAnswers": ["Elastic cartilage", "Fibrocartilage", "Bone cartilage"],
+      "explanation": "Hyaline cartilage acts as a smooth, lubricating surface, reducing friction and allowing smooth movement in joints."
+    },
+    {
+      "question": "What is the role of cartilage in the knee joint?",
+      "correctAnswers": ["Cushioning and reducing friction"],
+      "incorrectAnswers": ["Storing calcium", "Strengthening the bone structure", "Providing flexibility to the muscle fibers"],
+      "explanation": "In the knee joint, cartilage helps to cushion and reduce friction between the bones, enabling smooth movement."
+    },
+    {
+      "question": "What is the main characteristic of fibrocartilage compared to other cartilage types?",
+      "correctAnswers": ["It is more rigid and tough due to dense collagen fibers"],
+      "incorrectAnswers": ["It is more flexible and elastic", "It has a smooth surface for joint lubrication", "It is found only in the ear and epiglottis"],
+      "explanation": "Fibrocartilage is dense with collagen fibers, which give it strength and durability, making it ideal for areas under stress."
+    },
+    {
+      "question": "Which cartilage type contains more elastic fibers than collagen?",
+      "correctAnswers": ["Elastic cartilage"],
+      "incorrectAnswers": ["Fibrocartilage", "Hyaline cartilage", "Osteoid cartilage"],
+      "explanation": "Elastic cartilage has a higher proportion of elastic fibers, allowing it to stretch and return to its original shape."
+    },
+    {
+      "question": "What is the role of chondrocytes in cartilage?",
+      "correctAnswers": ["They maintain the cartilage matrix"],
+      "incorrectAnswers": ["They produce red blood cells", "They provide nutrients to the bone", "They contract to facilitate movement"],
+      "explanation": "Chondrocytes are the cells responsible for producing and maintaining the extracellular matrix in cartilage, keeping it healthy and functional."
+    },
+    {
+      "question": "Which of the following is a feature of elastic cartilage?",
+      "correctAnswers": ["It provides flexible support"],
+      "incorrectAnswers": ["It absorbs shock and resists compression", "It is found only in joints", "It forms the framework of the body’s skeletal structure"],
+      "explanation": "Elastic cartilage is designed to provide flexible support and is found in structures that need to maintain shape but be flexible, like the ear."
+    },
+    {
+      "question": "Which cartilage type forms the nasal septum?",
+      "correctAnswers": ["Hyaline cartilage"],
+      "incorrectAnswers": ["Elastic cartilage", "Fibrocartilage", "Bone cartilage"],
+      "explanation": "Hyaline cartilage forms the nasal septum, providing a structure that is firm yet flexible."
+    },
+    {
+      "question": "What type of cartilage is involved in the repair of cartilage damage?",
+      "correctAnswers": ["Fibrocartilage"],
+      "incorrectAnswers": ["Elastic cartilage", "Hyaline cartilage", "Calcified cartilage"],
+      "explanation": "Fibrocartilage is involved in the healing of cartilage injuries because it can repair and form scar tissue."
+    },
+    {
+      "question": "Which cartilage type is least flexible but provides the strongest support?",
+      "correctAnswers": ["Fibrocartilage"],
+      "incorrectAnswers": ["Elastic cartilage", "Hyaline cartilage", "Osteoid cartilage"],
+      "explanation": "Fibrocartilage is tough and durable, providing support and shock absorption in high-stress areas like the intervertebral discs."
+    },
+    {
+      "question": "Which cartilage type is characterized by a smooth, glassy appearance?",
+      "correctAnswers": ["Hyaline cartilage"],
+      "incorrectAnswers": ["Elastic cartilage", "Fibrocartilage", "Osteoid cartilage"],
+      "explanation": "Hyaline cartilage has a smooth, glass-like appearance and is commonly found in the respiratory tract, ribs, and joints."
+    },
+    {
+      "question": "Which cartilage type allows the rib cage to expand during breathing?",
+      "correctAnswers": ["Hyaline cartilage"],
+      "incorrectAnswers": ["Elastic cartilage", "Fibrocartilage", "Bone cartilage"],
+      "explanation": "Hyaline cartilage connects the ribs to the sternum, allowing for flexibility and expansion during respiration."
+    },
+    {
+      "question": "Which cartilage type is commonly found in the larynx?",
+      "correctAnswers": ["Elastic cartilage"],
+      "incorrectAnswers": ["Fibrocartilage", "Hyaline cartilage", "Calcified cartilage"],
+      "explanation": "Elastic cartilage forms parts of the larynx, giving it the ability to change shape and return to its original form."
+    },
+    {
+      "question": "What is the primary component of the extracellular matrix of cartilage?",
+      "correctAnswers": ["Collagen and proteoglycans"],
+      "incorrectAnswers": ["Elastin and keratin", "Calcium and phosphate", "Keratin and collagen"],
+      "explanation": "The extracellular matrix of cartilage consists mainly of collagen fibers and proteoglycans, which provide strength and flexibility."
+    },
+    {
+      "question": "What type of cartilage forms the bulk of the intervertebral discs?",
+      "correctAnswers": ["Fibrocartilage"],
+      "incorrectAnswers": ["Elastic cartilage", "Hyaline cartilage", "Osteoid cartilage"],
+      "explanation": "Fibrocartilage forms the intervertebral discs, providing strong support and shock absorption between vertebrae."
+    },
+    {
+      "question": "Which cartilage type is primarily involved in the formation of joint surfaces?",
+      "correctAnswers": ["Hyaline cartilage"],
+      "incorrectAnswers": ["Elastic cartilage", "Fibrocartilage", "Calcified cartilage"],
+      "explanation": "Hyaline cartilage covers the surfaces of bones in joints, allowing smooth, frictionless movement."
+    },
+    {
+        "question": "Which type of cartilage is most commonly found in the trachea?",
+        "correctAnswers": ["Hyaline cartilage"],
+        "incorrectAnswers": ["Fibrocartilage", "Elastic cartilage", "Calcified cartilage"],
+        "explanation": "Hyaline cartilage forms the C-shaped rings in the trachea, providing structure and keeping the airway open."
+      },
+      {
+        "question": "What type of cartilage is primarily involved in shock absorption in the knee joint?",
+        "correctAnswers": ["Fibrocartilage"],
+        "incorrectAnswers": ["Elastic cartilage", "Hyaline cartilage", "Bone cartilage"],
+        "explanation": "Fibrocartilage, specifically the menisci in the knee joint, provides cushioning and shock absorption."
+      },
+      {
+        "question": "Which cartilage type is most flexible and capable of returning to its original shape?",
+        "correctAnswers": ["Elastic cartilage"],
+        "incorrectAnswers": ["Fibrocartilage", "Hyaline cartilage", "Bone cartilage"],
+        "explanation": "Elastic cartilage contains elastic fibers, allowing it to stretch and return to its original shape, such as in the ear."
+      },
+      {
+        "question": "Which cartilage type is involved in the formation of the intervertebral discs?",
+        "correctAnswers": ["Fibrocartilage"],
+        "incorrectAnswers": ["Elastic cartilage", "Hyaline cartilage", "Calcified cartilage"],
+        "explanation": "Fibrocartilage is the primary type found in the intervertebral discs, offering both strength and flexibility."
+      },
+      {
+        "question": "What is the primary function of cartilage in the skeletal system?",
+        "correctAnswers": ["Provide support and flexibility to joints"],
+        "incorrectAnswers": ["Form the body’s skeletal framework", "Store calcium and phosphorus", "Facilitate blood cell production"],
+        "explanation": "Cartilage provides structural support and flexibility to joints, allowing for smooth movement and cushioning."
+      },
+      {
+        "question": "Which cartilage type is found in the external ear?",
+        "correctAnswers": ["Elastic cartilage"],
+        "incorrectAnswers": ["Fibrocartilage", "Hyaline cartilage", "Bone cartilage"],
+        "explanation": "Elastic cartilage is found in the external ear, allowing for flexibility and shape retention."
+      },
+      {
+        "question": "What cartilage type is involved in the formation of the nose?",
+        "correctAnswers": ["Hyaline cartilage"],
+        "incorrectAnswers": ["Elastic cartilage", "Fibrocartilage", "Bone cartilage"],
+        "explanation": "Hyaline cartilage provides the structure of the nose, giving it flexibility and support."
+      },
+      {
+        "question": "What type of cartilage is most abundant in embryonic development?",
+        "correctAnswers": ["Hyaline cartilage"],
+        "incorrectAnswers": ["Elastic cartilage", "Fibrocartilage", "Bone cartilage"],
+        "explanation": "Hyaline cartilage is abundant in the early stages of embryonic development and serves as a precursor to bone formation."
+      },
+      {
+        "question": "Which cartilage type has a high content of collagen fibers and provides tensile strength?",
+        "correctAnswers": ["Fibrocartilage"],
+        "incorrectAnswers": ["Elastic cartilage", "Hyaline cartilage", "Osteoid cartilage"],
+        "explanation": "Fibrocartilage contains a high amount of collagen fibers, providing tensile strength and durability."
+      },
+      {
+        "question": "What is a primary characteristic of hyaline cartilage?",
+        "correctAnswers": ["Smooth and glassy appearance"],
+        "incorrectAnswers": ["It is highly flexible and elastic", "It is dense and tough", "It has a rough texture for added stability"],
+        "explanation": "Hyaline cartilage has a smooth, glass-like appearance and is commonly found in joints, the rib cage, and the nose."
+      },
+      {
+        "question": "Which cartilage type is found in the pubic symphysis?",
+        "correctAnswers": ["Fibrocartilage"],
+        "incorrectAnswers": ["Elastic cartilage", "Hyaline cartilage", "Bone cartilage"],
+        "explanation": "Fibrocartilage forms the pubic symphysis, providing strength and flexibility between the two pubic bones."
+      },
+      {
+        "question": "Which type of cartilage makes up the articular surfaces of bones in synovial joints?",
+        "correctAnswers": ["Hyaline cartilage"],
+        "incorrectAnswers": ["Fibrocartilage", "Elastic cartilage", "Bone cartilage"],
+        "explanation": "Hyaline cartilage covers the articular surfaces of bones in synovial joints, reducing friction and enabling smooth movement."
+      },
+      {
+        "question": "Which cartilage type has a more elastic quality, allowing for greater flexibility?",
+        "correctAnswers": ["Elastic cartilage"],
+        "incorrectAnswers": ["Fibrocartilage", "Hyaline cartilage", "Calcified cartilage"],
+        "explanation": "Elastic cartilage contains elastic fibers, providing flexibility and shape retention, as seen in the ear and epiglottis."
+      },
+      {
+        "question": "Which cartilage type plays a role in cushioning the knee joint?",
+        "correctAnswers": ["Fibrocartilage"],
+        "incorrectAnswers": ["Elastic cartilage", "Hyaline cartilage", "Bone cartilage"],
+        "explanation": "Fibrocartilage, found in the knee joint's menisci, provides cushioning and shock absorption during movement."
+      },
+      {
+        "question": "What type of cartilage is typically found in the tracheal rings?",
+        "correctAnswers": ["Hyaline cartilage"],
+        "incorrectAnswers": ["Elastic cartilage", "Fibrocartilage", "Osteoid cartilage"],
+        "explanation": "Hyaline cartilage forms the rings of the trachea, maintaining its structure and preventing collapse during breathing."
+      },
+      {
+        "question": "Which cartilage type is known for its role in providing tensile strength and shock absorption in weight-bearing areas?",
+        "correctAnswers": ["Fibrocartilage"],
+        "incorrectAnswers": ["Elastic cartilage", "Hyaline cartilage", "Bone cartilage"],
+        "explanation": "Fibrocartilage is ideal for weight-bearing areas due to its dense collagen fibers that provide tensile strength and shock absorption."
+      },
+      {
+        "question": "What cartilage type is found in the epiglottis?",
+        "correctAnswers": ["Elastic cartilage"],
+        "incorrectAnswers": ["Fibrocartilage", "Hyaline cartilage", "Bone cartilage"],
+        "explanation": "Elastic cartilage is found in the epiglottis, providing flexibility for the flap that covers the windpipe during swallowing."
+      },
+      {
+        "question": "Which cartilage type is mainly involved in the growth of long bones in children?",
+        "correctAnswers": ["Hyaline cartilage"],
+        "incorrectAnswers": ["Fibrocartilage", "Elastic cartilage", "Osteoid cartilage"],
+        "explanation": "Hyaline cartilage is involved in endochondral ossification, where it acts as a template for bone growth in children."
+      },
+      {
+        "question": "Which type of cartilage contains a matrix rich in proteoglycans and collagen?",
+        "correctAnswers": ["Fibrocartilage"],
+        "incorrectAnswers": ["Elastic cartilage", "Hyaline cartilage", "Calcified cartilage"],
+        "explanation": "Fibrocartilage contains a matrix rich in collagen and proteoglycans, giving it the strength to resist compression and tension."
+      },
+      {
+        "question": "What is the primary function of cartilage in the skeletal system?",
+        "correctAnswers": ["Provide cushioning and flexibility in joints"],
+        "incorrectAnswers": ["Provide structure and rigidity to the bones", "Store calcium and phosphorus in the matrix", "Facilitate the production of red blood cells in bone marrow"],
+        "explanation": "Cartilage serves as a cushion, reducing friction in joints, while also providing flexibility in areas such as the nose and ear."
+      },
+      {
+        "question": "Which type of cartilage is primarily involved in forming the external ear?",
+        "correctAnswers": ["Elastic cartilage"],
+        "incorrectAnswers": ["Fibrocartilage", "Hyaline cartilage", "Bone cartilage"],
+        "explanation": "Elastic cartilage allows the external ear to retain its shape while providing flexibility and support."
+      },
+      {
+        "question": "What is a key characteristic of fibrocartilage that makes it suitable for areas under high stress?",
+        "correctAnswers": ["It contains dense collagen fibers"],
+        "incorrectAnswers": ["It is highly elastic and flexible", "It is composed primarily of hyaluronic acid", "It contains a high proportion of proteoglycans"],
+        "explanation": "Fibrocartilage contains dense collagen fibers that provide tensile strength and help resist compression in areas like intervertebral discs."
+      },
+      {
+        "question": "Which cartilage type is responsible for the flexibility of the epiglottis?",
+        "correctAnswers": ["Elastic cartilage"],
+        "incorrectAnswers": ["Fibrocartilage", "Hyaline cartilage", "Bone cartilage"],
+        "explanation": "Elastic cartilage in the epiglottis allows it to flex and cover the trachea during swallowing."
+      },
+      {
+        "question": "Where is hyaline cartilage primarily found in the human body?",
+        "correctAnswers": ["In the joints, ribs, and nasal passages"],
+        "incorrectAnswers": ["In the external ear and epiglottis", "In the intervertebral discs and pubic symphysis", "In the outer layer of the skin"],
+        "explanation": "Hyaline cartilage is most commonly found in joints, ribs, and the nose, where it provides smooth surfaces for joint movement and flexibility."
+      },
+      {
+        "question": "Which cartilage type is crucial for absorbing shock in the knee joint?",
+        "correctAnswers": ["Fibrocartilage"],
+        "incorrectAnswers": ["Elastic cartilage", "Hyaline cartilage", "Bone cartilage"],
+        "explanation": "Fibrocartilage in the knee joint (menisci) absorbs shock and helps to distribute pressure across the joint."
+      },
+      {
+        "question": "What is the main function of proteoglycans in cartilage?",
+        "correctAnswers": ["To attract water and provide hydration to the matrix"],
+        "incorrectAnswers": ["To increase the strength of collagen fibers", "To allow for rapid tissue repair", "To increase the flexibility of elastic cartilage"],
+        "explanation": "Proteoglycans bind to water molecules, allowing cartilage to remain hydrated and provide resilience to pressure."
+      },
+      {
+        "question": "Which cartilage type is responsible for connecting the ribs to the sternum?",
+        "correctAnswers": ["Hyaline cartilage"],
+        "incorrectAnswers": ["Elastic cartilage", "Fibrocartilage", "Bone cartilage"],
+        "explanation": "Hyaline cartilage connects the ribs to the sternum, allowing for movement during breathing while maintaining structural integrity."
+      },
+      {
+        "question": "Which type of cartilage is most commonly found in joints that undergo frequent movement?",
+        "correctAnswers": ["Hyaline cartilage"],
+        "incorrectAnswers": ["Fibrocartilage", "Elastic cartilage", "Bone cartilage"],
+        "explanation": "Hyaline cartilage lines the joints, providing a smooth surface for bones to glide over each other during movement."
+      },
+      {
+        "question": "What is the role of chondrocytes in cartilage?",
+        "correctAnswers": ["To produce and maintain the extracellular matrix"],
+        "incorrectAnswers": ["To repair bone fractures", "To produce red blood cells", "To facilitate muscle contraction and relaxation"],
+        "explanation": "Chondrocytes are the cells within cartilage that produce the extracellular matrix and help maintain its structure."
+      },
+      {
+        "question": "Which cartilage type is found in the pubic symphysis?",
+        "correctAnswers": ["Fibrocartilage"],
+        "incorrectAnswers": ["Elastic cartilage", "Hyaline cartilage", "Bone cartilage"],
+        "explanation": "Fibrocartilage is found in the pubic symphysis, providing strength and the ability to absorb shock between the pubic bones."
+      },
+      {
+        "question": "Which of the following is a characteristic feature of elastic cartilage?",
+        "correctAnswers": ["It contains elastin fibers that allow it to stretch and return to shape"],
+        "incorrectAnswers": ["It is composed mainly of dense collagen fibers for strength", "It is primarily found in weight-bearing areas like intervertebral discs", "It is highly calcified and rigid"],
+        "explanation": "Elastic cartilage contains elastin fibers that make it flexible and able to return to its original shape after stretching, as seen in the ear."
+      },
+      {
+        "question": "What type of cartilage is involved in the formation of the fetal skeleton?",
+        "correctAnswers": ["Hyaline cartilage"],
+        "incorrectAnswers": ["Elastic cartilage", "Fibrocartilage", "Bone cartilage"],
+        "explanation": "Hyaline cartilage forms the initial skeleton of a fetus, which is later replaced by bone through the process of ossification."
+      },
+      {
+        "question": "What type of cartilage covers the ends of long bones at joints?",
+        "correctAnswers": ["Hyaline cartilage"],
+        "incorrectAnswers": ["Fibrocartilage", "Elastic cartilage", "Osteoid cartilage"],
+        "explanation": "Hyaline cartilage covers the articular surfaces of bones at joints, providing smooth, low-friction surfaces for movement."
+      },
+      {
+        "question": "What type of cartilage is involved in the repair of cartilage damage after injury?",
+        "correctAnswers": ["Fibrocartilage"],
+        "incorrectAnswers": ["Elastic cartilage", "Hyaline cartilage", "Bone cartilage"],
+        "explanation": "Fibrocartilage helps repair damaged cartilage, especially in areas where the tissue is under stress, such as the knee."
+      },
+      {
+        "question": "Which cartilage type is found in the larynx, including the thyroid cartilage?",
+        "correctAnswers": ["Hyaline cartilage"],
+        "incorrectAnswers": ["Elastic cartilage", "Fibrocartilage", "Bone cartilage"],
+        "explanation": "Hyaline cartilage forms much of the larynx, including the thyroid cartilage, providing support and flexibility for vocalization."
+      },
+      {
+        "question": "What is a common feature of all types of cartilage?",
+        "correctAnswers": ["They are avascular and rely on diffusion for nutrient exchange"],
+        "incorrectAnswers": ["They contain blood vessels for nutrient delivery", "They are rigid and support the body structure", "They produce bone cells for skeletal growth"],
+        "explanation": "Cartilage is avascular, meaning it lacks blood vessels and relies on diffusion from surrounding tissues for nutrient supply."
+      },
+      {
+        "question": "Which cartilage type is responsible for providing tensile strength in the tendons and ligaments?",
+        "correctAnswers": ["Fibrocartilage"],
+        "incorrectAnswers": ["Elastic cartilage", "Hyaline cartilage", "Bone cartilage"],
+        "explanation": "Fibrocartilage, which is found in tendons and ligaments, provides tensile strength and resistance to stretching."
+      },
+      {
+        "question": "Which cartilage type allows the ribs to expand during respiration?",
+        "correctAnswers": ["Hyaline cartilage"],
+        "incorrectAnswers": ["Elastic cartilage", "Fibrocartilage", "Bone cartilage"],
+        "explanation": "Hyaline cartilage, found in the rib cage, allows for flexibility during breathing, enabling the ribs to expand and contract."
+      },
+      {
+        "question": "What is a distinguishing feature of fibrocartilage compared to hyaline cartilage?",
+        "correctAnswers": ["It contains dense collagen fibers that make it tougher and more durable"],
+        "incorrectAnswers": ["It is more flexible and elastic", "It has a smooth, glass-like appearance", "It is composed primarily of hyaluronic acid"],
+        "explanation": "Fibrocartilage has dense collagen fibers that make it more durable and resistant to compression, unlike the smooth and flexible hyaline cartilage."
+      }
+]
