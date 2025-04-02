@@ -108,7 +108,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
 
         return Flux.generate(sink -> {
                     if (match.questionExists())
-                        sink.next(match.getQuestion());
+                        sink.next(match.getCurrentQuestion());
                     else
                         sink.complete();
                 })
@@ -163,8 +163,8 @@ public void addMatch(MessageChannel messageChannel, Match match) {
 
     private Mono<Message> createQuestionMessage(MessageChannel messageChannel, Long questionNumber, int timeLeft){
         Match match = quizzes.get(messageChannel);
-        String questionsAnswers = match.getQuestion().getStringAnswers(false);
-        int answersSize = match.getQuestion().getAnswers().size();
+        String questionsAnswers = match.getCurrentQuestion().getStringAnswers(false);
+        int answersSize = match.getCurrentQuestion().getAnswers().size();
 
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
@@ -176,7 +176,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         //String formattedTime = String.format("%02d", timeLeft);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("#" + (match.getCurrentQuestionNum() + 1) + " **" + match.getQuestion().getQuestion() + "**")
+                .title("#" + (match.getCurrentQuestionNum() + 1) + " **" + match.getCurrentQuestion().getQuestion() + "**")
                 //.description("**" + match.getQuestion().getQuestion() + "**")
                 .addField("\n", questionsAnswers + "\n", false)
                 .addField("\n", "```" + timeLeft + " seconds left.```", false)
@@ -192,8 +192,8 @@ public void addMatch(MessageChannel messageChannel, Match match) {
 
     private Mono<Message> editQuestionMessageTime(MessageChannel messageChannel, Message message, Long questionNumber, int timeLeft){
         Match match = quizzes.get(messageChannel);
-        String questionsAnswers = match.getQuestion().getStringAnswers(false);
-        int answersSize = match.getQuestion().getAnswers().size();
+        String questionsAnswers = match.getCurrentQuestion().getStringAnswers(false);
+        int answersSize = match.getCurrentQuestion().getAnswers().size();
 
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
@@ -205,7 +205,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         //String formattedTime = String.format("%02d", timeLeft);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("#" + (match.getCurrentQuestionNum() + 1) + " **" + match.getQuestion().getQuestion() + "**")
+                .title("#" + (match.getCurrentQuestionNum() + 1) + " **" + match.getCurrentQuestion().getQuestion() + "**")
                 //.description("**" + match.getQuestion().getQuestion() + "**")
                 .addField("\n", questionsAnswers + "\n", false)
                 .addField("\n", "```" + timeLeft + " seconds left.```", false)
@@ -219,8 +219,8 @@ public void addMatch(MessageChannel messageChannel, Match match) {
 
     private Mono<Message> editQuestionMessageInitial(MessageChannel messageChannel, Message message, Long questionNumber){
         Match match = quizzes.get(messageChannel);
-        String questionsAnswers = match.getQuestion().getStringAnswers(false);
-        int answersSize = match.getQuestion().getAnswers().size();
+        String questionsAnswers = match.getCurrentQuestion().getStringAnswers(false);
+        int answersSize = match.getCurrentQuestion().getAnswers().size();
 
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
@@ -230,7 +230,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("#" + (match.getCurrentQuestionNum() + 1) + " **" + match.getQuestion().getQuestion() + "**")
+                .title("#" + (match.getCurrentQuestionNum() + 1) + " **" + match.getCurrentQuestion().getQuestion() + "**")
                 //.description("**" + match.getQuestion().getQuestion() + "**")
                 .addField("\n", questionsAnswers + "\n", false)
                 .build();
@@ -244,8 +244,8 @@ public void addMatch(MessageChannel messageChannel, Match match) {
 
     private Mono<Message> editQuestionMessage(MessageChannel messageChannel, Message message, Long questionNumber){
         Match match = quizzes.get(messageChannel);
-        String questionsAnswers = match.getQuestion().getStringAnswers(true);
-        int answersSize = match.getQuestion().getAnswers().size();
+        String questionsAnswers = match.getCurrentQuestion().getStringAnswers(true);
+        int answersSize = match.getCurrentQuestion().getAnswers().size();
 
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
@@ -255,9 +255,9 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         buttons.add(Button.danger("cancelQuiz", "Abort quiz").disabled());
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("#" + (match.getCurrentQuestionNum() + 1) + " **" + match.getQuestion().getQuestion() + "**")
+                .title("#" + (match.getCurrentQuestionNum() + 1) + " **" + match.getCurrentQuestion().getQuestion() + "**")
                 .addField("\n", questionsAnswers + "\n", false)
-                .addField("Explanation", match.getQuestion().getExplanation() + "\n", false)
+                .addField("Explanation", match.getCurrentQuestion().getExplanation() + "\n", false)
                 //.addField("", "Answers:\n" + match.getUsersAnswers(), false)
                 .addField("Answers", match.getUsersAnswers(), false)
                 .addField("Scoreboard", match.getScoreboard(), false)
@@ -329,7 +329,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
     }
 
     private Mono<Void> moveToNextQuestion(Match match){
-        match.nextQuestion();
+        match.skipToNextQuestion();
         return Mono.empty();
     }
 
@@ -369,14 +369,14 @@ public void addMatch(MessageChannel messageChannel, Match match) {
     }
 
     public String addUserToMatch(ButtonInteraction buttonInteraction){
-        User user = buttonInteraction.getUser();
+        Long userId = buttonInteraction.getUser().getId().asLong();
         Message message = buttonInteraction.getMessage();
         MessageChannel messageChannel = buttonInteraction.getMessageChannel();
         Match match = quizzes.get(messageChannel);
         int questionsNumber = match.getQuestions().size();
 
         if (quizzes.containsKey(messageChannel)){
-            return quizzes.get(messageChannel).addPlayer(user, questionsNumber);
+            return quizzes.get(messageChannel).addPlayer(userId, questionsNumber);
         }
         else{
             return "This match doesn't exist anymore.";
@@ -389,7 +389,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         MessageChannel messageChannel = buttonInteraction.getMessageChannel();
 
         if (quizzes.containsKey(messageChannel))
-            return quizzes.get(messageChannel).removePlayer(user);
+            return quizzes.get(messageChannel).removePlayer(user.getId().asLong());
         else{
             return "This match doesn't exist anymore.";
         }
@@ -414,7 +414,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
     }
 
     public AnswerInteractionEnum setPlayerAnswer(ButtonInteraction buttonInteraction, ButtonInteractionData buttonInteractionData){
-        User user = buttonInteraction.getUser();
+        Long userId = buttonInteraction.getUser().getId().asLong();
         MessageChannel messageChannel = buttonInteraction.getMessageChannel();
         int questionNum = buttonInteractionData.getQuestionNumber();
         int answerNum = buttonInteractionData.getAnswerNumber();
@@ -427,15 +427,15 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         if (questionNum != match.getCurrentQuestionNum() || match.isAnsweringOpen() != true)
             return AnswerInteractionEnum.TOO_LATE;
 
-        if (match.getPlayers().containsKey(user)) {
-            match.getPlayers().get(user).getAnswersList().set(questionNum, answerNum);
+        if (match.getPlayers().containsKey(userId)) {
+            match.getPlayers().get(userId).getAnswersList().set(questionNum, answerNum);
             return AnswerInteractionEnum.VALID;
         }
         else return AnswerInteractionEnum.NOT_IN_MATCH;
     }
 
     public Mono<Void> addPlayerPoints(MessageChannel messageChannel){
-        quizzes.get(messageChannel).addPlayerPoints();
+        quizzes.get(messageChannel).updatePlayerPoints();
         return Mono.empty();
     }
 
