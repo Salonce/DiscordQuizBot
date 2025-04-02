@@ -369,14 +369,14 @@ public void addMatch(MessageChannel messageChannel, Match match) {
     }
 
     public String addUserToMatch(ButtonInteraction buttonInteraction){
-        User user = buttonInteraction.getUser();
+        Long userId = buttonInteraction.getUser().getId().asLong();
         Message message = buttonInteraction.getMessage();
         MessageChannel messageChannel = buttonInteraction.getMessageChannel();
         Match match = quizzes.get(messageChannel);
         int questionsNumber = match.getQuestions().size();
 
         if (quizzes.containsKey(messageChannel)){
-            return quizzes.get(messageChannel).addPlayer(user, questionsNumber);
+            return quizzes.get(messageChannel).addPlayer(userId, questionsNumber);
         }
         else{
             return "This match doesn't exist anymore.";
@@ -389,7 +389,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         MessageChannel messageChannel = buttonInteraction.getMessageChannel();
 
         if (quizzes.containsKey(messageChannel))
-            return quizzes.get(messageChannel).removePlayer(user);
+            return quizzes.get(messageChannel).removePlayer(user.getId().asLong());
         else{
             return "This match doesn't exist anymore.";
         }
@@ -414,7 +414,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
     }
 
     public AnswerInteractionEnum setPlayerAnswer(ButtonInteraction buttonInteraction, ButtonInteractionData buttonInteractionData){
-        User user = buttonInteraction.getUser();
+        Long userId = buttonInteraction.getUser().getId().asLong();
         MessageChannel messageChannel = buttonInteraction.getMessageChannel();
         int questionNum = buttonInteractionData.getQuestionNumber();
         int answerNum = buttonInteractionData.getAnswerNumber();
@@ -427,8 +427,8 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         if (questionNum != match.getCurrentQuestionNum() || match.isAnsweringOpen() != true)
             return AnswerInteractionEnum.TOO_LATE;
 
-        if (match.getPlayers().containsKey(user)) {
-            match.getPlayers().get(user).getAnswersList().set(questionNum, answerNum);
+        if (match.getPlayers().containsKey(userId)) {
+            match.getPlayers().get(userId).getAnswersList().set(questionNum, answerNum);
             return AnswerInteractionEnum.VALID;
         }
         else return AnswerInteractionEnum.NOT_IN_MATCH;

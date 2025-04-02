@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 @Getter
 public class Match{
-    private final Map<User, Player> players;
+    private final Map<Long, Player> players;
     private final List<Question> questions;
     private final int unansweredQuestionsLimit;
     private int currentQuestionNum;
@@ -23,7 +23,7 @@ public class Match{
     @Setter
     private boolean enrollment;
     @Setter
-    private User owner;
+    private Long ownerId;
     @Setter
     private boolean startNow;
 
@@ -33,23 +33,22 @@ public class Match{
         return enumMatchClosed != EnumMatchClosed.NOT_CLOSED;
     }
 
-    public Match(List<Question> questions, String type, User owner, int unansweredQuestionsLimit){
+    public Match(List<Question> questions, String type, Long ownerId, int unansweredQuestionsLimit){
         this.questions = questions;
         this.players = new HashMap<>();
         this.enrollment = true;
         this.currentQuestionNum = 0;
         this.noAnswerCount = 0;
-        this.owner = owner;
+        this.ownerId = ownerId;
         this.unansweredQuestionsLimit = unansweredQuestionsLimit;
         this.enumMatchClosed = EnumMatchClosed.NOT_CLOSED;
         this.startNow = false;
 
         if (type != null) {
-            String capitalized = type.substring(0, 1).toUpperCase() + type.substring(1);
-            this.name = capitalized;
+            this.name = type.substring(0, 1).toUpperCase() + type.substring(1); //Capitalize match name
         }
 
-        players.put(owner, new Player(questions.size()));
+        players.put(ownerId, new Player(questions.size()));
     }
 
     public boolean everyoneAnswered(){
@@ -80,8 +79,7 @@ public class Match{
     }
 
     public boolean closeMatch(Long ownerId){
-        long matchOwnerId = this.owner.getId().asLong();
-        if (matchOwnerId == ownerId){
+        if (ownerId.equals(this.ownerId)){
             enumMatchClosed = EnumMatchClosed.BY_OWNER;
             return true;
         }
@@ -90,7 +88,7 @@ public class Match{
 
     //sort highest to lowest scores -> b - a
     public String getScoreboard(){
-        return getPlayers().entrySet().stream().sorted((a, b) -> (b.getValue().getPoints() - a.getValue().getPoints())).map(entry -> "<@" + entry.getKey().getId().asString() + ">" + ": " + entry.getValue().getPoints()).collect(Collectors.joining("\n"));
+        return getPlayers().entrySet().stream().sorted((a, b) -> (b.getValue().getPoints() - a.getValue().getPoints())).map(entry -> "<@" + entry.getKey() + ">" + ": " + entry.getValue().getPoints()).collect(Collectors.joining("\n"));
     }
 
     public String getWinners() {
@@ -103,7 +101,7 @@ public class Match{
         // Get all players with max points
         return getPlayers().entrySet().stream()
                 .filter(entry -> entry.getValue().getPoints() == maxPoints)
-                .map(entry -> "<@" + entry.getKey().getId().asString() + ">")
+                .map(entry -> "<@" + entry.getKey().toString() + ">")
 //              .map(entry -> "<@" + entry.getKey().getId().asString() + ">: " + maxPoints)
                 .collect(Collectors.joining(", "));
     }
@@ -126,10 +124,10 @@ public class Match{
         for (int i = 0; i < questions.get(currentQuestionNum).getAnswers().size() + 1; i++){
             playersAnswers.add(new ArrayList<>());
         }
-        for (Map.Entry<User, Player> entry : players.entrySet()){
+        for (Map.Entry<Long, Player> entry : players.entrySet()){
             int intAnswer = entry.getValue().getAnswersList().get(currentQuestionNum) + 1;
             //int intAnswer = entry.getValue().getCurrentAnswerNum() + 1;
-            playersAnswers.get(intAnswer).add("<@" + entry.getKey().getId().asString() + ">");
+            playersAnswers.get(intAnswer).add("<@" + entry.getKey().toString() + ">");
         }
         StringBuilder sb = new StringBuilder();
         for (int i = 1; i < playersAnswers.size(); i++){
@@ -168,46 +166,43 @@ public class Match{
     public String getUserNames() {
         return players.keySet().stream()
                 .sorted((u1, u2) -> {
-                    if (u1 == owner) return -1;
-                    if (u2 == owner) return 1;
+                    if (u1.equals(ownerId)) return -1;
+                    if (u2.equals(ownerId)) return 1;
                     return 0;  // Keep original order for non-owners
                 })
-                .map(user -> "<@" + user.getId().asString() + ">" +
-                        (user == owner ? " (owner)" : ""))
+                .map(userId -> "<@" + userId + ">" +
+                        (userId.equals(ownerId) ? " (owner)" : ""))
                 .collect(Collectors.joining(", "));
     }
 
-    public String addPlayer(User user, int questionsNumber){
+    public String addPlayer(Long userId, int questionsNumber){
         if (!isEnrollment()){
             return "Can't do that! You can join the match only during enrollment phase.";
         }
-        if (players.containsKey(user)) {
+        if (players.containsKey(userId)) {
             return "You've already joined the match.";
         }
         else {
-            players.put(user, new Player(questionsNumber));
+            players.put(userId, new Player(questionsNumber));
             if (players.size() == 1) {
-                this.owner = user;
+                this.ownerId = userId;
             }
             return "You've joined the match.";
         }
     }
 
-    public String removePlayer(User user){
+    public String removePlayer(Long userId){
         if (!isEnrollment()){
             return "Can't do that! You can leave the match only during enrollment phase.";
         }
-        if (isEnrollment() && players.containsKey(user)) {
-            players.remove(user);
+        if (isEnrollment() && players.containsKey(userId)) {
+            players.remove(userId);
             //if player was the owner, remove his ownership
-            if (this.owner != null && user.getId().asLong() == this.owner.getId().asLong()){
+            if (userId.equals(ownerId)){
+                this.ownerId = null;
                 //if there are players get a random user to be the new owner
                 if (!players.isEmpty()){
-                    this.owner = players.entrySet().iterator().next().getKey();
-                }
-                //if no players set owner to null
-                else {
-                    this.owner = null;
+                    this.ownerId = players.entrySet().iterator().next().getKey();
                 }
             }
             return "You've left the match.";

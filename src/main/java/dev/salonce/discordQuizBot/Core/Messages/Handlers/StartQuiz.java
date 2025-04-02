@@ -29,10 +29,9 @@ public class StartQuiz implements MessageHandler {
                 return true; // too short command. end chain
             String lastMsg = message[2];
             if (questionSetsConfig.getFiles().containsKey(lastMsg)){
-                User user = discordMessage.getUser();
-                //Long ownerId = discordMessage.getUsernameIdLong();
+                Long userId = discordMessage.getUser().getId().asLong();
                 MessageChannel messageChannel = discordMessage.getChannel();
-                quizManager.addMatch(messageChannel, matchFactory.makeMatch(lastMsg, user));
+                quizManager.addMatch(messageChannel, matchFactory.makeMatch(lastMsg, userId));
                 return true;
             }
             else{
