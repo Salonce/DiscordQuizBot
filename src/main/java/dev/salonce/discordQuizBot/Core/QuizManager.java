@@ -1,4 +1,4 @@
-package dev.salonce.discordQuizBot;
+package dev.salonce.discordQuizBot.Core;
 
 import dev.salonce.discordQuizBot.Configs.QuestionSetsConfig;
 import dev.salonce.discordQuizBot.Buttons.AnswerInteractionEnum;
