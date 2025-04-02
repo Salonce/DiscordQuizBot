@@ -1,6 +1,7 @@
 package dev.salonce.discordQuizBot.Core.Matches;
 
 import dev.salonce.discordQuizBot.Core.Questions.Question;
+import dev.salonce.discordQuizBot.MatchI;
 import discord4j.core.object.entity.User;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +9,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Getter
-public class Match{
+public class StandardMatch {
     private final Map<User, Player> players;
     private final List<Question> questions;
     private final int unansweredQuestionsLimit;
@@ -26,14 +27,15 @@ public class Match{
     private User owner;
     @Setter
     private boolean startNow;
-
     private String name;
 
+    //@Override
     public boolean isClosed(){
         return enumMatchClosed != EnumMatchClosed.NOT_CLOSED;
     }
 
-    public Match(List<Question> questions, String type, User owner, int unansweredQuestionsLimit){
+
+    public StandardMatch(List<Question> questions, String type, User owner, int unansweredQuestionsLimit){
         this.questions = questions;
         this.players = new HashMap<>();
         this.enrollment = true;
@@ -134,7 +136,7 @@ public class Match{
         StringBuilder sb = new StringBuilder();
         for (int i = 1; i < playersAnswers.size(); i++){
             if (i != 1) sb.append("\n");
-            if (getCurrentQuestion().getCorrectAnswerInt() == i - 1)
+            if (getQuestion().getCorrectAnswerInt() == i - 1)
                 sb.append("✅ ").append("**").append((char)('A' + i - 1)).append("**: ");
             else
                 sb.append("❌ ").append((char)('A' + i - 1)).append(": ");
@@ -151,18 +153,19 @@ public class Match{
         return sb.toString();
     }
 
-    public void skipToNextQuestion(){
-        currentQuestionNum++;
-    }
     public boolean questionExists(){
         return currentQuestionNum < questions.size();
     }
 
-    public Question getCurrentQuestion(){
+    public Question getQuestion(){
         if (currentQuestionNum < questions.size())
             return questions.get(currentQuestionNum);
         else
             return null;
+    }
+
+    public void nextQuestion(){
+        currentQuestionNum++;
     }
 
     public String getUserNames() {
@@ -176,6 +179,12 @@ public class Match{
                         (user == owner ? " (owner)" : ""))
                 .collect(Collectors.joining(", "));
     }
+
+//    public String getUserNames() {
+//        return players.keySet().stream()
+//                .map(user -> "<@" + user.getId().asString() + ">")
+//                .collect(Collectors.joining(", "));
+//    }
 
     public String addPlayer(User user, int questionsNumber){
         if (!isEnrollment()){
@@ -217,3 +226,4 @@ public class Match{
         }
     }
 }
+
