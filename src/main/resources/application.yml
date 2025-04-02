@@ -8,6 +8,13 @@ discord:
 
 questions:
   files:
+    anatomy:
+      - anatomy/skeletal/bones.json
+      - anatomy/skeletal/joints.json
+      - anatomy/skeletal/cartilage.json
+      - anatomy/muscular/functions.json
+      - anatomy/muscular/movements.json
+      - anatomy/muscular/muscle_types.json
     java:
     - java/arrays.json
     - java/classesAndObjects.json
@@ -21,7 +28,7 @@ questions:
     - java/io.json
     - java/springBootCore.json
     human_memory: human_memory.json
-    big-five: big-five.json
+    big_five: big_five.json
     art_history: art_history.json
     python: python.json
     painting_techniques: painting_techniques.json

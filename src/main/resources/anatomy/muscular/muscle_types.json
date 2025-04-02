@@ -1,0 +1,459 @@
+[
+    {
+      "question": "What type of muscle is primarily responsible for voluntary movements?",
+      "correctAnswers": ["Skeletal muscle"],
+      "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle fibers", "Connective tissue"],
+      "explanation": "Skeletal muscle is responsible for voluntary movements and is attached to bones."
+    },
+    {
+      "question": "Which muscle type is found in the walls of hollow organs?",
+      "correctAnswers": ["Smooth muscle"],
+      "incorrectAnswers": ["Striated muscle tissue", "Cardiac muscle cells", "Fibrous connective tissue"],
+      "explanation": "Smooth muscle is found in the walls of hollow organs and is responsible for involuntary movements."
+    },
+    {
+      "question": "What type of muscle is specialized for pumping blood throughout the body?",
+      "correctAnswers": ["Cardiac muscle"],
+      "incorrectAnswers": ["Skeletal muscle fibers", "Smooth muscle tissue", "Elastic connective tissue"],
+      "explanation": "Cardiac muscle is specialized for pumping blood and is found in the heart."
+    },
+    {
+      "question": "Which type of muscle is characterized by its striated appearance under a microscope?",
+      "correctAnswers": ["Skeletal muscle", "Cardiac muscle"],
+      "incorrectAnswers": ["Smooth muscle tissue", "Adipose tissue", "Blood tissue"],
+      "explanation": "Both skeletal and cardiac muscles have a striated appearance due to their organized structure."
+    },
+    {
+      "question": "What type of muscle is responsible for involuntary movements?",
+      "correctAnswers": ["Smooth muscle", "Cardiac muscle"],
+      "incorrectAnswers": ["Skeletal muscle tissue", "Nervous tissue", "Epithelial tissue"],
+      "explanation": "Smooth and cardiac muscles are responsible for involuntary movements."
+    },
+    {
+      "question": "Which muscle type is attached to bones and helps in movement?",
+      "correctAnswers": ["Skeletal muscle"],
+      "incorrectAnswers": ["Smooth muscle fibers", "Cardiac muscle cells", "Tendon tissue"],
+      "explanation": "Skeletal muscle is attached to bones and aids in voluntary movement."
+    },
+    {
+      "question": "What type of muscle is found in the heart and is responsible for its contractions?",
+      "correctAnswers": ["Cardiac muscle"],
+      "incorrectAnswers": ["Skeletal muscle fibers", "Smooth muscle tissue", "Lymphatic tissue"],
+      "explanation": "Cardiac muscle is specialized for the heart's contractions."
+    },
+    {
+      "question": "Which type of muscle is not under conscious control?",
+      "correctAnswers": ["Smooth muscle", "Cardiac muscle"],
+      "incorrectAnswers": ["Skeletal muscle tissue", "Nerve tissue", "Muscle spindles"],
+      "explanation": "Smooth and cardiac muscles operate without conscious control."
+    },
+    {
+      "question": "What type of muscle is involved in the digestion process?",
+      "correctAnswers": ["Smooth muscle"],
+      "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Adipose tissue"],
+      "explanation": "Smooth muscle aids in the movement of food through the digestive tract."
+    },
+    {
+      "question": "Which muscle type is responsible for maintaining posture?",
+      "correctAnswers": ["Skeletal muscle"],
+      "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle fibers", "Bone tissue"],
+      "explanation": "Skeletal muscle helps maintain posture through its voluntary control."
+    },
+    {
+      "question": "What type of muscle is specialized for rapid, powerful contractions?",
+      "correctAnswers": ["Skeletal muscle"],
+      "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle cells", "Elastic cartilage"],
+      "explanation": "Skeletal muscle is capable of rapid, powerful contractions."
+    },
+    {
+      "question": "Which type of muscle is found in the walls of blood vessels?",
+      "correctAnswers": ["Smooth muscle"],
+      "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Lymphatic tissue"],
+      "explanation": "Smooth muscle in blood vessel walls helps regulate blood pressure."
+    },
+    {
+      "question": "What type of muscle is responsible for the rhythmic contractions of the heart?",
+      "correctAnswers": ["Cardiac muscle"],
+      "incorrectAnswers": ["Skeletal muscle tissue", "Smooth muscle fibers", "Nervous tissue"],
+      "explanation": "Cardiac muscle ensures the heart's rhythmic contractions."
+    },
+    {
+      "question": "Which muscle type is involved in regulating body temperature?",
+      "correctAnswers": ["Skeletal muscle"],
+      "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle fibers", "Adipose tissue"],
+      "explanation": "Skeletal muscle can generate heat through shivering."
+    },
+    {
+      "question": "What type of muscle is characterized by its ability to stretch without losing its contractile properties?",
+      "correctAnswers": ["Smooth muscle"],
+      "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Tendon tissue"],
+      "explanation": "Smooth muscle can stretch and still contract effectively."
+    },
+    {
+      "question": "Which type of muscle is responsible for the movement of food through the esophagus?",
+      "correctAnswers": ["Smooth muscle"],
+      "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Epithelial tissue"],
+      "explanation": "Smooth muscle aids in peristalsis, moving food through the esophagus."
+    },
+    {
+      "question": "What type of muscle is involved in the regulation of blood pressure?",
+      "correctAnswers": ["Smooth muscle"],
+      "incorrectAnswers": ["Skeletal muscle tissue", "Cardiac muscle fibers", "Lymphatic tissue"],
+      "explanation": "Smooth muscle in blood vessels helps regulate blood pressure."
+    },
+    {
+      "question": "Which type of muscle is capable of sustained contractions over long periods?",
+      "correctAnswers": ["Smooth muscle"],
+      "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Bone tissue"],
+      "explanation": "Smooth muscle can maintain contractions for extended periods."
+    },
+    {
+      "question": "What type of muscle is found in the iris of the eye?",
+      "correctAnswers": ["Smooth muscle"],
+      "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Nervous tissue"],
+      "explanation": "Smooth muscle in the iris helps control pupil size."
+    },
+    {
+      "question": "Which type of muscle is responsible for the contraction of the bladder?",
+      "correctAnswers": ["Smooth muscle"],
+      "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Adipose tissue"],
+      "explanation": "Smooth muscle in the bladder wall aids in urination."
+    },
+    {
+        "question": "Which muscle type is primarily responsible for the movement of the limbs?",
+        "correctAnswers": ["Skeletal muscle"],
+        "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle fibers", "Connective tissue"],
+        "explanation": "Skeletal muscle is responsible for voluntary movements and is attached to bones."
+      },
+      {
+        "question": "What type of muscle is involved in the contraction of the diaphragm?",
+        "correctAnswers": ["Skeletal muscle"],
+        "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle cells", "Elastic cartilage"],
+        "explanation": "The diaphragm is a skeletal muscle crucial for breathing."
+      },
+      {
+        "question": "Which type of muscle is found in the walls of the stomach?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Lymphatic tissue"],
+        "explanation": "Smooth muscle in the stomach aids in digestion."
+      },
+      {
+        "question": "What type of muscle is specialized for maintaining posture?",
+        "correctAnswers": ["Skeletal muscle"],
+        "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle fibers", "Bone tissue"],
+        "explanation": "Skeletal muscle helps maintain posture through its voluntary control."
+      },
+      {
+        "question": "Which muscle type is responsible for the movement of the eyes?",
+        "correctAnswers": ["Skeletal muscle"],
+        "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle cells", "Nervous tissue"],
+        "explanation": "Skeletal muscles control eye movements."
+      },
+      {
+        "question": "What type of muscle is involved in the regulation of blood flow?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Adipose tissue"],
+        "explanation": "Smooth muscle in blood vessels helps regulate blood flow."
+      },
+      {
+        "question": "Which type of muscle is characterized by its ability to contract rapidly?",
+        "correctAnswers": ["Skeletal muscle"],
+        "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle fibers", "Elastic connective tissue"],
+        "explanation": "Skeletal muscle is capable of rapid contractions."
+      },
+      {
+        "question": "What type of muscle is found in the walls of the intestines?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Epithelial tissue"],
+        "explanation": "Smooth muscle in the intestines aids in peristalsis."
+      },
+      {
+        "question": "Which muscle type is responsible for the contraction of the uterus during childbirth?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Nervous tissue"],
+        "explanation": "Smooth muscle in the uterus aids in childbirth."
+      },
+      {
+        "question": "What type of muscle is involved in the movement of the tongue?",
+        "correctAnswers": ["Skeletal muscle"],
+        "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle fibers", "Mucous membrane"],
+        "explanation": "Skeletal muscles control tongue movements."
+      },
+      {
+        "question": "Which type of muscle is specialized for sustained contractions?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Bone tissue"],
+        "explanation": "Smooth muscle can maintain contractions over long periods."
+      },
+      {
+        "question": "What type of muscle is found in the walls of the urinary bladder?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Adipose tissue"],
+        "explanation": "Smooth muscle in the bladder aids in urination."
+      },
+      {
+        "question": "Which muscle type is responsible for the movement of the vocal cords?",
+        "correctAnswers": ["Skeletal muscle"],
+        "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle fibers", "Nervous tissue"],
+        "explanation": "Skeletal muscles control vocal cord movements."
+      },
+      {
+        "question": "What type of muscle is involved in the regulation of body temperature through shivering?",
+        "correctAnswers": ["Skeletal muscle"],
+        "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle fibers", "Adipose tissue"],
+        "explanation": "Skeletal muscle generates heat through shivering."
+      },
+      {
+        "question": "Which type of muscle is characterized by its ability to function without conscious control?",
+        "correctAnswers": ["Smooth muscle", "Cardiac muscle"],
+        "incorrectAnswers": ["Skeletal muscle tissue", "Nervous tissue", "Epithelial tissue"],
+        "explanation": "Smooth and cardiac muscles operate without conscious control."
+      },
+      {
+        "question": "What type of muscle is found in the walls of the blood vessels and helps regulate blood pressure?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Lymphatic tissue"],
+        "explanation": "Smooth muscle in blood vessels aids in blood pressure regulation."
+      },
+      {
+        "question": "Which muscle type is responsible for the contraction of the gallbladder?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Connective tissue"],
+        "explanation": "Smooth muscle in the gallbladder aids in bile release."
+      },
+      {
+        "question": "What type of muscle is involved in the movement of the jaw?",
+        "correctAnswers": ["Skeletal muscle"],
+        "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle fibers", "Bone tissue"],
+        "explanation": "Skeletal muscles control jaw movements."
+      },
+      {
+        "question": "Which type of muscle is specialized for pumping blood throughout the body and is found in the heart?",
+        "correctAnswers": ["Cardiac muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Smooth muscle tissue", "Elastic connective tissue"],
+        "explanation": "Cardiac muscle is specialized for the heart's contractions."
+      },
+      {
+        "question": "What type of muscle is found in the walls of the bronchi and helps regulate airflow?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Mucous membrane"],
+        "explanation": "Smooth muscle in the bronchi aids in regulating airflow."
+      },
+      {
+        "question": "Which muscle type is responsible for the movement of the facial expressions?",
+        "correctAnswers": ["Skeletal muscle"],
+        "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle fibers", "Nervous tissue"],
+        "explanation": "Skeletal muscles control facial expressions."
+      },
+      {
+        "question": "What type of muscle is involved in the regulation of the digestive process?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Adipose tissue"],
+        "explanation": "Smooth muscle aids in the movement of food through the digestive tract."
+      },
+      {
+        "question": "Which type of muscle is characterized by its ability to contract and relax rapidly and efficiently?",
+        "correctAnswers": ["Cardiac muscle"],
+        "incorrectAnswers": ["Skeletal muscle tissue", "Smooth muscle fibers", "Elastic cartilage"],
+        "explanation": "Cardiac muscle ensures rapid and efficient heart contractions."
+      },
+      {
+        "question": "What type of muscle is found in the walls of the ureters and helps move urine to the bladder?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Lymphatic tissue"],
+        "explanation": "Smooth muscle in the ureters aids in urine transport."
+      },
+      {
+        "question": "Which muscle type is responsible for the movement of the abdominal wall?",
+        "correctAnswers": ["Skeletal muscle"],
+        "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle fibers", "Connective tissue"],
+        "explanation": "Skeletal muscles control abdominal wall movements."
+      },
+      {
+        "question": "What type of muscle is involved in the regulation of the menstrual cycle?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Nervous tissue"],
+        "explanation": "Smooth muscle in the uterus aids in menstrual cycle regulation."
+      },
+      {
+        "question": "Which type of muscle is specialized for maintaining the body's posture during sleep?",
+        "correctAnswers": ["Skeletal muscle"],
+        "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle fibers", "Bone tissue"],
+        "explanation": "Skeletal muscle helps maintain posture even during sleep."
+      },
+      {
+        "question": "What type of muscle is found in the walls of the airways and helps regulate breathing?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Mucous membrane"],
+        "explanation": "Smooth muscle in airways aids in regulating airflow."
+      },
+      {
+        "question": "Which muscle type is responsible for the movement of the pharynx during swallowing?",
+        "correctAnswers": ["Skeletal muscle"],
+        "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle fibers", "Epithelial tissue"],
+        "explanation": "Skeletal muscles control pharyngeal movements during swallowing."
+      },
+      {
+        "question": "What type of muscle is involved in the regulation of blood vessel diameter?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Lymphatic tissue"],
+        "explanation": "Smooth muscle in blood vessels helps regulate vessel diameter."
+      },
+      {
+        "question": "Which type of muscle is characterized by its ability to function continuously without fatigue?",
+        "correctAnswers": ["Cardiac muscle"],
+        "incorrectAnswers": ["Skeletal muscle tissue", "Smooth muscle fibers", "Nervous tissue"],
+        "explanation": "Cardiac muscle operates continuously without fatigue."
+      },
+      {
+        "question": "What type of muscle is found in the walls of the bile ducts and helps regulate bile flow?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Connective tissue"],
+        "explanation": "Smooth muscle in bile ducts aids in bile release."
+      },
+      {
+        "question": "Which muscle type is responsible for the movement of the larynx during speech?",
+        "correctAnswers": ["Skeletal muscle"],
+        "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle fibers", "Mucous membrane"],
+        "explanation": "Skeletal muscles control laryngeal movements during speech."
+      },
+      {
+        "question": "What type of muscle is involved in the regulation of the circulatory system?",
+        "correctAnswers": ["Cardiac muscle", "Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Nervous tissue", "Epithelial tissue"],
+        "explanation": "Cardiac muscle pumps blood, while smooth muscle regulates blood vessel diameter."
+      },
+      {
+        "question": "Which type of muscle is specialized for generating forceful contractions?",
+        "correctAnswers": ["Skeletal muscle"],
+        "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle fibers", "Elastic connective tissue"],
+        "explanation": "Skeletal muscle is capable of generating forceful contractions."
+      },
+      {
+        "question": "What type of muscle is found in the walls of the urethra and helps regulate urine flow?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Adipose tissue"],
+        "explanation": "Smooth muscle in the urethra aids in urine flow regulation."
+      },
+      {
+        "question": "Which muscle type is responsible for the movement of the scalp?",
+        "correctAnswers": ["Skeletal muscle"],
+        "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle fibers", "Connective tissue"],
+        "explanation": "Skeletal muscles control scalp movements."
+      },
+      {
+        "question": "What type of muscle is involved in the regulation of the respiratory system?",
+        "correctAnswers": ["Skeletal muscle", "Smooth muscle"],
+        "incorrectAnswers": ["Cardiac muscle fibers", "Nervous tissue", "Epithelial tissue"],
+        "explanation": "Skeletal muscle controls breathing movements, while smooth muscle regulates airway diameter."
+      },
+      {
+        "question": "Which type of muscle is characterized by its ability to maintain tone over long periods?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle tissue", "Cardiac muscle fibers", "Bone tissue"],
+        "explanation": "Smooth muscle can maintain tone for extended periods."
+      },
+      {
+        "question": "What type of muscle is found in the walls of the esophagus and helps move food to the stomach?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Mucous membrane"],
+        "explanation": "Smooth muscle in the esophagus aids in peristalsis."
+      },
+      {
+        "question": "Which muscle type is responsible for the movement of the neck?",
+        "correctAnswers": ["Skeletal muscle"],
+        "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle fibers", "Nervous tissue"],
+        "explanation": "Skeletal muscles control neck movements."
+      },
+      {
+        "question": "What type of muscle is involved in the regulation of the digestive tract's motility?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Adipose tissue"],
+        "explanation": "Smooth muscle aids in the movement of food through the digestive tract."
+      },
+      {
+        "question": "Which type of muscle is specialized for rapid, precise movements?",
+        "correctAnswers": ["Skeletal muscle"],
+        "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle fibers", "Elastic cartilage"],
+        "explanation": "Skeletal muscle is capable of rapid, precise movements."
+      },
+      {
+        "question": "What type of muscle is found in the walls of the trachea and helps regulate airflow?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Mucous membrane"],
+        "explanation": "Smooth muscle in the trachea aids in regulating airflow."
+      },
+      {
+        "question": "Which muscle type is responsible for the movement of the lips?",
+        "correctAnswers": ["Skeletal muscle"],
+        "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle fibers", "Nervous tissue"],
+        "explanation": "Skeletal muscles control lip movements."
+      },
+      {
+        "question": "What type of muscle is involved in the regulation of blood pressure through vessel constriction?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Lymphatic tissue"],
+        "explanation": "Smooth muscle in blood vessels helps regulate blood pressure."
+      },
+      {
+        "question": "Which type of muscle is characterized by its ability to function without rest?",
+        "correctAnswers": ["Cardiac muscle"],
+        "incorrectAnswers": ["Skeletal muscle tissue", "Smooth muscle fibers", "Nervous tissue"],
+        "explanation": "Cardiac muscle operates continuously without rest."
+      },
+      {
+        "question": "What type of muscle is found in the walls of the stomach and helps mix food with digestive enzymes?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Epithelial tissue"],
+        "explanation": "Smooth muscle in the stomach aids in digestion."
+      },
+      {
+        "question": "Which muscle type is responsible for the movement of the wrist?",
+        "correctAnswers": ["Skeletal muscle"],
+        "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle fibers", "Bone tissue"],
+        "explanation": "Skeletal muscles control wrist movements."
+      },
+      {
+        "question": "What type of muscle is involved in the regulation of the circulatory system's blood flow?",
+        "correctAnswers": ["Smooth muscle", "Cardiac muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Nervous tissue", "Epithelial tissue"],
+        "explanation": "Cardiac muscle pumps blood, while smooth muscle regulates blood vessel diameter."
+      },
+      {
+        "question": "Which type of muscle is specialized for generating heat through shivering?",
+        "correctAnswers": ["Skeletal muscle"],
+        "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle fibers", "Adipose tissue"],
+        "explanation": "Skeletal muscle generates heat through shivering."
+      },
+      {
+        "question": "What type of muscle is found in the walls of the small intestine and helps mix food with digestive enzymes?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Mucous membrane"],
+        "explanation": "Smooth muscle in the small intestine aids in digestion."
+      },
+      {
+        "question": "Which muscle type is responsible for the movement of the fingers?",
+        "correctAnswers": ["Skeletal muscle"],
+        "incorrectAnswers": ["Smooth muscle tissue", "Cardiac muscle fibers", "Connective tissue"],
+        "explanation": "Skeletal muscles control finger movements."
+      },
+      {
+        "question": "What type of muscle is involved in the regulation of the respiratory system's airflow?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Nervous tissue"],
+        "explanation": "Smooth muscle in airways aids in regulating airflow."
+      },
+      {
+        "question": "Which type of muscle is characterized by its ability to maintain contractions over long periods without fatigue?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle tissue", "Cardiac muscle fibers", "Bone tissue"],
+        "explanation": "Smooth muscle can maintain contractions for extended periods."
+      },
+      {
+        "question": "What type of muscle is found in the walls of the large intestine and helps move waste to the rectum?",
+        "correctAnswers": ["Smooth muscle"],
+        "incorrectAnswers": ["Skeletal muscle fibers", "Cardiac muscle cells", "Epithelial tissue"],
+        "explanation": "Smooth muscle in the large intestine aids in waste movement."
+      }
+]
+  
