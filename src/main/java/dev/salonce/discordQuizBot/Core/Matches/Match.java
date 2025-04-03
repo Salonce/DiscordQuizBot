@@ -1,7 +1,6 @@
 package dev.salonce.discordQuizBot.Core.Matches;
 
 import dev.salonce.discordQuizBot.Core.Questions.Question;
-import discord4j.core.object.entity.User;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.*;
@@ -9,23 +8,19 @@ import java.util.stream.Collectors;
 
 @Getter
 public class Match{
-    private final Map<Long, Player> players;
+    private final Map<Long, Player> players = new LinkedHashMap<>();;
     private final List<Question> questions;
     private final int unansweredQuestionsLimit;
-    private int currentQuestionNum;
-    private int noAnswerCount;
+    private int currentQuestionNum = 0;
+    private int noAnswerCount = 0;
 
-
-
-    private EnumMatchClosed enumMatchClosed;
+    private EnumMatchClosed enumMatchClosed = EnumMatchClosed.NOT_CLOSED;;
     @Setter
     private boolean answeringOpen;
     @Setter
-    private boolean enrollment;
+    private boolean enrollment = true;
     @Setter
-    private Long ownerId;
-    @Setter
-    private boolean startNow;
+    private boolean startNow = false;
 
     private String name;
 
@@ -35,20 +30,12 @@ public class Match{
 
     public Match(List<Question> questions, String type, Long ownerId, int unansweredQuestionsLimit){
         this.questions = questions;
-        this.players = new HashMap<>();
-        this.enrollment = true;
-        this.currentQuestionNum = 0;
-        this.noAnswerCount = 0;
-        this.ownerId = ownerId;
         this.unansweredQuestionsLimit = unansweredQuestionsLimit;
-        this.enumMatchClosed = EnumMatchClosed.NOT_CLOSED;
-        this.startNow = false;
+        players.put(ownerId, new Player(questions.size()));
 
         if (type != null) {
             this.name = type.substring(0, 1).toUpperCase() + type.substring(1); //Capitalize match name
         }
-
-        players.put(ownerId, new Player(questions.size()));
     }
 
     public boolean everyoneAnswered(){
@@ -78,32 +65,17 @@ public class Match{
             noAnswerCount = 0;
     }
 
-    public boolean closeMatch(Long ownerId){
-        if (ownerId.equals(this.ownerId)){
+    public boolean closeMatch(Long userId){
+        if (userId.equals(getOwnerId())){
             enumMatchClosed = EnumMatchClosed.BY_OWNER;
             return true;
         }
         return false;
     }
 
-    //sort highest to lowest scores -> b - a
-    public String getScoreboard(){
-        return getPlayers().entrySet().stream().sorted((a, b) -> (b.getValue().getPoints() - a.getValue().getPoints())).map(entry -> "<@" + entry.getKey() + ">" + ": " + entry.getValue().getPoints()).collect(Collectors.joining("\n"));
-    }
-
-    public String getWinners() {
-        // Find the max points
-        int maxPoints = getPlayers().values().stream()
-                .mapToInt(Player::getPoints)
-                .max()
-                .orElse(0);
-
-        // Get all players with max points
-        return getPlayers().entrySet().stream()
-                .filter(entry -> entry.getValue().getPoints() == maxPoints)
-                .map(entry -> "<@" + entry.getKey().toString() + ">")
-//              .map(entry -> "<@" + entry.getKey().getId().asString() + ">: " + maxPoints)
-                .collect(Collectors.joining(", "));
+    private Long getOwnerId(){
+        try { return players.keySet().iterator().next(); }
+        catch (NoSuchElementException e){ return null; }
     }
 
     public void updatePlayerPoints(){
@@ -164,15 +136,14 @@ public class Match{
     }
 
     public String getUserNames() {
-        return players.keySet().stream()
-                .sorted((u1, u2) -> {
-                    if (u1.equals(ownerId)) return -1;
-                    if (u2.equals(ownerId)) return 1;
-                    return 0;  // Keep original order for non-owners
-                })
-                .map(userId -> "<@" + userId + ">" +
-                        (userId.equals(ownerId) ? " (owner)" : ""))
-                .collect(Collectors.joining(", "));
+        Iterator<Long> iterator = players.keySet().iterator();
+        if (!iterator.hasNext())
+            return "";
+        Long ownerId = iterator.next();
+        StringBuilder result = new StringBuilder("<@" + ownerId + "> (owner)");
+        while (iterator.hasNext())
+            result.append(", <@").append(iterator.next()).append(">");
+        return result.toString();
     }
 
     public String addPlayer(Long userId, int questionsNumber){
@@ -184,31 +155,40 @@ public class Match{
         }
         else {
             players.put(userId, new Player(questionsNumber));
-            if (players.size() == 1) {
-                this.ownerId = userId;
-            }
             return "You've joined the match.";
         }
     }
 
     public String removePlayer(Long userId){
-        if (!isEnrollment()){
+        if (!isEnrollment()) {
             return "Can't do that! You can leave the match only during enrollment phase.";
         }
-        if (isEnrollment() && players.containsKey(userId)) {
+        else if (isEnrollment() && players.containsKey(userId)) {
             players.remove(userId);
-            //if player was the owner, remove his ownership
-            if (userId.equals(ownerId)){
-                this.ownerId = null;
-                //if there are players get a random user to be the new owner
-                if (!players.isEmpty()){
-                    this.ownerId = players.entrySet().iterator().next().getKey();
-                }
-            }
             return "You've left the match.";
         }
         else {
             return "You are not in the match to leave it.";
         }
+    }
+
+    //sort highest to lowest scores -> b - a
+    public String getScoreboard(){
+        return getPlayers().entrySet().stream().sorted((a, b) -> (b.getValue().getPoints() - a.getValue().getPoints())).map(entry -> "<@" + entry.getKey() + ">" + ": " + entry.getValue().getPoints()).collect(Collectors.joining("\n"));
+    }
+
+    public String getWinners() {
+        // Find the max points
+        int maxPoints = getPlayers().values().stream()
+                .mapToInt(Player::getPoints)
+                .max()
+                .orElse(0);
+
+        // Get all players with max points
+        return getPlayers().entrySet().stream()
+                .filter(entry -> entry.getValue().getPoints() == maxPoints)
+                .map(entry -> "<@" + entry.getKey().toString() + ">")
+//              .map(entry -> "<@" + entry.getKey().getId().asString() + ">: " + maxPoints)
+                .collect(Collectors.joining(", "));
     }
 }
