@@ -338,8 +338,8 @@ public void addMatch(MessageChannel messageChannel, Match match) {
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("Final scoreboard: " )
-                .description(match.getScoreboard())
-                .addField("\uD83C\uDFC6", "The winners are: " + match.getWinners(), false)
+                .description(match.getFinalScoreboard())
+                //.addField("\uD83C\uDFC6", "The winners are: " + match.getWinners(), false)
                 .build();
 
         return messageChannel.createMessage(embed);
