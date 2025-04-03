@@ -174,8 +174,54 @@ public class Match{
 
     //sort highest to lowest scores -> b - a
     public String getScoreboard(){
-        return getPlayers().entrySet().stream().sorted((a, b) -> (b.getValue().getPoints() - a.getValue().getPoints())).map(entry -> "<@" + entry.getKey() + ">" + ": " + entry.getValue().getPoints()).collect(Collectors.joining("\n"));
+        return getPlayers().entrySet().stream().sorted((a, b) -> (b.getValue().getPoints() - a.getValue().getPoints())).map(entry -> "<@" + entry.getKey() + ">" + ": " + entry.getValue().getPoints() + " points").collect(Collectors.joining("\n"));
     }
+
+    public String getFinalScoreboard() {
+        // Group players by their points
+        Map<Integer, List<String>> pointsGrouped = getPlayers().entrySet().stream()
+                .collect(Collectors.groupingBy(
+                        entry -> entry.getValue().getPoints(),
+                        Collectors.mapping(entry -> "<@" + entry.getKey() + ">", Collectors.toList())
+                ));
+
+        // Sort the points in descending order
+        List<Integer> sortedPoints = pointsGrouped.keySet().stream()
+                .sorted((a, b) -> b - a) // Sorting points in descending order
+                .collect(Collectors.toList());
+
+        // Build the scoreboard message
+        StringBuilder scoreboard = new StringBuilder();
+        int place = 1;
+
+        for (Integer points : sortedPoints) {
+            List<String> players = pointsGrouped.get(points);
+            String playersList = String.join(", ", players);
+            scoreboard.append(getOrdinalSuffix(place)).append(" place: ").append(playersList)
+                    .append(" : ").append(points).append(" points\n");
+            place++;
+        }
+
+        return scoreboard.toString().trim();
+    }
+
+    // Helper method to get the ordinal suffix (1st, 2nd, 3rd, etc.)
+    private String getOrdinalSuffix(int place) {
+        if (place % 100 >= 11 && place % 100 <= 13) {
+            return place + "th";
+        }
+        switch (place % 10) {
+            case 1: return place + "st";
+            case 2: return place + "nd";
+            case 3: return place + "rd";
+            default: return place + "th";
+        }
+    }
+
+//    public String getScoreboard(){
+//        return getPlayers().entrySet().stream().sorted((a, b) -> (b.getValue().getPoints() - a.getValue().getPoints())).map(entry -> "<@" + entry.getKey() + ">" + ": " + entry.getValue().getPoints()).collect(Collectors.joining("\n"));
+//    }
+
 
     public String getWinners() {
         // Find the max points

@@ -176,7 +176,8 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         //String formattedTime = String.format("%02d", timeLeft);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("#" + (match.getCurrentQuestionNum() + 1) + " **" + match.getCurrentQuestion().getQuestion() + "**")
+                .title("Question " + (match.getCurrentQuestionNum() + 1) + "/10")
+                .addField("\n", "**" + match.getCurrentQuestion().getQuestion() + "**", false)
                 //.description("**" + match.getQuestion().getQuestion() + "**")
                 .addField("\n", questionsAnswers + "\n", false)
                 .addField("\n", "```" + timeLeft + " seconds left.```", false)
@@ -188,6 +189,31 @@ public void addMatch(MessageChannel messageChannel, Match match) {
                 .build();
 
         return messageChannel.createMessage(spec);
+    }
+
+    private Mono<Message> editQuestionMessageInitial(MessageChannel messageChannel, Message message, Long questionNumber){
+        Match match = quizzes.get(messageChannel);
+        String questionsAnswers = match.getCurrentQuestion().getStringAnswers(false);
+        int answersSize = match.getCurrentQuestion().getAnswers().size();
+
+        List<Button> buttons = new ArrayList<>();
+        for (int i = 0; i < answersSize; i++) {
+            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))).disabled());
+            //System.out.println("Creating button of id:" + "Answer-" + (char)('A' + i) + "-" + questionNumber.toString());
+        }
+        buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
+
+        EmbedCreateSpec embed = EmbedCreateSpec.builder()
+                .title("Question " + (match.getCurrentQuestionNum() + 1) + "/10")
+                .addField("\n", "**" + match.getCurrentQuestion().getQuestion() + "**", false)
+                //.description("**" + match.getQuestion().getQuestion() + "**")
+                .addField("\n", questionsAnswers + "\n", false)
+                .build();
+
+        return message.edit(MessageEditSpec.builder()
+                .addComponent(ActionRow.of(buttons))
+                .addEmbed(embed)
+                .build());
     }
 
     private Mono<Message> editQuestionMessageTime(MessageChannel messageChannel, Message message, Long questionNumber, int timeLeft){
@@ -205,10 +231,12 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         //String formattedTime = String.format("%02d", timeLeft);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("#" + (match.getCurrentQuestionNum() + 1) + " **" + match.getCurrentQuestion().getQuestion() + "**")
+                .title("Question " + (match.getCurrentQuestionNum() + 1) + "/10")
+                .addField("\n", "**" + match.getCurrentQuestion().getQuestion() + "**", false)
                 //.description("**" + match.getQuestion().getQuestion() + "**")
                 .addField("\n", questionsAnswers + "\n", false)
                 .addField("\n", "```" + timeLeft + " seconds left.```", false)
+                //.footer("Question " + questionNumber + " out of 10", null)
                 .build();
 
         return message.edit(MessageEditSpec.builder()
@@ -216,31 +244,6 @@ public void addMatch(MessageChannel messageChannel, Match match) {
                 .addEmbed(embed)
                 .build());
     }
-
-    private Mono<Message> editQuestionMessageInitial(MessageChannel messageChannel, Message message, Long questionNumber){
-        Match match = quizzes.get(messageChannel);
-        String questionsAnswers = match.getCurrentQuestion().getStringAnswers(false);
-        int answersSize = match.getCurrentQuestion().getAnswers().size();
-
-        List<Button> buttons = new ArrayList<>();
-        for (int i = 0; i < answersSize; i++) {
-            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))).disabled());
-            //System.out.println("Creating button of id:" + "Answer-" + (char)('A' + i) + "-" + questionNumber.toString());
-        }
-        buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
-
-        EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("#" + (match.getCurrentQuestionNum() + 1) + " **" + match.getCurrentQuestion().getQuestion() + "**")
-                //.description("**" + match.getQuestion().getQuestion() + "**")
-                .addField("\n", questionsAnswers + "\n", false)
-                .build();
-
-        return message.edit(MessageEditSpec.builder()
-                .addComponent(ActionRow.of(buttons))
-                .addEmbed(embed)
-                .build());
-    }
-
 
     private Mono<Message> editQuestionMessage(MessageChannel messageChannel, Message message, Long questionNumber){
         Match match = quizzes.get(messageChannel);
@@ -255,7 +258,8 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         buttons.add(Button.danger("cancelQuiz", "Abort quiz").disabled());
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("#" + (match.getCurrentQuestionNum() + 1) + " **" + match.getCurrentQuestion().getQuestion() + "**")
+                .title("Question " + (match.getCurrentQuestionNum() + 1) + "/10")
+                .addField("\n", "**" + match.getCurrentQuestion().getQuestion() + "**", false)
                 .addField("\n", questionsAnswers + "\n", false)
                 .addField("Explanation", match.getCurrentQuestion().getExplanation() + "\n", false)
                 //.addField("", "Answers:\n" + match.getUsersAnswers(), false)
@@ -338,8 +342,8 @@ public void addMatch(MessageChannel messageChannel, Match match) {
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("Final scoreboard: " )
-                .description(match.getScoreboard())
-                .addField("\uD83C\uDFC6", "The winners are: " + match.getWinners(), false)
+                .description(match.getFinalScoreboard())
+                //.addField("\uD83C\uDFC6", "The winners are: " + match.getWinners(), false)
                 .build();
 
         return messageChannel.createMessage(embed);
