@@ -1,10 +1,8 @@
 package dev.salonce.discordQuizBot.Core.Matches;
 
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Getter
