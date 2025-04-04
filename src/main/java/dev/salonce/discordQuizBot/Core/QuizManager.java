@@ -176,7 +176,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         //String formattedTime = String.format("%02d", timeLeft);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("Question " + (match.getCurrentQuestionNum() + 1) + "/5")
+                .title("Question " + (match.getCurrentQuestionNum() + 1) + "/10")
                 .addField("\n", "**" + match.getCurrentQuestion().getQuestion() + "**", false)
                 //.description("**" + match.getQuestion().getQuestion() + "**")
                 .addField("\n", questionsAnswers + "\n", false)
@@ -204,7 +204,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("Question " + (match.getCurrentQuestionNum() + 1) + "/5")
+                .title("Question " + (match.getCurrentQuestionNum() + 1) + "/10")
                 .addField("\n", "**" + match.getCurrentQuestion().getQuestion() + "**", false)
                 //.description("**" + match.getQuestion().getQuestion() + "**")
                 .addField("\n", questionsAnswers + "\n", false)
@@ -231,7 +231,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         //String formattedTime = String.format("%02d", timeLeft);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("Question " + (match.getCurrentQuestionNum() + 1) + "/5")
+                .title("Question " + (match.getCurrentQuestionNum() + 1) + "/10")
                 .addField("\n", "**" + match.getCurrentQuestion().getQuestion() + "**", false)
                 //.description("**" + match.getQuestion().getQuestion() + "**")
                 .addField("\n", questionsAnswers + "\n", false)
@@ -258,7 +258,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         buttons.add(Button.danger("cancelQuiz", "Abort quiz").disabled());
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("Question " + (match.getCurrentQuestionNum() + 1) + "/5")
+                .title("Question " + (match.getCurrentQuestionNum() + 1) + "/10")
                 .addField("\n", "**" + match.getCurrentQuestion().getQuestion() + "**", false)
                 .addField("\n", questionsAnswers + "\n", false)
                 .addField("Explanation", match.getCurrentQuestion().getExplanation() + "\n", false)
