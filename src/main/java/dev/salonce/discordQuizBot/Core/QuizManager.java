@@ -176,7 +176,8 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         //String formattedTime = String.format("%02d", timeLeft);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("#" + (match.getCurrentQuestionNum() + 1) + " **" + match.getCurrentQuestion().getQuestion() + "**")
+                .title("Question " + (match.getCurrentQuestionNum() + 1) + "/5")
+                .addField("\n", "**" + match.getCurrentQuestion().getQuestion() + "**", false)
                 //.description("**" + match.getQuestion().getQuestion() + "**")
                 .addField("\n", questionsAnswers + "\n", false)
                 .addField("\n", "```" + timeLeft + " seconds left.```", false)
@@ -203,7 +204,8 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("#" + (match.getCurrentQuestionNum() + 1) + " **" + match.getCurrentQuestion().getQuestion() + "**")
+                .title("Question " + (match.getCurrentQuestionNum() + 1) + "/5")
+                .addField("\n", "**" + match.getCurrentQuestion().getQuestion() + "**", false)
                 //.description("**" + match.getQuestion().getQuestion() + "**")
                 .addField("\n", questionsAnswers + "\n", false)
                 .build();
@@ -229,10 +231,12 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         //String formattedTime = String.format("%02d", timeLeft);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("#" + (match.getCurrentQuestionNum() + 1) + " **" + match.getCurrentQuestion().getQuestion() + "**")
+                .title("Question " + (match.getCurrentQuestionNum() + 1) + "/5")
+                .addField("\n", "**" + match.getCurrentQuestion().getQuestion() + "**", false)
                 //.description("**" + match.getQuestion().getQuestion() + "**")
                 .addField("\n", questionsAnswers + "\n", false)
                 .addField("\n", "```" + timeLeft + " seconds left.```", false)
+                //.footer("Question " + questionNumber + " out of 10", null)
                 .build();
 
         return message.edit(MessageEditSpec.builder()
@@ -254,7 +258,8 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         buttons.add(Button.danger("cancelQuiz", "Abort quiz").disabled());
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("#" + (match.getCurrentQuestionNum() + 1) + " **" + match.getCurrentQuestion().getQuestion() + "**")
+                .title("Question " + (match.getCurrentQuestionNum() + 1) + "/5")
+                .addField("\n", "**" + match.getCurrentQuestion().getQuestion() + "**", false)
                 .addField("\n", questionsAnswers + "\n", false)
                 .addField("Explanation", match.getCurrentQuestion().getExplanation() + "\n", false)
                 //.addField("", "Answers:\n" + match.getUsersAnswers(), false)
