@@ -22,7 +22,7 @@ public class QuestionMessage {
         this.matches = matches;
     }
 
-    public Mono<Message> createQuestionMessage(MessageChannel messageChannel, Long questionNumber, int timeLeft){
+    public Mono<Message> create(MessageChannel messageChannel, Long questionNumber, int timeLeft){
         Match match = matches.get(messageChannel);
         String questionsAnswers = match.getCurrentQuestion().getStringAnswers(false);
         int answersSize = match.getCurrentQuestion().getAnswers().size();
@@ -52,7 +52,7 @@ public class QuestionMessage {
         return messageChannel.createMessage(spec);
     }
 
-    public Mono<Message> editQuestionMessageInitial(MessageChannel messageChannel, Message message, Long questionNumber){
+    public Mono<Message> editFirst(MessageChannel messageChannel, Message message, Long questionNumber){
         Match match = matches.get(messageChannel);
         String questionsAnswers = match.getCurrentQuestion().getStringAnswers(false);
         int answersSize = match.getCurrentQuestion().getAnswers().size();
@@ -77,7 +77,7 @@ public class QuestionMessage {
                 .build());
     }
 
-    public Mono<Message> editQuestionMessageTime(MessageChannel messageChannel, Message message, Long questionNumber, int timeLeft){
+    public Mono<Message> editWithTime(MessageChannel messageChannel, Message message, Long questionNumber, int timeLeft){
         Match match = matches.get(messageChannel);
         String questionsAnswers = match.getCurrentQuestion().getStringAnswers(false);
         int answersSize = match.getCurrentQuestion().getAnswers().size();
@@ -106,7 +106,7 @@ public class QuestionMessage {
                 .build());
     }
 
-    public Mono<Message> editQuestionMessage(MessageChannel messageChannel, Message message, Long questionNumber){
+    public Mono<Message> editWithScores(MessageChannel messageChannel, Message message, Long questionNumber){
         Match match = matches.get(messageChannel);
         String questionsAnswers = match.getCurrentQuestion().getStringAnswers(true);
         int answersSize = match.getCurrentQuestion().getAnswers().size();

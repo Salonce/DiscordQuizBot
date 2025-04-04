@@ -8,14 +8,11 @@ import dev.salonce.discordQuizBot.Configs.QuizConfig;
 import dev.salonce.discordQuizBot.Core.Matches.Match;
 import dev.salonce.discordQuizBot.Core.Matches.EnumMatchClosed;
 import dev.salonce.discordQuizBot.Core.MessagesSending.QuestionMessage;
-import discord4j.core.object.component.ActionRow;
-import discord4j.core.object.component.Button;
+import dev.salonce.discordQuizBot.Core.MessagesSending.StartingMessage;
 import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.User;
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.spec.EmbedCreateSpec;
-import discord4j.core.spec.MessageCreateSpec;
-import discord4j.core.spec.MessageEditSpec;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -32,6 +29,7 @@ public class QuizManager {
     private final QuestionSetsConfig questionSetsConfig;
 
     private QuestionMessage questionMessage = new QuestionMessage(matches);
+    private StartingMessage startingMessage = new StartingMessage(matches);
 
     public QuizManager(QuestionSetsConfig questionSetsConfig, QuizConfig quizConfig){
         this.questionSetsConfig = questionSetsConfig;
@@ -47,7 +45,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
     } else {
         matches.put(messageChannel, match);
 
-        createStartQuizMessage(messageChannel, totalTimeToJoinLeft)
+        startingMessage.create(messageChannel, totalTimeToJoinLeft)
                 .flatMap(message ->
                         Flux.interval(Duration.ofSeconds(1))
                                 .take(totalTimeToJoinLeft)
@@ -55,7 +53,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
                                 .takeUntil(interval -> match.isStartNow())
                                 .flatMap(interval -> {
                                     Long timeLeft = (long) (totalTimeToJoinLeft - interval.intValue() - 1);
-                                    return editStartQuizMessage(message, messageChannel, timeLeft);
+                                    return startingMessage.edit(message, messageChannel, timeLeft);
                                 })
                                 .then(Mono.just(message))
                 )
@@ -70,7 +68,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
                                     .takeUntil(interval -> match.isClosed())
                                     .flatMap(interval -> {
                                         Long timeLeft = (long) (totalTimeToStartLeft - interval.intValue());
-                                        return editStartQuizMessage2(message, messageChannel, timeLeft);
+                                        return startingMessage.edit2(message, messageChannel, timeLeft);
                                     })
                                     .then(Mono.just(message));
                         })
@@ -117,7 +115,7 @@ public void addMatch(MessageChannel messageChannel, Match match) {
                 .index()
                 .concatMap(tuple -> {
                             long index = tuple.getT1();
-                            return questionMessage.createQuestionMessage(messageChannel, index, quizConfig.getTimeToPickAnswer())
+                            return questionMessage.create(messageChannel, index, quizConfig.getTimeToPickAnswer())
                                     .flatMap(message -> {
                                         openAnswering(messageChannel);
                                         int totalTime = quizConfig.getTimeToPickAnswer();
@@ -126,15 +124,15 @@ public void addMatch(MessageChannel messageChannel, Match match) {
                                                 .takeUntil(interval -> match.isClosed() || match.everyoneAnswered())
                                                 .flatMap(interval -> {
                                                     int timeLeft = totalTime - (interval.intValue() + 1); // Calculate remaining time
-                                                    return questionMessage.editQuestionMessageTime(messageChannel, message, index, timeLeft);
+                                                    return questionMessage.editWithTime(messageChannel, message, index, timeLeft);
                                                 })
                                                 //.then(Mono.defer(() -> openAnswering(messageChannel)))
                                                 //.then(Mono.delay(Duration.ofSeconds(totalTime)))
-                                                .then(Mono.defer(() -> questionMessage.editQuestionMessageInitial(messageChannel, message, index)))
+                                                .then(Mono.defer(() -> questionMessage.editFirst(messageChannel, message, index)))
                                                 .then(Mono.delay(Duration.ofSeconds(1)))
                                                 .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
                                                 .then(Mono.defer(() -> closeAnswering(messageChannel)))
-                                                .then(Mono.defer(() -> questionMessage.editQuestionMessage(messageChannel, message, index)))
+                                                .then(Mono.defer(() -> questionMessage.editWithScores(messageChannel, message, index)))
                                                 .then(Mono.defer(() -> setNoAnswerCountAndCloseMatchIfLimit(messageChannel)))
                                                 .then(Mono.delay(Duration.ofSeconds(quizConfig.getTimeForNewQuestionToAppear())))
                                                 .then(Mono.defer(() -> moveToNextQuestion(match)));
@@ -160,59 +158,6 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         Match match = matches.get(messageChannel);
         match.setAnsweringOpen(true);
         return Mono.empty();
-    }
-
-    public Mono<Message> createStartQuizMessage(MessageChannel messageChannel, int timeToJoinLeft){
-        Match match = matches.get(messageChannel);
-
-        EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                //.title("\uD83C\uDFC1 Java Quiz")
-                .title(match.getName() + " quiz" + " 🧠")
-                .addField("Number of questions", String.valueOf(match.getQuestions().size()), false)
-                .addField("Participants", match.getUserNames(), false)
-                .addField("Time", "```" + timeToJoinLeft + " seconds to join.```", false)
-                .build();
-
-        MessageCreateSpec spec = MessageCreateSpec.builder()
-                .addComponent(ActionRow.of(Button.primary("startNow", "Start now"), Button.success("joinQuiz", "Join"), Button.success("leaveQuiz", "Leave"), Button.danger("cancelQuiz", "Cancel")))
-                .addEmbed(embed)
-                .build();
-
-        return messageChannel.createMessage(spec);
-    }
-
-    private Mono<Message> editStartQuizMessage(Message message, MessageChannel messageChannel, Long timeToJoinLeft){
-        Match match = matches.get(messageChannel);
-
-        EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                //.title("\uD83C\uDFC1 Java Quiz")
-                .title(match.getName() + " quiz" + " 🧠")
-                .addField("Number of questions", String.valueOf(match.getQuestions().size()), false)
-                .addField("Participants", match.getUserNames(), false)
-                .addField("Time", "```" + timeToJoinLeft + " seconds to join.``` ", false)
-                .build();
-
-        return message.edit(MessageEditSpec.builder()
-                .addComponent(ActionRow.of(Button.primary("startNow", "Start now"), Button.success("joinQuiz", "Join"), Button.success("leaveQuiz", "Leave"), Button.danger("cancelQuiz", "Cancel")))
-                .addEmbed(embed)
-                .build());
-    }
-
-    private Mono<Message> editStartQuizMessage2(Message message, MessageChannel messageChannel, Long timeToStartLeft){
-        Match match = matches.get(messageChannel);
-
-        EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                //.title("\uD83C\uDFC1 Java Quiz")
-                .title(match.getName() + " quiz" + " 🧠")
-                .addField("Number of questions", String.valueOf(match.getQuestions().size()), false)
-                .addField("Participants", match.getUserNames(), false)
-                .addField("Time", "```" + timeToStartLeft + " seconds to start.``` ", false)
-                .build();
-
-        return message.edit(MessageEditSpec.builder()
-                .addComponent(ActionRow.of(Button.primary("startNow", "Start now").disabled(), Button.success("joinQuiz", "Join").disabled(), Button.success("leaveQuiz", "Leave").disabled(), Button.danger("cancelQuiz", "Cancel").disabled()))
-                .addEmbed(embed)
-                .build());
     }
 
     private Mono<Void> createQuestionMessages(MessageChannel messageChannel) {
