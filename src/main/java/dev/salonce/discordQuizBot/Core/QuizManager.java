@@ -190,6 +190,30 @@ public void addMatch(MessageChannel messageChannel, Match match) {
         return messageChannel.createMessage(spec);
     }
 
+    private Mono<Message> editQuestionMessageInitial(MessageChannel messageChannel, Message message, Long questionNumber){
+        Match match = quizzes.get(messageChannel);
+        String questionsAnswers = match.getCurrentQuestion().getStringAnswers(false);
+        int answersSize = match.getCurrentQuestion().getAnswers().size();
+
+        List<Button> buttons = new ArrayList<>();
+        for (int i = 0; i < answersSize; i++) {
+            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))).disabled());
+            //System.out.println("Creating button of id:" + "Answer-" + (char)('A' + i) + "-" + questionNumber.toString());
+        }
+        buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
+
+        EmbedCreateSpec embed = EmbedCreateSpec.builder()
+                .title("#" + (match.getCurrentQuestionNum() + 1) + " **" + match.getCurrentQuestion().getQuestion() + "**")
+                //.description("**" + match.getQuestion().getQuestion() + "**")
+                .addField("\n", questionsAnswers + "\n", false)
+                .build();
+
+        return message.edit(MessageEditSpec.builder()
+                .addComponent(ActionRow.of(buttons))
+                .addEmbed(embed)
+                .build());
+    }
+
     private Mono<Message> editQuestionMessageTime(MessageChannel messageChannel, Message message, Long questionNumber, int timeLeft){
         Match match = quizzes.get(messageChannel);
         String questionsAnswers = match.getCurrentQuestion().getStringAnswers(false);
@@ -216,31 +240,6 @@ public void addMatch(MessageChannel messageChannel, Match match) {
                 .addEmbed(embed)
                 .build());
     }
-
-    private Mono<Message> editQuestionMessageInitial(MessageChannel messageChannel, Message message, Long questionNumber){
-        Match match = quizzes.get(messageChannel);
-        String questionsAnswers = match.getCurrentQuestion().getStringAnswers(false);
-        int answersSize = match.getCurrentQuestion().getAnswers().size();
-
-        List<Button> buttons = new ArrayList<>();
-        for (int i = 0; i < answersSize; i++) {
-            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))).disabled());
-            //System.out.println("Creating button of id:" + "Answer-" + (char)('A' + i) + "-" + questionNumber.toString());
-        }
-        buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
-
-        EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("#" + (match.getCurrentQuestionNum() + 1) + " **" + match.getCurrentQuestion().getQuestion() + "**")
-                //.description("**" + match.getQuestion().getQuestion() + "**")
-                .addField("\n", questionsAnswers + "\n", false)
-                .build();
-
-        return message.edit(MessageEditSpec.builder()
-                .addComponent(ActionRow.of(buttons))
-                .addEmbed(embed)
-                .build());
-    }
-
 
     private Mono<Message> editQuestionMessage(MessageChannel messageChannel, Message message, Long questionNumber){
         Match match = quizzes.get(messageChannel);
