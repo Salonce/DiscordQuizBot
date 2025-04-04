@@ -1,8 +1,7 @@
-package dev.salonce.discordQuizBot.Core.Messages.Handlers;
+package dev.salonce.discordQuizBot.Core.MessagesHandling.Handlers;
 
-import dev.salonce.discordQuizBot.Core.Messages.DiscordMessage;
-import dev.salonce.discordQuizBot.Core.Messages.MessageHandler;
-import dev.salonce.discordQuizBot.Core.Messages.MessageSender;
+import dev.salonce.discordQuizBot.Core.MessagesHandling.DiscordMessage;
+import dev.salonce.discordQuizBot.Core.MessagesHandling.MessageHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

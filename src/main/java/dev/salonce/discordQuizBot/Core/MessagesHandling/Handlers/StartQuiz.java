@@ -1,11 +1,10 @@
-package dev.salonce.discordQuizBot.Core.Messages.Handlers;
+package dev.salonce.discordQuizBot.Core.MessagesHandling.Handlers;
 
-import dev.salonce.discordQuizBot.Core.Messages.DiscordMessage;
+import dev.salonce.discordQuizBot.Core.MessagesHandling.DiscordMessage;
 import dev.salonce.discordQuizBot.Core.Matches.MatchFactory;
 import dev.salonce.discordQuizBot.Core.QuizManager;
-import dev.salonce.discordQuizBot.Core.Messages.MessageHandler;
+import dev.salonce.discordQuizBot.Core.MessagesHandling.MessageHandler;
 import dev.salonce.discordQuizBot.Configs.QuestionSetsConfig;
-import discord4j.core.object.entity.User;
 import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

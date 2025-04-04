@@ -1,4 +1,4 @@
-package dev.salonce.discordQuizBot.Core.Messages;
+package dev.salonce.discordQuizBot.Core.MessagesHandling;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
