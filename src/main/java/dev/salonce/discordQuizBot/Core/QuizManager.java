@@ -112,7 +112,8 @@ public class QuizManager {
                                         int totalTime = quizConfig.getTimeToPickAnswer();
                                         return Flux.interval(Duration.ofSeconds(1)) // Emit every second
                                                 .take(totalTime)// Number of updates
-                                                .takeUntil(interval -> match.isClosed() || match.everyoneAnswered())
+                                                //.takeUntil(interval -> match.isClosed() || match.everyoneAnswered()) // isClosed() check is already elsewhere every 0.5s
+                                                .takeUntil(interval -> match.everyoneAnswered())
                                                 .flatMap(interval -> {
                                                     int timeLeft = totalTime - (interval.intValue() + 1); // Calculate remaining time
                                                     return questionMessage.editWithTime(messageChannel, message, index, timeLeft);
@@ -183,7 +184,7 @@ public class QuizManager {
             text = "Match has been closed by the owner.";
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title(text )
+                .title(text)
                 .build();
 
         return messageChannel.createMessage(embed);
