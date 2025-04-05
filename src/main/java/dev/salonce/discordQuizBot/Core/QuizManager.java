@@ -36,20 +36,21 @@ public class QuizManager {
         this.quizConfig = quizConfig;
     }
 
-public void addMatch(MessageChannel messageChannel, Match match) {
-    int totalTimeToJoinLeft = quizConfig.getTimeToJoinQuiz();
-    int totalTimeToStartLeft = quizConfig.getTimeToStartMatch();
+    public void addMatch(MessageChannel messageChannel, Match match) {
+        int totalTimeToJoinLeft = quizConfig.getTimeToJoinQuiz();
+        int totalTimeToStartLeft = quizConfig.getTimeToStartMatch();
 
-    if (matches.containsKey(messageChannel)) {
-        //send message that starting a match is impossible because there is already one
-    } else {
+        if (matches.containsKey(messageChannel)) {
+            // send a message that a match is already in progress in that chat and can't start new one
+            return;
+        }
+
         matches.put(messageChannel, match);
 
-        startingMessage.create(messageChannel, totalTimeToJoinLeft)
+        Mono<Void> normalFlow = startingMessage.create(messageChannel, totalTimeToJoinLeft)
                 .flatMap(message ->
                         Flux.interval(Duration.ofSeconds(1))
                                 .take(totalTimeToJoinLeft)
-                                .takeUntil(interval -> match.isClosed()) // Stop if match is closed
                                 .takeUntil(interval -> match.isStartNow())
                                 .flatMap(interval -> {
                                     Long timeLeft = (long) (totalTimeToJoinLeft - interval.intValue() - 1);
@@ -59,42 +60,32 @@ public void addMatch(MessageChannel messageChannel, Match match) {
                 )
                 .flatMap(message -> closeEnrollment(message, match))
                 .flatMap(message ->
-                        Mono.defer(() -> {
-                            if (match.isClosed()) {
-                                return Mono.just(message); // Skip to next stage if closed
-                            }
-                            return Flux.interval(Duration.ofSeconds(1))
-                                    .take(totalTimeToStartLeft + 1)
-                                    .takeUntil(interval -> match.isClosed())
-                                    .flatMap(interval -> {
-                                        Long timeLeft = (long) (totalTimeToStartLeft - interval.intValue());
-                                        return startingMessage.edit2(message, messageChannel, timeLeft);
-                                    })
-                                    .then(Mono.just(message));
-                        })
+                        Flux.interval(Duration.ofSeconds(1))
+                                .take(totalTimeToStartLeft + 1)
+                                .flatMap(interval -> {
+                                    Long timeLeft = (long) (totalTimeToStartLeft - interval.intValue());
+                                    return startingMessage.edit2(message, messageChannel, timeLeft);
+                                })
+                                .then(Mono.just(message))
                 )
-                .flatMap(message ->
-                        Mono.defer(() -> {
-                            if (match.isClosed()) {
-                                return Mono.just(message); // Skip question messages if closed
-                            }
-                            System.out.println("before it creates q messages");
-                            return createQuestionMessages(messageChannel);
-                        })
-                )
+                .flatMap(message -> createQuestionMessages(messageChannel))
+                .then(Mono.defer(() -> createMatchResultsMessage(messageChannel)))
+                .then();
+
+        Mono<Void> cancelFlow = Flux.interval(Duration.ofMillis(500))
+                .filter(tick -> match.isClosed())
+                .next()
+                .flatMap(tick -> createCanceledMatchMessage(messageChannel))
+                .then();
+
+        Mono.firstWithSignal(normalFlow, cancelFlow)
                 .then(Mono.defer(() -> {
-                            if (match.isClosed()) {
-                                System.out.println("createCanceledMatchMessage");
-                                return createCanceledMatchMessage(messageChannel);
-                            }
-                            System.out.println("createMatchResultsMsg");
-                            return createMatchResultsMessage(messageChannel);
-                        })
-                )
-                .then(Mono.defer(() -> Mono.just(matches.remove(messageChannel))))
+                    matches.remove(messageChannel);
+                    return Mono.empty();
+                }))
                 .subscribe();
     }
-}
+
 
     private Mono<Message> closeEnrollment(Message monoMessage, Match match){
         match.setEnrollment(false);
