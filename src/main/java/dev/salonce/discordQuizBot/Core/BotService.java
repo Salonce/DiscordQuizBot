@@ -1,8 +1,8 @@
 package dev.salonce.discordQuizBot.Core;
 
-import dev.salonce.discordQuizBot.Buttons.AnswerInteractionEnum;
 import dev.salonce.discordQuizBot.Buttons.ButtonInteraction;
 import dev.salonce.discordQuizBot.Buttons.ButtonInteractionData;
+import dev.salonce.discordQuizBot.Buttons.ButtonHandlerChain;
 import dev.salonce.discordQuizBot.Core.MessagesHandling.DiscordMessage;
 import dev.salonce.discordQuizBot.Core.MessagesHandling.MessageHandlerChain;
 import discord4j.core.DiscordClient;
@@ -12,13 +12,14 @@ import discord4j.core.event.domain.message.MessageCreateEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
 @Service
 public class BotService {
 
     private final MessageHandlerChain messageHandlerChain;
-    private final QuizManager quizManager;
+    private final ButtonHandlerChain buttonHandlerChain;
 
     @Value("${discord.bot.token}")
     private String discordBotToken;
@@ -43,33 +44,19 @@ public class BotService {
                 .subscribe();
     }
 
-    private void handleButtonInteractions(GatewayDiscordClient gateway) {
+    public void handleButtonInteractions(GatewayDiscordClient gateway) {
         gateway.on(ButtonInteractionEvent.class, event -> {
+            // Create button interaction object
             ButtonInteraction buttonInteraction = new ButtonInteraction(event);
-            if (!buttonInteraction.buttonEventValid()) return null;
+            if (!buttonInteraction.buttonEventValid()) {
+                return Mono.empty();
+            }
 
             ButtonInteractionData buttonInteractionData = new ButtonInteractionData(event.getCustomId());
 
-            return switch (buttonInteractionData.getButtonType()) {
-                case "joinQuiz" -> event.reply(quizManager.addUserToMatch(buttonInteraction)).withEphemeral(true);
-                case "leaveQuiz" -> event.reply(quizManager.removeUserFromMatch(buttonInteraction)).withEphemeral(true);
-                case "startNow" -> event.reply(quizManager.startNow(buttonInteraction)).withEphemeral(true);
-                case "cancelQuiz" -> {
-                    boolean canceled = quizManager.cancelQuiz(buttonInteraction);
-                    yield event.reply(canceled ? "You've canceled the quiz." : "Only matchmaker can cancel the quiz.").withEphemeral(true);
-                }
-                case "Answer" -> {
-                    AnswerInteractionEnum answerEnum = quizManager.setPlayerAnswer(buttonInteraction, buttonInteractionData);
-                    String response = switch (answerEnum) {
-                        case NOT_IN_MATCH -> "You are not in the match.";
-                        case TOO_LATE -> "Your answer came too late!";
-                        case VALID -> "Your answer: " + (char) ('A' + buttonInteractionData.getAnswerNumber()) + ".";
-                        default -> "Something went wrong.";
-                    };
-                    yield event.reply(response).withEphemeral(true);
-                }
-                default -> event.reply("Button interaction failed. Is it old?").withEphemeral(true);
-            };
+            buttonHandlerChain.handle(event, buttonInteraction, buttonInteractionData);
+
+            return Mono.empty(); // Since handlers subscribe to the events themselves
         }).subscribe();
     }
 }

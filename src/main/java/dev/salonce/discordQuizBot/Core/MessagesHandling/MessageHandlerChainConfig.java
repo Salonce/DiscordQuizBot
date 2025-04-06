@@ -13,5 +13,4 @@ public class MessageHandlerChainConfig {
 
         return new MessageHandlerChain(Arrays.asList(messageFilter, startQuiz, help));
     }
-    
 }
