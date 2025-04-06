@@ -3,6 +3,7 @@ package dev.salonce.discordQuizBot.Core;
 import dev.salonce.discordQuizBot.Buttons.AnswerInteractionEnum;
 import dev.salonce.discordQuizBot.Buttons.ButtonInteraction;
 import dev.salonce.discordQuizBot.Buttons.ButtonInteractionData;
+import dev.salonce.discordQuizBot.Buttons.ButtonInteractions;
 import dev.salonce.discordQuizBot.Core.MessagesHandling.DiscordMessage;
 import dev.salonce.discordQuizBot.Core.MessagesHandling.MessageHandlerChain;
 import discord4j.core.DiscordClient;
@@ -17,8 +18,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class BotService {
 
+    private final ButtonInteractions buttonInteractions;
     private final MessageHandlerChain messageHandlerChain;
-    private final QuizManager quizManager;
 
     @Value("${discord.bot.token}")
     private String discordBotToken;
@@ -51,15 +52,15 @@ public class BotService {
             ButtonInteractionData buttonInteractionData = new ButtonInteractionData(event.getCustomId());
 
             return switch (buttonInteractionData.getButtonType()) {
-                case "joinQuiz" -> event.reply(quizManager.addUserToMatch(buttonInteraction)).withEphemeral(true);
-                case "leaveQuiz" -> event.reply(quizManager.removeUserFromMatch(buttonInteraction)).withEphemeral(true);
-                case "startNow" -> event.reply(quizManager.startNow(buttonInteraction)).withEphemeral(true);
+                case "joinQuiz" -> event.reply(buttonInteractions.addUserToMatch(buttonInteraction)).withEphemeral(true);
+                case "leaveQuiz" -> event.reply(buttonInteractions.removeUserFromMatch(buttonInteraction)).withEphemeral(true);
+                case "startNow" -> event.reply(buttonInteractions.startNow(buttonInteraction)).withEphemeral(true);
                 case "cancelQuiz" -> {
-                    boolean canceled = quizManager.cancelQuiz(buttonInteraction);
+                    boolean canceled = buttonInteractions.cancelQuiz(buttonInteraction);
                     yield event.reply(canceled ? "You've canceled the quiz." : "Only matchmaker can cancel the quiz.").withEphemeral(true);
                 }
                 case "Answer" -> {
-                    AnswerInteractionEnum answerEnum = quizManager.setPlayerAnswer(buttonInteraction, buttonInteractionData);
+                    AnswerInteractionEnum answerEnum = buttonInteractions.setPlayerAnswer(buttonInteraction);
                     String response = switch (answerEnum) {
                         case NOT_IN_MATCH -> "You are not in the match.";
                         case TOO_LATE -> "Your answer came too late!";

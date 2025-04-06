@@ -11,13 +11,15 @@ public class ButtonInteraction {
 
     private final String buttonId;
     private final User user;
+    private final Long userId;
     private final Message message;
     private final MessageChannel messageChannel;
 
     public ButtonInteraction(ButtonInteractionEvent buttonInteractionEvent){
-        buttonId = buttonInteractionEvent.getCustomId();
-        user = buttonInteractionEvent.getInteraction().getUser();
-        message = buttonInteractionEvent.getMessage().orElse(null);
+        this.buttonId = buttonInteractionEvent.getCustomId();
+        this.user = buttonInteractionEvent.getInteraction().getUser();
+        this.userId = user.getId().asLong();
+        this.message = buttonInteractionEvent.getMessage().orElse(null);
         if (message != null)
             messageChannel = message.getChannel().blockOptional().orElse(null);
         else
