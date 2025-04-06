@@ -37,8 +37,8 @@ public class QuizManager {
     }
 
     public void addMatch(MessageChannel messageChannel, Match match) {
-        int totalTimeToJoinLeft = quizConfig.getTimeToJoinQuiz();
-        int totalTimeToStartLeft = quizConfig.getTimeToStartMatch();
+        int totalTimeToJoin = quizConfig.getTimeToJoinQuiz();
+        int totalTimeToStart = quizConfig.getTimeToStartMatch();
 
         if (matches.containsKey(messageChannel)) {
             // send a message that a match is already in progress in that chat and can't start new one
@@ -47,13 +47,13 @@ public class QuizManager {
 
         matches.put(messageChannel, match);
 
-        Mono<Void> normalFlow = startingMessage.create(messageChannel, totalTimeToJoinLeft)
+        Mono<Void> normalFlow = startingMessage.create(messageChannel, totalTimeToJoin)
                 .flatMap(message ->
                         Flux.interval(Duration.ofSeconds(1))
-                                .take(totalTimeToJoinLeft)
+                                .take(totalTimeToJoin)
                                 .takeUntil(interval -> match.isStartNow())
                                 .flatMap(interval -> {
-                                    Long timeLeft = (long) (totalTimeToJoinLeft - interval.intValue() - 1);
+                                    Long timeLeft = (long) (totalTimeToJoin - interval.intValue() - 1);
                                     return startingMessage.edit(message, messageChannel, timeLeft);
                                 })
                                 .then(Mono.just(message))
@@ -61,9 +61,9 @@ public class QuizManager {
                 .flatMap(message -> closeEnrollment(message, match))
                 .flatMap(message ->
                         Flux.interval(Duration.ofSeconds(1))
-                                .take(totalTimeToStartLeft + 1)
+                                .take(totalTimeToStart + 1)
                                 .flatMap(interval -> {
-                                    Long timeLeft = (long) (totalTimeToStartLeft - interval.intValue());
+                                    Long timeLeft = (long) (totalTimeToStart - interval.intValue());
                                     return startingMessage.edit2(message, messageChannel, timeLeft);
                                 })
                                 .then(Mono.just(message))
@@ -86,52 +86,57 @@ public class QuizManager {
                 .subscribe();
     }
 
+    private Mono<Void> createQuestionMessages(MessageChannel messageChannel) {
+        Match match = matches.get(messageChannel);
+
+        return Flux.generate(sink -> {
+                    if (match.questionExists()) {
+                        sink.next(match.getCurrentQuestion());
+                    } else {
+                        sink.complete();
+                    }
+                })
+                .takeWhile(question -> !match.isClosed())
+                .index()
+                .concatMap(tuple -> {
+                    long index = tuple.getT1();
+                    return handleSingleQuestion(match, messageChannel, index);
+                })
+                .then();
+    }
+
+    private Mono<Void> handleSingleQuestion(Match match, MessageChannel messageChannel, long index) {
+        int totalTime = quizConfig.getTimeToPickAnswer();
+
+        return questionMessage.create(messageChannel, index, totalTime)
+                .flatMap(message -> {
+                    openAnswering(messageChannel);
+                    return createCountdownTimer(match, messageChannel, message, index, totalTime)
+                            .then(Mono.defer(() -> questionMessage.editFirst(messageChannel, message, index)))
+                            .then(Mono.delay(Duration.ofSeconds(1)))
+                            .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
+                            .then(Mono.defer(() -> closeAnswering(messageChannel)))
+                            .then(Mono.defer(() -> questionMessage.editWithScores(messageChannel, message, index)))
+                            .then(Mono.defer(() -> setNoAnswerCountAndCloseMatchIfLimit(messageChannel)))
+                            .then(Mono.delay(Duration.ofSeconds(quizConfig.getTimeForNewQuestionToAppear())))
+                            .then(Mono.defer(() -> moveToNextQuestion(match)));
+                });
+    }
+    private Mono<Void> createCountdownTimer(Match match, MessageChannel channel, Message message, long index, int totalTime) {
+        return Flux.interval(Duration.ofSeconds(1))
+                .take(totalTime)
+                .takeUntil(tick -> match.everyoneAnswered())
+                .flatMap(tick -> {
+                    int timeLeft = totalTime - (tick.intValue() + 1);
+                    return questionMessage.editWithTime(channel, message, index, timeLeft);
+                })
+                .then();
+    }
 
     private Mono<Message> closeEnrollment(Message monoMessage, Match match){
         match.setEnrollment(false);
         System.out.println("enrollment closed");
         return Mono.just(monoMessage);
-    }
-
-    private Mono<Void> createQuestionMessagesSequentially(MessageChannel messageChannel) {
-        Match match = matches.get(messageChannel);
-
-        return Flux.generate(sink -> {
-                    if (match.questionExists())
-                        sink.next(match.getCurrentQuestion());
-                    else
-                        sink.complete();
-                })
-                .takeWhile(question -> !match.isClosed())
-                .index()
-                .concatMap(tuple -> {
-                            long index = tuple.getT1();
-                            return questionMessage.create(messageChannel, index, quizConfig.getTimeToPickAnswer())
-                                    .flatMap(message -> {
-                                        openAnswering(messageChannel);
-                                        int totalTime = quizConfig.getTimeToPickAnswer();
-                                        return Flux.interval(Duration.ofSeconds(1)) // Emit every second
-                                                .take(totalTime)// Number of updates
-                                                //.takeUntil(interval -> match.isClosed() || match.everyoneAnswered()) // isClosed() check is already elsewhere every 0.5s
-                                                .takeUntil(interval -> match.everyoneAnswered())
-                                                .flatMap(interval -> {
-                                                    int timeLeft = totalTime - (interval.intValue() + 1); // Calculate remaining time
-                                                    return questionMessage.editWithTime(messageChannel, message, index, timeLeft);
-                                                })
-                                                //.then(Mono.defer(() -> openAnswering(messageChannel)))
-                                                //.then(Mono.delay(Duration.ofSeconds(totalTime)))
-                                                .then(Mono.defer(() -> questionMessage.editFirst(messageChannel, message, index)))
-                                                .then(Mono.delay(Duration.ofSeconds(1)))
-                                                .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
-                                                .then(Mono.defer(() -> closeAnswering(messageChannel)))
-                                                .then(Mono.defer(() -> questionMessage.editWithScores(messageChannel, message, index)))
-                                                .then(Mono.defer(() -> setNoAnswerCountAndCloseMatchIfLimit(messageChannel)))
-                                                .then(Mono.delay(Duration.ofSeconds(quizConfig.getTimeForNewQuestionToAppear())))
-                                                .then(Mono.defer(() -> moveToNextQuestion(match)));
-                                    });
-                        }
-                )
-                .then();
     }
 
     private Mono<Void> setNoAnswerCountAndCloseMatchIfLimit(MessageChannel messageChannel){
@@ -150,12 +155,6 @@ public class QuizManager {
         Match match = matches.get(messageChannel);
         match.setAnsweringOpen(true);
         return Mono.empty();
-    }
-
-    private Mono<Void> createQuestionMessages(MessageChannel messageChannel) {
-        return createQuestionMessagesSequentially(messageChannel); // Process all questions sequentially
-                //.then(Mono.delay(Duration.ofSeconds(2))) // add time after last question?
-
     }
 
     private Mono<Void> moveToNextQuestion(Match match){
