@@ -1,13 +1,8 @@
-package dev.salonce.discordQuizBot.Buttons.Handlers;
+package dev.salonce.discordQuizBot.Buttons;
 
-import dev.salonce.discordQuizBot.Buttons.ButtonHandler;
-import dev.salonce.discordQuizBot.Buttons.ButtonInteraction;
-import dev.salonce.discordQuizBot.Buttons.ButtonInteractionData;
-import dev.salonce.discordQuizBot.Buttons.ButtonInteractions;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import lombok.RequiredArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor

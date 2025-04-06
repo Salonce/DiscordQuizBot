@@ -1,10 +1,8 @@
 package dev.salonce.discordQuizBot.Core;
 
-import dev.salonce.discordQuizBot.Buttons.AnswerInteractionEnum;
 import dev.salonce.discordQuizBot.Buttons.ButtonInteraction;
 import dev.salonce.discordQuizBot.Buttons.ButtonInteractionData;
-import dev.salonce.discordQuizBot.Buttons.ButtonInteractions;
-import dev.salonce.discordQuizBot.Buttons.Handlers.ButtonHandlerChain;
+import dev.salonce.discordQuizBot.Buttons.ButtonHandlerChain;
 import dev.salonce.discordQuizBot.Core.MessagesHandling.DiscordMessage;
 import dev.salonce.discordQuizBot.Core.MessagesHandling.MessageHandlerChain;
 import discord4j.core.DiscordClient;
@@ -20,7 +18,6 @@ import reactor.core.publisher.Mono;
 @Service
 public class BotService {
 
-    private final ButtonInteractions buttonInteractions;
     private final MessageHandlerChain messageHandlerChain;
     private final ButtonHandlerChain buttonHandlerChain;
 
