@@ -1,5 +1,6 @@
 package dev.salonce.discordQuizBot.Core.MessagesSending;
 
+import dev.salonce.discordQuizBot.Core.MatchStore;
 import dev.salonce.discordQuizBot.Core.Matches.Match;
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
@@ -8,22 +9,22 @@ import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.spec.EmbedCreateSpec;
 import discord4j.core.spec.MessageCreateSpec;
 import discord4j.core.spec.MessageEditSpec;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+@RequiredArgsConstructor
+@Component
 public class QuestionMessage {
 
-    private final Map<MessageChannel, Match> matches;
-
-    public QuestionMessage(Map<MessageChannel, Match> matches){
-        this.matches = matches;
-    }
+    private final MatchStore matchStore;
 
     public Mono<Message> create(MessageChannel messageChannel, Long questionNumber, int timeLeft){
-        Match match = matches.get(messageChannel);
+        Match match = matchStore.get(messageChannel);
         String questionsAnswers = match.getCurrentQuestion().getStringAnswers(false);
         int answersSize = match.getCurrentQuestion().getAnswers().size();
 
@@ -53,7 +54,7 @@ public class QuestionMessage {
     }
 
     public Mono<Message> editFirst(MessageChannel messageChannel, Message message, Long questionNumber){
-        Match match = matches.get(messageChannel);
+        Match match = matchStore.get(messageChannel);
         String questionsAnswers = match.getCurrentQuestion().getStringAnswers(false);
         int answersSize = match.getCurrentQuestion().getAnswers().size();
 
@@ -78,7 +79,7 @@ public class QuestionMessage {
     }
 
     public Mono<Message> editWithTime(MessageChannel messageChannel, Message message, Long questionNumber, int timeLeft){
-        Match match = matches.get(messageChannel);
+        Match match = matchStore.get(messageChannel);
         String questionsAnswers = match.getCurrentQuestion().getStringAnswers(false);
         int answersSize = match.getCurrentQuestion().getAnswers().size();
 
@@ -107,7 +108,7 @@ public class QuestionMessage {
     }
 
     public Mono<Message> editWithScores(MessageChannel messageChannel, Message message, Long questionNumber){
-        Match match = matches.get(messageChannel);
+        Match match = matchStore.get(messageChannel);
         String questionsAnswers = match.getCurrentQuestion().getStringAnswers(true);
         int answersSize = match.getCurrentQuestion().getAnswers().size();
 

@@ -13,6 +13,7 @@ import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.User;
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.spec.EmbedCreateSpec;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -22,30 +23,25 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class QuizManager {
 
-    private final Map<MessageChannel, Match> matches = new HashMap<>();
+    private final MatchStore matchStore;
     private final QuizConfig quizConfig;
     private final QuestionSetsConfig questionSetsConfig;
-
-    private QuestionMessage questionMessage = new QuestionMessage(matches);
-    private StartingMessage startingMessage = new StartingMessage(matches);
-
-    public QuizManager(QuestionSetsConfig questionSetsConfig, QuizConfig quizConfig){
-        this.questionSetsConfig = questionSetsConfig;
-        this.quizConfig = quizConfig;
-    }
+    private final QuestionMessage questionMessage;
+    private final StartingMessage startingMessage;
 
     public void addMatch(MessageChannel messageChannel, Match match) {
         int totalTimeToJoin = quizConfig.getTimeToJoinQuiz();
         int totalTimeToStart = quizConfig.getTimeToStartMatch();
 
-        if (matches.containsKey(messageChannel)) {
+        if (matchStore.containsKey(messageChannel)) {
             // send a message that a match is already in progress in that chat and can't start new one
             return;
         }
 
-        matches.put(messageChannel, match);
+        matchStore.put(messageChannel, match);
 
         Mono<Void> normalFlow = startingMessage.create(messageChannel, totalTimeToJoin)
                 .flatMap(message ->
@@ -80,14 +76,14 @@ public class QuizManager {
 
         Mono.firstWithSignal(normalFlow, cancelFlow)
                 .then(Mono.defer(() -> {
-                    matches.remove(messageChannel);
+                    matchStore.remove(messageChannel);
                     return Mono.empty();
                 }))
                 .subscribe();
     }
 
     private Mono<Void> createQuestionMessages(MessageChannel messageChannel) {
-        Match match = matches.get(messageChannel);
+        Match match = matchStore.get(messageChannel);
 
         return Flux.generate(sink -> {
                     if (match.questionExists()) {
@@ -140,19 +136,19 @@ public class QuizManager {
     }
 
     private Mono<Void> setNoAnswerCountAndCloseMatchIfLimit(MessageChannel messageChannel){
-        Match match = matches.get(messageChannel);
+        Match match = matchStore.get(messageChannel);
         match.setNoAnswerCountAndCloseMatchIfLimit();
         return Mono.empty();
     }
 
     private Mono<Void> closeAnswering(MessageChannel messageChannel){
-        Match match = matches.get(messageChannel);
+        Match match = matchStore.get(messageChannel);
         match.setAnsweringOpen(false);
         return Mono.empty();
     }
 
     private Mono<Void> openAnswering(MessageChannel messageChannel){
-        Match match = matches.get(messageChannel);
+        Match match = matchStore.get(messageChannel);
         match.setAnsweringOpen(true);
         return Mono.empty();
     }
@@ -163,7 +159,7 @@ public class QuizManager {
     }
 
     private Mono<Message> createMatchResultsMessage(MessageChannel messageChannel){
-        Match match = matches.get(messageChannel);
+        Match match = matchStore.get(messageChannel);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("Final scoreboard: " )
@@ -175,7 +171,7 @@ public class QuizManager {
     }
 
     private Mono<Message> createCanceledMatchMessage(MessageChannel messageChannel){
-        Match match = matches.get(messageChannel);
+        Match match = matchStore.get(messageChannel);
         String text = "Match has been closed.";
         if (match.getEnumMatchClosed() == EnumMatchClosed.BY_AUTOCLOSE)
             text = "Match has been autoclosed.";
@@ -193,7 +189,7 @@ public class QuizManager {
         User user = buttonInteraction.getUser();
 //      Message message = buttonInteraction.getMessage();
         MessageChannel messageChannel = buttonInteraction.getMessageChannel();
-        Match match = matches.get(messageChannel);
+        Match match = matchStore.get(messageChannel);
         return match.closeMatch(user.getId().asLong());
     }
 
@@ -201,11 +197,11 @@ public class QuizManager {
         Long userId = buttonInteraction.getUser().getId().asLong();
         Message message = buttonInteraction.getMessage();
         MessageChannel messageChannel = buttonInteraction.getMessageChannel();
-        Match match = matches.get(messageChannel);
+        Match match = matchStore.get(messageChannel);
         int questionsNumber = match.getQuestions().size();
 
-        if (matches.containsKey(messageChannel)){
-            return matches.get(messageChannel).addPlayer(userId, questionsNumber);
+        if (matchStore.containsKey(messageChannel)){
+            return matchStore.get(messageChannel).addPlayer(userId, questionsNumber);
         }
         else{
             return "This match doesn't exist anymore.";
@@ -217,8 +213,8 @@ public class QuizManager {
         Message message = buttonInteraction.getMessage();
         MessageChannel messageChannel = buttonInteraction.getMessageChannel();
 
-        if (matches.containsKey(messageChannel))
-            return matches.get(messageChannel).removePlayer(user.getId().asLong());
+        if (matchStore.containsKey(messageChannel))
+            return matchStore.get(messageChannel).removePlayer(user.getId().asLong());
         else{
             return "This match doesn't exist anymore.";
         }
@@ -229,9 +225,9 @@ public class QuizManager {
         Message message = buttonInteraction.getMessage();
         MessageChannel messageChannel = buttonInteraction.getMessageChannel();
 
-        if (matches.containsKey(messageChannel)){
-            if (!matches.get(messageChannel).isStartNow()) {
-                matches.get(messageChannel).setStartNow(true);
+        if (matchStore.containsKey(messageChannel)){
+            if (!matchStore.get(messageChannel).isStartNow()) {
+                matchStore.get(messageChannel).setStartNow(true);
                 return "Starting immediately";
             }
             else
@@ -248,7 +244,7 @@ public class QuizManager {
         int questionNum = buttonInteractionData.getQuestionNumber();
         int answerNum = buttonInteractionData.getAnswerNumber();
 
-        Match match = matches.get(messageChannel);
+        Match match = matchStore.get(messageChannel);
 
         if (match == null)
             return AnswerInteractionEnum.TOO_LATE; // could be different
@@ -264,12 +260,12 @@ public class QuizManager {
     }
 
     public Mono<Void> addPlayerPoints(MessageChannel messageChannel){
-        matches.get(messageChannel).updatePlayerPoints();
+        matchStore.get(messageChannel).updatePlayerPoints();
         return Mono.empty();
     }
 
     public Mono<Message> sendHelpMessage(MessageChannel messageChannel) {
-        Match match = matches.get(messageChannel);
+        Match match = matchStore.get(messageChannel);
         String example = null;
         String example2 = null;
         Iterator <String> iterator = questionSetsConfig.getFiles().keySet().iterator();

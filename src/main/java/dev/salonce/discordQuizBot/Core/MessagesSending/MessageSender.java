@@ -10,7 +10,6 @@ import reactor.core.publisher.Mono;
 @Component
 public class MessageSender {
 
-
     public Mono<Message> sendFullChannelMessage(MessageChannel messageChannel, String title, String text) {
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title(title)
