@@ -24,7 +24,7 @@ public class HelpMessage {
     private final MatchStore matchStore;
 
 
-    public Mono<Message> sendHelpMessage(MessageChannel messageChannel) {
+    public Mono<Message> create(MessageChannel messageChannel) {
         Match match = matchStore.get(messageChannel);
         String example = null;
         String example2 = null;
