@@ -9,14 +9,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
-@Component("ButtonJoinMatch")
-public class JoinQuizButtonHandler implements ButtonHandler {
+@Component("ButtonCancelMatch")
+public class CancelMatchButtonHandler implements ButtonHandler {
     private final ButtonInteractions buttonInteractions;
 
     @Override
     public boolean handle(ButtonInteractionEvent event, ButtonInteraction buttonInteraction, ButtonInteractionData data) {
-        if ("joinQuiz".equals(data.getButtonType())) {
-            event.reply(buttonInteractions.addUserToMatch(buttonInteraction))
+        if ("cancelQuiz".equals(data.getButtonType())) {
+            boolean canceled = buttonInteractions.cancelQuiz(buttonInteraction);
+            event.reply(canceled ? "You've canceled the quiz." : "Only matchmaker can cancel the quiz.")
                     .withEphemeral(true)
                     .subscribe();
             return true;
