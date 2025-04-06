@@ -7,6 +7,8 @@ import dev.salonce.discordQuizBot.Buttons.ButtonInteractionData;
 import dev.salonce.discordQuizBot.Configs.QuizConfig;
 import dev.salonce.discordQuizBot.Core.Matches.Match;
 import dev.salonce.discordQuizBot.Core.Matches.EnumMatchClosed;
+import dev.salonce.discordQuizBot.Core.MessagesSending.HelpMessage;
+import dev.salonce.discordQuizBot.Core.MessagesSending.MatchCanceledMessage;
 import dev.salonce.discordQuizBot.Core.MessagesSending.QuestionMessage;
 import dev.salonce.discordQuizBot.Core.MessagesSending.StartingMessage;
 import discord4j.core.object.entity.Message;
@@ -19,8 +21,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.Duration;
-import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -31,6 +31,7 @@ public class QuizManager {
     private final QuestionSetsConfig questionSetsConfig;
     private final QuestionMessage questionMessage;
     private final StartingMessage startingMessage;
+    private final MatchCanceledMessage matchCanceledMessage;
 
     public void addMatch(MessageChannel messageChannel, Match match) {
         int totalTimeToJoin = quizConfig.getTimeToJoinQuiz();
@@ -71,7 +72,7 @@ public class QuizManager {
         Mono<Void> cancelFlow = Flux.interval(Duration.ofMillis(500))
                 .filter(tick -> match.isClosed())
                 .next()
-                .flatMap(tick -> createCanceledMatchMessage(messageChannel))
+                .flatMap(tick -> matchCanceledMessage.create(messageChannel))
                 .then();
 
         Mono.firstWithSignal(normalFlow, cancelFlow)
@@ -170,21 +171,6 @@ public class QuizManager {
         return messageChannel.createMessage(embed);
     }
 
-    private Mono<Message> createCanceledMatchMessage(MessageChannel messageChannel){
-        Match match = matchStore.get(messageChannel);
-        String text = "Match has been closed.";
-        if (match.getEnumMatchClosed() == EnumMatchClosed.BY_AUTOCLOSE)
-            text = "Match has been autoclosed.";
-        else if (match.getEnumMatchClosed() == EnumMatchClosed.BY_OWNER)
-            text = "Match has been closed by the owner.";
-
-        EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title(text)
-                .build();
-
-        return messageChannel.createMessage(embed);
-    }
-
     public boolean cancelQuiz(ButtonInteraction buttonInteraction) {
         User user = buttonInteraction.getUser();
 //      Message message = buttonInteraction.getMessage();
@@ -249,7 +235,7 @@ public class QuizManager {
         if (match == null)
             return AnswerInteractionEnum.TOO_LATE; // could be different
 
-        if (questionNum != match.getCurrentQuestionNum() || match.isAnsweringOpen() != true)
+        if (questionNum != match.getCurrentQuestionNum() || !match.isAnsweringOpen())
             return AnswerInteractionEnum.TOO_LATE;
 
         if (match.getPlayers().containsKey(userId)) {
@@ -262,37 +248,5 @@ public class QuizManager {
     public Mono<Void> addPlayerPoints(MessageChannel messageChannel){
         matchStore.get(messageChannel).updatePlayerPoints();
         return Mono.empty();
-    }
-
-    public Mono<Message> sendHelpMessage(MessageChannel messageChannel) {
-        Match match = matchStore.get(messageChannel);
-        String example = null;
-        String example2 = null;
-        Iterator <String> iterator = questionSetsConfig.getFiles().keySet().iterator();
-        if (iterator.hasNext())
-            example = iterator.next();
-        if (iterator.hasNext())
-            example2 = iterator.next();
-
-        EmbedCreateSpec embed;
-        if (example != null && example2 != null) {
-            EmbedCreateSpec.Builder embedBuilder = EmbedCreateSpec.builder();
-
-            List<String> categories = questionSetsConfig.getFiles().keySet().stream().sorted(String::compareTo).toList();
-
-            embed = embedBuilder
-                    .addField("How to start a quiz?", "Choose a category and type: **qq quiz <selected category>**", false)
-                    .addField("Examples", "To start **" + example + "** quiz, type: **qq quiz " + example + "**\n" + "To start **" + example2 + "** quiz, type: **qq quiz " + example2 + "**", false)
-                    .addField("Available categories", categories.stream().collect(Collectors.joining("\n")), false)
-                    .build();
-        }
-        else{
-            embed = EmbedCreateSpec.builder()
-                    .title("No data" )
-                    .addField("", "Sorry. This bot has no available quizzes.", false)
-                    .build();
-        }
-
-        return messageChannel.createMessage(embed);
     }
 }
