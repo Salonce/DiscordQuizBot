@@ -13,7 +13,7 @@ public class FallbackButtonHandler implements ButtonHandler {
     @Override
     public boolean handle(ButtonInteractionEvent event, ButtonInteraction buttonInteraction, ButtonInteractionData data) {
         // This handler always returns true as it's meant to be the last in the chain
-        event.reply("Button interaction failed. Is it old?")
+        event.reply("Button interaction failed.")
                 .withEphemeral(true)
                 .subscribe();
         return true;
