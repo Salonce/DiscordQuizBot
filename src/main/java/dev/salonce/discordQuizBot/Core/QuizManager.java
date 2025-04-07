@@ -2,6 +2,7 @@ package dev.salonce.discordQuizBot.Core;
 
 import dev.salonce.discordQuizBot.Configs.QuizConfig;
 import dev.salonce.discordQuizBot.Core.Matches.Match;
+import dev.salonce.discordQuizBot.Core.Matches.MatchState;
 import dev.salonce.discordQuizBot.Core.MessagesSending.MatchCanceledMessage;
 import dev.salonce.discordQuizBot.Core.MessagesSending.QuestionMessage;
 import dev.salonce.discordQuizBot.Core.MessagesSending.StartingMessage;
@@ -123,7 +124,7 @@ public class QuizManager {
     }
 
     private Mono<Message> closeEnrollment(Message monoMessage, Match match){
-        match.setEnrollment(false);
+        match.setMatchState(MatchState.COUNTDOWN);
         System.out.println("enrollment closed");
         return Mono.just(monoMessage);
     }

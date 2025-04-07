@@ -14,18 +14,17 @@ public class Match{
     private int currentQuestionNum = 0;
     private int noAnswerCount = 0;
 
-    private EnumMatchState enumMatchState = EnumMatchState.ENROLLMENT;;
+    @Setter
+    private MatchState matchState = MatchState.ENROLLMENT;;
     @Setter
     private boolean answeringOpen;
-    @Setter
-    private boolean enrollment = true;
     @Setter
     private boolean startNow = false;
 
     private String name;
 
     public boolean isClosed(){
-        return ((enumMatchState == EnumMatchState.CLOSED_BY_INACTIVITY) || (enumMatchState == EnumMatchState.CLOSED_BY_OWNER));
+        return ((matchState == MatchState.CLOSED_BY_INACTIVITY) || (matchState == MatchState.CLOSED_BY_OWNER));
     }
 
     public Match(List<Question> questions, String type, Long ownerId, int unansweredQuestionsLimit){
@@ -58,7 +57,7 @@ public class Match{
         if (noAnswersCount == players.size()) {
             noAnswerCount++;
             if (noAnswerCount >= unansweredQuestionsLimit) {
-                enumMatchState = EnumMatchState.CLOSED_BY_INACTIVITY;
+                matchState = MatchState.CLOSED_BY_INACTIVITY;
             }
         }
         else
@@ -67,7 +66,7 @@ public class Match{
 
     public boolean closeMatch(Long userId){
         if (userId.equals(getOwnerId())){
-            enumMatchState = EnumMatchState.CLOSED_BY_OWNER;
+            matchState = MatchState.CLOSED_BY_OWNER;
             return true;
         }
         return false;
@@ -147,7 +146,7 @@ public class Match{
     }
 
     public String addPlayer(Long userId, int questionsNumber){
-        if (!isEnrollment()){
+        if (matchState != MatchState.ENROLLMENT){
             return "Can't do that! You can join the match only during enrollment phase.";
         }
         if (players.containsKey(userId)) {
@@ -160,10 +159,10 @@ public class Match{
     }
 
     public String removePlayer(Long userId){
-        if (!isEnrollment()) {
+        if (matchState != MatchState.ENROLLMENT) {
             return "Can't do that! You can leave the match only during enrollment phase.";
         }
-        else if (isEnrollment() && players.containsKey(userId)) {
+        else if (matchState == MatchState.ENROLLMENT && players.containsKey(userId)) {
             players.remove(userId);
             return "You've left the match.";
         }

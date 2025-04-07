@@ -1,6 +1,6 @@
 package dev.salonce.discordQuizBot.Core.Matches;
 
-public enum EnumMatchState {
+public enum MatchState {
     ENROLLMENT,
     COUNTDOWN,
     QUESTIONS,
