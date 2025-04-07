@@ -44,9 +44,9 @@ public class BotService {
                 .subscribe();
     }
 
-    public void handleButtonInteractions(GatewayDiscordClient gateway) {
+    private void handleButtonInteractions(GatewayDiscordClient gateway) {
         gateway.on(ButtonInteractionEvent.class, event -> {
-            // Create button interaction object
+
             ButtonInteraction buttonInteraction = new ButtonInteraction(event);
             if (!buttonInteraction.buttonEventValid()) {
                 return Mono.empty();
