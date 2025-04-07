@@ -14,7 +14,7 @@ public class Match{
     private int currentQuestionNum = 0;
     private int noAnswerCount = 0;
 
-    @Setter
+
     private MatchState matchState = MatchState.ENROLLMENT;;
     @Setter
     private boolean answeringOpen;
@@ -22,6 +22,11 @@ public class Match{
     private boolean startNow = false;
 
     private String name;
+
+
+    public void setMatchState(MatchState matchState) {
+        if (!isClosed()) this.matchState = matchState;
+    }
 
     public boolean isClosed(){
         return ((matchState == MatchState.CLOSED_BY_INACTIVITY) || (matchState == MatchState.CLOSED_BY_OWNER));
