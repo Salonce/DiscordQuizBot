@@ -2,6 +2,7 @@ package dev.salonce.discordQuizBot.Core;
 
 import dev.salonce.discordQuizBot.Configs.QuizConfig;
 import dev.salonce.discordQuizBot.Core.Matches.Match;
+import dev.salonce.discordQuizBot.Core.Matches.MatchState;
 import dev.salonce.discordQuizBot.Core.MessagesSending.MatchCanceledMessage;
 import dev.salonce.discordQuizBot.Core.MessagesSending.QuestionMessage;
 import dev.salonce.discordQuizBot.Core.MessagesSending.StartingMessage;
@@ -40,7 +41,7 @@ public class QuizManager {
                 .flatMap(message ->
                         Flux.interval(Duration.ofSeconds(1))
                                 .take(totalTimeToJoin)
-                                .takeUntil(interval -> match.isStartNow())
+                                .takeUntil(interval -> match.getMatchState() == MatchState.COUNTDOWN)
                                 .flatMap(interval -> {
                                     Long timeLeft = (long) (totalTimeToJoin - interval.intValue() - 1);
                                     return startingMessage.edit(message, messageChannel, timeLeft);
@@ -123,7 +124,7 @@ public class QuizManager {
     }
 
     private Mono<Message> closeEnrollment(Message monoMessage, Match match){
-        match.setEnrollment(false);
+        match.setMatchState(MatchState.COUNTDOWN);
         System.out.println("enrollment closed");
         return Mono.just(monoMessage);
     }
@@ -136,13 +137,13 @@ public class QuizManager {
 
     private Mono<Void> closeAnswering(MessageChannel messageChannel){
         Match match = matchStore.get(messageChannel);
-        match.setAnsweringOpen(false);
+        match.setMatchState(MatchState.WAITING);
         return Mono.empty();
     }
 
     private Mono<Void> openAnswering(MessageChannel messageChannel){
         Match match = matchStore.get(messageChannel);
-        match.setAnsweringOpen(true);
+        match.setMatchState(MatchState.ANSWERING);
         return Mono.empty();
     }
 
@@ -164,7 +165,7 @@ public class QuizManager {
     }
 
     private Mono<Void> addPlayerPoints(MessageChannel messageChannel){
-        matchStore.get(messageChannel).updatePlayerPoints();
+        matchStore.get(messageChannel).updateScores();
         return Mono.empty();
     }
 }

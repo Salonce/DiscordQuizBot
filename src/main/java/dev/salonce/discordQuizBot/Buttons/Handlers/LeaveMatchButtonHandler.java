@@ -4,6 +4,8 @@ import dev.salonce.discordQuizBot.Buttons.ButtonHandler;
 import dev.salonce.discordQuizBot.Buttons.ButtonInteraction;
 import dev.salonce.discordQuizBot.Buttons.ButtonInteractionData;
 import dev.salonce.discordQuizBot.Core.MatchStore;
+import dev.salonce.discordQuizBot.Core.Matches.Match;
+import dev.salonce.discordQuizBot.Core.Matches.MatchState;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.RequiredArgsConstructor;
@@ -12,14 +14,14 @@ import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
 @Component("ButtonLeaveMatch")
-public class LeaveQuizButtonHandler implements ButtonHandler {
+public class LeaveMatchButtonHandler implements ButtonHandler {
 
     private final MatchStore matchStore;
 
     @Override
     public boolean handle(ButtonInteractionEvent event, ButtonInteraction buttonInteraction, ButtonInteractionData data) {
         if ("leaveQuiz".equals(data.getButtonType())) {
-            event.reply(removeUserFromMatch(buttonInteraction))
+            event.reply(leaveMatch(buttonInteraction))
                     .withEphemeral(true)
                     .subscribe();
             return true;
@@ -27,13 +29,22 @@ public class LeaveQuizButtonHandler implements ButtonHandler {
         return false;
     }
 
-    private String removeUserFromMatch(ButtonInteraction buttonInteraction){
+    private String leaveMatch(ButtonInteraction buttonInteraction){
         MessageChannel messageChannel = buttonInteraction.getMessageChannel();
-
-        if (matchStore.containsKey(messageChannel))
-            return matchStore.get(messageChannel).removePlayer(buttonInteraction.getUserId());
-        else{
-            return "This match doesn't exist anymore.";
+        Match match = matchStore.get(messageChannel);
+        Long userId = buttonInteraction.getUserId();
+        if (match == null) {
+            return "This match doesn't exist.";
+        }
+        if (!match.getPlayers().containsKey(userId)){
+            return "You are not even in the match.";
+        }
+        if (match.getMatchState() != MatchState.ENROLLMENT) {
+            return "Excuse me, you can leave the match only during enrollment phase.";
+        }
+        else {
+            match.getPlayers().remove(userId);
+            return "You've left the match.";
         }
     }
 }

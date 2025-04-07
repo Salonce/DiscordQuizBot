@@ -4,6 +4,7 @@ import dev.salonce.discordQuizBot.Buttons.ButtonHandler;
 import dev.salonce.discordQuizBot.Buttons.ButtonInteraction;
 import dev.salonce.discordQuizBot.Buttons.ButtonInteractionData;
 import dev.salonce.discordQuizBot.Core.MatchStore;
+import dev.salonce.discordQuizBot.Core.Matches.MatchState;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.RequiredArgsConstructor;
@@ -29,9 +30,12 @@ public class StartNowButtonHandler implements ButtonHandler {
     private String startNow(ButtonInteraction buttonInteraction){
         MessageChannel messageChannel = buttonInteraction.getMessageChannel();
 
+
+
         if (matchStore.containsKey(messageChannel)){
-            if (!matchStore.get(messageChannel).isStartNow()) {
-                matchStore.get(messageChannel).setStartNow(true);
+            //i think everyone is allowed now to start because of lack of ownership check, should be also in if (userId == ownerId...)
+            if (matchStore.get(messageChannel).getMatchState() != MatchState.COUNTDOWN) {
+                matchStore.get(messageChannel).setMatchState(MatchState.COUNTDOWN);
                 return "Starting immediately";
             }
             else

@@ -2,40 +2,36 @@ package dev.salonce.discordQuizBot.Core.Matches;
 
 import dev.salonce.discordQuizBot.Core.Questions.Question;
 import lombok.Getter;
-import lombok.Setter;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Getter
 public class Match{
+    private String name;
     private final Map<Long, Player> players = new LinkedHashMap<>();;
     private final List<Question> questions;
     private final int unansweredQuestionsLimit;
     private int currentQuestionNum = 0;
     private int noAnswerCount = 0;
+    private MatchState matchState = MatchState.ENROLLMENT;
 
-    private EnumMatchClosed enumMatchClosed = EnumMatchClosed.NOT_CLOSED;;
-    @Setter
-    private boolean answeringOpen;
-    @Setter
-    private boolean enrollment = true;
-    @Setter
-    private boolean startNow = false;
-
-    private String name;
-
-    public boolean isClosed(){
-        return enumMatchClosed != EnumMatchClosed.NOT_CLOSED;
-    }
-
-    public Match(List<Question> questions, String type, Long ownerId, int unansweredQuestionsLimit){
+    public Match(List<Question> questions, String name, Long ownerId, int unansweredQuestionsLimit){
         this.questions = questions;
         this.unansweredQuestionsLimit = unansweredQuestionsLimit;
         players.put(ownerId, new Player(questions.size()));
 
-        if (type != null) {
-            this.name = type.substring(0, 1).toUpperCase() + type.substring(1); //Capitalize match name
+        if (name != null) {
+            this.name = name.substring(0, 1).toUpperCase() + name.substring(1); //Capitalize match name
         }
+    }
+
+    public void setMatchState(MatchState matchState) {
+        if (!isClosed()) this.matchState = matchState;
+    }
+
+    public boolean isClosed(){
+        return ((matchState == MatchState.CLOSED_BY_INACTIVITY) || (matchState == MatchState.CLOSED_BY_OWNER));
     }
 
     public boolean everyoneAnswered(){
@@ -58,32 +54,22 @@ public class Match{
         if (noAnswersCount == players.size()) {
             noAnswerCount++;
             if (noAnswerCount >= unansweredQuestionsLimit) {
-                enumMatchClosed = EnumMatchClosed.BY_AUTOCLOSE;
+                matchState = MatchState.CLOSED_BY_INACTIVITY;
             }
         }
         else
             noAnswerCount = 0;
     }
 
-    public boolean closeMatch(Long userId){
-        if (userId.equals(getOwnerId())){
-            enumMatchClosed = EnumMatchClosed.BY_OWNER;
-            return true;
-        }
-        return false;
-    }
-
-    private Long getOwnerId(){
+    public Long getOwnerId(){
         try { return players.keySet().iterator().next(); }
         catch (NoSuchElementException e){ return null; }
     }
 
-    public void updatePlayerPoints(){
+    public void updateScores(){
         for (Player player : players.values()){
             if (player.getAnswersList().get(currentQuestionNum) == getQuestionCorrectAnswerInt())
                 player.addPoint();
-//            if (player.getCurrentAnswerNum() == getQuestionCorrectAnswerInt())
-//                player.addPoint();
         }
     }
 
@@ -147,7 +133,7 @@ public class Match{
     }
 
     public String addPlayer(Long userId, int questionsNumber){
-        if (!isEnrollment()){
+        if (matchState != MatchState.ENROLLMENT){
             return "Can't do that! You can join the match only during enrollment phase.";
         }
         if (players.containsKey(userId)) {
@@ -156,19 +142,6 @@ public class Match{
         else {
             players.put(userId, new Player(questionsNumber));
             return "You've joined the match.";
-        }
-    }
-
-    public String removePlayer(Long userId){
-        if (!isEnrollment()) {
-            return "Can't do that! You can leave the match only during enrollment phase.";
-        }
-        else if (isEnrollment() && players.containsKey(userId)) {
-            players.remove(userId);
-            return "You've left the match.";
-        }
-        else {
-            return "You are not in the match to leave it.";
         }
     }
 
@@ -217,10 +190,6 @@ public class Match{
             default: return place + "th";
         }
     }
-
-//    public String getScoreboard(){
-//        return getPlayers().entrySet().stream().sorted((a, b) -> (b.getValue().getPoints() - a.getValue().getPoints())).map(entry -> "<@" + entry.getKey() + ">" + ": " + entry.getValue().getPoints()).collect(Collectors.joining("\n"));
-//    }
 
 
     public String getWinners() {

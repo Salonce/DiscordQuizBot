@@ -1,7 +1,7 @@
 package dev.salonce.discordQuizBot.Core.MessagesSending;
 
 import dev.salonce.discordQuizBot.Core.MatchStore;
-import dev.salonce.discordQuizBot.Core.Matches.EnumMatchClosed;
+import dev.salonce.discordQuizBot.Core.Matches.MatchState;
 import dev.salonce.discordQuizBot.Core.Matches.Match;
 import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.channel.MessageChannel;
@@ -19,9 +19,9 @@ public class MatchCanceledMessage {
     public Mono<Message> create(MessageChannel messageChannel){
         Match match = matchStore.get(messageChannel);
         String text = "Match has been closed.";
-        if (match.getEnumMatchClosed() == EnumMatchClosed.BY_AUTOCLOSE)
+        if (match.getMatchState() == MatchState.CLOSED_BY_INACTIVITY)
             text = "Match has been autoclosed.";
-        else if (match.getEnumMatchClosed() == EnumMatchClosed.BY_OWNER)
+        else if (match.getMatchState() == MatchState.CLOSED_BY_OWNER)
             text = "Match has been closed by the owner.";
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
