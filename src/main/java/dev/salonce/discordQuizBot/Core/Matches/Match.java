@@ -14,7 +14,7 @@ public class Match{
     private int currentQuestionNum = 0;
     private int noAnswerCount = 0;
 
-    private EnumMatchClosed enumMatchClosed = EnumMatchClosed.NOT_CLOSED;;
+    private EnumMatchState enumMatchState = EnumMatchState.ENROLLMENT;;
     @Setter
     private boolean answeringOpen;
     @Setter
@@ -25,7 +25,7 @@ public class Match{
     private String name;
 
     public boolean isClosed(){
-        return enumMatchClosed != EnumMatchClosed.NOT_CLOSED;
+        return ((enumMatchState == EnumMatchState.CLOSED_BY_INACTIVITY) || (enumMatchState == EnumMatchState.CLOSED_BY_OWNER));
     }
 
     public Match(List<Question> questions, String type, Long ownerId, int unansweredQuestionsLimit){
@@ -58,7 +58,7 @@ public class Match{
         if (noAnswersCount == players.size()) {
             noAnswerCount++;
             if (noAnswerCount >= unansweredQuestionsLimit) {
-                enumMatchClosed = EnumMatchClosed.BY_AUTOCLOSE;
+                enumMatchState = EnumMatchState.CLOSED_BY_INACTIVITY;
             }
         }
         else
@@ -67,7 +67,7 @@ public class Match{
 
     public boolean closeMatch(Long userId){
         if (userId.equals(getOwnerId())){
-            enumMatchClosed = EnumMatchClosed.BY_OWNER;
+            enumMatchState = EnumMatchState.CLOSED_BY_OWNER;
             return true;
         }
         return false;

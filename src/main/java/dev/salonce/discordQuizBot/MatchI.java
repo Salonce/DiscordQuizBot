@@ -1,6 +1,6 @@
 package dev.salonce.discordQuizBot;
 
-import dev.salonce.discordQuizBot.Core.Matches.EnumMatchClosed;
+import dev.salonce.discordQuizBot.Core.Matches.EnumMatchState;
 import dev.salonce.discordQuizBot.Core.Matches.Player;
 import dev.salonce.discordQuizBot.Core.Questions.Question;
 import discord4j.core.object.entity.User;
@@ -23,7 +23,7 @@ public interface MatchI {
 
     void updatePoints();
 
-    EnumMatchClosed getMatchClosed();
+    EnumMatchState getMatchClosed();
     boolean everyoneAnswered();
     boolean isClosed();
 
