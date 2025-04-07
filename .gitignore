@@ -34,3 +34,7 @@ build/
 
 ### Environment Variables
 .env
+
+### Non-sample resources
+/src/main/resources/application.yml
+/src/main/resources/private

@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 
 import java.io.IOException;
 
@@ -15,7 +16,12 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 	private final BotService botService;
 
 	public static void main(String[] args) throws IOException {
-		SpringApplication.run(DiscordQuizBotApplication.class, args);
+		// loading two application files, normal overriding sample if it exists
+		new SpringApplicationBuilder(DiscordQuizBotApplication.class)
+				.properties("spring.config.name=application,application-sample",
+						"spring.config.additional-location=classpath:/sample/,classpath:/private/")
+
+				.run(args);
 	}
 
 	@Override
