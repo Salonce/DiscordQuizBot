@@ -18,6 +18,7 @@ import reactor.core.publisher.Mono;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Component
@@ -128,7 +129,7 @@ public class QuestionMessage {
                 .addField("Explanation", match.getCurrentQuestion().getExplanation() + "\n", false)
                 //.addField("", "Answers:\n" + match.getUsersAnswers(), false)
                 .addField("Answers", getUsersAnswers(match), false)
-                .addField("Scoreboard", match.getScoreboard(), false)
+                .addField("Scoreboard", getScoreboard(match), false)
                 .build();
 
         return message.edit(MessageEditSpec.builder()
@@ -172,4 +173,8 @@ public class QuestionMessage {
         return sb.toString();
     }
 
+    //sorted highest to lowest scores -> b - a
+    private String getScoreboard(Match match){
+        return match.getPlayers().entrySet().stream().sorted((a, b) -> (b.getValue().getPoints() - a.getValue().getPoints())).map(entry -> "<@" + entry.getKey() + ">" + ": " + entry.getValue().getPoints() + " points").collect(Collectors.joining("\n"));
+    }
 }
