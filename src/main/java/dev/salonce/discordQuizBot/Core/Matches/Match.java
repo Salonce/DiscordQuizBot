@@ -8,18 +8,13 @@ import java.util.stream.Collectors;
 
 @Getter
 public class Match{
+    private String name;
     private final Map<Long, Player> players = new LinkedHashMap<>();;
     private final List<Question> questions;
     private final int unansweredQuestionsLimit;
     private int currentQuestionNum = 0;
     private int noAnswerCount = 0;
-
-    private MatchState matchState = MatchState.ENROLLMENT;;
-    @Setter
-    private boolean answeringOpen;
-
-    private String name;
-
+    private MatchState matchState = MatchState.ENROLLMENT;
 
     public void setMatchState(MatchState matchState) {
         if (!isClosed()) this.matchState = matchState;

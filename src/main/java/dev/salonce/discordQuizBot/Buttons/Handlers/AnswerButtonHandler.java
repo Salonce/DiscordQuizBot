@@ -3,6 +3,7 @@ package dev.salonce.discordQuizBot.Buttons.Handlers;
 import dev.salonce.discordQuizBot.Buttons.*;
 import dev.salonce.discordQuizBot.Core.MatchStore;
 import dev.salonce.discordQuizBot.Core.Matches.Match;
+import dev.salonce.discordQuizBot.Core.Matches.MatchState;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.RequiredArgsConstructor;
@@ -57,7 +58,7 @@ public class AnswerButtonHandler implements ButtonHandler {
         if (match == null)
             return AnswerInteractionEnum.TOO_LATE; // could be different
 
-        if (questionNum != match.getCurrentQuestionNum() || !match.isAnsweringOpen())
+        if (questionNum != match.getCurrentQuestionNum() || match.getMatchState() != MatchState.QUIZ_ANSWERING)
             return AnswerInteractionEnum.TOO_LATE;
 
         if (match.getPlayers().containsKey(userId)) {
