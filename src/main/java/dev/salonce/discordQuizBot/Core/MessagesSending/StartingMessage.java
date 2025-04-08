@@ -27,11 +27,10 @@ public class StartingMessage {
         Match match = matchStore.get(messageChannel);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                //.title("\uD83C\uDFC1 Java Quiz")
                 .title(match.getName() + " quiz" + " 🧠")
-                .addField("Number of questions", String.valueOf(match.getQuestions().size()), false)
-                .addField("Participants", getUserNames(match), false)
-                .addField("Time", "```" + timeToJoinLeft + " seconds to join.```", false)
+                .addField("Number of questions: " + match.getQuestions().size(), "", false)
+                .addField("", "\uD83D\uDC65 " + getUserNames(match), false)
+                .addField("", "```" + timeToJoinLeft + " seconds to start.``` ", false)
                 .build();
 
         MessageCreateSpec spec = MessageCreateSpec.builder()
@@ -48,9 +47,9 @@ public class StartingMessage {
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 //.title("\uD83C\uDFC1 Java Quiz")
                 .title(match.getName() + " quiz" + " 🧠")
-                .addField("Number of questions", String.valueOf(match.getQuestions().size()), false)
-                .addField("Participants", getUserNames(match), false)
-                .addField("Time", "```" + timeToJoinLeft + " seconds to join.``` ", false)
+                .addField("Number of questions: " + match.getQuestions().size(), "", false)
+                .addField("", "\uD83D\uDC65 " + getUserNames(match), false)
+                .addField("", "```" + timeToJoinLeft + " seconds to start.``` ", false)
                 .build();
 
         return message.edit(MessageEditSpec.builder()
@@ -65,9 +64,9 @@ public class StartingMessage {
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 //.title("\uD83C\uDFC1 Java Quiz")
                 .title(match.getName() + " quiz" + " 🧠")
-                .addField("Number of questions", String.valueOf(match.getQuestions().size()), false)
-                .addField("Participants", getUserNames(match), false)
-                .addField("Time", "```" + timeToStartLeft + " seconds to start.``` ", false)
+                .addField("Number of questions: " + match.getQuestions().size(), "", false)
+                .addField("", "\uD83D\uDC65 " + getUserNames(match), false)
+                .addField("", "```" + timeToStartLeft + " seconds to start.``` ", false)
                 .build();
 
         return message.edit(MessageEditSpec.builder()
