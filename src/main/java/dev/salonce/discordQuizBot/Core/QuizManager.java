@@ -107,7 +107,8 @@ public class QuizManager {
                             .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
                             .then(Mono.defer(() -> closeAnswering(messageChannel)))
                             .then(Mono.defer(() -> questionMessage.editWithScores(messageChannel, message, index)))
-                            .then(Mono.defer(() -> setNoAnswerCountAndCloseMatchIfLimit(messageChannel)))
+                            .then(Mono.defer(() -> updateInactiveRoundsInARowCount(messageChannel)))
+                            .then(Mono.defer(() -> switchStateToClosedIfInactiveRoundsInARowLimitReached(messageChannel)))
                             .then(Mono.delay(Duration.ofSeconds(quizConfig.getTimeForNewQuestionToAppear())))
                             .then(Mono.defer(() -> moveToNextQuestion(match)));
                 });
@@ -129,11 +130,18 @@ public class QuizManager {
         return Mono.just(monoMessage);
     }
 
-    private Mono<Void> setNoAnswerCountAndCloseMatchIfLimit(MessageChannel messageChannel){
+    public Mono<Void> updateInactiveRoundsInARowCount(MessageChannel messageChannel){
         Match match = matchStore.get(messageChannel);
-        match.updateInactiveCountAndCloseMatchIfLimit();
+        match.updateInactiveRoundsInARowCount();
         return Mono.empty();
     }
+
+    public Mono<Void> switchStateToClosedIfInactiveRoundsInARowLimitReached(MessageChannel messageChannel){
+        Match match = matchStore.get(messageChannel);
+        match.switchStateToClosedIfInactiveRoundsInARowLimitReached();
+        return Mono.empty();
+    }
+
 
     private Mono<Void> closeAnswering(MessageChannel messageChannel){
         Match match = matchStore.get(messageChannel);
