@@ -46,25 +46,6 @@ public class Match{
         return true;
     }
 
-    public void updateInactiveCountAndCloseMatchIfLimit(){
-        int noAnswersCount = 0;
-        for (Player player : players.values()){
-            int intAnswer = player.getAnswersList().get(currentQuestionNum);
-            if (intAnswer == -1)
-                noAnswersCount++;
-            else break;
-        }
-
-        if (noAnswersCount == players.size()) {
-            inactiveRounds++;
-            if (inactiveRounds >= inactiveRoundsLimit) {
-                matchState = MatchState.CLOSED_BY_INACTIVITY;
-            }
-        }
-        else
-            inactiveRounds = 0;
-    }
-
     public Long getOwnerId(){
         try { return players.keySet().iterator().next(); }
         catch (NoSuchElementException e){ return null; }
@@ -79,6 +60,27 @@ public class Match{
 
     private int getCurrentQuestionCorrectAnswer(){
         return questions.get(currentQuestionNum).getCorrectAnswerInt();
+    }
+
+    public void updateInactiveRoundsInARowCount(){
+        int noAnswersCount = 0;
+        for (Player player : players.values()){
+            int intAnswer = player.getAnswersList().get(currentQuestionNum);
+            if (intAnswer == -1)
+                noAnswersCount++;
+            else break;
+        }
+
+        if (noAnswersCount == players.size())
+            inactiveRounds++;
+        else
+            inactiveRounds = 0;
+    }
+
+    public void switchStateToClosedIfInactiveRoundsInARowLimitReached(){
+        if (inactiveRounds >= inactiveRoundsLimit) {
+            matchState = MatchState.CLOSED_BY_INACTIVITY;
+        }
     }
 
     public String getUsersAnswers(){
