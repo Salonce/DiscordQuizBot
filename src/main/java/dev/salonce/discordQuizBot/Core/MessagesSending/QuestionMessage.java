@@ -2,6 +2,8 @@ package dev.salonce.discordQuizBot.Core.MessagesSending;
 
 import dev.salonce.discordQuizBot.Core.MatchStore;
 import dev.salonce.discordQuizBot.Core.Matches.Match;
+import dev.salonce.discordQuizBot.Core.Matches.Player;
+import dev.salonce.discordQuizBot.Core.Questions.Question;
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
 import discord4j.core.object.entity.Message;
@@ -125,7 +127,7 @@ public class QuestionMessage {
                 .addField("\n", questionsAnswers + "\n", false)
                 .addField("Explanation", match.getCurrentQuestion().getExplanation() + "\n", false)
                 //.addField("", "Answers:\n" + match.getUsersAnswers(), false)
-                .addField("Answers", match.getUsersAnswers(), false)
+                .addField("Answers", getUsersAnswers(match), false)
                 .addField("Scoreboard", match.getScoreboard(), false)
                 .build();
 
@@ -133,6 +135,41 @@ public class QuestionMessage {
                 .addComponent(ActionRow.of(buttons))
                 .addEmbed(embed)
                 .build());
+    }
+
+    private String getUsersAnswers(Match match){
+        List<Question> questions = match.getQuestions();
+        int currentQuestionNum = match.getCurrentQuestionNum();
+        int currentQuestionCorrectAnswer = match.getCurrentQuestion().getCorrectAnswerInt();
+        Map<Long, Player> players = match.getPlayers();
+
+        List<List<String>> playersAnswers = new ArrayList<>();
+        for (int i = 0; i < questions.get(currentQuestionNum).getAnswers().size() + 1; i++){
+            playersAnswers.add(new ArrayList<>());
+        }
+        for (Map.Entry<Long, Player> entry : players.entrySet()){
+            int intAnswer = entry.getValue().getAnswersList().get(currentQuestionNum) + 1;
+            //int intAnswer = entry.getValue().getCurrentAnswerNum() + 1;
+            playersAnswers.get(intAnswer).add("<@" + entry.getKey().toString() + ">");
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 1; i < playersAnswers.size(); i++){
+            if (i != 1) sb.append("\n");
+            if (currentQuestionCorrectAnswer == i - 1)
+                sb.append("✅ ").append("**").append((char)('A' + i - 1)).append("**: ");
+            else
+                sb.append("❌ ").append((char)('A' + i - 1)).append(": ");
+            for (int j = 0; j < playersAnswers.get(i).size(); j++){
+                if (j != 0) sb.append(", ");
+                sb.append(playersAnswers.get(i).get(j));
+            }
+        }
+        sb.append("\n❌ ").append("-: ");
+        for (int j = 0; j < playersAnswers.get(0).size(); j++){
+            if (j != 0) sb.append(", ");
+            sb.append(playersAnswers.get(0).get(j));
+        }
+        return sb.toString();
     }
 
 }

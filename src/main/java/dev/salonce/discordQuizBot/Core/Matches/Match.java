@@ -8,8 +8,11 @@ import java.util.stream.Collectors;
 
 @Getter
 public class Match{
+
+    //could add rounds list (with updates) and then just calculate back on "update"
+
     private String name;
-    private final Map<Long, Player> players = new LinkedHashMap<>();;
+    private final Map<Long, Player> players = new LinkedHashMap<>();
     private final List<Question> questions;
     private final int inactiveRoundsLimit;
     private int currentQuestionNum = 0;
@@ -62,55 +65,10 @@ public class Match{
         return questions.get(currentQuestionNum).getCorrectAnswerInt();
     }
 
-    public void updateInactiveRoundsInARowCount(){
-        int noAnswersCount = 0;
-        for (Player player : players.values()){
-            int intAnswer = player.getAnswersList().get(currentQuestionNum);
-            if (intAnswer == -1)
-                noAnswersCount++;
-            else break;
-        }
-
-        if (noAnswersCount == players.size())
-            inactiveRounds++;
-        else
-            inactiveRounds = 0;
-    }
-
     public void switchStateToClosedIfInactiveRoundsInARowLimitReached(){
         if (inactiveRounds >= inactiveRoundsLimit) {
             matchState = MatchState.CLOSED_BY_INACTIVITY;
         }
-    }
-
-    public String getUsersAnswers(){
-        List<List<String>> playersAnswers = new ArrayList<>();
-        for (int i = 0; i < questions.get(currentQuestionNum).getAnswers().size() + 1; i++){
-            playersAnswers.add(new ArrayList<>());
-        }
-        for (Map.Entry<Long, Player> entry : players.entrySet()){
-            int intAnswer = entry.getValue().getAnswersList().get(currentQuestionNum) + 1;
-            //int intAnswer = entry.getValue().getCurrentAnswerNum() + 1;
-            playersAnswers.get(intAnswer).add("<@" + entry.getKey().toString() + ">");
-        }
-        StringBuilder sb = new StringBuilder();
-        for (int i = 1; i < playersAnswers.size(); i++){
-            if (i != 1) sb.append("\n");
-            if (getCurrentQuestion().getCorrectAnswerInt() == i - 1)
-                sb.append("✅ ").append("**").append((char)('A' + i - 1)).append("**: ");
-            else
-                sb.append("❌ ").append((char)('A' + i - 1)).append(": ");
-            for (int j = 0; j < playersAnswers.get(i).size(); j++){
-                if (j != 0) sb.append(", ");
-                sb.append(playersAnswers.get(i).get(j));
-            }
-        }
-        sb.append("\n❌ ").append("-: ");
-        for (int j = 0; j < playersAnswers.get(0).size(); j++){
-            if (j != 0) sb.append(", ");
-            sb.append(playersAnswers.get(0).get(j));
-        }
-        return sb.toString();
     }
 
     public void skipToNextQuestion(){
@@ -127,18 +85,22 @@ public class Match{
             return null;
     }
 
-    public String getUserNames() {
-        Iterator<Long> iterator = players.keySet().iterator();
-        if (!iterator.hasNext())
-            return "";
-        Long ownerId = iterator.next();
-        StringBuilder result = new StringBuilder("<@" + ownerId + "> (owner)");
-        while (iterator.hasNext())
-            result.append(", <@").append(iterator.next()).append(">");
-        return result.toString();
+    public void updateInactiveRoundsInARowCount(){
+        int noAnswersCount = 0;
+        for (Player player : players.values()){
+            int intAnswer = player.getAnswersList().get(currentQuestionNum);
+            if (intAnswer == -1)
+                noAnswersCount++;
+            else break;
+        }
+
+        if (noAnswersCount == players.size())
+            inactiveRounds++;
+        else
+            inactiveRounds = 0;
     }
 
-    //sort highest to lowest scores -> b - a
+    //sorted highest to lowest scores -> b - a
     public String getScoreboard(){
         return getPlayers().entrySet().stream().sorted((a, b) -> (b.getValue().getPoints() - a.getValue().getPoints())).map(entry -> "<@" + entry.getKey() + ">" + ": " + entry.getValue().getPoints() + " points").collect(Collectors.joining("\n"));
     }
@@ -182,21 +144,5 @@ public class Match{
             case 3: return place + "rd";
             default: return place + "th";
         }
-    }
-
-
-    public String getWinners() {
-        // Find the max points
-        int maxPoints = getPlayers().values().stream()
-                .mapToInt(Player::getPoints)
-                .max()
-                .orElse(0);
-
-        // Get all players with max points
-        return getPlayers().entrySet().stream()
-                .filter(entry -> entry.getValue().getPoints() == maxPoints)
-                .map(entry -> "<@" + entry.getKey().toString() + ">")
-//              .map(entry -> "<@" + entry.getKey().getId().asString() + ">: " + maxPoints)
-                .collect(Collectors.joining(", "));
     }
 }

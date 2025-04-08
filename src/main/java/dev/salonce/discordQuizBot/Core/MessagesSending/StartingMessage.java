@@ -2,6 +2,7 @@ package dev.salonce.discordQuizBot.Core.MessagesSending;
 
 import dev.salonce.discordQuizBot.Core.MatchStore;
 import dev.salonce.discordQuizBot.Core.Matches.Match;
+import dev.salonce.discordQuizBot.Core.Matches.Player;
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
 import discord4j.core.object.entity.Message;
@@ -13,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
+import java.util.Iterator;
 import java.util.Map;
 
 @Component
@@ -28,7 +30,7 @@ public class StartingMessage {
                 //.title("\uD83C\uDFC1 Java Quiz")
                 .title(match.getName() + " quiz" + " 🧠")
                 .addField("Number of questions", String.valueOf(match.getQuestions().size()), false)
-                .addField("Participants", match.getUserNames(), false)
+                .addField("Participants", getUserNames(match), false)
                 .addField("Time", "```" + timeToJoinLeft + " seconds to join.```", false)
                 .build();
 
@@ -47,7 +49,7 @@ public class StartingMessage {
                 //.title("\uD83C\uDFC1 Java Quiz")
                 .title(match.getName() + " quiz" + " 🧠")
                 .addField("Number of questions", String.valueOf(match.getQuestions().size()), false)
-                .addField("Participants", match.getUserNames(), false)
+                .addField("Participants", getUserNames(match), false)
                 .addField("Time", "```" + timeToJoinLeft + " seconds to join.``` ", false)
                 .build();
 
@@ -64,7 +66,7 @@ public class StartingMessage {
                 //.title("\uD83C\uDFC1 Java Quiz")
                 .title(match.getName() + " quiz" + " 🧠")
                 .addField("Number of questions", String.valueOf(match.getQuestions().size()), false)
-                .addField("Participants", match.getUserNames(), false)
+                .addField("Participants", getUserNames(match), false)
                 .addField("Time", "```" + timeToStartLeft + " seconds to start.``` ", false)
                 .build();
 
@@ -72,6 +74,20 @@ public class StartingMessage {
                 .addComponent(ActionRow.of(Button.primary("startNow", "Start now").disabled(), Button.success("joinQuiz", "Join").disabled(), Button.success("leaveQuiz", "Leave").disabled(), Button.danger("cancelQuiz", "Cancel").disabled()))
                 .addEmbed(embed)
                 .build());
+    }
+
+    private String getUserNames(Match match) {
+
+        Map<Long, Player> players = match.getPlayers();
+
+        Iterator<Long> iterator = players.keySet().iterator();
+        if (!iterator.hasNext())
+            return "";
+        Long ownerId = iterator.next();
+        StringBuilder result = new StringBuilder("<@" + ownerId + "> (owner)");
+        while (iterator.hasNext())
+            result.append(", <@").append(iterator.next()).append(">");
+        return result.toString();
     }
 
 }
