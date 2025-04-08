@@ -23,12 +23,12 @@ public class RawQuestion {
     public Question generateQuestion(){
 
         //make an text list
-        List<Answer> answers = new ArrayList<>();
+        List<QuizOption> quizOptions = new ArrayList<>();
 
         //add correct answers
         Random rand = new Random();
         int num = rand.nextInt(correctAnswers.size());
-        answers.add(new Answer(correctAnswers.get(num), true));
+        quizOptions.add(new QuizOption(correctAnswers.get(num), true));
 
         //add incorrect answers
         Set<Integer> set = new HashSet();
@@ -39,13 +39,13 @@ public class RawQuestion {
         }
 
         for (int i : set){
-            answers.add(new Answer(incorrectAnswers.get(i), false));
+            quizOptions.add(new QuizOption(incorrectAnswers.get(i), false));
         }
 
         //shuffle the list
-        Collections.shuffle(answers);
+        Collections.shuffle(quizOptions);
 
-        return new Question(question, answers, explanation);
+        return new Question(question, quizOptions, explanation);
     }
 
 }

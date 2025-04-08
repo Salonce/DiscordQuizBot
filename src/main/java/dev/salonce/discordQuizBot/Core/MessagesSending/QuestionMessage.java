@@ -28,8 +28,8 @@ public class QuestionMessage {
 
     public Mono<Message> create(MessageChannel messageChannel, Long questionNumber, int timeLeft){
         Match match = matchStore.get(messageChannel);
-        String questionsAnswers = match.getCurrentQuestion().getStringAnswers(false);
-        int answersSize = match.getCurrentQuestion().getAnswers().size();
+        String questionsAnswers = match.getCurrentQuestion().getOptions();
+        int answersSize = match.getCurrentQuestion().getQuizOptions().size();
 
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
@@ -58,8 +58,8 @@ public class QuestionMessage {
 
     public Mono<Message> editFirst(MessageChannel messageChannel, Message message, Long questionNumber){
         Match match = matchStore.get(messageChannel);
-        String questionsAnswers = match.getCurrentQuestion().getStringAnswers(false);
-        int answersSize = match.getCurrentQuestion().getAnswers().size();
+        String questionsAnswers = match.getCurrentQuestion().getOptions();
+        int answersSize = match.getCurrentQuestion().getQuizOptions().size();
 
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
@@ -83,8 +83,8 @@ public class QuestionMessage {
 
     public Mono<Message> editWithTime(MessageChannel messageChannel, Message message, Long questionNumber, int timeLeft){
         Match match = matchStore.get(messageChannel);
-        String questionsAnswers = match.getCurrentQuestion().getStringAnswers(false);
-        int answersSize = match.getCurrentQuestion().getAnswers().size();
+        String questionsAnswers = match.getCurrentQuestion().getOptions();
+        int answersSize = match.getCurrentQuestion().getQuizOptions().size();
 
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
@@ -112,8 +112,8 @@ public class QuestionMessage {
 
     public Mono<Message> editWithScores(MessageChannel messageChannel, Message message, Long questionNumber){
         Match match = matchStore.get(messageChannel);
-        String questionsAnswers = match.getCurrentQuestion().getStringAnswers(true);
-        int answersSize = match.getCurrentQuestion().getAnswers().size();
+        String questionsAnswers = match.getCurrentQuestion().getOptionsRevealed();
+        int answersSize = match.getCurrentQuestion().getQuizOptions().size();
 
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
@@ -145,7 +145,7 @@ public class QuestionMessage {
         Map<Long, Player> players = match.getPlayers();
 
         List<List<String>> playersAnswers = new ArrayList<>();
-        for (int i = 0; i < questions.get(currentQuestionNum).getAnswers().size() + 1; i++){
+        for (int i = 0; i < questions.get(currentQuestionNum).getQuizOptions().size() + 1; i++){
             playersAnswers.add(new ArrayList<>());
         }
         for (Map.Entry<Long, Player> entry : players.entrySet()){
@@ -165,7 +165,8 @@ public class QuestionMessage {
                 sb.append(playersAnswers.get(i).get(j));
             }
         }
-        sb.append("\n❌ ").append("-: ");
+        sb.append("\n");
+        sb.append("\n\uD83D\uDCA4 ").append(": ");
         for (int j = 0; j < playersAnswers.get(0).size(); j++){
             if (j != 0) sb.append(", ");
             sb.append(playersAnswers.get(0).get(j));
