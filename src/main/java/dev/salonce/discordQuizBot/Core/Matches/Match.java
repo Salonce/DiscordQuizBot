@@ -26,6 +26,10 @@ public class Match{
         }
     }
 
+    public void addPlayer(Long userId){
+        players.put(userId, new Player(questions.size()));
+    }
+
     public void setMatchState(MatchState matchState) {
         if (!isClosed()) this.matchState = matchState;
     }
@@ -130,19 +134,6 @@ public class Match{
         while (iterator.hasNext())
             result.append(", <@").append(iterator.next()).append(">");
         return result.toString();
-    }
-
-    public String addPlayer(Long userId, int questionsNumber){
-        if (matchState != MatchState.ENROLLMENT){
-            return "Can't do that! You can join the match only during enrollment phase.";
-        }
-        if (players.containsKey(userId)) {
-            return "You've already joined the match.";
-        }
-        else {
-            players.put(userId, new Player(questionsNumber));
-            return "You've joined the match.";
-        }
     }
 
     //sort highest to lowest scores -> b - a
