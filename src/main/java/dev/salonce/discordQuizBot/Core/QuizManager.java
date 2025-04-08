@@ -4,11 +4,11 @@ import dev.salonce.discordQuizBot.Configs.QuizConfig;
 import dev.salonce.discordQuizBot.Core.Matches.Match;
 import dev.salonce.discordQuizBot.Core.Matches.MatchState;
 import dev.salonce.discordQuizBot.Core.MessagesSending.MatchCanceledMessage;
+import dev.salonce.discordQuizBot.Core.MessagesSending.MatchResultsMessage;
 import dev.salonce.discordQuizBot.Core.MessagesSending.QuestionMessage;
 import dev.salonce.discordQuizBot.Core.MessagesSending.StartingMessage;
 import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.channel.MessageChannel;
-import discord4j.core.spec.EmbedCreateSpec;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -25,6 +25,7 @@ public class QuizManager {
     private final QuestionMessage questionMessage;
     private final StartingMessage startingMessage;
     private final MatchCanceledMessage matchCanceledMessage;
+    private final MatchResultsMessage matchResultsMessage;
 
     public void addMatch(MessageChannel messageChannel, Match match) {
         int totalTimeToJoin = quizConfig.getTimeToJoinQuiz();
@@ -59,7 +60,7 @@ public class QuizManager {
                                 .then(Mono.just(message))
                 )
                 .flatMap(message -> createQuestionMessages(messageChannel))
-                .then(Mono.defer(() -> createMatchResultsMessage(messageChannel)))
+                .then(Mono.defer(() -> matchResultsMessage.create(messageChannel)))
                 .then();
 
         Mono<Void> cancelFlow = Flux.interval(Duration.ofMillis(500))
@@ -158,18 +159,6 @@ public class QuizManager {
     private Mono<Void> moveToNextQuestion(Match match){
         match.skipToNextQuestion();
         return Mono.empty();
-    }
-
-    private Mono<Message> createMatchResultsMessage(MessageChannel messageChannel){
-        Match match = matchStore.get(messageChannel);
-
-        EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("Final scoreboard: " )
-                .description(match.getFinalScoreboard())
-                //.addField("\uD83C\uDFC6", "The winners are: " + match.getWinners(), false)
-                .build();
-
-        return messageChannel.createMessage(embed);
     }
 
     private Mono<Void> addPlayerPoints(MessageChannel messageChannel){
