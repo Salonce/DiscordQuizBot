@@ -58,7 +58,7 @@ public class AnswerButtonHandler implements ButtonHandler {
         if (match == null)
             return AnswerInteractionEnum.TOO_LATE; // could be different
 
-        if (questionNum != match.getCurrentQuestionNum() || match.getMatchState() != MatchState.QUIZ_ANSWERING)
+        if (questionNum != match.getCurrentQuestionNum() || match.getMatchState() != MatchState.ANSWERING)
             return AnswerInteractionEnum.TOO_LATE;
 
         if (match.getPlayers().containsKey(userId)) {

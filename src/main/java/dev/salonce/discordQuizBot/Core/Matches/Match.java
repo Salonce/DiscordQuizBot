@@ -155,19 +155,6 @@ public class Match{
         }
     }
 
-    public String removePlayer(Long userId){
-        if (matchState != MatchState.ENROLLMENT) {
-            return "Can't do that! You can leave the match only during enrollment phase.";
-        }
-        else if (matchState == MatchState.ENROLLMENT && players.containsKey(userId)) {
-            players.remove(userId);
-            return "You've left the match.";
-        }
-        else {
-            return "You are not in the match to leave it.";
-        }
-    }
-
     //sort highest to lowest scores -> b - a
     public String getScoreboard(){
         return getPlayers().entrySet().stream().sorted((a, b) -> (b.getValue().getPoints() - a.getValue().getPoints())).map(entry -> "<@" + entry.getKey() + ">" + ": " + entry.getValue().getPoints() + " points").collect(Collectors.joining("\n"));

@@ -137,13 +137,13 @@ public class QuizManager {
 
     private Mono<Void> closeAnswering(MessageChannel messageChannel){
         Match match = matchStore.get(messageChannel);
-        match.setMatchState(MatchState.QUIZ_WAITING);
+        match.setMatchState(MatchState.WAITING);
         return Mono.empty();
     }
 
     private Mono<Void> openAnswering(MessageChannel messageChannel){
         Match match = matchStore.get(messageChannel);
-        match.setMatchState(MatchState.QUIZ_ANSWERING);
+        match.setMatchState(MatchState.ANSWERING);
         return Mono.empty();
     }
 
