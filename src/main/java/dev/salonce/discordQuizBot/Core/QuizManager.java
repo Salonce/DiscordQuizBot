@@ -131,7 +131,7 @@ public class QuizManager {
 
     private Mono<Void> setNoAnswerCountAndCloseMatchIfLimit(MessageChannel messageChannel){
         Match match = matchStore.get(messageChannel);
-        match.setNoAnswerCountAndCloseMatchIfLimit();
+        match.updateInactiveCountAndCloseMatchIfLimit();
         return Mono.empty();
     }
 

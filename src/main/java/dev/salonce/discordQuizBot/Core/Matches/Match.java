@@ -11,14 +11,14 @@ public class Match{
     private String name;
     private final Map<Long, Player> players = new LinkedHashMap<>();;
     private final List<Question> questions;
-    private final int unansweredQuestionsLimit;
+    private final int inactiveRoundsLimit;
     private int currentQuestionNum = 0;
-    private int noAnswerCount = 0;
+    private int inactiveRounds = 0;
     private MatchState matchState = MatchState.ENROLLMENT;
 
-    public Match(List<Question> questions, String name, Long ownerId, int unansweredQuestionsLimit){
+    public Match(List<Question> questions, String name, Long ownerId, int inactiveRoundsLimit){
         this.questions = questions;
-        this.unansweredQuestionsLimit = unansweredQuestionsLimit;
+        this.inactiveRoundsLimit = inactiveRoundsLimit;
         players.put(ownerId, new Player(questions.size()));
 
         if (name != null) {
@@ -46,7 +46,7 @@ public class Match{
         return true;
     }
 
-    public void setNoAnswerCountAndCloseMatchIfLimit(){
+    public void updateInactiveCountAndCloseMatchIfLimit(){
         int noAnswersCount = 0;
         for (Player player : players.values()){
             int intAnswer = player.getAnswersList().get(currentQuestionNum);
@@ -56,13 +56,13 @@ public class Match{
         }
 
         if (noAnswersCount == players.size()) {
-            noAnswerCount++;
-            if (noAnswerCount >= unansweredQuestionsLimit) {
+            inactiveRounds++;
+            if (inactiveRounds >= inactiveRoundsLimit) {
                 matchState = MatchState.CLOSED_BY_INACTIVITY;
             }
         }
         else
-            noAnswerCount = 0;
+            inactiveRounds = 0;
     }
 
     public Long getOwnerId(){
@@ -72,12 +72,12 @@ public class Match{
 
     public void updateScores(){
         for (Player player : players.values()){
-            if (player.getAnswersList().get(currentQuestionNum) == getQuestionCorrectAnswerInt())
+            if (player.getAnswersList().get(currentQuestionNum) == getCurrentQuestionCorrectAnswer())
                 player.addPoint();
         }
     }
 
-    private int getQuestionCorrectAnswerInt(){
+    private int getCurrentQuestionCorrectAnswer(){
         return questions.get(currentQuestionNum).getCorrectAnswerInt();
     }
 
