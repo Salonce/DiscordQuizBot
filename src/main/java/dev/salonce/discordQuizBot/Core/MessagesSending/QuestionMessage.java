@@ -165,7 +165,8 @@ public class QuestionMessage {
                 sb.append(playersAnswers.get(i).get(j));
             }
         }
-        sb.append("\n❌ ").append("-: ");
+        sb.append("\n");
+        sb.append("\n\uD83D\uDCA4 ").append(": ");
         for (int j = 0; j < playersAnswers.get(0).size(); j++){
             if (j != 0) sb.append(", ");
             sb.append(playersAnswers.get(0).get(j));

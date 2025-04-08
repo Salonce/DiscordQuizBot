@@ -27,9 +27,10 @@ public class StartingMessage {
         Match match = matchStore.get(messageChannel);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title(match.getName() + " quiz" + " 🧠")
-                .addField("Number of questions: " + match.getQuestions().size(), "", false)
-                .addField("", "\uD83D\uDC65 " + getUserNames(match), false)
+                .title("Quiz")
+                .addField("Subject: " + match.getName(), "", false)
+                .addField("Questions: " + match.getQuestions().size(), "", false)
+                .addField("", "\uD83D\uDC65 " + "**Players:** " + getUserNames(match), false)
                 .addField("", "```" + timeToJoinLeft + " seconds to start.``` ", false)
                 .build();
 
@@ -46,9 +47,10 @@ public class StartingMessage {
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 //.title("\uD83C\uDFC1 Java Quiz")
-                .title(match.getName() + " quiz" + " 🧠")
-                .addField("Number of questions: " + match.getQuestions().size(), "", false)
-                .addField("", "\uD83D\uDC65 " + getUserNames(match), false)
+                .title("Quiz")
+                .addField("Subject: " + match.getName(), "", false)
+                .addField("Questions: " + match.getQuestions().size(), "", false)
+                .addField("", "\uD83D\uDC65 " + "**Players:** " + getUserNames(match), false)
                 .addField("", "```" + timeToJoinLeft + " seconds to start.``` ", false)
                 .build();
 
@@ -63,9 +65,10 @@ public class StartingMessage {
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 //.title("\uD83C\uDFC1 Java Quiz")
-                .title(match.getName() + " quiz" + " 🧠")
-                .addField("Number of questions: " + match.getQuestions().size(), "", false)
-                .addField("", "\uD83D\uDC65 " + getUserNames(match), false)
+                .title("Quiz")
+                .addField("Subject: " + match.getName(), "", false)
+                .addField("Questions: " + match.getQuestions().size(), "", false)
+                .addField("", "\uD83D\uDC65 " + "**Players:** " + getUserNames(match), false)
                 .addField("", "```" + timeToStartLeft + " seconds to start.``` ", false)
                 .build();
 
