@@ -98,16 +98,24 @@ public class QuizManager {
 
     private Mono<Void> handleSingleQuestion(Match match, MessageChannel messageChannel, long index) {
         int totalTime = quizConfig.getTimeToPickAnswer();
+        int totalTimeForNextQuestionToAppear = quizConfig.getTimeForNewQuestionToAppear();
 
         return questionMessage.create(messageChannel, index, totalTime)
                 .flatMap(message -> {
                     openAnswering(messageChannel);
                     return createCountdownTimer(match, messageChannel, message, index, totalTime)
-                            .then(Mono.defer(() -> questionMessage.editFirst(messageChannel, message, index)))
+                            .then(Mono.defer(() -> questionMessage.editAfterAnswersWait(messageChannel, message, index)))
                             .then(Mono.delay(Duration.ofSeconds(1)))
                             .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
                             .then(Mono.defer(() -> closeAnswering(messageChannel)))
                             .then(Mono.defer(() -> questionMessage.editWithScores(messageChannel, message, index)))
+//                            .thenMany(Flux.interval(Duration.ofSeconds(1))
+//                                    .take((long) totalTimeForNextQuestionToAppear)
+//                                    .flatMap(tick -> {
+//                                        Long timeLeft = (long) (totalTimeForNextQuestionToAppear - (tick.intValue() + 1));
+//                                        return questionMessage.editWithScoresAndTimeLeft(messageChannel, message, index, timeLeft);
+//                                    })
+//                            )
                             .then(Mono.defer(() -> updateInactiveRoundsInARowCount(messageChannel)))
                             .then(Mono.defer(() -> switchStateToClosedIfInactiveRoundsInARowLimitReached(messageChannel)))
                             .then(Mono.delay(Duration.ofSeconds(quizConfig.getTimeForNewQuestionToAppear())))
