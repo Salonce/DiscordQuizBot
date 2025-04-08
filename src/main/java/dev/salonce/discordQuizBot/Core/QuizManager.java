@@ -41,7 +41,7 @@ public class QuizManager {
                 .flatMap(message ->
                         Flux.interval(Duration.ofSeconds(1))
                                 .take(totalTimeToJoin)
-                                .takeUntil(interval -> match.isStartNow())
+                                .takeUntil(interval -> match.getMatchState() == MatchState.COUNTDOWN)
                                 .flatMap(interval -> {
                                     Long timeLeft = (long) (totalTimeToJoin - interval.intValue() - 1);
                                     return startingMessage.edit(message, messageChannel, timeLeft);

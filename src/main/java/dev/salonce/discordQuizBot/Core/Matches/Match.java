@@ -14,12 +14,9 @@ public class Match{
     private int currentQuestionNum = 0;
     private int noAnswerCount = 0;
 
-
     private MatchState matchState = MatchState.ENROLLMENT;;
     @Setter
     private boolean answeringOpen;
-    @Setter
-    private boolean startNow = false;
 
     private String name;
 
