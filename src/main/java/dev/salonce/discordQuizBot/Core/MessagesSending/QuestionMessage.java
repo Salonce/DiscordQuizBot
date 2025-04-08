@@ -45,7 +45,7 @@ public class QuestionMessage {
                 .addField("\n", "**" + match.getCurrentQuestion().getQuestion() + "**", false)
                 //.description("**" + match.getQuestion().getQuestion() + "**")
                 .addField("\n", questionsAnswers + "\n", false)
-                .addField("\n", "```" + timeLeft + " seconds left.```", false)
+                .addField("\n", "```⏳ " + timeLeft + " seconds left.```", false)
                 .build();
 
         MessageCreateSpec spec = MessageCreateSpec.builder()
@@ -54,31 +54,6 @@ public class QuestionMessage {
                 .build();
 
         return messageChannel.createMessage(spec);
-    }
-
-    public Mono<Message> editFirst(MessageChannel messageChannel, Message message, Long questionNumber){
-        Match match = matchStore.get(messageChannel);
-        String questionsAnswers = match.getCurrentQuestion().getOptions();
-        int answersSize = match.getCurrentQuestion().getQuizOptions().size();
-
-        List<Button> buttons = new ArrayList<>();
-        for (int i = 0; i < answersSize; i++) {
-            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))).disabled());
-            //System.out.println("Creating button of id:" + "Answer-" + (char)('A' + i) + "-" + questionNumber.toString());
-        }
-        buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
-
-        EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("Question " + (match.getCurrentQuestionNum() + 1) + "/10")
-                .addField("\n", "**" + match.getCurrentQuestion().getQuestion() + "**", false)
-                //.description("**" + match.getQuestion().getQuestion() + "**")
-                .addField("\n", questionsAnswers + "\n", false)
-                .build();
-
-        return message.edit(MessageEditSpec.builder()
-                .addComponent(ActionRow.of(buttons))
-                .addEmbed(embed)
-                .build());
     }
 
     public Mono<Message> editWithTime(MessageChannel messageChannel, Message message, Long questionNumber, int timeLeft){
@@ -100,8 +75,33 @@ public class QuestionMessage {
                 .addField("\n", "**" + match.getCurrentQuestion().getQuestion() + "**", false)
                 //.description("**" + match.getQuestion().getQuestion() + "**")
                 .addField("\n", questionsAnswers + "\n", false)
-                .addField("\n", "```" + timeLeft + " seconds left.```", false)
+                .addField("\n", "```⏳ " + timeLeft + " seconds left.```", false)
                 //.footer("Question " + questionNumber + " out of 10", null)
+                .build();
+
+        return message.edit(MessageEditSpec.builder()
+                .addComponent(ActionRow.of(buttons))
+                .addEmbed(embed)
+                .build());
+    }
+
+    public Mono<Message> editAfterAnswersWait(MessageChannel messageChannel, Message message, Long questionNumber){
+        Match match = matchStore.get(messageChannel);
+        String questionsAnswers = match.getCurrentQuestion().getOptions();
+        int answersSize = match.getCurrentQuestion().getQuizOptions().size();
+
+        List<Button> buttons = new ArrayList<>();
+        for (int i = 0; i < answersSize; i++) {
+            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))).disabled());
+            //System.out.println("Creating button of id:" + "Answer-" + (char)('A' + i) + "-" + questionNumber.toString());
+        }
+        buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
+
+        EmbedCreateSpec embed = EmbedCreateSpec.builder()
+                .title("Question " + (match.getCurrentQuestionNum() + 1) + "/10")
+                .addField("\n", "**" + match.getCurrentQuestion().getQuestion() + "**", false)
+                //.description("**" + match.getQuestion().getQuestion() + "**")
+                .addField("\n", questionsAnswers + "\n", false)
                 .build();
 
         return message.edit(MessageEditSpec.builder()
@@ -137,6 +137,35 @@ public class QuestionMessage {
                 .addEmbed(embed)
                 .build());
     }
+
+//    public Mono<Message> editWithScoresAndTimeLeft(MessageChannel messageChannel, Message message, Long questionNumber, Long timeLeft){
+//        Match match = matchStore.get(messageChannel);
+//        String questionsAnswers = match.getCurrentQuestion().getOptionsRevealed();
+//        int answersSize = match.getCurrentQuestion().getQuizOptions().size();
+//
+//        List<Button> buttons = new ArrayList<>();
+//        for (int i = 0; i < answersSize; i++) {
+//            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))).disabled());
+//            //System.out.println("Creating button of id:" + "Answer-" + (char)('A' + i) + "-" + questionNumber.toString());
+//        }
+//        buttons.add(Button.danger("cancelQuiz", "Abort quiz").disabled());
+//
+//        EmbedCreateSpec embed = EmbedCreateSpec.builder()
+//                .title("Question " + (match.getCurrentQuestionNum() + 1) + "/10")
+//                .addField("\n", "**" + match.getCurrentQuestion().getQuestion() + "**", false)
+//                .addField("\n", questionsAnswers + "\n", false)
+//                .addField("Explanation", match.getCurrentQuestion().getExplanation() + "\n", false)
+//                //.addField("", "Answers:\n" + match.getUsersAnswers(), false)
+//                .addField("Answers", getUsersAnswers(match), false)
+//                .addField("Scoreboard", getScoreboard(match), false)
+//                .addField("", "```⏳ " + timeLeft + " seconds to the next question.``` ", false)
+//                .build();
+//
+//        return message.edit(MessageEditSpec.builder()
+//                .addComponent(ActionRow.of(buttons))
+//                .addEmbed(embed)
+//                .build());
+//    }
 
     private String getUsersAnswers(Match match){
         List<Question> questions = match.getQuestions();
