@@ -27,11 +27,11 @@ public class StartingMessage {
         Match match = matchStore.get(messageChannel);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("Quiz")
-                .addField("Subject: " + match.getName(), "", false)
-                .addField("Questions: " + match.getQuestions().size(), "", false)
+                .title("\uD83D\uDE80 Starting Soon...")
+                .addField("\uD83D\uDCD8 Subject: " + match.getName(), "", false)
+                .addField("❓ Questions: " + match.getQuestions().size(), "", false)
                 .addField("", "\uD83D\uDC65 " + "**Players:** " + getUserNames(match), false)
-                .addField("", "```" + timeToJoinLeft + " seconds to start.``` ", false)
+                .addField("", "```⏳ " + timeToJoinLeft + " seconds to start.``` ", false)
                 .build();
 
         MessageCreateSpec spec = MessageCreateSpec.builder()
@@ -47,11 +47,11 @@ public class StartingMessage {
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 //.title("\uD83C\uDFC1 Java Quiz")
-                .title("Quiz")
-                .addField("Subject: " + match.getName(), "", false)
-                .addField("Questions: " + match.getQuestions().size(), "", false)
+                .title("\uD83D\uDE80 Starting Soon...")
+                .addField("\uD83D\uDCD8 Subject: " + match.getName(), "", false)
+                .addField("❓ Questions: " + match.getQuestions().size(), "", false)
                 .addField("", "\uD83D\uDC65 " + "**Players:** " + getUserNames(match), false)
-                .addField("", "```" + timeToJoinLeft + " seconds to start.``` ", false)
+                .addField("", "```⏳ " + timeToJoinLeft + " seconds to start.``` ", false)
                 .build();
 
         return message.edit(MessageEditSpec.builder()
@@ -65,11 +65,11 @@ public class StartingMessage {
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 //.title("\uD83C\uDFC1 Java Quiz")
-                .title("Quiz")
-                .addField("Subject: " + match.getName(), "", false)
-                .addField("Questions: " + match.getQuestions().size(), "", false)
+                .title("\uD83D\uDE80 Starting Soon...")
+                .addField("\uD83D\uDCD8 Subject: " + match.getName(), "", false)
+                .addField("❓ Questions: " + match.getQuestions().size(), "", false)
                 .addField("", "\uD83D\uDC65 " + "**Players:** " + getUserNames(match), false)
-                .addField("", "```" + timeToStartLeft + " seconds to start.``` ", false)
+                .addField("", "```⏳ " + timeToStartLeft + " seconds to start.``` ", false)
                 .build();
 
         return message.edit(MessageEditSpec.builder()

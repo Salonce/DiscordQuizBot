@@ -8,60 +8,58 @@ import java.util.List;
 @Getter
 public class Question {
     private final String question;
-    private final List<Answer> answers;
+    private final List<QuizOption> quizOptions;
     private final String explanation;
 
-    public Question(String question, List<Answer> answers, String explanation) {
+    public Question(String question, List<QuizOption> quizOptions, String explanation) {
         this.question = question;
-        this.answers = answers;
+        this.quizOptions = quizOptions;
         this.explanation = explanation;
     }
 
-//    public List<Integer> getCorrectAnswerListInt(){
-//        return IntStream.range(0, answers.size())
-//                .filter(i -> answers.get(i).correctness())
-//                .boxed()
-//                .toList();
-//    }
-
-    public String getCorrectAnswerString(){
-        int corAns = getCorrectAnswerInt();
-        if (corAns != -1)
-            return answers.get(corAns).text();
-        return "No correct text";
-    }
-
     public int getCorrectAnswerInt(){
-        for (int i = 0; i < answers.size(); i++){
-            if (answers.get(i).correctness())
+        for (int i = 0; i < quizOptions.size(); i++){
+            if (quizOptions.get(i).isCorrect())
                 return i;
         }
         return -1;
     }
 
+    public String getOptions(){
+        StringBuilder sb = new StringBuilder();
+        char letter = 'A';
+        for (QuizOption quizOption : quizOptions){
+            sb.append(letter).append(") ").append(quizOption.text());
+            letter++;
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
+    public String getOptionsRevealed(){
+        StringBuilder sb = new StringBuilder();
+        char letter = 'A';
+        for (QuizOption quizOption : quizOptions){
+            if (!quizOption.isCorrect()) sb.append("❌ ").append(letter).append(") ").append(quizOption.text());
+            if (quizOption.isCorrect()) sb.append("✅** ").append(letter).append(") ").append(quizOption.text()).append("**");
+            letter++;
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
     public Character getCorrectAnswer(){
-        for (int i = 0; i < answers.size(); i++){
-            if (answers.get(i).correctness())
+        for (int i = 0; i < quizOptions.size(); i++){
+            if (quizOptions.get(i).isCorrect())
                 return (char)('A' + i);
         }
         return null;
     }
 
-    public String getStringAnswers(boolean showAnswers){
-        StringBuilder sb = new StringBuilder();
-        char letter = 'A';
-        for (Answer answer : answers){
-            if (showAnswers && answer.correctness()) sb.append("**");
-            //if (showAnswers && !answer.correctness()) sb.append("~~");
-            sb.append(letter + ") " + answer.text());
-            letter++;
-            //if (showAnswers && !answer.correctness()) sb.append("~~");
-            //if (showAnswers && !answer.correctness()) sb.append(" ✗ ❌");
-            //if (showAnswers && answer.correctness()) sb.append(" ✔ ✅**");
-            if (showAnswers && !answer.correctness()) sb.append(" ❌");
-            if (showAnswers && answer.correctness()) sb.append("** ✅");
-            sb.append("\n");
-        }
-        return sb.toString();
+    public String getCorrectAnswerString(){
+        int corAns = getCorrectAnswerInt();
+        if (corAns != -1)
+            return quizOptions.get(corAns).text();
+        return "No correct text";
     }
 }
