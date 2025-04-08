@@ -165,7 +165,7 @@ public class QuizManager {
     }
 
     private Mono<Void> addPlayerPoints(MessageChannel messageChannel){
-        matchStore.get(messageChannel).updatePlayerPoints();
+        matchStore.get(messageChannel).updateScores();
         return Mono.empty();
     }
 }

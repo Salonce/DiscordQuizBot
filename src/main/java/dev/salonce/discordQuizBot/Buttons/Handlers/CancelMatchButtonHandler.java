@@ -5,6 +5,7 @@ import dev.salonce.discordQuizBot.Buttons.ButtonInteraction;
 import dev.salonce.discordQuizBot.Buttons.ButtonInteractionData;
 import dev.salonce.discordQuizBot.Core.MatchStore;
 import dev.salonce.discordQuizBot.Core.Matches.Match;
+import dev.salonce.discordQuizBot.Core.Matches.MatchState;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.RequiredArgsConstructor;
@@ -19,8 +20,7 @@ public class CancelMatchButtonHandler implements ButtonHandler {
     @Override
     public boolean handle(ButtonInteractionEvent event, ButtonInteraction buttonInteraction, ButtonInteractionData data) {
         if ("cancelQuiz".equals(data.getButtonType())) {
-            boolean canceled = cancelQuiz(buttonInteraction);
-            event.reply(canceled ? "You've canceled the quiz." : "Only matchmaker can cancel the quiz.")
+            event.reply(cancelMatch(buttonInteraction))
                     .withEphemeral(true)
                     .subscribe();
             return true;
@@ -28,9 +28,15 @@ public class CancelMatchButtonHandler implements ButtonHandler {
         return false;
     }
 
-    private boolean cancelQuiz(ButtonInteraction buttonInteraction) {
+    private String cancelMatch (ButtonInteraction buttonInteraction) {
         MessageChannel messageChannel = buttonInteraction.getMessageChannel();
         Match match = matchStore.get(messageChannel);
-        return match.closeMatch(buttonInteraction.getUserId());
+        Long userId = buttonInteraction.getUserId();
+        if (match == null)
+            return "This match doesn't exist anymore.";
+        if (!match.getOwnerId().equals(userId))
+            return "You are not the owner. Only the owner can cancel the match.";
+        match.setMatchState(MatchState.CLOSED_BY_OWNER);
+        return "With your undeniable power of ownership, you've cancelled the match";
     }
 }

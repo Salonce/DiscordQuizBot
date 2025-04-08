@@ -2,7 +2,7 @@ package dev.salonce.discordQuizBot.Core.Matches;
 
 import dev.salonce.discordQuizBot.Core.Questions.Question;
 import lombok.Getter;
-import lombok.Setter;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -16,22 +16,22 @@ public class Match{
     private int noAnswerCount = 0;
     private MatchState matchState = MatchState.ENROLLMENT;
 
+    public Match(List<Question> questions, String name, Long ownerId, int unansweredQuestionsLimit){
+        this.questions = questions;
+        this.unansweredQuestionsLimit = unansweredQuestionsLimit;
+        players.put(ownerId, new Player(questions.size()));
+
+        if (name != null) {
+            this.name = name.substring(0, 1).toUpperCase() + name.substring(1); //Capitalize match name
+        }
+    }
+
     public void setMatchState(MatchState matchState) {
         if (!isClosed()) this.matchState = matchState;
     }
 
     public boolean isClosed(){
         return ((matchState == MatchState.CLOSED_BY_INACTIVITY) || (matchState == MatchState.CLOSED_BY_OWNER));
-    }
-
-    public Match(List<Question> questions, String type, Long ownerId, int unansweredQuestionsLimit){
-        this.questions = questions;
-        this.unansweredQuestionsLimit = unansweredQuestionsLimit;
-        players.put(ownerId, new Player(questions.size()));
-
-        if (type != null) {
-            this.name = type.substring(0, 1).toUpperCase() + type.substring(1); //Capitalize match name
-        }
     }
 
     public boolean everyoneAnswered(){
@@ -61,25 +61,15 @@ public class Match{
             noAnswerCount = 0;
     }
 
-    public boolean closeMatch(Long userId){
-        if (userId.equals(getOwnerId())){
-            matchState = MatchState.CLOSED_BY_OWNER;
-            return true;
-        }
-        return false;
-    }
-
-    private Long getOwnerId(){
+    public Long getOwnerId(){
         try { return players.keySet().iterator().next(); }
         catch (NoSuchElementException e){ return null; }
     }
 
-    public void updatePlayerPoints(){
+    public void updateScores(){
         for (Player player : players.values()){
             if (player.getAnswersList().get(currentQuestionNum) == getQuestionCorrectAnswerInt())
                 player.addPoint();
-//            if (player.getCurrentAnswerNum() == getQuestionCorrectAnswerInt())
-//                player.addPoint();
         }
     }
 
@@ -200,10 +190,6 @@ public class Match{
             default: return place + "th";
         }
     }
-
-//    public String getScoreboard(){
-//        return getPlayers().entrySet().stream().sorted((a, b) -> (b.getValue().getPoints() - a.getValue().getPoints())).map(entry -> "<@" + entry.getKey() + ">" + ": " + entry.getValue().getPoints()).collect(Collectors.joining("\n"));
-//    }
 
 
     public String getWinners() {
