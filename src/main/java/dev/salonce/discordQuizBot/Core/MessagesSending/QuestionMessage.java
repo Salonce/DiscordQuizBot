@@ -34,15 +34,12 @@ public class QuestionMessage {
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
             buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))));
-            //System.out.println("Creating button of id:" + "Answer-" + (char)('A' + i) + "-" + questionNumber.toString());
         }
         buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
 
-        //String formattedTime = String.format("%02d", timeLeft);
-
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("Question " + (match.getCurrentQuestionNum() + 1) + "/10")
-                .addField("\n", "**" + match.getCurrentQuestion().getQuestion() + "**", false)
+                .title(titleString(match))
+                .addField("\n", "❓ **" + match.getCurrentQuestion().getQuestion() + "**", false)
                 //.description("**" + match.getQuestion().getQuestion() + "**")
                 .addField("\n", questionsAnswers + "\n", false)
                 .addField("\n", "```⏳ " + timeLeft + " seconds left.```", false)
@@ -64,19 +61,14 @@ public class QuestionMessage {
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
             buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))));
-            //System.out.println("Creating button of id:" + "Answer-" + (char)('A' + i) + "-" + questionNumber.toString());
         }
         buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
 
-        //String formattedTime = String.format("%02d", timeLeft);
-
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("Question " + (match.getCurrentQuestionNum() + 1) + "/10")
-                .addField("\n", "**" + match.getCurrentQuestion().getQuestion() + "**", false)
-                //.description("**" + match.getQuestion().getQuestion() + "**")
+                .title(titleString(match))
+                .addField("\n", "❓ **" + match.getCurrentQuestion().getQuestion() + "**", false)
                 .addField("\n", questionsAnswers + "\n", false)
                 .addField("\n", "```⏳ " + timeLeft + " seconds left.```", false)
-                //.footer("Question " + questionNumber + " out of 10", null)
                 .build();
 
         return message.edit(MessageEditSpec.builder()
@@ -93,14 +85,12 @@ public class QuestionMessage {
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
             buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))).disabled());
-            //System.out.println("Creating button of id:" + "Answer-" + (char)('A' + i) + "-" + questionNumber.toString());
         }
         buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("Question " + (match.getCurrentQuestionNum() + 1) + "/10")
-                .addField("\n", "**" + match.getCurrentQuestion().getQuestion() + "**", false)
-                //.description("**" + match.getQuestion().getQuestion() + "**")
+                .title(titleString(match))
+                .addField("\n", "❓ **" + match.getCurrentQuestion().getQuestion() + "**", false)
                 .addField("\n", questionsAnswers + "\n", false)
                 .build();
 
@@ -118,24 +108,26 @@ public class QuestionMessage {
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
             buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))).disabled());
-            //System.out.println("Creating button of id:" + "Answer-" + (char)('A' + i) + "-" + questionNumber.toString());
         }
-        buttons.add(Button.danger("cancelQuiz", "Abort quiz").disabled());
+        buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("Question " + (match.getCurrentQuestionNum() + 1) + "/10")
-                .addField("\n", "**" + match.getCurrentQuestion().getQuestion() + "**", false)
+                .title(titleString(match))
+                .addField("\n", "❓ **" + match.getCurrentQuestion().getQuestion() + "**", false)
                 .addField("\n", questionsAnswers + "\n", false)
-                .addField("Explanation", match.getCurrentQuestion().getExplanation() + "\n", false)
-                //.addField("", "Answers:\n" + match.getUsersAnswers(), false)
-                .addField("Answers", getUsersAnswers(match), false)
-                .addField("Scoreboard", getScoreboard(match), false)
+                .addField("\uD83D\uDCDD Explanation", match.getCurrentQuestion().getExplanation() + "\n", false)
+                .addField("\uD83D\uDCCB Answers", getUsersAnswers(match), false)
+                .addField("\uD83D\uDCCA Scoreboard", getScoreboard(match), false)
                 .build();
 
         return message.edit(MessageEditSpec.builder()
                 .addComponent(ActionRow.of(buttons))
                 .addEmbed(embed)
                 .build());
+    }
+
+    private String titleString(Match match){
+        return "Question " + (match.getCurrentQuestionNum() + 1) + "/10";
     }
 
 //    public Mono<Message> editWithScoresAndTimeLeft(MessageChannel messageChannel, Message message, Long questionNumber, Long timeLeft){
