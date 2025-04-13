@@ -1,7 +1,6 @@
 package dev.salonce.discordQuizBot.Buttons.Handlers;
 
 import dev.salonce.discordQuizBot.Buttons.ButtonHandler;
-import dev.salonce.discordQuizBot.Buttons.ButtonInteraction;
 import dev.salonce.discordQuizBot.Buttons.ButtonInteractionData;
 import dev.salonce.discordQuizBot.Core.MatchStore;
 import dev.salonce.discordQuizBot.Core.Matches.MatchState;
@@ -17,9 +16,9 @@ public class StartNowButtonHandler implements ButtonHandler {
     private final MatchStore matchStore;
 
     @Override
-    public boolean handle(ButtonInteractionEvent event, ButtonInteraction buttonInteraction) {
-        if ("startNow".equals(buttonInteraction.getButtonId())) {
-            event.reply(startNow(buttonInteraction))
+    public boolean handle(ButtonInteractionEvent event, ButtonInteractionData buttonInteractionData) {
+        if ("startNow".equals(buttonInteractionData.getButtonId())) {
+            event.reply(startNow(buttonInteractionData))
                     .withEphemeral(true)
                     .subscribe();
             return true;
@@ -27,8 +26,8 @@ public class StartNowButtonHandler implements ButtonHandler {
         return false;
     }
 
-    private String startNow(ButtonInteraction buttonInteraction){
-        MessageChannel messageChannel = buttonInteraction.getMessageChannel();
+    private String startNow(ButtonInteractionData buttonInteractionData){
+        MessageChannel messageChannel = buttonInteractionData.getMessageChannel();
 
 
 

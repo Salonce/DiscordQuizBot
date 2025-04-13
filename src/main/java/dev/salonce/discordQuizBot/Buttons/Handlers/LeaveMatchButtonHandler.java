@@ -1,7 +1,6 @@
 package dev.salonce.discordQuizBot.Buttons.Handlers;
 
 import dev.salonce.discordQuizBot.Buttons.ButtonHandler;
-import dev.salonce.discordQuizBot.Buttons.ButtonInteraction;
 import dev.salonce.discordQuizBot.Buttons.ButtonInteractionData;
 import dev.salonce.discordQuizBot.Core.MatchStore;
 import dev.salonce.discordQuizBot.Core.Matches.Match;
@@ -19,9 +18,9 @@ public class LeaveMatchButtonHandler implements ButtonHandler {
     private final MatchStore matchStore;
 
     @Override
-    public boolean handle(ButtonInteractionEvent event, ButtonInteraction buttonInteraction) {
-        if ("leaveQuiz".equals(buttonInteraction.getButtonId())) {
-            event.reply(leaveMatch(buttonInteraction))
+    public boolean handle(ButtonInteractionEvent event, ButtonInteractionData buttonInteractionData) {
+        if ("leaveQuiz".equals(buttonInteractionData.getButtonId())) {
+            event.reply(leaveMatch(buttonInteractionData))
                     .withEphemeral(true)
                     .subscribe();
             return true;
@@ -29,10 +28,10 @@ public class LeaveMatchButtonHandler implements ButtonHandler {
         return false;
     }
 
-    private String leaveMatch(ButtonInteraction buttonInteraction){
-        MessageChannel messageChannel = buttonInteraction.getMessageChannel();
+    private String leaveMatch(ButtonInteractionData buttonInteractionData){
+        MessageChannel messageChannel = buttonInteractionData.getMessageChannel();
         Match match = matchStore.get(messageChannel);
-        Long userId = buttonInteraction.getUserId();
+        Long userId = buttonInteractionData.getUserId();
         if (match == null) {
             return "This match doesn't exist.";
         }

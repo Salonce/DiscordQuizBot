@@ -17,10 +17,10 @@ public class AnswerButtonHandler implements ButtonHandler {
     private final MatchStore matchStore;
 
     @Override
-    public boolean handle(ButtonInteractionEvent event, ButtonInteraction buttonInteraction) {
-        if (buttonInteraction.getButtonId().startsWith("Answer")) {
-            AnswerInteractionEnum answerEnum = setPlayerAnswer(buttonInteraction);
-            AnswerData answerData = new AnswerData(buttonInteraction.getButtonId());
+    public boolean handle(ButtonInteractionEvent event, ButtonInteractionData buttonInteractionData) {
+        if (buttonInteractionData.getButtonId().startsWith("Answer")) {
+            AnswerInteractionEnum answerEnum = setPlayerAnswer(buttonInteractionData);
+            AnswerData answerData = new AnswerData(buttonInteractionData.getButtonId());
 
             String response = switch (answerEnum) {
                 case NOT_IN_MATCH -> "You are not in the match.";
@@ -37,11 +37,11 @@ public class AnswerButtonHandler implements ButtonHandler {
         return false;
     }
 
-    private AnswerInteractionEnum setPlayerAnswer(ButtonInteraction buttonInteraction) {
-        Long userId = buttonInteraction.getUserId();
-        MessageChannel messageChannel = buttonInteraction.getMessageChannel();
+    private AnswerInteractionEnum setPlayerAnswer(ButtonInteractionData buttonInteractionData) {
+        Long userId = buttonInteractionData.getUserId();
+        MessageChannel messageChannel = buttonInteractionData.getMessageChannel();
         Match match = matchStore.get(messageChannel);
-        String buttonId = buttonInteraction.getButtonId();
+        String buttonId = buttonInteractionData.getButtonId();
 
         int answerNum = 0;
         int questionNum = 0;
