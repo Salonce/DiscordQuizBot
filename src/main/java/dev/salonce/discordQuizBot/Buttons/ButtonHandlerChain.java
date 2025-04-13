@@ -9,10 +9,10 @@ import java.util.List;
 public class ButtonHandlerChain {
     private final List<ButtonHandler> buttonHandlers;
 
-    public void handle(ButtonInteractionEvent event, ButtonInteraction buttonInteraction, ButtonInteractionData data) {
+    public void handle(ButtonInteractionEvent event, ButtonInteraction buttonInteraction) {
         for (ButtonHandler handler : buttonHandlers) {
             System.out.println("handling: " + handler.getClass());
-            if (handler.handle(event, buttonInteraction, data)) {
+            if (handler.handle(event, buttonInteraction)) {
                 break;
             }
         }

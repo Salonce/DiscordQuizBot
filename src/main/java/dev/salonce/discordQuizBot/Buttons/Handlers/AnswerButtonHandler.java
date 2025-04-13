@@ -6,6 +6,7 @@ import dev.salonce.discordQuizBot.Core.Matches.Match;
 import dev.salonce.discordQuizBot.Core.Matches.MatchState;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import discord4j.core.object.entity.channel.MessageChannel;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -16,14 +17,15 @@ public class AnswerButtonHandler implements ButtonHandler {
     private final MatchStore matchStore;
 
     @Override
-    public boolean handle(ButtonInteractionEvent event, ButtonInteraction buttonInteraction, ButtonInteractionData data) {
-        if ("Answer".equals(data.getButtonType())) {
+    public boolean handle(ButtonInteractionEvent event, ButtonInteraction buttonInteraction) {
+        if (buttonInteraction.getButtonId().startsWith("Answer")) {
             AnswerInteractionEnum answerEnum = setPlayerAnswer(buttonInteraction);
+            AnswerData answerData = new AnswerData(buttonInteraction.getButtonId());
 
             String response = switch (answerEnum) {
                 case NOT_IN_MATCH -> "You are not in the match.";
                 case TOO_LATE -> "Your answer came too late!";
-                case VALID -> "Your answer: " + (char) ('A' + data.getAnswerNumber()) + ".";
+                case VALID -> "Your answer: " + (char) ('A' + answerData.getAnswerNumber()) + ".";
                 default -> "Something went wrong.";
             };
 
@@ -65,5 +67,19 @@ public class AnswerButtonHandler implements ButtonHandler {
             match.getPlayers().get(userId).getAnswersList().set(questionNum, answerNum);
             return AnswerInteractionEnum.VALID;
         } else return AnswerInteractionEnum.NOT_IN_MATCH;
+    }
+}
+
+@Getter
+class AnswerData {
+    private final int questionNumber;
+    private final int answerNumber;
+
+    public AnswerData(String buttonId) {
+        if (!buttonId.matches("Answer-[A-D]-\\d+"))
+            throw new IllegalArgumentException("Invalid button ID format: " + buttonId);
+        String[] parts = buttonId.split("-");
+        answerNumber = parts[1].charAt(0) - 'A';  // Convert letter to text number (A=0, B=1, C=2, D=3)
+        questionNumber = Integer.parseInt(parts[2]);
     }
 }
