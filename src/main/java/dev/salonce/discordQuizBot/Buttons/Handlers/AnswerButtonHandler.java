@@ -19,8 +19,8 @@ public class AnswerButtonHandler implements ButtonHandler {
     @Override
     public boolean handle(ButtonInteractionEvent event, ButtonInteractionData buttonInteractionData) {
         if (buttonInteractionData.getButtonId().startsWith("Answer")) {
-            AnswerInteractionEnum answerEnum = setPlayerAnswer(buttonInteractionData);
             AnswerData answerData = new AnswerData(buttonInteractionData.getButtonId());
+            AnswerInteractionEnum answerEnum = setPlayerAnswer(buttonInteractionData, answerData);
 
             String response = switch (answerEnum) {
                 case NOT_IN_MATCH -> "You are not in the match.";
@@ -37,36 +37,21 @@ public class AnswerButtonHandler implements ButtonHandler {
         return false;
     }
 
-    private AnswerInteractionEnum setPlayerAnswer(ButtonInteractionData buttonInteractionData) {
+    private AnswerInteractionEnum setPlayerAnswer(ButtonInteractionData buttonInteractionData, AnswerData answerData) {
         Long userId = buttonInteractionData.getUserId();
-        MessageChannel messageChannel = buttonInteractionData.getMessageChannel();
-        Match match = matchStore.get(messageChannel);
-        String buttonId = buttonInteractionData.getButtonId();
-
-        int answerNum = 0;
-        int questionNum = 0;
-
-        if (buttonId.matches("Answer-[A-D]-\\d+")) {
-            String[] parts = buttonId.split("-");
-
-            // Convert letter to text number (A=0, B=1, C=2, D=3)
-            char letterPart = parts[1].charAt(0);
-            answerNum = letterPart - 'A';
-
-            // Extract question number
-            questionNum = Integer.parseInt(parts[2]);
-        }
+        Match match = matchStore.get(buttonInteractionData.getMessageChannel());
 
         if (match == null)
             return AnswerInteractionEnum.TOO_LATE; // could be different
 
-        if (questionNum != match.getCurrentQuestionNum() || match.getMatchState() != MatchState.ANSWERING)
+        if (answerData.getQuestionNumber() != match.getCurrentQuestionNum() || match.getMatchState() != MatchState.ANSWERING)
             return AnswerInteractionEnum.TOO_LATE;
 
         if (match.getPlayers().containsKey(userId)) {
-            match.getPlayers().get(userId).getAnswersList().set(questionNum, answerNum);
+            match.getPlayers().get(userId).getAnswersList().set(answerData.getQuestionNumber(), answerData.getAnswerNumber());
             return AnswerInteractionEnum.VALID;
-        } else return AnswerInteractionEnum.NOT_IN_MATCH;
+        }
+        return AnswerInteractionEnum.NOT_IN_MATCH;
     }
 }
 
