@@ -8,7 +8,7 @@ discord:
 
 questions:
   files:
-    art_history: sample/data/art_history.json
+    art_history: sample/data/art_history_periods.json
     python: sample/data/python.json
     programming:
     - sample/data/general_programming/oop.json

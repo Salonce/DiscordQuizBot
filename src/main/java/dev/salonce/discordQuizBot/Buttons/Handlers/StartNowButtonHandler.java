@@ -17,8 +17,8 @@ public class StartNowButtonHandler implements ButtonHandler {
     private final MatchStore matchStore;
 
     @Override
-    public boolean handle(ButtonInteractionEvent event, ButtonInteraction buttonInteraction, ButtonInteractionData data) {
-        if ("startNow".equals(data.getButtonType())) {
+    public boolean handle(ButtonInteractionEvent event, ButtonInteraction buttonInteraction) {
+        if ("startNow".equals(buttonInteraction.getButtonId())) {
             event.reply(startNow(buttonInteraction))
                     .withEphemeral(true)
                     .subscribe();

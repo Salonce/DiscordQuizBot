@@ -18,8 +18,8 @@ public class JoinMatchButtonHandler implements ButtonHandler {
     private final MatchStore matchStore;
 
     @Override
-    public boolean handle(ButtonInteractionEvent event, ButtonInteraction buttonInteraction, ButtonInteractionData data) {
-        if ("joinQuiz".equals(data.getButtonType())) {
+    public boolean handle(ButtonInteractionEvent event, ButtonInteraction buttonInteraction) {
+        if ("joinQuiz".equals(buttonInteraction.getButtonId())) {
             event.reply(addPlayer(buttonInteraction))
                     .withEphemeral(true)
                     .subscribe();

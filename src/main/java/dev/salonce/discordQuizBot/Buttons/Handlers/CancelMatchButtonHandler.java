@@ -18,8 +18,8 @@ public class CancelMatchButtonHandler implements ButtonHandler {
     private final MatchStore matchStore;
 
     @Override
-    public boolean handle(ButtonInteractionEvent event, ButtonInteraction buttonInteraction, ButtonInteractionData data) {
-        if ("cancelQuiz".equals(data.getButtonType())) {
+    public boolean handle(ButtonInteractionEvent event, ButtonInteraction buttonInteraction) {
+        if ("cancelQuiz".equals(buttonInteraction.getButtonId())) {
             event.reply(cancelMatch(buttonInteraction))
                     .withEphemeral(true)
                     .subscribe();

@@ -54,7 +54,7 @@ public class BotService {
 
             ButtonInteractionData buttonInteractionData = new ButtonInteractionData(event.getCustomId());
 
-            buttonHandlerChain.handle(event, buttonInteraction, buttonInteractionData);
+            buttonHandlerChain.handle(event, buttonInteraction);
 
             return Mono.empty(); // Since handlers subscribe to the events themselves
         }).subscribe();
