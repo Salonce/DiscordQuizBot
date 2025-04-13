@@ -1,6 +1,5 @@
 package dev.salonce.discordQuizBot.Core;
 
-import dev.salonce.discordQuizBot.Buttons.ButtonInteraction;
 import dev.salonce.discordQuizBot.Buttons.ButtonInteractionData;
 import dev.salonce.discordQuizBot.Buttons.ButtonHandlerChain;
 import dev.salonce.discordQuizBot.Core.MessagesHandling.DiscordMessage;
@@ -46,15 +45,12 @@ public class BotService {
 
     private void handleButtonInteractions(GatewayDiscordClient gateway) {
         gateway.on(ButtonInteractionEvent.class, event -> {
+            ButtonInteractionData buttonInteractionData = new ButtonInteractionData(event);
 
-            ButtonInteraction buttonInteraction = new ButtonInteraction(event);
-            if (!buttonInteraction.buttonEventValid()) {
+            if (!buttonInteractionData.buttonEventValid())
                 return Mono.empty();
-            }
 
-            ButtonInteractionData buttonInteractionData = new ButtonInteractionData(event.getCustomId());
-
-            buttonHandlerChain.handle(event, buttonInteraction);
+            buttonHandlerChain.handle(event, buttonInteractionData);
 
             return Mono.empty(); // Since handlers subscribe to the events themselves
         }).subscribe();

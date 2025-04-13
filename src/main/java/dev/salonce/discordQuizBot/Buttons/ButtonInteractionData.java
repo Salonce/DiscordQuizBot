@@ -1,44 +1,32 @@
 package dev.salonce.discordQuizBot.Buttons;
 
+import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
+import discord4j.core.object.entity.Message;
+import discord4j.core.object.entity.User;
+import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.Getter;
 
 @Getter
 public class ButtonInteractionData {
-    private final String buttonType;
-    private final int questionNumber;
-    private final int answerNumber;
 
-    public ButtonInteractionData(String buttonId) {
-        if (buttonId.equals("joinQuiz")) {
-            buttonType = "joinQuiz";
-            questionNumber = -1;
-            answerNumber = -1;
-        } else if (buttonId.equals("leaveQuiz")) {
-            buttonType = "leaveQuiz";
-            questionNumber = -1;
-            answerNumber = -1;
-        } else if (buttonId.equals("cancelQuiz")) {
-            buttonType = "cancelQuiz";
-            questionNumber = -1;
-            answerNumber = -1;
-        } else if (buttonId.equals("startNow")) {
-            buttonType = "startNow";
-            questionNumber = -1;
-            answerNumber = -1;
-        } else if (buttonId.matches("Answer-[A-D]-\\d+")) {
-            String[] parts = buttonId.split("-");
-            buttonType = "Answer";
+    private final String buttonId;
+    private final User user;
+    private final Long userId;
+    private final Message message;
+    private final MessageChannel messageChannel;
 
-            // Convert letter to text number (A=0, B=1, C=2, D=3)
-            char letterPart = parts[1].charAt(0);
-            answerNumber = letterPart - 'A';
+    public ButtonInteractionData(ButtonInteractionEvent buttonInteractionEvent){
+        this.buttonId = buttonInteractionEvent.getCustomId();
+        this.user = buttonInteractionEvent.getInteraction().getUser();
+        this.userId = user.getId().asLong();
+        this.message = buttonInteractionEvent.getMessage().orElse(null);
+        if (message != null)
+            messageChannel = message.getChannel().blockOptional().orElse(null);
+        else
+            messageChannel = null;
+    }
 
-            // Extract question number
-            questionNumber = Integer.parseInt(parts[2]);
-        } else {
-            buttonType = "Invalid";
-            questionNumber = -1;
-            answerNumber = -1;
-        }
+    public boolean buttonEventValid(){
+        return (buttonId != null && user != null && message != null && messageChannel != null);
     }
 }
