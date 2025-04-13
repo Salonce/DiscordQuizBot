@@ -9,6 +9,8 @@ import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.Objects;
+
 @RequiredArgsConstructor
 @Component("ButtonStartNow")
 public class StartNowButtonHandler implements ButtonHandler {
@@ -26,22 +28,21 @@ public class StartNowButtonHandler implements ButtonHandler {
         return false;
     }
 
-    private String startNow(ButtonInteractionData buttonInteractionData){
+    private String startNow(ButtonInteractionData buttonInteractionData) {
         MessageChannel messageChannel = buttonInteractionData.getMessageChannel();
+        Long userId = buttonInteractionData.getUserId();
 
-
-
-        if (matchStore.containsKey(messageChannel)){
-            //i think everyone is allowed now to start because of lack of ownership check, should be also in if (userId == ownerId...)
-            if (matchStore.get(messageChannel).getMatchState() != MatchState.COUNTDOWN) {
-                matchStore.get(messageChannel).setMatchState(MatchState.COUNTDOWN);
-                return "Starting immediately";
-            }
-            else
-                return "Already started";
-        }
-        else{
+        if (!matchStore.containsKey(messageChannel))
             return "This match doesn't exist anymore.";
-        }
+        if (!Objects.equals(userId, matchStore.get(messageChannel).getOwnerId()))
+            return "You aren't the owner";
+        if (matchStore.get(messageChannel).getMatchState() != MatchState.ENROLLMENT)
+            return "Already started";
+
+        matchStore.get(messageChannel).setMatchState(MatchState.COUNTDOWN);
+        return "Starting immediately";
     }
 }
+
+
+
