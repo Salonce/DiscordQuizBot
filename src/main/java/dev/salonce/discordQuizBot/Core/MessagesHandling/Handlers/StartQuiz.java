@@ -23,22 +23,21 @@ public class StartQuiz implements MessageHandler {
     public boolean handleMessage(DiscordMessage discordMessage) {
         String[] message = discordMessage.getContent().split(" ");
 
-        if (message[0].equals("qq") && message[1].equals("quiz")){
-            if (message.length < 3)
-                return true; // too short command. end chain
-            String lastMsg = message[2];
-            if (questionSetsConfig.getFiles().containsKey(lastMsg)){
-                Long userId = discordMessage.getUser().getId().asLong();
-                MessageChannel messageChannel = discordMessage.getChannel();
-                quizManager.addMatch(messageChannel, matchFactory.makeMatch(lastMsg, userId));
-                return true;
-            }
-            else{
-                //write that the key - type of quiz - doesn't exist
-                //return true;
-            }
-        }
-        return false;
-    }
+        if (!(message[0].equals("qq") && (message[1].equals("quiz") || message[1].equals("start"))))
+            return false;
 
+        if (message.length < 3)
+            return true; // command good (checked above), but too short, end the chain
+
+        String quizName = message[2];
+
+        if (!questionSetsConfig.getFiles().containsKey(quizName))
+            return true; // quiz doesn't exist, maybe send a message that it doesn't
+
+        Long userId = discordMessage.getUser().getId().asLong();
+        MessageChannel messageChannel = discordMessage.getChannel();
+
+        quizManager.addMatch(messageChannel, matchFactory.makeMatch(quizName, userId));
+        return true;
+    }
 }
