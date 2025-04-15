@@ -28,18 +28,25 @@ public class StartQuiz implements MessageHandler {
         if (!(message[0].equals("qq") && (message[1].equals("quiz") || message[1].equals("start"))))
             return false;
 
-        if (message.length < 3)
+        if (message.length < 4)
             return true; // command good (checked above), but too short, end the chain
 
-        String quizName = message[2];
+        int difficulty;
+        try{
+            difficulty = Integer.parseInt(message[3]);
+        } catch (NumberFormatException e) {
+            return true; // end the chain - wrong integer, perhaps send a message that it is wrong
+        }
 
-        if (!availableTopicsConfig.getAvailableTopics().contains(quizName))
+        String tag = message[2];
+
+        if (!availableTopicsConfig.getAvailableTopics().containsKey(tag))
             return true; // quiz doesn't exist, maybe send a message that it doesn't
 
         Long userId = discordMessage.getUser().getId().asLong();
         MessageChannel messageChannel = discordMessage.getChannel();
 
-        quizManager.addMatch(messageChannel, matchFactory.makeMatch(quizName, userId));
+        quizManager.addMatch(messageChannel, matchFactory.makeMatch(tag, difficulty, userId));
         return true;
     }
 }

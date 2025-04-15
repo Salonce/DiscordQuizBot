@@ -1,16 +1,17 @@
 package dev.salonce.discordQuizBot.Core.Questions;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
+@Setter
+@Getter
 @ConfigurationProperties(prefix = "questions")
 @Component
-@Getter
 public class AvailableTopicsConfig {
-    private final Set<String> availableTopics = new HashSet<>();
+
+    private Map<String, Set<Integer>> availableTopics = new HashMap<>();
 }

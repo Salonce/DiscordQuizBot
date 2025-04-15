@@ -7,17 +7,11 @@ discord:
     token: ${DISCORD_BOT_QUIZZY}
 
 
+#numbers next to available topics signify available difficulty levels
 questions:
   available-topics:
-    - programming
-    - philosophy
-  files:
-    programming:
-    - sample/data/general_programming/oop.json
-    - sample/data/general_programming/concurrency.json
-    philosophy:
-    - sample/data/philosophy/absurdism.json
-    - sample/data/philosophy/existentialism.json
+    programming: [2, 4, 6]
+    philosophy: [2, 4, 6]
 
   #mode - 'standard' or 'testing' or 'testing2' or 'eureka'
 mode: standard

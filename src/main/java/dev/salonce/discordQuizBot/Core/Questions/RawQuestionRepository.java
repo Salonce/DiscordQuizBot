@@ -51,10 +51,10 @@ public class RawQuestionRepository {
         }
     }
 
-    public List<RawQuestion> getRawQuestions(String tag){
+    public List<RawQuestion> getRawQuestions(String tag, int difficulty){
         List<RawQuestion> rawQuestionSubset = new ArrayList<>();
         for (RawQuestion rawQuestion : rawQuestions)
-            if (rawQuestion.getTags().contains(tag))
+            if (rawQuestion.getTags().contains(tag) && rawQuestion.getDifficulty() <= difficulty)
                 rawQuestionSubset.add(rawQuestion);
         return rawQuestionSubset;
     }
