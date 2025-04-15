@@ -29,7 +29,17 @@ public class RawQuestionRepository {
     public void loadQuestionsFromResources() {
         try {
             PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-            Resource[] resources = resolver.getResources("classpath*:sample/data/**/*.json");
+
+            // Try to load from private data folder first
+            Resource[] privateResources = resolver.getResources("classpath*:private/data/**/*.json");
+
+            // If private resources exist, use them
+            Resource[] resources = privateResources.length > 0 ?
+                    privateResources :
+                    resolver.getResources("classpath*:sample/data/**/*.json");
+
+            String sourcePath = privateResources.length > 0 ? "private/data" : "sample/data";
+            System.out.println("📂 Loading questions from: " + sourcePath);
 
             for (Resource resource : resources) {
                 String path = resource.getURI().toString();
