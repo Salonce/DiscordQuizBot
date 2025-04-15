@@ -33,7 +33,7 @@ public class StartQuiz implements MessageHandler {
 
         String quizName = message[2];
 
-        if (!availableTopicsConfig.getAvailableTopics().contains(quizName))
+        if (!availableTopicsConfig.getAvailableTopics().containsKey(quizName))
             return true; // quiz doesn't exist, maybe send a message that it doesn't
 
         Long userId = discordMessage.getUser().getId().asLong();

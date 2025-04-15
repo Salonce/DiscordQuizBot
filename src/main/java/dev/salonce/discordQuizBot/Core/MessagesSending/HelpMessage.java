@@ -28,7 +28,7 @@ public class HelpMessage {
         Match match = matchStore.get(messageChannel);
         String example = null;
         String example2 = null;
-        Iterator<String> iterator = availableTopicsConfig.getAvailableTopics().iterator();
+        Iterator<String> iterator = availableTopicsConfig.getAvailableTopics().keySet().iterator();
         if (iterator.hasNext())
             example = iterator.next();
         if (iterator.hasNext())
@@ -38,7 +38,7 @@ public class HelpMessage {
         if (example != null && example2 != null) {
             EmbedCreateSpec.Builder embedBuilder = EmbedCreateSpec.builder();
 
-            List<String> categories = availableTopicsConfig.getAvailableTopics().stream().sorted(String::compareTo).toList();
+            List<String> categories = availableTopicsConfig.getAvailableTopics().keySet().stream().sorted(String::compareTo).toList();
 
             embed = embedBuilder
                     .addField("How to start a quiz?", "Choose a category and type: **qq quiz <selected category>**", false)
