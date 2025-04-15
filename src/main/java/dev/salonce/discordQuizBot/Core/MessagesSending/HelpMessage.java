@@ -1,6 +1,7 @@
 package dev.salonce.discordQuizBot.Core.MessagesSending;
 
-import dev.salonce.discordQuizBot.Core.Questions.QuestionSetsConfig;
+import dev.salonce.discordQuizBot.Core.Questions.AvailableTopicsConfig;
+import dev.salonce.discordQuizBot.Core.Questions.RawQuestionRepository;
 import dev.salonce.discordQuizBot.Core.MatchStore;
 import dev.salonce.discordQuizBot.Core.Matches.Match;
 import discord4j.core.object.entity.Message;
@@ -18,15 +19,16 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class HelpMessage {
 
-    private final QuestionSetsConfig questionSetsConfig;
+    private final RawQuestionRepository rawQuestionRepository;
     private final MatchStore matchStore;
+    private final AvailableTopicsConfig availableTopicsConfig;
 
 
     public Mono<Message> create(MessageChannel messageChannel) {
         Match match = matchStore.get(messageChannel);
         String example = null;
         String example2 = null;
-        Iterator<String> iterator = questionSetsConfig.getFiles().keySet().iterator();
+        Iterator<String> iterator = availableTopicsConfig.getAvailableTopics().iterator();
         if (iterator.hasNext())
             example = iterator.next();
         if (iterator.hasNext())
@@ -36,7 +38,7 @@ public class HelpMessage {
         if (example != null && example2 != null) {
             EmbedCreateSpec.Builder embedBuilder = EmbedCreateSpec.builder();
 
-            List<String> categories = questionSetsConfig.getFiles().keySet().stream().sorted(String::compareTo).toList();
+            List<String> categories = availableTopicsConfig.getAvailableTopics().stream().sorted(String::compareTo).toList();
 
             embed = embedBuilder
                     .addField("How to start a quiz?", "Choose a category and type: **qq quiz <selected category>**", false)

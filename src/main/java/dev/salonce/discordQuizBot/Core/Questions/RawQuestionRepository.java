@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -22,9 +23,7 @@ import java.util.Set;
 public class RawQuestionRepository {
 
     private Set<RawQuestion> rawQuestions = new HashSet<>();
-
-    @Autowired
-    private ObjectMapper objectMapper;
+    private ObjectMapper objectMapper = new ObjectMapper();
 
     @PostConstruct
     public void loadQuestionsFromResources() {
@@ -50,5 +49,13 @@ public class RawQuestionRepository {
         } catch (IOException e) {
             System.err.println("❌ Error scanning for JSON files: " + e.getMessage());
         }
+    }
+
+    public List<RawQuestion> getRawQuestions(String tag){
+        List<RawQuestion> rawQuestionSubset = new ArrayList<>();
+        for (RawQuestion rawQuestion : rawQuestions)
+            if (rawQuestion.getTags().contains(tag))
+                rawQuestionSubset.add(rawQuestion);
+        return rawQuestionSubset;
     }
 }

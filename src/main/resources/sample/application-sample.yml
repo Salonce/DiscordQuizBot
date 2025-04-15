@@ -6,7 +6,11 @@ discord:
   bot:
     token: ${DISCORD_BOT_QUIZZY}
 
+
 questions:
+  available-topics:
+    - programming
+    - philosophy
   files:
     programming:
     - sample/data/general_programming/oop.json

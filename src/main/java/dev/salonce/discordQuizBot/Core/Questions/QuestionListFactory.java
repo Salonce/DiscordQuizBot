@@ -9,14 +9,14 @@ import java.util.Random;
 
 @Component
 @RequiredArgsConstructor
-public class QuestionFactory {
+public class QuestionListFactory {
 
     private final Random rand = new Random();
     private final RawQuestionRepository rawQuestionRepository;
 
     //add logic to eliminate <5 questions by throwing exceptions
-    public List<Question> generateQuestions(String type, int NoQuestions){
-        List<RawQuestion> rawQuestions = rawQuestionRepository.getQuestions(type);
+    public List<Question> generateQuestions(String tag, int NoQuestions){
+        List<RawQuestion> rawQuestions = rawQuestionRepository.getRawQuestions(tag);
         List<Question> questions = new ArrayList<>();
         for(int i = 0; i < NoQuestions; i++){
             int next = rand.nextInt(rawQuestions.size());
