@@ -2,7 +2,7 @@ package dev.salonce.discordQuizBot.Core.Questions;
 
 import lombok.Getter;
 
-import java.util.List;
+import java.util.*;
 
 //can be a record class
 @Getter
@@ -16,6 +16,34 @@ public class Question {
         this.quizOptions = quizOptions;
         this.explanation = explanation;
     }
+
+    public Question (RawQuestion rawQuestion){
+        List<QuizOption> quizOptions = new ArrayList<>();
+
+        Random rand = new Random();
+        int num = rand.nextInt(rawQuestion.getCorrectAnswers().size());
+        quizOptions.add(new QuizOption(rawQuestion.getCorrectAnswers().get(num), true));
+
+        //add incorrect answers
+        Set<Integer> set = new HashSet();
+        int size = Math.min(3, rawQuestion.getIncorrectAnswers().size());
+        while (set.size() != size){
+            num = rand.nextInt(rawQuestion.getIncorrectAnswers().size());
+            set.add(num);
+        }
+
+        for (int i : set){
+            quizOptions.add(new QuizOption(rawQuestion.getIncorrectAnswers().get(i), false));
+        }
+
+        Collections.shuffle(quizOptions);
+
+        this.question = rawQuestion.getQuestion();
+        this.explanation = rawQuestion.getExplanation();
+        this.quizOptions = quizOptions;
+    }
+
+
 
     public int getCorrectAnswerInt(){
         for (int i = 0; i < quizOptions.size(); i++){
