@@ -22,7 +22,7 @@ public class QuestionListFactory {
             System.out.println("Not enough questions in this category...");
         for(int i = 0; i < NoQuestions; i++){
             int next = rand.nextInt(rawQuestions.size());
-            questions.add(rawQuestions.get(next).generateQuestion());
+            questions.add(new Question(rawQuestions.get(next)));
             rawQuestions.remove(next);
             //System.out.println(questions.get(i).getQuestion());
         }
