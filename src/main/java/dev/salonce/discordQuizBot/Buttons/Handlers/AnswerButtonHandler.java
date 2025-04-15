@@ -12,6 +12,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+import static java.lang.Integer.parseInt;
+
 @RequiredArgsConstructor
 @Component("ButtonAnswer")
 public class AnswerButtonHandler implements ButtonHandler {
@@ -20,23 +22,33 @@ public class AnswerButtonHandler implements ButtonHandler {
 
     @Override
     public boolean handle(ButtonInteractionEvent event, ButtonInteractionData buttonInteractionData) {
-        if (buttonInteractionData.getButtonId().startsWith("Answer")) {
-            AnswerData answerData = new AnswerData(buttonInteractionData.getButtonId());
-            String response = getPlayerAnswer(buttonInteractionData, answerData);
+        String buttonId = buttonInteractionData.getButtonId();
+        if (!buttonId.startsWith("Answer") || !buttonId.matches("Answer-[A-D]-\\d+"))
+            return false;
 
-            event.reply(response)
-                    .withEphemeral(true)
-                    .subscribe();
-            return true;
-        }
-        return false;
+        String[] answerData = buttonId.split("-");
+        int questionNumber = getQuestionNumber(answerData);
+        int answerNumber = getAnswerNumber(answerData);
+
+        String response = getPlayerAnswer(buttonInteractionData, questionNumber, answerNumber);
+
+        event.reply(response)
+                .withEphemeral(true)
+                .subscribe();
+        return true;
     }
 
-    private String getPlayerAnswer(ButtonInteractionData buttonInteractionData, AnswerData answerData) {
+    private int getAnswerNumber(String[] answerData){
+        return answerData[1].charAt(0) - 'A';
+    }
+
+    private int getQuestionNumber(String[] answerData){
+        return Integer.parseInt(answerData[2]);
+    }
+
+    private String getPlayerAnswer(ButtonInteractionData buttonInteractionData, int questionNumber, int answerNumber) {
         Long userId = buttonInteractionData.getUserId();
         Match match = matchStore.get(buttonInteractionData.getMessageChannel());
-        int questionNumber = answerData.getQuestionNumber();
-        int answerNumber = answerData.getAnswerNumber();
 
         if (match == null || questionNumber != match.getCurrentQuestionNum() || match.getMatchState() != MatchState.ANSWERING)
             return "Your answer came too late!";
@@ -48,19 +60,5 @@ public class AnswerButtonHandler implements ButtonHandler {
         answers.set(questionNumber, answerNumber);
         return "Your answer: " + (char) ('A' + answerNumber) + ".";
 
-    }
-}
-
-@Getter
-class AnswerData {
-    private final int questionNumber;
-    private final int answerNumber;
-
-    public AnswerData(String buttonId) {
-        if (!buttonId.matches("Answer-[A-D]-\\d+"))
-            throw new IllegalArgumentException("Invalid button ID format: " + buttonId);
-        String[] parts = buttonId.split("-");
-        answerNumber = parts[1].charAt(0) - 'A';  // Convert letter to text number (A=0, B=1, C=2, D=3)
-        questionNumber = Integer.parseInt(parts[2]);
     }
 }
