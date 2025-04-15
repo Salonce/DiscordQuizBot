@@ -2,9 +2,10 @@ package dev.salonce.discordQuizBot.Core.MessagesHandling.Handlers;
 
 import dev.salonce.discordQuizBot.Core.MessagesHandling.DiscordMessage;
 import dev.salonce.discordQuizBot.Core.Matches.MatchFactory;
+import dev.salonce.discordQuizBot.Core.Questions.AvailableTopicsConfig;
 import dev.salonce.discordQuizBot.Core.QuizManager;
 import dev.salonce.discordQuizBot.Core.MessagesHandling.MessageHandler;
-import dev.salonce.discordQuizBot.Configs.QuestionSetsConfig;
+import dev.salonce.discordQuizBot.Core.Questions.RawQuestionRepository;
 import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -16,7 +17,8 @@ public class StartQuiz implements MessageHandler {
     private final MatchFactory matchFactory;
     private final QuizManager quizManager;
 
-    private final QuestionSetsConfig questionSetsConfig;
+    private final RawQuestionRepository rawQuestionRepository;
+    private final AvailableTopicsConfig availableTopicsConfig;
 
 
     @Override
@@ -31,7 +33,7 @@ public class StartQuiz implements MessageHandler {
 
         String quizName = message[2];
 
-        if (!questionSetsConfig.getFiles().containsKey(quizName))
+        if (!availableTopicsConfig.getAvailableTopics().contains(quizName))
             return true; // quiz doesn't exist, maybe send a message that it doesn't
 
         Long userId = discordMessage.getUser().getId().asLong();

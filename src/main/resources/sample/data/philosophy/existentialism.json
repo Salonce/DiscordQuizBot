@@ -1,363 +1,162 @@
 [
-    {
-      "question": "Who is considered one of the founders of existentialism?",
-      "correctAnswers": ["Søren Kierkegaard"],
-      "incorrectAnswers": ["Jean-Paul Sartre", "Friedrich Nietzsche", "Simone de Beauvoir"],
-      "explanation": "Søren Kierkegaard is often regarded as one of the earliest existentialist philosophers, focusing on individual experience and faith."
-    },
-    {
-      "question": "What concept is central to existentialist philosophy regarding human existence?",
-      "correctAnswers": ["Absurdity"],
-      "incorrectAnswers": ["Nihilism", "Fatalism", "Pragmatism"],
-      "explanation": "The absurd refers to the conflict between humans' search for meaning and the meaningless universe, a key concept in existentialism."
-    },
-    {
-      "question": "Which existentialist philosopher is associated with the idea of 'being-in-the-world'?",
-      "correctAnswers": ["Martin Heidegger"],
-      "incorrectAnswers": ["Jean-Paul Sartre", "Albert Camus", "Simone de Beauvoir"],
-      "explanation": "Martin Heidegger introduced the idea of 'being-in-the-world,' which is central to his existential analysis of human existence."
-    },
-    {
-      "question": "Which existentialist work is Albert Camus most famous for?",
-      "correctAnswers": ["The Myth of Sisyphus"],
-      "incorrectAnswers": ["Being and Nothingness", "Being and Time", "Existentialism is a Humanism"],
-      "explanation": "Camus' 'The Myth of Sisyphus' explores the theme of the absurd and how one should confront a meaningless world."
-    },
-    {
-      "question": "What is the central idea of Jean-Paul Sartre’s concept of ‘bad faith’?",
-      "correctAnswers": ["Self-deception"],
-      "incorrectAnswers": ["Authenticity", "Freedom of choice", "Existential angst"],
-      "explanation": "In Sartre's philosophy, bad faith refers to self-deception, where individuals avoid facing the truth of their freedom and responsibility."
-    },
-    {
-      "question": "Which existentialist philosopher is known for the phrase 'existence precedes essence'?",
-      "correctAnswers": ["Jean-Paul Sartre"],
-      "incorrectAnswers": ["Simone de Beauvoir", "Friedrich Nietzsche", "Karl Marx"],
-      "explanation": "'Existence precedes essence' means that humans are not born with predetermined purposes, but instead create their essence through actions."
-    },
-    {
-      "question": "What is the main focus of existentialist ethics?",
-      "correctAnswers": ["Individual freedom and responsibility"],
-      "incorrectAnswers": ["Utilitarianism", "Deontological duties", "Social contracts"],
-      "explanation": "Existentialist ethics emphasizes individual freedom, responsibility, and the creation of one's own values in a meaningless world."
-    },
-    {
-      "question": "Which work by Friedrich Nietzsche is famous for declaring 'God is dead'?",
-      "correctAnswers": ["Thus Spoke Zarathustra"],
-      "incorrectAnswers": ["Beyond Good and Evil", "The Birth of Tragedy", "The Gay Science"],
-      "explanation": "'Thus Spoke Zarathustra' introduces Nietzsche's declaration that the traditional concept of God is no longer relevant in modern society."
-    },
-    {
-      "question": "What does existentialism emphasize about the human condition?",
-      "correctAnswers": ["Freedom and individual choice"],
-      "incorrectAnswers": ["Collective good", "Predetermined destiny", "Social order"],
-      "explanation": "Existentialism emphasizes the importance of individual freedom and personal choice in an inherently uncertain and meaningless world."
-    },
-    {
-      "question": "What is the primary theme of existentialist literature?",
-      "correctAnswers": ["The search for meaning in a meaningless world"],
-      "incorrectAnswers": ["Moral absolutes", "The pursuit of happiness", "The importance of social norms"],
-      "explanation": "Existentialist literature often explores themes of alienation, the search for personal meaning, and the confrontation with life's inherent meaninglessness."
-    },
-    {
-      "question": "What term describes the existential feeling of anxiety about one's freedom and responsibility?",
-      "correctAnswers": ["Existential dread"],
-      "incorrectAnswers": ["Nihilistic despair", "Absurdity", "Cognitive dissonance"],
-      "explanation": "Existential dread is the feeling of anxiety and fear that comes with realizing the full extent of one's freedom and responsibility."
-    },
-    {
-      "question": "Which existentialist thinker is associated with feminist existentialism?",
-      "correctAnswers": ["Simone de Beauvoir"],
-      "incorrectAnswers": ["Jean-Paul Sartre", "Martin Heidegger", "Albert Camus"],
-      "explanation": "Simone de Beauvoir applied existentialist ideas to feminism, particularly in her work 'The Second Sex,' where she explores women's oppression."
-    },
-    {
-      "question": "In existentialism, what is the term for the condition of facing a meaningless or indifferent universe?",
-      "correctAnswers": ["The absurd"],
-      "incorrectAnswers": ["Alienation", "Anomie", "Nihilism"],
-      "explanation": "The absurd refers to the tension between humans' quest for meaning and the indifferent, meaningless universe they inhabit."
-    },
-    {
-      "question": "Which existentialist philosopher explored the concept of 'the will to power'?",
-      "correctAnswers": ["Friedrich Nietzsche"],
-      "incorrectAnswers": ["Jean-Paul Sartre", "Simone de Beauvoir", "Martin Heidegger"],
-      "explanation": "Nietzsche's concept of the 'will to power' suggests that the fundamental driving force in humans is the desire to assert and enhance their power."
-    },
-    {
-      "question": "Which existentialist theme deals with the individual’s confrontation with their own mortality?",
-      "correctAnswers": ["Existential angst"],
-      "incorrectAnswers": ["Moral relativism", "Cognitive dissonance", "Social contract theory"],
-      "explanation": "Existential angst refers to the anxiety or dread that arises when one faces the inevitability of their own death and the meaning of life."
-    },
-    {
-      "question": "Which of the following is a common existentialist approach to overcoming meaninglessness?",
-      "correctAnswers": ["Creating one’s own values"],
-      "incorrectAnswers": ["Conforming to social expectations", "Seeking external validation", "Adhering to religious doctrines"],
-      "explanation": "Existentialism encourages individuals to create their own values and meaning in life, rather than relying on external systems."
-    },
-    {
-      "question": "Which philosopher is known for his concept of 'the eternal recurrence'?",
-      "correctAnswers": ["Friedrich Nietzsche"],
-      "incorrectAnswers": ["Albert Camus", "Martin Heidegger", "Jean-Paul Sartre"],
-      "explanation": "Nietzsche's concept of the eternal recurrence suggests that life repeats itself infinitely and challenges individuals to live as if they would relive their lives over and over."
-    },
-    {
-      "question": "What is the existentialist view on the concept of 'authenticity'?",
-      "correctAnswers": ["Living true to oneself, regardless of societal expectations"],
-      "incorrectAnswers": ["Conforming to societal norms", "Adhering to traditional moral values", "Following religious doctrines"],
-      "explanation": "Authenticity in existentialism refers to living in a way that reflects one's true self and personal choices, rather than conforming to external pressures."
-    },
-    {
-      "question": "Which existentialist thinker is most famous for discussing the concept of ‘being-for-itself’?",
-      "correctAnswers": ["Jean-Paul Sartre"],
-      "incorrectAnswers": ["Simone de Beauvoir", "Martin Heidegger", "Albert Camus"],
-      "explanation": "Sartre's concept of ‘being-for-itself’ refers to human consciousness, which is characterized by freedom, self-awareness, and the ability to make choices."
-    },
-    {
-      "question": "Which of the following best describes existentialism’s view on human freedom?",
-      "correctAnswers": ["Humans are radically free to make choices and shape their lives"],
-      "incorrectAnswers": ["Humans are bound by fate", "Humans have no real freedom", "Freedom is a social construct"],
-      "explanation": "Existentialism posits that individuals are radically free and must take responsibility for their choices and actions, despite the weight of this freedom."
-    },
-    {
-        "question": "Which existentialist thinker introduced the concept of 'the human project'?",
-        "correctAnswers": ["Jean-Paul Sartre"],
-        "incorrectAnswers": ["Simone de Beauvoir", "Martin Heidegger", "Albert Camus"],
-        "explanation": "Sartre's concept of 'the human project' refers to the idea that humans define themselves through their actions, choices, and projects."
-      },
-      {
-        "question": "What existentialist term describes the feeling of disconnection from the world?",
-        "correctAnswers": ["Alienation"],
-        "incorrectAnswers": ["Estrangement", "Loneliness", "Apathy"],
-        "explanation": "Alienation in existentialism refers to the feeling of being detached or disconnected from the world, often as a result of confronting the absurd."
-      },
-      {
-        "question": "Which philosopher's existentialist work focuses on the theme of the 'struggle for recognition'?",
-        "correctAnswers": ["Georg Wilhelm Friedrich Hegel"],
-        "incorrectAnswers": ["Simone de Beauvoir", "Martin Heidegger", "Jean-Paul Sartre"],
-        "explanation": "Hegel's work explores the theme of the struggle for recognition, where individuals seek validation and acknowledgment from others in order to become fully self-conscious."
-      },
-      {
-        "question": "Which existentialist philosopher famously said, 'Man is condemned to be free'?",
-        "correctAnswers": ["Jean-Paul Sartre"],
-        "incorrectAnswers": ["Albert Camus", "Friedrich Nietzsche", "Martin Heidegger"],
-        "explanation": "This quote from Sartre captures the essence of existentialist freedom, emphasizing the burden and responsibility that comes with total freedom of choice."
-      },
-      {
-        "question": "What existentialist theme involves the exploration of human suffering and its meaning?",
-        "correctAnswers": ["Absurdism"],
-        "incorrectAnswers": ["Nihilism", "Existential dread", "Fatalism"],
-        "explanation": "Absurdism, a central theme in the work of Albert Camus, explores how humans seek meaning in a universe that offers none, particularly through the lens of suffering."
-      },
-      {
-        "question": "In existentialist thought, what is the term for the avoidance of personal responsibility?",
-        "correctAnswers": ["Bad faith"],
-        "incorrectAnswers": ["Denial", "Projection", "Self-deception"],
-        "explanation": "Bad faith refers to the avoidance of personal responsibility by deceiving oneself into believing one is not free to choose, often due to societal pressures or fear."
-      },
-      {
-        "question": "Which existentialist philosopher emphasized the importance of 'authentic existence'?",
-        "correctAnswers": ["Martin Heidegger"],
-        "incorrectAnswers": ["Jean-Paul Sartre", "Simone de Beauvoir", "Albert Camus"],
-        "explanation": "Heidegger stressed that living authentically means confronting one's own mortality and living according to one’s true self, rather than conforming to societal norms."
-      },
-      {
-        "question": "Which of the following existentialist themes is discussed in the context of an individual's confrontation with death?",
-        "correctAnswers": ["Being-toward-death"],
-        "incorrectAnswers": ["Being-in-the-world", "Absurdism", "Nihilism"],
-        "explanation": "The concept of 'being-toward-death' from Heidegger's philosophy explores how awareness of death shapes an individual's existence and choices."
-      },
-      {
-        "question": "Which existentialist philosopher is associated with the idea that 'the world is my project'?",
-        "correctAnswers": ["Jean-Paul Sartre"],
-        "incorrectAnswers": ["Simone de Beauvoir", "Martin Heidegger", "Friedrich Nietzsche"],
-        "explanation": "Sartre believed that humans are free to shape their world and their lives, and that meaning is created through personal projects and choices."
-      },
-      {
-        "question": "What existentialist concept describes the conflict between human desire for meaning and the universe's indifference?",
-        "correctAnswers": ["The Absurd"],
-        "incorrectAnswers": ["Nihilism", "Existential dread", "Fatalism"],
-        "explanation": "The Absurd is the existentialist concept that highlights the clash between humans' search for meaning and the indifferent, meaningless universe."
-      },
-      {
-        "question": "Which existentialist philosopher is known for his analysis of 'the will to power' as a fundamental force in human life?",
-        "correctAnswers": ["Friedrich Nietzsche"],
-        "incorrectAnswers": ["Albert Camus", "Jean-Paul Sartre", "Simone de Beauvoir"],
-        "explanation": "Nietzsche's 'will to power' is a concept that asserts that humans are driven by a fundamental force to assert, expand, and enhance their power."
-      },
-      {
-        "question": "In existentialist philosophy, what is the term for the idea that existence precedes essence?",
-        "correctAnswers": ["Existentialism"],
-        "incorrectAnswers": ["Essentialism", "Materialism", "Idealism"],
-        "explanation": "Existentialism is the philosophy that emphasizes the idea that humans first exist, and only later define themselves through actions, choices, and experiences."
-      },
-      {
-        "question": "Which existentialist concept involves the idea that a person must create their own meaning in life?",
-        "correctAnswers": ["Freedom of choice"],
-        "incorrectAnswers": ["Determinism", "Materialism", "Essentialism"],
-        "explanation": "Existentialism stresses that humans have the freedom to make choices and must create their own meaning, rather than relying on external systems."
-      },
-      {
-        "question": "Which existentialist thinker discussed the concept of 'the other' as a critical element of human experience?",
-        "correctAnswers": ["Simone de Beauvoir"],
-        "incorrectAnswers": ["Martin Heidegger", "Jean-Paul Sartre", "Friedrich Nietzsche"],
-        "explanation": "De Beauvoir explored 'the other' as a concept that reflects the way individuals are defined in relation to others, particularly in the context of gender and oppression."
-      },
-      {
-        "question": "Which work by Jean-Paul Sartre discusses the concept of 'being-for-others'?",
-        "correctAnswers": ["Being and Nothingness"],
-        "incorrectAnswers": ["Existentialism is a Humanism", "The Myth of Sisyphus", "The Second Sex"],
-        "explanation": "In 'Being and Nothingness,' Sartre explores 'being-for-others,' focusing on how human identity is shaped through the gaze and judgments of others."
-      },
-      {
-        "question": "What existentialist thinker is known for discussing the concept of 'existence as absurd'?",
-        "correctAnswers": ["Albert Camus"],
-        "incorrectAnswers": ["Jean-Paul Sartre", "Simone de Beauvoir", "Martin Heidegger"],
-        "explanation": "Camus is famous for his exploration of the absurd, emphasizing the tension between humans’ desire for meaning and the universe’s inherent meaninglessness."
-      },
-      {
-        "question": "What existentialist concept emphasizes that individuals must create their own values in an indifferent universe?",
-        "correctAnswers": ["Authenticity"],
-        "incorrectAnswers": ["Moral relativism", "Determinism", "Conformity"],
-        "explanation": "Authenticity in existentialism refers to living in accordance with one’s true self and values, independent of societal expectations or norms."
-      },
-      {
-        "question": "Which existentialist philosopher is famous for discussing 'the will to power' in the context of overcoming nihilism?",
-        "correctAnswers": ["Friedrich Nietzsche"],
-        "incorrectAnswers": ["Jean-Paul Sartre", "Albert Camus", "Martin Heidegger"],
-        "explanation": "Nietzsche’s 'will to power' is a central concept in his philosophy, suggesting that individuals can overcome nihilism by asserting their will and creating meaning."
-      },
-      {
-        "question": "What existentialist concept describes the idea that individuals confront their own mortality in order to live authentically?",
-        "correctAnswers": ["Being-toward-death"],
-        "incorrectAnswers": ["Existential dread", "Absurdism", "Nihilism"],
-        "explanation": "'Being-toward-death' is a concept from Heidegger, which emphasizes that acknowledging one's mortality leads to a more authentic and meaningful existence."
-      },
-      {
-        "question": "Which existentialist philosopher is associated with the term 'existential freedom'?",
-        "correctAnswers": ["Jean-Paul Sartre"],
-        "incorrectAnswers": ["Simone de Beauvoir", "Martin Heidegger", "Friedrich Nietzsche"],
-        "explanation": "Sartre's concept of 'existential freedom' emphasizes the idea that humans are radically free to make choices and are responsible for creating their own essence."
-      },
-      {
-        "question": "What existentialist theme involves the challenge of making choices in a world without predetermined meaning?",
-        "correctAnswers": ["Freedom and responsibility"],
-        "incorrectAnswers": ["Fatalism", "Nihilism", "Pragmatism"],
-        "explanation": "Existentialism stresses that individuals must confront the responsibility of making choices and creating meaning in a world devoid of inherent purpose."
-      },
-      {
-        "question": "Which existentialist thinker argued that 'life has no meaning, except the meaning we give it'?",
-        "correctAnswers": ["Jean-Paul Sartre"],
-        "incorrectAnswers": ["Simone de Beauvoir", "Albert Camus", "Friedrich Nietzsche"],
-        "explanation": "Sartre’s philosophy suggests that meaning is not inherent in the world, and individuals must create their own meaning through choices and actions."
-      },
-      {
-        "question": "Which concept in existentialism is concerned with the idea of transcending one's limitations?",
-        "correctAnswers": ["Transcendence"],
-        "incorrectAnswers": ["Immanence", "Fatalism", "Determinism"],
-        "explanation": "Transcendence refers to the existentialist idea of moving beyond one’s limitations and creating a future based on one’s own actions."
-      },
-      {
-        "question": "Which existentialist philosopher is famous for stating that 'one must imagine Sisyphus happy'?",
-        "correctAnswers": ["Albert Camus"],
-        "incorrectAnswers": ["Jean-Paul Sartre", "Friedrich Nietzsche", "Simone de Beauvoir"],
-        "explanation": "Camus, in 'The Myth of Sisyphus,' argues that despite the absurdity of life, humans can find meaning in their struggle, symbolized by Sisyphus' eternal task."
-      },
-      {
-        "question": "Which existentialist term refers to the experience of life being filled with contradictions and absurdities?",
-        "correctAnswers": ["The Absurd"],
-        "incorrectAnswers": ["Existential dread", "Alienation", "Nihilism"],
-        "explanation": "The Absurd is a central theme in Camus' philosophy, describing the conflict between the human desire for meaning and the universe’s indifference."
-      },
-      {
-        "question": "What existentialist idea is represented by the notion that individuals must act in accordance with their true self?",
-        "correctAnswers": ["Authenticity"],
-        "incorrectAnswers": ["Conformity", "Morality", "Idealism"],
-        "explanation": "Authenticity is a key existentialist idea that emphasizes living in alignment with one’s true nature, free from societal expectations and pressures."
-      },
-      {
-        "question": "Which existentialist thinker emphasized the importance of 'being-in-the-world' in understanding human existence?",
-        "correctAnswers": ["Martin Heidegger"],
-        "incorrectAnswers": ["Jean-Paul Sartre", "Albert Camus", "Simone de Beauvoir"],
-        "explanation": "Heidegger’s concept of 'being-in-the-world' refers to the idea that human existence is always situated in a particular context, defined by relationships, history, and society."
-      },
-      {
-        "question": "Which term refers to the human experience of feeling both free and burdened by the responsibility to create meaning?",
-        "correctAnswers": ["Existential freedom"],
-        "incorrectAnswers": ["Determinism", "Fatalism", "Relativism"],
-        "explanation": "Existential freedom refers to the responsibility of creating one's own meaning and purpose, a burden that is intrinsic to human existence."
-      },
-      {
-        "question": "Which existentialist philosopher is known for discussing 'the death of God' and its implications for human existence?",
-        "correctAnswers": ["Friedrich Nietzsche"],
-        "incorrectAnswers": ["Albert Camus", "Jean-Paul Sartre", "Simone de Beauvoir"],
-        "explanation": "Nietzsche's concept of 'the death of God' describes the loss of objective, religious meaning in the world, leaving humans to create their own values."
-      },
-      {
-        "question": "Which concept refers to the existential idea that humans must face the inevitable and arbitrary nature of death?",
-        "correctAnswers": ["Being-toward-death"],
-        "incorrectAnswers": ["Existential dread", "Existential alienation", "The absurd"],
-        "explanation": "Heidegger’s 'being-toward-death' emphasizes the human confrontation with mortality and how it shapes one’s existence and choices."
-      },
-      {
-        "question": "What existentialist concept involves the idea that humans can find meaning in the act of living, despite its inherent meaninglessness?",
-        "correctAnswers": ["Absurdism"],
-        "incorrectAnswers": ["Nihilism", "Realism", "Materialism"],
-        "explanation": "Absurdism, particularly associated with Camus, suggests that meaning can be created in a meaningless world through human action and engagement."
-      },
-      {
-        "question": "Which existentialist philosopher is associated with the concept of 'the eternal return,' where life is repeated infinitely?",
-        "correctAnswers": ["Friedrich Nietzsche"],
-        "incorrectAnswers": ["Jean-Paul Sartre", "Albert Camus", "Simone de Beauvoir"],
-        "explanation": "Nietzsche’s 'eternal return' is a thought experiment where one must live as if every action will repeat forever, emphasizing the importance of living fully."
-      },
-      {
-        "question": "Which existentialist thinker explored the concept of 'the look,' referring to the way others perceive us and define our identity?",
-        "correctAnswers": ["Jean-Paul Sartre"],
-        "incorrectAnswers": ["Simone de Beauvoir", "Albert Camus", "Friedrich Nietzsche"],
-        "explanation": "Sartre’s idea of 'the look' describes how we are constantly shaped and defined by the gaze and judgment of others in a social context."
-      },
-      {
-        "question": "Which existentialist term describes the anxiety and discomfort that arises from the realization of one’s freedom and responsibility?",
-        "correctAnswers": ["Existential anxiety"],
-        "incorrectAnswers": ["Nihilism", "Alienation", "Absurdity"],
-        "explanation": "Existential anxiety is the feeling of unease and fear that arises from realizing one’s total freedom and the responsibility it entails."
-      },
-      {
-        "question": "Which existentialist philosopher’s work focuses on the role of social conditions in shaping individual identity, particularly through gender?",
-        "correctAnswers": ["Simone de Beauvoir"],
-        "incorrectAnswers": ["Jean-Paul Sartre", "Friedrich Nietzsche", "Albert Camus"],
-        "explanation": "De Beauvoir's existentialist feminism highlights the ways in which women’s identities are shaped by societal structures and expectations."
-      },
-      {
-        "question": "Which existentialist theme involves the concept of individuals creating meaning in an indifferent and often hostile universe?",
-        "correctAnswers": ["The Absurd"],
-        "incorrectAnswers": ["Existential dread", "Alienation", "Nihilism"],
-        "explanation": "The Absurd, as developed by Camus, focuses on the tension between humanity’s need for meaning and the indifferent, meaningless universe."
-      },
-      {
-        "question": "What existentialist term refers to the acceptance of one’s mortality as a means of living more authentically?",
-        "correctAnswers": ["Death awareness"],
-        "incorrectAnswers": ["Existential dread", "Mortal fear", "Nihilism"],
-        "explanation": "Death awareness is the existentialist notion that recognizing and accepting one’s inevitable death can lead to a more authentic and meaningful life."
-      },
-      {
-        "question": "Which existentialist philosopher argued that individuals must embrace the absurdity of life without seeking false comforts or illusions?",
-        "correctAnswers": ["Albert Camus"],
-        "incorrectAnswers": ["Simone de Beauvoir", "Jean-Paul Sartre", "Martin Heidegger"],
-        "explanation": "Camus emphasized the importance of confronting the absurdity of life directly, without resorting to illusions, and finding meaning through rebellion."
-      },
-      {
-        "question": "Which existentialist philosopher is known for his exploration of 'the human condition' in works like 'The Trial' and 'The Castle'?",
-        "correctAnswers": ["Franz Kafka"],
-        "incorrectAnswers": ["Simone de Beauvoir", "Albert Camus", "Friedrich Nietzsche"],
-        "explanation": "Kafka’s works focus on the existential struggles of individuals caught in bureaucratic, arbitrary systems, exploring themes of alienation and absurdity."
-      },
-      {
-        "question": "Which existentialist idea refers to the tension between human freedom and the limitations imposed by society or nature?",
-        "correctAnswers": ["Conflict of freedom"],
-        "incorrectAnswers": ["Nihilism", "Existential dread", "Fatalism"],
-        "explanation": "The conflict of freedom addresses the existentialist dilemma of balancing individual freedom with the constraints of social norms, physical laws, and existential realities."
-      }
+  {
+    "question": "Who is considered the father of existentialism?",
+    "correctAnswers": ["Søren Kierkegaard"],
+    "incorrectAnswers": ["Immanuel Kant", "Plato", "Karl Marx"],
+    "explanation": "Søren Kierkegaard is widely regarded as the first existentialist philosopher, emphasizing individual existence and subjective truth.",
+    "difficulty": 2,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "question": "Which French philosopher wrote 'Being and Nothingness'?",
+    "correctAnswers": ["Jean-Paul Sartre"],
+    "incorrectAnswers": ["Albert Camus", "Simone de Beauvoir", "Michel Foucault"],
+    "explanation": "'Being and Nothingness' is a foundational text in existentialist philosophy by Jean-Paul Sartre.",
+    "difficulty": 3,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "question": "What concept is central to existentialist thought?",
+    "correctAnswers": ["Individual freedom"],
+    "incorrectAnswers": ["Divine command", "Historical determinism", "Scientific realism"],
+    "explanation": "Existentialism emphasizes the freedom and responsibility of individuals to define their own meaning.",
+    "difficulty": 2,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "question": "What is 'bad faith' according to Sartre?",
+    "correctAnswers": ["Self-deception"],
+    "incorrectAnswers": ["Moral corruption", "Lack of education", "Mental illness"],
+    "explanation": "Sartre used 'bad faith' to describe the act of deceiving oneself to avoid acknowledging freedom and responsibility.",
+    "difficulty": 4,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "question": "Which work by Camus introduces the concept of the absurd?",
+    "correctAnswers": ["The Myth of Sisyphus"],
+    "incorrectAnswers": ["The Rebel", "Nausea", "Being and Time"],
+    "explanation": "'The Myth of Sisyphus' introduces Camus' idea of the absurd and how individuals confront a meaningless world.",
+    "difficulty": 5,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "question": "Existentialism emphasizes the importance of:",
+    "correctAnswers": ["Personal choice"],
+    "incorrectAnswers": ["Universal laws", "Economic systems", "Genetic destiny"],
+    "explanation": "Existentialists argue that individuals must create their own values and live authentically.",
+    "difficulty": 1,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "question": "Which philosopher is known for the phrase 'existence precedes essence'?",
+    "correctAnswers": ["Jean-Paul Sartre"],
+    "incorrectAnswers": ["Martin Heidegger", "Albert Camus", "Friedrich Nietzsche"],
+    "explanation": "Sartre's phrase means humans define themselves through actions, not predetermined nature.",
+    "difficulty": 4,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "question": "Simone de Beauvoir’s existentialist feminism appears in which book?",
+    "correctAnswers": ["The Second Sex"],
+    "incorrectAnswers": ["Ethics of Ambiguity", "The Stranger", "Beyond Good and Evil"],
+    "explanation": "'The Second Sex' blends existentialism with feminism, analyzing the construction of womanhood.",
+    "difficulty": 6,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "question": "Heidegger’s term 'Dasein' refers to:",
+    "correctAnswers": ["Being-there"],
+    "incorrectAnswers": ["Mind-body dualism", "Political being", "Subject-object unity"],
+    "explanation": "In Heidegger’s ontology, 'Dasein' is the human being who questions its own existence.",
+    "difficulty": 7,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "question": "Which philosopher argued that life’s meaning must be created, not discovered?",
+    "correctAnswers": ["Friedrich Nietzsche"],
+    "incorrectAnswers": ["Descartes", "Aristotle", "Hume"],
+    "explanation": "Nietzsche rejected objective values and stressed individual meaning-making.",
+    "difficulty": 3,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "question": "According to Camus, how should one respond to the absurd?",
+    "correctAnswers": ["Live with rebellion"],
+    "incorrectAnswers": ["Seek religious faith", "Ignore it", "Escape into pleasure"],
+    "explanation": "Camus advocated for a defiant embrace of life despite its absurdity.",
+    "difficulty": 5,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "question": "What does existential anxiety stem from?",
+    "correctAnswers": ["Awareness of freedom"],
+    "incorrectAnswers": ["Fear of death", "Social rejection", "Moral failure"],
+    "explanation": "Existentialists argue anxiety arises from confronting radical freedom and choice.",
+    "difficulty": 4,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "question": "Which idea is NOT central to existentialism?",
+    "correctAnswers": ["Predetermined fate"],
+    "incorrectAnswers": ["Anguish", "Freedom", "Authenticity"],
+    "explanation": "Existentialism rejects fate in favor of individual freedom and responsibility.",
+    "difficulty": 2,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "question": "Who explored existential themes in 'Notes from Underground'?",
+    "correctAnswers": ["Fyodor Dostoevsky"],
+    "incorrectAnswers": ["Leo Tolstoy", "Franz Kafka", "Max Weber"],
+    "explanation": "Dostoevsky’s novella is considered a precursor to existentialist literature.",
+    "difficulty": 5,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "question": "What does Sartre mean by 'man is condemned to be free'?",
+    "correctAnswers": ["We must choose without excuse"],
+    "incorrectAnswers": ["Freedom is a curse", "Free will is an illusion", "Humans are punished for sin"],
+    "explanation": "Sartre emphasized that humans must take full responsibility for their choices.",
+    "difficulty": 6,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "question": "Nietzsche famously declared:",
+    "correctAnswers": ["God is dead"],
+    "incorrectAnswers": ["Truth is relative", "Nothing exists", "Reason is supreme"],
+    "explanation": "Nietzsche’s 'God is dead' symbolizes the decline of absolute values in modernity.",
+    "difficulty": 4,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "question": "In existentialism, 'authenticity' refers to:",
+    "correctAnswers": ["Living true to oneself"],
+    "incorrectAnswers": ["Following social norms", "Obeying authority", "Achieving success"],
+    "explanation": "Authenticity involves acknowledging one’s freedom and acting accordingly.",
+    "difficulty": 3,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "question": "What role does death play in Heidegger’s philosophy?",
+    "correctAnswers": ["It reveals the meaning of Being"],
+    "incorrectAnswers": ["It is meaningless", "It must be avoided", "It defines morality"],
+    "explanation": "For Heidegger, awareness of death sharpens the understanding of existence.",
+    "difficulty": 7,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "question": "What does 'the absurd' describe in existentialism?",
+    "correctAnswers": ["Conflict between meaning-seeking and a silent world"],
+    "incorrectAnswers": ["Illogical thinking", "Dreamlike reality", "Moral confusion"],
+    "explanation": "Camus defines the absurd as the human desire for meaning facing an indifferent universe.",
+    "difficulty": 5,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "question": "Existentialists argue that meaning in life is:",
+    "correctAnswers": ["Self-created"],
+    "incorrectAnswers": ["God-given", "Scientifically proven", "Culturally inherited"],
+    "explanation": "Existentialists believe individuals must create their own purpose in life.",
+    "difficulty": 3,
+    "tags": ["philosophy", "existentialism"]
+  }
 ]
-  

@@ -1,482 +1,162 @@
 [
     {
-        "question": "Which principle of OOP involves restricting access to certain parts of an object?",
+        "question": "What does OOP stand for?",
+        "correctAnswers": ["Object-Oriented Programming"],
+        "incorrectAnswers": ["Open Output Protocol", "Operational Overhead Programming", "Object-Oriented Process"],
+        "explanation": "OOP stands for Object-Oriented Programming, a paradigm based on the concept of objects.",
+        "difficulty": 1,
+        "tags": ["programming", "oop"]
+    },
+    {
+        "question": "Which keyword is used to create a class in Java?",
+        "correctAnswers": ["class"],
+        "incorrectAnswers": ["define", "struct", "object"],
+        "explanation": "In Java, the 'class' keyword is used to declare a new class.",
+        "difficulty": 1,
+        "tags": ["programming", "oop"]
+    },
+    {
+        "question": "Which OOP principle is related to code reuse via inheritance?",
+        "correctAnswers": ["Inheritance"],
+        "incorrectAnswers": ["Encapsulation", "Polymorphism", "Abstraction"],
+        "explanation": "Inheritance allows one class to acquire the properties and methods of another class.",
+        "difficulty": 2,
+        "tags": ["programming", "oop"]
+    },
+    {
+        "question": "What is the purpose of a constructor?",
+        "correctAnswers": ["Initialize an object"],
+        "incorrectAnswers": ["Destroy an object", "Copy a file", "Compile a class"],
+        "explanation": "A constructor is used to initialize objects of a class.",
+        "difficulty": 2,
+        "tags": ["programming", "oop"]
+    },
+    {
+        "question": "Which principle hides internal object details?",
         "correctAnswers": ["Encapsulation"],
-        "incorrectAnswers": ["Abstraction", "Polymorphism", "Inheritance"],
-        "explanation": "Encapsulation restricts access to the internal state and behavior of an object, exposing only selected information through public methods."
+        "incorrectAnswers": ["Inheritance", "Composition", "Delegation"],
+        "explanation": "Encapsulation restricts direct access to object components and is a key OOP concept.",
+        "difficulty": 2,
+        "tags": ["programming", "oop"]
     },
     {
-        "question": "What does the 'is-a' relationship in OOP represent?",
-        "correctAnswers": ["Inheritance"],
-        "incorrectAnswers": ["Encapsulation", "Composition", "Polymorphism"],
-        "explanation": "The 'is-a' relationship is modeled using inheritance, where one class derives from another, inheriting its properties and behavior."
-    },
-    {
-        "question": "Which OOP principle allows the same operation to behave differently on different classes?",
-        "correctAnswers": ["Polymorphism"],
-        "incorrectAnswers": ["Inheritance", "Abstraction", "Encapsulation"],
-        "explanation": "Polymorphism enables methods to be overridden or overloaded, allowing the same operation to behave differently based on the object."
-    },
-    {
-        "question": "What is the process of hiding implementation details while showing only the essential features in OOP?",
-        "correctAnswers": ["Abstraction"],
-        "incorrectAnswers": ["Encapsulation", "Inheritance", "Polymorphism"],
-        "explanation": "Abstraction focuses on exposing only the relevant details of an object while hiding its complexity."
-    },
-    {
-        "question": "Which OOP feature allows a child class to inherit from a parent class?",
-        "correctAnswers": ["Inheritance"],
-        "incorrectAnswers": ["Polymorphism", "Encapsulation", "Aggregation"],
-        "explanation": "Inheritance allows a child class to acquire properties and methods from a parent class, promoting code reuse."
-    },
-    {
-        "question": "Which keyword is commonly used in many languages to create an object from a class?",
-        "correctAnswers": ["new"],
-        "incorrectAnswers": ["create", "object", "initialize"],
-        "explanation": "The 'new' keyword is used to create an instance of a class, allocating memory for the object."
-    },
-    {
-        "question": "What is the term for combining multiple objects to build a more complex structure?",
-        "correctAnswers": ["Composition"],
-        "incorrectAnswers": ["Inheritance", "Aggregation", "Abstraction"],
-        "explanation": "Composition involves creating complex objects by combining simpler ones, often preferred over inheritance for flexibility."
-    },
-    {
-        "question": "Which concept allows a class to have multiple methods with the same name but different parameters?",
-        "correctAnswers": ["Method Overloading"],
-        "incorrectAnswers": ["Method Overriding", "Polymorphism", "Inheritance"],
-        "explanation": "Method overloading allows multiple methods with the same name to exist in a class, differentiated by their parameter lists."
-    },
-    {
-        "question": "What is the name of the function in a class that is automatically called when an object is created?",
-        "correctAnswers": ["Constructor"],
-        "incorrectAnswers": ["Destructor", "Method", "Initializer"],
-        "explanation": "A constructor is a special method in a class that initializes new objects and is called automatically upon object creation."
-    },
-    {
-        "question": "What is the term for a class that cannot be instantiated and is meant to be extended?",
-        "correctAnswers": ["Abstract Class"],
-        "incorrectAnswers": ["Interface", "Static Class", "Final Class"],
-        "explanation": "An abstract class serves as a blueprint for other classes and cannot be instantiated directly."
-    },
-    {
-        "question": "Which type of method is shared by all instances of a class and does not operate on individual objects?",
-        "correctAnswers": ["Static Method"],
-        "incorrectAnswers": ["Instance Method", "Abstract Method", "Virtual Method"],
-        "explanation": "Static methods belong to the class itself and do not require an instance to be invoked."
-    },
-    {
-        "question": "What is the mechanism in OOP to destroy an object when it is no longer needed?",
+        "question": "Which method is automatically called when an object is destroyed?",
         "correctAnswers": ["Destructor"],
-        "incorrectAnswers": ["Constructor", "Finalizer", "Cleaner"],
-        "explanation": "A destructor is a method called to free resources and perform cleanup when an object is no longer needed."
+        "incorrectAnswers": ["Constructor", "Cleaner", "Initializer"],
+        "explanation": "A destructor is called to clean up before an object is removed from memory.",
+        "difficulty": 3,
+        "tags": ["programming", "oop"]
     },
     {
-        "question": "What is the term for providing a specific implementation of a method in a derived class?",
-        "correctAnswers": ["Method Overriding"],
-        "incorrectAnswers": ["Method Overloading", "Inheritance", "Encapsulation"],
-        "explanation": "Method overriding allows a subclass to provide a specific implementation for a method defined in its parent class."
+        "question": "What is polymorphism?",
+        "correctAnswers": ["Same interface, different behavior"],
+        "incorrectAnswers": ["Multiple inheritance", "Code duplication", "Hiding variables"],
+        "explanation": "Polymorphism allows objects to be treated as instances of their parent class with behavior specific to the subclass.",
+        "difficulty": 3,
+        "tags": ["programming", "oop"]
     },
     {
-        "question": "Which OOP concept refers to objects interacting with each other through their exposed interfaces?",
-        "correctAnswers": ["Message Passing"],
-        "incorrectAnswers": ["Inheritance", "Encapsulation", "Abstraction"],
-        "explanation": "Message passing allows objects to communicate and invoke behaviors through their defined interfaces."
+        "question": "Which of these is not an OOP language?",
+        "correctAnswers": ["SQL"],
+        "incorrectAnswers": ["Java", "Python", "C++"],
+        "explanation": "SQL is a declarative language used for querying databases, not an OOP language.",
+        "difficulty": 2,
+        "tags": ["programming", "oop"]
+    },
+    {
+        "question": "What is 'this' keyword used for in OOP?",
+        "correctAnswers": ["Refers to current object"],
+        "incorrectAnswers": ["Creates a class", "Returns an object", "Imports a package"],
+        "explanation": "'this' refers to the current instance of the class within its method or constructor.",
+        "difficulty": 3,
+        "tags": ["programming", "oop"]
+    },
+    {
+        "question": "Which principle allows treating different objects through a common interface?",
+        "correctAnswers": ["Polymorphism"],
+        "incorrectAnswers": ["Encapsulation", "Recursion", "Iteration"],
+        "explanation": "Polymorphism allows using a unified interface to work with different types of objects.",
+        "difficulty": 4,
+        "tags": ["programming", "oop"]
+    },
+    {
+        "question": "Which design principle prefers composition over inheritance?",
+        "correctAnswers": ["Favor composition"],
+        "incorrectAnswers": ["Encapsulation principle", "Open-closed principle", "Single responsibility principle"],
+        "explanation": "Favoring composition over inheritance encourages flexible code reuse and design.",
+        "difficulty": 5,
+        "tags": ["programming", "oop"]
+    },
+    {
+        "question": "What is method overloading?",
+        "correctAnswers": ["Same method name, different parameters"],
+        "incorrectAnswers": ["Same parameters, different class", "Different return types", "Same method, different file"],
+        "explanation": "Overloading allows multiple methods with the same name but different signatures in a class.",
+        "difficulty": 4,
+        "tags": ["programming", "oop"]
+    },
+    {
+        "question": "Which visibility modifier restricts access to within the same class?",
+        "correctAnswers": ["private"],
+        "incorrectAnswers": ["protected", "public", "internal"],
+        "explanation": "'private' limits access to the members within the same class only.",
+        "difficulty": 2,
+        "tags": ["programming", "oop"]
+    },
+    {
+        "question": "What is an abstract class?",
+        "correctAnswers": ["A class with unimplemented methods"],
+        "incorrectAnswers": ["A class that cannot have children", "A static class", "A fully defined class"],
+        "explanation": "An abstract class cannot be instantiated and can have abstract methods without implementation.",
+        "difficulty": 5,
+        "tags": ["programming", "oop"]
+    },
+    {
+        "question": "Which is a benefit of OOP?",
+        "correctAnswers": ["Code reuse"],
+        "incorrectAnswers": ["More memory usage", "Tight coupling", "Slower development"],
+        "explanation": "OOP promotes code reuse through inheritance and modular design.",
+        "difficulty": 1,
+        "tags": ["programming", "oop"]
     },
     {
         "question": "What is an interface in OOP?",
-        "correctAnswers": ["A contract specifying methods a class must implement"],
-        "incorrectAnswers": ["A fully implemented class", "A class that cannot be instantiated", "A blueprint for constructors"],
-        "explanation": "An interface defines a set of methods that implementing classes must provide, serving as a contract for behavior."
+        "correctAnswers": ["A contract of methods to implement"],
+        "incorrectAnswers": ["A GUI element", "A file format", "A class with fields"],
+        "explanation": "An interface defines a set of methods that a class agrees to implement.",
+        "difficulty": 5,
+        "tags": ["programming", "oop"]
     },
     {
-        "question": "Which keyword in many OOP languages is used to refer to the current object?",
-        "correctAnswers": ["this"],
-        "incorrectAnswers": ["self", "current", "context"],
-        "explanation": "The 'this' keyword refers to the current object instance within a class, allowing access to its properties and methods."
+        "question": "Can abstract classes have constructors?",
+        "correctAnswers": ["Yes"],
+        "incorrectAnswers": ["No", "Only static ones", "Only in interfaces"],
+        "explanation": "Abstract classes can have constructors to initialize common fields.",
+        "difficulty": 6,
+        "tags": ["programming", "oop"]
     },
     {
-        "question": "What is the main benefit of polymorphism in OOP?",
-        "correctAnswers": ["Code flexibility and reusability"],
-        "incorrectAnswers": ["Faster execution", "Improved security", "Better encapsulation"],
-        "explanation": "Polymorphism promotes flexibility and code reuse by allowing methods to behave differently based on the context."
+        "question": "What is multiple inheritance?",
+        "correctAnswers": ["A class inherits from multiple classes"],
+        "incorrectAnswers": ["Class has multiple methods", "One class inherits many objects", "Class has many instances"],
+        "explanation": "Multiple inheritance allows a class to inherit from more than one parent class.",
+        "difficulty": 6,
+        "tags": ["programming", "oop"]
     },
     {
-        "question": "What is a property of a class in OOP?",
-        "correctAnswers": ["A variable associated with an object"],
-        "incorrectAnswers": ["A method in a class", "An abstract method", "A static function"],
-        "explanation": "A property is a variable defined in a class that holds data or state for an object."
+        "question": "What problem does diamond inheritance cause?",
+        "correctAnswers": ["Ambiguity"],
+        "incorrectAnswers": ["Recursion", "Compilation error", "Memory leak"],
+        "explanation": "Diamond inheritance causes ambiguity when two base classes implement the same method.",
+        "difficulty": 7,
+        "tags": ["programming", "oop"]
     },
     {
-        "question": "Which OOP concept emphasizes using existing code to reduce redundancy?",
-        "correctAnswers": ["Code Reusability"],
-        "incorrectAnswers": ["Abstraction", "Polymorphism", "Encapsulation"],
-        "explanation": "Code reusability in OOP is achieved through inheritance, composition, and modularity, minimizing redundancy."
-    },
-    {
-        "question": "What is a concrete class in OOP?",
-        "correctAnswers": ["A class that can be instantiated"],
-        "incorrectAnswers": ["A class with no implementation", "A class with only abstract methods", "A class that cannot inherit"],
-        "explanation": "A concrete class has a full implementation and can be used to create objects."
-    },
-    {
-        "question": "Which design principle in OOP suggests that a class should have only one reason to change?",
-        "correctAnswers": ["Single Responsibility Principle"],
-        "incorrectAnswers": ["Open/Closed Principle", "Dependency Inversion Principle", "Interface Segregation Principle"],
-        "explanation": "The Single Responsibility Principle states that a class should have one, and only one, reason to change, promoting focused and maintainable code."
-    },
-    {
-        "question": "What is the term for defining methods in an interface but not providing their implementation?",
-        "correctAnswers": ["Abstract Method"],
-        "incorrectAnswers": ["Virtual Method", "Static Method", "Final Method"],
-        "explanation": "Abstract methods are declared in an interface or abstract class without implementation, requiring derived classes to define them."
-    },
-    {
-        "question": "What type of class in OOP ensures that only one instance of the class exists?",
-        "correctAnswers": ["Singleton"],
-        "incorrectAnswers": ["Factory", "Prototype", "Adapter"],
-        "explanation": "The Singleton design pattern restricts a class to a single instance and provides a global point of access to it."
-    },
-    {
-        "question": "Which principle allows a derived class to replace a base class without affecting the functionality of the program?",
-        "correctAnswers": ["Liskov Substitution Principle"],
-        "incorrectAnswers": ["Single Responsibility Principle", "Open/Closed Principle", "Interface Segregation Principle"],
-        "explanation": "The Liskov Substitution Principle ensures that objects of a derived class can substitute objects of the base class without altering correctness."
-    },
-    {
-        "question": "What is the term for creating a new class from an existing class by adding new features?",
-        "correctAnswers": ["Inheritance"],
-        "incorrectAnswers": ["Composition", "Aggregation", "Polymorphism"],
-        "explanation": "Inheritance allows a new class to reuse the properties and methods of an existing class while adding or overriding features."
-    },
-    {
-        "question": "What OOP concept uses interfaces to enforce certain methods in classes?",
-        "correctAnswers": ["Contract Enforcement"],
-        "incorrectAnswers": ["Code Reusability", "Polymorphic Behavior", "Encapsulation"],
-        "explanation": "Interfaces enforce a contract in OOP, requiring classes to implement specific methods defined in the interface."
-    },
-    {
-        "question": "What is the term for associating multiple objects to model a 'whole-part' relationship?",
-        "correctAnswers": ["Aggregation"],
-        "incorrectAnswers": ["Inheritance", "Composition", "Polymorphism"],
-        "explanation": "Aggregation models a 'whole-part' relationship where the part can exist independently of the whole."
-    },
-    {
-        "question": "What kind of method is declared but not defined in an abstract class?",
-        "correctAnswers": ["Abstract Method"],
-        "incorrectAnswers": ["Static Method", "Concrete Method", "Virtual Method"],
-        "explanation": "Abstract methods are defined in abstract classes and must be implemented in derived classes."
-    },
-    {
-        "question": "Which keyword is used to indicate that a method cannot be overridden in OOP?",
-        "correctAnswers": ["final"],
-        "incorrectAnswers": ["static", "virtual", "override"],
-        "explanation": "The 'final' keyword in many programming languages is used to prevent methods from being overridden."
-    },
-    {
-        "question": "Which OOP concept ensures that a derived class can provide a specific implementation of a method defined in its parent class?",
-        "correctAnswers": ["Method Overriding"],
-        "incorrectAnswers": ["Method Overloading", "Polymorphism", "Encapsulation"],
-        "explanation": "Method overriding allows a subclass to provide a specific implementation for a method declared in its parent class."
-    },
-    {
-        "question": "What is the term for a relationship where one object contains or owns another object?",
-        "correctAnswers": ["Composition"],
-        "incorrectAnswers": ["Aggregation", "Inheritance", "Polymorphism"],
-        "explanation": "Composition represents a 'has-a' relationship where one object owns another and is responsible for its lifecycle."
-    },
-    {
-        "question": "What is an advantage of using inheritance in OOP?",
-        "correctAnswers": ["Code reuse and extension"],
-        "incorrectAnswers": ["Improved performance", "Reduced memory usage", "Better security"],
-        "explanation": "Inheritance promotes code reuse by enabling derived classes to inherit and extend functionality from base classes."
-    },
-    {
-        "question": "What is the term for an error that occurs when an abstract method is not implemented in a subclass?",
-        "correctAnswers": ["Abstract Method Error"],
-        "incorrectAnswers": ["Runtime Exception", "Interface Conflict", "Method Override Error"],
-        "explanation": "Failing to implement abstract methods in derived classes results in an error during compilation or runtime, depending on the language."
-    },
-    {
-        "question": "Which keyword allows a class to extend functionality from another class?",
-        "correctAnswers": ["extends"],
-        "incorrectAnswers": ["inherits", "overrides", "implements"],
-        "explanation": "The 'extends' keyword is commonly used in OOP to signify that one class is inheriting from another."
-    },
-    {
-        "question": "Which concept in OOP ensures that implementation details are hidden from the user?",
-        "correctAnswers": ["Encapsulation"],
-        "incorrectAnswers": ["Abstraction", "Polymorphism", "Inheritance"],
-        "explanation": "Encapsulation ensures that the internal implementation of a class is hidden, exposing only necessary details through interfaces or methods."
-    },
-    {
-        "question": "What is the main focus of the Open/Closed Principle in OOP?",
-        "correctAnswers": ["Classes should be open for extension but closed for modification"],
-        "incorrectAnswers": ["Classes should be closed for extension but open for modification", "Classes should avoid public methods", "Classes should use only final methods"],
-        "explanation": "The Open/Closed Principle encourages designing classes that can be extended without modifying their existing code, promoting flexibility and stability."
-    },
-    {
-        "question": "What does 'multiple inheritance' refer to in OOP?",
-        "correctAnswers": ["A class inheriting from more than one class"],
-        "incorrectAnswers": ["An object having multiple instances", "A class extending itself", "An interface implementing multiple classes"],
-        "explanation": "Multiple inheritance allows a class to derive from more than one parent class, combining their functionalities."
-    },
-    {
-        "question": "Which design pattern provides a way to access the elements of an aggregate object sequentially without exposing its underlying structure?",
-        "correctAnswers": ["Iterator Pattern"],
-        "incorrectAnswers": ["Composite Pattern", "Observer Pattern", "Factory Pattern"],
-        "explanation": "The Iterator Pattern enables sequential access to the elements of a collection without exposing its internal structure."
-    },
-    {
-        "question": "Which of the following is a key benefit of encapsulation?",
-        "correctAnswers": ["Improved modularity and security"],
-        "incorrectAnswers": ["Faster execution speed", "Reduced memory usage", "Simpler syntax"],
-        "explanation": "Encapsulation enhances modularity and security by controlling access to the internal state of objects."
-    },
-    {
-        "question": "What is the purpose of the 'super' keyword in OOP?",
-        "correctAnswers": ["To refer to the parent class of the current object"],
-        "incorrectAnswers": ["To create a new class instance", "To define a static method", "To invoke private methods"],
-        "explanation": "The 'super' keyword is used to call the parent class's methods or constructors in the context of inheritance."
-    },
-    {
-        "question": "What is the primary goal of the Dependency Inversion Principle in OOP?",
-        "correctAnswers": ["To depend on abstractions rather than concrete implementations"],
-        "incorrectAnswers": ["To remove all dependencies between classes", "To favor inheritance over composition", "To minimize the use of interfaces"],
-        "explanation": "The Dependency Inversion Principle aims to reduce coupling by making high-level modules depend on abstractions rather than low-level implementations."
-    },
-    {
-        "question": "Which concept in OOP is used to group related classes together under a single namespace?",
-        "correctAnswers": ["Package"],
-        "incorrectAnswers": ["Interface", "Class", "Library"],
-        "explanation": "Packages are used to group related classes and interfaces under a single namespace, promoting better organization and reusability."
-    },
-    {
-        "question": "Which principle ensures that interfaces are client-specific and not overly generalized?",
-        "correctAnswers": ["Interface Segregation Principle"],
-        "incorrectAnswers": ["Single Responsibility Principle", "Open/Closed Principle", "Liskov Substitution Principle"],
-        "explanation": "The Interface Segregation Principle ensures that interfaces are tailored to specific client needs, avoiding the creation of bloated interfaces."
-    },
-    {
-        "question": "What is the term for creating an exact copy of an object in OOP?",
-        "correctAnswers": ["Cloning"],
-        "incorrectAnswers": ["Inheritance", "Serialization", "Deserialization"],
-        "explanation": "Cloning is the process of creating a duplicate of an object with the same properties and values."
-    },
-    {
-        "question": "Which pattern ensures that a group of related objects can be treated as a single object?",
-        "correctAnswers": ["Composite Pattern"],
-        "incorrectAnswers": ["Adapter Pattern", "Singleton Pattern", "Decorator Pattern"],
-        "explanation": "The Composite Pattern lets you treat individual objects and compositions of objects uniformly, simplifying complex hierarchies."
-    },
-    {
-        "question": "What is the difference between an abstract class and an interface in OOP?",
-        "correctAnswers": ["Abstract classes can have implementation, while interfaces cannot"],
-        "incorrectAnswers": ["Interfaces support inheritance, while abstract classes do not", "Abstract classes are more flexible than interfaces", "Interfaces can only contain variables"],
-        "explanation": "Abstract classes can include method implementations, while interfaces are strictly contracts with no implementations."
-    },
-    {
-        "question": "What does the term 'late binding' refer to in OOP?",
-        "correctAnswers": ["The method to be called is determined at runtime"],
-        "incorrectAnswers": ["The object is created only when needed", "The method is defined at runtime", "The class hierarchy is created dynamically"],
-        "explanation": "Late binding refers to resolving method calls at runtime, often used with polymorphism and method overriding."
-    },
-    {
-        "question": "What is the primary role of the Factory Pattern in OOP?",
-        "correctAnswers": ["To create objects without specifying their exact class"],
-        "incorrectAnswers": ["To restrict object creation to a single instance", "To allow multiple objects to share behavior", "To facilitate access to a group of objects"],
-        "explanation": "The Factory Pattern encapsulates the object creation process, making it easy to change the instantiation logic without altering client code."
-    },
-    {
-        "question": "Which design pattern allows behavior to be added to an object dynamically?",
-        "correctAnswers": ["Decorator Pattern"],
-        "incorrectAnswers": ["Adapter Pattern", "Composite Pattern", "Builder Pattern"],
-        "explanation": "The Decorator Pattern provides a flexible alternative to subclassing for adding new behavior dynamically to objects."
-    },
-    {
-        "question": "What is the term for converting an object into a format that can be stored or transmitted?",
-        "correctAnswers": ["Serialization"],
-        "incorrectAnswers": ["Deserialization", "Cloning", "Instantiation"],
-        "explanation": "Serialization is the process of converting an object into a storable or transmittable format, often for file storage or communication."
-    },
-    {
-        "question": "Which principle in OOP encourages the separation of concerns by restricting direct modifications to a class?",
-        "correctAnswers": ["Open/Closed Principle"],
-        "incorrectAnswers": ["Interface Segregation Principle", "Dependency Inversion Principle", "Single Responsibility Principle"],
-        "explanation": "The Open/Closed Principle states that software entities should be open for extension but closed for modification."
-    },
-    {
-        "question": "What type of class provides a template for other classes but cannot be instantiated itself?",
-        "correctAnswers": ["Abstract Class"],
-        "incorrectAnswers": ["Interface", "Static Class", "Concrete Class"],
-        "explanation": "An abstract class provides a foundation for other classes by defining common methods and properties but cannot be instantiated."
-    },
-    {
-        "question": "What is the purpose of a 'getter' method in OOP?",
-        "correctAnswers": ["To retrieve the value of an object's attribute"],
-        "incorrectAnswers": ["To modify an object's state", "To initialize an object", "To invoke another method"],
-        "explanation": "A getter method retrieves the value of an attribute, adhering to the principle of encapsulation by providing controlled access."
-    },
-    {
-        "question": "Which pattern provides a simplified interface to a larger body of code in OOP?",
-        "correctAnswers": ["Facade Pattern"],
-        "incorrectAnswers": ["Bridge Pattern", "Proxy Pattern", "Adapter Pattern"],
-        "explanation": "The Facade Pattern hides the complexities of a subsystem and provides a simple interface for the client to interact with it."
-    },
-    {
-        "question": "What is the term for the practice of using existing code as a blueprint for new development?",
-        "correctAnswers": ["Code Reuse"],
-        "incorrectAnswers": ["Code Refactoring", "Code Serialization", "Code Abstraction"],
-        "explanation": "Code reuse involves using existing code structures, such as classes or functions, to avoid duplication and improve efficiency."
-    },
-    {
-        "question": "Which pattern ensures that an object’s state is saved and restored without exposing its details?",
-        "correctAnswers": ["Memento Pattern"],
-        "incorrectAnswers": ["Builder Pattern", "Strategy Pattern", "Singleton Pattern"],
-        "explanation": "The Memento Pattern captures and externalizes an object's state so that it can be restored later without violating encapsulation."
-    },
-    {
-        "question": "What is the term for a class that represents a real-world entity in OOP?",
-        "correctAnswers": ["Model Class"],
-        "incorrectAnswers": ["Abstract Class", "Controller Class", "Factory Class"],
-        "explanation": "Model classes represent real-world entities by encapsulating their attributes and behaviors, often used in MVC architectures."
-    },
-    {
-        "question": "Which OOP concept allows different classes to be treated as instances of the same superclass?",
-        "correctAnswers": ["Polymorphism"],
-        "incorrectAnswers": ["Encapsulation", "Composition", "Aggregation"],
-        "explanation": "Polymorphism allows different classes to implement the same interface or inherit from the same superclass, enabling them to be treated uniformly."
-    },
-    {
-        "question": "Which keyword in many OOP languages is used to prevent a class from being subclassed?",
-        "correctAnswers": ["final"],
-        "incorrectAnswers": ["static", "abstract", "sealed"],
-        "explanation": "The 'final' keyword is used in many OOP languages to indicate that a class cannot be extended or subclassed."
-    },
-    {
-        "question": "What is the main benefit of using interfaces in OOP?",
-        "correctAnswers": ["To define contracts for behavior across different classes"],
-        "incorrectAnswers": ["To enforce code reuse", "To simplify object serialization", "To reduce method overloading"],
-        "explanation": "Interfaces define a contract that classes must follow, ensuring consistency and enabling polymorphism."
-    },
-    {
-        "question": "Which keyword is used in OOP to define a method that must be implemented in all subclasses?",
-        "correctAnswers": ["abstract"],
-        "incorrectAnswers": ["static", "final", "virtual"],
-        "explanation": "The 'abstract' keyword is used to define a method without implementation, requiring all subclasses to implement it."
-    },
-    {
-        "question": "What is the primary benefit of using encapsulation in OOP?",
-        "correctAnswers": ["To protect the internal state of an object from unintended modification"],
-        "incorrectAnswers": ["To create multiple classes with the same name", "To make code execution faster", "To allow multiple inheritances"],
-        "explanation": "Encapsulation protects the internal state of an object by restricting direct access and exposing it through controlled methods."
-    },
-    {
-        "question": "Which OOP concept involves creating a new object from an existing one without modifying the original?",
-        "correctAnswers": ["Prototype"],
-        "incorrectAnswers": ["Factory", "Adapter", "Decorator"],
-        "explanation": "The Prototype Pattern allows creating new objects by copying an existing object rather than creating one from scratch."
-    },
-    {
-        "question": "Which keyword is used to restrict a method from being inherited in a subclass?",
-        "correctAnswers": ["final"],
-        "incorrectAnswers": ["static", "override", "abstract"],
-        "explanation": "The 'final' keyword is used to prevent a method from being overridden in a subclass, ensuring its behavior remains unchanged."
-    },
-    {
-        "question": "What is the primary goal of polymorphism in OOP?",
-        "correctAnswers": ["To allow objects of different types to be treated as objects of a common type"],
-        "incorrectAnswers": ["To create multiple classes with similar names", "To restrict access to class members", "To facilitate object serialization"],
-        "explanation": "Polymorphism enables objects of different types to be treated uniformly, promoting flexibility and code reuse."
-    },
-    {
-        "question": "What is the term for combining data and behavior in a single unit in OOP?",
-        "correctAnswers": ["Encapsulation"],
-        "incorrectAnswers": ["Abstraction", "Polymorphism", "Inheritance"],
-        "explanation": "Encapsulation is the process of combining data and methods into a single unit, typically a class."
-    },
-    {
-        "question": "What is the purpose of the Builder Pattern in OOP?",
-        "correctAnswers": ["To construct complex objects step by step"],
-        "incorrectAnswers": ["To manage dependencies between objects", "To create a single instance of a class", "To ensure objects are immutable"],
-        "explanation": "The Builder Pattern constructs complex objects step by step, allowing for greater control over the object construction process."
-    },
-    {
-        "question": "Which term refers to the process of destroying unused objects to free up resources in OOP?",
-        "correctAnswers": ["Garbage Collection"],
-        "incorrectAnswers": ["Deserialization", "Finalization", "Object Pooling"],
-        "explanation": "Garbage collection automatically reclaims memory used by objects that are no longer in use, preventing memory leaks."
-    },
-    {
-        "question": "What does the term 'method signature' refer to in OOP?",
-        "correctAnswers": ["The method name and its parameter types"],
-        "incorrectAnswers": ["The method body and return type", "The visibility modifier of the method", "The number of times a method is called"],
-        "explanation": "A method signature in OOP includes the method name and its parameter types, which uniquely identify the method."
-    },
-    {
-        "question": "What is a virtual method in OOP?",
-        "correctAnswers": ["A method that can be overridden in a derived class"],
-        "incorrectAnswers": ["A method with no implementation", "A method that can only be called once", "A method that is private to a class"],
-        "explanation": "Virtual methods allow subclasses to provide a new implementation while maintaining the method's behavior in the base class."
-    },
-    {
-        "question": "What is a key advantage of using inheritance in OOP?",
-        "correctAnswers": ["It allows code reuse across multiple classes"],
-        "incorrectAnswers": ["It ensures data security", "It prevents method overriding", "It simplifies debugging"],
-        "explanation": "Inheritance enables the reuse of existing code in new classes, reducing duplication and improving maintainability."
-    },
-    {
-        "question": "Which keyword is commonly used to implement interfaces in OOP?",
-        "correctAnswers": ["implements"],
-        "incorrectAnswers": ["extends", "inherits", "uses"],
-        "explanation": "The 'implements' keyword is used in many programming languages to specify that a class implements an interface."
-    },
-    {
-        "question": "What is the purpose of a constructor in OOP?",
-        "correctAnswers": ["To initialize an object when it is created"],
-        "incorrectAnswers": ["To destroy an object", "To define object behavior", "To inherit properties from another class"],
-        "explanation": "A constructor is a special method that is automatically called to initialize an object when it is created."
-    },
-    {
-        "question": "Which design pattern is used to ensure a class has only one instance and provides a global access point to it?",
-        "correctAnswers": ["Singleton Pattern"],
-        "incorrectAnswers": ["Factory Pattern", "Observer Pattern", "Adapter Pattern"],
-        "explanation": "The Singleton Pattern restricts a class to a single instance and provides a global point of access to it."
-    },
-    {
-        "question": "Which OOP concept allows different methods to have the same name but operate on different data types?",
-        "correctAnswers": ["Method Overloading"],
-        "incorrectAnswers": ["Method Overriding", "Abstract Methods", "Static Methods"],
-        "explanation": "Method overloading allows multiple methods in the same class to share the same name but operate on different parameter lists."
-    },
-    {
-        "question": "What is the term for the relationship where an object is composed of other objects?",
-        "correctAnswers": ["Composition"],
-        "incorrectAnswers": ["Inheritance", "Aggregation", "Polymorphism"],
-        "explanation": "Composition is a design principle where an object is composed of other objects to achieve complex functionality."
-    },
-    {
-        "question": "What is the main characteristic of an immutable object?",
-        "correctAnswers": ["Its state cannot be changed after creation"],
-        "incorrectAnswers": ["It can only be used in static methods", "It is always stored in a constant variable", "It cannot be serialized"],
-        "explanation": "An immutable object's state cannot be modified after it is created, ensuring consistent and thread-safe behavior."
-    },
-    {
-        "question": "Which OOP concept ensures that classes expose only the necessary details to the outside world?",
+        "question": "Which OOP principle promotes separating what an object does from how?",
         "correctAnswers": ["Abstraction"],
-        "incorrectAnswers": ["Encapsulation", "Inheritance", "Polymorphism"],
-        "explanation": "Abstraction hides complex implementation details and exposes only the necessary functionality to the outside world."
-    },
-    {
-        "question": "Which keyword is used to refer to a parent class's constructor in OOP?",
-        "correctAnswers": ["super"],
-        "incorrectAnswers": ["base", "this", "parent"],
-        "explanation": "The 'super' keyword is used to call a parent class's constructor or methods, enabling initialization or reuse of parent functionality."
-    },
-    {
-        "question": "What is the term for reusing existing code by combining multiple objects instead of using inheritance?",
-        "correctAnswers": ["Composition"],
-        "incorrectAnswers": ["Aggregation", "Polymorphism", "Method Overriding"],
-        "explanation": "Composition achieves code reuse by combining multiple objects, offering greater flexibility compared to inheritance."
+        "incorrectAnswers": ["Inheritance", "Composition", "Polymorphism"],
+        "explanation": "Abstraction hides implementation details and exposes only essential features.",
+        "difficulty": 4,
+        "tags": ["programming", "oop"]
     }
 ]

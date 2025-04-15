@@ -12,12 +12,16 @@ public class RawQuestion {
     private final List<String> correctAnswers;
     private final List<String> incorrectAnswers;
     private final String explanation;
+    private final Integer difficulty;
+    private final Set<String> tags;
 
-    public RawQuestion(@JsonProperty("question") String question, @JsonProperty("correctAnswers") List<String> correctAnswers, @JsonProperty("incorrectAnswers") List<String> incorrectAnswers, @JsonProperty("explanation") String explanation) {
+    public RawQuestion(@JsonProperty("question") String question, @JsonProperty("correctAnswers") List<String> correctAnswers, @JsonProperty("incorrectAnswers") List<String> incorrectAnswers, @JsonProperty("explanation") String explanation, @JsonProperty("difficulty") Integer difficulty, @JsonProperty("tags") Set<String> tags) {
         this.question = question;
         this.correctAnswers = correctAnswers;
         this.incorrectAnswers = incorrectAnswers;
         this.explanation = explanation;
+        this.difficulty = difficulty;
+        this.tags = tags;
     }
 
     public Question generateQuestion(){
