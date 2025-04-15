@@ -41,7 +41,7 @@ public class HelpMessage {
         if (iterator.hasNext()) {
             Map.Entry<String, List<Integer>> mapEntry2 = iterator.next();
             example2 = mapEntry2.getKey();
-            exampleDifficulty2 = mapEntry2.getValue().get(1);
+            exampleDifficulty2 = mapEntry2.getValue().get(0);
         }
 
         EmbedCreateSpec embed;
