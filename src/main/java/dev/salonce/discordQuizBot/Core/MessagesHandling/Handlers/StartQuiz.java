@@ -4,7 +4,7 @@ import dev.salonce.discordQuizBot.Core.MessagesHandling.DiscordMessage;
 import dev.salonce.discordQuizBot.Core.Matches.MatchFactory;
 import dev.salonce.discordQuizBot.Core.QuizManager;
 import dev.salonce.discordQuizBot.Core.MessagesHandling.MessageHandler;
-import dev.salonce.discordQuizBot.Configs.QuestionSetsConfig;
+import dev.salonce.discordQuizBot.Core.Questions.QuestionSetsConfig;
 import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

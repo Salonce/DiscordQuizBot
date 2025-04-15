@@ -1,19 +1,17 @@
 package dev.salonce.discordQuizBot.Core.MessagesSending;
 
-import dev.salonce.discordQuizBot.Configs.QuestionSetsConfig;
+import dev.salonce.discordQuizBot.Core.Questions.QuestionSetsConfig;
 import dev.salonce.discordQuizBot.Core.MatchStore;
 import dev.salonce.discordQuizBot.Core.Matches.Match;
 import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.spec.EmbedCreateSpec;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @Component

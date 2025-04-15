@@ -12,11 +12,11 @@ import java.util.Random;
 public class QuestionFactory {
 
     private final Random rand = new Random();
-    private final QuestionRepository questionRepository;
+    private final RawQuestionRepository rawQuestionRepository;
 
     //add logic to eliminate <5 questions by throwing exceptions
     public List<Question> generateQuestions(String type, int NoQuestions){
-        List<RawQuestion> rawQuestions = questionRepository.getQuestions(type);
+        List<RawQuestion> rawQuestions = rawQuestionRepository.getQuestions(type);
         List<Question> questions = new ArrayList<>();
         for(int i = 0; i < NoQuestions; i++){
             int next = rand.nextInt(rawQuestions.size());
