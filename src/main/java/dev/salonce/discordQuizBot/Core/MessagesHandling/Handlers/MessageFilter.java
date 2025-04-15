@@ -14,25 +14,25 @@ public class MessageFilter implements MessageHandler {
     @Override
     public boolean handleMessage(DiscordMessage discordMessage){
 
-        //if empty message - ignore and end chain
-//        if (discordMessage.getContent() == null){
-//            return true;
-//        }
         String content = discordMessage.getContent();
 
-        //if empty message - ignore and end chain
-        if (content == null || content.isEmpty()){
+        if (content == null || content.isEmpty())
             return true;
-        }
 
+        if (!content.startsWith("qq"))
+            return true;
+
+        if (content.length() > 50)
+            return true;
 
         String[] message = discordMessage.getContent().split(" ");
 
-        //if too short message - ignore and end chain
-        if (message.length < 2)
+        if (message.length <= 1)
             return true;
 
-        //conditions not met - move on to next chain piece
+        if (message.length >= 5)
+            return true;
+
         return false;
     }
 }
