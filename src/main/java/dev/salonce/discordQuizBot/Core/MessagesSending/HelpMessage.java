@@ -32,30 +32,39 @@ public class HelpMessage {
         Integer exampleDifficulty = -1;
         String example2 = null;
         Integer exampleDifficulty2 = -1;
-        Iterator<Map.Entry<String, Set<Integer>>> iterator = availableTopicsConfig.getAvailableTopics().entrySet().iterator();
+        Iterator<Map.Entry<String, List<Integer>>> iterator = availableTopicsConfig.getAvailableTopics().entrySet().iterator();
         if (iterator.hasNext()) {
-            Map.Entry<String, Set<Integer>> mapEntry1 = iterator.next();
+            Map.Entry<String, List<Integer>> mapEntry1 = iterator.next();
             example = mapEntry1.getKey();
-            exampleDifficulty = mapEntry1.getValue().iterator().next();
+            exampleDifficulty = mapEntry1.getValue().get(0);
         }
         if (iterator.hasNext()) {
-            Map.Entry<String, Set<Integer>> mapEntry2 = iterator.next();
+            Map.Entry<String, List<Integer>> mapEntry2 = iterator.next();
             example2 = mapEntry2.getKey();
-            exampleDifficulty2 = mapEntry2.getValue().iterator().next();
+            exampleDifficulty2 = mapEntry2.getValue().get(1);
         }
 
         EmbedCreateSpec embed;
         if (example != null && example2 != null && exampleDifficulty != null && exampleDifficulty2 != null) {
             EmbedCreateSpec.Builder embedBuilder = EmbedCreateSpec.builder();
 
-            List<String> categories = availableTopicsConfig.getAvailableTopics().keySet().stream().sorted(String::compareTo).toList();
+            String categories = availableTopicsConfig.getAvailableTopics().entrySet().stream()
+                    .map(entry -> {
+                        String topic = entry.getKey();
+                        String difficulties = entry.getValue().stream()
+                                .map(String::valueOf)
+                                .collect(Collectors.joining(", "));
+                        return topic + " (" + difficulties + ")";
+                    })
+                    .collect(Collectors.joining("\n"));
+
 
             embed = embedBuilder
                     .addField("How to start a quiz?", "Choose a category and type: **qq quiz <selected category> <selected difficulty level>**", false)
                     .addField("Examples",
                             "To start **" + example + "** quiz, type: **qq quiz " + example + " " + exampleDifficulty + "**\n"
                                 + "To start **" + example2 + "** quiz, type: **qq quiz " + example2 + " " + exampleDifficulty2 + "**", false)
-                    .addField("Available categories", categories.stream().collect(Collectors.joining("\n")), false)
+                    .addField("Available categories", categories, false)
                     .build();
         }
         else{
