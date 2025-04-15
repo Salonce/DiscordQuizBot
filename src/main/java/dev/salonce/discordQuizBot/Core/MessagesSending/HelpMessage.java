@@ -13,6 +13,8 @@ import reactor.core.publisher.Mono;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Component
@@ -27,22 +29,32 @@ public class HelpMessage {
     public Mono<Message> create(MessageChannel messageChannel) {
         Match match = matchStore.get(messageChannel);
         String example = null;
+        Integer exampleDifficulty = -1;
         String example2 = null;
-        Iterator<String> iterator = availableTopicsConfig.getAvailableTopics().keySet().iterator();
-        if (iterator.hasNext())
-            example = iterator.next();
-        if (iterator.hasNext())
-            example2 = iterator.next();
+        Integer exampleDifficulty2 = -1;
+        Iterator<Map.Entry<String, Set<Integer>>> iterator = availableTopicsConfig.getAvailableTopics().entrySet().iterator();
+        if (iterator.hasNext()) {
+            Map.Entry<String, Set<Integer>> mapEntry1 = iterator.next();
+            example = mapEntry1.getKey();
+            exampleDifficulty = mapEntry1.getValue().iterator().next();
+        }
+        if (iterator.hasNext()) {
+            Map.Entry<String, Set<Integer>> mapEntry2 = iterator.next();
+            example2 = mapEntry2.getKey();
+            exampleDifficulty2 = mapEntry2.getValue().iterator().next();
+        }
 
         EmbedCreateSpec embed;
-        if (example != null && example2 != null) {
+        if (example != null && example2 != null && exampleDifficulty != null && exampleDifficulty2 != null) {
             EmbedCreateSpec.Builder embedBuilder = EmbedCreateSpec.builder();
 
             List<String> categories = availableTopicsConfig.getAvailableTopics().keySet().stream().sorted(String::compareTo).toList();
 
             embed = embedBuilder
-                    .addField("How to start a quiz?", "Choose a category and type: **qq quiz <selected category>**", false)
-                    .addField("Examples", "To start **" + example + "** quiz, type: **qq quiz " + example + "**\n" + "To start **" + example2 + "** quiz, type: **qq quiz " + example2 + "**", false)
+                    .addField("How to start a quiz?", "Choose a category and type: **qq quiz <selected category> <selected difficulty level>**", false)
+                    .addField("Examples",
+                            "To start **" + example + "** quiz, type: **qq quiz " + example + " " + exampleDifficulty + "**\n"
+                                + "To start **" + example2 + "** quiz, type: **qq quiz " + example2 + " " + exampleDifficulty2 + "**", false)
                     .addField("Available categories", categories.stream().collect(Collectors.joining("\n")), false)
                     .build();
         }
