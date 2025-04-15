@@ -10,6 +10,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Component("ButtonAnswer")
 public class AnswerButtonHandler implements ButtonHandler {
@@ -20,14 +22,7 @@ public class AnswerButtonHandler implements ButtonHandler {
     public boolean handle(ButtonInteractionEvent event, ButtonInteractionData buttonInteractionData) {
         if (buttonInteractionData.getButtonId().startsWith("Answer")) {
             AnswerData answerData = new AnswerData(buttonInteractionData.getButtonId());
-            AnswerInteractionEnum answerEnum = setPlayerAnswer(buttonInteractionData, answerData);
-
-            String response = switch (answerEnum) {
-                case NOT_IN_MATCH -> "You are not in the match.";
-                case TOO_LATE -> "Your answer came too late!";
-                case VALID -> "Your answer: " + (char) ('A' + answerData.getAnswerNumber()) + ".";
-                default -> "Something went wrong.";
-            };
+            String response = getPlayerAnswer(buttonInteractionData, answerData);
 
             event.reply(response)
                     .withEphemeral(true)
@@ -37,21 +32,22 @@ public class AnswerButtonHandler implements ButtonHandler {
         return false;
     }
 
-    private AnswerInteractionEnum setPlayerAnswer(ButtonInteractionData buttonInteractionData, AnswerData answerData) {
+    private String getPlayerAnswer(ButtonInteractionData buttonInteractionData, AnswerData answerData) {
         Long userId = buttonInteractionData.getUserId();
         Match match = matchStore.get(buttonInteractionData.getMessageChannel());
+        int questionNumber = answerData.getQuestionNumber();
+        int answerNumber = answerData.getAnswerNumber();
 
-        if (match == null)
-            return AnswerInteractionEnum.TOO_LATE; // could be different
+        if (match == null || questionNumber != match.getCurrentQuestionNum() || match.getMatchState() != MatchState.ANSWERING)
+            return "Your answer came too late!";
 
-        if (answerData.getQuestionNumber() != match.getCurrentQuestionNum() || match.getMatchState() != MatchState.ANSWERING)
-            return AnswerInteractionEnum.TOO_LATE;
+        if (!match.getPlayers().containsKey(userId))
+            return "You are not in the match.";
 
-        if (match.getPlayers().containsKey(userId)) {
-            match.getPlayers().get(userId).getAnswersList().set(answerData.getQuestionNumber(), answerData.getAnswerNumber());
-            return AnswerInteractionEnum.VALID;
-        }
-        return AnswerInteractionEnum.NOT_IN_MATCH;
+        List<Integer> answers = match.getPlayers().get(userId).getAnswersList();
+        answers.set(questionNumber, answerNumber);
+        return "Your answer: " + (char) ('A' + answerNumber) + ".";
+
     }
 }
 
