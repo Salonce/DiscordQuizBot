@@ -1,140 +1,162 @@
 [
     {
-        "question": "What is the primary purpose of a mutex in concurrent programming?",
-        "correctAnswers": ["To prevent multiple threads from accessing a shared resource simultaneously"],
-        "incorrectAnswers": ["To schedule tasks across different processors", "To increase the execution speed of threads", "To manage memory allocation for threads"],
-        "explanation": "A mutex (mutual exclusion) is used to ensure that only one thread can access a shared resource at a time, preventing race conditions."
+        "question": "What is a thread?",
+        "correctAnswers": ["A unit of execution in a process"],
+        "incorrectAnswers": ["A file handler", "A network request", "A compiler directive"],
+        "explanation": "A thread is the smallest unit of execution in a process, allowing parallelism.",
+        "difficulty": 2,
+        "tags": ["programming", "concurrency"]
     },
     {
-        "question": "Which concurrency control mechanism allows multiple threads to read a resource but restricts write access to one thread at a time?",
-        "correctAnswers": ["Read-Write Lock"],
-        "incorrectAnswers": ["Semaphore", "Mutex", "Barrier"],
-        "explanation": "A Read-Write Lock permits multiple threads to read simultaneously while ensuring that only one thread can write, enhancing concurrency without compromising data integrity."
+        "question": "What is a race condition?",
+        "correctAnswers": ["A bug from unsynchronized thread access"],
+        "incorrectAnswers": ["A memory leak", "A deadlock", "A loop error"],
+        "explanation": "Race conditions occur when threads access shared data unsafely.",
+        "difficulty": 3,
+        "tags": ["programming", "concurrency"]
     },
     {
-        "question": "What is a race condition in the context of concurrent programming?",
-        "correctAnswers": ["When the system's substantive behavior depends on the sequence or timing of uncontrollable events"],
-        "incorrectAnswers": ["A condition where threads are waiting indefinitely for resources", "A situation where multiple threads execute in a fixed order", "A scenario where threads are starved of CPU time"],
-        "explanation": "A race condition occurs when the behavior of software depends on the timing or sequence of uncontrollable events, leading to unpredictable outcomes."
+        "question": "Which Java keyword is used to control access to critical sections?",
+        "correctAnswers": ["synchronized"],
+        "incorrectAnswers": ["threadsafe", "atomic", "volatile"],
+        "explanation": "`synchronized` ensures that only one thread can execute the block at a time.",
+        "difficulty": 3,
+        "tags": ["programming", "concurrency"]
     },
     {
-        "question": "Which term describes the inability of a thread to make progress because it is waiting for resources held by other threads?",
-        "correctAnswers": ["Deadlock"],
-        "incorrectAnswers": ["Livelock", "Starvation", "Race condition"],
-        "explanation": "Deadlock happens when threads are stuck waiting for each other to release resources, resulting in a standstill where no thread can proceed."
+        "question": "What does 'deadlock' mean?",
+        "correctAnswers": ["Two or more threads waiting forever on each other"],
+        "incorrectAnswers": ["An infinite loop", "A memory overflow", "A scheduling conflict"],
+        "explanation": "Deadlocks occur when threads wait on each other and none can proceed.",
+        "difficulty": 4,
+        "tags": ["programming", "concurrency"]
     },
     {
-        "question": "What concurrency model uses actors as the fundamental units of computation?",
-        "correctAnswers": ["Actor Model"],
-        "incorrectAnswers": ["Shared Memory Model", "Fork-Join Model", "Pipeline Model"],
-        "explanation": "The Actor Model treats actors as independent entities that communicate via message passing, enabling scalable and concurrent system design."
+        "question": "Which mechanism ensures only one thread accesses a resource?",
+        "correctAnswers": ["Mutex"],
+        "incorrectAnswers": ["Array", "Semaphore", "Thread"],
+        "explanation": "A mutex provides mutual exclusion for critical sections.",
+        "difficulty": 3,
+        "tags": ["programming", "concurrency"]
     },
     {
-        "question": "Which synchronization primitive can be used to allow threads to wait for a condition to become true?",
-        "correctAnswers": ["Condition Variable"],
-        "incorrectAnswers": ["Mutex", "Semaphore", "Barrier"],
-        "explanation": "Condition variables enable threads to wait for certain conditions to be met, facilitating coordinated execution based on shared state."
+        "question": "What is a thread pool?",
+        "correctAnswers": ["A group of reusable threads"],
+        "incorrectAnswers": ["A set of loops", "A process scheduler", "A network queue"],
+        "explanation": "Thread pools allow thread reuse and efficient task execution.",
+        "difficulty": 4,
+        "tags": ["programming", "concurrency"]
     },
     {
-        "question": "What is the main difference between a thread and a process in concurrent programming?",
-        "correctAnswers": ["Threads share the same memory space within a process, whereas processes have separate memory spaces"],
-        "incorrectAnswers": ["Threads are always slower than processes", "Processes cannot run concurrently", "Threads cannot communicate with each other"],
-        "explanation": "Threads within the same process share memory and resources, allowing for efficient communication, while processes operate in isolated memory spaces."
+        "question": "What is the purpose of `join()` in threading?",
+        "correctAnswers": ["Waits for a thread to finish"],
+        "incorrectAnswers": ["Starts a thread", "Pauses a thread", "Kills a thread"],
+        "explanation": "`join()` causes the calling thread to wait for another thread to finish.",
+        "difficulty": 2,
+        "tags": ["programming", "concurrency"]
     },
     {
-        "question": "Which problem occurs when threads are perpetually denied the resources they need to proceed, often due to improper resource allocation?",
-        "correctAnswers": ["Starvation"],
-        "incorrectAnswers": ["Deadlock", "Race condition", "Livelock"],
-        "explanation": "Starvation happens when threads are unable to gain necessary resources to proceed, often because other threads are constantly taking those resources."
+        "question": "What does 'atomic' mean in concurrency?",
+        "correctAnswers": ["Operation that completes fully or not at all"],
+        "incorrectAnswers": ["Runs slowly", "Depends on input", "Needs memory lock"],
+        "explanation": "Atomic operations are indivisible and prevent race conditions.",
+        "difficulty": 5,
+        "tags": ["programming", "concurrency"]
     },
     {
-        "question": "What is a common use case for using a thread pool in concurrent programming?",
-        "correctAnswers": ["Managing a fixed number of threads to execute multiple tasks efficiently"],
-        "incorrectAnswers": ["Ensuring that only one thread runs at a time", "Preventing threads from accessing shared resources", "Automatically resolving deadlocks"],
-        "explanation": "Thread pools maintain a limited number of threads that can be reused to execute multiple tasks, reducing the overhead of creating and destroying threads frequently."
+        "question": "Which of these is a thread-safe data structure?",
+        "correctAnswers": ["ConcurrentHashMap"],
+        "incorrectAnswers": ["ArrayList", "HashSet", "TreeMap"],
+        "explanation": "`ConcurrentHashMap` is designed for safe use by multiple threads.",
+        "difficulty": 5,
+        "tags": ["programming", "concurrency"]
     },
     {
-        "question": "Which concept ensures that multiple threads can work on shared data without causing inconsistencies?",
-        "correctAnswers": ["Synchronization"],
-        "incorrectAnswers": ["Parallelism", "Asynchrony", "Concurrency"],
-        "explanation": "Synchronization techniques, such as mutexes and locks, coordinate thread access to shared resources to maintain data consistency."
+        "question": "What is a semaphore used for?",
+        "correctAnswers": ["Controlling access to a resource"],
+        "incorrectAnswers": ["Sorting arrays", "Compiling code", "Handling exceptions"],
+        "explanation": "Semaphores manage resource access limits among threads.",
+        "difficulty": 4,
+        "tags": ["programming", "concurrency"]
     },
     {
-        "question": "What does the term 'livelock' refer to in concurrent systems?",
-        "correctAnswers": ["A situation where threads continuously change state in response to each other without making progress"],
-        "incorrectAnswers": ["Threads are permanently blocked waiting for resources", "Threads execute in a fixed, non-interleaved order", "Threads terminate unexpectedly due to errors"],
-        "explanation": "Livelock occurs when threads are active and responding to each other but unable to make any actual progress, similar to deadlock but with ongoing activity."
+        "question": "Which library provides concurrency utilities in Java?",
+        "correctAnswers": ["java.util.concurrent"],
+        "incorrectAnswers": ["java.lang.sync", "java.core.threads", "java.threading"],
+        "explanation": "Java provides high-level concurrency tools in `java.util.concurrent`.",
+        "difficulty": 4,
+        "tags": ["programming", "concurrency"]
     },
     {
-        "question": "Which model of concurrency relies on multiple threads executing independently but coordinating through shared memory?",
-        "correctAnswers": ["Shared Memory Model"],
-        "incorrectAnswers": ["Actor Model", "Dataflow Model", "Event-driven Model"],
-        "explanation": "The Shared Memory Model allows threads to communicate and synchronize by accessing and modifying shared variables in memory."
+        "question": "What is 'context switching'?",
+        "correctAnswers": ["Switching CPU from one thread to another"],
+        "incorrectAnswers": ["Switching variables", "Swapping memory pages", "Ending processes"],
+        "explanation": "Context switching allows multitasking by swapping thread states.",
+        "difficulty": 5,
+        "tags": ["programming", "concurrency"]
     },
     {
-        "question": "What is the purpose of a semaphore in concurrent programming?",
-        "correctAnswers": ["To control access to a common resource by multiple threads"],
-        "incorrectAnswers": ["To manage thread scheduling priorities", "To facilitate communication between threads", "To handle exceptions in thread execution"],
-        "explanation": "Semaphores are synchronization tools that limit the number of threads accessing a particular resource, ensuring controlled and safe concurrent access."
+        "question": "What causes a livelock?",
+        "correctAnswers": ["Threads constantly react to each other without progress"],
+        "incorrectAnswers": ["Threads crash", "One thread uses all CPU", "Memory fills up"],
+        "explanation": "In a livelock, threads change state but fail to complete tasks.",
+        "difficulty": 6,
+        "tags": ["programming", "concurrency"]
     },
     {
-        "question": "Which of the following is a non-blocking synchronization mechanism used to prevent race conditions?",
-        "correctAnswers": ["Lock-Free Programming"],
-        "incorrectAnswers": ["Mutex Locking", "Thread Sleeping", "Priority Inversion"],
-        "explanation": "Lock-free programming allows multiple threads to operate on shared data without using locks, reducing the chances of deadlocks and improving performance."
+        "question": "Which thread state means it's ready to run but not yet running?",
+        "correctAnswers": ["Runnable"],
+        "incorrectAnswers": ["Blocked", "Waiting", "Terminated"],
+        "explanation": "Runnable threads are scheduled to run by the OS.",
+        "difficulty": 3,
+        "tags": ["programming", "concurrency"]
     },
     {
-        "question": "What does Amdahl's Law pertain to in the context of concurrent programming?",
-        "correctAnswers": ["The potential speedup of a program using multiple processors"],
-        "incorrectAnswers": ["The maximum number of threads that can run concurrently", "The relationship between memory and processing speed", "The overhead of thread synchronization"],
-        "explanation": "Amdahl's Law calculates the theoretical maximum speedup of a task using parallel processing, considering the proportion of the task that can be parallelized."
+        "question": "Which of these avoids deadlock?",
+        "correctAnswers": ["Lock ordering"],
+        "incorrectAnswers": ["Nested loops", "Thread.sleep()", "Using global variables"],
+        "explanation": "Lock ordering ensures threads acquire locks in the same sequence.",
+        "difficulty": 6,
+        "tags": ["programming", "concurrency"]
     },
     {
-        "question": "In concurrent programming, what is a 'critical section'?",
-        "correctAnswers": ["A part of the code that accesses shared resources and must not be executed by more than one thread at a time"],
-        "incorrectAnswers": ["A section of code that handles thread creation", "A segment where threads are terminated", "A part of the code dedicated to logging and debugging"],
-        "explanation": "A critical section is a code segment that must be executed by only one thread at a time to prevent data inconsistencies when accessing shared resources."
+        "question": "What is `volatile` used for in Java?",
+        "correctAnswers": ["To ensure visibility of changes across threads"],
+        "incorrectAnswers": ["Prevent thread creation", "Make code faster", "Allocate memory"],
+        "explanation": "A volatile variable guarantees visibility of updates between threads.",
+        "difficulty": 5,
+        "tags": ["programming", "concurrency"]
     },
     {
-        "question": "Which programming construct allows a thread to wait until another thread completes its execution?",
-        "correctAnswers": ["Join"],
-        "incorrectAnswers": ["Detach", "Yield", "Sleep"],
-        "explanation": "The join operation causes one thread to wait for another thread to finish its execution before continuing, ensuring proper sequencing."
+        "question": "What is the fork/join framework used for?",
+        "correctAnswers": ["Parallel task execution"],
+        "incorrectAnswers": ["Thread sleeping", "Locking data", "Handling I/O"],
+        "explanation": "Fork/join helps break tasks into subtasks for parallel processing.",
+        "difficulty": 6,
+        "tags": ["programming", "concurrency"]
     },
     {
-        "question": "What is the main advantage of using asynchronous programming in concurrent applications?",
-        "correctAnswers": ["Improved responsiveness and better resource utilization"],
-        "incorrectAnswers": ["Simpler code structure", "Guaranteed thread safety", "Elimination of race conditions"],
-        "explanation": "Asynchronous programming allows applications to handle other tasks while waiting for operations to complete, enhancing responsiveness and efficiency."
+        "question": "Which is true about immutable objects?",
+        "correctAnswers": ["They are inherently thread-safe"],
+        "incorrectAnswers": ["They can't be serialized", "They use more memory", "They require locks"],
+        "explanation": "Immutable objects don't change, so concurrent access is safe.",
+        "difficulty": 4,
+        "tags": ["programming", "concurrency"]
     },
     {
-        "question": "Which term describes the execution of multiple threads in overlapping time periods, not necessarily simultaneously?",
-        "correctAnswers": ["Concurrency"],
-        "incorrectAnswers": ["Parallelism", "Synchronization", "Serialization"],
-        "explanation": "Concurrency involves managing multiple threads that make progress over the same time period, which may interleave execution without running simultaneously."
+        "question": "What is the main advantage of lock-free programming?",
+        "correctAnswers": ["Reduced contention and improved performance"],
+        "incorrectAnswers": ["Simpler code", "No need for variables", "More memory usage"],
+        "explanation": "Lock-free code avoids blocking, improving throughput.",
+        "difficulty": 7,
+        "tags": ["programming", "concurrency"]
     },
     {
-        "question": "What is the purpose of a barrier in concurrent programming?",
-        "correctAnswers": ["To synchronize a group of threads at a certain point until all have reached it"],
-        "incorrectAnswers": ["To prevent threads from accessing certain resources", "To prioritize thread execution order", "To handle exceptions across threads"],
-        "explanation": "A barrier ensures that a group of threads waits until all members have reached a specific point in the program before any can proceed, facilitating coordinated execution."
-    },
-    {
-        "question": "Which concurrency issue arises when multiple threads modify a shared variable simultaneously without proper synchronization?",
-        "correctAnswers": ["Race Condition"],
-        "incorrectAnswers": ["Deadlock", "Starvation", "Livelock"],
-        "explanation": "Race conditions occur when threads compete to modify shared data without synchronization, leading to unpredictable and erroneous behavior."
-    },
-    {
-        "question": "In the context of concurrent programming, what is a 'thread pool'?",
-        "correctAnswers": ["A collection of reusable threads managed to perform multiple tasks"],
-        "incorrectAnswers": ["A storage area for thread-related data", "A mechanism to prioritize threads", "A tool for debugging thread issues"],
-        "explanation": "A thread pool maintains a set of ready-to-use threads, reducing the overhead of creating and destroying threads for each task and improving performance."
-    },
-    {
-        "question": "What is the key characteristic of the 'Fork-Join' model in concurrency?",
-        "correctAnswers": ["Tasks are recursively split into smaller subtasks and then combined to produce the final result"],
-        "incorrectAnswers": ["Threads communicate exclusively through message passing", "Threads share a common memory space without synchronization", "Tasks are executed in a fixed, sequential order"],
-        "explanation": "The Fork-Join model involves breaking down a task into smaller subtasks (fork), executing them in parallel, and then combining their results (join) to achieve the final outcome."
+        "question": "Which pattern helps coordinate tasks with dependencies?",
+        "correctAnswers": ["Barrier"],
+        "incorrectAnswers": ["MapReduce", "Producer-Consumer", "Observer"],
+        "explanation": "Barriers let threads wait until others reach the same point.",
+        "difficulty": 6,
+        "tags": ["programming", "concurrency"]
     }
 ]
