@@ -63,10 +63,10 @@ public class HelpMessage {
                     .collect(Collectors.joining("\n"));
 
             embed = embedBuilder
-                    .addField("Basics", "Quizzes are separated by categories and levels. Each category has its own leveling system. It's advised to start at beginner levels and increase the difficulty only when you get very comfortable at previous levels (scoring 8-10). Higher levels include questions from previous levels, so it will be hard to pass them without finishing previous levels.", false)
+                    .addField("Basics", "Quizzes are separated by categories and levels. Each category has its own leveling system. It's advised to start at beginner levels and increase the difficulty when you get very comfortable at previous levels (scoring 8-10). Higher levels include questions from previous levels, so it will be hard to pass them without finishing previous levels. Spaced repetition is included is included while moving up in levels.", false)
                     .addField("How to start a quiz?", "Choose a category, its level and type: **qq quiz <selected category> <selected difficulty level>**", false)
                     .addField("Examples", firstExample + secondExample, false)
-                    .addField("Available categories", categories, false)
+                    .addField("Available categories (levels)", categories, false)
                     .build();
         }
         else{
