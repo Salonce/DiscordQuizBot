@@ -2,6 +2,7 @@ package dev.salonce.discordQuizBot.Core.Questions;
 
 import dev.salonce.discordQuizBot.Configs.AvailableTopicsConfig;
 import jakarta.annotation.PostConstruct;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +15,7 @@ public class RawQuestionService {
     private final RawQuestionRepository rawQuestionRepository;
     private final AvailableTopicsConfig availableTopicsConfig;
 
+    @Getter
     private final Map<String, List<List<RawQuestion>>> topicRawQuestionSets = new HashMap<>();
 
 
