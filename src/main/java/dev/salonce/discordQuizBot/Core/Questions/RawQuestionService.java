@@ -1,6 +1,7 @@
 package dev.salonce.discordQuizBot.Core.Questions;
 
 import dev.salonce.discordQuizBot.Configs.AvailableTopicsConfig;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +18,20 @@ public class RawQuestionService {
     private final AvailableTopicsConfig availableTopicsConfig;
 
     private final HashMap<String, List<Set<RawQuestion>>> topicRawQuestionSets;
+
+    @PostConstruct
+    public void loadTopicRawQuestionSets(){
+
+    }
+
+    public boolean doesQuestionSetExist(String topic, int difficulty){
+        if (!topicRawQuestionSets.containsKey(topic))
+            return false;
+        if (!(topicRawQuestionSets.get(topic).size() < difficulty))
+            return false;
+        return true;
+    }
+
 
     public List<RawQuestion> getRawQuestions(String tag, int difficulty){
         List<RawQuestion> rawQuestionSubset = new ArrayList<>();
