@@ -52,6 +52,8 @@ public class RawQuestionService {
         int difficulty = 0;
         while (rawTopicQuestions.size() >= 10){
             List<RawQuestion> rawQuestions = new ArrayList<>();
+            //maybe add 60 to previous level if size < 60. that way last level will have biggest growth
+            //then add next level if 10+, or make it 70/30 e.g.
             for (int i = 0; i < 50; i++){
                 if (rawTopicQuestions.isEmpty()) break;
                 rawQuestions.add(rawTopicQuestions.get(0));
