@@ -14,7 +14,7 @@ public class RawQuestionService {
     private final RawQuestionRepository rawQuestionRepository;
     private final AvailableTopicsConfig availableTopicsConfig;
 
-    private final HashMap<String, List<Set<RawQuestion>>> topicRawQuestionSets;
+    private final Map<String, List<List<RawQuestion>>> topicRawQuestionSets = new HashMap<>();
 
 
     private List<RawQuestion> generateRawQuestions(String topic){
@@ -26,23 +26,44 @@ public class RawQuestionService {
         return rawQuestions;
     }
 
-    public static void sortQuestions(List<RawQuestion> questions) {
+    public void sortQuestions(List<RawQuestion> questions) {
         questions.sort(Comparator
                 .comparing(RawQuestion::getDifficulty, Comparator.nullsLast(Integer::compareTo))
                 .thenComparing(RawQuestion::getQuestion, Comparator.nullsLast(String::compareToIgnoreCase)));
     }
 
+    private void makeDifficultyListForEachTopic(){
+        for (String topic :  availableTopicsConfig.getAvailableTopics().keySet()){
+            List<List<RawQuestion>> topicDifficultyList = new ArrayList<>();
+            topicRawQuestionSets.put(topic, topicDifficultyList);
+        }
+    }
+
+    private void fillDifficultySets(List<RawQuestion> rawTopicQuestions, String topic){
+        int difficulty = 0;
+        while (rawTopicQuestions.size() >= 50){
+            List<RawQuestion> rawQuestions = new ArrayList<>();
+            for (int i = 0; i < 50; i++){
+                rawQuestions.add(rawTopicQuestions.get(0));
+                rawTopicQuestions.remove(0);
+            }
+            topicRawQuestionSets.get(topic).add(rawQuestions);
+            difficulty++;
+        }
+    }
+
     @PostConstruct
     public void loadTopicRawQuestionSets(){
+        makeDifficultyListForEachTopic();
+
         for (String topic :  availableTopicsConfig.getAvailableTopics().keySet()){
             //generate
-            List<RawQuestion> rawQuestions = generateRawQuestions(topic);
+            List<RawQuestion> rawTopicQuestions = generateRawQuestions(topic);
             // sort by difficulty, if not then question string
-            sortQuestions(rawQuestions);
-            // add 50~ unique question to each level
-
-            // remove the added ones from list on the fly
+            sortQuestions(rawTopicQuestions);
+            // add 50~ unique question to each level, remove the added ones from list on the fly
             // have lists with separate question levels
+            fillDifficultySets(rawTopicQuestions, topic);
             // first just separately add level sets to the game
             // later use the lists to generate random sets with % contribution
 
@@ -55,6 +76,13 @@ public class RawQuestionService {
         if (!(topicRawQuestionSets.get(topic).size() < difficulty))
             return false;
         return true;
+    }
+
+    public List<RawQuestion> getRawQuestionSet(String topic, int difficulty){
+        if (!doesQuestionSetExist(topic, difficulty))
+            return null;
+        List<RawQuestion> rawQuestions = new ArrayList<>();
+        return new ArrayList<>(topicRawQuestionSets.get(topic).get(difficulty-1));
     }
 
 
