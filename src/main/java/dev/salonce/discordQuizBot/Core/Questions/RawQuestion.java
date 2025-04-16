@@ -8,6 +8,7 @@ import java.util.*;
 @Getter
 public class RawQuestion {
 
+    private final Long id;
     private final String question;
     private final List<String> correctAnswers;
     private final List<String> incorrectAnswers;
@@ -15,7 +16,9 @@ public class RawQuestion {
     private final Integer difficulty;
     private final Set<String> tags;
 
-    public RawQuestion(@JsonProperty("question") String question, @JsonProperty("correctAnswers") List<String> correctAnswers, @JsonProperty("incorrectAnswers") List<String> incorrectAnswers, @JsonProperty("explanation") String explanation, @JsonProperty("difficulty") Integer difficulty, @JsonProperty("tags") Set<String> tags) {
+    public RawQuestion(@JsonProperty("id") Long id, @JsonProperty("question") String question, @JsonProperty("correctAnswers") List<String> correctAnswers, @JsonProperty("incorrectAnswers") List<String> incorrectAnswers, @JsonProperty("explanation") String explanation, @JsonProperty("difficulty") Integer difficulty, @JsonProperty("tags") Set<String> tags) {
+
+        this.id = id;
         this.question = question;
         this.correctAnswers = correctAnswers;
         this.incorrectAnswers = incorrectAnswers;

@@ -18,14 +18,21 @@ public class RawQuestionService {
     @Getter
     private final Map<String, List<List<RawQuestion>>> topicRawQuestionSets = new HashMap<>();
 
-
-    private List<RawQuestion> generateRawQuestions(String topic){
-        List<RawQuestion> rawQuestions = new ArrayList<>();
+    // i need to generate raw questions for each tag and then combine them
+    private Set<RawQuestion> generateRawQuestions(String tag){
+        Set<RawQuestion> rawQuestions = new HashSet<>();
         for (RawQuestion rawQuestion : rawQuestionRepository.getRawQuestions()){
-            if (rawQuestion.containsTag(topic))
+            if (rawQuestion.containsTag(tag))
                 rawQuestions.add(rawQuestion);
         }
         return rawQuestions;
+    }
+
+    private List<RawQuestion> combineRawQuestionsFromTags(String[] tags){
+        Set<RawQuestion> combinedRawQuestions = new HashSet<>();
+        for (String tag : tags)
+            combinedRawQuestions.addAll(generateRawQuestions(tag));
+        return new ArrayList<>(combinedRawQuestions);
     }
 
     public void sortQuestions(List<RawQuestion> questions) {
@@ -43,9 +50,10 @@ public class RawQuestionService {
 
     private void fillDifficultySets(List<RawQuestion> rawTopicQuestions, String topic){
         int difficulty = 0;
-        while (rawTopicQuestions.size() >= 50){
+        while (rawTopicQuestions.size() >= 10){
             List<RawQuestion> rawQuestions = new ArrayList<>();
             for (int i = 0; i < 50; i++){
+                if (rawTopicQuestions.isEmpty()) break;
                 rawQuestions.add(rawTopicQuestions.get(0));
                 rawTopicQuestions.remove(0);
             }
@@ -59,9 +67,10 @@ public class RawQuestionService {
     public void loadTopicRawQuestionSets(){
         makeDifficultyListForEachTopic();
 
-        for (String topic :  availableTopicsConfig.getAvailableTopics().keySet()){
+        for (Map.Entry<String, String[]> entry : availableTopicsConfig.getAvailableTopics().entrySet()){
             //generate
-            List<RawQuestion> rawTopicQuestions = generateRawQuestions(topic);
+            String topic = entry.getKey();
+            List<RawQuestion> rawTopicQuestions = combineRawQuestionsFromTags(entry.getValue());
             // sort by difficulty, if not then question string
             sortQuestions(rawTopicQuestions);
             // add 50~ unique question to each level, remove the added ones from list on the fly
