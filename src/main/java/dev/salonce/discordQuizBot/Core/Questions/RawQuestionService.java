@@ -47,6 +47,7 @@ public class RawQuestionService {
                 rawQuestions.add(rawTopicQuestions.get(0));
                 rawTopicQuestions.remove(0);
             }
+            System.out.println("Loaded set, topic: " + topic + ", difficulty: " + difficulty);
             topicRawQuestionSets.get(topic).add(rawQuestions);
             difficulty++;
         }
