@@ -2,7 +2,7 @@ package dev.salonce.discordQuizBot.Core.MessagesHandling.Handlers;
 
 import dev.salonce.discordQuizBot.Core.MessagesHandling.DiscordMessage;
 import dev.salonce.discordQuizBot.Core.Matches.MatchFactory;
-import dev.salonce.discordQuizBot.Core.Questions.AvailableTopicsConfig;
+import dev.salonce.discordQuizBot.Configs.AvailableTopicsConfig;
 import dev.salonce.discordQuizBot.Core.QuizManager;
 import dev.salonce.discordQuizBot.Core.MessagesHandling.MessageHandler;
 import dev.salonce.discordQuizBot.Core.Questions.RawQuestionRepository;
