@@ -74,24 +74,33 @@ public class RawQuestionService {
     public boolean doesQuestionSetExist(String topic, int difficulty){
         if (!topicRawQuestionSets.containsKey(topic))
             return false;
-        if (!(topicRawQuestionSets.get(topic).size() < difficulty))
+        if (topicRawQuestionSets.get(topic).size() < difficulty)
             return false;
+        System.out.println("question set exists");
         return true;
     }
 
-    public List<RawQuestion> getRawQuestionSet(String topic, int difficulty){
+    public List<RawQuestion> getRawQuestionList(String topic, int difficulty){
         if (!doesQuestionSetExist(topic, difficulty))
             return null;
         List<RawQuestion> rawQuestions = new ArrayList<>();
         return new ArrayList<>(topicRawQuestionSets.get(topic).get(difficulty-1));
     }
 
+//    public List<RawQuestion> getRawQuestionList(String topic, int difficulty){
+//        if (!doesQuestionSetExist(topic, difficulty))
+//            return null;
+//        List<RawQuestion> rawQuestions = new ArrayList<>();
+//        return new ArrayList<>(topicRawQuestionSets.get(topic).get(difficulty-1));
+//
+//    }
 
-    public List<RawQuestion> getRawQuestions(String tag, int difficulty){
-        List<RawQuestion> rawQuestionSubset = new ArrayList<>();
-        for (RawQuestion rawQuestion : rawQuestionRepository.getRawQuestions())
-            if (rawQuestion.getTags().contains(tag) && rawQuestion.getDifficulty() <= difficulty)
-                rawQuestionSubset.add(rawQuestion);
-        return rawQuestionSubset;
-    }
+
+//    public List<RawQuestion> getRawQuestions(String tag, int difficulty){
+//        List<RawQuestion> rawQuestionSubset = new ArrayList<>();
+//        for (RawQuestion rawQuestion : rawQuestionRepository.getRawQuestions())
+//            if (rawQuestion.getTags().contains(tag) && rawQuestion.getDifficulty() <= difficulty)
+//                rawQuestionSubset.add(rawQuestion);
+//        return rawQuestionSubset;
+//    }
 }

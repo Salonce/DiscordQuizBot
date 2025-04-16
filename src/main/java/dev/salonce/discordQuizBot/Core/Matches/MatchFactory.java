@@ -16,7 +16,7 @@ public class MatchFactory {
     private final QuestionListFactory questionListFactory;
 
     public Match makeMatch(String tag, int difficulty, Long ownerId){
-        List<Question> questions = questionListFactory.generateQuestions(tag, difficulty, quizConfig.getNoOfQuestions());
+        List<Question> questions = questionListFactory.generateMixedDifficultyQuestions(tag, difficulty, quizConfig.getNoOfQuestions());
         return new Match(questions, tag, ownerId, quizConfig.getUnansweredLimit());
     }
 }
