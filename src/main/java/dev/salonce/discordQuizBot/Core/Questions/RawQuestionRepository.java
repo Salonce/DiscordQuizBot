@@ -50,6 +50,7 @@ public class RawQuestionRepository {
                     CollectionType listType = objectMapper.getTypeFactory()
                             .constructCollectionType(List.class, RawQuestion.class);
                     List<RawQuestion> loaded = objectMapper.readValue(is, listType);
+                    System.out.println("Loaded " + loaded.size() + " from file " + path);
                     rawQuestions.addAll(loaded);
                 } catch (IOException e) {
                     System.err.println("❌ Failed to load file: " + path + " → " + e.getMessage());
