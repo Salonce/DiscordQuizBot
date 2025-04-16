@@ -5,10 +5,7 @@ import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Component
 @RequiredArgsConstructor
@@ -27,15 +24,23 @@ public class RawQuestionService {
                 rawQuestions.add(rawQuestion);
         }
         return rawQuestions;
-    };
+    }
+
+    public static void sortQuestions(List<RawQuestion> questions) {
+        questions.sort(Comparator
+                .comparing(RawQuestion::getDifficulty, Comparator.nullsLast(Integer::compareTo))
+                .thenComparing(RawQuestion::getQuestion, Comparator.nullsLast(String::compareToIgnoreCase)));
+    }
 
     @PostConstruct
     public void loadTopicRawQuestionSets(){
         for (String topic :  availableTopicsConfig.getAvailableTopics().keySet()){
             //generate
             List<RawQuestion> rawQuestions = generateRawQuestions(topic);
-            // sort
+            // sort by difficulty, if not then question string
+            sortQuestions(rawQuestions);
             // add 50~ unique question to each level
+
             // remove the added ones from list on the fly
             // have lists with separate question levels
             // first just separately add level sets to the game
