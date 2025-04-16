@@ -24,33 +24,40 @@ public class RawQuestion {
         this.tags = tags;
     }
 
-    public Question generateQuestion(){
-
-        //make an text list
-        List<QuizOption> quizOptions = new ArrayList<>();
-
-        //add correct answers
-        Random rand = new Random();
-        int num = rand.nextInt(correctAnswers.size());
-        quizOptions.add(new QuizOption(correctAnswers.get(num), true));
-
-        //add incorrect answers
-        Set<Integer> set = new HashSet();
-        int size = Math.min(3, incorrectAnswers.size());
-        while (set.size() != size){
-            num = rand.nextInt(incorrectAnswers.size());
-            set.add(num);
-        }
-
-        for (int i : set){
-            quizOptions.add(new QuizOption(incorrectAnswers.get(i), false));
-        }
-
-        //shuffle the list
-        Collections.shuffle(quizOptions);
-
-        return new Question(question, quizOptions, explanation);
+    public boolean containsTag(String tag){
+        return tags.contains(tag);
     }
+
+
+
+
+//    public Question generateQuestion(){
+//
+//        //make an text list
+//        List<QuizOption> quizOptions = new ArrayList<>();
+//
+//        //add correct answers
+//        Random rand = new Random();
+//        int num = rand.nextInt(correctAnswers.size());
+//        quizOptions.add(new QuizOption(correctAnswers.get(num), true));
+//
+//        //add incorrect answers
+//        Set<Integer> set = new HashSet();
+//        int size = Math.min(3, incorrectAnswers.size());
+//        while (set.size() != size){
+//            num = rand.nextInt(incorrectAnswers.size());
+//            set.add(num);
+//        }
+//
+//        for (int i : set){
+//            quizOptions.add(new QuizOption(incorrectAnswers.get(i), false));
+//        }
+//
+//        //shuffle the list
+//        Collections.shuffle(quizOptions);
+//
+//        return new Question(question, quizOptions, explanation);
+//    }
 
 }
 
