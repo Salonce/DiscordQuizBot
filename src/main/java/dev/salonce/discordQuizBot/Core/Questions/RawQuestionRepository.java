@@ -2,8 +2,10 @@ package dev.salonce.discordQuizBot.Core.Questions;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
+import dev.salonce.discordQuizBot.Configs.AvailableTopicsConfig;
 import jakarta.annotation.PostConstruct;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -17,16 +19,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Setter
 @Getter
 @Component
 public class RawQuestionRepository {
 
     private Set<RawQuestion> rawQuestions = new HashSet<>();
-    private ObjectMapper objectMapper = new ObjectMapper();
 
     @PostConstruct
     public void loadQuestionsFromResources() {
+        ObjectMapper objectMapper = new ObjectMapper();
         try {
             PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 
@@ -54,18 +55,9 @@ public class RawQuestionRepository {
                     System.err.println("❌ Failed to load file: " + path + " → " + e.getMessage());
                 }
             }
-
             System.out.println("✅ Total questions loaded: " + rawQuestions.size());
         } catch (IOException e) {
             System.err.println("❌ Error scanning for JSON files: " + e.getMessage());
         }
-    }
-
-    public List<RawQuestion> getRawQuestions(String tag, int difficulty){
-        List<RawQuestion> rawQuestionSubset = new ArrayList<>();
-        for (RawQuestion rawQuestion : rawQuestions)
-            if (rawQuestion.getTags().contains(tag) && rawQuestion.getDifficulty() <= difficulty)
-                rawQuestionSubset.add(rawQuestion);
-        return rawQuestionSubset;
     }
 }

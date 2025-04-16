@@ -12,11 +12,11 @@ import java.util.Random;
 public class QuestionListFactory {
 
     private final Random rand = new Random();
-    private final RawQuestionRepository rawQuestionRepository;
+    private final RawQuestionService rawQuestionService;
 
     //add logic to eliminate <5 questions by throwing exceptions
     public List<Question> generateQuestions(String tag, int difficulty, int NoQuestions){
-        List<RawQuestion> rawQuestions = rawQuestionRepository.getRawQuestions(tag, difficulty);
+        List<RawQuestion> rawQuestions = rawQuestionService.getRawQuestions(tag, difficulty);
         List<Question> questions = new ArrayList<>();
         if (rawQuestions.size() < NoQuestions)
             System.out.println("Not enough questions in this category...");

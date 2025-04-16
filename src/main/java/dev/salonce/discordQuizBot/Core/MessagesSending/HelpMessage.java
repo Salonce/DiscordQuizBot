@@ -1,6 +1,6 @@
 package dev.salonce.discordQuizBot.Core.MessagesSending;
 
-import dev.salonce.discordQuizBot.Core.Questions.AvailableTopicsConfig;
+import dev.salonce.discordQuizBot.Configs.AvailableTopicsConfig;
 import dev.salonce.discordQuizBot.Core.Questions.RawQuestionRepository;
 import dev.salonce.discordQuizBot.Core.MatchStore;
 import dev.salonce.discordQuizBot.Core.Matches.Match;
@@ -14,7 +14,6 @@ import reactor.core.publisher.Mono;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Component
