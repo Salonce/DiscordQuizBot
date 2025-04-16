@@ -14,7 +14,7 @@ public class RawQuestionService {
     private final RawQuestionRepository rawQuestionRepository;
     private final AvailableTopicsConfig availableTopicsConfig;
 
-    private final HashMap<String, List<Set<RawQuestion>>> topicRawQuestionSets;
+    private final Map<String, List<List<RawQuestion>>> topicRawQuestionSets = new HashMap<>();
 
 
     private List<RawQuestion> generateRawQuestions(String topic){
@@ -36,13 +36,27 @@ public class RawQuestionService {
     public void loadTopicRawQuestionSets(){
         for (String topic :  availableTopicsConfig.getAvailableTopics().keySet()){
             //generate
-            List<RawQuestion> rawQuestions = generateRawQuestions(topic);
-            // sort by difficulty, if not then question string
-            sortQuestions(rawQuestions);
-            // add 50~ unique question to each level
+            List<RawQuestion> rawTopicQuestions = generateRawQuestions(topic);
 
+            //make difficultyList for each topic
+            List<List<RawQuestion>> topicDifficultyList = new ArrayList<>();
+            topicRawQuestionSets.put(topic, topicDifficultyList);
+
+            // sort by difficulty, if not then question string
+            sortQuestions(rawTopicQuestions);
+            // add 50~ unique question to each level
             // remove the added ones from list on the fly
             // have lists with separate question levels
+            int difficulty = 0;
+            while (rawTopicQuestions.size() >= 50){
+                List<RawQuestion> rawQuestions = new ArrayList<>();
+                for (int i = 0; i < 50; i++){
+                    rawQuestions.add(rawTopicQuestions.get(0));
+                    rawTopicQuestions.remove(0);
+                }
+                topicDifficultyList.add(rawQuestions);
+                difficulty++;
+            }
             // first just separately add level sets to the game
             // later use the lists to generate random sets with % contribution
 
