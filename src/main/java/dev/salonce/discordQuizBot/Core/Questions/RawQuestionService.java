@@ -71,6 +71,13 @@ public class RawQuestionService {
         return true;
     }
 
+    public List<RawQuestion> getRawQuestionSet(String topic, int difficulty){
+        if (!doesQuestionSetExist(topic, difficulty))
+            return null;
+        List<RawQuestion> rawQuestions = new ArrayList<>();
+        return new ArrayList<>(topicRawQuestionSets.get(topic).get(difficulty));
+    }
+
 
     public List<RawQuestion> getRawQuestions(String tag, int difficulty){
         List<RawQuestion> rawQuestionSubset = new ArrayList<>();
