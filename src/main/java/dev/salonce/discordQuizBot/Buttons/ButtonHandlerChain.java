@@ -11,7 +11,7 @@ public class ButtonHandlerChain {
 
     public void handle(ButtonInteractionEvent event, ButtonInteractionData buttonInteractionData) {
         for (ButtonHandler handler : buttonHandlers) {
-            System.out.println("handling: " + handler.getClass());
+            //System.out.println("handling: " + handler.getClass());
             if (handler.handle(event, buttonInteractionData)) {
                 break;
             }

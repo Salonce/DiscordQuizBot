@@ -23,10 +23,9 @@ public class DiscordMessage {
             this.content = message.getContent();
 
         } catch (NoSuchElementException noSuchElementException) {
-            System.out.println("Error setting message data.");
-            System.out.println("huh but why.");
+            //System.out.println("Error setting message data.");
         } catch (NullPointerException nullPointerException) {
-            System.out.println("nullPointerException.");
+            //System.out.println("Null pointer exception.")
         }
     }
 
