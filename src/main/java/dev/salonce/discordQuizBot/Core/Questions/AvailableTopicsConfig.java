@@ -13,5 +13,5 @@ import java.util.*;
 @Component
 public class AvailableTopicsConfig {
 
-    private Map<String, String[]> availableTopics = new HashMap<>();
+    private Map<String, Set<String>> availableTopics = new HashMap<>();
 }

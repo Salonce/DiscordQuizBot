@@ -11,9 +11,9 @@ import java.util.*;
 class Topic{
     private List<DifficultyLevel> difficulties = new ArrayList<>();
 
-    public Topic(List<RawQuestion> rawQuestions){
-        while (!rawQuestions.isEmpty()){
-            difficulties.add(new DifficultyLevel(rawQuestions));
+    public Topic(List<RawQuestion> sortedRawQuestions){
+        while (!sortedRawQuestions.isEmpty()){
+            difficulties.add(new DifficultyLevel(sortedRawQuestions));
         }
     }
 
@@ -26,13 +26,6 @@ class Topic{
     public DifficultyLevel getDifficultyLevel(int level){
         return difficulties.get(level - 1);
     }
-//    public void addRawQuestions(Collection<RawQuestion> rawQuestions){
-//        while (!rawQuestions.isEmpty()){
-//            DifficultyLevel difficultyLevel = new DifficultyLevel();
-//            difficultyLevel.add(rawQuestions);
-//            difficulties.add(difficultyLevel);
-//        }
-//    }
 }
 
 @Getter
@@ -71,20 +64,18 @@ public class RawQuestionService {
     @Getter
     private final Map<String, List<List<RawQuestion>>> topics = new HashMap<>();
 
-    private Set<RawQuestion> generateRawQuestions(String tag){
+
+    private List<RawQuestion> getRawQuestions(Set<String> tags){
         Set<RawQuestion> rawQuestions = new HashSet<>();
         for (RawQuestion rawQuestion : rawQuestionRepository.getRawQuestions()){
-            if (rawQuestion.containsTag(tag))
-                rawQuestions.add(rawQuestion);
+            for (String tag : tags){
+                if (rawQuestion.containsTag(tag)) {
+                    rawQuestions.add(rawQuestion);
+                    break;
+                }
+            }
         }
-        return rawQuestions;
-    }
-
-    private List<RawQuestion> generateRawQuestions(String... tags){
-        Set<RawQuestion> combinedRawQuestions = new HashSet<>();
-        for (String tag : tags)
-            combinedRawQuestions.addAll(generateRawQuestions(tag));
-        return new ArrayList<>(combinedRawQuestions);
+        return new ArrayList<>(rawQuestions);
     }
 
     // sort by growing difficulty, if not ID
@@ -105,10 +96,10 @@ public class RawQuestionService {
     public void loadTopicRawQuestionSets(){
         makeDifficultyListForEachTopic();
 
-        for (Map.Entry<String, String[]> entry : availableTopicsConfig.getAvailableTopics().entrySet()){
+        for (Map.Entry<String, Set<String>> entry : availableTopicsConfig.getAvailableTopics().entrySet()){
             //generate
             String topic = entry.getKey();
-            List<RawQuestion> rawTopicQuestions = generateRawQuestions(entry.getValue());
+            List<RawQuestion> rawTopicQuestions = getRawQuestions(entry.getValue());
             sortQuestions(rawTopicQuestions);
             // add 50~ unique question to each level, remove the added ones from list on the fly
             // have lists with separate question levels
@@ -151,4 +142,13 @@ public class RawQuestionService {
         List<RawQuestion> rawQuestions = new ArrayList<>();
         return new ArrayList<>(topics.get(topic).get(difficulty-1));
     }
+
+    //    private Set<RawQuestion> getRawQuestions(String tag){
+    //        Set<RawQuestion> rawQuestions = new HashSet<>();
+    //        for (RawQuestion rawQuestion : rawQuestionRepository.getRawQuestions()){
+    //            if (rawQuestion.containsTag(tag))
+    //                rawQuestions.add(rawQuestion);
+    //        }
+    //        return rawQuestions;
+    //    }
 }
