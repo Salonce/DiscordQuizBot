@@ -2,8 +2,8 @@ package dev.salonce.discordQuizBot.Core.MessagesHandling.Handlers;
 
 import dev.salonce.discordQuizBot.Core.MessagesHandling.DiscordMessage;
 import dev.salonce.discordQuizBot.Core.Matches.MatchFactory;
-import dev.salonce.discordQuizBot.Core.Questions.AvailableTopicsConfig;
-import dev.salonce.discordQuizBot.Core.Questions.RawQuestionService;
+import dev.salonce.discordQuizBot.Core.Questions.TopicsConfig;
+import dev.salonce.discordQuizBot.Core.Questions.RawQuestionRepository;
 import dev.salonce.discordQuizBot.Core.QuizManager;
 import dev.salonce.discordQuizBot.Core.MessagesHandling.MessageHandler;
 import discord4j.core.object.entity.channel.MessageChannel;
@@ -17,8 +17,8 @@ public class StartQuiz implements MessageHandler {
     private final MatchFactory matchFactory;
     private final QuizManager quizManager;
 
-    private final RawQuestionService rawQuestionService;
-    private final AvailableTopicsConfig availableTopicsConfig;
+    private final RawQuestionRepository rawQuestionRepository;
+    private final TopicsConfig topicsConfig;
 
 
     @Override
@@ -40,7 +40,7 @@ public class StartQuiz implements MessageHandler {
 
         String tag = message[2];
         System.out.println("quiz exists not");
-        if (!rawQuestionService.doesQuestionSetExist(tag, difficulty))
+        if (!rawQuestionRepository.doesQuestionSetExist(tag, difficulty))
             return true; // quiz doesn't exist, maybe send a message that it doesn't
         System.out.println("quiz exists");
 //        if (!availableTopicsConfig.getAvailableTopics().containsKey(tag))

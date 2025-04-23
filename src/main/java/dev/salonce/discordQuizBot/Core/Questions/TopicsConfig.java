@@ -11,7 +11,7 @@ import java.util.*;
 @Getter
 @ConfigurationProperties(prefix = "questions")
 @Component
-public class AvailableTopicsConfig {
+public class TopicsConfig {
 
     private Map<String, Set<String>> availableTopics = new HashMap<>();
 }

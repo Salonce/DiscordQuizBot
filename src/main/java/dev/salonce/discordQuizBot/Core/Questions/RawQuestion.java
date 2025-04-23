@@ -32,8 +32,6 @@ public class RawQuestion {
     }
 
 
-
-
 //    public Question generateQuestion(){
 //
 //        //make an text list

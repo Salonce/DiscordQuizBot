@@ -3,6 +3,7 @@ package dev.salonce.discordQuizBot.Core.Questions;
 import lombok.Getter;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Getter
@@ -10,10 +11,11 @@ public class Topic {
     private String name;
     private List<DifficultyLevel> difficulties = new ArrayList<>();
 
-    public Topic(String name, List<RawQuestion> sortedRawQuestions) {
+    public Topic(String name, List<RawQuestion> rawQuestions) {
+        sortQuestions(rawQuestions);
         this.name = name;
-        while (!sortedRawQuestions.isEmpty()) {
-            difficulties.add(new DifficultyLevel(sortedRawQuestions));
+        while (!rawQuestions.isEmpty()) {
+            difficulties.add(new DifficultyLevel(rawQuestions));
         }
     }
 
@@ -25,5 +27,11 @@ public class Topic {
 
     public DifficultyLevel getDifficultyLevel(int level) {
         return difficulties.get(level - 1);
+    }
+
+    private void sortQuestions(List<RawQuestion> questions) {
+        questions.sort(Comparator
+                .comparing(RawQuestion::getDifficulty, Comparator.nullsLast(Integer::compareTo))
+                .thenComparing(RawQuestion::getId, Comparator.nullsLast(Long::compareTo)));
     }
 }

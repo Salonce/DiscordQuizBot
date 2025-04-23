@@ -1,59 +1,60 @@
 package dev.salonce.discordQuizBot.Core.Questions;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.CollectionType;
 import jakarta.annotation.PostConstruct;
 import lombok.Getter;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
-@Getter
 @Component
+@RequiredArgsConstructor
 public class RawQuestionRepository {
 
-    private Set<RawQuestion> rawQuestions = new HashSet<>();
+    private final RawQuestionLoader rawQuestionLoader;
+    private final TopicsConfig topicsConfig;
+    private List<RawQuestion> rawQuestions;
+
+    @Getter
+    private final Map<String, Topic> topicsMap = new HashMap<>();
 
     @PostConstruct
-    public void loadQuestionsFromResources() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+    public void init(){
+        rawQuestions = rawQuestionLoader.loadQuestionsFromResources();
 
-            // Try to load from private data folder first
-            Resource[] privateResources = resolver.getResources("classpath*:private/data/**/*.json");
+        for (Map.Entry<String, Set<String>> entry : topicsConfig.getAvailableTopics().entrySet()){
+            String topicName = entry.getKey();
+            Set<String> tagsSet = entry.getValue();
+            List<RawQuestion> rawTopicQuestions = getRawQuestions(tagsSet);
+            topicsMap.put(topicName, new Topic(topicName, rawTopicQuestions));
+        }
+    }
 
-            // If private resources exist, use them
-            Resource[] resources = privateResources.length > 0 ?
-                    privateResources :
-                    resolver.getResources("classpath*:sample/data/**/*.json");
-
-            String sourcePath = privateResources.length > 0 ? "private/data" : "sample/data";
-            System.out.println("📂 Loading questions from: " + sourcePath);
-
-            for (Resource resource : resources) {
-                String path = resource.getURI().toString();
-                System.out.println("📂 Found file: " + path);
-
-                try (InputStream is = resource.getInputStream()) {
-                    CollectionType listType = objectMapper.getTypeFactory()
-                            .constructCollectionType(List.class, RawQuestion.class);
-                    List<RawQuestion> loaded = objectMapper.readValue(is, listType);
-                    System.out.println("Loaded " + loaded.size() + " from file " + path);
-                    rawQuestions.addAll(loaded);
-                } catch (IOException e) {
-                    System.err.println("❌ Failed to load file: " + path + " → " + e.getMessage());
+    private List<RawQuestion> getRawQuestions(Set<String> tags){
+        Set<RawQuestion> rawQuestions = new HashSet<>();
+        for (RawQuestion rawQuestion : this.rawQuestions){
+            for (String tag : tags){
+                if (rawQuestion.containsTag(tag)) {
+                    rawQuestions.add(rawQuestion);
+                    break;
                 }
             }
-            System.out.println("✅ Total questions loaded: " + rawQuestions.size());
-        } catch (IOException e) {
-            System.err.println("❌ Error scanning for JSON files: " + e.getMessage());
         }
+        return new ArrayList<>(rawQuestions);
+    }
+
+
+    public boolean doesQuestionSetExist(String topic, int level){
+        if (!topicsMap.containsKey(topic))
+            return false;
+        if (!topicsMap.get(topic).difficultyLevelExists(level))
+            return false;
+        return true;
+    }
+
+    public List<RawQuestion> getRawQuestionList(String topic, int level){
+        if (!doesQuestionSetExist(topic, level))
+            return null;
+        return new ArrayList<>(topicsMap.get(topic).getDifficultyLevel(level).getRawQuestions());
     }
 }

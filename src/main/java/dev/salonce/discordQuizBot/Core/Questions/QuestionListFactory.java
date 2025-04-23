@@ -12,11 +12,11 @@ import java.util.Random;
 public class QuestionListFactory {
 
     private final Random rand = new Random();
-    private final RawQuestionService rawQuestionService;
+    private final RawQuestionRepository rawQuestionRepository;
 
 
     private List<Question> generateExactDifficultyQuestions(String tag, int difficulty, int NoQuestions){
-        List<RawQuestion> rawQuestions = rawQuestionService.getRawQuestionList(tag, difficulty);
+        List<RawQuestion> rawQuestions = rawQuestionRepository.getRawQuestionList(tag, difficulty);
         List<Question> questions = new ArrayList<>();
         if (rawQuestions.size() < NoQuestions)
             System.out.println("Not enough questions in this category...");
@@ -31,7 +31,7 @@ public class QuestionListFactory {
     private List<Question> generateLowerDifficultyQuestions(String tag, int difficulty, int NoQuestions){
         List<RawQuestion> rawQuestions = new ArrayList<>();
         for (int i = 1; i < difficulty; i++){
-            rawQuestions.addAll(rawQuestionService.getRawQuestionList(tag, i));
+            rawQuestions.addAll(rawQuestionRepository.getRawQuestionList(tag, i));
         }
         List<Question> questions = new ArrayList<>();
         if (rawQuestions.size() < NoQuestions)

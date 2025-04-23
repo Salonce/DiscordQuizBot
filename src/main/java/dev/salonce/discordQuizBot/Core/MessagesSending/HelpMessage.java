@@ -1,9 +1,8 @@
 package dev.salonce.discordQuizBot.Core.MessagesSending;
 
-import dev.salonce.discordQuizBot.Core.Questions.AvailableTopicsConfig;
-import dev.salonce.discordQuizBot.Core.Questions.RawQuestion;
+import dev.salonce.discordQuizBot.Core.Questions.TopicsConfig;
 import dev.salonce.discordQuizBot.Core.MatchStore;
-import dev.salonce.discordQuizBot.Core.Questions.RawQuestionService;
+import dev.salonce.discordQuizBot.Core.Questions.RawQuestionRepository;
 import dev.salonce.discordQuizBot.Core.Questions.Topic;
 import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.channel.MessageChannel;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -21,13 +19,13 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class HelpMessage {
 
-    private final RawQuestionService rawQuestionService;
+    private final RawQuestionRepository rawQuestionRepository;
     private final MatchStore matchStore;
-    private final AvailableTopicsConfig availableTopicsConfig;
+    private final TopicsConfig topicsConfig;
 
     //examples
     public Mono<Message> create(MessageChannel messageChannel) {
-        Map<String, Topic> topics = rawQuestionService.getTopics();
+        Map<String, Topic> topics = rawQuestionRepository.getTopicsMap();
         String example = null;
         Integer exampleDifficulty = -1;
         String example2 = null;
@@ -54,7 +52,7 @@ public class HelpMessage {
         if (example != null && exampleDifficulty != null) {
             EmbedCreateSpec.Builder embedBuilder = EmbedCreateSpec.builder();
 
-            String categories = rawQuestionService.getTopics().entrySet().stream()
+            String categories = rawQuestionRepository.getTopicsMap().entrySet().stream()
                     .sorted(Map.Entry.comparingByKey())
                     .map(entry -> {
                         String topic = entry.getKey();
