@@ -14,14 +14,6 @@ public class QuestionListFactory {
     private final Random rand = new Random();
     private final RawQuestionService rawQuestionService;
 
-    public boolean doesQuestionSetExist(String topic, int difficulty){
-        if (!rawQuestionService.getTopics().containsKey(topic))
-            return false;
-        if (rawQuestionService.getTopics().get(topic).size() < difficulty)
-            return false;
-        System.out.println("question set exists");
-        return true;
-    }
 
     private List<Question> generateExactDifficultyQuestions(String tag, int difficulty, int NoQuestions){
         List<RawQuestion> rawQuestions = rawQuestionService.getRawQuestionList(tag, difficulty);
