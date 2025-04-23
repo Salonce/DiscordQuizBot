@@ -3,8 +3,10 @@ package dev.salonce.discordQuizBot.Core.Matches;
 import dev.salonce.discordQuizBot.Core.Questions.Question;
 import lombok.Getter;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.NoSuchElementException;
 
 @Getter
 public class Match{

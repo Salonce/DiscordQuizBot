@@ -14,20 +14,13 @@ public class QuestionListFactory {
     private final Random rand = new Random();
     private final RawQuestionService rawQuestionService;
 
-    //add logic to eliminate <5 questions by throwing exceptions
-    public List<Question> generateQuestions(String tag, int difficulty, int NoQuestions){
-        List<RawQuestion> rawQuestions = rawQuestionService.getRawQuestionList(tag, difficulty);
-        List<Question> questions = new ArrayList<>();
-        if (rawQuestions.size() < NoQuestions)
-            System.out.println("Not enough questions in this category...");
-        for(int i = 0; i < NoQuestions; i++){
-            int next = rand.nextInt(rawQuestions.size());
-            questions.add(new Question(rawQuestions.get(next)));
-            rawQuestions.remove(next);
-            //System.out.println(questions.get(i).getQuestion());
-        }
-
-        return questions;
+    public boolean doesQuestionSetExist(String topic, int difficulty){
+        if (!rawQuestionService.getTopics().containsKey(topic))
+            return false;
+        if (rawQuestionService.getTopics().get(topic).size() < difficulty)
+            return false;
+        System.out.println("question set exists");
+        return true;
     }
 
     private List<Question> generateExactDifficultyQuestions(String tag, int difficulty, int NoQuestions){
@@ -70,4 +63,22 @@ public class QuestionListFactory {
         }
         return questions;
     }
+
+
+
+//    //add logic to eliminate <5 questions by throwing exceptions
+//    public List<Question> generateQuestions(String tag, int difficulty, int NoQuestions){
+//        List<RawQuestion> rawQuestions = rawQuestionService.getRawQuestionList(tag, difficulty);
+//        List<Question> questions = new ArrayList<>();
+//        if (rawQuestions.size() < NoQuestions)
+//            System.out.println("Not enough questions in this category...");
+//        for(int i = 0; i < NoQuestions; i++){
+//            int next = rand.nextInt(rawQuestions.size());
+//            questions.add(new Question(rawQuestions.get(next)));
+//            rawQuestions.remove(next);
+//            //System.out.println(questions.get(i).getQuestion());
+//        }
+//
+//        return questions;
+//    }
 }
