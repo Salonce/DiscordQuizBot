@@ -1,11 +1,7 @@
 package dev.salonce.discordQuizBot.Core.MessagesSending;
 
-import dev.salonce.discordQuizBot.Configs.AvailableTopicsConfig;
-import dev.salonce.discordQuizBot.Core.Questions.RawQuestion;
-import dev.salonce.discordQuizBot.Core.Questions.RawQuestionRepository;
-import dev.salonce.discordQuizBot.Core.MatchStore;
-import dev.salonce.discordQuizBot.Core.Matches.Match;
-import dev.salonce.discordQuizBot.Core.Questions.RawQuestionService;
+import dev.salonce.discordQuizBot.Core.Questions.TopicService;
+import dev.salonce.discordQuizBot.Core.Questions.Topic;
 import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.spec.EmbedCreateSpec;
@@ -14,7 +10,6 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -22,30 +17,28 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class HelpMessage {
 
-    private final RawQuestionService rawQuestionService;
-    private final MatchStore matchStore;
-    private final AvailableTopicsConfig availableTopicsConfig;
+    private final TopicService topicService;
 
     //examples
     public Mono<Message> create(MessageChannel messageChannel) {
-        Map<String, List<List<RawQuestion>>> topicRawQuestionSets = rawQuestionService.getTopicRawQuestionSets();
+        Map<String, Topic> topics = topicService.getTopicsMap();
         String example = null;
         Integer exampleDifficulty = -1;
         String example2 = null;
         Integer exampleDifficulty2 = -1;
-        Iterator<Map.Entry<String, List<List<RawQuestion>>>> iterator = topicRawQuestionSets.entrySet().iterator();
+        Iterator<Topic> iterator = topics.values().iterator();
         String firstExample = "";
         if (iterator.hasNext()) {
-            Map.Entry<String, List<List<RawQuestion>>> mapEntry1 = iterator.next();
-            example = mapEntry1.getKey();
+            Topic topic1 = iterator.next();
+            example = topic1.getName();
             exampleDifficulty = 1;
             firstExample = "To start **" + example + "** quiz, at level " + exampleDifficulty + ", type: **qq quiz " + example + " " + exampleDifficulty + "**\n";
         }
         String secondExample = "";
         if (iterator.hasNext()) {
-            Map.Entry<String, List<List<RawQuestion>>> mapEntry2 = iterator.next();
-            example2 = mapEntry2.getKey();
-            exampleDifficulty2 = mapEntry2.getValue().size();
+            Topic topic2 = iterator.next();
+            example2 = topic2.getName();
+            exampleDifficulty2 = 2;
             secondExample = "To start **" + example2 + "** quiz, at level " + exampleDifficulty2 + ", type: **qq quiz " + example2 + " " + exampleDifficulty2 + "**\n";
         }
 
@@ -55,11 +48,11 @@ public class HelpMessage {
         if (example != null && exampleDifficulty != null) {
             EmbedCreateSpec.Builder embedBuilder = EmbedCreateSpec.builder();
 
-            String categories = rawQuestionService.getTopicRawQuestionSets().entrySet().stream()
+            String categories = topicService.getTopicsMap().entrySet().stream()
                     .sorted(Map.Entry.comparingByKey())
                     .map(entry -> {
                         String topic = entry.getKey();
-                        int maxDifficulty = entry.getValue().size();
+                        int maxDifficulty = entry.getValue().getDifficulties().size();
                         return topic + " (1-" + maxDifficulty + ")";
                     })
                     .collect(Collectors.joining("\n"));

@@ -1,4 +1,4 @@
-package dev.salonce.discordQuizBot.Configs;
+package dev.salonce.discordQuizBot.Core.Questions;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +11,7 @@ import java.util.*;
 @Getter
 @ConfigurationProperties(prefix = "questions")
 @Component
-public class AvailableTopicsConfig {
+public class TopicsConfig {
 
-    private Map<String, String[]> availableTopics = new HashMap<>();
+    private Map<String, Set<String>> availableTopics = new HashMap<>();
 }
