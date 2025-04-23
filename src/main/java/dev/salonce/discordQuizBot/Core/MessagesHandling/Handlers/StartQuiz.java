@@ -2,6 +2,7 @@ package dev.salonce.discordQuizBot.Core.MessagesHandling.Handlers;
 
 import dev.salonce.discordQuizBot.Core.MessagesHandling.DiscordMessage;
 import dev.salonce.discordQuizBot.Core.Matches.MatchFactory;
+import dev.salonce.discordQuizBot.Core.Questions.TopicService;
 import dev.salonce.discordQuizBot.Core.Questions.TopicsConfig;
 import dev.salonce.discordQuizBot.Core.Questions.RawQuestionRepository;
 import dev.salonce.discordQuizBot.Core.QuizManager;
@@ -17,8 +18,7 @@ public class StartQuiz implements MessageHandler {
     private final MatchFactory matchFactory;
     private final QuizManager quizManager;
 
-    private final RawQuestionRepository rawQuestionRepository;
-    private final TopicsConfig topicsConfig;
+    private final TopicService topicService;
 
 
     @Override
@@ -38,9 +38,9 @@ public class StartQuiz implements MessageHandler {
             return true; // end the chain - wrong integer, perhaps send a message that it is wrong
         }
 
-        String tag = message[2];
+        String topic = message[2];
         System.out.println("quiz exists not");
-        if (!rawQuestionRepository.doesQuestionSetExist(tag, difficulty))
+        if (!topicService.doesQuestionSetExist(topic, difficulty))
             return true; // quiz doesn't exist, maybe send a message that it doesn't
         System.out.println("quiz exists");
 //        if (!availableTopicsConfig.getAvailableTopics().containsKey(tag))
@@ -49,7 +49,7 @@ public class StartQuiz implements MessageHandler {
         Long userId = discordMessage.getUser().getId().asLong();
         MessageChannel messageChannel = discordMessage.getChannel();
 
-        quizManager.addMatch(messageChannel, matchFactory.makeMatch(tag, difficulty, userId));
+        quizManager.addMatch(messageChannel, matchFactory.makeMatch(topic, difficulty, userId));
         System.out.println("match made");
         return true;
     }

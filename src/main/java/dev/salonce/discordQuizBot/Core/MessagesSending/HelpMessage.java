@@ -1,8 +1,6 @@
 package dev.salonce.discordQuizBot.Core.MessagesSending;
 
-import dev.salonce.discordQuizBot.Core.Questions.TopicsConfig;
-import dev.salonce.discordQuizBot.Core.MatchStore;
-import dev.salonce.discordQuizBot.Core.Questions.RawQuestionRepository;
+import dev.salonce.discordQuizBot.Core.Questions.TopicService;
 import dev.salonce.discordQuizBot.Core.Questions.Topic;
 import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.channel.MessageChannel;
@@ -19,13 +17,11 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class HelpMessage {
 
-    private final RawQuestionRepository rawQuestionRepository;
-    private final MatchStore matchStore;
-    private final TopicsConfig topicsConfig;
+    private final TopicService topicService;
 
     //examples
     public Mono<Message> create(MessageChannel messageChannel) {
-        Map<String, Topic> topics = rawQuestionRepository.getTopicsMap();
+        Map<String, Topic> topics = topicService.getTopicsMap();
         String example = null;
         Integer exampleDifficulty = -1;
         String example2 = null;
@@ -52,7 +48,7 @@ public class HelpMessage {
         if (example != null && exampleDifficulty != null) {
             EmbedCreateSpec.Builder embedBuilder = EmbedCreateSpec.builder();
 
-            String categories = rawQuestionRepository.getTopicsMap().entrySet().stream()
+            String categories = topicService.getTopicsMap().entrySet().stream()
                     .sorted(Map.Entry.comparingByKey())
                     .map(entry -> {
                         String topic = entry.getKey();
