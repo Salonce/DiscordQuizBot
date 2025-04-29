@@ -28,6 +28,8 @@ public class BotService {
         final GatewayDiscordClient gateway = client.login().block();
 
         if (gateway != null) {
+
+            printGuildCount(gateway);
             handleMessages(gateway);
             handleButtonInteractions(gateway);
 
@@ -54,5 +56,10 @@ public class BotService {
 
             return Mono.empty(); // Since handlers subscribe to the events themselves
         }).subscribe();
+    }
+
+    private void printGuildCount(GatewayDiscordClient gateway){
+        int guildCount = gateway.getGuilds().collectList().block().size();
+        System.out.println("Bot is in " + guildCount + " servers.");
     }
 }
