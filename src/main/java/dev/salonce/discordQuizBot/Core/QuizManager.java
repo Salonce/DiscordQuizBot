@@ -1,6 +1,6 @@
 package dev.salonce.discordQuizBot.Core;
 
-import dev.salonce.discordQuizBot.Configs.QuizConfig;
+import dev.salonce.discordQuizBot.Configs.TimersConfig;
 import dev.salonce.discordQuizBot.Core.Matches.Match;
 import dev.salonce.discordQuizBot.Core.Matches.MatchState;
 import dev.salonce.discordQuizBot.Core.MessagesSending.MatchCanceledMessage;
@@ -21,15 +21,15 @@ import java.time.Duration;
 public class QuizManager {
 
     private final MatchStore matchStore;
-    private final QuizConfig quizConfig;
+    private final TimersConfig timersConfig;
     private final QuestionMessage questionMessage;
     private final StartingMessage startingMessage;
     private final MatchCanceledMessage matchCanceledMessage;
     private final MatchResultsMessage matchResultsMessage;
 
     public void addMatch(MessageChannel messageChannel, Match match) {
-        int totalTimeToJoin = quizConfig.getTimeToJoinQuiz();
-        int totalTimeToStart = quizConfig.getTimeToStartMatch();
+        int totalTimeToJoin = timersConfig.getTimeToJoinQuiz();
+        int totalTimeToStart = timersConfig.getTimeToStartMatch();
 
         if (matchStore.containsKey(messageChannel)) {
             // send a message that a match is already in progress in that chat and can't start new one
@@ -97,8 +97,8 @@ public class QuizManager {
     }
 
     private Mono<Void> handleSingleQuestion(Match match, MessageChannel messageChannel, long index) {
-        int totalTime = quizConfig.getTimeToPickAnswer();
-        int totalTimeForNextQuestionToAppear = quizConfig.getTimeForNewQuestionToAppear();
+        int totalTime = timersConfig.getTimeToPickAnswer();
+        int totalTimeForNextQuestionToAppear = timersConfig.getTimeForNewQuestionToAppear();
 
         return questionMessage.create(messageChannel, index, totalTime)
                 .flatMap(message -> {
@@ -118,7 +118,7 @@ public class QuizManager {
 //                            )
                             .then(Mono.defer(() -> updateInactiveRoundsInARowCount(messageChannel)))
                             .then(Mono.defer(() -> switchStateToClosedIfInactiveRoundsInARowLimitReached(messageChannel)))
-                            .then(Mono.delay(Duration.ofSeconds(quizConfig.getTimeForNewQuestionToAppear())))
+                            .then(Mono.delay(Duration.ofSeconds(timersConfig.getTimeForNewQuestionToAppear())))
                             .then(Mono.defer(() -> moveToNextQuestion(match)));
                 });
     }
