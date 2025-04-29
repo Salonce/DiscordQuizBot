@@ -135,7 +135,6 @@ public class QuizManager {
 
     private Mono<Message> closeEnrollment(Message monoMessage, Match match){
         match.setMatchState(MatchState.COUNTDOWN);
-        System.out.println("enrollment closed");
         return Mono.just(monoMessage);
     }
 

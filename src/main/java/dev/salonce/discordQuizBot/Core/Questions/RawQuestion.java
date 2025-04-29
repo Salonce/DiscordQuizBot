@@ -25,9 +25,15 @@ public class RawQuestion {
         this.explanation = explanation;
         this.difficulty = difficulty;
         this.tags = tags;
+
+
     }
 
     public boolean containsTag(String tag){
+        if (tags == null) {
+            System.out.println("Missing or null tags for question ID: " + id);
+            System.out.println("question: " + question);
+        }
         return tags.contains(tag);
     }
 
