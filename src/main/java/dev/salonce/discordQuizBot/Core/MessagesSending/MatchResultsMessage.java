@@ -24,8 +24,10 @@ public class MatchResultsMessage {
         Match match = matchStore.get(messageChannel);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title("Final scoreboard: " )
-                .description(getFinalScoreboard(match))
+                .title("\uD83C\uDFC6 Final scoreboard")
+                .addField("\uD83D\uDCD8 Subject: " + match.getTopic() + " " + match.getDifficulty(), "", false)
+                .addField("❓ Questions: " + match.getQuestions().size(), "", false)
+                .addField("", getFinalScoreboard(match), false)
                 //.addField("\uD83C\uDFC6", "The winners are: " + match.getWinners(), false)
                 .build();
 
@@ -53,9 +55,22 @@ public class MatchResultsMessage {
 
         for (Integer points : sortedPoints) {
             List<String> players = pointsGrouped.get(points);
-            String playersList = String.join(", ", players);
-            scoreboard.append(getOrdinalSuffix(place)).append(" place: ").append(playersList)
-                    .append(" : ").append(points).append(" points\n");
+            String playersList = players.stream()
+                    .map(p -> "**" + p + "**")
+                    .collect(Collectors.joining(", "));
+            String pointWord = points == 1 ? "point" : "points";
+
+            String label;
+            switch (place) {
+                case 1 -> label = "🥇";
+                case 2 -> label = "🥈";
+                case 3 -> label = "🥉";
+                default -> label = getOrdinalSuffix(place);
+            }
+
+            scoreboard.append(label).append(": ")
+                    .append(playersList).append(" — ")
+                    .append("**").append(points).append(" ").append(pointWord).append("**\n");
             place++;
         }
 

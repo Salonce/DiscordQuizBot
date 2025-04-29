@@ -3,8 +3,6 @@ package dev.salonce.discordQuizBot.Core.MessagesHandling.Handlers;
 import dev.salonce.discordQuizBot.Core.MessagesHandling.DiscordMessage;
 import dev.salonce.discordQuizBot.Core.Matches.MatchFactory;
 import dev.salonce.discordQuizBot.Core.Questions.TopicService;
-import dev.salonce.discordQuizBot.Core.Questions.TopicsConfig;
-import dev.salonce.discordQuizBot.Core.Questions.RawQuestionRepository;
 import dev.salonce.discordQuizBot.Core.QuizManager;
 import dev.salonce.discordQuizBot.Core.MessagesHandling.MessageHandler;
 import discord4j.core.object.entity.channel.MessageChannel;
@@ -39,18 +37,13 @@ public class StartQuiz implements MessageHandler {
         }
 
         String topic = message[2];
-        System.out.println("quiz exists not");
         if (!topicService.doesQuestionSetExist(topic, difficulty))
-            return true; // quiz doesn't exist, maybe send a message that it doesn't
-        System.out.println("quiz exists");
-//        if (!availableTopicsConfig.getAvailableTopics().containsKey(tag))
-//            return true; // quiz doesn't exist, maybe send a message that it doesn't
+            return true;
 
         Long userId = discordMessage.getUser().getId().asLong();
         MessageChannel messageChannel = discordMessage.getChannel();
 
         quizManager.addMatch(messageChannel, matchFactory.makeMatch(topic, difficulty, userId));
-        System.out.println("match made");
         return true;
     }
 }

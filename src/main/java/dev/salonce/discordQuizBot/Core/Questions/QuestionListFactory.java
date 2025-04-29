@@ -48,29 +48,14 @@ public class QuestionListFactory {
     public List<Question> generateMixedDifficultyQuestions(String tag, int difficulty, int NoQuestions){
         List<Question> questions = new ArrayList<>();
         if (difficulty == 1)
-            questions.addAll(generateExactDifficultyQuestions(tag, difficulty, 10));
+            questions.addAll(generateExactDifficultyQuestions(tag, difficulty, NoQuestions));
         else{
-            questions.addAll(generateExactDifficultyQuestions(tag, difficulty, 5));
-            questions.addAll(generateLowerDifficultyQuestions(tag, difficulty, 5));
+            int NoQuestionsEasier = NoQuestions/2;
+            int NoQuestionsExact = NoQuestions - NoQuestionsEasier;
+            questions.addAll(generateLowerDifficultyQuestions(tag, difficulty, NoQuestionsEasier));
+            questions.addAll(generateExactDifficultyQuestions(tag, difficulty, NoQuestionsExact));
+
         }
         return questions;
     }
-
-
-
-//    //add logic to eliminate <5 questions by throwing exceptions
-//    public List<Question> generateQuestions(String tag, int difficulty, int NoQuestions){
-//        List<RawQuestion> rawQuestions = rawQuestionService.getRawQuestionList(tag, difficulty);
-//        List<Question> questions = new ArrayList<>();
-//        if (rawQuestions.size() < NoQuestions)
-//            System.out.println("Not enough questions in this category...");
-//        for(int i = 0; i < NoQuestions; i++){
-//            int next = rand.nextInt(rawQuestions.size());
-//            questions.add(new Question(rawQuestions.get(next)));
-//            rawQuestions.remove(next);
-//            //System.out.println(questions.get(i).getQuestion());
-//        }
-//
-//        return questions;
-//    }
 }

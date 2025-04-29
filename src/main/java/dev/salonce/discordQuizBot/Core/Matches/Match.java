@@ -13,7 +13,8 @@ public class Match{
 
     //could maybe add rounds list (with updates) and then just calculate back on "update"
 
-    private String name;
+    private String topic;
+    private final int difficulty;
     private final Map<Long, Player> players = new LinkedHashMap<>();
     private final List<Question> questions;
     private final int inactiveRoundsLimit;
@@ -21,14 +22,15 @@ public class Match{
     private int inactiveRounds = 0;
     private MatchState matchState = MatchState.ENROLLMENT;
 
-    public Match(List<Question> questions, String name, Long ownerId, int inactiveRoundsLimit){
+    public Match(List<Question> questions, String topic, int difficulty, Long ownerId, int inactiveRoundsLimit){
         this.questions = questions;
         this.inactiveRoundsLimit = inactiveRoundsLimit;
         players.put(ownerId, new Player(questions.size()));
 
-        if (name != null) {
-            this.name = name.substring(0, 1).toUpperCase() + name.substring(1); //Capitalize match name
+        if (topic != null) {
+            this.topic = topic.substring(0, 1).toUpperCase() + topic.substring(1); //Capitalize match name
         }
+        this.difficulty = difficulty;
     }
 
     public void addPlayer(Long userId){
