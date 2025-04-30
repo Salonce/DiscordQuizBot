@@ -5,6 +5,7 @@ import dev.salonce.discordQuizBot.Core.Matches.MatchFactory;
 import dev.salonce.discordQuizBot.Core.Questions.TopicService;
 import dev.salonce.discordQuizBot.Core.QuizManager;
 import dev.salonce.discordQuizBot.Core.MessagesHandling.MessageHandler;
+import dev.salonce.discordQuizBot.Core.Stats;
 import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -15,9 +16,7 @@ import org.springframework.stereotype.Component;
 public class StartQuiz implements MessageHandler {
     private final MatchFactory matchFactory;
     private final QuizManager quizManager;
-
     private final TopicService topicService;
-
 
     @Override
     public boolean handleMessage(DiscordMessage discordMessage) {

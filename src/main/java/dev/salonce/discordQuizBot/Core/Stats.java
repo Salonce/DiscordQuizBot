@@ -1,8 +1,9 @@
 package dev.salonce.discordQuizBot.Core;
 
 import dev.salonce.discordQuizBot.Core.Matches.Match;
-import discord4j.core.object.entity.channel.MessageChannel;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Stats {
     private int matches_started = 0;
     //function that prints amount of guilds, their ids and names in a string on call
@@ -10,7 +11,7 @@ public class Stats {
     public void addMatch(Match match){
         System.out.println("Starting match nr " + ++matches_started);
         System.out.println("Creator: " + "<@" + match.getOwnerId() + ">");
-        System.out.println("Topic:" + match.getTopic() + " " + match.getDifficulty());
+        System.out.println("Topic: " + match.getTopic() + " " + match.getDifficulty());
         System.out.println();
 
     }
