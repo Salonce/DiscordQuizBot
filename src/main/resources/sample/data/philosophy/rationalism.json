@@ -1,0 +1,164 @@
+[
+  {
+    "id": 4970351,
+    "question": "What does rationalism emphasize as the primary source of knowledge?",
+    "correctAnswers": ["Reason"],
+    "incorrectAnswers": ["Experience", "Emotion", "Perception"],
+    "explanation": "Rationalism holds that reason is the chief source and test of knowledge.",
+    "difficulty": 5,
+    "tags": ["philosophy", "rationalism"]
+  },
+  {
+    "id": 2390674,
+    "question": "Which philosopher is most associated with rationalism?",
+    "correctAnswers": ["Descartes"],
+    "incorrectAnswers": ["Locke", "Hume", "Berkeley"],
+    "explanation": "René Descartes is often considered the father of modern rationalism.",
+    "difficulty": 8,
+    "tags": ["philosophy", "rationalism"]
+  },
+  {
+    "id": 1759064,
+    "question": "Which statement best reflects rationalist thinking?",
+    "correctAnswers": ["Knowledge comes from innate ideas."],
+    "incorrectAnswers": ["All knowledge comes from sensory data.", "Truth is found through emotions.", "Experience defines all knowledge."],
+    "explanation": "Rationalists argue that some knowledge is innate and independent of experience.",
+    "difficulty": 12,
+    "tags": ["philosophy", "rationalism"]
+  },
+  {
+    "id": 8397203,
+    "question": "Which famous phrase is attributed to Descartes?",
+    "correctAnswers": ["I think, therefore I am."],
+    "incorrectAnswers": ["To be is to be perceived.", "Man is the measure of all things.", "The unexamined life is not worth living."],
+    "explanation": "Descartes' phrase expresses the foundational role of thought in his philosophy.",
+    "difficulty": 15,
+    "tags": ["philosophy", "rationalism"]
+  },
+  {
+    "id": 2809635,
+    "question": "Which branch of philosophy is most directly linked to rationalism?",
+    "correctAnswers": ["Epistemology"],
+    "incorrectAnswers": ["Ethics", "Aesthetics", "Metaphysics"],
+    "explanation": "Rationalism primarily concerns epistemology, the study of knowledge.",
+    "difficulty": 20,
+    "tags": ["philosophy", "rationalism"]
+  },
+  {
+    "id": 4963082,
+    "question": "Which is a hallmark of rationalist thought?",
+    "correctAnswers": ["Deduction"],
+    "incorrectAnswers": ["Induction", "Empiricism", "Pragmatism"],
+    "explanation": "Deductive reasoning is key to rationalist philosophy.",
+    "difficulty": 25,
+    "tags": ["philosophy", "rationalism"]
+  },
+  {
+    "id": 1347620,
+    "question": "Which philosopher argued against rationalism in favor of empiricism?",
+    "correctAnswers": ["Hume"],
+    "incorrectAnswers": ["Spinoza", "Leibniz", "Plato"],
+    "explanation": "David Hume challenged rationalist claims by emphasizing sensory experience.",
+    "difficulty": 30,
+    "tags": ["philosophy", "rationalism"]
+  },
+  {
+    "id": 9741230,
+    "question": "What kind of truths do rationalists believe can be known a priori?",
+    "correctAnswers": ["Independent of experience"],
+    "incorrectAnswers": ["Through scientific observation", "Via emotional introspection", "From historical analysis"],
+    "explanation": "A priori truths are known through reason without sensory input.",
+    "difficulty": 35,
+    "tags": ["philosophy", "rationalism"]
+  },
+  {
+    "id": 6834721,
+    "question": "Which rationalist philosopher developed a system based on monads?",
+    "correctAnswers": ["Leibniz"],
+    "incorrectAnswers": ["Kant", "Sartre", "Hobbes"],
+    "explanation": "Leibniz proposed monads as fundamental units of reality.",
+    "difficulty": 40,
+    "tags": ["philosophy", "rationalism"]
+  },
+  {
+    "id": 5613809,
+    "question": "What does Descartes seek to doubt in his Meditations?",
+    "correctAnswers": ["All beliefs"],
+    "incorrectAnswers": ["Religious doctrines", "Political systems", "Mathematical truths"],
+    "explanation": "Descartes begins by doubting everything to find indubitable truths.",
+    "difficulty": 45,
+    "tags": ["philosophy", "rationalism"]
+  },
+  {
+    "id": 4520983,
+    "question": "Spinoza equated God with what?",
+    "correctAnswers": ["Nature"],
+    "incorrectAnswers": ["Love", "Logic", "Perfection"],
+    "explanation": "Spinoza's rationalist philosophy identified God with the natural world.",
+    "difficulty": 50,
+    "tags": ["philosophy", "rationalism"]
+  },
+  {
+    "id": 6071824,
+    "question": "Which rationalist wrote 'Ethics' in a geometric style?",
+    "correctAnswers": ["Spinoza"],
+    "incorrectAnswers": ["Kant", "Nietzsche", "Bacon"],
+    "explanation": "Spinoza used a deductive, geometrical format to present his ethical system.",
+    "difficulty": 55,
+    "tags": ["philosophy", "rationalism"]
+  },
+  {
+    "id": 7923506,
+    "question": "What is the rationalist view on innate ideas?",
+    "correctAnswers": ["They exist."],
+    "incorrectAnswers": ["They are illusions.", "They are learned.", "They come from society."],
+    "explanation": "Rationalists believe certain ideas are innate and not derived from experience.",
+    "difficulty": 60,
+    "tags": ["philosophy", "rationalism"]
+  },
+  {
+    "id": 3684701,
+    "question": "Which rationalist philosopher emphasized clear and distinct ideas?",
+    "correctAnswers": ["Descartes"],
+    "incorrectAnswers": ["Kierkegaard", "Russell", "Comte"],
+    "explanation": "Descartes claimed that clear and distinct ideas are the basis for certainty.",
+    "difficulty": 65,
+    "tags": ["philosophy", "rationalism"]
+  },
+  {
+    "id": 1703294,
+    "question": "What distinguishes rationalism from empiricism?",
+    "correctAnswers": ["Reason over experience"],
+    "incorrectAnswers": ["Emotion over reason", "Experience over reason", "Faith over logic"],
+    "explanation": "Rationalism values reasoning as the main source of knowledge.",
+    "difficulty": 70,
+    "tags": ["philosophy", "rationalism"]
+  },
+  {
+    "id": 9853076,
+    "question": "Which philosopher tried to reconcile rationalism and empiricism?",
+    "correctAnswers": ["Kant"],
+    "incorrectAnswers": ["Socrates", "Mill", "Foucault"],
+    "explanation": "Kant attempted to synthesize rationalist and empiricist views of knowledge.",
+    "difficulty": 80,
+    "tags": ["philosophy", "rationalism"]
+  },
+  {
+    "id": 6138429,
+    "question": "Which of the following is a synthetic a priori judgment?",
+    "correctAnswers": ["7 + 5 = 12"],
+    "incorrectAnswers": ["Ice melts in heat", "Dogs bark loudly", "All bachelors are unmarried"],
+    "explanation": "Kant considered '7 + 5 = 12' a synthetic a priori truth known through reason.",
+    "difficulty": 85,
+    "tags": ["philosophy", "rationalism"]
+  },
+  {
+    "id": 7312984,
+    "question": "What is the rationalist stance on sensory perception?",
+    "correctAnswers": ["It can be deceiving."],
+    "incorrectAnswers": ["It always reveals truth.", "It is superior to logic.", "It is the only knowledge source."],
+    "explanation": "Rationalists often view the senses as unreliable compared to reason.",
+    "difficulty": 90,
+    "tags": ["philosophy", "rationalism"]
+  }
+]

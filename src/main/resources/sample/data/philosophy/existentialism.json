@@ -1,162 +1,164 @@
 [
   {
-    "question": "Who is considered the father of existentialism?",
+    "id": 1938472,
+    "question": "What is existentialism primarily concerned with?",
+    "correctAnswers": ["Human freedom"],
+    "incorrectAnswers": ["Religious doctrine", "Scientific method", "Economic systems"],
+    "explanation": "Existentialism focuses on individual freedom, choice, and responsibility.",
+    "difficulty": 10,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "id": 7624913,
+    "question": "Which philosopher is closely associated with the phrase 'existence precedes essence'?",
+    "correctAnswers": ["Jean-Paul Sartre"],
+    "incorrectAnswers": ["Karl Marx", "John Locke", "Plato"],
+    "explanation": "Sartre argued that people define themselves through actions, not predetermined essence.",
+    "difficulty": 15,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "id": 3047195,
+    "question": "Which emotion is often central in existentialist thought?",
+    "correctAnswers": ["Anguish"],
+    "incorrectAnswers": ["Euphoria", "Greed", "Pride"],
+    "explanation": "Existentialists emphasize feelings like anguish when confronting freedom and responsibility.",
+    "difficulty": 18,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "id": 8193476,
+    "question": "Who is considered a founder of existentialism?",
     "correctAnswers": ["Søren Kierkegaard"],
-    "incorrectAnswers": ["Immanuel Kant", "Plato", "Karl Marx"],
-    "explanation": "Søren Kierkegaard is widely regarded as the first existentialist philosopher, emphasizing individual existence and subjective truth.",
-    "difficulty": 2,
+    "incorrectAnswers": ["Sigmund Freud", "Niccolò Machiavelli", "Thomas Aquinas"],
+    "explanation": "Kierkegaard is often regarded as the father of existentialism due to his emphasis on personal faith and choice.",
+    "difficulty": 20,
     "tags": ["philosophy", "existentialism"]
   },
   {
-    "question": "Which French philosopher wrote 'Being and Nothingness'?",
-    "correctAnswers": ["Jean-Paul Sartre"],
-    "incorrectAnswers": ["Albert Camus", "Simone de Beauvoir", "Michel Foucault"],
-    "explanation": "'Being and Nothingness' is a foundational text in existentialist philosophy by Jean-Paul Sartre.",
-    "difficulty": 3,
-    "tags": ["philosophy", "existentialism"]
-  },
-  {
-    "question": "What concept is central to existentialist thought?",
-    "correctAnswers": ["Individual freedom"],
-    "incorrectAnswers": ["Divine command", "Historical determinism", "Scientific realism"],
-    "explanation": "Existentialism emphasizes the freedom and responsibility of individuals to define their own meaning.",
-    "difficulty": 2,
-    "tags": ["philosophy", "existentialism"]
-  },
-  {
-    "question": "What is 'bad faith' according to Sartre?",
+    "id": 5120834,
+    "question": "What does 'bad faith' mean in existentialism?",
     "correctAnswers": ["Self-deception"],
-    "incorrectAnswers": ["Moral corruption", "Lack of education", "Mental illness"],
-    "explanation": "Sartre used 'bad faith' to describe the act of deceiving oneself to avoid acknowledging freedom and responsibility.",
-    "difficulty": 4,
+    "incorrectAnswers": ["Moral failure", "Religious doubt", "Lack of intelligence"],
+    "explanation": "‘Bad faith’ refers to denying one's freedom and responsibility through self-deception.",
+    "difficulty": 22,
     "tags": ["philosophy", "existentialism"]
   },
   {
-    "question": "Which work by Camus introduces the concept of the absurd?",
-    "correctAnswers": ["The Myth of Sisyphus"],
-    "incorrectAnswers": ["The Rebel", "Nausea", "Being and Time"],
-    "explanation": "'The Myth of Sisyphus' introduces Camus' idea of the absurd and how individuals confront a meaningless world.",
-    "difficulty": 5,
+    "id": 1789345,
+    "question": "Which work was written by Sartre?",
+    "correctAnswers": ["Being and Nothingness"],
+    "incorrectAnswers": ["The Republic", "Critique of Pure Reason", "Phenomenology of Spirit"],
+    "explanation": "Sartre's *Being and Nothingness* is a major text in existentialist philosophy.",
+    "difficulty": 25,
     "tags": ["philosophy", "existentialism"]
   },
   {
-    "question": "Existentialism emphasizes the importance of:",
-    "correctAnswers": ["Personal choice"],
-    "incorrectAnswers": ["Universal laws", "Economic systems", "Genetic destiny"],
-    "explanation": "Existentialists argue that individuals must create their own values and live authentically.",
-    "difficulty": 1,
+    "id": 6201389,
+    "question": "Which novelist is known for existentialist themes?",
+    "correctAnswers": ["Albert Camus"],
+    "incorrectAnswers": ["Charles Dickens", "Jane Austen", "Fyodor Dostoevsky"],
+    "explanation": "Albert Camus explored existential themes like absurdity and rebellion.",
+    "difficulty": 28,
     "tags": ["philosophy", "existentialism"]
   },
   {
-    "question": "Which philosopher is known for the phrase 'existence precedes essence'?",
-    "correctAnswers": ["Jean-Paul Sartre"],
-    "incorrectAnswers": ["Martin Heidegger", "Albert Camus", "Friedrich Nietzsche"],
-    "explanation": "Sartre's phrase means humans define themselves through actions, not predetermined nature.",
-    "difficulty": 4,
-    "tags": ["philosophy", "existentialism"]
-  },
-  {
-    "question": "Simone de Beauvoir’s existentialist feminism appears in which book?",
-    "correctAnswers": ["The Second Sex"],
-    "incorrectAnswers": ["Ethics of Ambiguity", "The Stranger", "Beyond Good and Evil"],
-    "explanation": "'The Second Sex' blends existentialism with feminism, analyzing the construction of womanhood.",
-    "difficulty": 6,
-    "tags": ["philosophy", "existentialism"]
-  },
-  {
-    "question": "Heidegger’s term 'Dasein' refers to:",
-    "correctAnswers": ["Being-there"],
-    "incorrectAnswers": ["Mind-body dualism", "Political being", "Subject-object unity"],
-    "explanation": "In Heidegger’s ontology, 'Dasein' is the human being who questions its own existence.",
-    "difficulty": 7,
-    "tags": ["philosophy", "existentialism"]
-  },
-  {
-    "question": "Which philosopher argued that life’s meaning must be created, not discovered?",
-    "correctAnswers": ["Friedrich Nietzsche"],
-    "incorrectAnswers": ["Descartes", "Aristotle", "Hume"],
-    "explanation": "Nietzsche rejected objective values and stressed individual meaning-making.",
-    "difficulty": 3,
-    "tags": ["philosophy", "existentialism"]
-  },
-  {
-    "question": "According to Camus, how should one respond to the absurd?",
-    "correctAnswers": ["Live with rebellion"],
-    "incorrectAnswers": ["Seek religious faith", "Ignore it", "Escape into pleasure"],
-    "explanation": "Camus advocated for a defiant embrace of life despite its absurdity.",
-    "difficulty": 5,
-    "tags": ["philosophy", "existentialism"]
-  },
-  {
-    "question": "What does existential anxiety stem from?",
-    "correctAnswers": ["Awareness of freedom"],
-    "incorrectAnswers": ["Fear of death", "Social rejection", "Moral failure"],
-    "explanation": "Existentialists argue anxiety arises from confronting radical freedom and choice.",
-    "difficulty": 4,
-    "tags": ["philosophy", "existentialism"]
-  },
-  {
-    "question": "Which idea is NOT central to existentialism?",
-    "correctAnswers": ["Predetermined fate"],
-    "incorrectAnswers": ["Anguish", "Freedom", "Authenticity"],
-    "explanation": "Existentialism rejects fate in favor of individual freedom and responsibility.",
-    "difficulty": 2,
-    "tags": ["philosophy", "existentialism"]
-  },
-  {
-    "question": "Who explored existential themes in 'Notes from Underground'?",
-    "correctAnswers": ["Fyodor Dostoevsky"],
-    "incorrectAnswers": ["Leo Tolstoy", "Franz Kafka", "Max Weber"],
-    "explanation": "Dostoevsky’s novella is considered a precursor to existentialist literature.",
-    "difficulty": 5,
-    "tags": ["philosophy", "existentialism"]
-  },
-  {
-    "question": "What does Sartre mean by 'man is condemned to be free'?",
-    "correctAnswers": ["We must choose without excuse"],
-    "incorrectAnswers": ["Freedom is a curse", "Free will is an illusion", "Humans are punished for sin"],
-    "explanation": "Sartre emphasized that humans must take full responsibility for their choices.",
-    "difficulty": 6,
-    "tags": ["philosophy", "existentialism"]
-  },
-  {
-    "question": "Nietzsche famously declared:",
-    "correctAnswers": ["God is dead"],
-    "incorrectAnswers": ["Truth is relative", "Nothing exists", "Reason is supreme"],
-    "explanation": "Nietzsche’s 'God is dead' symbolizes the decline of absolute values in modernity.",
-    "difficulty": 4,
-    "tags": ["philosophy", "existentialism"]
-  },
-  {
-    "question": "In existentialism, 'authenticity' refers to:",
-    "correctAnswers": ["Living true to oneself"],
-    "incorrectAnswers": ["Following social norms", "Obeying authority", "Achieving success"],
-    "explanation": "Authenticity involves acknowledging one’s freedom and acting accordingly.",
-    "difficulty": 3,
-    "tags": ["philosophy", "existentialism"]
-  },
-  {
-    "question": "What role does death play in Heidegger’s philosophy?",
-    "correctAnswers": ["It reveals the meaning of Being"],
-    "incorrectAnswers": ["It is meaningless", "It must be avoided", "It defines morality"],
-    "explanation": "For Heidegger, awareness of death sharpens the understanding of existence.",
-    "difficulty": 7,
-    "tags": ["philosophy", "existentialism"]
-  },
-  {
-    "question": "What does 'the absurd' describe in existentialism?",
+    "id": 4901237,
+    "question": "What is the 'absurd' in Camus’ philosophy?",
     "correctAnswers": ["Conflict between meaning-seeking and a silent world"],
-    "incorrectAnswers": ["Illogical thinking", "Dreamlike reality", "Moral confusion"],
-    "explanation": "Camus defines the absurd as the human desire for meaning facing an indifferent universe.",
-    "difficulty": 5,
+    "incorrectAnswers": ["Chaos in society", "Violent behavior", "Existence of evil"],
+    "explanation": "Camus described the absurd as the tension between humans’ desire for meaning and the indifference of the universe.",
+    "difficulty": 30,
     "tags": ["philosophy", "existentialism"]
   },
   {
-    "question": "Existentialists argue that meaning in life is:",
-    "correctAnswers": ["Self-created"],
-    "incorrectAnswers": ["God-given", "Scientifically proven", "Culturally inherited"],
-    "explanation": "Existentialists believe individuals must create their own purpose in life.",
-    "difficulty": 3,
+    "id": 3317426,
+    "question": "Which novel by Camus features a character indifferent to society?",
+    "correctAnswers": ["The Stranger"],
+    "incorrectAnswers": ["The Plague", "Nausea", "The Fall"],
+    "explanation": "*The Stranger* presents Meursault, a man detached from social norms and emotions.",
+    "difficulty": 35,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "id": 9038172,
+    "question": "What does Nietzsche mean by 'God is dead'?",
+    "correctAnswers": ["Loss of religious belief"],
+    "incorrectAnswers": ["Death of a prophet", "Critique of science", "Rejection of morality"],
+    "explanation": "Nietzsche's phrase refers to the decline of traditional religion in modern society.",
+    "difficulty": 40,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "id": 5408123,
+    "question": "What is the 'leap of faith' in Kierkegaard's work?",
+    "correctAnswers": ["Commitment beyond reason"],
+    "incorrectAnswers": ["Conversion to atheism", "Scientific deduction", "Religious ritual"],
+    "explanation": "The leap of faith is a personal commitment to belief without logical proof.",
+    "difficulty": 43,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "id": 2847196,
+    "question": "Heidegger's term 'Being-toward-death' emphasizes what?",
+    "correctAnswers": ["Awareness of mortality"],
+    "incorrectAnswers": ["Desire for eternal life", "Denial of aging", "Religious salvation"],
+    "explanation": "Being-toward-death means authentically living by recognizing life’s finitude.",
+    "difficulty": 50,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "id": 7496132,
+    "question": "What does 'authenticity' mean in existentialism?",
+    "correctAnswers": ["Living true to oneself"],
+    "incorrectAnswers": ["Following tradition", "Seeking power", "Pleasing others"],
+    "explanation": "Authenticity involves embracing personal freedom and acting with integrity.",
+    "difficulty": 55,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "id": 1042938,
+    "question": "What does Beauvoir argue in 'The Second Sex'?",
+    "correctAnswers": ["Woman is made, not born"],
+    "incorrectAnswers": ["Man is biologically superior", "Women are naturally passive", "Sex defines destiny"],
+    "explanation": "Beauvoir claimed that society, not biology, constructs the role of women.",
+    "difficulty": 60,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "id": 6382941,
+    "question": "What is the existentialist view of meaning?",
+    "correctAnswers": ["Created by the individual"],
+    "incorrectAnswers": ["Given by society", "Determined by nature", "Revealed by religion"],
+    "explanation": "Existentialists believe meaning is not given but must be chosen and lived.",
+    "difficulty": 65,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "id": 8012493,
+    "question": "Which existentialist concept emphasizes responsibility for all humanity?",
+    "correctAnswers": ["Universal choice"],
+    "incorrectAnswers": ["Moral relativism", "Group ethics", "Collective duty"],
+    "explanation": "Sartre argued that choosing for oneself implies choosing for all mankind.",
+    "difficulty": 70,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "id": 9184752,
+    "question": "In existentialism, what follows radical freedom?",
+    "correctAnswers": ["Responsibility"],
+    "incorrectAnswers": ["Anarchy", "Power", "Spirituality"],
+    "explanation": "Existentialists assert that freedom demands accepting full responsibility for actions.",
+    "difficulty": 75,
+    "tags": ["philosophy", "existentialism"]
+  },
+  {
+    "id": 3021847,
+    "question": "What is Sartre’s main argument in 'Existentialism is a Humanism'?",
+    "correctAnswers": ["Man defines himself"],
+    "incorrectAnswers": ["Man must follow God", "Morality is inherited", "Truth is absolute"],
+    "explanation": "Sartre defends existentialism by claiming humans are free to shape their identity.",
+    "difficulty": 80,
     "tags": ["philosophy", "existentialism"]
   }
 ]
