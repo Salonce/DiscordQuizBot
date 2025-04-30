@@ -1,0 +1,164 @@
+[
+  {
+    "id": 7302918,
+    "question": "What does nihilism generally deny?",
+    "correctAnswers": ["Meaning"],
+    "incorrectAnswers": ["Beauty", "Reality", "Freedom"],
+    "explanation": "Nihilism broadly refers to the rejection or denial of meaning, especially in life or morality.",
+    "difficulty": 5,
+    "tags": ["philosophy", "nihilism"]
+  },
+  {
+    "id": 8427301,
+    "question": "Which philosopher is often linked with the term nihilism?",
+    "correctAnswers": ["Nietzsche"],
+    "incorrectAnswers": ["Plato", "Descartes", "Kant"],
+    "explanation": "Friedrich Nietzsche is frequently associated with the concept and critique of nihilism.",
+    "difficulty": 10,
+    "tags": ["philosophy", "nihilism"]
+  },
+  {
+    "id": 1912874,
+    "question": "What type of values does moral nihilism reject?",
+    "correctAnswers": ["Ethical"],
+    "incorrectAnswers": ["Aesthetic", "Religious", "Logical"],
+    "explanation": "Moral nihilism is the view that there are no objective moral values.",
+    "difficulty": 12,
+    "tags": ["philosophy", "nihilism"]
+  },
+  {
+    "id": 3601982,
+    "question": "Which concept did Nietzsche say had 'killed God'?",
+    "correctAnswers": ["Modernity"],
+    "incorrectAnswers": ["Science", "Democracy", "Atheism"],
+    "explanation": "Nietzsche used the phrase 'God is dead' to criticize how modernity rendered old values meaningless.",
+    "difficulty": 20,
+    "tags": ["philosophy", "nihilism"]
+  },
+  {
+    "id": 5794210,
+    "question": "What does existential nihilism claim about life?",
+    "correctAnswers": ["It has no purpose"],
+    "incorrectAnswers": ["It must be joyful", "It’s driven by reason", "It mirrors nature"],
+    "explanation": "Existential nihilism asserts that life lacks inherent meaning or purpose.",
+    "difficulty": 25,
+    "tags": ["philosophy", "nihilism"]
+  },
+  {
+    "id": 4801273,
+    "question": "Which of these best describes metaphysical nihilism?",
+    "correctAnswers": ["No objects exist"],
+    "incorrectAnswers": ["All truths are relative", "Consciousness is an illusion", "Everything is energy"],
+    "explanation": "Metaphysical nihilism is the idea that it's possible for nothing to exist at all.",
+    "difficulty": 30,
+    "tags": ["philosophy", "nihilism"]
+  },
+  {
+    "id": 8741052,
+    "question": "How does political nihilism view institutions?",
+    "correctAnswers": ["As unjust"],
+    "incorrectAnswers": ["As divine", "As ideal systems", "As natural evolutions"],
+    "explanation": "Political nihilism views institutions as illegitimate or corrupt, often advocating their rejection.",
+    "difficulty": 32,
+    "tags": ["philosophy", "nihilism"]
+  },
+  {
+    "id": 2179430,
+    "question": "What kind of truth does epistemological nihilism deny?",
+    "correctAnswers": ["Knowledge"],
+    "incorrectAnswers": ["Morality", "God", "Logic"],
+    "explanation": "Epistemological nihilism holds that knowledge is either impossible or meaningless.",
+    "difficulty": 35,
+    "tags": ["philosophy", "nihilism"]
+  },
+  {
+    "id": 3602847,
+    "question": "Which novel is considered an early literary expression of nihilism?",
+    "correctAnswers": ["Fathers and Sons"],
+    "incorrectAnswers": ["The Republic", "The Brothers Karamazov", "The Stranger"],
+    "explanation": "Turgenev’s 'Fathers and Sons' introduced nihilist ideas through the character Bazarov.",
+    "difficulty": 40,
+    "tags": ["philosophy", "nihilism"]
+  },
+  {
+    "id": 9183025,
+    "question": "Which of these is a core belief of existential nihilism?",
+    "correctAnswers": ["Life lacks meaning"],
+    "incorrectAnswers": ["Truth is subjective", "God grants purpose", "Morality is divine"],
+    "explanation": "Existential nihilism suggests human life has no objective meaning or value.",
+    "difficulty": 45,
+    "tags": ["philosophy", "nihilism"]
+  },
+  {
+    "id": 7842051,
+    "question": "Which ideology is often opposed by nihilists?",
+    "correctAnswers": ["Religious faith"],
+    "incorrectAnswers": ["Empiricism", "Dualism", "Utilitarianism"],
+    "explanation": "Nihilists frequently challenge religious or faith-based systems as sources of false meaning.",
+    "difficulty": 50,
+    "tags": ["philosophy", "nihilism"]
+  },
+  {
+    "id": 3159084,
+    "question": "What emotional state is often linked to nihilism?",
+    "correctAnswers": ["Despair"],
+    "incorrectAnswers": ["Hope", "Joy", "Awe"],
+    "explanation": "Despair and emptiness often arise when confronting the idea of a meaningless existence.",
+    "difficulty": 55,
+    "tags": ["philosophy", "nihilism"]
+  },
+  {
+    "id": 6291873,
+    "question": "Nietzsche believed nihilism must eventually be what?",
+    "correctAnswers": ["Overcome"],
+    "incorrectAnswers": ["Accepted", "Worshipped", "Destroyed completely"],
+    "explanation": "Nietzsche saw nihilism as a challenge that humanity must move beyond to create new values.",
+    "difficulty": 60,
+    "tags": ["philosophy", "nihilism"]
+  },
+  {
+    "id": 4125983,
+    "question": "What term did Nietzsche use for creating personal values?",
+    "correctAnswers": ["Revaluation"],
+    "incorrectAnswers": ["Reflection", "Introspection", "Salvation"],
+    "explanation": "Nietzsche's concept of 'revaluation of all values' encouraged creating new personal values.",
+    "difficulty": 65,
+    "tags": ["philosophy", "nihilism"]
+  },
+  {
+    "id": 5192438,
+    "question": "Which 20th-century philosopher is associated with active nihilism?",
+    "correctAnswers": ["Nietzsche"],
+    "incorrectAnswers": ["Heidegger", "Camus", "Russell"],
+    "explanation": "Nietzsche described 'active nihilism' as a transformative force to rebuild values.",
+    "difficulty": 70,
+    "tags": ["philosophy", "nihilism"]
+  },
+  {
+    "id": 6840239,
+    "question": "How does passive nihilism respond to the loss of meaning?",
+    "correctAnswers": ["With resignation"],
+    "incorrectAnswers": ["By fighting it", "By creating values", "With celebration"],
+    "explanation": "Passive nihilism reacts with surrender or despair to the absence of meaning.",
+    "difficulty": 75,
+    "tags": ["philosophy", "nihilism"]
+  },
+  {
+    "id": 1064293,
+    "question": "What is Nietzsche’s 'will to power' often seen as opposing?",
+    "correctAnswers": ["Nihilism"],
+    "incorrectAnswers": ["Empiricism", "Rationalism", "Utilitarianism"],
+    "explanation": "Nietzsche’s 'will to power' is proposed as a force to overcome nihilism.",
+    "difficulty": 80,
+    "tags": ["philosophy", "nihilism"]
+  },
+  {
+    "id": 2083971,
+    "question": "In philosophy, nihilism is most concerned with the absence of what?",
+    "correctAnswers": ["Meaning"],
+    "incorrectAnswers": ["Power", "Emotion", "Experience"],
+    "explanation": "Philosophical nihilism revolves around the absence or denial of meaning in life or values.",
+    "difficulty": 85,
+    "tags": ["philosophy", "nihilism"]
+  }
+]

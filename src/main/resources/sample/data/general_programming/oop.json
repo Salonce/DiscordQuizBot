@@ -1,162 +1,164 @@
 [
     {
+        "id": 1073942,
         "question": "What does OOP stand for?",
         "correctAnswers": ["Object-Oriented Programming"],
-        "incorrectAnswers": ["Open Output Protocol", "Operational Overhead Programming", "Object-Oriented Process"],
-        "explanation": "OOP stands for Object-Oriented Programming, a paradigm based on the concept of objects.",
-        "difficulty": 1,
+        "incorrectAnswers": ["Objective Open Programming", "Object Option Processor", "Operation-Oriented Procedure"],
+        "explanation": "OOP stands for Object-Oriented Programming, a paradigm based on objects and classes.",
+        "difficulty": 5,
         "tags": ["programming", "oop"]
     },
     {
-        "question": "Which keyword is used to create a class in Java?",
-        "correctAnswers": ["class"],
-        "incorrectAnswers": ["define", "struct", "object"],
-        "explanation": "In Java, the 'class' keyword is used to declare a new class.",
-        "difficulty": 1,
-        "tags": ["programming", "oop"]
-    },
-    {
-        "question": "Which OOP principle is related to code reuse via inheritance?",
-        "correctAnswers": ["Inheritance"],
-        "incorrectAnswers": ["Encapsulation", "Polymorphism", "Abstraction"],
-        "explanation": "Inheritance allows one class to acquire the properties and methods of another class.",
-        "difficulty": 2,
-        "tags": ["programming", "oop"]
-    },
-    {
-        "question": "What is the purpose of a constructor?",
-        "correctAnswers": ["Initialize an object"],
-        "incorrectAnswers": ["Destroy an object", "Copy a file", "Compile a class"],
-        "explanation": "A constructor is used to initialize objects of a class.",
-        "difficulty": 2,
-        "tags": ["programming", "oop"]
-    },
-    {
-        "question": "Which principle hides internal object details?",
+        "id": 8246719,
+        "question": "Which OOP principle involves hiding internal details?",
         "correctAnswers": ["Encapsulation"],
-        "incorrectAnswers": ["Inheritance", "Composition", "Delegation"],
-        "explanation": "Encapsulation restricts direct access to object components and is a key OOP concept.",
-        "difficulty": 2,
+        "incorrectAnswers": ["Polymorphism", "Inheritance", "Delegation"],
+        "explanation": "Encapsulation hides internal state and behavior, exposing only necessary parts.",
+        "difficulty": 10,
         "tags": ["programming", "oop"]
     },
     {
-        "question": "Which method is automatically called when an object is destroyed?",
-        "correctAnswers": ["Destructor"],
-        "incorrectAnswers": ["Constructor", "Cleaner", "Initializer"],
-        "explanation": "A destructor is called to clean up before an object is removed from memory.",
-        "difficulty": 3,
+        "id": 2901386,
+        "question": "What is a class?",
+        "correctAnswers": ["A blueprint for objects"],
+        "incorrectAnswers": ["A function block", "A program module", "A user input method"],
+        "explanation": "A class defines properties and behaviors that its instances (objects) will have.",
+        "difficulty": 12,
         "tags": ["programming", "oop"]
     },
     {
-        "question": "What is polymorphism?",
-        "correctAnswers": ["Same interface, different behavior"],
-        "incorrectAnswers": ["Multiple inheritance", "Code duplication", "Hiding variables"],
-        "explanation": "Polymorphism allows objects to be treated as instances of their parent class with behavior specific to the subclass.",
-        "difficulty": 3,
+        "id": 4758213,
+        "question": "What is an object?",
+        "correctAnswers": ["An instance of a class"],
+        "incorrectAnswers": ["A method call", "A return value", "A file handler"],
+        "explanation": "An object is a concrete instance created from a class blueprint.",
+        "difficulty": 14,
         "tags": ["programming", "oop"]
     },
     {
-        "question": "Which of these is not an OOP language?",
-        "correctAnswers": ["SQL"],
-        "incorrectAnswers": ["Java", "Python", "C++"],
-        "explanation": "SQL is a declarative language used for querying databases, not an OOP language.",
-        "difficulty": 2,
+        "id": 9437162,
+        "question": "What is inheritance?",
+        "correctAnswers": ["Reusing class behavior"],
+        "incorrectAnswers": ["Duplicating code", "Creating files", "Compiling classes"],
+        "explanation": "Inheritance allows one class to use properties and methods from another.",
+        "difficulty": 17,
         "tags": ["programming", "oop"]
     },
     {
-        "question": "What is 'this' keyword used for in OOP?",
-        "correctAnswers": ["Refers to current object"],
-        "incorrectAnswers": ["Creates a class", "Returns an object", "Imports a package"],
-        "explanation": "'this' refers to the current instance of the class within its method or constructor.",
-        "difficulty": 3,
-        "tags": ["programming", "oop"]
-    },
-    {
-        "question": "Which principle allows treating different objects through a common interface?",
+        "id": 3285914,
+        "question": "Which OOP principle allows different behaviors for the same method?",
         "correctAnswers": ["Polymorphism"],
-        "incorrectAnswers": ["Encapsulation", "Recursion", "Iteration"],
-        "explanation": "Polymorphism allows using a unified interface to work with different types of objects.",
-        "difficulty": 4,
+        "incorrectAnswers": ["Abstraction", "Binding", "Overloading"],
+        "explanation": "Polymorphism enables one method name to behave differently based on context or object.",
+        "difficulty": 20,
         "tags": ["programming", "oop"]
     },
     {
-        "question": "Which design principle prefers composition over inheritance?",
-        "correctAnswers": ["Favor composition"],
-        "incorrectAnswers": ["Encapsulation principle", "Open-closed principle", "Single responsibility principle"],
-        "explanation": "Favoring composition over inheritance encourages flexible code reuse and design.",
-        "difficulty": 5,
-        "tags": ["programming", "oop"]
-    },
-    {
-        "question": "What is method overloading?",
-        "correctAnswers": ["Same method name, different parameters"],
-        "incorrectAnswers": ["Same parameters, different class", "Different return types", "Same method, different file"],
-        "explanation": "Overloading allows multiple methods with the same name but different signatures in a class.",
-        "difficulty": 4,
-        "tags": ["programming", "oop"]
-    },
-    {
-        "question": "Which visibility modifier restricts access to within the same class?",
-        "correctAnswers": ["private"],
-        "incorrectAnswers": ["protected", "public", "internal"],
-        "explanation": "'private' limits access to the members within the same class only.",
-        "difficulty": 2,
-        "tags": ["programming", "oop"]
-    },
-    {
-        "question": "What is an abstract class?",
-        "correctAnswers": ["A class with unimplemented methods"],
-        "incorrectAnswers": ["A class that cannot have children", "A static class", "A fully defined class"],
-        "explanation": "An abstract class cannot be instantiated and can have abstract methods without implementation.",
-        "difficulty": 5,
-        "tags": ["programming", "oop"]
-    },
-    {
-        "question": "Which is a benefit of OOP?",
-        "correctAnswers": ["Code reuse"],
-        "incorrectAnswers": ["More memory usage", "Tight coupling", "Slower development"],
-        "explanation": "OOP promotes code reuse through inheritance and modular design.",
-        "difficulty": 1,
-        "tags": ["programming", "oop"]
-    },
-    {
-        "question": "What is an interface in OOP?",
-        "correctAnswers": ["A contract of methods to implement"],
-        "incorrectAnswers": ["A GUI element", "A file format", "A class with fields"],
-        "explanation": "An interface defines a set of methods that a class agrees to implement.",
-        "difficulty": 5,
-        "tags": ["programming", "oop"]
-    },
-    {
-        "question": "Can abstract classes have constructors?",
-        "correctAnswers": ["Yes"],
-        "incorrectAnswers": ["No", "Only static ones", "Only in interfaces"],
-        "explanation": "Abstract classes can have constructors to initialize common fields.",
-        "difficulty": 6,
-        "tags": ["programming", "oop"]
-    },
-    {
-        "question": "What is multiple inheritance?",
-        "correctAnswers": ["A class inherits from multiple classes"],
-        "incorrectAnswers": ["Class has multiple methods", "One class inherits many objects", "Class has many instances"],
-        "explanation": "Multiple inheritance allows a class to inherit from more than one parent class.",
-        "difficulty": 6,
-        "tags": ["programming", "oop"]
-    },
-    {
-        "question": "What problem does diamond inheritance cause?",
-        "correctAnswers": ["Ambiguity"],
-        "incorrectAnswers": ["Recursion", "Compilation error", "Memory leak"],
-        "explanation": "Diamond inheritance causes ambiguity when two base classes implement the same method.",
-        "difficulty": 7,
-        "tags": ["programming", "oop"]
-    },
-    {
-        "question": "Which OOP principle promotes separating what an object does from how?",
+        "id": 6942715,
+        "question": "Which concept describes a simplified view of complexity?",
         "correctAnswers": ["Abstraction"],
-        "incorrectAnswers": ["Inheritance", "Composition", "Polymorphism"],
-        "explanation": "Abstraction hides implementation details and exposes only essential features.",
-        "difficulty": 4,
+        "incorrectAnswers": ["Encapsulation", "Concurrency", "Iteration"],
+        "explanation": "Abstraction focuses on essential features while hiding the unnecessary ones.",
+        "difficulty": 25,
+        "tags": ["programming", "oop"]
+    },
+    {
+        "id": 8115379,
+        "question": "Which access modifier allows access from anywhere?",
+        "correctAnswers": ["public"],
+        "incorrectAnswers": ["private", "protected", "static"],
+        "explanation": "The 'public' modifier means the member can be accessed from any class.",
+        "difficulty": 30,
+        "tags": ["programming", "oop"]
+    },
+    {
+        "id": 5318270,
+        "question": "What does 'this' refer to in a class method?",
+        "correctAnswers": ["Current object"],
+        "incorrectAnswers": ["Parent class", "Static context", "Global scope"],
+        "explanation": "'this' refers to the current instance of the object calling the method.",
+        "difficulty": 35,
+        "tags": ["programming", "oop"]
+    },
+    {
+        "id": 1796408,
+        "question": "What is method overloading?",
+        "correctAnswers": ["Same name, different parameters"],
+        "incorrectAnswers": ["Multiple returns", "Different classes", "Private access"],
+        "explanation": "Overloading allows multiple methods with the same name but different arguments.",
+        "difficulty": 40,
+        "tags": ["programming", "oop"]
+    },
+    {
+        "id": 9463120,
+        "question": "Which keyword prevents a class from being extended in Java?",
+        "correctAnswers": ["final"],
+        "incorrectAnswers": ["abstract", "static", "sealed"],
+        "explanation": "The 'final' keyword in Java prevents a class from being subclassed.",
+        "difficulty": 45,
+        "tags": ["programming", "oop"]
+    },
+    {
+        "id": 3281467,
+        "question": "What does a constructor do?",
+        "correctAnswers": ["Initializes an object"],
+        "incorrectAnswers": ["Deletes memory", "Calls superclass", "Generates threads"],
+        "explanation": "A constructor is a special method that initializes new objects.",
+        "difficulty": 48,
+        "tags": ["programming", "oop"]
+    },
+    {
+        "id": 6219573,
+        "question": "Which type of relationship is inheritance?",
+        "correctAnswers": ["IS-A"],
+        "incorrectAnswers": ["HAS-A", "CAN-DO", "USES-A"],
+        "explanation": "Inheritance represents an IS-A relationship between a subclass and superclass.",
+        "difficulty": 50,
+        "tags": ["programming", "oop"]
+    },
+    {
+        "id": 4058931,
+        "question": "What is the role of an abstract class?",
+        "correctAnswers": ["Defines partial behavior"],
+        "incorrectAnswers": ["Implements all logic", "Stores data only", "Creates interfaces"],
+        "explanation": "Abstract classes provide base definitions and may include unimplemented methods.",
+        "difficulty": 60,
+        "tags": ["programming", "oop"]
+    },
+    {
+        "id": 9781230,
+        "question": "Can interfaces have method bodies in Java?",
+        "correctAnswers": ["Yes, with default methods"],
+        "incorrectAnswers": ["No, never", "Only in constructors", "Only in static blocks"],
+        "explanation": "Since Java 8, interfaces can have default and static method implementations.",
+        "difficulty": 65,
+        "tags": ["programming", "oop"]
+    },
+    {
+        "id": 1640937,
+        "question": "What is dynamic binding?",
+        "correctAnswers": ["Runtime method resolution"],
+        "incorrectAnswers": ["Compile-time linking", "Hard-coded logic", "Synchronous execution"],
+        "explanation": "Dynamic binding means the method call is resolved at runtime, allowing polymorphism.",
+        "difficulty": 70,
+        "tags": ["programming", "oop"]
+    },
+    {
+        "id": 3519806,
+        "question": "What design pattern enforces a single instance?",
+        "correctAnswers": ["Singleton"],
+        "incorrectAnswers": ["Factory", "Observer", "Strategy"],
+        "explanation": "The Singleton pattern ensures only one instance of a class exists.",
+        "difficulty": 75,
+        "tags": ["programming", "oop"]
+    },
+    {
+        "id": 7352049,
+        "question": "What is the main purpose of dependency injection?",
+        "correctAnswers": ["Reduce coupling"],
+        "incorrectAnswers": ["Speed up runtime", "Add more threads", "Increase memory"],
+        "explanation": "Dependency injection allows components to be loosely coupled and testable.",
+        "difficulty": 80,
         "tags": ["programming", "oop"]
     }
 ]
