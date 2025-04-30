@@ -27,10 +27,10 @@ public class MessageFilter implements MessageHandler {
 
         String[] message = discordMessage.getContent().split(" ");
 
-        if (message.length <= 1)
+        if (message.length < 2)
             return true;
 
-        if (message.length >= 5)
+        if (message.length > 6)
             return true;
 
         return false;
