@@ -5,12 +5,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-
-import java.io.File;
-import java.io.IOException;
 
 @RequiredArgsConstructor
 @SpringBootApplication

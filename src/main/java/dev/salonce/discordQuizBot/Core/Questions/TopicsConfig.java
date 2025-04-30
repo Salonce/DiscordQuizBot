@@ -1,5 +1,6 @@
 package dev.salonce.discordQuizBot.Core.Questions;
 
+import jakarta.annotation.PostConstruct;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -14,4 +15,10 @@ import java.util.*;
 public class TopicsConfig {
 
     private Map<String, Set<String>> availableTopics = new HashMap<>();
+
+    @PostConstruct
+    private void postConst(){
+        for (String string : availableTopics.keySet())
+            System.out.println(string);
+    }
 }

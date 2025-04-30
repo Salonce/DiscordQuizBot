@@ -22,20 +22,33 @@ public class StartQuiz implements MessageHandler {
     public boolean handleMessage(DiscordMessage discordMessage) {
         String[] message = discordMessage.getContent().split(" ");
 
-        if (!(message[0].equals("qq") && (message[1].equals("quiz") || message[1].equals("start"))))
+        if (!(message[0].equals("qq") && (message[1].equals("quiz") || message[1].equals("start") || message[1].equals("play"))))
             return false;
 
         if (message.length < 4)
             return true; // command good (checked above), but too short, end the chain
 
+        //also already set in MessageFilter handler
+        if (message.length > 6)
+            return true; // command good (checked above), but too long, end the chain
+
         int difficulty;
         try{
-            difficulty = Integer.parseInt(message[3]);
+            difficulty = Integer.parseInt(message[message.length-1]);
         } catch (NumberFormatException e) {
+            System.out.println("wrong int");
             return true; // end the chain - wrong integer, perhaps send a message that it is wrong
         }
 
-        String topic = message[2];
+        StringBuilder sb = new StringBuilder();
+        for (int i = 2; i < message.length - 1; i++) {
+            sb.append(message[i]);
+            System.out.println(message[i]);
+            if (i != message.length - 2)
+                sb.append(" ");
+        }
+        String topic = sb.toString();
+        System.out.println(topic);
         if (!topicService.doesQuestionSetExist(topic, difficulty))
             return true;
 
