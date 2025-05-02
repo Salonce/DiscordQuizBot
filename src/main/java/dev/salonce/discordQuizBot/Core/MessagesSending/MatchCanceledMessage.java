@@ -18,14 +18,18 @@ public class MatchCanceledMessage {
 
     public Mono<Message> create(MessageChannel messageChannel){
         Match match = matchStore.get(messageChannel);
-        String text = "Match has been closed.";
+        String title = "\uD83D\uDEAA Match aborted.";
+        String reason = "unknown.";
         if (match.getMatchState() == MatchState.CLOSED_BY_INACTIVITY)
-            text = "Match has been autoclosed.";
+            reason = "autoclosed due to player's inactivity.";
         else if (match.getMatchState() == MatchState.CLOSED_BY_OWNER)
-            text = "Match has been closed by the owner.";
+            reason = "the owner <@" + match.getOwnerId() + ">" + " aborted the match.";
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                .title(text)
+                .title(title)
+                .addField("\uD83D\uDCD8 Subject: " + match.getTopic() + " " + match.getDifficulty(), "", false)
+                .addField("❓ Questions: " + match.getQuestions().size(), "", false)
+                .addField("" , "**\uD83E\uDD14 Reason: " + "**", false)
                 .build();
 
         return messageChannel.createMessage(embed);
