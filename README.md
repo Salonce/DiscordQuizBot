@@ -21,3 +21,4 @@ It is advised to create a new folder /resources/private, construed analogically 
 It is also possible to just modify the data in the /sample/ folder, but by default the program will look for /resources/private configuration and if they exist they will override the sample.
 
 ![starting](https://i.imgur.com/qbvJKU6.gif)
+![middle_game](https://i.imgur.com/gYcZ0EN.gif)
