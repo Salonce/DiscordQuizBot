@@ -20,4 +20,4 @@ There is a small standard sample of questions in the /resources/sample folder.
 It is advised to create a new folder /resources/private, construed analogically to /resources/sample, and use a file named application.yml in it, instead of application-sample.yml as in /sample instead.
 It is also possible to just modify the data in the /sample/ folder, but by default the program will look for /resources/private configuration and if they exist they will override the sample.
 
-![somegifname](https://i.imgur.com/weKHW6Z.gif)
+![starting](https://i.imgur.com/qbvJKU6.gif)
