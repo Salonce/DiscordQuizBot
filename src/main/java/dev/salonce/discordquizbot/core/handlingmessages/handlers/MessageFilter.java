@@ -1,4 +1,4 @@
-package dev.salonce.discordquizbot.core.handlingmessages.Handlers;
+package dev.salonce.discordquizbot.core.handlingmessages.handlers;
 
 import dev.salonce.discordquizbot.core.handlingmessages.DiscordMessage;
 import dev.salonce.discordquizbot.core.handlingmessages.MessageHandler;
