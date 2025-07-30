@@ -1,4 +1,4 @@
-package dev.salonce.discordquizbot.core.questions;
+package dev.salonce.discordquizbot.core.questions.rawquestions;
 
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +16,10 @@ public class RawQuestionRepository {
     @PostConstruct
     public void init(){
         rawQuestions = rawQuestionLoader.loadQuestionsFromResources();
+    }
+
+    public List<RawQuestion> getAllRawQuestions(){
+        return new ArrayList<>(rawQuestions);
     }
 
     public List<RawQuestion> getRawQuestions(Set<String> tags){

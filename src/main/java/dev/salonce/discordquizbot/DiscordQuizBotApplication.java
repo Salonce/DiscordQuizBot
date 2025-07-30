@@ -1,6 +1,6 @@
 package dev.salonce.discordquizbot;
 
-import dev.salonce.discordquizbot.core.BotService;
+import dev.salonce.discordquizbot.core.StartingBotService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -12,7 +12,7 @@ import org.springframework.core.io.Resource;
 @SpringBootApplication
 public class DiscordQuizBotApplication implements CommandLineRunner {
 
-	private final BotService botService;
+	private final StartingBotService startingBotService;
 
 	public static void main(String[] args) {
 		Resource primaryResource = new ClassPathResource("private/application.yml");
@@ -27,7 +27,7 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) {
-		botService.startBot();
+		startingBotService.startBot();
 	}
 
 }

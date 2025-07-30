@@ -1,4 +1,4 @@
-package dev.salonce.discordquizbot.core.questions;
+package dev.salonce.discordquizbot.core.questions.rawquestions;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;

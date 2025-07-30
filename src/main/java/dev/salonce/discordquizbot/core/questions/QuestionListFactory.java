@@ -1,5 +1,6 @@
 package dev.salonce.discordquizbot.core.questions;
 
+import dev.salonce.discordquizbot.core.questions.rawquestions.RawQuestion;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

@@ -15,7 +15,7 @@ import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
 @Service
-public class BotService {
+public class StartingBotService {
 
     private final MessageHandlerChain messageHandlerChain;
     private final ButtonHandlerChain buttonHandlerChain;
