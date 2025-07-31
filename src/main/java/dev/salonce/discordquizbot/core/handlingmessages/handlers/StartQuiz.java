@@ -2,6 +2,7 @@ package dev.salonce.discordquizbot.core.handlingmessages.handlers;
 
 import dev.salonce.discordquizbot.core.handlingmessages.DiscordMessage;
 import dev.salonce.discordquizbot.core.matches.MatchService;
+import dev.salonce.discordquizbot.core.questions.questions.QuestionsService;
 import dev.salonce.discordquizbot.core.questions.topics.TopicService;
 import dev.salonce.discordquizbot.core.QuizManager;
 import dev.salonce.discordquizbot.core.handlingmessages.MessageHandler;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Component;
 public class StartQuiz implements MessageHandler {
     private final MatchService matchService;
     private final QuizManager quizManager;
-    private final TopicService topicService;
+    private final QuestionsService questionsService;
 
     @Override
     public boolean handleMessage(DiscordMessage discordMessage) {
@@ -48,7 +49,7 @@ public class StartQuiz implements MessageHandler {
         }
         String topic = sb.toString();
         System.out.println(topic);
-        if (!topicService.doesQuestionSetExist(topic, difficulty))
+        if (!questionsService.doesQuestionSetExist(topic, difficulty))
             return true;
 
         Long userId = discordMessage.getUser().getId().asLong();

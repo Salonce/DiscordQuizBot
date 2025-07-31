@@ -17,7 +17,7 @@ public class MatchCreationService {
     private final QuestionsService questionsService;
     private final Statistics statistics;
 
-    public Match makeMatch(String topic, int difficulty, Long ownerId){
+    Match makeMatch(String topic, int difficulty, Long ownerId){
         List<Question> questions = questionsService.generateQuestions(topic, difficulty, timersConfig.getNoOfQuestions());
         Match match = new Match(questions, topic, difficulty, ownerId, timersConfig.getUnansweredLimit());
         statistics.addMatch(match);

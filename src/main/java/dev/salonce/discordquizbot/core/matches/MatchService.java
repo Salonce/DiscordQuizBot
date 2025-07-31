@@ -10,8 +10,8 @@ import java.util.Collection;
 @RequiredArgsConstructor
 public class MatchService {
 
-    private MatchCache matchCache;
-    private MatchCreationService matchCreationService;
+    private final MatchCache matchCache;
+    private final MatchCreationService matchCreationService;
 
     public Match makeMatch(String topic, int difficulty, Long ownerId){
         return matchCreationService.makeMatch(topic, difficulty, ownerId);

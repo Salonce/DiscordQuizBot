@@ -22,6 +22,7 @@ public class DiscordQuizBotApplication implements CommandLineRunner {
 				"classpath:/sample/application-sample.yml";
 
 		System.setProperty("spring.config.location", configLocation);
+
 		SpringApplication.run(DiscordQuizBotApplication.class, args);
 	}
 
