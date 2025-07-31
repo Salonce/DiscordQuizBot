@@ -1,9 +1,9 @@
 package dev.salonce.discordquizbot.core.matches;
 
 import dev.salonce.discordquizbot.configs.TimersConfig;
-import dev.salonce.discordquizbot.core.questions.Question;
-import dev.salonce.discordquizbot.core.questions.QuestionListFactory;
+import dev.salonce.discordquizbot.core.questions.questions.Question;
 import dev.salonce.discordquizbot.core.Stats;
+import dev.salonce.discordquizbot.core.questions.questions.QuestionsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -14,11 +14,11 @@ import java.util.List;
 public class MatchFactory {
 
     private final TimersConfig timersConfig;
-    private final QuestionListFactory questionListFactory;
+    private final QuestionsService questionsService;
     private final Stats stats;
 
     public Match makeMatch(String topic, int difficulty, Long ownerId){
-        List<Question> questions = questionListFactory.generateMixedDifficultyQuestions(topic, difficulty, timersConfig.getNoOfQuestions());
+        List<Question> questions = questionsService.generateQuestions(topic, difficulty, timersConfig.getNoOfQuestions());
         Match match = new Match(questions, topic, difficulty, ownerId, timersConfig.getUnansweredLimit());
         stats.addMatch(match);
         return match;

@@ -3,7 +3,7 @@ package dev.salonce.discordquizbot.core.sendingmessages;
 import dev.salonce.discordquizbot.core.MatchStore;
 import dev.salonce.discordquizbot.core.matches.Match;
 import dev.salonce.discordquizbot.core.matches.Player;
-import dev.salonce.discordquizbot.core.questions.Question;
+import dev.salonce.discordquizbot.core.questions.questions.Question;
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
 import discord4j.core.object.entity.Message;

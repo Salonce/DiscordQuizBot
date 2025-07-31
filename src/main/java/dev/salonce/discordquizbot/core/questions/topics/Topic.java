@@ -1,4 +1,4 @@
-package dev.salonce.discordquizbot.core.questions;
+package dev.salonce.discordquizbot.core.questions.topics;
 
 import dev.salonce.discordquizbot.core.questions.rawquestions.RawQuestion;
 import lombok.Getter;
