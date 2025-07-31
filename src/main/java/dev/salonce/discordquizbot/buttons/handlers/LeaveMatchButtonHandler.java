@@ -2,8 +2,8 @@ package dev.salonce.discordquizbot.buttons.handlers;
 
 import dev.salonce.discordquizbot.buttons.ButtonHandler;
 import dev.salonce.discordquizbot.buttons.ButtonInteractionData;
-import dev.salonce.discordquizbot.core.MatchStore;
 import dev.salonce.discordquizbot.core.matches.Match;
+import dev.salonce.discordquizbot.core.matches.MatchService;
 import dev.salonce.discordquizbot.core.matches.MatchState;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import discord4j.core.object.entity.channel.MessageChannel;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component("ButtonLeaveMatch")
 public class LeaveMatchButtonHandler implements ButtonHandler {
 
-    private final MatchStore matchStore;
+    private final MatchService matchService;
 
     @Override
     public boolean handle(ButtonInteractionEvent event, ButtonInteractionData buttonInteractionData) {
@@ -30,7 +30,7 @@ public class LeaveMatchButtonHandler implements ButtonHandler {
 
     private String leaveMatch(ButtonInteractionData buttonInteractionData){
         MessageChannel messageChannel = buttonInteractionData.getMessageChannel();
-        Match match = matchStore.get(messageChannel);
+        Match match = matchService.get(messageChannel);
         Long userId = buttonInteractionData.getUserId();
         if (match == null) {
             return "This match doesn't exist.";

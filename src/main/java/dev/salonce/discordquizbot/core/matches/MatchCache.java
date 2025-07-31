@@ -1,6 +1,5 @@
-package dev.salonce.discordquizbot.core;
+package dev.salonce.discordquizbot.core.matches;
 
-import dev.salonce.discordquizbot.core.matches.Match;
 import discord4j.core.object.entity.channel.MessageChannel;
 import org.springframework.stereotype.Component;
 
@@ -9,7 +8,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Component
-public class MatchStore {
+public class MatchCache {
     //private final Map<MessageChannel, Match> matches = new HashMap<>();
     private final Map<MessageChannel, Match> matches = new ConcurrentHashMap<>();
 

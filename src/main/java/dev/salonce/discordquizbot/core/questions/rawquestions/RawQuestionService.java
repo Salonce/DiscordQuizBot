@@ -11,13 +11,13 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class RawQuestionService {
 
-    private final RawQuestionRepository rawQuestionRepository;
+    private final RawQuestionStore rawQuestionStore;
 
     public List<RawQuestion> getRawQuestions(Set<String> tags){
-        return rawQuestionRepository.getRawQuestions(tags);
+        return rawQuestionStore.getRawQuestions(tags);
     }
 
     public List<RawQuestion> getAllRawQuestions(){
-        return rawQuestionRepository.getAllRawQuestions();
+        return rawQuestionStore.getAllRawQuestions();
     }
 }

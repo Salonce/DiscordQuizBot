@@ -8,7 +8,7 @@ import java.util.*;
 
 @Component
 @RequiredArgsConstructor
-public class RawQuestionRepository {
+public class RawQuestionStore {
 
     private final RawQuestionLoader rawQuestionLoader;
     private List<RawQuestion> rawQuestions;

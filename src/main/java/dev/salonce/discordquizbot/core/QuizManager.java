@@ -2,7 +2,9 @@ package dev.salonce.discordquizbot.core;
 
 import dev.salonce.discordquizbot.configs.TimersConfig;
 import dev.salonce.discordquizbot.core.matches.Match;
+import dev.salonce.discordquizbot.core.matches.MatchService;
 import dev.salonce.discordquizbot.core.matches.MatchState;
+import dev.salonce.discordquizbot.core.matches.MatchCache;
 import dev.salonce.discordquizbot.core.sendingmessages.MatchCanceledMessage;
 import dev.salonce.discordquizbot.core.sendingmessages.MatchResultsMessage;
 import dev.salonce.discordquizbot.core.sendingmessages.QuestionMessage;
@@ -20,7 +22,7 @@ import java.time.Duration;
 @RequiredArgsConstructor
 public class QuizManager {
 
-    private final MatchStore matchStore;
+    private final MatchService matchService;
     private final TimersConfig timersConfig;
     private final QuestionMessage questionMessage;
     private final StartingMessage startingMessage;
@@ -31,12 +33,12 @@ public class QuizManager {
         int totalTimeToJoin = timersConfig.getTimeToJoinQuiz();
         int totalTimeToStart = timersConfig.getTimeToStartMatch();
 
-        if (matchStore.containsKey(messageChannel)) {
+        if (matchService.containsKey(messageChannel)) {
             // send a message that a match is already in progress in that chat and can't start new one
             return;
         }
 
-        matchStore.put(messageChannel, match);
+        matchService.put(messageChannel, match);
 
         Mono<Void> normalFlow = startingMessage.create(messageChannel, totalTimeToJoin)
                 .flatMap(message ->
@@ -71,14 +73,14 @@ public class QuizManager {
 
         Mono.firstWithSignal(normalFlow, cancelFlow)
                 .then(Mono.defer(() -> {
-                    matchStore.remove(messageChannel);
+                    matchService.remove(messageChannel);
                     return Mono.empty();
                 }))
                 .subscribe();
     }
 
     private Mono<Void> createQuestionMessages(MessageChannel messageChannel) {
-        Match match = matchStore.get(messageChannel);
+        Match match = matchService.get(messageChannel);
 
         return Flux.generate(sink -> {
                     if (match.questionExists()) {
@@ -139,26 +141,26 @@ public class QuizManager {
     }
 
     public Mono<Void> updateInactiveRoundsInARowCount(MessageChannel messageChannel){
-        Match match = matchStore.get(messageChannel);
+        Match match = matchService.get(messageChannel);
         match.updateInactiveRoundsInARowCount();
         return Mono.empty();
     }
 
     public Mono<Void> switchStateToClosedIfInactiveRoundsInARowLimitReached(MessageChannel messageChannel){
-        Match match = matchStore.get(messageChannel);
+        Match match = matchService.get(messageChannel);
         match.switchStateToClosedIfInactiveRoundsInARowLimitReached();
         return Mono.empty();
     }
 
 
     private Mono<Void> closeAnswering(MessageChannel messageChannel){
-        Match match = matchStore.get(messageChannel);
+        Match match = matchService.get(messageChannel);
         match.setMatchState(MatchState.WAITING);
         return Mono.empty();
     }
 
     private Mono<Void> openAnswering(MessageChannel messageChannel){
-        Match match = matchStore.get(messageChannel);
+        Match match = matchService.get(messageChannel);
         match.setMatchState(MatchState.ANSWERING);
         return Mono.empty();
     }
@@ -169,7 +171,7 @@ public class QuizManager {
     }
 
     private Mono<Void> addPlayerPoints(MessageChannel messageChannel){
-        matchStore.get(messageChannel).updateScores();
+        matchService.get(messageChannel).updateScores();
         return Mono.empty();
     }
 }
