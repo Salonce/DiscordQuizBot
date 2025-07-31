@@ -1,9 +1,9 @@
 package dev.salonce.discordquizbot.core.sendingmessages;
 
-import dev.salonce.discordquizbot.core.MatchStore;
 import dev.salonce.discordquizbot.core.matches.Match;
+import dev.salonce.discordquizbot.core.matches.MatchService;
 import dev.salonce.discordquizbot.core.matches.Player;
-import dev.salonce.discordquizbot.core.questions.Question;
+import dev.salonce.discordquizbot.core.questions.questions.Question;
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
 import discord4j.core.object.entity.Message;
@@ -24,10 +24,10 @@ import java.util.stream.Collectors;
 @Component
 public class QuestionMessage {
 
-    private final MatchStore matchStore;
+    private final MatchService matchService;
 
     public Mono<Message> create(MessageChannel messageChannel, Long questionNumber, int timeLeft){
-        Match match = matchStore.get(messageChannel);
+        Match match = matchService.get(messageChannel);
         String questionsAnswers = match.getCurrentQuestion().getOptions();
         int answersSize = match.getCurrentQuestion().getQuizOptions().size();
 
@@ -54,7 +54,7 @@ public class QuestionMessage {
     }
 
     public Mono<Message> editWithTime(MessageChannel messageChannel, Message message, Long questionNumber, int timeLeft){
-        Match match = matchStore.get(messageChannel);
+        Match match = matchService.get(messageChannel);
         String questionsAnswers = match.getCurrentQuestion().getOptions();
         int answersSize = match.getCurrentQuestion().getQuizOptions().size();
 
@@ -78,7 +78,7 @@ public class QuestionMessage {
     }
 
     public Mono<Message> editAfterAnswersWait(MessageChannel messageChannel, Message message, Long questionNumber){
-        Match match = matchStore.get(messageChannel);
+        Match match = matchService.get(messageChannel);
         String questionsAnswers = match.getCurrentQuestion().getOptions();
         int answersSize = match.getCurrentQuestion().getQuizOptions().size();
 
@@ -101,7 +101,7 @@ public class QuestionMessage {
     }
 
     public Mono<Message> editWithScores(MessageChannel messageChannel, Message message, Long questionNumber){
-        Match match = matchStore.get(messageChannel);
+        Match match = matchService.get(messageChannel);
         String questionsAnswers = match.getCurrentQuestion().getOptionsRevealed();
         int answersSize = match.getCurrentQuestion().getQuizOptions().size();
 

@@ -1,20 +1,16 @@
 package dev.salonce.discordquizbot.aspects;
 
-import dev.salonce.discordquizbot.core.questions.RawQuestion;
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Aspect
 @Component
 public class LogExecutionTime {
 
-    @Pointcut("execution(public * dev.salonce.discordquizbot.core.questions.RawQuestionLoader.loadQuestionsFromResources(..))")
+    @Pointcut("execution(public * dev.salonce.discordquizbot.core.questions.rawquestions.RawQuestionLoader.loadQuestionsFromResources(..))")
     public void loadQuestionsFromResources(){};
 
     @Around("loadQuestionsFromResources()")

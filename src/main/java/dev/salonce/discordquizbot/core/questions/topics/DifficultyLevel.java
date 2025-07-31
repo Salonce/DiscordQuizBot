@@ -1,5 +1,6 @@
-package dev.salonce.discordquizbot.core.questions;
+package dev.salonce.discordquizbot.core.questions.topics;
 
+import dev.salonce.discordquizbot.core.questions.rawquestions.RawQuestion;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -7,7 +8,7 @@ import java.util.List;
 
 @Getter
 class DifficultyLevel {
-    private List<RawQuestion> rawQuestions = new ArrayList<>();
+    public List<RawQuestion> rawQuestions = new ArrayList<>();
 
     public DifficultyLevel(List<RawQuestion> rawQuestions) {
         addRawQuestions(rawQuestions);

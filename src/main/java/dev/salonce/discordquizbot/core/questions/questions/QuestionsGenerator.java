@@ -1,5 +1,7 @@
-package dev.salonce.discordquizbot.core.questions;
+package dev.salonce.discordquizbot.core.questions.questions;
 
+import dev.salonce.discordquizbot.core.questions.rawquestions.RawQuestion;
+import dev.salonce.discordquizbot.core.questions.topics.TopicService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -9,7 +11,7 @@ import java.util.Random;
 
 @Component
 @RequiredArgsConstructor
-public class QuestionListFactory {
+public class QuestionsGenerator {
 
     private final Random rand = new Random();
     private final TopicService topicService;
@@ -45,7 +47,7 @@ public class QuestionListFactory {
     }
 
 
-    public List<Question> generateMixedDifficultyQuestions(String tag, int difficulty, int NoQuestions){
+    List<Question> generateQuestions(String tag, int difficulty, int NoQuestions){
         List<Question> questions = new ArrayList<>();
         if (difficulty == 1)
             questions.addAll(generateExactDifficultyQuestions(tag, difficulty, NoQuestions));

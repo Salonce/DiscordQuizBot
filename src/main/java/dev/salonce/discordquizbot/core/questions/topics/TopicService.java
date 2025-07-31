@@ -1,5 +1,7 @@
-package dev.salonce.discordquizbot.core.questions;
+package dev.salonce.discordquizbot.core.questions.topics;
 
+import dev.salonce.discordquizbot.core.questions.rawquestions.RawQuestion;
+import dev.salonce.discordquizbot.core.questions.rawquestions.RawQuestionService;
 import jakarta.annotation.PostConstruct;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +14,7 @@ import java.util.*;
 @RequiredArgsConstructor
 public class TopicService {
 
-    private final RawQuestionRepository rawQuestionRepository;
+    private final RawQuestionService rawQuestionService;
     private final TopicsConfig topicsConfig;
 
     @Getter
@@ -23,7 +25,7 @@ public class TopicService {
         for (Map.Entry<String, Set<String>> entry : topicsConfig.getAvailableTopics().entrySet()){
             String topicName = entry.getKey();
             Set<String> tagsSet = entry.getValue();
-            List<RawQuestion> rawTopicQuestions = rawQuestionRepository.getRawQuestions(tagsSet);
+            List<RawQuestion> rawTopicQuestions = rawQuestionService.getRawQuestions(tagsSet);
             topicsMap.put(topicName, new Topic(topicName, rawTopicQuestions));
         }
     }

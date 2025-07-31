@@ -1,8 +1,8 @@
 package dev.salonce.discordquizbot.buttons.handlers;
 
 import dev.salonce.discordquizbot.buttons.*;
-import dev.salonce.discordquizbot.core.MatchStore;
 import dev.salonce.discordquizbot.core.matches.Match;
+import dev.salonce.discordquizbot.core.matches.MatchService;
 import dev.salonce.discordquizbot.core.matches.MatchState;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +16,7 @@ import static java.lang.Integer.parseInt;
 @Component("ButtonAnswer")
 public class AnswerButtonHandler implements ButtonHandler {
 
-    private final MatchStore matchStore;
+    private final MatchService matchService;
 
     @Override
     public boolean handle(ButtonInteractionEvent event, ButtonInteractionData buttonInteractionData) {
@@ -46,7 +46,7 @@ public class AnswerButtonHandler implements ButtonHandler {
 
     private String getPlayerAnswer(ButtonInteractionData buttonInteractionData, int questionNumber, int answerNumber) {
         Long userId = buttonInteractionData.getUserId();
-        Match match = matchStore.get(buttonInteractionData.getMessageChannel());
+        Match match = matchService.get(buttonInteractionData.getMessageChannel());
 
         if (match == null || questionNumber != match.getCurrentQuestionNum() || match.getMatchState() != MatchState.ANSWERING)
             return "Your answer came too late!";

@@ -1,6 +1,6 @@
 package dev.salonce.discordquizbot.core.sendingmessages;
 
-import dev.salonce.discordquizbot.core.MatchStore;
+import dev.salonce.discordquizbot.core.matches.MatchService;
 import dev.salonce.discordquizbot.core.matches.MatchState;
 import dev.salonce.discordquizbot.core.matches.Match;
 import discord4j.core.object.entity.Message;
@@ -14,10 +14,10 @@ import reactor.core.publisher.Mono;
 @Component
 public class MatchCanceledMessage {
 
-    private final MatchStore matchStore;
+    private final MatchService matchService;
 
     public Mono<Message> create(MessageChannel messageChannel){
-        Match match = matchStore.get(messageChannel);
+        Match match = matchService.get(messageChannel);
         String title = "\uD83D\uDEAA Match aborted";
         String reason = "unknown.";
         if (match.getMatchState() == MatchState.CLOSED_BY_INACTIVITY)

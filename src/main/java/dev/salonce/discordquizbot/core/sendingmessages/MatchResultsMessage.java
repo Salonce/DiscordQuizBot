@@ -1,7 +1,6 @@
 package dev.salonce.discordquizbot.core.sendingmessages;
-
-import dev.salonce.discordquizbot.core.MatchStore;
 import dev.salonce.discordquizbot.core.matches.Match;
+import dev.salonce.discordquizbot.core.matches.MatchService;
 import dev.salonce.discordquizbot.core.matches.Player;
 import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.channel.MessageChannel;
@@ -18,10 +17,10 @@ import java.util.stream.Collectors;
 @Component
 public class MatchResultsMessage {
 
-    private final MatchStore matchStore;
+    private final MatchService matchService;
 
     public Mono<Message> create(MessageChannel messageChannel){
-        Match match = matchStore.get(messageChannel);
+        Match match = matchService.get(messageChannel);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("\uD83C\uDFC6 Final scoreboard")

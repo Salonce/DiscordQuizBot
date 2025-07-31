@@ -1,10 +1,10 @@
-package dev.salonce.discordquizbot.core;
+package dev.salonce.discordquizbot.core.statistics;
 
 import dev.salonce.discordquizbot.core.matches.Match;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Stats {
+public class Statistics {
     private int matches_started = 0;
     //function that prints amount of guilds, their ids and names in a string on call
 

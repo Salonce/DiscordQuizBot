@@ -1,7 +1,7 @@
 package dev.salonce.discordquizbot.core.sendingmessages;
 
-import dev.salonce.discordquizbot.core.MatchStore;
 import dev.salonce.discordquizbot.core.matches.Match;
+import dev.salonce.discordquizbot.core.matches.MatchService;
 import dev.salonce.discordquizbot.core.matches.Player;
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
@@ -21,10 +21,10 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class StartingMessage {
 
-    private final MatchStore matchStore;
+    private final MatchService matchService;
 
     public Mono<Message> create(MessageChannel messageChannel, int timeToJoinLeft){
-        Match match = matchStore.get(messageChannel);
+        Match match = matchService.get(messageChannel);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("\uD83D\uDE80 Starting Soon...")
@@ -43,7 +43,7 @@ public class StartingMessage {
     }
 
     public Mono<Message> edit(Message message, MessageChannel messageChannel, Long timeToJoinLeft){
-        Match match = matchStore.get(messageChannel);
+        Match match = matchService.get(messageChannel);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 //.title("\uD83C\uDFC1 Java Quiz")
@@ -61,7 +61,7 @@ public class StartingMessage {
     }
 
     public Mono<Message> edit2(Message message, MessageChannel messageChannel, Long timeToStartLeft){
-        Match match = matchStore.get(messageChannel);
+        Match match = matchService.get(messageChannel);
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 //.title("\uD83C\uDFC1 Java Quiz")
