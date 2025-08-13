@@ -1,6 +1,6 @@
 package dev.salonce.discordquizbot;
 
-import dev.salonce.discordquizbot.core.StartingBotService;
+import dev.salonce.discordquizbot.application.StartingBotService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
