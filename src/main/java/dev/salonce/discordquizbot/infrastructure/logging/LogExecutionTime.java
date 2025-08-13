@@ -1,4 +1,4 @@
-package dev.salonce.discordquizbot.aspects;
+package dev.salonce.discordquizbot.infrastructure.logging;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
