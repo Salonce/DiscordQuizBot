@@ -2,9 +2,8 @@ package dev.salonce.discordquizbot.application;
 
 import dev.salonce.discordquizbot.domain.Match;
 import dev.salonce.discordquizbot.infrastructure.configs.TimersConfig;
-import dev.salonce.discordquizbot.core.questions.questions.Question;
+import dev.salonce.discordquizbot.domain.Question;
 import dev.salonce.discordquizbot.infrastructure.logging.Statistics;
-import dev.salonce.discordquizbot.core.questions.questions.QuestionsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

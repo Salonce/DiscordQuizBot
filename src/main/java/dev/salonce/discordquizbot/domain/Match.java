@@ -1,6 +1,5 @@
 package dev.salonce.discordquizbot.domain;
 
-import dev.salonce.discordquizbot.core.questions.questions.Question;
 import lombok.Getter;
 
 import java.util.LinkedHashMap;

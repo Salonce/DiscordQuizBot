@@ -1,9 +1,9 @@
-package dev.salonce.discordquizbot.application.handlingmessages.handlers;
+package dev.salonce.discordquizbot.infrastructure.messages.in;
 
 import dev.salonce.discordquizbot.infrastructure.dtos.DiscordMessage;
-import dev.salonce.discordquizbot.core.sendingmessages.HelpMessage;
-import dev.salonce.discordquizbot.core.QuizManager;
-import dev.salonce.discordquizbot.application.handlingmessages.MessageHandler;
+import dev.salonce.discordquizbot.infrastructure.messages.out.HelpMessage;
+import dev.salonce.discordquizbot.application.QuizManager;
+import dev.salonce.discordquizbot.application.MessageHandler;
 import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

@@ -1,13 +1,12 @@
-package dev.salonce.discordquizbot.core;
+package dev.salonce.discordquizbot.application;
 
 import dev.salonce.discordquizbot.infrastructure.configs.TimersConfig;
 import dev.salonce.discordquizbot.domain.Match;
-import dev.salonce.discordquizbot.application.MatchService;
 import dev.salonce.discordquizbot.domain.MatchState;
-import dev.salonce.discordquizbot.core.sendingmessages.MatchCanceledMessage;
-import dev.salonce.discordquizbot.core.sendingmessages.MatchResultsMessage;
-import dev.salonce.discordquizbot.core.sendingmessages.QuestionMessage;
-import dev.salonce.discordquizbot.core.sendingmessages.StartingMessage;
+import dev.salonce.discordquizbot.infrastructure.messages.out.MatchCanceledMessage;
+import dev.salonce.discordquizbot.infrastructure.messages.out.MatchResultsMessage;
+import dev.salonce.discordquizbot.infrastructure.messages.out.QuestionMessage;
+import dev.salonce.discordquizbot.infrastructure.messages.out.StartingMessage;
 import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.RequiredArgsConstructor;

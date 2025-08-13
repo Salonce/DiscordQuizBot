@@ -1,4 +1,4 @@
-package dev.salonce.discordquizbot.core.questions.rawquestions;
+package dev.salonce.discordquizbot.infrastructure.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;

@@ -1,6 +1,6 @@
-package dev.salonce.discordquizbot.core.questions.questions;
+package dev.salonce.discordquizbot.domain;
 
-import dev.salonce.discordquizbot.core.questions.rawquestions.RawQuestion;
+import dev.salonce.discordquizbot.infrastructure.dtos.RawQuestion;
 import lombok.Getter;
 
 import java.util.*;

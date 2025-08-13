@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class LogExecutionTime {
 
-    @Pointcut("execution(public * dev.salonce.discordquizbot.core.questions.rawquestions.RawQuestionLoader.loadQuestionsFromResources(..))")
+    @Pointcut("execution(public * dev.salonce.discordquizbot.infrastructure.RawQuestionLoader.loadQuestionsFromResources(..))")
     public void loadQuestionsFromResources(){};
 
     @Around("loadQuestionsFromResources()")

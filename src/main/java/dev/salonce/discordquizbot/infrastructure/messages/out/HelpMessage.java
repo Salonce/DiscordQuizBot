@@ -1,7 +1,7 @@
-package dev.salonce.discordquizbot.core.sendingmessages;
+package dev.salonce.discordquizbot.infrastructure.messages.out;
 
-import dev.salonce.discordquizbot.core.questions.topics.TopicService;
-import dev.salonce.discordquizbot.core.questions.topics.Topic;
+import dev.salonce.discordquizbot.application.TopicService;
+import dev.salonce.discordquizbot.domain.Topic;
 import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.spec.EmbedCreateSpec;

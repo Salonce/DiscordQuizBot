@@ -1,7 +1,8 @@
-package dev.salonce.discordquizbot.core.questions.rawquestions;
+package dev.salonce.discordquizbot.infrastructure;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
+import dev.salonce.discordquizbot.infrastructure.dtos.RawQuestion;
 import lombok.Getter;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;

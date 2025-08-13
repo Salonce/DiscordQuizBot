@@ -1,4 +1,4 @@
-package dev.salonce.discordquizbot.application.handlingmessages;
+package dev.salonce.discordquizbot.application;
 
 import dev.salonce.discordquizbot.infrastructure.dtos.DiscordMessage;
 import lombok.RequiredArgsConstructor;

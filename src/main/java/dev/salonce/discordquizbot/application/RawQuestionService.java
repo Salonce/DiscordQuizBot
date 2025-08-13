@@ -1,6 +1,8 @@
-package dev.salonce.discordquizbot.core.questions.rawquestions;
+package dev.salonce.discordquizbot.application;
 
 
+import dev.salonce.discordquizbot.infrastructure.RawQuestionStore;
+import dev.salonce.discordquizbot.infrastructure.dtos.RawQuestion;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

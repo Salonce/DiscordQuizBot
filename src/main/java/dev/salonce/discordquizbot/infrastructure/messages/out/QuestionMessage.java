@@ -1,9 +1,9 @@
-package dev.salonce.discordquizbot.core.sendingmessages;
+package dev.salonce.discordquizbot.infrastructure.messages.out;
 
 import dev.salonce.discordquizbot.domain.Match;
 import dev.salonce.discordquizbot.application.MatchService;
 import dev.salonce.discordquizbot.domain.Player;
-import dev.salonce.discordquizbot.core.questions.questions.Question;
+import dev.salonce.discordquizbot.domain.Question;
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
 import discord4j.core.object.entity.Message;

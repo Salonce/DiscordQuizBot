@@ -1,6 +1,6 @@
-package dev.salonce.discordquizbot.core.questions.questions;
+package dev.salonce.discordquizbot.application;
 
-import dev.salonce.discordquizbot.core.questions.topics.TopicService;
+import dev.salonce.discordquizbot.domain.Question;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

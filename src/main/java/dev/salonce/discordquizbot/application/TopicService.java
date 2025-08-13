@@ -1,7 +1,8 @@
-package dev.salonce.discordquizbot.core.questions.topics;
+package dev.salonce.discordquizbot.application;
 
-import dev.salonce.discordquizbot.core.questions.rawquestions.RawQuestion;
-import dev.salonce.discordquizbot.core.questions.rawquestions.RawQuestionService;
+import dev.salonce.discordquizbot.domain.Topic;
+import dev.salonce.discordquizbot.infrastructure.configs.TopicsConfig;
+import dev.salonce.discordquizbot.infrastructure.dtos.RawQuestion;
 import jakarta.annotation.PostConstruct;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

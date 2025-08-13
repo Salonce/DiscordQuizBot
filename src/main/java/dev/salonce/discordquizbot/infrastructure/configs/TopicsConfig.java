@@ -1,4 +1,4 @@
-package dev.salonce.discordquizbot.core.questions.topics;
+package dev.salonce.discordquizbot.infrastructure.configs;
 
 import jakarta.annotation.PostConstruct;
 import lombok.Getter;

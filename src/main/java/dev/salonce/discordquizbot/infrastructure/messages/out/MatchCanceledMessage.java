@@ -1,4 +1,4 @@
-package dev.salonce.discordquizbot.core.sendingmessages;
+package dev.salonce.discordquizbot.infrastructure.messages.out;
 
 import dev.salonce.discordquizbot.application.MatchService;
 import dev.salonce.discordquizbot.domain.MatchState;

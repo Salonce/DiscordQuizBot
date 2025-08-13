@@ -13,23 +13,23 @@ public class MatchCache {
     //private final Map<MessageChannel, Match> matches = new HashMap<>();
     private final Map<MessageChannel, Match> matches = new ConcurrentHashMap<>();
 
-    Match get(MessageChannel channel) {
+    public Match get(MessageChannel channel) {
         return matches.get(channel);
     }
 
-    void put(MessageChannel channel, Match match) {
+    public void put(MessageChannel channel, Match match) {
         matches.put(channel, match);
     }
 
-    boolean containsKey(MessageChannel channel) {
+    public boolean containsKey(MessageChannel channel) {
         return matches.containsKey(channel);
     }
 
-    void remove(MessageChannel channel) {
+    public void remove(MessageChannel channel) {
         matches.remove(channel);
     }
 
-    Collection<Match> getAll() {
+    public Collection<Match> getAll() {
         return matches.values();
     }
 }
