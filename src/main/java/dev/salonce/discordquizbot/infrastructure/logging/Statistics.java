@@ -1,19 +1,28 @@
 package dev.salonce.discordquizbot.infrastructure.logging;
 
 import dev.salonce.discordquizbot.domain.Match;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Aspect;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+@Aspect
 @Component
 public class Statistics {
-    private int matches_started = 0;
-    //function that prints amount of guilds, their ids and names in a string on call
 
-    public void addMatch(Match match){
-        System.out.println("Starting match nr " + ++matches_started);
-        System.out.println("Creator: " + "<@" + match.getOwnerId() + ">");
-        System.out.println("Topic: " + match.getTopic() + " " + match.getDifficulty());
-        System.out.println();
+    private static final Logger log = LoggerFactory.getLogger(Statistics.class);
+    private int matchesStarted = 0;
 
+    @AfterReturning(pointcut = "execution(* *..MatchService.makeMatch(..))", returning = "match")
+    public void logMatchCreation(JoinPoint joinPoint, Match match) {
+        matchesStarted++;
+        log.info("Match nr {} started by user <{}> | Topic: '{}' | Difficulty: {}",
+                matchesStarted,
+                match.getOwnerId(),
+                match.getTopic(),
+                match.getDifficulty()
+        );
     }
-    //function that increases amount of int matches whenever a match is called and prints it in console in form: Match nr X started by user Y in Guild of name Z
 }

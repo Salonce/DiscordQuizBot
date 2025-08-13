@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-public class LogExecutionTime {
+public class ExecutionTime {
 
-    private static final Logger logger = LoggerFactory.getLogger(LogExecutionTime.class);
+    private static final Logger logger = LoggerFactory.getLogger(ExecutionTime.class);
 
     @Pointcut("execution(public * dev.salonce.discordquizbot.infrastructure.RawQuestionLoader.loadQuestionsFromResources(..))")
     public void loadQuestionsFromResources(){};
