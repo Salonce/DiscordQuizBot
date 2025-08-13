@@ -1,6 +1,6 @@
 package dev.salonce.discordquizbot.infrastructure.logging;
 
-import dev.salonce.discordquizbot.domain.matches.Match;
+import dev.salonce.discordquizbot.domain.Match;
 import org.springframework.stereotype.Component;
 
 @Component

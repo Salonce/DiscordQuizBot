@@ -1,8 +1,8 @@
 package dev.salonce.discordquizbot.core.sendingmessages;
 
-import dev.salonce.discordquizbot.domain.matches.MatchService;
-import dev.salonce.discordquizbot.domain.matches.MatchState;
-import dev.salonce.discordquizbot.domain.matches.Match;
+import dev.salonce.discordquizbot.application.MatchService;
+import dev.salonce.discordquizbot.domain.MatchState;
+import dev.salonce.discordquizbot.domain.Match;
 import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.spec.EmbedCreateSpec;

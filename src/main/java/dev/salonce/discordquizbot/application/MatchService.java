@@ -1,5 +1,7 @@
-package dev.salonce.discordquizbot.domain.matches;
+package dev.salonce.discordquizbot.application;
 
+import dev.salonce.discordquizbot.domain.Match;
+import dev.salonce.discordquizbot.infrastructure.MatchCache;
 import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

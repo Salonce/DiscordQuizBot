@@ -1,8 +1,8 @@
 package dev.salonce.discordquizbot.infrastructure.buttons.handlers;
 
-import dev.salonce.discordquizbot.domain.matches.Match;
-import dev.salonce.discordquizbot.domain.matches.MatchService;
-import dev.salonce.discordquizbot.domain.matches.MatchState;
+import dev.salonce.discordquizbot.domain.Match;
+import dev.salonce.discordquizbot.application.MatchService;
+import dev.salonce.discordquizbot.domain.MatchState;
 import dev.salonce.discordquizbot.infrastructure.buttons.ButtonHandler;
 import dev.salonce.discordquizbot.infrastructure.buttons.ButtonInteractionData;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;

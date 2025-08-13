@@ -1,9 +1,9 @@
 package dev.salonce.discordquizbot.core;
 
 import dev.salonce.discordquizbot.infrastructure.configs.TimersConfig;
-import dev.salonce.discordquizbot.domain.matches.Match;
-import dev.salonce.discordquizbot.domain.matches.MatchService;
-import dev.salonce.discordquizbot.domain.matches.MatchState;
+import dev.salonce.discordquizbot.domain.Match;
+import dev.salonce.discordquizbot.application.MatchService;
+import dev.salonce.discordquizbot.domain.MatchState;
 import dev.salonce.discordquizbot.core.sendingmessages.MatchCanceledMessage;
 import dev.salonce.discordquizbot.core.sendingmessages.MatchResultsMessage;
 import dev.salonce.discordquizbot.core.sendingmessages.QuestionMessage;

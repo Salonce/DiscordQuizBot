@@ -1,4 +1,4 @@
-package dev.salonce.discordquizbot.domain.matches;
+package dev.salonce.discordquizbot.domain;
 
 public enum MatchState {
     ENROLLMENT,
