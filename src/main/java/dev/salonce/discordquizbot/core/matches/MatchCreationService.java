@@ -1,6 +1,6 @@
 package dev.salonce.discordquizbot.core.matches;
 
-import dev.salonce.discordquizbot.configs.TimersConfig;
+import dev.salonce.discordquizbot.infrastructure.configs.TimersConfig;
 import dev.salonce.discordquizbot.core.questions.questions.Question;
 import dev.salonce.discordquizbot.core.statistics.Statistics;
 import dev.salonce.discordquizbot.core.questions.questions.QuestionsService;
