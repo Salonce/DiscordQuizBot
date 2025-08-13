@@ -1,4 +1,4 @@
-package dev.salonce.discordquizbot.core.matches;
+package dev.salonce.discordquizbot.domain.matches;
 
 import discord4j.core.object.entity.channel.MessageChannel;
 import org.springframework.stereotype.Component;

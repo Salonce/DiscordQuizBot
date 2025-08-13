@@ -1,7 +1,7 @@
-package dev.salonce.discordquizbot.buttons.handlers;
+package dev.salonce.discordquizbot.infrastructure.buttons.handlers;
 
-import dev.salonce.discordquizbot.buttons.ButtonHandler;
-import dev.salonce.discordquizbot.buttons.ButtonInteractionData;
+import dev.salonce.discordquizbot.infrastructure.buttons.ButtonHandler;
+import dev.salonce.discordquizbot.infrastructure.buttons.ButtonInteractionData;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

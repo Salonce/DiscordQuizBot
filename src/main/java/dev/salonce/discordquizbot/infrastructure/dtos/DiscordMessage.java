@@ -1,4 +1,4 @@
-package dev.salonce.discordquizbot.core.handlingmessages;
+package dev.salonce.discordquizbot.infrastructure.dtos;
 
 import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.User;

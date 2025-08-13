@@ -1,4 +1,4 @@
-package dev.salonce.discordquizbot.core.matches;
+package dev.salonce.discordquizbot.domain.matches;
 
 import lombok.Getter;
 

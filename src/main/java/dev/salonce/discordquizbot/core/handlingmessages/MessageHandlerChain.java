@@ -1,5 +1,6 @@
 package dev.salonce.discordquizbot.core.handlingmessages;
 
+import dev.salonce.discordquizbot.infrastructure.dtos.DiscordMessage;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;

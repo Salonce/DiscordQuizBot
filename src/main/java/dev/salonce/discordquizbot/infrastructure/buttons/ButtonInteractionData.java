@@ -1,4 +1,4 @@
-package dev.salonce.discordquizbot.buttons;
+package dev.salonce.discordquizbot.infrastructure.buttons;
 
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import discord4j.core.object.entity.Message;

@@ -1,9 +1,8 @@
 package dev.salonce.discordquizbot.core.handlingmessages.handlers;
 
-import dev.salonce.discordquizbot.core.handlingmessages.DiscordMessage;
-import dev.salonce.discordquizbot.core.matches.MatchService;
+import dev.salonce.discordquizbot.infrastructure.dtos.DiscordMessage;
+import dev.salonce.discordquizbot.domain.matches.MatchService;
 import dev.salonce.discordquizbot.core.questions.questions.QuestionsService;
-import dev.salonce.discordquizbot.core.questions.topics.TopicService;
 import dev.salonce.discordquizbot.core.QuizManager;
 import dev.salonce.discordquizbot.core.handlingmessages.MessageHandler;
 import discord4j.core.object.entity.channel.MessageChannel;

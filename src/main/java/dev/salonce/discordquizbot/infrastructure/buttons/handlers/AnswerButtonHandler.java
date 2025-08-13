@@ -1,9 +1,10 @@
-package dev.salonce.discordquizbot.buttons.handlers;
+package dev.salonce.discordquizbot.infrastructure.buttons.handlers;
 
-import dev.salonce.discordquizbot.buttons.*;
-import dev.salonce.discordquizbot.core.matches.Match;
-import dev.salonce.discordquizbot.core.matches.MatchService;
-import dev.salonce.discordquizbot.core.matches.MatchState;
+import dev.salonce.discordquizbot.domain.matches.Match;
+import dev.salonce.discordquizbot.domain.matches.MatchService;
+import dev.salonce.discordquizbot.domain.matches.MatchState;
+import dev.salonce.discordquizbot.infrastructure.buttons.ButtonHandler;
+import dev.salonce.discordquizbot.infrastructure.buttons.ButtonInteractionData;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
