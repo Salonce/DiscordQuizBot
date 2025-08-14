@@ -26,7 +26,6 @@ public class AnswerButtonHandler implements ButtonHandler {
             return false;
 
         String[] answerData = buttonId.split("-");
-        //get data from string
         int questionNumber = answerData[1].charAt(0) - 'A';
         int answerNumber = Integer.parseInt(answerData[2]);
 
