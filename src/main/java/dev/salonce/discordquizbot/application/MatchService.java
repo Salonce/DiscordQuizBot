@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 @Component
@@ -95,5 +96,20 @@ public class MatchService {
 
         get(messageChannel).setMatchState(MatchState.COUNTDOWN);
         return "Starting immediately";
+    }
+
+    public String getPlayerAnswer(MessageChannel messageChannel, Long userId, int questionNumber, int answerNumber) {
+        Match match = get(messageChannel);
+
+        if (match == null || questionNumber != match.getCurrentQuestionNum() || match.getMatchState() != MatchState.ANSWERING)
+            return "Your answer came too late!";
+
+        if (!match.getPlayers().containsKey(userId))
+            return "You are not in the match.";
+
+        List<Integer> answers = match.getPlayers().get(userId).getAnswersList();
+        answers.set(questionNumber, answerNumber);
+        return "Your answer: " + (char) ('A' + answerNumber) + ".";
+
     }
 }
