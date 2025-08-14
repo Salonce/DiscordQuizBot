@@ -20,6 +20,19 @@ public class QuestionsService {
         return topicService.doesQuestionSetExist(topic, level);
     }
 
+    public List<Question> generateQuestions(String tag, int difficulty, int NoQuestions){
+        List<Question> questions = new ArrayList<>();
+        if (difficulty == 1)
+            questions.addAll(generateExactDifficultyQuestions(tag, difficulty, NoQuestions));
+        else{
+            int NoQuestionsEasier = NoQuestions/2;
+            int NoQuestionsExact = NoQuestions - NoQuestionsEasier;
+            questions.addAll(generateLowerDifficultyQuestions(tag, difficulty, NoQuestionsEasier));
+            questions.addAll(generateExactDifficultyQuestions(tag, difficulty, NoQuestionsExact));
+        }
+        return questions;
+    }
+
     private List<Question> generateExactDifficultyQuestions(String tag, int difficulty, int NoQuestions){
         List<RawQuestion> rawQuestions = topicService.getRawQuestionList(tag, difficulty);
         List<Question> questions = new ArrayList<>();
@@ -45,20 +58,6 @@ public class QuestionsService {
             int next = rand.nextInt(rawQuestions.size());
             questions.add(new Question(rawQuestions.get(next)));
             rawQuestions.remove(next);
-        }
-        return questions;
-    }
-
-
-    List<Question> generateQuestions(String tag, int difficulty, int NoQuestions){
-        List<Question> questions = new ArrayList<>();
-        if (difficulty == 1)
-            questions.addAll(generateExactDifficultyQuestions(tag, difficulty, NoQuestions));
-        else{
-            int NoQuestionsEasier = NoQuestions/2;
-            int NoQuestionsExact = NoQuestions - NoQuestionsEasier;
-            questions.addAll(generateLowerDifficultyQuestions(tag, difficulty, NoQuestionsEasier));
-            questions.addAll(generateExactDifficultyQuestions(tag, difficulty, NoQuestionsExact));
         }
         return questions;
     }
