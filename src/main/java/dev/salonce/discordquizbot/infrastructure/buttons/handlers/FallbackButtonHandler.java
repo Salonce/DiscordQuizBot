@@ -1,6 +1,6 @@
 package dev.salonce.discordquizbot.infrastructure.buttons.handlers;
 
-import dev.salonce.discordquizbot.infrastructure.buttons.ButtonHandler;
+import dev.salonce.discordquizbot.application.ButtonHandler;
 import dev.salonce.discordquizbot.infrastructure.dtos.ButtonInteractionData;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import lombok.RequiredArgsConstructor;
