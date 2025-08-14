@@ -1,6 +1,7 @@
 package dev.salonce.discordquizbot.application;
 
 import dev.salonce.discordquizbot.domain.Match;
+import dev.salonce.discordquizbot.domain.MatchState;
 import dev.salonce.discordquizbot.infrastructure.MatchCache;
 import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.RequiredArgsConstructor;
@@ -39,4 +40,19 @@ public class MatchService {
         return matchCache.getAll();
     }
 
+
+
+    public String addPlayerToMatch(MessageChannel channel, Long userId) {
+        Match match = get(channel);
+
+        if (match.getMatchState() != MatchState.ENROLLMENT) {
+            return "You can join only during enrollment phase.";
+        }
+        if (match.getPlayers().containsKey(userId)) {
+            return "You’ve already joined the match.";
+        }
+
+        match.addPlayer(userId);
+        return "You’ve joined the match.";
+    }
 }

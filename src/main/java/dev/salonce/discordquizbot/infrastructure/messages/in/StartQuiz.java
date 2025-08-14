@@ -53,6 +53,7 @@ public class StartQuiz implements MessageHandler {
 
         Long userId = discordMessage.getUser().getId().asLong();
         MessageChannel messageChannel = discordMessage.getChannel();
+        messageChannel.getId();
 
         quizManager.addMatch(messageChannel, matchService.makeMatch(topic, difficulty, userId));
         return true;

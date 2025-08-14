@@ -17,30 +17,15 @@ public class JoinMatchButtonHandler implements ButtonHandler {
     private final MatchService matchService;
 
     @Override
-    public boolean handle(ButtonInteractionEvent event, ButtonInteractionData buttonInteractionData) {
-        if ("joinQuiz".equals(buttonInteractionData.getButtonId())) {
-            event.reply(addPlayer(buttonInteractionData))
-                    .withEphemeral(true)
-                    .subscribe();
-            return true;
-        }
-        return false;
-    }
+    public boolean handle(ButtonInteractionEvent event, ButtonInteractionData data) {
+        if (!"joinQuiz".equals(data.getButtonId()))
+            return false;
 
-    private String addPlayer(ButtonInteractionData buttonInteractionData){
-        MessageChannel messageChannel = buttonInteractionData.getMessageChannel();
-        Match match = matchService.get(messageChannel);
-        Long userId = buttonInteractionData.getUserId();
+        String result = matchService.addPlayerToMatch(data.getMessageChannel(), data.getUserId());
 
-        if (match.getMatchState() != MatchState.ENROLLMENT){
-            return "Excuse me, you can join the match only during enrollment phase.";
-        }
-        if (match.getPlayers().containsKey(userId)) {
-            return "Nah... You've already joined the match.";
-        }
-        else {
-            match.addPlayer(userId);
-            return "You've joined the match.";
-        }
+        event.reply(result)
+                .withEphemeral(true)
+                .subscribe();
+        return true;
     }
 }
