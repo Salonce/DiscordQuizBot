@@ -3,6 +3,7 @@ package dev.salonce.discordquizbot.application;
 import dev.salonce.discordquizbot.domain.Match;
 import dev.salonce.discordquizbot.domain.MatchState;
 import dev.salonce.discordquizbot.infrastructure.MatchCache;
+import dev.salonce.discordquizbot.infrastructure.buttons.ButtonInteractionData;
 import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -54,5 +55,15 @@ public class MatchService {
 
         match.addPlayer(userId);
         return "You’ve joined the match.";
+    }
+
+    public String cancelMatch (MessageChannel messageChannel, Long userId) {
+        Match match = get(messageChannel);
+        if (match == null)
+            return "This match doesn't exist anymore.";
+        if (!match.getOwnerId().equals(userId))
+            return "You are not the owner. Only the owner can cancel the match.";
+        match.setMatchState(MatchState.CLOSED_BY_OWNER);
+        return "With your undeniable power of ownership, you've cancelled the match";
     }
 }

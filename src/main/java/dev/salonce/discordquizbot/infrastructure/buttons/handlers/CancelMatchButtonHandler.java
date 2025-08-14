@@ -17,25 +17,13 @@ public class CancelMatchButtonHandler implements ButtonHandler {
     private final MatchService matchService;
 
     @Override
-    public boolean handle(ButtonInteractionEvent event, ButtonInteractionData buttonInteractionData) {
-        if ("cancelQuiz".equals(buttonInteractionData.getButtonId())) {
-            event.reply(cancelMatch(buttonInteractionData))
-                    .withEphemeral(true)
-                    .subscribe();
-            return true;
-        }
-        return false;
-    }
-
-    private String cancelMatch (ButtonInteractionData buttonInteractionData) {
-        MessageChannel messageChannel = buttonInteractionData.getMessageChannel();
-        Match match = matchService.get(messageChannel);
-        Long userId = buttonInteractionData.getUserId();
-        if (match == null)
-            return "This match doesn't exist anymore.";
-        if (!match.getOwnerId().equals(userId))
-            return "You are not the owner. Only the owner can cancel the match.";
-        match.setMatchState(MatchState.CLOSED_BY_OWNER);
-        return "With your undeniable power of ownership, you've cancelled the match";
-    }
+    public boolean handle(ButtonInteractionEvent event, ButtonInteractionData data) {
+        if (!"cancelQuiz".equals(data.getButtonId()))
+            return false;
+        String result = matchService.cancelMatch(data.getMessageChannel(), data.getUserId());
+        event.reply(result)
+                .withEphemeral(true)
+                .subscribe();
+        return true;
+    }dd
 }
