@@ -13,11 +13,11 @@ import java.util.Random;
 @RequiredArgsConstructor
 public class QuestionsService {
 
-    private final TopicService topicService;
+    private final RawQuestionsService rawQuestionsService;
     private final Random rand = new Random();
 
     public boolean doesQuestionSetExist(String topic, int level){
-        return topicService.doesQuestionSetExist(topic, level);
+        return rawQuestionsService.doesQuestionSetExist(topic, level);
     }
 
     public List<Question> generateQuestions(String tag, int difficulty, int NoQuestions){
@@ -34,7 +34,7 @@ public class QuestionsService {
     }
 
     private List<Question> generateExactDifficultyQuestions(String tag, int difficulty, int NoQuestions){
-        List<RawQuestion> rawQuestions = topicService.getRawQuestionList(tag, difficulty);
+        List<RawQuestion> rawQuestions = rawQuestionsService.getRawQuestionList(tag, difficulty);
         List<Question> questions = new ArrayList<>();
         if (rawQuestions.size() < NoQuestions)
             System.out.println("Not enough questions in this category...");
@@ -49,7 +49,7 @@ public class QuestionsService {
     private List<Question> generateLowerDifficultyQuestions(String tag, int difficulty, int NoQuestions){
         List<RawQuestion> rawQuestions = new ArrayList<>();
         for (int i = 1; i < difficulty; i++){
-            rawQuestions.addAll(topicService.getRawQuestionList(tag, i));
+            rawQuestions.addAll(rawQuestionsService.getRawQuestionList(tag, i));
         }
         List<Question> questions = new ArrayList<>();
         if (rawQuestions.size() < NoQuestions)

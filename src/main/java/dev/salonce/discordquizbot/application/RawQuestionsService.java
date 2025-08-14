@@ -1,6 +1,7 @@
 package dev.salonce.discordquizbot.application;
 
 import dev.salonce.discordquizbot.domain.Topic;
+import dev.salonce.discordquizbot.infrastructure.RawQuestionStore;
 import dev.salonce.discordquizbot.infrastructure.configs.TopicsConfig;
 import dev.salonce.discordquizbot.infrastructure.dtos.RawQuestion;
 import jakarta.annotation.PostConstruct;
@@ -13,10 +14,10 @@ import java.util.*;
 
 @Service
 @RequiredArgsConstructor
-public class TopicService {
+public class RawQuestionsService {
 
-    private final RawQuestionService rawQuestionService;
     private final TopicsConfig topicsConfig;
+    private final RawQuestionStore rawQuestionStore;
 
     @Getter
     private final Map<String, Topic> topicsMap = new HashMap<>();
@@ -26,7 +27,7 @@ public class TopicService {
         for (Map.Entry<String, Set<String>> entry : topicsConfig.getAvailableTopics().entrySet()){
             String topicName = entry.getKey();
             Set<String> tagsSet = entry.getValue();
-            List<RawQuestion> rawTopicQuestions = rawQuestionService.getRawQuestions(tagsSet);
+            List<RawQuestion> rawTopicQuestions = rawQuestionStore.getRawQuestions(tagsSet);
             topicsMap.put(topicName, new Topic(topicName, rawTopicQuestions));
         }
     }
