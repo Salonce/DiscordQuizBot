@@ -1,4 +1,4 @@
-package dev.salonce.discordquizbot.infrastructure.buttons.handlers;
+package dev.salonce.discordquizbot.infrastructure.buttonhandlers;
 
 import dev.salonce.discordquizbot.application.ButtonHandler;
 import dev.salonce.discordquizbot.infrastructure.dtos.ButtonInteractionData;
@@ -7,17 +7,18 @@ import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+
 @RequiredArgsConstructor
-@Component("ButtonJoinMatch")
-public class JoinMatchButtonHandler implements ButtonHandler {
+@Component("ButtonLeaveMatch")
+public class LeaveMatchButtonHandler implements ButtonHandler {
 
     private final MatchService matchService;
 
     @Override
-    public boolean handle(ButtonInteractionEvent event, ButtonInteractionData data) {
-        if (!"joinQuiz".equals(data.getButtonId()))
+    public boolean handle(ButtonInteractionEvent event, ButtonInteractionData buttonInteractionData) {
+        if (!"leaveQuiz".equals(buttonInteractionData.getButtonId()))
             return false;
-        String result = matchService.addPlayerToMatch(data.getMessageChannel(), data.getUserId());
+        String result = matchService.leaveMatch(buttonInteractionData.getMessageChannel(), buttonInteractionData.getUserId());
         event.reply(result)
                 .withEphemeral(true)
                 .subscribe();
