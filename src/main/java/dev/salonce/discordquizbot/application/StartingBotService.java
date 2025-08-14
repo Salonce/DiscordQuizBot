@@ -1,7 +1,6 @@
 package dev.salonce.discordquizbot.application;
 
-import dev.salonce.discordquizbot.infrastructure.buttons.ButtonInteractionData;
-import dev.salonce.discordquizbot.infrastructure.buttons.ButtonHandlerChain;
+import dev.salonce.discordquizbot.infrastructure.dtos.ButtonInteractionData;
 import dev.salonce.discordquizbot.infrastructure.dtos.DiscordMessage;
 import discord4j.core.DiscordClient;
 import discord4j.core.GatewayDiscordClient;

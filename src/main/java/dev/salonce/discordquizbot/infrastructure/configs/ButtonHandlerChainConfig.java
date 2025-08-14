@@ -1,5 +1,7 @@
-package dev.salonce.discordquizbot.infrastructure.buttons;
+package dev.salonce.discordquizbot.infrastructure.configs;
 
+import dev.salonce.discordquizbot.application.ButtonHandler;
+import dev.salonce.discordquizbot.application.ButtonHandlerChain;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

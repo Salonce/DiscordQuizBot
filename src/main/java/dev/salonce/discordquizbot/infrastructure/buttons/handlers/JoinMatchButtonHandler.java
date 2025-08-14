@@ -1,12 +1,9 @@
 package dev.salonce.discordquizbot.infrastructure.buttons.handlers;
 
-import dev.salonce.discordquizbot.infrastructure.buttons.ButtonHandler;
-import dev.salonce.discordquizbot.infrastructure.buttons.ButtonInteractionData;
-import dev.salonce.discordquizbot.domain.Match;
+import dev.salonce.discordquizbot.application.ButtonHandler;
+import dev.salonce.discordquizbot.infrastructure.dtos.ButtonInteractionData;
 import dev.salonce.discordquizbot.application.MatchService;
-import dev.salonce.discordquizbot.domain.MatchState;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
-import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -17,30 +14,13 @@ public class JoinMatchButtonHandler implements ButtonHandler {
     private final MatchService matchService;
 
     @Override
-    public boolean handle(ButtonInteractionEvent event, ButtonInteractionData buttonInteractionData) {
-        if ("joinQuiz".equals(buttonInteractionData.getButtonId())) {
-            event.reply(addPlayer(buttonInteractionData))
-                    .withEphemeral(true)
-                    .subscribe();
-            return true;
-        }
-        return false;
-    }
-
-    private String addPlayer(ButtonInteractionData buttonInteractionData){
-        MessageChannel messageChannel = buttonInteractionData.getMessageChannel();
-        Match match = matchService.get(messageChannel);
-        Long userId = buttonInteractionData.getUserId();
-
-        if (match.getMatchState() != MatchState.ENROLLMENT){
-            return "Excuse me, you can join the match only during enrollment phase.";
-        }
-        if (match.getPlayers().containsKey(userId)) {
-            return "Nah... You've already joined the match.";
-        }
-        else {
-            match.addPlayer(userId);
-            return "You've joined the match.";
-        }
+    public boolean handle(ButtonInteractionEvent event, ButtonInteractionData data) {
+        if (!"joinQuiz".equals(data.getButtonId()))
+            return false;
+        String result = matchService.addPlayerToMatch(data.getMessageChannel(), data.getUserId());
+        event.reply(result)
+                .withEphemeral(true)
+                .subscribe();
+        return true;
     }
 }

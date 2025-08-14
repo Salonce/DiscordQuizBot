@@ -1,5 +1,7 @@
-package dev.salonce.discordquizbot.application;
+package dev.salonce.discordquizbot.infrastructure.configs;
 
+import dev.salonce.discordquizbot.application.MessageHandler;
+import dev.salonce.discordquizbot.application.MessageHandlerChain;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
