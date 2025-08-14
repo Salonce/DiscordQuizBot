@@ -66,4 +66,20 @@ public class MatchService {
         match.setMatchState(MatchState.CLOSED_BY_OWNER);
         return "With your undeniable power of ownership, you've cancelled the match";
     }
+
+    public String leaveMatch(MessageChannel messageChannel, Long userId){
+        Match match = get(messageChannel);
+        if (match == null) {
+            return "This match doesn't exist.";
+        }
+        if (!match.getPlayers().containsKey(userId)){
+            return "You are not even in the match.";
+        }
+        if (match.getMatchState() != MatchState.ENROLLMENT) {
+            return "Excuse me, you can leave the match only during enrollment phase.";
+        }
+        else {
+            match.getPlayers().remove(userId);
+            return "You've left the match.";
+        }
 }

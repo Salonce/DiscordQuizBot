@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 @Component("ButtonFallback")
 public class FallbackButtonHandler implements ButtonHandler {
     @Override
+    // This handler always returns true as it's meant to be the last in the chain
     public boolean handle(ButtonInteractionEvent event, ButtonInteractionData buttonInteractionData) {
-        // This handler always returns true as it's meant to be the last in the chain
         event.reply("Button interaction failed.")
                 .withEphemeral(true)
                 .subscribe();

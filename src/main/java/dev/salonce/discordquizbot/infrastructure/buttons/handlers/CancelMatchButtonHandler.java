@@ -25,5 +25,5 @@ public class CancelMatchButtonHandler implements ButtonHandler {
                 .withEphemeral(true)
                 .subscribe();
         return true;
-    }dd
+    }
 }
