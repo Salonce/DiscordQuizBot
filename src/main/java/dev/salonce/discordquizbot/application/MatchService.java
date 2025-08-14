@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
+import java.util.Objects;
 
 @Component
 @RequiredArgsConstructor
@@ -81,5 +82,18 @@ public class MatchService {
             match.getPlayers().remove(userId);
             return "You've left the match.";
         }
+    }
+
+
+    public String startNow(MessageChannel messageChannel, Long userId) {
+        if (!containsKey(messageChannel))
+            return "This match doesn't exist anymore.";
+        if (!Objects.equals(userId, get(messageChannel).getOwnerId()))
+            return "You aren't the owner";
+        if (get(messageChannel).getMatchState() != MatchState.ENROLLMENT)
+            return "Already started";
+
+        get(messageChannel).setMatchState(MatchState.COUNTDOWN);
+        return "Starting immediately";
     }
 }
