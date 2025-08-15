@@ -44,7 +44,14 @@ public class Match{
         if (!isClosed()) this.matchState = matchState;
     }
 
-    public void closeAnsweringPhase() {
+    public void startAnsweringPhase() {
+//        if (matchState != MatchState.COUNTDOWN) {
+//            throw new IllegalStateException("Cannot close answering if not in countdown phase");
+//        }
+        this.matchState = MatchState.ANSWERING;
+    }
+
+    public void startWaitingPhase() {
         if (matchState != MatchState.ANSWERING) {
             throw new IllegalStateException("Cannot close answering if not in answering phase");
         }
