@@ -17,7 +17,7 @@ public class AnswerButtonHandler implements ButtonHandler {
 
     @Override
     public boolean handle(ButtonInteractionEvent event, ButtonInteractionData buttonInteractionData) {
-        String buttonId = buttonInteractionData.getButtonId();
+        String buttonId = buttonInteractionData.buttonId();
         if (!buttonId.startsWith("Answer") || !buttonId.matches("Answer-[A-D]-\\d+"))
             return false;
 
@@ -25,7 +25,7 @@ public class AnswerButtonHandler implements ButtonHandler {
         int questionNumber = Integer.parseInt(answerData[2]);
         int answerNumber = answerData[1].charAt(0) - 'A';
 
-        String response = matchService.getPlayerAnswer(buttonInteractionData.getMessageChannel(), buttonInteractionData.getUserId(), questionNumber, answerNumber);
+        String response = matchService.getPlayerAnswer(buttonInteractionData.messageChannel(), buttonInteractionData.userId(), questionNumber, answerNumber);
 
         event.reply(response)
                 .withEphemeral(true)

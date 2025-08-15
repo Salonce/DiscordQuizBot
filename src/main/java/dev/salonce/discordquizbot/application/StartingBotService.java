@@ -2,6 +2,7 @@ package dev.salonce.discordquizbot.application;
 
 import dev.salonce.discordquizbot.infrastructure.dtos.ButtonInteractionData;
 import dev.salonce.discordquizbot.infrastructure.dtos.DiscordMessage;
+import dev.salonce.discordquizbot.infrastructure.mappers.ButtonMapper;
 import discord4j.core.DiscordClient;
 import discord4j.core.GatewayDiscordClient;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
@@ -45,9 +46,8 @@ public class StartingBotService {
 
     private void handleButtonInteractions(GatewayDiscordClient gateway) {
         gateway.on(ButtonInteractionEvent.class, event -> {
-            ButtonInteractionData buttonInteractionData = new ButtonInteractionData(event);
-
-            if (!buttonInteractionData.buttonEventValid())
+            ButtonInteractionData buttonInteractionData = ButtonMapper.toButtonInteractionData(event);
+            if (buttonInteractionData == null)
                 return Mono.empty();
 
             buttonHandlerChain.handle(event, buttonInteractionData);

@@ -15,9 +15,9 @@ public class StartNowButtonHandler implements ButtonHandler {
 
     @Override
     public boolean handle(ButtonInteractionEvent event, ButtonInteractionData buttonInteractionData) {
-        if (!"startNow".equals(buttonInteractionData.getButtonId()))
+        if (!"startNow".equals(buttonInteractionData.buttonId()))
             return false;
-        String result = matchService.startNow(buttonInteractionData.getMessageChannel(), buttonInteractionData.getUserId());
+        String result = matchService.startNow(buttonInteractionData.messageChannel(), buttonInteractionData.userId());
         event.reply(result)
                 .withEphemeral(true)
                 .subscribe();

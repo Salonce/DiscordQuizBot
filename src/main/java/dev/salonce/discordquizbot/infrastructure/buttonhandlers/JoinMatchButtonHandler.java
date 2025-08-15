@@ -15,9 +15,9 @@ public class JoinMatchButtonHandler implements ButtonHandler {
 
     @Override
     public boolean handle(ButtonInteractionEvent event, ButtonInteractionData data) {
-        if (!"joinQuiz".equals(data.getButtonId()))
+        if (!"joinQuiz".equals(data.buttonId()))
             return false;
-        String result = matchService.addPlayerToMatch(data.getMessageChannel(), data.getUserId());
+        String result = matchService.addPlayerToMatch(data.messageChannel(), data.userId());
         event.reply(result)
                 .withEphemeral(true)
                 .subscribe();

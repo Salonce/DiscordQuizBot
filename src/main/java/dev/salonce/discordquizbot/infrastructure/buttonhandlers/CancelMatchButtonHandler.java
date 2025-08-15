@@ -15,9 +15,9 @@ public class CancelMatchButtonHandler implements ButtonHandler {
 
     @Override
     public boolean handle(ButtonInteractionEvent event, ButtonInteractionData data) {
-        if (!"cancelQuiz".equals(data.getButtonId()))
+        if (!"cancelQuiz".equals(data.buttonId()))
             return false;
-        String result = matchService.cancelMatch(data.getMessageChannel(), data.getUserId());
+        String result = matchService.cancelMatch(data.messageChannel(), data.userId());
         event.reply(result)
                 .withEphemeral(true)
                 .subscribe();
