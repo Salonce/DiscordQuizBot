@@ -82,10 +82,7 @@ public class QuizFlowService {
         Mono<Void> cancelFlow = Flux.interval(Duration.ofMillis(500))
                 .filter(tick -> match.isClosed())
                 .next()
-                .flatMap(tick -> {
-                    EmbedCreateSpec embed = matchCanceledMessage.createEmbed(match);
-                    return messageChannel.createMessage(embed);}
-                )
+                .flatMap(tick -> discordMessageSender.send(messageChannel, matchCanceledMessage.createEmbed(match)))
                 .then();
 
         Mono.firstWithSignal(normalFlow, cancelFlow)
@@ -110,12 +107,12 @@ public class QuizFlowService {
                 .index()
                 .concatMap(tuple -> {
                     long index = tuple.getT1();
-                    return handleSingleQuestion(match, messageChannel, index);
+                    return runQuestionFlow(match, messageChannel, index);
                 })
                 .then();
     }
 
-    private Mono<Void> handleSingleQuestion(Match match, MessageChannel messageChannel, long index) {
+    private Mono<Void> runQuestionFlow(Match match, MessageChannel messageChannel, long index) {
         int totalTime = timersConfig.getTimeToPickAnswer();
         int timeForNextQuestionToAppear = timersConfig.getTimeForNewQuestionToAppear();
 
@@ -141,8 +138,7 @@ public class QuizFlowService {
                 .takeUntil(tick -> match.everyoneAnswered())
                 .flatMap(tick -> {
                     int timeLeft = totalTime - (tick.intValue() + 1);
-                    MessageEditSpec spec = questionMessage.editEmbedWithTime(match, index, timeLeft);
-                    return message.edit(spec);
+                    return discordMessageSender.edit(message, questionMessage.editEmbedWithTime(match, index, timeLeft));
                 })
                 .then();
     }
