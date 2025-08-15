@@ -39,7 +39,6 @@ public class QuestionMessage {
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title(titleString(match))
                 .addField("\n", "❓ **" + match.getCurrentQuestion().getQuestion() + "**", false)
-                //.description("**" + match.getQuestion().getQuestion() + "**")
                 .addField("\n", questionsAnswers + "\n", false)
                 .addField("\n", "```⏳ " + timeLeft + " seconds left.```", false)
                 .build();
@@ -50,8 +49,7 @@ public class QuestionMessage {
                 .build();
     }
 
-    public Mono<Message> createEmbedWithTime(MessageChannel messageChannel, Message message, Long questionNumber, int timeLeft){
-        Match match = matchService.get(messageChannel);
+    public MessageEditSpec createEmbedWithTime(Match match, Long questionNumber, int timeLeft){
         String questionsAnswers = match.getCurrentQuestion().getOptions();
         int answersSize = match.getCurrentQuestion().getQuizOptions().size();
 
@@ -68,10 +66,11 @@ public class QuestionMessage {
                 .addField("\n", "```⏳ " + timeLeft + " seconds left.```", false)
                 .build();
 
-        return message.edit(MessageEditSpec.builder()
+        return MessageEditSpec.builder()
                 .addComponent(ActionRow.of(buttons))
                 .addEmbed(embed)
-                .build());
+                .build();
+        // return message.edit();
     }
 
     public Mono<Message> createEmbedAfterAnswersWait(MessageChannel messageChannel, Message message, Long questionNumber){

@@ -10,6 +10,7 @@ import dev.salonce.discordquizbot.infrastructure.messages.out.StartingMessage;
 import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.spec.EmbedCreateSpec;
+import discord4j.core.spec.MessageEditSpec;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -136,7 +137,8 @@ public class QuizManager {
                 .takeUntil(tick -> match.everyoneAnswered())
                 .flatMap(tick -> {
                     int timeLeft = totalTime - (tick.intValue() + 1);
-                    return questionMessage.createEmbedWithTime(channel, message, index, timeLeft);
+                    MessageEditSpec spec = questionMessage.createEmbedWithTime(match, index, timeLeft);
+                    return message.edit(spec);
                 })
                 .then();
     }
