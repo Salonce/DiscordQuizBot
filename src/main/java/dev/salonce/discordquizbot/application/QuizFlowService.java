@@ -73,10 +73,7 @@ public class QuizFlowService {
                     messageChannel.getId();
                     return createQuestionMessages(messageChannel);
                 })
-                .then(Mono.defer(() -> {
-                    EmbedCreateSpec embed = matchResultsMessage.createEmbed(match);
-                    return messageChannel.createMessage(embed);})
-                )
+                .then(Mono.defer(() -> discordMessageSender.send(messageChannel, matchResultsMessage.createEmbed(match))))
                 .then();
 
         Mono<Void> cancelFlow = Flux.interval(Duration.ofMillis(500))
