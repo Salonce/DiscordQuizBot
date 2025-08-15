@@ -53,7 +53,10 @@ public class QuizFlowService {
                                 })
                                 .then(Mono.just(message))
                 )
-                .flatMap(message -> closeEnrollment(message, match))
+                .map(message -> {
+                    match.startCountdownPhase();
+                    return message;
+                })
                 .flatMap(message ->
                         Flux.interval(Duration.ofSeconds(1))
                                 .take(totalTimeToStart + 1)
@@ -124,23 +127,16 @@ public class QuizFlowService {
                                 return message.edit(spec);
                             }))
                             .then(Mono.delay(Duration.ofSeconds(1)))
-                            .then(Mono.defer(() -> addPlayerPoints(match)))
-                            .then(Mono.defer(() -> closeAnswering(match)))
+                            .then(Mono.defer(() -> {match.updateScores(); return Mono.empty();}))
+                            .then(Mono.defer(() -> {match.startWaitingPhase(); return Mono.empty();}))
                             .then(Mono.defer(() -> {
                                 MessageEditSpec spec = questionMessage.editEmbedWithScores(match, index);
                                 return message.edit(spec);
                             }))
-//                            .thenMany(Flux.interval(Duration.ofSeconds(1))
-//                                    .take((long) totalTimeForNextQuestionToAppear)
-//                                    .flatMap(tick -> {
-//                                        Long timeLeft = (long) (totalTimeForNextQuestionToAppear - (tick.intValue() + 1));
-//                                        return questionMessage.editWithScoresAndTimeLeft(messageChannel, message, index, timeLeft);
-//                                    })
-//                            )
-                            .then(Mono.defer(() -> updateInactiveRounds(match)))
-                            .then(Mono.defer(() -> closeIfInactiveLimitReached(match)))
+                            .then(Mono.defer(() -> {match.updateInactiveRounds(); return Mono.empty();}))
+                            .then(Mono.defer(() -> {match.closeIfInactiveLimitReached(); return Mono.empty();}))
                             .then(Mono.delay(Duration.ofSeconds(timersConfig.getTimeForNewQuestionToAppear())))
-                            .then(Mono.defer(() -> moveToNextQuestion(match)));
+                            .then(Mono.defer(() -> {match.skipToNextQuestion(); return Mono.empty();}));
                 });
     }
     private Mono<Void> createCountdownTimer(Match match, MessageChannel channel, Message message, long index, int totalTime) {
@@ -153,34 +149,5 @@ public class QuizFlowService {
                     return message.edit(spec);
                 })
                 .then();
-    }
-
-    private Mono<Message> closeEnrollment(Message monoMessage, Match match){
-        match.startCountdownPhase();
-        return Mono.just(monoMessage);
-    }
-
-    public Mono<Void> updateInactiveRounds(Match match){
-        match.updateInactiveRounds();
-        return Mono.empty();
-    }
-
-    public Mono<Void> closeIfInactiveLimitReached(Match match){
-        match.closeIfInactiveLimitReached();
-        return Mono.empty();
-    }
-    private Mono<Void> closeAnswering(Match match) {
-        match.startWaitingPhase();
-        return Mono.empty();
-    }
-
-    private Mono<Void> moveToNextQuestion(Match match){
-        match.skipToNextQuestion();
-        return Mono.empty();
-    }
-
-    private Mono<Void> addPlayerPoints(Match match){
-        match.updateScores();
-        return Mono.empty();
     }
 }
