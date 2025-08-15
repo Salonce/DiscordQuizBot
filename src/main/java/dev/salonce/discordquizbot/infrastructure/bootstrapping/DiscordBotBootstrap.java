@@ -2,16 +2,13 @@ package dev.salonce.discordquizbot.infrastructure.bootstrapping;
 
 import dev.salonce.discordquizbot.application.ButtonHandlerChain;
 import dev.salonce.discordquizbot.application.MessageHandlerChain;
-import dev.salonce.discordquizbot.infrastructure.configs.DiscordGatewayConfig;
 import dev.salonce.discordquizbot.infrastructure.dtos.ButtonInteraction;
 import dev.salonce.discordquizbot.infrastructure.mappers.ButtonMapper;
 import dev.salonce.discordquizbot.infrastructure.mappers.MessageMapper;
-import discord4j.core.DiscordClient;
 import discord4j.core.GatewayDiscordClient;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import discord4j.core.event.domain.message.MessageCreateEvent;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
