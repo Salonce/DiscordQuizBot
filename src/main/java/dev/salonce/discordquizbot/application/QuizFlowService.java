@@ -20,7 +20,7 @@ import java.time.Duration;
 
 @Service
 @RequiredArgsConstructor
-public class QuizManager {
+public class QuizFlowService {
 
     private final MatchService matchService;
     private final TimersConfig timersConfig;
@@ -173,9 +173,9 @@ public class QuizManager {
     }
 
 
-    private Mono<Void> closeAnswering(MessageChannel messageChannel){
-        Match match = matchService.get(messageChannel.getId().asLong());
-        match.setMatchState(MatchState.WAITING);
+    private Mono<Void> closeAnswering(MessageChannel messageChannel) {
+        matchService.get(messageChannel.getId().asLong())
+                .closeAnsweringPhase();
         return Mono.empty();
     }
 

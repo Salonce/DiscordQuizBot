@@ -44,6 +44,13 @@ public class Match{
         if (!isClosed()) this.matchState = matchState;
     }
 
+    public void closeAnsweringPhase() {
+        if (matchState != MatchState.ANSWERING) {
+            throw new IllegalStateException("Cannot close answering if not in answering phase");
+        }
+        this.matchState = MatchState.WAITING;
+    }
+
     public boolean isClosed(){
         return ((matchState == MatchState.CLOSED_BY_INACTIVITY) || (matchState == MatchState.CLOSED_BY_OWNER));
     }

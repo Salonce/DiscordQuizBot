@@ -2,7 +2,6 @@ package dev.salonce.discordquizbot.infrastructure.messages.in;
 
 import dev.salonce.discordquizbot.infrastructure.dtos.DiscordMessage;
 import dev.salonce.discordquizbot.infrastructure.messages.out.HelpMessage;
-import dev.salonce.discordquizbot.application.QuizManager;
 import dev.salonce.discordquizbot.application.MessageHandler;
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.spec.EmbedCreateSpec;
