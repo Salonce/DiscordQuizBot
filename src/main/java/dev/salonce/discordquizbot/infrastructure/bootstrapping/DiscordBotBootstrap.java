@@ -21,19 +21,13 @@ public class DiscordBotBootstrap {
 
     private final MessageHandlerChain messageHandlerChain;
     private final ButtonHandlerChain buttonHandlerChain;
-    private final DiscordGatewayConfig discordGatewayConfig;
+    private final GatewayDiscordClient gateway;
 
     public void startBot() {
-        GatewayDiscordClient gateway = discordGatewayConfig.getDiscordGateway();
-
-        if (gateway != null) {
-
-            printGuildCount(gateway);
-            handleMessages(gateway);
-            handleButtonInteractions(gateway);
-
-            gateway.onDisconnect().block();
-        }
+        printGuildCount(gateway);
+        handleMessages(gateway);
+        handleButtonInteractions(gateway);
+        gateway.onDisconnect().block();
     }
 
     private void handleMessages(GatewayDiscordClient gateway) {
