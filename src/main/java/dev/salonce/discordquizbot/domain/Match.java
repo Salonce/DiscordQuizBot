@@ -32,7 +32,11 @@ public class Match{
         this.difficulty = difficulty;
     }
 
-    public void addPlayer(Long userId){
+    public void addPlayer(Long userId) {
+        if (matchState != MatchState.ENROLLMENT)
+            throw new IllegalStateException("Cannot join now.");  // domain-level exception
+        if (players.containsKey(userId))
+            throw new IllegalStateException("Already joined.");
         players.put(userId, new Player(questions.size()));
     }
 

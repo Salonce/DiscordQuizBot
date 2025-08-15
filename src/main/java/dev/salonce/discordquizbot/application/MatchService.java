@@ -46,20 +46,13 @@ public class MatchService {
         return matchCache.getAll();
     }
 
-
-
     public String addPlayerToMatch(Long channelId, Long userId) {
-        Match match = get(channelId);
-
-        if (match.getMatchState() != MatchState.ENROLLMENT) {
-            return "You can join only during enrollment phase.";
-        }
-        if (match.getPlayers().containsKey(userId)) {
-            return "You’ve already joined the match.";
-        }
-
-        match.addPlayer(userId);
-        return "You’ve joined the match.";
+        Match match = matchCache.get(channelId);
+        if (match == null) return "This match doesn't exist.";
+        try { match.addPlayer(userId); }
+        catch (IllegalStateException e) { return e.getMessage(); }
+        matchCache.put(channelId, match);
+        return "You've joined the match.";
     }
 
     public String cancelMatch (Long channelId, Long userId) {
