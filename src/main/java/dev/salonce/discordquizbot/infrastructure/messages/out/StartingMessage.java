@@ -53,7 +53,7 @@ public class StartingMessage {
                 .build();
     }
 
-    public MessageEditSpec editSpec2(Match match, MessageChannel messageChannel, Long timeToStartLeft){
+    public MessageEditSpec editSpec2(Match match, Long timeToStartLeft){
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("\uD83D\uDE80 Starting Soon...")
                 .addField("\uD83D\uDCD8 Subject: " + match.getTopic() + " " + match.getDifficulty(), "", false)

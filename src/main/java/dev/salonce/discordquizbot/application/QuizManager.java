@@ -59,7 +59,7 @@ public class QuizManager {
                                 .take(totalTimeToStart + 1)
                                 .flatMap(interval -> {
                                     Long timeLeft = (long) (totalTimeToStart - interval.intValue());
-                                    MessageEditSpec spec = startingMessage.editSpec2(match, messageChannel, timeLeft);
+                                    MessageEditSpec spec = startingMessage.editSpec2(match, timeLeft);
                                     return message.edit(spec);
                                 })
                                 .then(Mono.just(message))
