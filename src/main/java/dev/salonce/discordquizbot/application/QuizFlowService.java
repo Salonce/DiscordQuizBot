@@ -138,7 +138,7 @@ public class QuizFlowService {
 //                                    })
 //                            )
                             .then(Mono.defer(() -> updateInactiveRoundsInARowCount(match)))
-                            .then(Mono.defer(() -> switchStateToClosedIfInactiveRoundsInARowLimitReached(match)))
+                            .then(Mono.defer(() -> closeIfInactiveLimitReached(match)))
                             .then(Mono.delay(Duration.ofSeconds(timersConfig.getTimeForNewQuestionToAppear())))
                             .then(Mono.defer(() -> moveToNextQuestion(match)));
                 });
@@ -165,7 +165,7 @@ public class QuizFlowService {
         return Mono.empty();
     }
 
-    public Mono<Void> switchStateToClosedIfInactiveRoundsInARowLimitReached(Match match){
+    public Mono<Void> closeIfInactiveLimitReached(Match match){
         match.closeIfInactiveLimitReached();
         return Mono.empty();
     }
