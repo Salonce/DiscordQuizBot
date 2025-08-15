@@ -68,7 +68,7 @@ public class QuizManager {
                 .filter(tick -> match.isClosed())
                 .next()
                 .flatMap(tick -> {
-                    EmbedCreateSpec embed = matchCanceledMessage.create(match);
+                    EmbedCreateSpec embed = matchCanceledMessage.createEmbed(match);
                     return messageChannel.createMessage(embed);}
                 )
                 .then();

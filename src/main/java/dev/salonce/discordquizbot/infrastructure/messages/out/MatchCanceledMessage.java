@@ -3,8 +3,6 @@ package dev.salonce.discordquizbot.infrastructure.messages.out;
 import dev.salonce.discordquizbot.application.MatchService;
 import dev.salonce.discordquizbot.domain.MatchState;
 import dev.salonce.discordquizbot.domain.Match;
-import discord4j.core.object.Embed;
-import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.spec.EmbedCreateSpec;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -15,7 +13,7 @@ public class MatchCanceledMessage {
 
     private final MatchService matchService;
 
-    public EmbedCreateSpec create(Match match){
+    public EmbedCreateSpec createEmbed(Match match){
         String title = "\uD83D\uDEAA Match aborted";
         String reason = "unknown.";
         if (match.getMatchState() == MatchState.CLOSED_BY_INACTIVITY)
