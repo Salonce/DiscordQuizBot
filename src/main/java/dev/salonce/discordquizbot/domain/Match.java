@@ -32,12 +32,34 @@ public class Match{
         this.difficulty = difficulty;
     }
 
-    public void addPlayer(Long userId){
+    public void addPlayer(Long userId) {
+        if (matchState != MatchState.ENROLLMENT)
+            throw new IllegalStateException("Cannot join now.");  // domain-level exception
+        if (players.containsKey(userId))
+            throw new IllegalStateException("Already joined.");
         players.put(userId, new Player(questions.size()));
     }
 
     public void setMatchState(MatchState matchState) {
         if (!isClosed()) this.matchState = matchState;
+    }
+
+    public void startAnsweringPhase() {
+//        if (matchState != MatchState.COUNTDOWN) {
+//            throw new IllegalStateException("Cannot close answering if not in countdown phase");
+//        }
+        this.matchState = MatchState.ANSWERING;
+    }
+
+    public void startCountdownPhase(){
+        setMatchState(MatchState.COUNTDOWN);
+    }
+
+    public void startWaitingPhase() {
+        if (matchState != MatchState.ANSWERING) {
+            throw new IllegalStateException("Cannot close answering if not in answering phase");
+        }
+        this.matchState = MatchState.WAITING;
     }
 
     public boolean isClosed(){
@@ -84,7 +106,7 @@ public class Match{
     }
 
     //actually adds +1 inactive round if current round was inactive, repeating this function in the same round will make results wrong
-    public void updateInactiveRoundsInARowCount(){
+    public void updateInactiveRounds(){
         int noAnswersCount = 0;
         for (Player player : players.values()){
             int intAnswer = player.getAnswersList().get(currentQuestionNum);
@@ -99,7 +121,7 @@ public class Match{
             inactiveRounds = 0;
     }
 
-    public void switchStateToClosedIfInactiveRoundsInARowLimitReached(){
+    public void closeIfInactiveLimitReached(){
         if (inactiveRounds >= inactiveRoundsLimit) {
             matchState = MatchState.CLOSED_BY_INACTIVITY;
         }

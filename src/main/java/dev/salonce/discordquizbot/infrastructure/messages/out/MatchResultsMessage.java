@@ -19,9 +19,7 @@ public class MatchResultsMessage {
 
     private final MatchService matchService;
 
-    public EmbedCreateSpec createEmbed(MessageChannel messageChannel){
-        Match match = matchService.get(messageChannel);
-
+    public EmbedCreateSpec createEmbed(Match match){
         return EmbedCreateSpec.builder()
                 .title("\uD83C\uDFC6 Final scoreboard")
                 .addField("\uD83D\uDCD8 Subject: " + match.getTopic() + " " + match.getDifficulty(), "", false)

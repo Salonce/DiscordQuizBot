@@ -11,24 +11,20 @@ import java.util.concurrent.ConcurrentHashMap;
 @Component
 public class MatchCache {
     //private final Map<MessageChannel, Match> matches = new HashMap<>();
-    private final Map<MessageChannel, Match> matches = new ConcurrentHashMap<>();
+    private final Map<Long, Match> matches = new ConcurrentHashMap<>();
 
-    public Match get(MessageChannel channel) {
-        return matches.get(channel);
+    public Match get(Long channelId) {
+        return matches.get(channelId);
     }
-
-    public void put(MessageChannel channel, Match match) {
-        matches.put(channel, match);
+    public void put(Long channelId, Match match) {
+        matches.put(channelId, match);
     }
-
-    public boolean containsKey(MessageChannel channel) {
-        return matches.containsKey(channel);
+    public boolean containsKey(Long channelId) {
+        return matches.containsKey(channelId);
     }
-
-    public void remove(MessageChannel channel) {
-        matches.remove(channel);
+    public void remove(Long channelId) {
+        matches.remove(channelId);
     }
-
     public Collection<Match> getAll() {
         return matches.values();
     }

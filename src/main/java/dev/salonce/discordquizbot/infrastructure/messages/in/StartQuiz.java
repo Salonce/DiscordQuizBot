@@ -3,7 +3,7 @@ package dev.salonce.discordquizbot.infrastructure.messages.in;
 import dev.salonce.discordquizbot.infrastructure.dtos.DiscordMessage;
 import dev.salonce.discordquizbot.application.MatchService;
 import dev.salonce.discordquizbot.application.QuestionsService;
-import dev.salonce.discordquizbot.application.QuizManager;
+import dev.salonce.discordquizbot.application.QuizFlowService;
 import dev.salonce.discordquizbot.application.MessageHandler;
 import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class StartQuiz implements MessageHandler {
     private final MatchService matchService;
-    private final QuizManager quizManager;
+    private final QuizFlowService quizFlowService;
     private final QuestionsService questionsService;
 
     @Override
@@ -55,7 +55,7 @@ public class StartQuiz implements MessageHandler {
         MessageChannel messageChannel = discordMessage.channel();
         messageChannel.getId();
 
-        quizManager.addMatch(messageChannel, matchService.makeMatch(topic, difficulty, userId));
+        quizFlowService.addMatch(messageChannel, matchService.makeMatch(topic, difficulty, userId));
         return true;
     }
 }
