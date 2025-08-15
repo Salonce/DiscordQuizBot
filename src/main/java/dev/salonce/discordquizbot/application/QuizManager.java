@@ -64,7 +64,10 @@ public class QuizManager {
                                 })
                                 .then(Mono.just(message))
                 )
-                .flatMap(message -> createQuestionMessages(messageChannel))
+                .flatMap(message -> {
+                    messageChannel.getId();
+                    return createQuestionMessages(messageChannel);
+                })
                 .then(Mono.defer(() -> {
                     EmbedCreateSpec embed = matchResultsMessage.createEmbed(messageChannel);
                     return messageChannel.createMessage(embed);})

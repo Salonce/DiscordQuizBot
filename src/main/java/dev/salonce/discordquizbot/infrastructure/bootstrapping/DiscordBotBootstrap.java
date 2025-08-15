@@ -2,6 +2,7 @@ package dev.salonce.discordquizbot.infrastructure.bootstrapping;
 
 import dev.salonce.discordquizbot.application.ButtonHandlerChain;
 import dev.salonce.discordquizbot.application.MessageHandlerChain;
+import dev.salonce.discordquizbot.infrastructure.configs.DiscordGatewayConfig;
 import dev.salonce.discordquizbot.infrastructure.dtos.ButtonInteraction;
 import dev.salonce.discordquizbot.infrastructure.mappers.ButtonMapper;
 import dev.salonce.discordquizbot.infrastructure.mappers.MessageMapper;
@@ -20,13 +21,10 @@ public class DiscordBotBootstrap {
 
     private final MessageHandlerChain messageHandlerChain;
     private final ButtonHandlerChain buttonHandlerChain;
-
-    @Value("${discord.bot.token}")
-    private String discordBotToken;
+    private final DiscordGatewayConfig discordGatewayConfig;
 
     public void startBot() {
-        final DiscordClient client = DiscordClient.create(discordBotToken);
-        final GatewayDiscordClient gateway = client.login().block();
+        GatewayDiscordClient gateway = discordGatewayConfig.getDiscordGateway();
 
         if (gateway != null) {
 
