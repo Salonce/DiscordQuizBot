@@ -19,7 +19,7 @@ public class ButtonMapper {
             messageChannel = null;
 
         if (buttonId != null && userId != null && messageChannel != null)
-            return new ButtonInteraction(buttonId, userId, messageChannel);
+            return new ButtonInteraction(userId, buttonId, messageChannel);
         return null;
     }
 }
