@@ -19,7 +19,6 @@ public class HelpMessage {
 
     private final RawQuestionsService rawQuestionsService;
 
-    //examples
     public Mono<Message> create(MessageChannel messageChannel) {
         Map<String, Topic> topics = rawQuestionsService.getTopicsMap();
         String example = null;
@@ -43,8 +42,6 @@ public class HelpMessage {
         }
 
         EmbedCreateSpec embed;
-        //categories list
-        //switch to if fail then dont do and move embed
         if (example != null && exampleDifficulty != null) {
             EmbedCreateSpec.Builder embedBuilder = EmbedCreateSpec.builder();
 

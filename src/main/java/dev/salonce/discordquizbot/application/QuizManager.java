@@ -9,6 +9,7 @@ import dev.salonce.discordquizbot.infrastructure.messages.out.QuestionMessage;
 import dev.salonce.discordquizbot.infrastructure.messages.out.StartingMessage;
 import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.channel.MessageChannel;
+import discord4j.core.spec.EmbedCreateSpec;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -66,7 +67,10 @@ public class QuizManager {
         Mono<Void> cancelFlow = Flux.interval(Duration.ofMillis(500))
                 .filter(tick -> match.isClosed())
                 .next()
-                .flatMap(tick -> matchCanceledMessage.create(messageChannel))
+                .flatMap(tick -> {
+                    EmbedCreateSpec embed = matchCanceledMessage.create(match);
+                    return messageChannel.createMessage(embed);}
+                )
                 .then();
 
         Mono.firstWithSignal(normalFlow, cancelFlow)
