@@ -51,6 +51,10 @@ public class Match{
         this.matchState = MatchState.ANSWERING;
     }
 
+    public void startCountdownPhase(){
+        setMatchState(MatchState.COUNTDOWN);
+    }
+
     public void startWaitingPhase() {
         if (matchState != MatchState.ANSWERING) {
             throw new IllegalStateException("Cannot close answering if not in answering phase");
@@ -102,7 +106,7 @@ public class Match{
     }
 
     //actually adds +1 inactive round if current round was inactive, repeating this function in the same round will make results wrong
-    public void updateInactiveRoundsInARowCount(){
+    public void updateInactiveRounds(){
         int noAnswersCount = 0;
         for (Player player : players.values()){
             int intAnswer = player.getAnswersList().get(currentQuestionNum);

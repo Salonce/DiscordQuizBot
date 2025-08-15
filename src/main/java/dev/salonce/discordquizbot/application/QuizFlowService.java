@@ -137,7 +137,7 @@ public class QuizFlowService {
 //                                        return questionMessage.editWithScoresAndTimeLeft(messageChannel, message, index, timeLeft);
 //                                    })
 //                            )
-                            .then(Mono.defer(() -> updateInactiveRoundsInARowCount(match)))
+                            .then(Mono.defer(() -> updateInactiveRounds(match)))
                             .then(Mono.defer(() -> closeIfInactiveLimitReached(match)))
                             .then(Mono.delay(Duration.ofSeconds(timersConfig.getTimeForNewQuestionToAppear())))
                             .then(Mono.defer(() -> moveToNextQuestion(match)));
@@ -156,12 +156,12 @@ public class QuizFlowService {
     }
 
     private Mono<Message> closeEnrollment(Message monoMessage, Match match){
-        match.setMatchState(MatchState.COUNTDOWN);
+        match.startCountdownPhase();
         return Mono.just(monoMessage);
     }
 
-    public Mono<Void> updateInactiveRoundsInARowCount(Match match){
-        match.updateInactiveRoundsInARowCount();
+    public Mono<Void> updateInactiveRounds(Match match){
+        match.updateInactiveRounds();
         return Mono.empty();
     }
 
