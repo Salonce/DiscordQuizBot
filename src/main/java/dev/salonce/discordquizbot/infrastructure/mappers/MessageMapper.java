@@ -8,9 +8,9 @@ public class MessageMapper {
     public static Optional<DiscordMessage> toDiscordMessage(Message message) {
         return message.getAuthor()
                 .map(author -> new DiscordMessage(
-                        message.getChannel().block(),
                         author.getId().asLong(),
-                        message.getContent()
+                        message.getContent(),
+                        message.getChannel().block()
                 ));
     }
 }

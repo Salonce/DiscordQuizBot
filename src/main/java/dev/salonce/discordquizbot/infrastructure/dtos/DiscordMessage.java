@@ -8,8 +8,8 @@ import lombok.Getter;
 import java.util.NoSuchElementException;
 
 
-public record DiscordMessage(MessageChannel channel,
-                             Long userId,
-                             String content) {
+public record DiscordMessage(Long userId,
+                             String content,
+                             MessageChannel channel) {
 }
 
