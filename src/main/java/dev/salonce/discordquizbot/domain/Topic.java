@@ -32,7 +32,7 @@ public class Topic {
 
     private void sortQuestions(List<RawQuestion> questions) {
         questions.sort(Comparator
-                .comparing(RawQuestion::getDifficulty, Comparator.nullsLast(Integer::compareTo))
-                .thenComparing(RawQuestion::getId, Comparator.nullsLast(Long::compareTo)));
+                .comparing(RawQuestion::difficulty, Comparator.nullsLast(Integer::compareTo))
+                .thenComparing(RawQuestion::id, Comparator.nullsLast(Long::compareTo)));
     }
 }

@@ -27,7 +27,12 @@ public class RawQuestionStore {
         Set<RawQuestion> rawQuestions = new HashSet<>();
         for (RawQuestion rawQuestion : this.rawQuestions){
             for (String tag : tags){
-                if (rawQuestion.containsTag(tag)) {
+                if (rawQuestion.tags() == null) {
+                    System.out.println("Missing or null tags for question ID: " + rawQuestion.id());
+                    System.out.println("question: " + rawQuestion.question());
+                    break;
+                }
+                if (rawQuestion.tags().contains(tag)) {
                     rawQuestions.add(rawQuestion);
                     break;
                 }

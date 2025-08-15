@@ -22,25 +22,25 @@ public class Question {
         List<QuizOption> quizOptions = new ArrayList<>();
 
         Random rand = new Random();
-        int num = rand.nextInt(rawQuestion.getCorrectAnswers().size());
-        quizOptions.add(new QuizOption(rawQuestion.getCorrectAnswers().get(num), true));
+        int num = rand.nextInt(rawQuestion.correctAnswers().size());
+        quizOptions.add(new QuizOption(rawQuestion.correctAnswers().get(num), true));
 
         //add incorrect answers
         Set<Integer> set = new HashSet();
-        int size = Math.min(3, rawQuestion.getIncorrectAnswers().size());
+        int size = Math.min(3, rawQuestion.incorrectAnswers().size());
         while (set.size() != size){
-            num = rand.nextInt(rawQuestion.getIncorrectAnswers().size());
+            num = rand.nextInt(rawQuestion.incorrectAnswers().size());
             set.add(num);
         }
 
         for (int i : set){
-            quizOptions.add(new QuizOption(rawQuestion.getIncorrectAnswers().get(i), false));
+            quizOptions.add(new QuizOption(rawQuestion.incorrectAnswers().get(i), false));
         }
 
         Collections.shuffle(quizOptions);
 
-        this.question = rawQuestion.getQuestion();
-        this.explanation = rawQuestion.getExplanation();
+        this.question = rawQuestion.question();
+        this.explanation = rawQuestion.explanation();
         this.quizOptions = quizOptions;
     }
 

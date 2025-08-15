@@ -11,8 +11,9 @@ import java.util.Arrays;
 @Configuration
 public class MessageHandlerChainConfig {
     @Bean
-    public MessageHandlerChain getMessageHandlerChain(@Qualifier("messageFilter") MessageHandler messageFilter, @Qualifier("startQuiz") MessageHandler startQuiz, @Qualifier("help") MessageHandler help){
-
+    public MessageHandlerChain getMessageHandlerChain(@Qualifier("messageFilter") MessageHandler messageFilter,
+                                                      @Qualifier("startQuiz") MessageHandler startQuiz,
+                                                      @Qualifier("help") MessageHandler help){
         return new MessageHandlerChain(Arrays.asList(messageFilter, startQuiz, help));
     }
 }
