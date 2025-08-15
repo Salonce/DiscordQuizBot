@@ -23,7 +23,7 @@ public class StartingMessage {
 
     private final MatchService matchService;
 
-    public MessageCreateSpec create(Match match, int timeToJoinLeft){
+    public MessageCreateSpec createSpec(Match match, int timeToJoinLeft){
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("\uD83D\uDE80 Starting Soon...")
                 .addField("\uD83D\uDCD8 Subject: " + match.getTopic() + " " + match.getDifficulty(), "", false)
@@ -38,11 +38,8 @@ public class StartingMessage {
                 .build();
     }
 
-    public Mono<Message> edit(Message message, MessageChannel messageChannel, Long timeToJoinLeft){
-        Match match = matchService.get(messageChannel);
-
+    public MessageEditSpec editSpec(Match match, Long timeToJoinLeft){
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                //.title("\uD83C\uDFC1 Java Quiz")
                 .title("\uD83D\uDE80 Starting Soon...")
                 .addField("\uD83D\uDCD8 Subject: " + match.getTopic() + " " + match.getDifficulty(), "", false)
                 .addField("❓ Questions: " + match.getQuestions().size(), "", false)
@@ -50,10 +47,10 @@ public class StartingMessage {
                 .addField("", "```⏳ " + timeToJoinLeft + " seconds to start.``` ", false)
                 .build();
 
-        return message.edit(MessageEditSpec.builder()
+        return MessageEditSpec.builder()
                 .addComponent(ActionRow.of(Button.primary("startNow", "Start now"), Button.success("joinQuiz", "Join"), Button.success("leaveQuiz", "Leave"), Button.danger("cancelQuiz", "Cancel")))
                 .addEmbed(embed)
-                .build());
+                .build();
     }
 
     public Mono<Message> edit2(Message message, MessageChannel messageChannel, Long timeToStartLeft){

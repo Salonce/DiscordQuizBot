@@ -40,7 +40,7 @@ public class QuizManager {
 
         matchService.put(messageChannel, match);
 
-        Mono<Void> normalFlow = Mono.just(startingMessage.create(match, totalTimeToJoin))
+        Mono<Void> normalFlow = Mono.just(startingMessage.createSpec(match, totalTimeToJoin))
                 .flatMap(messageChannel::createMessage)
                 .flatMap(message ->
                         Flux.interval(Duration.ofSeconds(1))
@@ -48,7 +48,8 @@ public class QuizManager {
                                 .takeUntil(interval -> match.getMatchState() == MatchState.COUNTDOWN)
                                 .flatMap(interval -> {
                                     Long timeLeft = (long) (totalTimeToJoin - interval.intValue() - 1);
-                                    return startingMessage.edit(message, messageChannel, timeLeft);
+                                    MessageEditSpec spec = startingMessage.editSpec(match, timeLeft);
+                                    return message.edit(spec);
                                 })
                                 .then(Mono.just(message))
                 )
