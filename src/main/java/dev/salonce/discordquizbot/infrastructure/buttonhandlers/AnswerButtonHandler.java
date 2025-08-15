@@ -25,7 +25,7 @@ public class AnswerButtonHandler implements ButtonHandler {
         int questionNumber = Integer.parseInt(answerData[2]);
         int answerNumber = answerData[1].charAt(0) - 'A';
 
-        String response = matchService.getPlayerAnswer(buttonInteraction.messageChannel().getId().asLong(), buttonInteraction.userId(), questionNumber, answerNumber);
+        String response = matchService.getPlayerAnswer(buttonInteraction.channelId(), buttonInteraction.userId(), questionNumber, answerNumber);
 
         event.reply(response)
                 .withEphemeral(true)

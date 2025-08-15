@@ -18,7 +18,7 @@ public class LeaveMatchButtonHandler implements ButtonHandler {
     public boolean handle(ButtonInteractionEvent event, ButtonInteraction buttonInteraction) {
         if (!"leaveQuiz".equals(buttonInteraction.buttonId()))
             return false;
-        String result = matchService.leaveMatch(buttonInteraction.messageChannel().getId().asLong(), buttonInteraction.userId());
+        String result = matchService.leaveMatch(buttonInteraction.channelId(), buttonInteraction.userId());
         event.reply(result)
                 .withEphemeral(true)
                 .subscribe();

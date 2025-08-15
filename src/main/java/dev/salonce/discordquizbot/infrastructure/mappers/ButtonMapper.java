@@ -11,15 +11,13 @@ public class ButtonMapper {
         Long userId = buttonInteractionEvent.getInteraction().getUser().getId().asLong();
 
         Message message = buttonInteractionEvent.getMessage().orElse(null);
-        MessageChannel messageChannel;
 
-        if (message != null)
-            messageChannel = message.getChannel().blockOptional().orElse(null);
-        else
-            messageChannel = null;
+        if (message == null) return null;
+        MessageChannel messageChannel = message.getChannel().blockOptional().orElse(null);
 
-        if (buttonId != null && userId != null && messageChannel != null)
-            return new ButtonInteraction(userId, buttonId, messageChannel);
-        return null;
+        if (messageChannel == null) return null;
+        Long channelId = messageChannel.getId().asLong();
+
+        return new ButtonInteraction(userId, channelId, buttonId);
     }
 }

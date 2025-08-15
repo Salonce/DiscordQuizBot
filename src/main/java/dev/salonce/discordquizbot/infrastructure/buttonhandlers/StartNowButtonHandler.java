@@ -17,7 +17,7 @@ public class StartNowButtonHandler implements ButtonHandler {
     public boolean handle(ButtonInteractionEvent event, ButtonInteraction buttonInteraction) {
         if (!"startNow".equals(buttonInteraction.buttonId()))
             return false;
-        String result = matchService.startNow(buttonInteraction.messageChannel().getId().asLong(), buttonInteraction.userId());
+        String result = matchService.startNow(buttonInteraction.channelId(), buttonInteraction.userId());
         event.reply(result)
                 .withEphemeral(true)
                 .subscribe();
