@@ -51,7 +51,7 @@ public class StartQuiz implements MessageHandler {
         if (!questionsService.doesQuestionSetExist(topic, difficulty))
             return true;
 
-        Long userId = discordMessage.user().getId().asLong();
+        Long userId = discordMessage.userId();
         MessageChannel messageChannel = discordMessage.channel();
         messageChannel.getId();
 
