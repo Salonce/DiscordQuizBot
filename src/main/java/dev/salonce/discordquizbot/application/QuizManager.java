@@ -40,7 +40,8 @@ public class QuizManager {
 
         matchService.put(messageChannel, match);
 
-        Mono<Void> normalFlow = startingMessage.create(messageChannel, totalTimeToJoin)
+        Mono<Void> normalFlow = Mono.just(startingMessage.create(match, totalTimeToJoin))
+                .flatMap(messageChannel::createMessage)
                 .flatMap(message ->
                         Flux.interval(Duration.ofSeconds(1))
                                 .take(totalTimeToJoin)

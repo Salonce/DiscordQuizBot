@@ -23,9 +23,7 @@ public class StartingMessage {
 
     private final MatchService matchService;
 
-    public Mono<Message> create(MessageChannel messageChannel, int timeToJoinLeft){
-        Match match = matchService.get(messageChannel);
-
+    public MessageCreateSpec create(Match match, int timeToJoinLeft){
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("\uD83D\uDE80 Starting Soon...")
                 .addField("\uD83D\uDCD8 Subject: " + match.getTopic() + " " + match.getDifficulty(), "", false)
@@ -34,12 +32,10 @@ public class StartingMessage {
                 .addField("", "```⏳ " + timeToJoinLeft + " seconds to start.``` ", false)
                 .build();
 
-        MessageCreateSpec spec = MessageCreateSpec.builder()
+        return MessageCreateSpec.builder()
                 .addComponent(ActionRow.of(Button.primary("startNow", "Start now"), Button.success("joinQuiz", "Join"), Button.success("leaveQuiz", "Leave"), Button.danger("cancelQuiz", "Cancel")))
                 .addEmbed(embed)
                 .build();
-
-        return messageChannel.createMessage(spec);
     }
 
     public Mono<Message> edit(Message message, MessageChannel messageChannel, Long timeToJoinLeft){
