@@ -49,7 +49,7 @@ public class QuestionMessage {
                 .build();
     }
 
-    public MessageEditSpec createEmbedWithTime(Match match, Long questionNumber, int timeLeft){
+    public MessageEditSpec editEmbedWithTime(Match match, Long questionNumber, int timeLeft){
         String questionsAnswers = match.getCurrentQuestion().getOptions();
         int answersSize = match.getCurrentQuestion().getQuizOptions().size();
 
@@ -70,11 +70,9 @@ public class QuestionMessage {
                 .addComponent(ActionRow.of(buttons))
                 .addEmbed(embed)
                 .build();
-        // return message.edit();
     }
 
-    public Mono<Message> createEmbedAfterAnswersWait(MessageChannel messageChannel, Message message, Long questionNumber){
-        Match match = matchService.get(messageChannel);
+    public MessageEditSpec editEmbedAfterAnswersWait(Match match, Message message, Long questionNumber){
         String questionsAnswers = match.getCurrentQuestion().getOptions();
         int answersSize = match.getCurrentQuestion().getQuizOptions().size();
 
@@ -90,10 +88,10 @@ public class QuestionMessage {
                 .addField("\n", questionsAnswers + "\n", false)
                 .build();
 
-        return message.edit(MessageEditSpec.builder()
+        return MessageEditSpec.builder()
                 .addComponent(ActionRow.of(buttons))
                 .addEmbed(embed)
-                .build());
+                .build();
     }
 
     public Mono<Message> createEmbedWithScores(MessageChannel messageChannel, Message message, Long questionNumber){

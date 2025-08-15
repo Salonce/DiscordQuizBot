@@ -113,7 +113,10 @@ public class QuizManager {
                 .flatMap(message -> {
                     openAnswering(messageChannel);
                     return createCountdownTimer(match, messageChannel, message, index, totalTime)
-                            .then(Mono.defer(() -> questionMessage.createEmbedAfterAnswersWait(messageChannel, message, index)))
+                            .then(Mono.defer(() -> {
+                                MessageEditSpec spec = questionMessage.editEmbedAfterAnswersWait(match, message, index);
+                                return message.edit(spec);
+                            }))
                             .then(Mono.delay(Duration.ofSeconds(1)))
                             .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
                             .then(Mono.defer(() -> closeAnswering(messageChannel)))
@@ -137,7 +140,7 @@ public class QuizManager {
                 .takeUntil(tick -> match.everyoneAnswered())
                 .flatMap(tick -> {
                     int timeLeft = totalTime - (tick.intValue() + 1);
-                    MessageEditSpec spec = questionMessage.createEmbedWithTime(match, index, timeLeft);
+                    MessageEditSpec spec = questionMessage.editEmbedWithTime(match, index, timeLeft);
                     return message.edit(spec);
                 })
                 .then();
