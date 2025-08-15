@@ -11,8 +11,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class MatchCanceledMessage {
 
-    private final MatchService matchService;
-
     public EmbedCreateSpec createEmbed(Match match){
         String title = "\uD83D\uDEAA Match aborted";
         String reason = "unknown.";

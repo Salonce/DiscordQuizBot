@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class Help implements MessageHandler {
     private final HelpMessage helpMessage;
-    private final QuizManager quizManager;
 
     @Override
     public boolean handleMessage(DiscordMessage discordMessage) {

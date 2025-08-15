@@ -27,7 +27,6 @@ public class MatchResultsMessage {
                 .addField("\uD83D\uDCD8 Subject: " + match.getTopic() + " " + match.getDifficulty(), "", false)
                 .addField("❓ Questions: " + match.getQuestions().size(), "", false)
                 .addField("", getFinalScoreboard(match), false)
-                //.addField("\uD83C\uDFC6", "The winners are: " + match.getWinners(), false)
                 .build();
     }
 
