@@ -1,5 +1,6 @@
 package dev.salonce.discordquizbot.application;
 
+import dev.salonce.discordquizbot.infrastructure.DiscordMessageSender;
 import dev.salonce.discordquizbot.infrastructure.configs.TimersConfig;
 import dev.salonce.discordquizbot.domain.Match;
 import dev.salonce.discordquizbot.domain.MatchState;
@@ -28,6 +29,7 @@ public class QuizFlowService {
     private final StartingMessage startingMessage;
     private final MatchCanceledMessage matchCanceledMessage;
     private final MatchResultsMessage matchResultsMessage;
+    private final DiscordMessageSender discordMessageSender;
 
     public void addMatch(MessageChannel messageChannel, Match match) {
         int totalTimeToJoin = timersConfig.getTimeToJoinQuiz();
@@ -115,27 +117,21 @@ public class QuizFlowService {
 
     private Mono<Void> handleSingleQuestion(Match match, MessageChannel messageChannel, long index) {
         int totalTime = timersConfig.getTimeToPickAnswer();
-        int totalTimeForNextQuestionToAppear = timersConfig.getTimeForNewQuestionToAppear();
+        int timeForNextQuestionToAppear = timersConfig.getTimeForNewQuestionToAppear();
 
         return Mono.just(questionMessage.createEmbed(match, index, totalTime))
                 .flatMap(messageChannel::createMessage)
                 .flatMap(message -> {
                     match.startAnsweringPhase();
                     return createCountdownTimer(match, message, index, totalTime)
-                            .then(Mono.defer(() -> {
-                                MessageEditSpec spec = questionMessage.editEmbedAfterAnswersWait(match, index);
-                                return message.edit(spec);
-                            }))
+                            .then(Mono.defer(() -> discordMessageSender.edit(message, questionMessage.editEmbedAfterAnswersWait(match, index))))
                             .then(Mono.delay(Duration.ofSeconds(1)))
                             .then(Mono.fromRunnable(match::updateScores))
                             .then(Mono.fromRunnable(match::startWaitingPhase))
-                            .then(Mono.defer(() -> {
-                                MessageEditSpec spec = questionMessage.editEmbedWithScores(match, index);
-                                return message.edit(spec);
-                            }))
+                            .then(Mono.defer(() -> discordMessageSender.edit(message, questionMessage.editEmbedWithScores(match, index))))
                             .then(Mono.fromRunnable(match::updateInactiveRounds))
                             .then(Mono.fromRunnable(match::closeIfInactiveLimitReached))
-                            .then(Mono.delay(Duration.ofSeconds(timersConfig.getTimeForNewQuestionToAppear())))
+                            .then(Mono.delay(Duration.ofSeconds(timeForNextQuestionToAppear)))
                             .then(Mono.fromRunnable(match::skipToNextQuestion));
                 });
     }
