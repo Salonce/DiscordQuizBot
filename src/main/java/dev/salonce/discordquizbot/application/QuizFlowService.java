@@ -121,25 +121,25 @@ public class QuizFlowService {
                 .flatMap(messageChannel::createMessage)
                 .flatMap(message -> {
                     match.startAnsweringPhase();
-                    return createCountdownTimer(match, messageChannel, message, index, totalTime)
+                    return createCountdownTimer(match, message, index, totalTime)
                             .then(Mono.defer(() -> {
                                 MessageEditSpec spec = questionMessage.editEmbedAfterAnswersWait(match, index);
                                 return message.edit(spec);
                             }))
                             .then(Mono.delay(Duration.ofSeconds(1)))
-                            .then(Mono.defer(() -> {match.updateScores(); return Mono.empty();}))
-                            .then(Mono.defer(() -> {match.startWaitingPhase(); return Mono.empty();}))
+                            .then(Mono.fromRunnable(match::updateScores))
+                            .then(Mono.fromRunnable(match::startWaitingPhase))
                             .then(Mono.defer(() -> {
                                 MessageEditSpec spec = questionMessage.editEmbedWithScores(match, index);
                                 return message.edit(spec);
                             }))
-                            .then(Mono.defer(() -> {match.updateInactiveRounds(); return Mono.empty();}))
-                            .then(Mono.defer(() -> {match.closeIfInactiveLimitReached(); return Mono.empty();}))
+                            .then(Mono.fromRunnable(match::updateInactiveRounds))
+                            .then(Mono.fromRunnable(match::closeIfInactiveLimitReached))
                             .then(Mono.delay(Duration.ofSeconds(timersConfig.getTimeForNewQuestionToAppear())))
-                            .then(Mono.defer(() -> {match.skipToNextQuestion(); return Mono.empty();}));
+                            .then(Mono.fromRunnable(match::skipToNextQuestion));
                 });
     }
-    private Mono<Void> createCountdownTimer(Match match, MessageChannel channel, Message message, long index, int totalTime) {
+    private Mono<Void> createCountdownTimer(Match match, Message message, long index, int totalTime) {
         return Flux.interval(Duration.ofSeconds(1))
                 .take(totalTime)
                 .takeUntil(tick -> match.everyoneAnswered())
