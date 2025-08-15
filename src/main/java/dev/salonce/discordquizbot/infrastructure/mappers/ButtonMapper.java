@@ -9,8 +9,8 @@ import discord4j.core.object.entity.channel.MessageChannel;
 public class ButtonMapper {
     public static ButtonInteractionData toButtonInteractionData(ButtonInteractionEvent buttonInteractionEvent){
         String buttonId = buttonInteractionEvent.getCustomId();
-        User user = buttonInteractionEvent.getInteraction().getUser();
-        Long userId = user.getId().asLong();
+        Long userId = buttonInteractionEvent.getInteraction().getUser().getId().asLong();
+
         Message message = buttonInteractionEvent.getMessage().orElse(null);
         MessageChannel messageChannel;
 
@@ -19,8 +19,8 @@ public class ButtonMapper {
         else
             messageChannel = null;
 
-        if (buttonId != null && user != null && userId != null && message != null && messageChannel != null)
-            return new ButtonInteractionData(buttonId, user, userId, message, messageChannel);
+        if (buttonId != null && userId != null && messageChannel != null)
+            return new ButtonInteractionData(buttonId, userId, messageChannel);
         return null;
     }
 }
