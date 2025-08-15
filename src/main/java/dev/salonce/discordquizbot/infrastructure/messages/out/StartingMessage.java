@@ -53,11 +53,8 @@ public class StartingMessage {
                 .build();
     }
 
-    public Mono<Message> edit2(Message message, MessageChannel messageChannel, Long timeToStartLeft){
-        Match match = matchService.get(messageChannel);
-
+    public MessageEditSpec editSpec2(Match match, MessageChannel messageChannel, Long timeToStartLeft){
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
-                //.title("\uD83C\uDFC1 Java Quiz")
                 .title("\uD83D\uDE80 Starting Soon...")
                 .addField("\uD83D\uDCD8 Subject: " + match.getTopic() + " " + match.getDifficulty(), "", false)
                 .addField("❓ Questions: " + match.getQuestions().size(), "", false)
@@ -65,10 +62,10 @@ public class StartingMessage {
                 .addField("", "```⏳ " + timeToStartLeft + " seconds to start.``` ", false)
                 .build();
 
-        return message.edit(MessageEditSpec.builder()
+        return MessageEditSpec.builder()
                 .addComponent(ActionRow.of(Button.primary("startNow", "Start now").disabled(), Button.success("joinQuiz", "Join").disabled(), Button.success("leaveQuiz", "Leave").disabled(), Button.danger("cancelQuiz", "Cancel").disabled()))
                 .addEmbed(embed)
-                .build());
+                .build();
     }
 
     private String getUserNames(Match match) {
