@@ -166,7 +166,7 @@ public class QuizFlowService {
     }
 
     public Mono<Void> switchStateToClosedIfInactiveRoundsInARowLimitReached(Match match){
-        match.switchStateToClosedIfInactiveRoundsInARowLimitReached();
+        match.closeIfInactiveLimitReached();
         return Mono.empty();
     }
     private Mono<Void> closeAnswering(Match match) {

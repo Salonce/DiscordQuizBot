@@ -117,7 +117,7 @@ public class Match{
             inactiveRounds = 0;
     }
 
-    public void switchStateToClosedIfInactiveRoundsInARowLimitReached(){
+    public void closeIfInactiveLimitReached(){
         if (inactiveRounds >= inactiveRoundsLimit) {
             matchState = MatchState.CLOSED_BY_INACTIVITY;
         }
