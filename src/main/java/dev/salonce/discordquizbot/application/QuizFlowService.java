@@ -50,8 +50,7 @@ public class QuizFlowService {
                                 .takeUntil(interval -> match.getMatchState() == MatchState.COUNTDOWN)
                                 .flatMap(interval -> {
                                     Long timeLeft = (long) (totalTimeToJoin - interval.intValue() - 1);
-                                    MessageEditSpec spec = startingMessage.editSpec(match, timeLeft);
-                                    return message.edit(spec);
+                                    return discordMessageSender.edit(message, startingMessage.editSpec(match, timeLeft));
                                 })
                                 .then(Mono.just(message))
                 )
@@ -64,8 +63,7 @@ public class QuizFlowService {
                                 .take(totalTimeToStart + 1)
                                 .flatMap(interval -> {
                                     Long timeLeft = (long) (totalTimeToStart - interval.intValue());
-                                    MessageEditSpec spec = startingMessage.editSpec2(match, timeLeft);
-                                    return message.edit(spec);
+                                    return discordMessageSender.edit(message, startingMessage.editSpec2(match, timeLeft));
                                 })
                                 .then(Mono.just(message))
                 )
