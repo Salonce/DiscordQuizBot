@@ -1,13 +1,12 @@
 package dev.salonce.discordquizbot.infrastructure.mappers;
 
-import dev.salonce.discordquizbot.infrastructure.dtos.ButtonInteractionData;
+import dev.salonce.discordquizbot.infrastructure.dtos.ButtonInteraction;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import discord4j.core.object.entity.Message;
-import discord4j.core.object.entity.User;
 import discord4j.core.object.entity.channel.MessageChannel;
 
 public class ButtonMapper {
-    public static ButtonInteractionData toButtonInteractionData(ButtonInteractionEvent buttonInteractionEvent){
+    public static ButtonInteraction toButtonInteractionData(ButtonInteractionEvent buttonInteractionEvent){
         String buttonId = buttonInteractionEvent.getCustomId();
         Long userId = buttonInteractionEvent.getInteraction().getUser().getId().asLong();
 
@@ -20,7 +19,7 @@ public class ButtonMapper {
             messageChannel = null;
 
         if (buttonId != null && userId != null && messageChannel != null)
-            return new ButtonInteractionData(buttonId, userId, messageChannel);
+            return new ButtonInteraction(buttonId, userId, messageChannel);
         return null;
     }
 }

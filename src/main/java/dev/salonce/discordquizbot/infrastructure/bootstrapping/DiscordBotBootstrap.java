@@ -2,7 +2,7 @@ package dev.salonce.discordquizbot.infrastructure.bootstrapping;
 
 import dev.salonce.discordquizbot.application.ButtonHandlerChain;
 import dev.salonce.discordquizbot.application.MessageHandlerChain;
-import dev.salonce.discordquizbot.infrastructure.dtos.ButtonInteractionData;
+import dev.salonce.discordquizbot.infrastructure.dtos.ButtonInteraction;
 import dev.salonce.discordquizbot.infrastructure.mappers.ButtonMapper;
 import dev.salonce.discordquizbot.infrastructure.mappers.MessageMapper;
 import discord4j.core.DiscordClient;
@@ -48,11 +48,11 @@ public class DiscordBotBootstrap {
 
     private void handleButtonInteractions(GatewayDiscordClient gateway) {
         gateway.on(ButtonInteractionEvent.class, event -> {
-            ButtonInteractionData buttonInteractionData = ButtonMapper.toButtonInteractionData(event);
-            if (buttonInteractionData == null)
+            ButtonInteraction buttonInteraction = ButtonMapper.toButtonInteractionData(event);
+            if (buttonInteraction == null)
                 return Mono.empty();
 
-            buttonHandlerChain.handle(event, buttonInteractionData);
+            buttonHandlerChain.handle(event, buttonInteraction);
 
             return Mono.empty(); // Since handlers subscribe to the events themselves
         }).subscribe();

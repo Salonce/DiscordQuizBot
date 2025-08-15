@@ -9,11 +9,7 @@ import java.util.NoSuchElementException;
 
 
 public record DiscordMessage(MessageChannel channel,
-                             User user,
-                             String userNameId,
-                             String userName,
-                             Long usernameIdLong,
-                             String userAvatarUrl,
+                             Long userId,
                              String content) {
 }
 
