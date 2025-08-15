@@ -114,13 +114,16 @@ public class QuizManager {
                     openAnswering(messageChannel);
                     return createCountdownTimer(match, messageChannel, message, index, totalTime)
                             .then(Mono.defer(() -> {
-                                MessageEditSpec spec = questionMessage.editEmbedAfterAnswersWait(match, message, index);
+                                MessageEditSpec spec = questionMessage.editEmbedAfterAnswersWait(match, index);
                                 return message.edit(spec);
                             }))
                             .then(Mono.delay(Duration.ofSeconds(1)))
                             .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
                             .then(Mono.defer(() -> closeAnswering(messageChannel)))
-                            .then(Mono.defer(() -> questionMessage.createEmbedWithScores(messageChannel, message, index)))
+                            .then(Mono.defer(() -> {
+                                MessageEditSpec spec = questionMessage.editEmbedWithScores(match, index);
+                                return message.edit(spec);
+                            }))
 //                            .thenMany(Flux.interval(Duration.ofSeconds(1))
 //                                    .take((long) totalTimeForNextQuestionToAppear)
 //                                    .flatMap(tick -> {

@@ -7,13 +7,11 @@ import dev.salonce.discordquizbot.domain.Question;
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
 import discord4j.core.object.entity.Message;
-import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.spec.EmbedCreateSpec;
 import discord4j.core.spec.MessageCreateSpec;
 import discord4j.core.spec.MessageEditSpec;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,7 +70,7 @@ public class QuestionMessage {
                 .build();
     }
 
-    public MessageEditSpec editEmbedAfterAnswersWait(Match match, Message message, Long questionNumber){
+    public MessageEditSpec editEmbedAfterAnswersWait(Match match, Long questionNumber){
         String questionsAnswers = match.getCurrentQuestion().getOptions();
         int answersSize = match.getCurrentQuestion().getQuizOptions().size();
 
@@ -94,8 +92,7 @@ public class QuestionMessage {
                 .build();
     }
 
-    public Mono<Message> createEmbedWithScores(MessageChannel messageChannel, Message message, Long questionNumber){
-        Match match = matchService.get(messageChannel);
+    public MessageEditSpec editEmbedWithScores(Match match, Long questionNumber){
         String questionsAnswers = match.getCurrentQuestion().getOptionsRevealed();
         int answersSize = match.getCurrentQuestion().getQuizOptions().size();
 
@@ -114,10 +111,10 @@ public class QuestionMessage {
                 .addField("\uD83D\uDCCA Scoreboard", getScoreboard(match), false)
                 .build();
 
-        return message.edit(MessageEditSpec.builder()
+        return MessageEditSpec.builder()
                 .addComponent(ActionRow.of(buttons))
                 .addEmbed(embed)
-                .build());
+                .build();
     }
 
     private String titleString(Match match){
