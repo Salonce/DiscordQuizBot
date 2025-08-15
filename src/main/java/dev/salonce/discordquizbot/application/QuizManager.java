@@ -1,5 +1,6 @@
 package dev.salonce.discordquizbot.application;
 
+import dev.salonce.discordquizbot.infrastructure.DiscordChannelProvider;
 import dev.salonce.discordquizbot.infrastructure.configs.TimersConfig;
 import dev.salonce.discordquizbot.domain.Match;
 import dev.salonce.discordquizbot.domain.MatchState;
@@ -28,17 +29,20 @@ public class QuizManager {
     private final StartingMessage startingMessage;
     private final MatchCanceledMessage matchCanceledMessage;
     private final MatchResultsMessage matchResultsMessage;
+    private final DiscordChannelProvider discordChannelProvider;
 
-    public void addMatch(MessageChannel messageChannel, Match match) {
+    public void addMatch(Long channelId, Match match) {
         int totalTimeToJoin = timersConfig.getTimeToJoinQuiz();
         int totalTimeToStart = timersConfig.getTimeToStartMatch();
 
-        if (matchService.containsKey(messageChannel)) {
+        if (matchService.containsKey(channelId)) {
             // send a message that a match is already in progress in that chat and can't start new one
             return;
         }
 
-        matchService.put(messageChannel, match);
+        matchService.put(channelId, match);
+
+        MessageChannel messageChannel = discordChannelProvider.getChannelById(channelId).block();
 
         Mono<Void> normalFlow = Mono.just(startingMessage.createSpec(match, totalTimeToJoin))
                 .flatMap(messageChannel::createMessage)
@@ -69,7 +73,7 @@ public class QuizManager {
                     return createQuestionMessages(messageChannel);
                 })
                 .then(Mono.defer(() -> {
-                    EmbedCreateSpec embed = matchResultsMessage.createEmbed(messageChannel);
+                    EmbedCreateSpec embed = matchResultsMessage.createEmbed(match);
                     return messageChannel.createMessage(embed);})
                 )
                 .then();
