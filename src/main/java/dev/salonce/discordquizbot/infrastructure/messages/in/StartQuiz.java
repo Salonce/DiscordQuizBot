@@ -19,7 +19,7 @@ public class StartQuiz implements MessageHandler {
 
     @Override
     public boolean handleMessage(DiscordMessage discordMessage) {
-        String[] message = discordMessage.getContent().split(" ");
+        String[] message = discordMessage.content().split(" ");
 
         if (!(message[0].equals("qq") && (message[1].equals("quiz") || message[1].equals("start") || message[1].equals("play"))))
             return false;
@@ -51,8 +51,8 @@ public class StartQuiz implements MessageHandler {
         if (!questionsService.doesQuestionSetExist(topic, difficulty))
             return true;
 
-        Long userId = discordMessage.getUser().getId().asLong();
-        MessageChannel messageChannel = discordMessage.getChannel();
+        Long userId = discordMessage.user().getId().asLong();
+        MessageChannel messageChannel = discordMessage.channel();
         messageChannel.getId();
 
         quizManager.addMatch(messageChannel, matchService.makeMatch(topic, difficulty, userId));

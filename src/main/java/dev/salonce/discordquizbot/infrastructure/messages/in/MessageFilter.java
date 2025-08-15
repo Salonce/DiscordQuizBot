@@ -14,7 +14,7 @@ public class MessageFilter implements MessageHandler {
     @Override
     public boolean handleMessage(DiscordMessage discordMessage){
 
-        String content = discordMessage.getContent();
+        String content = discordMessage.content();
 
         if (content == null || content.isEmpty())
             return true;
@@ -25,7 +25,7 @@ public class MessageFilter implements MessageHandler {
         if (content.length() > 50)
             return true;
 
-        String[] message = discordMessage.getContent().split(" ");
+        String[] message = discordMessage.content().split(" ");
 
         if (message.length < 2)
             return true;

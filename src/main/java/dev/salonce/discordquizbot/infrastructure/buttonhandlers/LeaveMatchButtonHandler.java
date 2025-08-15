@@ -1,18 +1,25 @@
-package dev.salonce.discordquizbot.infrastructure.buttons.handlers;
+package dev.salonce.discordquizbot.infrastructure.buttonhandlers;
 
 import dev.salonce.discordquizbot.application.ButtonHandler;
 import dev.salonce.discordquizbot.infrastructure.dtos.ButtonInteractionData;
+import dev.salonce.discordquizbot.application.MatchService;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+
 @RequiredArgsConstructor
-@Component("ButtonFallback")
-public class FallbackButtonHandler implements ButtonHandler {
+@Component("ButtonLeaveMatch")
+public class LeaveMatchButtonHandler implements ButtonHandler {
+
+    private final MatchService matchService;
+
     @Override
-    // This handler always returns true as it's meant to be the last in the chain
     public boolean handle(ButtonInteractionEvent event, ButtonInteractionData buttonInteractionData) {
-        event.reply("Button interaction failed.")
+        if (!"leaveQuiz".equals(buttonInteractionData.buttonId()))
+            return false;
+        String result = matchService.leaveMatch(buttonInteractionData.messageChannel(), buttonInteractionData.userId());
+        event.reply(result)
                 .withEphemeral(true)
                 .subscribe();
         return true;

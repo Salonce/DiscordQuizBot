@@ -1,4 +1,4 @@
-package dev.salonce.discordquizbot.infrastructure.buttons.handlers;
+package dev.salonce.discordquizbot.infrastructure.buttonhandlers;
 
 import dev.salonce.discordquizbot.application.ButtonHandler;
 import dev.salonce.discordquizbot.infrastructure.dtos.ButtonInteractionData;
@@ -8,16 +8,16 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
-@Component("ButtonCancelMatch")
-public class CancelMatchButtonHandler implements ButtonHandler {
+@Component("ButtonJoinMatch")
+public class JoinMatchButtonHandler implements ButtonHandler {
 
     private final MatchService matchService;
 
     @Override
     public boolean handle(ButtonInteractionEvent event, ButtonInteractionData data) {
-        if (!"cancelQuiz".equals(data.getButtonId()))
+        if (!"joinQuiz".equals(data.buttonId()))
             return false;
-        String result = matchService.cancelMatch(data.getMessageChannel(), data.getUserId());
+        String result = matchService.addPlayerToMatch(data.messageChannel(), data.userId());
         event.reply(result)
                 .withEphemeral(true)
                 .subscribe();

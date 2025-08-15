@@ -19,28 +19,26 @@ public class TimersConfig {
     private final int timeForNewQuestionToAppear;
 
     public TimersConfig(@Value("${mode}") String mode) {
-        if ("testing".equals(mode)) {
-            this.noOfQuestions = 4;
-            this.unansweredLimit = 3;
-            this.timeToJoinQuiz = 7;
-            this.timeToStartMatch = 2;
-            this.timeToPickAnswer = 5;
-            this.timeForNewQuestionToAppear = 1;
-        } else if ("standard".equals(mode)) {
-            this.noOfQuestions = 10;
-            this.unansweredLimit = 3;
-            this.timeToJoinQuiz = 30;
-            this.timeToStartMatch = 3;
-            this.timeToPickAnswer = 30;
-            this.timeForNewQuestionToAppear = 7;
-        } else {
-            System.out.println("ERROR! Mode " + mode + " doesn't exist! Check your application.yaml file for mode configuration.");
-            this.noOfQuestions = 0;
-            this.unansweredLimit = 0;
-            this.timeToJoinQuiz = 0;
-            this.timeToStartMatch = 0;
-            this.timeToPickAnswer = 0;
-            this.timeForNewQuestionToAppear = 0;
+        switch (mode) {
+            case "testing" -> {
+                this.noOfQuestions = 4;
+                this.unansweredLimit = 3;
+                this.timeToJoinQuiz = 7;
+                this.timeToStartMatch = 2;
+                this.timeToPickAnswer = 5;
+                this.timeForNewQuestionToAppear = 1;
+            }
+            case "standard" -> {
+                this.noOfQuestions = 10;
+                this.unansweredLimit = 3;
+                this.timeToJoinQuiz = 30;
+                this.timeToStartMatch = 3;
+                this.timeToPickAnswer = 30;
+                this.timeForNewQuestionToAppear = 7;
+            }
+            default -> throw new IllegalArgumentException(
+                    "Invalid mode '" + mode + "' in application.yaml! Valid values: 'testing', 'standard'."
+            );
         }
     }
 

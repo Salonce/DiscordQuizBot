@@ -2,6 +2,8 @@ package dev.salonce.discordquizbot.application;
 
 import dev.salonce.discordquizbot.infrastructure.dtos.ButtonInteractionData;
 import dev.salonce.discordquizbot.infrastructure.dtos.DiscordMessage;
+import dev.salonce.discordquizbot.infrastructure.mappers.ButtonMapper;
+import dev.salonce.discordquizbot.infrastructure.mappers.MessageMapper;
 import discord4j.core.DiscordClient;
 import discord4j.core.GatewayDiscordClient;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
@@ -10,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
+
+import java.util.Objects;
 
 @RequiredArgsConstructor
 @Service
@@ -38,16 +42,15 @@ public class StartingBotService {
     private void handleMessages(GatewayDiscordClient gateway) {
         gateway.on(MessageCreateEvent.class)
                 .map(MessageCreateEvent::getMessage)
-                .map(DiscordMessage::new)
+                .flatMap(message -> Mono.justOrEmpty(MessageMapper.toDiscordMessage(message)))
                 .doOnNext(messageHandlerChain::handle)
                 .subscribe();
     }
 
     private void handleButtonInteractions(GatewayDiscordClient gateway) {
         gateway.on(ButtonInteractionEvent.class, event -> {
-            ButtonInteractionData buttonInteractionData = new ButtonInteractionData(event);
-
-            if (!buttonInteractionData.buttonEventValid())
+            ButtonInteractionData buttonInteractionData = ButtonMapper.toButtonInteractionData(event);
+            if (buttonInteractionData == null)
                 return Mono.empty();
 
             buttonHandlerChain.handle(event, buttonInteractionData);
