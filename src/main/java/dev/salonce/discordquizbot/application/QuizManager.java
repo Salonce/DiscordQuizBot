@@ -107,15 +107,16 @@ public class QuizManager {
         int totalTime = timersConfig.getTimeToPickAnswer();
         int totalTimeForNextQuestionToAppear = timersConfig.getTimeForNewQuestionToAppear();
 
-        return questionMessage.create(messageChannel, index, totalTime)
+        return Mono.just(questionMessage.createEmbed(match, index, totalTime))
+                .flatMap(messageChannel::createMessage)
                 .flatMap(message -> {
                     openAnswering(messageChannel);
                     return createCountdownTimer(match, messageChannel, message, index, totalTime)
-                            .then(Mono.defer(() -> questionMessage.editAfterAnswersWait(messageChannel, message, index)))
+                            .then(Mono.defer(() -> questionMessage.createEmbedAfterAnswersWait(messageChannel, message, index)))
                             .then(Mono.delay(Duration.ofSeconds(1)))
                             .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
                             .then(Mono.defer(() -> closeAnswering(messageChannel)))
-                            .then(Mono.defer(() -> questionMessage.editWithScores(messageChannel, message, index)))
+                            .then(Mono.defer(() -> questionMessage.createEmbedWithScores(messageChannel, message, index)))
 //                            .thenMany(Flux.interval(Duration.ofSeconds(1))
 //                                    .take((long) totalTimeForNextQuestionToAppear)
 //                                    .flatMap(tick -> {
@@ -135,7 +136,7 @@ public class QuizManager {
                 .takeUntil(tick -> match.everyoneAnswered())
                 .flatMap(tick -> {
                     int timeLeft = totalTime - (tick.intValue() + 1);
-                    return questionMessage.editWithTime(channel, message, index, timeLeft);
+                    return questionMessage.createEmbedWithTime(channel, message, index, timeLeft);
                 })
                 .then();
     }
