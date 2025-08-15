@@ -117,7 +117,7 @@ public class QuizFlowService {
         return Mono.just(questionMessage.createEmbed(match, index, totalTime))
                 .flatMap(messageChannel::createMessage)
                 .flatMap(message -> {
-                    startAnsweringPhase(match);
+                    match.startAnsweringPhase();
                     return createCountdownTimer(match, messageChannel, message, index, totalTime)
                             .then(Mono.defer(() -> {
                                 MessageEditSpec spec = questionMessage.editEmbedAfterAnswersWait(match, index);
@@ -172,10 +172,6 @@ public class QuizFlowService {
     private Mono<Void> closeAnswering(Match match) {
         match.startWaitingPhase();
         return Mono.empty();
-    }
-
-    private void startAnsweringPhase(Match match){
-        match.startAnsweringPhase();
     }
 
     private Mono<Void> moveToNextQuestion(Match match){
