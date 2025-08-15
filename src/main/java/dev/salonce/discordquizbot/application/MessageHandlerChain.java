@@ -14,10 +14,5 @@ public class MessageHandlerChain {
             if (messageHandlers.get(i).handleMessage(discordMessage))
                 break;
         }
-
-//        for (MessageHandler messageHandler : messageHandlers){
-//            if (messageHandler.handleMessage(discordMessage))
-//                break;
-//        }
     }
 }

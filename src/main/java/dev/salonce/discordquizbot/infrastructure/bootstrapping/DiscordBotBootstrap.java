@@ -1,7 +1,8 @@
-package dev.salonce.discordquizbot.application;
+package dev.salonce.discordquizbot.infrastructure.bootstrapping;
 
+import dev.salonce.discordquizbot.application.ButtonHandlerChain;
+import dev.salonce.discordquizbot.application.MessageHandlerChain;
 import dev.salonce.discordquizbot.infrastructure.dtos.ButtonInteractionData;
-import dev.salonce.discordquizbot.infrastructure.dtos.DiscordMessage;
 import dev.salonce.discordquizbot.infrastructure.mappers.ButtonMapper;
 import dev.salonce.discordquizbot.infrastructure.mappers.MessageMapper;
 import discord4j.core.DiscordClient;
@@ -13,11 +14,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
-import java.util.Objects;
-
 @RequiredArgsConstructor
 @Service
-public class StartingBotService {
+public class DiscordBotBootstrap {
 
     private final MessageHandlerChain messageHandlerChain;
     private final ButtonHandlerChain buttonHandlerChain;
