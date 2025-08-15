@@ -19,18 +19,16 @@ public class MatchResultsMessage {
 
     private final MatchService matchService;
 
-    public Mono<Message> create(MessageChannel messageChannel){
+    public EmbedCreateSpec createEmbed(MessageChannel messageChannel){
         Match match = matchService.get(messageChannel);
 
-        EmbedCreateSpec embed = EmbedCreateSpec.builder()
+        return EmbedCreateSpec.builder()
                 .title("\uD83C\uDFC6 Final scoreboard")
                 .addField("\uD83D\uDCD8 Subject: " + match.getTopic() + " " + match.getDifficulty(), "", false)
                 .addField("❓ Questions: " + match.getQuestions().size(), "", false)
                 .addField("", getFinalScoreboard(match), false)
                 //.addField("\uD83C\uDFC6", "The winners are: " + match.getWinners(), false)
                 .build();
-
-        return messageChannel.createMessage(embed);
     }
 
     private String getFinalScoreboard(Match match) {

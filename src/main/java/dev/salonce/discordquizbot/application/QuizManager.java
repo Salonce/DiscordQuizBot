@@ -61,7 +61,10 @@ public class QuizManager {
                                 .then(Mono.just(message))
                 )
                 .flatMap(message -> createQuestionMessages(messageChannel))
-                .then(Mono.defer(() -> matchResultsMessage.create(messageChannel)))
+                .then(Mono.defer(() -> {
+                    EmbedCreateSpec embed = matchResultsMessage.createEmbed(messageChannel);
+                    return messageChannel.createMessage(embed);})
+                )
                 .then();
 
         Mono<Void> cancelFlow = Flux.interval(Duration.ofMillis(500))
