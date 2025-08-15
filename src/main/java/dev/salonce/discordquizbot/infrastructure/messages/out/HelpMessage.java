@@ -19,8 +19,7 @@ public class HelpMessage {
 
     private final RawQuestionsService rawQuestionsService;
 
-    //examples
-    public Mono<Message> create(MessageChannel messageChannel) {
+    public EmbedCreateSpec createEmbed() {
         Map<String, Topic> topics = rawQuestionsService.getTopicsMap();
         String example = null;
         Integer exampleDifficulty = -1;
@@ -43,8 +42,6 @@ public class HelpMessage {
         }
 
         EmbedCreateSpec embed;
-        //categories list
-        //switch to if fail then dont do and move embed
         if (example != null && exampleDifficulty != null) {
             EmbedCreateSpec.Builder embedBuilder = EmbedCreateSpec.builder();
 
@@ -70,8 +67,7 @@ public class HelpMessage {
                     .addField("", "Sorry. This bot has no available quizzes.", false)
                     .build();
         }
-
-        return messageChannel.createMessage(embed);
+        return embed;
     }
 
 }

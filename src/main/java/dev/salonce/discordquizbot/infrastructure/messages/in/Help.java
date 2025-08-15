@@ -5,6 +5,7 @@ import dev.salonce.discordquizbot.infrastructure.messages.out.HelpMessage;
 import dev.salonce.discordquizbot.application.QuizManager;
 import dev.salonce.discordquizbot.application.MessageHandler;
 import discord4j.core.object.entity.channel.MessageChannel;
+import discord4j.core.spec.EmbedCreateSpec;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +14,6 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class Help implements MessageHandler {
     private final HelpMessage helpMessage;
-    private final QuizManager quizManager;
 
     @Override
     public boolean handleMessage(DiscordMessage discordMessage) {
@@ -21,7 +21,8 @@ public class Help implements MessageHandler {
 
         if (message[0].equals("qq") && message[1].equals("help")) {
                 MessageChannel messageChannel = discordMessage.channel();
-                helpMessage.create(messageChannel).subscribe();
+                EmbedCreateSpec embed = helpMessage.createEmbed();
+                messageChannel.createMessage(embed).subscribe();
                 return true;
         }
         return false;

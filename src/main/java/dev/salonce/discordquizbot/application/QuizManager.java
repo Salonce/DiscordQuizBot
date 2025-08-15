@@ -9,6 +9,8 @@ import dev.salonce.discordquizbot.infrastructure.messages.out.QuestionMessage;
 import dev.salonce.discordquizbot.infrastructure.messages.out.StartingMessage;
 import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.channel.MessageChannel;
+import discord4j.core.spec.EmbedCreateSpec;
+import discord4j.core.spec.MessageEditSpec;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -38,14 +40,16 @@ public class QuizManager {
 
         matchService.put(messageChannel, match);
 
-        Mono<Void> normalFlow = startingMessage.create(messageChannel, totalTimeToJoin)
+        Mono<Void> normalFlow = Mono.just(startingMessage.createSpec(match, totalTimeToJoin))
+                .flatMap(messageChannel::createMessage)
                 .flatMap(message ->
                         Flux.interval(Duration.ofSeconds(1))
                                 .take(totalTimeToJoin)
                                 .takeUntil(interval -> match.getMatchState() == MatchState.COUNTDOWN)
                                 .flatMap(interval -> {
                                     Long timeLeft = (long) (totalTimeToJoin - interval.intValue() - 1);
-                                    return startingMessage.edit(message, messageChannel, timeLeft);
+                                    MessageEditSpec spec = startingMessage.editSpec(match, timeLeft);
+                                    return message.edit(spec);
                                 })
                                 .then(Mono.just(message))
                 )
@@ -55,18 +59,25 @@ public class QuizManager {
                                 .take(totalTimeToStart + 1)
                                 .flatMap(interval -> {
                                     Long timeLeft = (long) (totalTimeToStart - interval.intValue());
-                                    return startingMessage.edit2(message, messageChannel, timeLeft);
+                                    MessageEditSpec spec = startingMessage.editSpec2(match, timeLeft);
+                                    return message.edit(spec);
                                 })
                                 .then(Mono.just(message))
                 )
                 .flatMap(message -> createQuestionMessages(messageChannel))
-                .then(Mono.defer(() -> matchResultsMessage.create(messageChannel)))
+                .then(Mono.defer(() -> {
+                    EmbedCreateSpec embed = matchResultsMessage.createEmbed(messageChannel);
+                    return messageChannel.createMessage(embed);})
+                )
                 .then();
 
         Mono<Void> cancelFlow = Flux.interval(Duration.ofMillis(500))
                 .filter(tick -> match.isClosed())
                 .next()
-                .flatMap(tick -> matchCanceledMessage.create(messageChannel))
+                .flatMap(tick -> {
+                    EmbedCreateSpec embed = matchCanceledMessage.createEmbed(match);
+                    return messageChannel.createMessage(embed);}
+                )
                 .then();
 
         Mono.firstWithSignal(normalFlow, cancelFlow)
@@ -100,15 +111,22 @@ public class QuizManager {
         int totalTime = timersConfig.getTimeToPickAnswer();
         int totalTimeForNextQuestionToAppear = timersConfig.getTimeForNewQuestionToAppear();
 
-        return questionMessage.create(messageChannel, index, totalTime)
+        return Mono.just(questionMessage.createEmbed(match, index, totalTime))
+                .flatMap(messageChannel::createMessage)
                 .flatMap(message -> {
                     openAnswering(messageChannel);
                     return createCountdownTimer(match, messageChannel, message, index, totalTime)
-                            .then(Mono.defer(() -> questionMessage.editAfterAnswersWait(messageChannel, message, index)))
+                            .then(Mono.defer(() -> {
+                                MessageEditSpec spec = questionMessage.editEmbedAfterAnswersWait(match, index);
+                                return message.edit(spec);
+                            }))
                             .then(Mono.delay(Duration.ofSeconds(1)))
                             .then(Mono.defer(() -> addPlayerPoints(messageChannel)))
                             .then(Mono.defer(() -> closeAnswering(messageChannel)))
-                            .then(Mono.defer(() -> questionMessage.editWithScores(messageChannel, message, index)))
+                            .then(Mono.defer(() -> {
+                                MessageEditSpec spec = questionMessage.editEmbedWithScores(match, index);
+                                return message.edit(spec);
+                            }))
 //                            .thenMany(Flux.interval(Duration.ofSeconds(1))
 //                                    .take((long) totalTimeForNextQuestionToAppear)
 //                                    .flatMap(tick -> {
@@ -128,7 +146,8 @@ public class QuizManager {
                 .takeUntil(tick -> match.everyoneAnswered())
                 .flatMap(tick -> {
                     int timeLeft = totalTime - (tick.intValue() + 1);
-                    return questionMessage.editWithTime(channel, message, index, timeLeft);
+                    MessageEditSpec spec = questionMessage.editEmbedWithTime(match, index, timeLeft);
+                    return message.edit(spec);
                 })
                 .then();
     }
