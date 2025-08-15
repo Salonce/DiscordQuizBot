@@ -10,8 +10,6 @@ import dev.salonce.discordquizbot.infrastructure.messages.out.QuestionMessage;
 import dev.salonce.discordquizbot.infrastructure.messages.out.StartingMessage;
 import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.channel.MessageChannel;
-import discord4j.core.spec.EmbedCreateSpec;
-import discord4j.core.spec.MessageEditSpec;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
