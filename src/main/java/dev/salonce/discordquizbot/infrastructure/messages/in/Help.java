@@ -17,10 +17,10 @@ public class Help implements MessageHandler {
 
     @Override
     public boolean handleMessage(DiscordMessage discordMessage) {
-        String[] message = discordMessage.getContent().split(" ");
+        String[] message = discordMessage.content().split(" ");
 
         if (message[0].equals("qq") && message[1].equals("help")) {
-                MessageChannel messageChannel = discordMessage.getChannel();
+                MessageChannel messageChannel = discordMessage.channel();
                 helpMessage.create(messageChannel).subscribe();
                 return true;
         }
