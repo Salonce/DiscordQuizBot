@@ -67,6 +67,10 @@ public class Match{
         return true;
     }
 
+    public boolean isInTheMatch(Long userId){
+        return players.containsKey(userId);
+    }
+
     public Long getOwnerId(){
         try { return players.keySet().iterator().next(); }
         catch (NoSuchElementException e){ return null; }

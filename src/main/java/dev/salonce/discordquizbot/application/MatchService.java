@@ -67,7 +67,7 @@ public class MatchService {
         if (match == null) {
             return "This match doesn't exist.";
         }
-        if (!match.getPlayers().containsKey(userId)) {
+        if (!match.isInTheMatch(userId)) {
             return "You are not even in the match.";
         }
         if (match.getMatchState() != MatchState.ENROLLMENT) {
