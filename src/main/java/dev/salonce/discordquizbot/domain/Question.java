@@ -45,6 +45,7 @@ public class Question {
     }
 
     public boolean isCorrectAnswer(int num){
+        if(num == -1) return false;
         return (quizOptions.get(num).isCorrect());
     }
 
