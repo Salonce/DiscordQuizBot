@@ -12,17 +12,17 @@ public class Player {
     @Getter
     private int points;
 
-    public void setAnswer(int questionNumber, int answerNumber){
-        this.answersList.set(questionNumber, answerNumber);
+    public void setAnswer(int index, int answer){
+        this.answersList.set(index, answer);
     };
 
-    public void setAnswerAsLetter(int questionNumber, char letter) {
+    public void setAnswerAsLetter(int index, char letter) {
         int answerNumber = letter - 'A';  // Convert 'A', 'B', 'C', etc. to 0, 1, 2...
-        answersList.set(questionNumber, answerNumber);
+        answersList.set(index, answerNumber);
     }
 
-    public String getAnswerAsLetter(int questionNumber) {
-        int answer = answersList.get(questionNumber);
+    public String getAnswerAsLetter(int index) {
+        int answer = answersList.get(index);
         return answer >= 0 ? String.valueOf((char) ('A' + answer)) : "?";
     }
 

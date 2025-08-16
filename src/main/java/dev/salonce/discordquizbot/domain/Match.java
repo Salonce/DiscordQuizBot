@@ -5,14 +5,12 @@ import lombok.Getter;
 import java.util.*;
 import java.util.stream.Collectors;
 
+@Getter
 public class Match{
-    @Getter
     private String topic;
-    @Getter
     private final int difficulty;
     private final Map<Long, Player> players = new LinkedHashMap<>();
     private final List<Question> questions;
-    @Getter
     private int currentQuestionNum = 0;
     private int inactiveRounds = 0;
     private MatchState matchState = MatchState.ENROLLMENT;
