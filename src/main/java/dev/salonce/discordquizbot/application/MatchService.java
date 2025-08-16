@@ -4,7 +4,6 @@ import dev.salonce.discordquizbot.domain.Match;
 import dev.salonce.discordquizbot.domain.MatchState;
 import dev.salonce.discordquizbot.domain.Question;
 import dev.salonce.discordquizbot.infrastructure.MatchCache;
-import dev.salonce.discordquizbot.infrastructure.configs.QuizSetupConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -59,7 +58,7 @@ public class MatchService {
             return "This match doesn't exist anymore.";
         if (!match.getOwnerId().equals(userId))
             return "You are not the owner. Only the owner can cancel the match.";
-        match.setMatchState(MatchState.CLOSED_BY_OWNER);
+        match.closeByOwner();
         return "With your undeniable power of ownership, you've cancelled the match";
     }
 
@@ -87,7 +86,7 @@ public class MatchService {
         if (get(channelId).getMatchState() != MatchState.ENROLLMENT)
             return "Already started";
 
-        get(channelId).setMatchState(MatchState.COUNTDOWN);
+        get(channelId).startCountdownPhase();
         return "Starting immediately";
     }
 

@@ -9,9 +9,6 @@ import java.util.NoSuchElementException;
 
 @Getter
 public class Match{
-
-    //could maybe add rounds list (with updates) and then just calculate back on "update"
-
     private String topic;
     private final int difficulty;
     private final Map<Long, Player> players = new LinkedHashMap<>();
@@ -23,9 +20,8 @@ public class Match{
     public Match(List<Question> questions, String topic, int difficulty, Long ownerId){
         this.questions = questions;
         players.put(ownerId, new Player(questions.size()));
-
         if (topic != null) {
-            this.topic = topic.substring(0, 1).toUpperCase() + topic.substring(1); //Capitalize match name
+            this.topic = topic.substring(0, 1).toUpperCase() + topic.substring(1);
         }
         this.difficulty = difficulty;
     }
@@ -38,8 +34,9 @@ public class Match{
         players.put(userId, new Player(questions.size()));
     }
 
-    public void setMatchState(MatchState matchState) {
-        if (!isClosed()) this.matchState = matchState;
+    public void closeByOwner(){
+        if (!isClosed())
+            this.matchState = MatchState.CLOSED_BY_OWNER;
     }
 
     public void startAnsweringPhase() {
@@ -50,7 +47,7 @@ public class Match{
     }
 
     public void startCountdownPhase(){
-        setMatchState(MatchState.COUNTDOWN);
+        this.matchState = MatchState.COUNTDOWN;
     }
 
     public void startWaitingPhase() {
@@ -100,7 +97,6 @@ public class Match{
             return null;
     }
 
-    //actually adds +1 inactive round if current round was inactive, repeating this function in the same round will make results wrong
     public void updateInactiveRounds(){
         int noAnswersCount = 0;
         for (Player player : players.values()){
