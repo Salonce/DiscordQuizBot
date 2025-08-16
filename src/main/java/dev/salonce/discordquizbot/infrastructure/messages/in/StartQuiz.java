@@ -7,9 +7,10 @@ import dev.salonce.discordquizbot.application.QuizFlowService;
 import dev.salonce.discordquizbot.application.MessageHandler;
 import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-
+@Slf4j
 @Component("startQuiz")
 @RequiredArgsConstructor
 public class StartQuiz implements MessageHandler {
@@ -24,12 +25,8 @@ public class StartQuiz implements MessageHandler {
         if (!(message[0].equals("qq") && (message[1].equals("quiz") || message[1].equals("start") || message[1].equals("play"))))
             return false;
 
-        if (message.length < 4)
-            return true; // command good (checked above), but too short, end the chain
-
-        //also already set in MessageFilter handler
-        if (message.length > 6)
-            return true; // command good (checked above), but too long, end the chain
+        if (message.length < 4 || message.length > 6)
+            return true; // command is of wrong length, end the chain
 
         int difficulty;
         try{
@@ -47,7 +44,6 @@ public class StartQuiz implements MessageHandler {
                 sb.append(" ");
         }
         String topic = sb.toString();
-        System.out.println(topic);
         if (!questionsService.doesQuestionSetExist(topic, difficulty))
             return true;
 
@@ -55,7 +51,8 @@ public class StartQuiz implements MessageHandler {
         MessageChannel messageChannel = discordMessage.channel();
         messageChannel.getId();
 
-        quizFlowService.addMatch(messageChannel, matchService.makeMatch(topic, difficulty, userId));
+        log.info("User {} started a match: {} {}", userId, topic, difficulty);
+        quizFlowService.startMatch(messageChannel, topic, difficulty, userId);
         return true;
     }
 }

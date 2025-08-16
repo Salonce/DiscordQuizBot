@@ -7,6 +7,8 @@ import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 import static java.lang.Integer.parseInt;
 
 @RequiredArgsConstructor
@@ -16,20 +18,15 @@ public class AnswerButtonHandler implements ButtonHandler {
     private final MatchService matchService;
 
     @Override
-    public boolean handle(ButtonInteractionEvent event, ButtonInteraction buttonInteraction) {
+    public Optional<String> handle(ButtonInteraction buttonInteraction) {
         String buttonId = buttonInteraction.buttonId();
         if (!buttonId.startsWith("Answer") || !buttonId.matches("Answer-[A-D]-\\d+"))
-            return false;
+            return Optional.empty();
 
         String[] answerData = buttonId.split("-");
         int questionNumber = Integer.parseInt(answerData[2]);
         int answerNumber = answerData[1].charAt(0) - 'A';
 
-        String response = matchService.getPlayerAnswer(buttonInteraction.messageChannel().getId().asLong(), buttonInteraction.userId(), questionNumber, answerNumber);
-
-        event.reply(response)
-                .withEphemeral(true)
-                .subscribe();
-        return true;
+        return Optional.of(matchService.getPlayerAnswer(buttonInteraction.channelId(), buttonInteraction.userId(), questionNumber, answerNumber));
     }
 }

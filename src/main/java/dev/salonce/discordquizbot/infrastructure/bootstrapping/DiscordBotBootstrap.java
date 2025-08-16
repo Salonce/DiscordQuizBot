@@ -2,16 +2,17 @@ package dev.salonce.discordquizbot.infrastructure.bootstrapping;
 
 import dev.salonce.discordquizbot.application.ButtonHandlerChain;
 import dev.salonce.discordquizbot.application.MessageHandlerChain;
-import dev.salonce.discordquizbot.infrastructure.dtos.ButtonInteraction;
 import dev.salonce.discordquizbot.infrastructure.mappers.ButtonMapper;
 import dev.salonce.discordquizbot.infrastructure.mappers.MessageMapper;
 import discord4j.core.GatewayDiscordClient;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import discord4j.core.event.domain.message.MessageCreateEvent;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class DiscordBotBootstrap {
@@ -21,7 +22,6 @@ public class DiscordBotBootstrap {
     private final GatewayDiscordClient gateway;
 
     public void startBot() {
-        printGuildCount(gateway);
         handleMessages(gateway);
         handleButtonInteractions(gateway);
         gateway.onDisconnect().block();
@@ -36,19 +36,15 @@ public class DiscordBotBootstrap {
     }
 
     private void handleButtonInteractions(GatewayDiscordClient gateway) {
-        gateway.on(ButtonInteractionEvent.class, event -> {
-            ButtonInteraction buttonInteraction = ButtonMapper.toButtonInteractionData(event);
-            if (buttonInteraction == null)
-                return Mono.empty();
-
-            buttonHandlerChain.handle(event, buttonInteraction);
-
-            return Mono.empty(); // Since handlers subscribe to the events themselves
-        }).subscribe();
-    }
-
-    private void printGuildCount(GatewayDiscordClient gateway){
-        int guildCount = gateway.getGuilds().collectList().block().size();
-        System.out.println("Bot is in " + guildCount + " servers.");
+        gateway.on(ButtonInteractionEvent.class, event ->
+                Mono.fromCallable(() -> ButtonMapper.toButtonInteractionData(event))
+                        .flatMap(data -> Mono.justOrEmpty(buttonHandlerChain.handle(data)))
+                        .flatMap(response -> event.reply(response).withEphemeral(true))
+                        .doOnError(error -> log.error("Failed to handle button interaction", error))
+                        .onErrorResume(error ->
+                                event.reply("An error occurred processing your request.")
+                                        .withEphemeral(true)
+                        )
+        ).subscribe();
     }
 }

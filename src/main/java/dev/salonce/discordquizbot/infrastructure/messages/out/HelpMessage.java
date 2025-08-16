@@ -21,53 +21,66 @@ public class HelpMessage {
 
     public EmbedCreateSpec createEmbed() {
         Map<String, Topic> topics = rawQuestionsService.getTopicsMap();
-        String example = null;
-        Integer exampleDifficulty = -1;
-        String example2 = null;
-        Integer exampleDifficulty2 = -1;
+
+        if (topics.isEmpty()) {
+            return createNoDataEmbed();
+        }
+
+        return createQuizHelpEmbed(topics);
+    }
+
+    private EmbedCreateSpec createNoDataEmbed() {
+        return EmbedCreateSpec.builder()
+                .title("No data")
+                .addField("", "Sorry. This bot has no available quizzes.", false)
+                .build();
+    }
+
+    private EmbedCreateSpec createQuizHelpEmbed(Map<String, Topic> topics) {
+        String examples = createExamples(topics);
+        String categories = createCategoriesList(topics);
+
+        return EmbedCreateSpec.builder()
+                .addField("Basics", "Choose a category. Start at level 1. Each level adds 50 questions. Move up in levels when you can easily score 9-10/10.", false)
+                .addField("How to start a quiz?", "Choose a category, its level and type. Template:\n **qq quiz <category> <difficulty level>**", false)
+                .addField("Examples", examples, false)
+                .addField("Categories (levels)", categories, false)
+                .build();
+    }
+
+    private String createExamples(Map<String, Topic> topics) {
         Iterator<Topic> iterator = topics.values().iterator();
-        String firstExample = "";
+        StringBuilder examples = new StringBuilder();
+
         if (iterator.hasNext()) {
             Topic topic1 = iterator.next();
-            example = topic1.getName();
-            exampleDifficulty = 1;
-            firstExample = "To start **" + example + "** quiz, at level " + exampleDifficulty + ", type: **qq quiz " + example + " " + exampleDifficulty + "**\n";
+            examples.append(createExampleText(topic1.getName(), 1));
         }
-        String secondExample = "";
+
         if (iterator.hasNext()) {
             Topic topic2 = iterator.next();
-            example2 = topic2.getName();
-            exampleDifficulty2 = 2;
-            secondExample = "To start **" + example2 + "** quiz, at level " + exampleDifficulty2 + ", type: **qq quiz " + example2 + " " + exampleDifficulty2 + "**\n";
+            examples.append(createExampleText(topic2.getName(), 2));
         }
 
-        EmbedCreateSpec embed;
-        if (example != null && exampleDifficulty != null) {
-            EmbedCreateSpec.Builder embedBuilder = EmbedCreateSpec.builder();
+        return examples.toString();
+    }
 
-            String categories = rawQuestionsService.getTopicsMap().entrySet().stream()
-                    .sorted(Map.Entry.comparingByKey())
-                    .map(entry -> {
-                        String topic = entry.getKey();
-                        int maxDifficulty = entry.getValue().getDifficulties().size();
-                        return topic + " (1-" + maxDifficulty + ")";
-                    })
-                    .collect(Collectors.joining("\n"));
+    private String createExampleText(String topicName, int difficulty) {
+        return "To start **" + topicName + "** quiz, at level " + difficulty +
+                ", type: **qq quiz " + topicName + " " + difficulty + "**\n";
+    }
 
-            embed = embedBuilder
-                    .addField("Basics", "Choose a category. Start at level 1. Each level adds 50 questions. Move up in levels when you can easily score 9-10/10.", false)
-                    .addField("How to start a quiz?", "Choose a category, its level and type. Template:\n **qq quiz <category> <difficulty level>**", false)
-                    .addField("Examples", firstExample + secondExample, false)
-                    .addField("Categories (levels)", categories, false)
-                    .build();
-        }
-        else{
-            embed = EmbedCreateSpec.builder()
-                    .title("No data" )
-                    .addField("", "Sorry. This bot has no available quizzes.", false)
-                    .build();
-        }
-        return embed;
+    private String createCategoriesList(Map<String, Topic> topics) {
+        return topics.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .map(this::formatCategoryEntry)
+                .collect(Collectors.joining("\n"));
+    }
+
+    private String formatCategoryEntry(Map.Entry<String, Topic> entry) {
+        String topic = entry.getKey();
+        int maxDifficulty = entry.getValue().getDifficulties().size();
+        return topic + " (1-" + maxDifficulty + ")";
     }
 
 }

@@ -9,20 +9,20 @@ import org.springframework.stereotype.Component;
 @Configuration
 @Component
 @Getter
-public class TimersConfig {
+public class QuizSetupConfig {
 
     private final int noOfQuestions;
-    private final int unansweredLimit;
+    private final int inactiveRoundsLimit;
     private final int timeToJoinQuiz;
     private final int timeToStartMatch;
     private final int timeToPickAnswer;
     private final int timeForNewQuestionToAppear;
 
-    public TimersConfig(@Value("${mode}") String mode) {
+    public QuizSetupConfig(@Value("${mode}") String mode) {
         switch (mode) {
             case "testing" -> {
                 this.noOfQuestions = 4;
-                this.unansweredLimit = 3;
+                this.inactiveRoundsLimit = 3;
                 this.timeToJoinQuiz = 7;
                 this.timeToStartMatch = 2;
                 this.timeToPickAnswer = 5;
@@ -30,7 +30,7 @@ public class TimersConfig {
             }
             case "standard" -> {
                 this.noOfQuestions = 10;
-                this.unansweredLimit = 3;
+                this.inactiveRoundsLimit = 3;
                 this.timeToJoinQuiz = 30;
                 this.timeToStartMatch = 3;
                 this.timeToPickAnswer = 30;

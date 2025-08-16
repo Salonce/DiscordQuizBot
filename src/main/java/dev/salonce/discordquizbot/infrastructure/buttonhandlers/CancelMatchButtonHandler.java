@@ -7,6 +7,8 @@ import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @RequiredArgsConstructor
 @Component("ButtonCancelMatch")
 public class CancelMatchButtonHandler implements ButtonHandler {
@@ -14,13 +16,9 @@ public class CancelMatchButtonHandler implements ButtonHandler {
     private final MatchService matchService;
 
     @Override
-    public boolean handle(ButtonInteractionEvent event, ButtonInteraction data) {
+    public Optional<String> handle(ButtonInteraction data) {
         if (!"cancelQuiz".equals(data.buttonId()))
-            return false;
-        String result = matchService.cancelMatch(data.messageChannel().getId().asLong(), data.userId());
-        event.reply(result)
-                .withEphemeral(true)
-                .subscribe();
-        return true;
+            return Optional.empty();
+        return Optional.of(matchService.cancelMatch(data.channelId(), data.userId()));
     }
 }

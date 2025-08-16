@@ -1,8 +1,6 @@
 package dev.salonce.discordquizbot.infrastructure.dtos;
 
-import discord4j.core.object.entity.channel.MessageChannel;
-
 public record ButtonInteraction(Long userId,
-                                String buttonId,
-                                MessageChannel messageChannel){
+                                Long channelId,
+                                String buttonId){
 }

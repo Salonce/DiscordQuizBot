@@ -1,8 +1,9 @@
 package dev.salonce.discordquizbot.application;
 
 import dev.salonce.discordquizbot.infrastructure.dtos.ButtonInteraction;
-import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
+
+import java.util.Optional;
 
 public interface ButtonHandler {
-    boolean handle(ButtonInteractionEvent event, ButtonInteraction buttonInteraction);
+    Optional<String> handle(ButtonInteraction buttonInteraction);
 }

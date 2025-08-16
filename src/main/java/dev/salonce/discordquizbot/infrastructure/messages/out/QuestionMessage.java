@@ -2,11 +2,10 @@ package dev.salonce.discordquizbot.infrastructure.messages.out;
 
 import dev.salonce.discordquizbot.domain.Match;
 import dev.salonce.discordquizbot.application.MatchService;
-import dev.salonce.discordquizbot.domain.Player;
 import dev.salonce.discordquizbot.domain.Question;
+import dev.salonce.discordquizbot.domain.QuizOption;
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
-import discord4j.core.object.entity.Message;
 import discord4j.core.spec.EmbedCreateSpec;
 import discord4j.core.spec.MessageCreateSpec;
 import discord4j.core.spec.MessageEditSpec;
@@ -14,9 +13,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import static dev.salonce.discordquizbot.infrastructure.DiscordFormatter.formatMentions;
 
 @RequiredArgsConstructor
 @Component
@@ -25,7 +27,6 @@ public class QuestionMessage {
     private final MatchService matchService;
 
     public MessageCreateSpec createEmbed(Match match, Long questionNumber, int timeLeft){
-        String questionsAnswers = match.getCurrentQuestion().getOptions();
         int answersSize = match.getCurrentQuestion().getQuizOptions().size();
 
         List<Button> buttons = new ArrayList<>();
@@ -37,7 +38,7 @@ public class QuestionMessage {
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title(titleString(match))
                 .addField("\n", "❓ **" + match.getCurrentQuestion().getQuestion() + "**", false)
-                .addField("\n", questionsAnswers + "\n", false)
+                .addField("\n", getOptionsString(match.getCurrentQuestion().getQuizOptions()) + "\n", false)
                 .addField("\n", "```⏳ " + timeLeft + " seconds left.```", false)
                 .build();
 
@@ -47,8 +48,9 @@ public class QuestionMessage {
                 .build();
     }
 
+
+
     public MessageEditSpec editEmbedWithTime(Match match, Long questionNumber, int timeLeft){
-        String questionsAnswers = match.getCurrentQuestion().getOptions();
         int answersSize = match.getCurrentQuestion().getQuizOptions().size();
 
         List<Button> buttons = new ArrayList<>();
@@ -60,7 +62,7 @@ public class QuestionMessage {
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title(titleString(match))
                 .addField("\n", "❓ **" + match.getCurrentQuestion().getQuestion() + "**", false)
-                .addField("\n", questionsAnswers + "\n", false)
+                .addField("\n", getOptionsString(match.getCurrentQuestion().getQuizOptions()) + "\n", false)
                 .addField("\n", "```⏳ " + timeLeft + " seconds left.```", false)
                 .build();
 
@@ -71,7 +73,6 @@ public class QuestionMessage {
     }
 
     public MessageEditSpec editEmbedAfterAnswersWait(Match match, Long questionNumber){
-        String questionsAnswers = match.getCurrentQuestion().getOptions();
         int answersSize = match.getCurrentQuestion().getQuizOptions().size();
 
         List<Button> buttons = new ArrayList<>();
@@ -83,7 +84,7 @@ public class QuestionMessage {
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title(titleString(match))
                 .addField("\n", "❓ **" + match.getCurrentQuestion().getQuestion() + "**", false)
-                .addField("\n", questionsAnswers + "\n", false)
+                .addField("\n", getOptionsString(match.getCurrentQuestion().getQuizOptions()) + "\n", false)
                 .build();
 
         return MessageEditSpec.builder()
@@ -93,7 +94,6 @@ public class QuestionMessage {
     }
 
     public MessageEditSpec editEmbedWithScores(Match match, Long questionNumber){
-        String questionsAnswers = match.getCurrentQuestion().getOptionsRevealed();
         int answersSize = match.getCurrentQuestion().getQuizOptions().size();
 
         List<Button> buttons = new ArrayList<>();
@@ -105,7 +105,7 @@ public class QuestionMessage {
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title(titleString(match))
                 .addField("\n", "❓ **" + match.getCurrentQuestion().getQuestion() + "**", false)
-                .addField("\n", questionsAnswers + "\n", false)
+                .addField("\n", getOptionsRevealed(match.getCurrentQuestion().getQuizOptions()) + "\n", false)
                 .addField("\uD83D\uDCDD Explanation", match.getCurrentQuestion().getExplanation() + "\n", false)
                 .addField("\uD83D\uDCCB Answers", getUsersAnswers(match), false)
                 .addField("\uD83D\uDCCA Scoreboard", getScoreboard(match), false)
@@ -117,46 +117,66 @@ public class QuestionMessage {
                 .build();
     }
 
-    private String titleString(Match match){
-        return "Question " + (match.getCurrentQuestionNum() + 1) + "/10";
-    }
-
-    private String getUsersAnswers(Match match){
-        List<Question> questions = match.getQuestions();
-        int currentQuestionNum = match.getCurrentQuestionNum();
-        int currentQuestionCorrectAnswer = match.getCurrentQuestion().getCorrectAnswerInt();
-        Map<Long, Player> players = match.getPlayers();
-
-        List<List<String>> playersAnswers = new ArrayList<>();
-        for (int i = 0; i < questions.get(currentQuestionNum).getQuizOptions().size() + 1; i++){
-            playersAnswers.add(new ArrayList<>());
-        }
-        for (Map.Entry<Long, Player> entry : players.entrySet()){
-            int intAnswer = entry.getValue().getAnswersList().get(currentQuestionNum) + 1;
-            playersAnswers.get(intAnswer).add("<@" + entry.getKey().toString() + ">");
-        }
+    private String getOptionsRevealed(List<QuizOption> quizOptions){
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i < playersAnswers.size(); i++){
-            if (i != 1) sb.append("\n");
-            if (currentQuestionCorrectAnswer == i - 1)
-                sb.append("✅ ").append("**").append((char)('A' + i - 1)).append("**: ");
-            else
-                sb.append("❌ ").append((char)('A' + i - 1)).append(": ");
-            for (int j = 0; j < playersAnswers.get(i).size(); j++){
-                if (j != 0) sb.append(", ");
-                sb.append(playersAnswers.get(i).get(j));
-            }
-        }
-        sb.append("\n");
-        sb.append("\n\uD83D\uDCA4 ").append(": ");
-        for (int j = 0; j < playersAnswers.get(0).size(); j++){
-            if (j != 0) sb.append(", ");
-            sb.append(playersAnswers.get(0).get(j));
+        char letter = 'A';
+        for (QuizOption quizOption : quizOptions){
+            if (!quizOption.isCorrect()) sb.append("❌ ").append(letter).append(") ").append(quizOption.text());
+            if (quizOption.isCorrect()) sb.append("✅** ").append(letter).append(") ").append(quizOption.text()).append("**");
+            letter++;
+            sb.append("\n");
         }
         return sb.toString();
     }
 
-    private String getScoreboard(Match match){
-        return match.getPlayers().entrySet().stream().sorted((a, b) -> (b.getValue().getPoints() - a.getValue().getPoints())).map(entry -> "<@" + entry.getKey() + ">" + ": " + entry.getValue().getPoints() + " points").collect(Collectors.joining("\n"));
+    private String titleString(Match match){
+        return "Question " + (match.getCurQuestionIndex() + 1) + "/10";
     }
+    private String getUsersAnswers(Match match) {
+        Question currentQuestion = match.getCurrentQuestion();
+        Map<Integer, List<Long>> playerGroups = match.getPlayersGroupedByAnswer();
+        int correctAnswer = currentQuestion.getCorrectAnswerAsInt();
+
+        StringBuilder sb = new StringBuilder();
+
+        // Format each option
+        for (int i = 0; i < currentQuestion.getQuizOptions().size(); i++) {
+            if (i > 0) sb.append("\n");
+
+            String prefix = correctAnswer == i ? "✅ **" + (char)('A' + i) + "**"
+                                               : "❌ " + (char)('A' + i);
+            sb.append(prefix).append(": ");
+            List<Long> playerIds = playerGroups.getOrDefault(i, Collections.emptyList());
+            sb.append(formatMentions(playerIds));
+        }
+
+        // Non-responders
+        sb.append("\n\n💤: ");
+        List<Long> playerIds = playerGroups.getOrDefault(-1, Collections.emptyList());
+        sb.append(formatMentions(playerIds));
+
+        return sb.toString();
+    }
+
+    private String getOptionsString(List<QuizOption> quizOptions){
+        StringBuilder sb = new StringBuilder();
+        char letter = 'A';
+        for (QuizOption quizOption : quizOptions){
+            sb.append(letter).append(") ").append(quizOption.text());
+            letter++;
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
+    private String getScoreboard(Match match) {
+        Map<Long, Long> points = match.getPlayersPoints(); // use your new map
+
+        return points.entrySet().stream()
+                .sorted((a, b) -> Long.compare(b.getValue(), a.getValue())) // sort descending
+                .map(entry -> "<@" + entry.getKey() + ">: " + entry.getValue() + " points")
+                .collect(Collectors.joining("\n"));
+    }
+
+
 }

@@ -16,32 +16,11 @@ public class MessageFilter implements MessageHandler {
 
         String content = discordMessage.content();
 
-        if (content == null || content.isEmpty())
-            return true;
-
-        if (!content.startsWith("qq"))
-            return true;
-
-        if (content.length() > 50)
-            return true;
+        if (content == null || content.isEmpty()) return true;
+        if (!content.startsWith("qq")) return true;
+        if (content.length() > 50)  return true;
 
         String[] message = discordMessage.content().split(" ");
-
-        if (message.length < 2)
-            return true;
-
-        if (message.length > 6)
-            return true;
-
-        return false;
+        return message.length < 2 || message.length > 6;
     }
 }
-
-
-
-
-//this doesn't do anything now because of message length condition
-//        else if (discordMessage.getContent().equalsIgnoreCase("qq")) {
-//            messageSender.sendMessage(discordMessage, "Empty request").subscribe();
-//            return true;
-//        }

@@ -14,15 +14,15 @@ public class MatchCanceledMessage {
     public EmbedCreateSpec createEmbed(Match match){
         String title = "\uD83D\uDEAA Match aborted";
         String reason = "unknown.";
-        if (match.getMatchState() == MatchState.CLOSED_BY_INACTIVITY)
+        if (match.isClosedByInactivityState())
             reason = "autoclosed due to players' inactivity.";
-        else if (match.getMatchState() == MatchState.CLOSED_BY_OWNER)
+        else if (match.isClosedByOwnerState())
             reason = "<@" + match.getOwnerId() + "> (owner)" + " has cancelled the match.";
 
         return EmbedCreateSpec.builder()
                 .title(title)
                 .addField("\uD83D\uDCD8 Subject: " + match.getTopic() + " " + match.getDifficulty(), "", false)
-                .addField("❓ Questions: " + match.getQuestions().size(), "", false)
+                .addField("❓ Questions: " + match.getNumberOfQuestions(), "", false)
                 .addField("" , "**\uD83E\uDD14 Reason: " + reason + "**", false)
                 .build();
     }

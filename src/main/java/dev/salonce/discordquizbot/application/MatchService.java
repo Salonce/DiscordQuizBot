@@ -4,8 +4,6 @@ import dev.salonce.discordquizbot.domain.Match;
 import dev.salonce.discordquizbot.domain.MatchState;
 import dev.salonce.discordquizbot.domain.Question;
 import dev.salonce.discordquizbot.infrastructure.MatchCache;
-import dev.salonce.discordquizbot.infrastructure.configs.TimersConfig;
-import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -18,12 +16,11 @@ import java.util.Objects;
 public class MatchService {
 
     private final MatchCache matchCache;
-    private final TimersConfig timersConfig;
     private final QuestionsService questionsService;
 
     public Match makeMatch(String topic, int difficulty, Long ownerId){
-        List<Question> questions = questionsService.generateQuestions(topic, difficulty, timersConfig.getNoOfQuestions());
-        return new Match(questions, topic, difficulty, ownerId, timersConfig.getUnansweredLimit());
+        List<Question> questions = questionsService.generateQuestions(topic, difficulty);
+        return new Match(questions, topic, difficulty, ownerId);
     }
 
     public Match get(Long channelId) {
@@ -59,9 +56,9 @@ public class MatchService {
         Match match = get(channelId);
         if (match == null)
             return "This match doesn't exist anymore.";
-        if (!match.getOwnerId().equals(userId))
+        if (!match.isOwner(userId))
             return "You are not the owner. Only the owner can cancel the match.";
-        match.setMatchState(MatchState.CLOSED_BY_OWNER);
+        match.closeByOwner();
         return "With your undeniable power of ownership, you've cancelled the match";
     }
 
@@ -70,42 +67,40 @@ public class MatchService {
         if (match == null) {
             return "This match doesn't exist.";
         }
-        if (!match.getPlayers().containsKey(userId)) {
+        if (!match.isInTheMatch(userId)) {
             return "You are not even in the match.";
         }
-        if (match.getMatchState() != MatchState.ENROLLMENT) {
+        if (!match.isEnrollmentState()) {
             return "Excuse me, you can leave the match only during enrollment phase.";
         } else {
-            match.getPlayers().remove(userId);
+            match.removeUser(userId);
             return "You've left the match.";
         }
     }
-
 
     public String startNow(Long channelId, Long userId) {
         if (!containsKey(channelId))
             return "This match doesn't exist anymore.";
         if (!Objects.equals(userId, get(channelId).getOwnerId()))
             return "You aren't the owner";
-        if (get(channelId).getMatchState() != MatchState.ENROLLMENT)
+        if (!get(channelId).isEnrollmentState())
             return "Already started";
 
-        get(channelId).setMatchState(MatchState.COUNTDOWN);
+        get(channelId).startCountdownPhase();
         return "Starting immediately";
     }
 
-    public String getPlayerAnswer(Long channelId, Long userId, int questionNumber, int answerNumber) {
+    public String getPlayerAnswer(Long channelId, Long userId, int questionIndex, int answerIndex) {
         Match match = get(channelId);
 
-        if (match == null || questionNumber != match.getCurrentQuestionNum() || match.getMatchState() != MatchState.ANSWERING)
+        if (match == null || !match.isCurrentQuestion(questionIndex) || !match.isAnsweringState())
             return "Your answer came too late!";
 
-        if (!match.getPlayers().containsKey(userId))
+        if (!match.isInTheMatch(userId))
             return "You are not in the match.";
 
-        List<Integer> answers = match.getPlayers().get(userId).getAnswersList();
-        answers.set(questionNumber, answerNumber);
-        return "Your answer: " + (char) ('A' + answerNumber) + ".";
+        match.setPlayerAnswer(userId, questionIndex, answerIndex);
+        return "Your answer: " + (char) ('A' + answerIndex) + ".";
 
     }
 }

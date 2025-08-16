@@ -3,24 +3,25 @@ package dev.salonce.discordquizbot.domain;
 import lombok.Getter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-@Getter
 public class Player {
+    private final List<Integer> answersList;
 
-    private List<Integer> answersList;
-
-    public Player(int numOfAnswers){
-        this.points = 0;
-        answersList = new ArrayList<>();
-        for (int i = 0; i < numOfAnswers; i++){
-            answersList.add(-1);
-        }
-        //this.answersList = new ArrayList<>(Collections.nCopies(numOfAnswers, -1));
+    public Player(int numOfQuestions) {
+        this.answersList = new ArrayList<>(Collections.nCopies(numOfQuestions, -1));
     }
-    private int points;
 
-    public void addPoint(){
-        this.points++;
+    public int getAnswer(int index){
+        return answersList.get(index);
+    }
+
+    public void setAnswer(int index, int answer){
+        this.answersList.set(index, answer);
+    };
+
+    public boolean isUnanswered(int index){
+        return (answersList.get(index) == -1);
     }
 }

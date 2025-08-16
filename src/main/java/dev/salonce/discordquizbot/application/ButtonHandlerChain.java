@@ -5,16 +5,19 @@ import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 public class ButtonHandlerChain {
     private final List<ButtonHandler> buttonHandlers;
 
-    public void handle(ButtonInteractionEvent event, ButtonInteraction buttonInteraction) {
+    public Optional<String> handle(ButtonInteraction buttonInteraction) {
         for (ButtonHandler handler : buttonHandlers) {
-            if (handler.handle(event, buttonInteraction)) {
-                break;
+            Optional<String> optionalString = handler.handle(buttonInteraction);
+            if (handler.handle(buttonInteraction).isPresent()) {
+                return optionalString;
             }
         }
+        return Optional.empty();
     }
 }

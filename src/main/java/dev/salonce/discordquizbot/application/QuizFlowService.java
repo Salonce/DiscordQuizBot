@@ -1,7 +1,7 @@
 package dev.salonce.discordquizbot.application;
 
 import dev.salonce.discordquizbot.infrastructure.DiscordMessageSender;
-import dev.salonce.discordquizbot.infrastructure.configs.TimersConfig;
+import dev.salonce.discordquizbot.infrastructure.configs.QuizSetupConfig;
 import dev.salonce.discordquizbot.domain.Match;
 import dev.salonce.discordquizbot.domain.MatchState;
 import dev.salonce.discordquizbot.infrastructure.messages.out.MatchCanceledMessage;
@@ -22,22 +22,24 @@ import java.time.Duration;
 public class QuizFlowService {
 
     private final MatchService matchService;
-    private final TimersConfig timersConfig;
+    private final QuizSetupConfig quizSetupConfig;
     private final QuestionMessage questionMessage;
     private final StartingMessage startingMessage;
     private final MatchCanceledMessage matchCanceledMessage;
     private final MatchResultsMessage matchResultsMessage;
     private final DiscordMessageSender discordMessageSender;
 
-    public void addMatch(MessageChannel messageChannel, Match match) {
-        int totalTimeToJoin = timersConfig.getTimeToJoinQuiz();
-        int totalTimeToStart = timersConfig.getTimeToStartMatch();
+    public void startMatch(MessageChannel messageChannel, String topic, int difficulty, Long userId) {
 
         if (matchService.containsKey(messageChannel.getId().asLong())) {
             // send a message that a match is already in progress in that chat and can't start new one
             return;
         }
 
+        int totalTimeToJoin = quizSetupConfig.getTimeToJoinQuiz();
+        int totalTimeToStart = quizSetupConfig.getTimeToStartMatch();
+
+        Match match = matchService.makeMatch(topic, difficulty, userId);
         matchService.put(messageChannel.getId().asLong(), match);
 
         Mono<Void> normalFlow = Mono.just(startingMessage.createSpec(match, totalTimeToJoin))
@@ -106,8 +108,9 @@ public class QuizFlowService {
     }
 
     private Mono<Void> runQuestionFlow(Match match, MessageChannel messageChannel, long index) {
-        int totalTime = timersConfig.getTimeToPickAnswer();
-        int timeForNextQuestionToAppear = timersConfig.getTimeForNewQuestionToAppear();
+        int totalTime = quizSetupConfig.getTimeToPickAnswer();
+        int timeForNextQuestionToAppear = quizSetupConfig.getTimeForNewQuestionToAppear();
+        int inactiveRoundsLimit = quizSetupConfig.getInactiveRoundsLimit();
 
         return Mono.just(questionMessage.createEmbed(match, index, totalTime))
                 .flatMap(messageChannel::createMessage)
@@ -116,11 +119,10 @@ public class QuizFlowService {
                     return createCountdownTimer(match, message, index, totalTime)
                             .then(Mono.defer(() -> discordMessageSender.edit(message, questionMessage.editEmbedAfterAnswersWait(match, index))))
                             .then(Mono.delay(Duration.ofSeconds(1)))
-                            .then(Mono.fromRunnable(match::updateScores))
                             .then(Mono.fromRunnable(match::startWaitingPhase))
                             .then(Mono.defer(() -> discordMessageSender.edit(message, questionMessage.editEmbedWithScores(match, index))))
                             .then(Mono.fromRunnable(match::updateInactiveRounds))
-                            .then(Mono.fromRunnable(match::closeIfInactiveLimitReached))
+                            .then(Mono.fromRunnable(() -> match.closeIfInactiveLimitReached(inactiveRoundsLimit)))
                             .then(Mono.delay(Duration.ofSeconds(timeForNextQuestionToAppear)))
                             .then(Mono.fromRunnable(match::skipToNextQuestion));
                 });
