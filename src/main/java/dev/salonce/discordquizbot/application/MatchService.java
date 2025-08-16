@@ -70,10 +70,10 @@ public class MatchService {
         if (!match.isInTheMatch(userId)) {
             return "You are not even in the match.";
         }
-        if (match.getMatchState() != MatchState.ENROLLMENT) {
+        if (match.isEnrollmentState()) {
             return "Excuse me, you can leave the match only during enrollment phase.";
         } else {
-            match.getPlayers().remove(userId);
+            match.removeUser(userId);
             return "You've left the match.";
         }
     }
@@ -83,7 +83,7 @@ public class MatchService {
             return "This match doesn't exist anymore.";
         if (!Objects.equals(userId, get(channelId).getOwnerId()))
             return "You aren't the owner";
-        if (get(channelId).getMatchState() != MatchState.ENROLLMENT)
+        if (get(channelId).isEnrollmentState())
             return "Already started";
 
         get(channelId).startCountdownPhase();
@@ -96,7 +96,7 @@ public class MatchService {
         if (match == null || questionNumber != match.getCurrentQuestionNum() || match.getMatchState() != MatchState.ANSWERING)
             return "Your answer came too late!";
 
-        if (!match.getPlayers().containsKey(userId))
+        if (!match.isInTheMatch(userId))
             return "You are not in the match.";
 
         match.getPlayers().get(userId).setAnswer(questionNumber, answerNumber);

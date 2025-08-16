@@ -67,6 +67,14 @@ public class Match{
         return true;
     }
 
+    public void removeUser(Long userId){
+        players.remove(userId);
+    }
+
+    public boolean isEnrollmentState(){
+        return (this.matchState == MatchState.ENROLLMENT);
+    }
+
     public boolean isInTheMatch(Long userId){
         return players.containsKey(userId);
     }
