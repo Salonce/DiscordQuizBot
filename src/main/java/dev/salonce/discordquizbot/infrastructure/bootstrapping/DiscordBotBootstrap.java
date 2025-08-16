@@ -3,17 +3,19 @@ package dev.salonce.discordquizbot.infrastructure.bootstrapping;
 import dev.salonce.discordquizbot.application.ButtonHandlerChain;
 import dev.salonce.discordquizbot.application.MessageHandlerChain;
 import dev.salonce.discordquizbot.infrastructure.dtos.ButtonInteraction;
+import dev.salonce.discordquizbot.infrastructure.logging.ExecutionTime;
 import dev.salonce.discordquizbot.infrastructure.mappers.ButtonMapper;
 import dev.salonce.discordquizbot.infrastructure.mappers.MessageMapper;
 import discord4j.core.GatewayDiscordClient;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import discord4j.core.event.domain.message.MessageCreateEvent;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
-import java.util.Optional;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class DiscordBotBootstrap {
@@ -39,12 +41,15 @@ public class DiscordBotBootstrap {
 
     private void handleButtonInteractions(GatewayDiscordClient gateway) {
         gateway.on(ButtonInteractionEvent.class, event ->
-                Mono.justOrEmpty(ButtonMapper.toButtonInteractionData(event))
-                .map(buttonHandlerChain::handle)
-                .doOnNext(opt -> opt.ifPresent(
-                        response -> event.reply(response).withEphemeral(true).subscribe()
-                ))
-                .then()).subscribe();
+                Mono.fromCallable(() -> ButtonMapper.toButtonInteractionData(event))
+                        .flatMap(data -> Mono.justOrEmpty(buttonHandlerChain.handle(data)))
+                        .flatMap(response -> event.reply(response).withEphemeral(true))
+                        .doOnError(error -> log.error("Failed to handle button interaction", error))
+                        .onErrorResume(error ->
+                                event.reply("An error occurred processing your request.")
+                                        .withEphemeral(true)
+                        )
+        ).subscribe();
     }
 
     private void printGuildCount(GatewayDiscordClient gateway){
