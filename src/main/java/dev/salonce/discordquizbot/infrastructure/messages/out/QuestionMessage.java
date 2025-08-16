@@ -6,7 +6,6 @@ import dev.salonce.discordquizbot.domain.Player;
 import dev.salonce.discordquizbot.domain.Question;
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
-import discord4j.core.object.entity.Message;
 import discord4j.core.spec.EmbedCreateSpec;
 import discord4j.core.spec.MessageCreateSpec;
 import discord4j.core.spec.MessageEditSpec;

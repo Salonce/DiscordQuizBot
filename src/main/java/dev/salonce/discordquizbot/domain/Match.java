@@ -4,6 +4,7 @@ import lombok.Getter;
 
 import java.util.*;
 
+@Getter
 public class Match{
     @Getter
     private String topic;
@@ -11,7 +12,8 @@ public class Match{
     private final int difficulty;
     private final Map<Long, Player> players = new LinkedHashMap<>();
     private final List<Question> questions;
-    private int currentQuestion = 0;
+    @Getter
+    private int currentQuestionNum = 0;
     private int inactiveRounds = 0;
     private MatchState matchState = MatchState.ENROLLMENT;
 
@@ -38,7 +40,15 @@ public class Match{
     }
 
     public boolean isCurrentQuestion(int index){
-        return (index == currentQuestion);
+        return (index == currentQuestionNum);
+    }
+
+    public int getNumberOfQuestions(){
+        return questions.size();
+    }
+
+    public Iterator<Long> getPlayersIdsIterator(){
+        return players.keySet().iterator();
     }
 
     public void setPlayerAnswer(Long userId, int questionIndex, int answerIndex){
@@ -57,9 +67,9 @@ public class Match{
     }
 
     public void startWaitingPhase() {
-        if (matchState != MatchState.ANSWERING) {
-            throw new IllegalStateException("Cannot close answering if not in answering phase");
-        }
+//        if (matchState != MatchState.ANSWERING) {
+//            throw new IllegalStateException("Cannot close answering if not in answering phase");
+//        }
         this.matchState = MatchState.WAITING;
     }
 
@@ -69,7 +79,7 @@ public class Match{
 
     public boolean everyoneAnswered(){
         for (Player player : players.values()){
-            if (player.isUnanswered(currentQuestion))
+            if (player.isUnanswered(currentQuestionNum))
                 return false;
         }
         return true;
@@ -85,6 +95,14 @@ public class Match{
 
     public boolean isAnsweringState(){
         return (this.matchState == MatchState.ANSWERING);
+    }
+
+    public boolean isClosedByOwnerState(){
+        return (this.matchState == MatchState.CLOSED_BY_OWNER);
+    }
+
+    public boolean isClosedByInactivityState(){
+        return (this.matchState == MatchState.CLOSED_BY_INACTIVITY);
     }
 
     public boolean isInTheMatch(Long userId){
@@ -103,22 +121,22 @@ public class Match{
     //actually adds +1 point to all players with current question correctly answered, repeating this function in the same round will make results wrong
     public void updateScores(){
         for (Player player : players.values()){
-            int playerAnswer = player.getAnswer(currentQuestion);
-            if (questions.get(currentQuestion).isCorrectAnswer(playerAnswer))
+            int playerAnswer = player.getAnswer(currentQuestionNum);
+            if (questions.get(currentQuestionNum).isCorrectAnswer(playerAnswer))
                 player.addPoint();
         }
     }
 
     public void skipToNextQuestion(){
-        currentQuestion++;
+        currentQuestionNum++;
     }
     public boolean questionExists(){
-        return currentQuestion < questions.size();
+        return currentQuestionNum < questions.size();
     }
 
     public Question getCurrentQuestion(){
-        if (currentQuestion < questions.size())
-            return questions.get(currentQuestion);
+        if (currentQuestionNum < questions.size())
+            return questions.get(currentQuestionNum);
         else
             return null;
     }
@@ -126,7 +144,7 @@ public class Match{
     public void updateInactiveRounds(){
         int noAnswersCount = 0;
         for (Player player : players.values()){
-            if (player.isUnanswered(currentQuestion))
+            if (player.isUnanswered(currentQuestionNum))
                 noAnswersCount++;
             else break;
         }

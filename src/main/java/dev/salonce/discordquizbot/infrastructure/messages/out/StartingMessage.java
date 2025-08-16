@@ -5,14 +5,11 @@ import dev.salonce.discordquizbot.application.MatchService;
 import dev.salonce.discordquizbot.domain.Player;
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
-import discord4j.core.object.entity.Message;
-import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.spec.EmbedCreateSpec;
 import discord4j.core.spec.MessageCreateSpec;
 import discord4j.core.spec.MessageEditSpec;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import reactor.core.publisher.Mono;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -27,7 +24,7 @@ public class StartingMessage {
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("\uD83D\uDE80 Starting Soon...")
                 .addField("\uD83D\uDCD8 Subject: " + match.getTopic() + " " + match.getDifficulty(), "", false)
-                .addField("❓ Questions: " + match.getQuestions().size(), "", false)
+                .addField("❓ Questions: " + match.getNumberOfQuestions(), "", false)
                 .addField("", "\uD83D\uDC65 " + "**Players:** " + getUserNames(match), false)
                 .addField("", "```⏳ " + timeToJoinLeft + " seconds to start.``` ", false)
                 .build();
@@ -42,7 +39,7 @@ public class StartingMessage {
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("\uD83D\uDE80 Starting Soon...")
                 .addField("\uD83D\uDCD8 Subject: " + match.getTopic() + " " + match.getDifficulty(), "", false)
-                .addField("❓ Questions: " + match.getQuestions().size(), "", false)
+                .addField("❓ Questions: " + match.getNumberOfQuestions(), "", false)
                 .addField("", "\uD83D\uDC65 " + "**Players:** " + getUserNames(match), false)
                 .addField("", "```⏳ " + timeToJoinLeft + " seconds to start.``` ", false)
                 .build();
@@ -57,7 +54,7 @@ public class StartingMessage {
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("\uD83D\uDE80 Starting Soon...")
                 .addField("\uD83D\uDCD8 Subject: " + match.getTopic() + " " + match.getDifficulty(), "", false)
-                .addField("❓ Questions: " + match.getQuestions().size(), "", false)
+                .addField("❓ Questions: " + match.getNumberOfQuestions(), "", false)
                 .addField("", "\uD83D\uDC65 " + "**Players:** " + getUserNames(match), false)
                 .addField("", "```⏳ " + timeToStartLeft + " seconds to start.``` ", false)
                 .build();
@@ -69,10 +66,7 @@ public class StartingMessage {
     }
 
     private String getUserNames(Match match) {
-
-        Map<Long, Player> players = match.getPlayers();
-
-        Iterator<Long> iterator = players.keySet().iterator();
+        Iterator<Long> iterator = match.getPlayersIdsIterator();
         if (!iterator.hasNext())
             return "";
         Long ownerId = iterator.next();

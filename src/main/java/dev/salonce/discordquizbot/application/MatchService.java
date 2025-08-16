@@ -70,7 +70,7 @@ public class MatchService {
         if (!match.isInTheMatch(userId)) {
             return "You are not even in the match.";
         }
-        if (match.isEnrollmentState()) {
+        if (!match.isEnrollmentState()) {
             return "Excuse me, you can leave the match only during enrollment phase.";
         } else {
             match.removeUser(userId);
@@ -83,7 +83,7 @@ public class MatchService {
             return "This match doesn't exist anymore.";
         if (!Objects.equals(userId, get(channelId).getOwnerId()))
             return "You aren't the owner";
-        if (get(channelId).isEnrollmentState())
+        if (!get(channelId).isEnrollmentState())
             return "Already started";
 
         get(channelId).startCountdownPhase();
@@ -93,7 +93,7 @@ public class MatchService {
     public String getPlayerAnswer(Long channelId, Long userId, int questionIndex, int answerIndex) {
         Match match = get(channelId);
 
-        if (match == null || !match.isCurrentQuestion(questionIndex) || match.isAnsweringState())
+        if (match == null || !match.isCurrentQuestion(questionIndex) || !match.isAnsweringState())
             return "Your answer came too late!";
 
         if (!match.isInTheMatch(userId))
