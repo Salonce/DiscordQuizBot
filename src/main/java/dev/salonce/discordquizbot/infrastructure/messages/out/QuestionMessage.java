@@ -132,7 +132,7 @@ public class QuestionMessage {
             playersAnswers.add(new ArrayList<>());
         }
         for (Map.Entry<Long, Player> entry : players.entrySet()){
-            int intAnswer = entry.getValue().getAnswersList().get(currentQuestionNum) + 1;
+            int intAnswer = entry.getValue().getAnswer(currentQuestionNum) + 1;
             playersAnswers.get(intAnswer).add("<@" + entry.getKey().toString() + ">");
         }
         StringBuilder sb = new StringBuilder();

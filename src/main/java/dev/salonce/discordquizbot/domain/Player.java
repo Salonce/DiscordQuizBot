@@ -9,12 +9,19 @@ public class Player {
 
     private final List<Integer> answersList;
 
+    @Getter
+    private int points;
+
     public void setAnswer(int questionNumber, int answerNumber){
         this.answersList.set(questionNumber, answerNumber);
     };
 
     public boolean isUnanswered(int index){
         return (answersList.get(index) == -1);
+    }
+
+    public int getAnswer(int index){
+        return answersList.get(index);
     }
 
     public Player(int numOfAnswers){
@@ -25,7 +32,6 @@ public class Player {
         }
         //this.answersList = new ArrayList<>(Collections.nCopies(numOfAnswers, -1));
     }
-    private int points;
 
     public void addPoint(){
         this.points++;
