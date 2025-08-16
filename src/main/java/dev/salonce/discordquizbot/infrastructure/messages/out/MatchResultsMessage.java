@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static dev.salonce.discordquizbot.infrastructure.DiscordFormatter.formatMentions;
+
 @RequiredArgsConstructor
 @Component
 public class MatchResultsMessage {
@@ -29,38 +31,28 @@ public class MatchResultsMessage {
     }
 
     private String getFinalScoreboard(Match match) {
-        Map<Long, Player> playersMap = match.getPlayers();
-
-        // Group players by their points
-        Map<Integer, List<String>> pointsGrouped = playersMap.entrySet().stream()
-                .collect(Collectors.groupingBy(
-                        entry -> entry.getValue().getPoints(),
-                        Collectors.mapping(entry -> "<@" + entry.getKey() + ">", Collectors.toList())
-                ));
+        Map<Integer, List<Long>> pointsGrouped = match.getPlayersGroupedByPoints();
 
         // Sort the points in descending order
         List<Integer> sortedPoints = pointsGrouped.keySet().stream()
-                .sorted((a, b) -> b - a) // Sorting points in descending order
-                .collect(Collectors.toList());
+                .sorted((a, b) -> b - a)
+                .toList();
 
         // Build the scoreboard message
         StringBuilder scoreboard = new StringBuilder();
         int place = 1;
 
         for (Integer points : sortedPoints) {
-            List<String> players = pointsGrouped.get(points);
-            String playersList = players.stream()
-                    .map(p -> "**" + p + "**")
-                    .collect(Collectors.joining(", "));
+            List<Long> playerIds = pointsGrouped.get(points);
+            String playersList = formatMentions(playerIds).replace("<@", "**<@").replace(">", ">**");
             String pointWord = points == 1 ? "point" : "points";
 
-            String label;
-            switch (place) {
-                case 1 -> label = "🥇";
-                case 2 -> label = "🥈";
-                case 3 -> label = "🥉";
-                default -> label = getOrdinalSuffix(place);
-            }
+            String label = switch (place) {
+                case 1 -> "🥇";
+                case 2 -> "🥈";
+                case 3 -> "🥉";
+                default -> getOrdinalSuffix(place);
+            };
 
             scoreboard.append(label).append(": ")
                     .append(playersList).append(" — ")
@@ -76,11 +68,11 @@ public class MatchResultsMessage {
         if (place % 100 >= 11 && place % 100 <= 13) {
             return place + "th";
         }
-        switch (place % 10) {
-            case 1: return place + "st";
-            case 2: return place + "nd";
-            case 3: return place + "rd";
-            default: return place + "th";
-        }
+        return switch (place % 10) {
+            case 1 -> place + "st";
+            case 2 -> place + "nd";
+            case 3 -> place + "rd";
+            default -> place + "th";
+        };
     }
 }

@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static dev.salonce.discordquizbot.infrastructure.DiscordFormatter.formatMentions;
+
 @RequiredArgsConstructor
 @Component
 public class QuestionMessage {
@@ -131,9 +133,9 @@ public class QuestionMessage {
         for (int i = 0; i < currentQuestion.getQuizOptions().size(); i++) {
             if (i > 0) sb.append("\n");
 
-            String prefix = correctAnswer == i ? "✅ **" + (char)('A' + i) + "**" : "❌ " + (char)('A' + i);
+            String prefix = correctAnswer == i ? "✅ **" + (char)('A' + i) + "**"
+                                               : "❌ " + (char)('A' + i);
             sb.append(prefix).append(": ");
-
             List<Long> playerIds = playerGroups.getOrDefault(i, Collections.emptyList());
             sb.append(formatMentions(playerIds));
         }
@@ -144,12 +146,6 @@ public class QuestionMessage {
         sb.append(formatMentions(playerIds));
 
         return sb.toString();
-    }
-
-    private String formatMentions(List<Long> playerIds) {
-        return playerIds.stream()
-                .map(id -> "<@" + id + ">")
-                .collect(Collectors.joining(", "));
     }
 
     private String getScoreboard(Match match){

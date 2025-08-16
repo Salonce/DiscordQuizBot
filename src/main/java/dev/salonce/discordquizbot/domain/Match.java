@@ -3,6 +3,7 @@ package dev.salonce.discordquizbot.domain;
 import lombok.Getter;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Getter
 public class Match{
@@ -127,6 +128,14 @@ public class Match{
         });
 
         return groups;
+    }
+
+    public Map<Integer, List<Long>> getPlayersGroupedByPoints() {
+        return players.entrySet().stream()
+                .collect(Collectors.groupingBy(
+                        entry -> entry.getValue().getPoints(),
+                        Collectors.mapping(Map.Entry::getKey, Collectors.toList())
+                ));
     }
 
     //actually adds +1 point to all players with current question correctly answered, repeating this function in the same round will make results wrong
