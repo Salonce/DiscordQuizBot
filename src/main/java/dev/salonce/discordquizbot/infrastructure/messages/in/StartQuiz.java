@@ -52,7 +52,7 @@ public class StartQuiz implements MessageHandler {
         messageChannel.getId();
 
         log.info("User {} started a match: {} {}", userId, topic, difficulty);
-        quizFlowService.addMatch(messageChannel, matchService.makeMatch(topic, difficulty, userId));
+        quizFlowService.startMatch(messageChannel, topic, difficulty, userId);
         return true;
     }
 }

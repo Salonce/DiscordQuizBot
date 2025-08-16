@@ -29,15 +29,17 @@ public class QuizFlowService {
     private final MatchResultsMessage matchResultsMessage;
     private final DiscordMessageSender discordMessageSender;
 
-    public void addMatch(MessageChannel messageChannel, Match match) {
-        int totalTimeToJoin = quizSetupConfig.getTimeToJoinQuiz();
-        int totalTimeToStart = quizSetupConfig.getTimeToStartMatch();
+    public void startMatch(MessageChannel messageChannel, String topic, int difficulty, Long userId) {
 
         if (matchService.containsKey(messageChannel.getId().asLong())) {
             // send a message that a match is already in progress in that chat and can't start new one
             return;
         }
 
+        int totalTimeToJoin = quizSetupConfig.getTimeToJoinQuiz();
+        int totalTimeToStart = quizSetupConfig.getTimeToStartMatch();
+
+        Match match = matchService.makeMatch(topic, difficulty, userId);
         matchService.put(messageChannel.getId().asLong(), match);
 
         Mono<Void> normalFlow = Mono.just(startingMessage.createSpec(match, totalTimeToJoin))
