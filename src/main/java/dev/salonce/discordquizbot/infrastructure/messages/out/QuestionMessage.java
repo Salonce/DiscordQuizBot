@@ -2,7 +2,6 @@ package dev.salonce.discordquizbot.infrastructure.messages.out;
 
 import dev.salonce.discordquizbot.domain.Match;
 import dev.salonce.discordquizbot.application.MatchService;
-import dev.salonce.discordquizbot.domain.Player;
 import dev.salonce.discordquizbot.domain.Question;
 import dev.salonce.discordquizbot.domain.QuizOption;
 import discord4j.core.object.component.ActionRow;
@@ -131,12 +130,12 @@ public class QuestionMessage {
     }
 
     private String titleString(Match match){
-        return "Question " + (match.getCurrentQuestionNum() + 1) + "/10";
+        return "Question " + (match.getCurQuestionIndex() + 1) + "/10";
     }
     private String getUsersAnswers(Match match) {
         Question currentQuestion = match.getCurrentQuestion();
         Map<Integer, List<Long>> playerGroups = match.getPlayersGroupedByAnswer();
-        int correctAnswer = currentQuestion.getCorrectAnswerInt();
+        int correctAnswer = currentQuestion.getCorrectAnswerAsInt();
 
         StringBuilder sb = new StringBuilder();
 

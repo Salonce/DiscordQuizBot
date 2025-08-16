@@ -9,10 +9,10 @@ import java.util.stream.Collectors;
 public class Match{
     private String topic;
     private final int difficulty;
+    private int curQuestionIndex = 0;
+    private int inactivity = 0;
     private final Map<Long, Player> players = new LinkedHashMap<>();
     private final List<Question> questions;
-    private int currentQuestionNum = 0;
-    private int inactiveRounds = 0;
     private MatchState matchState = MatchState.ENROLLMENT;
 
     public Match(List<Question> questions, String topic, int difficulty, Long ownerId){
@@ -57,7 +57,7 @@ public class Match{
     }
 
     public boolean isCurrentQuestion(int index){
-        return (index == currentQuestionNum);
+        return (index == curQuestionIndex);
     }
 
     public int getNumberOfQuestions(){
@@ -96,7 +96,7 @@ public class Match{
 
     public boolean everyoneAnswered(){
         for (Player player : players.values()){
-            if (player.isUnanswered(currentQuestionNum))
+            if (player.isUnanswered(curQuestionIndex))
                 return false;
         }
         return true;
@@ -139,7 +139,7 @@ public class Match{
         Map<Integer, List<Long>> groups = new HashMap<>();
 
         players.forEach((playerId, player) -> {
-            int answer = player.getAnswer(currentQuestionNum);
+            int answer = player.getAnswer(curQuestionIndex);
             groups.computeIfAbsent(answer, k -> new ArrayList<>()).add(playerId);
         });
 
@@ -155,15 +155,15 @@ public class Match{
     }
 
     public void skipToNextQuestion(){
-        currentQuestionNum++;
+        curQuestionIndex++;
     }
     public boolean questionExists(){
-        return currentQuestionNum < questions.size();
+        return curQuestionIndex < questions.size();
     }
 
     public Question getCurrentQuestion(){
-        if (currentQuestionNum < questions.size())
-            return questions.get(currentQuestionNum);
+        if (curQuestionIndex < questions.size())
+            return questions.get(curQuestionIndex);
         else
             return null;
     }
@@ -171,19 +171,19 @@ public class Match{
     public void updateInactiveRounds(){
         int noAnswersCount = 0;
         for (Player player : players.values()){
-            if (player.isUnanswered(currentQuestionNum))
+            if (player.isUnanswered(curQuestionIndex))
                 noAnswersCount++;
             else break;
         }
 
         if (noAnswersCount == players.size())
-            inactiveRounds++;
+            inactivity++;
         else
-            inactiveRounds = 0;
+            inactivity = 0;
     }
 
     public void closeIfInactiveLimitReached(int inactiveRoundsLimit){
-        if (inactiveRounds >= inactiveRoundsLimit) {
+        if (inactivity >= inactiveRoundsLimit) {
             matchState = MatchState.CLOSED_BY_INACTIVITY;
         }
     }

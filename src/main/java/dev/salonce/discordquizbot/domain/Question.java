@@ -1,6 +1,5 @@
 package dev.salonce.discordquizbot.domain;
 
-import dev.salonce.discordquizbot.infrastructure.dtos.RawQuestion;
 import lombok.Getter;
 
 import java.util.*;
@@ -23,7 +22,7 @@ public class Question {
         return (quizOptions.get(num).isCorrect());
     }
 
-    public int getCorrectAnswerInt(){
+    public int getCorrectAnswerAsInt(){
         for (int i = 0; i < quizOptions.size(); i++){
             if (quizOptions.get(i).isCorrect())
                 return i;
