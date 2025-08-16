@@ -38,16 +38,13 @@ public class DiscordBotBootstrap {
     }
 
     private void handleButtonInteractions(GatewayDiscordClient gateway) {
-        gateway.on(ButtonInteractionEvent.class, event -> {
-            ButtonInteraction buttonInteraction = ButtonMapper.toButtonInteractionData(event);
-            if (buttonInteraction == null)
-                return Mono.empty();
-
-            Optional<String> stringOptional = buttonHandlerChain.handle(buttonInteraction);
-            stringOptional.ifPresent(response -> event.reply(response).withEphemeral(true).subscribe());
-
-            return Mono.empty(); // Since handlers subscribe to the events themselves
-        }).subscribe();
+        gateway.on(ButtonInteractionEvent.class, event ->
+                Mono.justOrEmpty(ButtonMapper.toButtonInteractionData(event))
+                .map(buttonHandlerChain::handle)
+                .doOnNext(opt -> opt.ifPresent(
+                        response -> event.reply(response).withEphemeral(true).subscribe()
+                ))
+                .then()).subscribe();
     }
 
     private void printGuildCount(GatewayDiscordClient gateway){
