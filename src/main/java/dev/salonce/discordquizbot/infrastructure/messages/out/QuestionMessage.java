@@ -135,21 +135,21 @@ public class QuestionMessage {
             sb.append(prefix).append(": ");
 
             List<Long> playerIds = playerGroups.getOrDefault(i, Collections.emptyList());
-            String mentions = playerIds.stream()
-                    .map(id -> "<@" + id + ">")
-                    .collect(Collectors.joining(", "));
-            sb.append(mentions);
+            sb.append(formatMentions(playerIds));
         }
 
         // Non-responders
         sb.append("\n\n💤: ");
-        List<Long> nonResponders = playerGroups.getOrDefault(-1, Collections.emptyList());
-        String nonResponderMentions = nonResponders.stream()
-                .map(id -> "<@" + id + ">")
-                .collect(Collectors.joining(", "));
-        sb.append(nonResponderMentions);
+        List<Long> playerIds = playerGroups.getOrDefault(-1, Collections.emptyList());
+        sb.append(formatMentions(playerIds));
 
         return sb.toString();
+    }
+
+    private String formatMentions(List<Long> playerIds) {
+        return playerIds.stream()
+                .map(id -> "<@" + id + ">")
+                .collect(Collectors.joining(", "));
     }
 
     private String getScoreboard(Match match){
