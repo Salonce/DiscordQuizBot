@@ -9,8 +9,8 @@ import java.util.*;
 @Getter
 public class Question {
     private final String question;
-    private final List<QuizOption> quizOptions;
     private final String explanation;
+    private final List<QuizOption> quizOptions;
 
     public Question(String question, List<QuizOption> quizOptions, String explanation) {
         this.question = question;
