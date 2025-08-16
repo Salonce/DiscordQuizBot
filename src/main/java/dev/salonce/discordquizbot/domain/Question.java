@@ -30,16 +30,4 @@ public class Question {
         }
         return -1;
     }
-
-    public String getOptionsRevealed(){
-        StringBuilder sb = new StringBuilder();
-        char letter = 'A';
-        for (QuizOption quizOption : quizOptions){
-            if (!quizOption.isCorrect()) sb.append("❌ ").append(letter).append(") ").append(quizOption.text());
-            if (quizOption.isCorrect()) sb.append("✅** ").append(letter).append(") ").append(quizOption.text()).append("**");
-            letter++;
-            sb.append("\n");
-        }
-        return sb.toString();
-    }
 }

@@ -95,7 +95,6 @@ public class QuestionMessage {
     }
 
     public MessageEditSpec editEmbedWithScores(Match match, Long questionNumber){
-        String questionsAnswers = match.getCurrentQuestion().getOptionsRevealed();
         int answersSize = match.getCurrentQuestion().getQuizOptions().size();
 
         List<Button> buttons = new ArrayList<>();
@@ -107,7 +106,7 @@ public class QuestionMessage {
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title(titleString(match))
                 .addField("\n", "❓ **" + match.getCurrentQuestion().getQuestion() + "**", false)
-                .addField("\n", questionsAnswers + "\n", false)
+                .addField("\n", getOptionsRevealed(match.getCurrentQuestion().getQuizOptions()) + "\n", false)
                 .addField("\uD83D\uDCDD Explanation", match.getCurrentQuestion().getExplanation() + "\n", false)
                 .addField("\uD83D\uDCCB Answers", getUsersAnswers(match), false)
                 .addField("\uD83D\uDCCA Scoreboard", getScoreboard(match), false)
@@ -117,6 +116,18 @@ public class QuestionMessage {
                 .addComponent(ActionRow.of(buttons))
                 .addEmbed(embed)
                 .build();
+    }
+
+    private String getOptionsRevealed(List<QuizOption> quizOptions){
+        StringBuilder sb = new StringBuilder();
+        char letter = 'A';
+        for (QuizOption quizOption : quizOptions){
+            if (!quizOption.isCorrect()) sb.append("❌ ").append(letter).append(") ").append(quizOption.text());
+            if (quizOption.isCorrect()) sb.append("✅** ").append(letter).append(") ").append(quizOption.text()).append("**");
+            letter++;
+            sb.append("\n");
+        }
+        return sb.toString();
     }
 
     private String titleString(Match match){
