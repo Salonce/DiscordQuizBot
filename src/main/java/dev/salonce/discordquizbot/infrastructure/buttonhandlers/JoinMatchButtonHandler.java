@@ -7,6 +7,8 @@ import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @RequiredArgsConstructor
 @Component("ButtonJoinMatch")
 public class JoinMatchButtonHandler implements ButtonHandler {
@@ -14,13 +16,9 @@ public class JoinMatchButtonHandler implements ButtonHandler {
     private final MatchService matchService;
 
     @Override
-    public boolean handle(ButtonInteractionEvent event, ButtonInteraction data) {
+    public Optional<String> handle(ButtonInteraction data) {
         if (!"joinQuiz".equals(data.buttonId()))
-            return false;
-        String result = matchService.addPlayerToMatch(data.channelId(), data.userId());
-        event.reply(result)
-                .withEphemeral(true)
-                .subscribe();
-        return true;
+            return Optional.empty();
+        return Optional.of(matchService.addPlayerToMatch(data.channelId(), data.userId()));
     }
 }

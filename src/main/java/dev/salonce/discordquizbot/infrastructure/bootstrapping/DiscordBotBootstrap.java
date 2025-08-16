@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+import java.util.Optional;
+
 @RequiredArgsConstructor
 @Service
 public class DiscordBotBootstrap {
@@ -41,7 +43,8 @@ public class DiscordBotBootstrap {
             if (buttonInteraction == null)
                 return Mono.empty();
 
-            buttonHandlerChain.handle(event, buttonInteraction);
+            Optional<String> stringOptional = buttonHandlerChain.handle(buttonInteraction);
+            stringOptional.ifPresent(response -> event.reply(response).withEphemeral(true).subscribe());
 
             return Mono.empty(); // Since handlers subscribe to the events themselves
         }).subscribe();
