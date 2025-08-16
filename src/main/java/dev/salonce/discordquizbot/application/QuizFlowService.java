@@ -117,7 +117,6 @@ public class QuizFlowService {
                     return createCountdownTimer(match, message, index, totalTime)
                             .then(Mono.defer(() -> discordMessageSender.edit(message, questionMessage.editEmbedAfterAnswersWait(match, index))))
                             .then(Mono.delay(Duration.ofSeconds(1)))
-                            .then(Mono.fromRunnable(match::updateScores))
                             .then(Mono.fromRunnable(match::startWaitingPhase))
                             .then(Mono.defer(() -> discordMessageSender.edit(message, questionMessage.editEmbedWithScores(match, index))))
                             .then(Mono.fromRunnable(match::updateInactiveRounds))

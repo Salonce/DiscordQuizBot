@@ -148,7 +148,12 @@ public class QuestionMessage {
         return sb.toString();
     }
 
-    private String getScoreboard(Match match){
-        return match.getPlayers().entrySet().stream().sorted((a, b) -> (b.getValue().getPoints() - a.getValue().getPoints())).map(entry -> "<@" + entry.getKey() + ">" + ": " + entry.getValue().getPoints() + " points").collect(Collectors.joining("\n"));
+    private String getScoreboard(Match match) {
+        Map<Long, Long> points = match.getPlayersPoints(); // use your new map
+
+        return points.entrySet().stream()
+                .sorted((a, b) -> Long.compare(b.getValue(), a.getValue())) // sort descending
+                .map(entry -> "<@" + entry.getKey() + ">: " + entry.getValue() + " points")
+                .collect(Collectors.joining("\n"));
     }
 }

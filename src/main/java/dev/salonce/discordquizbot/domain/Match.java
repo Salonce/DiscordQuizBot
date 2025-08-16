@@ -32,6 +32,25 @@ public class Match{
         players.put(userId, new Player(questions.size()));
     }
 
+    public Map<Long, Long> getPlayersPoints() {
+        Map<Long, Long> playerPoints = new LinkedHashMap<>();
+
+        for (Map.Entry<Long, Player> entry : players.entrySet()) {
+            Long playerId = entry.getKey();
+            Player player = entry.getValue();
+
+            long points = 0;
+            for (int i = 0; i < questions.size(); i++) {
+                int answerIndex = player.getAnswer(i);
+                if (questions.get(i).isCorrectAnswer(answerIndex)) {
+                    points++;
+                }
+            }
+            playerPoints.put(playerId, points);
+        }
+        return playerPoints;
+    }
+
     public void closeByOwner(){
         if (!isClosed())
             this.matchState = MatchState.CLOSED_BY_OWNER;
@@ -128,20 +147,11 @@ public class Match{
     }
 
     public Map<Integer, List<Long>> getPlayersGroupedByPoints() {
-        return players.entrySet().stream()
+        return getPlayersPoints().entrySet().stream()
                 .collect(Collectors.groupingBy(
-                        entry -> entry.getValue().getPoints(),
+                        e -> e.getValue().intValue(),   // points as key
                         Collectors.mapping(Map.Entry::getKey, Collectors.toList())
                 ));
-    }
-
-    //actually adds +1 point to all players with current question correctly answered, repeating this function in the same round will make results wrong
-    public void updateScores(){
-        for (Player player : players.values()){
-            int playerAnswer = player.getAnswer(currentQuestionNum);
-            if (questions.get(currentQuestionNum).isCorrectAnswer(playerAnswer))
-                player.addPoint();
-        }
     }
 
     public void skipToNextQuestion(){
