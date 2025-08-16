@@ -2,18 +2,16 @@ package dev.salonce.discordquizbot.domain;
 
 import lombok.Getter;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
-@Getter
 public class Match{
+    @Getter
     private String topic;
+    @Getter
     private final int difficulty;
     private final Map<Long, Player> players = new LinkedHashMap<>();
     private final List<Question> questions;
-    private int currentQuestionNum = 0;
+    private int currentQuestion = 0;
     private int inactiveRounds = 0;
     private MatchState matchState = MatchState.ENROLLMENT;
 
@@ -63,7 +61,7 @@ public class Match{
 
     public boolean everyoneAnswered(){
         for (Player player : players.values()){
-            if (player.isUnanswered(getCurrentQuestionNum()))
+            if (player.isUnanswered(currentQuestion))
                 return false;
         }
         return true;
@@ -74,25 +72,29 @@ public class Match{
         catch (NoSuchElementException e){ return null; }
     }
 
+    public boolean isOwner(Long userId){
+        return Objects.equals(userId, getOwnerId());
+    }
+
     //actually adds +1 point to all players with current question correctly answered, repeating this function in the same round will make results wrong
     public void updateScores(){
         for (Player player : players.values()){
-            int playerAnswer = player.getAnswer(currentQuestionNum);
-            if (questions.get(currentQuestionNum).isCorrectAnswer(playerAnswer))
+            int playerAnswer = player.getAnswer(currentQuestion);
+            if (questions.get(currentQuestion).isCorrectAnswer(playerAnswer))
                 player.addPoint();
         }
     }
 
     public void skipToNextQuestion(){
-        currentQuestionNum++;
+        currentQuestion++;
     }
     public boolean questionExists(){
-        return currentQuestionNum < questions.size();
+        return currentQuestion < questions.size();
     }
 
     public Question getCurrentQuestion(){
-        if (currentQuestionNum < questions.size())
-            return questions.get(currentQuestionNum);
+        if (currentQuestion < questions.size())
+            return questions.get(currentQuestion);
         else
             return null;
     }
@@ -100,7 +102,7 @@ public class Match{
     public void updateInactiveRounds(){
         int noAnswersCount = 0;
         for (Player player : players.values()){
-            if (player.isUnanswered(currentQuestionNum))
+            if (player.isUnanswered(currentQuestion))
                 noAnswersCount++;
             else break;
         }

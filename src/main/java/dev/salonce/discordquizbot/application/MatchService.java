@@ -56,7 +56,7 @@ public class MatchService {
         Match match = get(channelId);
         if (match == null)
             return "This match doesn't exist anymore.";
-        if (!match.getOwnerId().equals(userId))
+        if (!match.isOwner(userId))
             return "You are not the owner. Only the owner can cancel the match.";
         match.closeByOwner();
         return "With your undeniable power of ownership, you've cancelled the match";
