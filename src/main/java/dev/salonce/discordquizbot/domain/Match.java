@@ -68,7 +68,7 @@ public class Match{
 
     public boolean everyoneAnswered(){
         for (Player player : players.values()){
-            if (player.getAnswersList().get(currentQuestionNum) == -1)
+            if (player.isUnanswered(getCurrentQuestionNum()))
                 return false;
         }
         return true;

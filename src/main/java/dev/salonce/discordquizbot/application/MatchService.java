@@ -101,8 +101,7 @@ public class MatchService {
         if (!match.getPlayers().containsKey(userId))
             return "You are not in the match.";
 
-        List<Integer> answers = match.getPlayers().get(userId).getAnswersList();
-        answers.set(questionNumber, answerNumber);
+        match.getPlayers().get(userId).setAnswer(questionNumber, answerNumber);
         return "Your answer: " + (char) ('A' + answerNumber) + ".";
 
     }

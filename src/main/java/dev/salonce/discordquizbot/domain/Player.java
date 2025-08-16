@@ -5,10 +5,17 @@ import lombok.Getter;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
 public class Player {
 
-    private List<Integer> answersList;
+    private final List<Integer> answersList;
+
+    public void setAnswer(int questionNumber, int answerNumber){
+        this.answersList.set(questionNumber, answerNumber);
+    };
+
+    public boolean isUnanswered(int index){
+        return (answersList.get(index) == -1);
+    }
 
     public Player(int numOfAnswers){
         this.points = 0;
