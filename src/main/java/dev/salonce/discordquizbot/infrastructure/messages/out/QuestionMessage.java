@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -119,39 +120,35 @@ public class QuestionMessage {
     private String titleString(Match match){
         return "Question " + (match.getCurrentQuestionNum() + 1) + "/10";
     }
+    private String getUsersAnswers(Match match) {
+        Question currentQuestion = match.getCurrentQuestion();
+        Map<Integer, List<Long>> playerGroups = match.getPlayersGroupedByAnswer();
+        int correctAnswer = currentQuestion.getCorrectAnswerInt();
 
-    private String getUsersAnswers(Match match){
-        List<Question> questions = match.getQuestions();
-        int currentQuestionNum = match.getCurrentQuestionNum();
-        int currentQuestionCorrectAnswer = match.getCurrentQuestion().getCorrectAnswerInt();
-        Map<Long, Player> players = match.getPlayers();
-
-        List<List<String>> playersAnswers = new ArrayList<>();
-        for (int i = 0; i < questions.get(currentQuestionNum).getQuizOptions().size() + 1; i++){
-            playersAnswers.add(new ArrayList<>());
-        }
-        for (Map.Entry<Long, Player> entry : players.entrySet()){
-            int intAnswer = entry.getValue().getAnswer(currentQuestionNum) + 1;
-            playersAnswers.get(intAnswer).add("<@" + entry.getKey().toString() + ">");
-        }
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i < playersAnswers.size(); i++){
-            if (i != 1) sb.append("\n");
-            if (currentQuestionCorrectAnswer == i - 1)
-                sb.append("✅ ").append("**").append((char)('A' + i - 1)).append("**: ");
-            else
-                sb.append("❌ ").append((char)('A' + i - 1)).append(": ");
-            for (int j = 0; j < playersAnswers.get(i).size(); j++){
-                if (j != 0) sb.append(", ");
-                sb.append(playersAnswers.get(i).get(j));
-            }
+
+        // Format each option
+        for (int i = 0; i < currentQuestion.getQuizOptions().size(); i++) {
+            if (i > 0) sb.append("\n");
+
+            String prefix = correctAnswer == i ? "✅ **" + (char)('A' + i) + "**" : "❌ " + (char)('A' + i);
+            sb.append(prefix).append(": ");
+
+            List<Long> playerIds = playerGroups.getOrDefault(i, Collections.emptyList());
+            String mentions = playerIds.stream()
+                    .map(id -> "<@" + id + ">")
+                    .collect(Collectors.joining(", "));
+            sb.append(mentions);
         }
-        sb.append("\n");
-        sb.append("\n\uD83D\uDCA4 ").append(": ");
-        for (int j = 0; j < playersAnswers.get(0).size(); j++){
-            if (j != 0) sb.append(", ");
-            sb.append(playersAnswers.get(0).get(j));
-        }
+
+        // Non-responders
+        sb.append("\n\n💤: ");
+        List<Long> nonResponders = playerGroups.getOrDefault(-1, Collections.emptyList());
+        String nonResponderMentions = nonResponders.stream()
+                .map(id -> "<@" + id + ">")
+                .collect(Collectors.joining(", "));
+        sb.append(nonResponderMentions);
+
         return sb.toString();
     }
 

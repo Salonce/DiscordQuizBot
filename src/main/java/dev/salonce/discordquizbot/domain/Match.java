@@ -118,6 +118,17 @@ public class Match{
         return Objects.equals(userId, getOwnerId());
     }
 
+    public Map<Integer, List<Long>> getPlayersGroupedByAnswer() {
+        Map<Integer, List<Long>> groups = new HashMap<>();
+
+        players.forEach((playerId, player) -> {
+            int answer = player.getAnswer(currentQuestionNum);
+            groups.computeIfAbsent(answer, k -> new ArrayList<>()).add(playerId);
+        });
+
+        return groups;
+    }
+
     //actually adds +1 point to all players with current question correctly answered, repeating this function in the same round will make results wrong
     public void updateScores(){
         for (Player player : players.values()){
