@@ -4,6 +4,7 @@ import dev.salonce.discordquizbot.domain.Match;
 import dev.salonce.discordquizbot.application.MatchService;
 import dev.salonce.discordquizbot.domain.Player;
 import dev.salonce.discordquizbot.domain.Question;
+import dev.salonce.discordquizbot.domain.QuizOption;
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
 import discord4j.core.spec.EmbedCreateSpec;
@@ -27,7 +28,6 @@ public class QuestionMessage {
     private final MatchService matchService;
 
     public MessageCreateSpec createEmbed(Match match, Long questionNumber, int timeLeft){
-        String questionsAnswers = match.getCurrentQuestion().getOptions();
         int answersSize = match.getCurrentQuestion().getQuizOptions().size();
 
         List<Button> buttons = new ArrayList<>();
@@ -39,7 +39,7 @@ public class QuestionMessage {
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title(titleString(match))
                 .addField("\n", "❓ **" + match.getCurrentQuestion().getQuestion() + "**", false)
-                .addField("\n", questionsAnswers + "\n", false)
+                .addField("\n", getOptionsString(match.getCurrentQuestion().getQuizOptions()) + "\n", false)
                 .addField("\n", "```⏳ " + timeLeft + " seconds left.```", false)
                 .build();
 
@@ -49,8 +49,9 @@ public class QuestionMessage {
                 .build();
     }
 
+
+
     public MessageEditSpec editEmbedWithTime(Match match, Long questionNumber, int timeLeft){
-        String questionsAnswers = match.getCurrentQuestion().getOptions();
         int answersSize = match.getCurrentQuestion().getQuizOptions().size();
 
         List<Button> buttons = new ArrayList<>();
@@ -62,7 +63,7 @@ public class QuestionMessage {
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title(titleString(match))
                 .addField("\n", "❓ **" + match.getCurrentQuestion().getQuestion() + "**", false)
-                .addField("\n", questionsAnswers + "\n", false)
+                .addField("\n", getOptionsString(match.getCurrentQuestion().getQuizOptions()) + "\n", false)
                 .addField("\n", "```⏳ " + timeLeft + " seconds left.```", false)
                 .build();
 
@@ -73,7 +74,6 @@ public class QuestionMessage {
     }
 
     public MessageEditSpec editEmbedAfterAnswersWait(Match match, Long questionNumber){
-        String questionsAnswers = match.getCurrentQuestion().getOptions();
         int answersSize = match.getCurrentQuestion().getQuizOptions().size();
 
         List<Button> buttons = new ArrayList<>();
@@ -85,7 +85,7 @@ public class QuestionMessage {
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title(titleString(match))
                 .addField("\n", "❓ **" + match.getCurrentQuestion().getQuestion() + "**", false)
-                .addField("\n", questionsAnswers + "\n", false)
+                .addField("\n", getOptionsString(match.getCurrentQuestion().getQuizOptions()) + "\n", false)
                 .build();
 
         return MessageEditSpec.builder()
@@ -148,6 +148,17 @@ public class QuestionMessage {
         return sb.toString();
     }
 
+    private String getOptionsString(List<QuizOption> quizOptions){
+        StringBuilder sb = new StringBuilder();
+        char letter = 'A';
+        for (QuizOption quizOption : quizOptions){
+            sb.append(letter).append(") ").append(quizOption.text());
+            letter++;
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
     private String getScoreboard(Match match) {
         Map<Long, Long> points = match.getPlayersPoints(); // use your new map
 
@@ -156,4 +167,6 @@ public class QuestionMessage {
                 .map(entry -> "<@" + entry.getKey() + ">: " + entry.getValue() + " points")
                 .collect(Collectors.joining("\n"));
     }
+
+
 }

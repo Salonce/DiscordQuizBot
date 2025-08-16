@@ -31,17 +31,6 @@ public class Question {
         return -1;
     }
 
-    public String getOptions(){
-        StringBuilder sb = new StringBuilder();
-        char letter = 'A';
-        for (QuizOption quizOption : quizOptions){
-            sb.append(letter).append(") ").append(quizOption.text());
-            letter++;
-            sb.append("\n");
-        }
-        return sb.toString();
-    }
-
     public String getOptionsRevealed(){
         StringBuilder sb = new StringBuilder();
         char letter = 'A';
@@ -52,13 +41,5 @@ public class Question {
             sb.append("\n");
         }
         return sb.toString();
-    }
-
-    public Character getCorrectAnswer(){
-        for (int i = 0; i < quizOptions.size(); i++){
-            if (quizOptions.get(i).isCorrect())
-                return (char)('A' + i);
-        }
-        return null;
     }
 }
