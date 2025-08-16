@@ -22,7 +22,7 @@ public class MatchService {
 
     public Match makeMatch(String topic, int difficulty, Long ownerId){
         List<Question> questions = questionsService.generateQuestions(topic, difficulty, quizSetupConfig.getNoOfQuestions());
-        return new Match(questions, topic, difficulty, ownerId, quizSetupConfig.getInactiveRoundsLimit());
+        return new Match(questions, topic, difficulty, ownerId);
     }
 
     public Match get(Long channelId) {

@@ -16,14 +16,12 @@ public class Match{
     private final int difficulty;
     private final Map<Long, Player> players = new LinkedHashMap<>();
     private final List<Question> questions;
-    private final int inactiveRoundsLimit;
     private int currentQuestionNum = 0;
     private int inactiveRounds = 0;
     private MatchState matchState = MatchState.ENROLLMENT;
 
-    public Match(List<Question> questions, String topic, int difficulty, Long ownerId, int inactiveRoundsLimit){
+    public Match(List<Question> questions, String topic, int difficulty, Long ownerId){
         this.questions = questions;
-        this.inactiveRoundsLimit = inactiveRoundsLimit;
         players.put(ownerId, new Player(questions.size()));
 
         if (topic != null) {
@@ -117,7 +115,7 @@ public class Match{
             inactiveRounds = 0;
     }
 
-    public void closeIfInactiveLimitReached(){
+    public void closeIfInactiveLimitReached(int inactiveRoundsLimit){
         if (inactiveRounds >= inactiveRoundsLimit) {
             matchState = MatchState.CLOSED_BY_INACTIVITY;
         }

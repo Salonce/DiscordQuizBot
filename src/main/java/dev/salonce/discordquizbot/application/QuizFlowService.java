@@ -108,6 +108,7 @@ public class QuizFlowService {
     private Mono<Void> runQuestionFlow(Match match, MessageChannel messageChannel, long index) {
         int totalTime = quizSetupConfig.getTimeToPickAnswer();
         int timeForNextQuestionToAppear = quizSetupConfig.getTimeForNewQuestionToAppear();
+        int inactiveRoundsLimit = quizSetupConfig.getInactiveRoundsLimit();
 
         return Mono.just(questionMessage.createEmbed(match, index, totalTime))
                 .flatMap(messageChannel::createMessage)
@@ -120,7 +121,7 @@ public class QuizFlowService {
                             .then(Mono.fromRunnable(match::startWaitingPhase))
                             .then(Mono.defer(() -> discordMessageSender.edit(message, questionMessage.editEmbedWithScores(match, index))))
                             .then(Mono.fromRunnable(match::updateInactiveRounds))
-                            .then(Mono.fromRunnable(match::closeIfInactiveLimitReached))
+                            .then(Mono.fromRunnable(() -> match.closeIfInactiveLimitReached(inactiveRoundsLimit)))
                             .then(Mono.delay(Duration.ofSeconds(timeForNextQuestionToAppear)))
                             .then(Mono.fromRunnable(match::skipToNextQuestion));
                 });
