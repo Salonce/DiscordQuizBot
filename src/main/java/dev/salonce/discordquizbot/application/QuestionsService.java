@@ -1,14 +1,13 @@
 package dev.salonce.discordquizbot.application;
 
 import dev.salonce.discordquizbot.domain.Question;
+import dev.salonce.discordquizbot.domain.QuizOption;
 import dev.salonce.discordquizbot.infrastructure.configs.QuizSetupConfig;
 import dev.salonce.discordquizbot.infrastructure.dtos.RawQuestion;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Component
 @RequiredArgsConstructor
@@ -21,6 +20,27 @@ public class QuestionsService {
     public boolean doesQuestionSetExist(String topic, int level){
         return rawQuestionsService.doesQuestionSetExist(topic, level);
     }
+
+    private Question create(RawQuestion rawQuestion) {
+        List<QuizOption> options = new ArrayList<>();
+        Random rand = new Random();
+
+        // pick one correct answer
+        int correctIndex = rand.nextInt(rawQuestion.correctAnswers().size());
+        options.add(new QuizOption(rawQuestion.correctAnswers().get(correctIndex), true));
+
+        // pick incorrect answers
+        Set<Integer> set = new HashSet<>();
+        int size = Math.min(3, rawQuestion.incorrectAnswers().size());
+        while (set.size() != size){
+            set.add(rand.nextInt(rawQuestion.incorrectAnswers().size()));
+        }
+        for (int i : set) options.add(new QuizOption(rawQuestion.incorrectAnswers().get(i), false));
+
+        Collections.shuffle(options);
+        return new Question(rawQuestion.question(), options, rawQuestion.explanation());
+    }
+
 
     public List<Question> generateQuestions(String tag, int difficulty){
         int NoQuestions = quizSetupConfig.getNoOfQuestions();
@@ -43,7 +63,7 @@ public class QuestionsService {
             System.out.println("Not enough questions in this category...");
         for(int i = 0; i < NoQuestions; i++){
             int next = rand.nextInt(rawQuestions.size());
-            questions.add(new Question(rawQuestions.get(next)));
+            questions.add(create(rawQuestions.get(next)));
             rawQuestions.remove(next);
         }
         return questions;
@@ -59,7 +79,7 @@ public class QuestionsService {
             System.out.println("Not enough questions in this category...");
         for(int i = 0; i < NoQuestions; i++){
             int next = rand.nextInt(rawQuestions.size());
-            questions.add(new Question(rawQuestions.get(next)));
+            questions.add(create(rawQuestions.get(next)));
             rawQuestions.remove(next);
         }
         return questions;
