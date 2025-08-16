@@ -5,7 +5,6 @@ import lombok.Getter;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Getter
 public class Match{
     @Getter
     private String topic;
