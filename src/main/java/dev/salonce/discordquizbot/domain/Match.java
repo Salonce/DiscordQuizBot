@@ -82,13 +82,10 @@ public class Match{
     //actually adds +1 point to all players with current question correctly answered, repeating this function in the same round will make results wrong
     public void updateScores(){
         for (Player player : players.values()){
-            if (player.getAnswersList().get(currentQuestionNum) == getCurrentQuestionCorrectAnswer())
+            int playerAnswer = player.getAnswersList().get(currentQuestionNum);
+            if (questions.get(currentQuestionNum).isCorrectAnswer(playerAnswer))
                 player.addPoint();
         }
-    }
-
-    private int getCurrentQuestionCorrectAnswer(){
-        return questions.get(currentQuestionNum).getCorrectAnswerInt();
     }
 
     public void skipToNextQuestion(){

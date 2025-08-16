@@ -5,7 +5,6 @@ import dev.salonce.discordquizbot.domain.MatchState;
 import dev.salonce.discordquizbot.domain.Question;
 import dev.salonce.discordquizbot.infrastructure.MatchCache;
 import dev.salonce.discordquizbot.infrastructure.configs.TimersConfig;
-import discord4j.core.object.entity.channel.MessageChannel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -80,7 +79,6 @@ public class MatchService {
             return "You've left the match.";
         }
     }
-
 
     public String startNow(Long channelId, Long userId) {
         if (!containsKey(channelId))

@@ -26,7 +26,7 @@ public class Question {
         quizOptions.add(new QuizOption(rawQuestion.correctAnswers().get(num), true));
 
         //add incorrect answers
-        Set<Integer> set = new HashSet();
+        Set<Integer> set = new HashSet<>();
         int size = Math.min(3, rawQuestion.incorrectAnswers().size());
         while (set.size() != size){
             num = rand.nextInt(rawQuestion.incorrectAnswers().size());
@@ -44,7 +44,9 @@ public class Question {
         this.quizOptions = quizOptions;
     }
 
-
+    public boolean isCorrectAnswer(int num){
+        return (quizOptions.get(num).isCorrect());
+    }
 
     public int getCorrectAnswerInt(){
         for (int i = 0; i < quizOptions.size(); i++){
@@ -83,12 +85,5 @@ public class Question {
                 return (char)('A' + i);
         }
         return null;
-    }
-
-    public String getCorrectAnswerString(){
-        int corAns = getCorrectAnswerInt();
-        if (corAns != -1)
-            return quizOptions.get(corAns).text();
-        return "No correct text";
     }
 }
