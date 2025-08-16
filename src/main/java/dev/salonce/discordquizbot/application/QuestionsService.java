@@ -1,6 +1,7 @@
 package dev.salonce.discordquizbot.application;
 
 import dev.salonce.discordquizbot.domain.Question;
+import dev.salonce.discordquizbot.infrastructure.configs.QuizSetupConfig;
 import dev.salonce.discordquizbot.infrastructure.dtos.RawQuestion;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -13,6 +14,7 @@ import java.util.Random;
 @RequiredArgsConstructor
 public class QuestionsService {
 
+    private final QuizSetupConfig quizSetupConfig;
     private final RawQuestionsService rawQuestionsService;
     private final Random rand = new Random();
 
@@ -20,7 +22,8 @@ public class QuestionsService {
         return rawQuestionsService.doesQuestionSetExist(topic, level);
     }
 
-    public List<Question> generateQuestions(String tag, int difficulty, int NoQuestions){
+    public List<Question> generateQuestions(String tag, int difficulty){
+        int NoQuestions = quizSetupConfig.getNoOfQuestions();
         List<Question> questions = new ArrayList<>();
         if (difficulty == 1)
             questions.addAll(generateExactDifficultyQuestions(tag, difficulty, NoQuestions));

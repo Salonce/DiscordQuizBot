@@ -17,11 +17,10 @@ import java.util.Objects;
 public class MatchService {
 
     private final MatchCache matchCache;
-    private final QuizSetupConfig quizSetupConfig;
     private final QuestionsService questionsService;
 
     public Match makeMatch(String topic, int difficulty, Long ownerId){
-        List<Question> questions = questionsService.generateQuestions(topic, difficulty, quizSetupConfig.getNoOfQuestions());
+        List<Question> questions = questionsService.generateQuestions(topic, difficulty);
         return new Match(questions, topic, difficulty, ownerId);
     }
 
