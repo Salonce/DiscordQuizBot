@@ -1,7 +1,7 @@
 package dev.salonce.discordquizbot.application;
 
 import dev.salonce.discordquizbot.infrastructure.DiscordMessageSender;
-import dev.salonce.discordquizbot.infrastructure.configs.TimersConfig;
+import dev.salonce.discordquizbot.infrastructure.configs.QuizSetupConfig;
 import dev.salonce.discordquizbot.domain.Match;
 import dev.salonce.discordquizbot.domain.MatchState;
 import dev.salonce.discordquizbot.infrastructure.messages.out.MatchCanceledMessage;
@@ -22,7 +22,7 @@ import java.time.Duration;
 public class QuizFlowService {
 
     private final MatchService matchService;
-    private final TimersConfig timersConfig;
+    private final QuizSetupConfig quizSetupConfig;
     private final QuestionMessage questionMessage;
     private final StartingMessage startingMessage;
     private final MatchCanceledMessage matchCanceledMessage;
@@ -30,8 +30,8 @@ public class QuizFlowService {
     private final DiscordMessageSender discordMessageSender;
 
     public void addMatch(MessageChannel messageChannel, Match match) {
-        int totalTimeToJoin = timersConfig.getTimeToJoinQuiz();
-        int totalTimeToStart = timersConfig.getTimeToStartMatch();
+        int totalTimeToJoin = quizSetupConfig.getTimeToJoinQuiz();
+        int totalTimeToStart = quizSetupConfig.getTimeToStartMatch();
 
         if (matchService.containsKey(messageChannel.getId().asLong())) {
             // send a message that a match is already in progress in that chat and can't start new one
@@ -106,8 +106,8 @@ public class QuizFlowService {
     }
 
     private Mono<Void> runQuestionFlow(Match match, MessageChannel messageChannel, long index) {
-        int totalTime = timersConfig.getTimeToPickAnswer();
-        int timeForNextQuestionToAppear = timersConfig.getTimeForNewQuestionToAppear();
+        int totalTime = quizSetupConfig.getTimeToPickAnswer();
+        int timeForNextQuestionToAppear = quizSetupConfig.getTimeForNewQuestionToAppear();
 
         return Mono.just(questionMessage.createEmbed(match, index, totalTime))
                 .flatMap(messageChannel::createMessage)

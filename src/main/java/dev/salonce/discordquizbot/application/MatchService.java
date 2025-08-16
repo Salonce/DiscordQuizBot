@@ -4,7 +4,7 @@ import dev.salonce.discordquizbot.domain.Match;
 import dev.salonce.discordquizbot.domain.MatchState;
 import dev.salonce.discordquizbot.domain.Question;
 import dev.salonce.discordquizbot.infrastructure.MatchCache;
-import dev.salonce.discordquizbot.infrastructure.configs.TimersConfig;
+import dev.salonce.discordquizbot.infrastructure.configs.QuizSetupConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -17,12 +17,12 @@ import java.util.Objects;
 public class MatchService {
 
     private final MatchCache matchCache;
-    private final TimersConfig timersConfig;
+    private final QuizSetupConfig quizSetupConfig;
     private final QuestionsService questionsService;
 
     public Match makeMatch(String topic, int difficulty, Long ownerId){
-        List<Question> questions = questionsService.generateQuestions(topic, difficulty, timersConfig.getNoOfQuestions());
-        return new Match(questions, topic, difficulty, ownerId, timersConfig.getUnansweredLimit());
+        List<Question> questions = questionsService.generateQuestions(topic, difficulty, quizSetupConfig.getNoOfQuestions());
+        return new Match(questions, topic, difficulty, ownerId, quizSetupConfig.getInactiveRoundsLimit());
     }
 
     public Match get(Long channelId) {
