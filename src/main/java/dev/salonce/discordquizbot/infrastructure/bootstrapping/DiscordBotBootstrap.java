@@ -2,8 +2,6 @@ package dev.salonce.discordquizbot.infrastructure.bootstrapping;
 
 import dev.salonce.discordquizbot.application.ButtonHandlerChain;
 import dev.salonce.discordquizbot.application.MessageHandlerChain;
-import dev.salonce.discordquizbot.infrastructure.dtos.ButtonInteraction;
-import dev.salonce.discordquizbot.infrastructure.logging.ExecutionTime;
 import dev.salonce.discordquizbot.infrastructure.mappers.ButtonMapper;
 import dev.salonce.discordquizbot.infrastructure.mappers.MessageMapper;
 import discord4j.core.GatewayDiscordClient;
@@ -13,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
-
 
 @Slf4j
 @RequiredArgsConstructor
@@ -25,7 +22,6 @@ public class DiscordBotBootstrap {
     private final GatewayDiscordClient gateway;
 
     public void startBot() {
-        printGuildCount(gateway);
         handleMessages(gateway);
         handleButtonInteractions(gateway);
         gateway.onDisconnect().block();
@@ -50,10 +46,5 @@ public class DiscordBotBootstrap {
                                         .withEphemeral(true)
                         )
         ).subscribe();
-    }
-
-    private void printGuildCount(GatewayDiscordClient gateway){
-        int guildCount = gateway.getGuilds().collectList().block().size();
-        System.out.println("Bot is in " + guildCount + " servers.");
     }
 }
