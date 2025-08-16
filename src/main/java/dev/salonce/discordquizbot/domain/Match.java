@@ -37,6 +37,14 @@ public class Match{
             this.matchState = MatchState.CLOSED_BY_OWNER;
     }
 
+    public boolean isCurrentQuestion(int index){
+        return (index == currentQuestion);
+    }
+
+    public void setPlayerAnswer(Long userId, int questionIndex, int answerIndex){
+        players.get(userId).setAnswer(questionIndex, answerIndex);
+    }
+
     public void startAnsweringPhase() {
 //        if (matchState != MatchState.COUNTDOWN) {
 //            throw new IllegalStateException("Cannot close answering if not in countdown phase");
@@ -73,6 +81,10 @@ public class Match{
 
     public boolean isEnrollmentState(){
         return (this.matchState == MatchState.ENROLLMENT);
+    }
+
+    public boolean isAnsweringState(){
+        return (this.matchState == MatchState.ANSWERING);
     }
 
     public boolean isInTheMatch(Long userId){

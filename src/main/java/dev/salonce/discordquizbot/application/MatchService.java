@@ -90,17 +90,17 @@ public class MatchService {
         return "Starting immediately";
     }
 
-    public String getPlayerAnswer(Long channelId, Long userId, int questionNumber, int answerNumber) {
+    public String getPlayerAnswer(Long channelId, Long userId, int questionIndex, int answerIndex) {
         Match match = get(channelId);
 
-        if (match == null || questionNumber != match.getCurrentQuestionNum() || match.getMatchState() != MatchState.ANSWERING)
+        if (match == null || !match.isCurrentQuestion(questionIndex) || match.isAnsweringState())
             return "Your answer came too late!";
 
         if (!match.isInTheMatch(userId))
             return "You are not in the match.";
 
-        match.getPlayers().get(userId).setAnswer(questionNumber, answerNumber);
-        return "Your answer: " + (char) ('A' + answerNumber) + ".";
+        match.setPlayerAnswer(userId, questionIndex, answerIndex);
+        return "Your answer: " + (char) ('A' + answerIndex) + ".";
 
     }
 }
