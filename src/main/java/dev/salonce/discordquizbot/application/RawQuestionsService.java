@@ -46,7 +46,7 @@ public class RawQuestionsService {
     public List<RawQuestion> getRawQuestionList(String topic, int level){
         if (!doesQuestionSetExist(topic, level))
             return null;
-        return new ArrayList<>(topicsMap.get(topic).getDifficultyLevel(level).getRawQuestions());
+        return new ArrayList<>(topicsMap.get(topic).getDifficultyLevel(level).rawQuestions());
     }
 
     public List<RawQuestion> removePrepareQuestionsForDifficultyLevel(List<RawQuestion> removableRawQuestions) {
