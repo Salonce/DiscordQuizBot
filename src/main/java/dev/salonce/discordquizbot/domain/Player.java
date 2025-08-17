@@ -7,8 +7,8 @@ import java.util.List;
 public class Player {
     private final List<Answer> answersList;
 
-    public Player(int numOfQuestions) {
-        this.answersList = new ArrayList<>(Collections.nCopies(numOfQuestions, Answer.none()));
+    public Player(int answersSize) {
+        this.answersList = new ArrayList<>(Collections.nCopies(answersSize, Answer.none()));
     }
 
     public Answer getAnswer(int index){

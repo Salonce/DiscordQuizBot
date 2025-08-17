@@ -4,7 +4,7 @@ import dev.salonce.discordquizbot.domain.Answer;
 import dev.salonce.discordquizbot.domain.Match;
 import dev.salonce.discordquizbot.application.MatchService;
 import dev.salonce.discordquizbot.domain.Question;
-import dev.salonce.discordquizbot.domain.QuizOption;
+import dev.salonce.discordquizbot.domain.QuestionOption;
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
 import discord4j.core.spec.EmbedCreateSpec;
@@ -28,7 +28,7 @@ public class QuestionMessage {
     private final MatchService matchService;
 
     public MessageCreateSpec createEmbed(Match match, Long questionNumber, int timeLeft){
-        int answersSize = match.getCurrentQuestion().getQuizOptions().size();
+        int answersSize = match.getCurrentQuestion().getQuestionOptions().size();
 
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
@@ -39,7 +39,7 @@ public class QuestionMessage {
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title(titleString(match))
                 .addField("\n", "❓ **" + match.getCurrentQuestion().getQuestion() + "**", false)
-                .addField("\n", getOptionsString(match.getCurrentQuestion().getQuizOptions()) + "\n", false)
+                .addField("\n", getOptionsString(match.getCurrentQuestion().getQuestionOptions()) + "\n", false)
                 .addField("\n", "```⏳ " + timeLeft + " seconds left.```", false)
                 .build();
 
@@ -52,7 +52,7 @@ public class QuestionMessage {
 
 
     public MessageEditSpec editEmbedWithTime(Match match, Long questionNumber, int timeLeft){
-        int answersSize = match.getCurrentQuestion().getQuizOptions().size();
+        int answersSize = match.getCurrentQuestion().getQuestionOptions().size();
 
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
@@ -63,7 +63,7 @@ public class QuestionMessage {
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title(titleString(match))
                 .addField("\n", "❓ **" + match.getCurrentQuestion().getQuestion() + "**", false)
-                .addField("\n", getOptionsString(match.getCurrentQuestion().getQuizOptions()) + "\n", false)
+                .addField("\n", getOptionsString(match.getCurrentQuestion().getQuestionOptions()) + "\n", false)
                 .addField("\n", "```⏳ " + timeLeft + " seconds left.```", false)
                 .build();
 
@@ -74,7 +74,7 @@ public class QuestionMessage {
     }
 
     public MessageEditSpec editEmbedAfterAnswersWait(Match match, Long questionNumber){
-        int answersSize = match.getCurrentQuestion().getQuizOptions().size();
+        int answersSize = match.getCurrentQuestion().getQuestionOptions().size();
 
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
@@ -85,7 +85,7 @@ public class QuestionMessage {
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title(titleString(match))
                 .addField("\n", "❓ **" + match.getCurrentQuestion().getQuestion() + "**", false)
-                .addField("\n", getOptionsString(match.getCurrentQuestion().getQuizOptions()) + "\n", false)
+                .addField("\n", getOptionsString(match.getCurrentQuestion().getQuestionOptions()) + "\n", false)
                 .build();
 
         return MessageEditSpec.builder()
@@ -95,7 +95,7 @@ public class QuestionMessage {
     }
 
     public MessageEditSpec editEmbedWithScores(Match match, Long questionNumber){
-        int answersSize = match.getCurrentQuestion().getQuizOptions().size();
+        int answersSize = match.getCurrentQuestion().getQuestionOptions().size();
 
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
@@ -106,7 +106,7 @@ public class QuestionMessage {
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title(titleString(match))
                 .addField("\n", "❓ **" + match.getCurrentQuestion().getQuestion() + "**", false)
-                .addField("\n", getOptionsRevealed(match.getCurrentQuestion().getQuizOptions()) + "\n", false)
+                .addField("\n", getOptionsRevealed(match.getCurrentQuestion().getQuestionOptions()) + "\n", false)
                 .addField("\uD83D\uDCDD Explanation", match.getCurrentQuestion().getExplanation() + "\n", false)
                 .addField("\uD83D\uDCCB Answers", getUsersAnswers(match), false)
                 .addField("\uD83D\uDCCA Scoreboard", getScoreboard(match), false)
@@ -118,12 +118,12 @@ public class QuestionMessage {
                 .build();
     }
 
-    private String getOptionsRevealed(List<QuizOption> quizOptions){
+    private String getOptionsRevealed(List<QuestionOption> questionOptions){
         StringBuilder sb = new StringBuilder();
         char letter = 'A';
-        for (QuizOption quizOption : quizOptions){
-            if (!quizOption.isCorrect()) sb.append("❌ ").append(letter).append(") ").append(quizOption.text());
-            if (quizOption.isCorrect()) sb.append("✅** ").append(letter).append(") ").append(quizOption.text()).append("**");
+        for (QuestionOption questionOption : questionOptions){
+            if (!questionOption.isCorrect()) sb.append("❌ ").append(letter).append(") ").append(questionOption.text());
+            if (questionOption.isCorrect()) sb.append("✅** ").append(letter).append(") ").append(questionOption.text()).append("**");
             letter++;
             sb.append("\n");
         }
@@ -135,7 +135,7 @@ public class QuestionMessage {
     }
     private String getUsersAnswers(Match match) {
         Question currentQuestion = match.getCurrentQuestion();
-        int optionsLength = currentQuestion.getQuizOptions().size();
+        int optionsLength = currentQuestion.getQuestionOptions().size();
         Map<Answer, List<Long>> playerGroups = match.getPlayersGroupedByAnswer();
         Answer answer = currentQuestion.getCorrectAnswer();
 
@@ -161,11 +161,11 @@ public class QuestionMessage {
         return sb.toString();
     }
 
-    private String getOptionsString(List<QuizOption> quizOptions){
+    private String getOptionsString(List<QuestionOption> questionOptions){
         StringBuilder sb = new StringBuilder();
         char letter = 'A';
-        for (QuizOption quizOption : quizOptions){
-            sb.append(letter).append(") ").append(quizOption.text());
+        for (QuestionOption questionOption : questionOptions){
+            sb.append(letter).append(") ").append(questionOption.text());
             letter++;
             sb.append("\n");
         }
