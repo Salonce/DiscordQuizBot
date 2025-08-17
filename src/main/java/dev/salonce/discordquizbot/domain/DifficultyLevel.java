@@ -6,22 +6,13 @@ import lombok.Getter;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Getter
 public class DifficultyLevel {
-    public List<RawQuestion> rawQuestions = new ArrayList<>();
 
-    public DifficultyLevel(List<RawQuestion> rawQuestions) {
-        if (rawQuestions.size() < 65) {
-            int size = rawQuestions.size();
-            for (int i = 0; i < size; i++) {
-                this.rawQuestions.add(rawQuestions.get(0));
-                rawQuestions.remove(0);
-            }
-        } else {
-            for (int i = 0; i < 50; i++) {
-                this.rawQuestions.add(rawQuestions.get(0));
-                rawQuestions.remove(0);
-            }
-        }
+    public DifficultyLevel(List<RawQuestion> rawQuestions){
+        this.rawQuestions = rawQuestions;
     }
+
+    public List<RawQuestion> rawQuestions = new ArrayList<>();
 }

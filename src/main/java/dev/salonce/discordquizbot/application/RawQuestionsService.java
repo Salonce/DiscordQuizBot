@@ -18,6 +18,7 @@ public class RawQuestionsService {
 
     private final TopicsConfig topicsConfig;
     private final RawQuestionStore rawQuestionStore;
+    private final TopicFactory topicFactory;
 
     @Getter
     private final Map<String, Topic> topicsMap = new HashMap<>();
@@ -28,7 +29,7 @@ public class RawQuestionsService {
             String topicName = entry.getKey();
             Set<String> tagsSet = entry.getValue();
             List<RawQuestion> rawTopicQuestions = rawQuestionStore.getRawQuestions(tagsSet);
-            Topic topic = TopicFactory.createTopic(topicName, rawTopicQuestions);
+            Topic topic = topicFactory.createTopic(topicName, rawTopicQuestions);
             topicsMap.put(topicName, topic);
         }
     }
@@ -45,5 +46,22 @@ public class RawQuestionsService {
         if (!doesQuestionSetExist(topic, level))
             return null;
         return new ArrayList<>(topicsMap.get(topic).getDifficultyLevel(level).getRawQuestions());
+    }
+
+    public List<RawQuestion> removePrepareQuestionsForDifficultyLevel(List<RawQuestion> removableRawQuestions) {
+        List<RawQuestion> preparedRawQuestions = new ArrayList<>();
+        if (removableRawQuestions.size() < 65) {
+            int size = removableRawQuestions.size();
+            for (int i = 0; i < size; i++) {
+                preparedRawQuestions.add(removableRawQuestions.get(0));
+                removableRawQuestions.remove(0);
+            }
+        } else {
+            for (int i = 0; i < 50; i++) {
+                preparedRawQuestions.add(removableRawQuestions.get(0));
+                removableRawQuestions.remove(0);
+            }
+        }
+        return preparedRawQuestions;
     }
 }
