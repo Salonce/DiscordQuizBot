@@ -1,5 +1,6 @@
 package dev.salonce.discordquizbot.infrastructure.messages.out;
 
+import dev.salonce.discordquizbot.domain.Answer;
 import dev.salonce.discordquizbot.domain.Match;
 import dev.salonce.discordquizbot.application.MatchService;
 import dev.salonce.discordquizbot.domain.Question;
@@ -135,16 +136,17 @@ public class QuestionMessage {
     private String getUsersAnswers(Match match) {
         Question currentQuestion = match.getCurrentQuestion();
         Map<Integer, List<Long>> playerGroups = match.getPlayersGroupedByAnswer();
-        int correctAnswer = currentQuestion.getCorrectAnswerAsInt();
+        Answer answer = currentQuestion.getCorrectAnswer();
 
         StringBuilder sb = new StringBuilder();
 
         // Format each option
         for (int i = 0; i < currentQuestion.getQuizOptions().size(); i++) {
+
             if (i > 0) sb.append("\n");
 
-            String prefix = correctAnswer == i ? "✅ **" + (char)('A' + i) + "**"
-                                               : "❌ " + (char)('A' + i);
+            String prefix = answer.asNumber() == i ? "✅ **" + answer.asChar()+ "**"
+                                                   : "❌ " + answer.asChar();
             sb.append(prefix).append(": ");
             List<Long> playerIds = playerGroups.getOrDefault(i, Collections.emptyList());
             sb.append(formatMentions(playerIds));

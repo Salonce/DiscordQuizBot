@@ -22,11 +22,11 @@ public class Question {
         return (quizOptions.get(answer.asNumber()).isCorrect());
     }
 
-    public int getCorrectAnswerAsInt(){
+    public Answer getCorrectAnswer(){
         for (int i = 0; i < quizOptions.size(); i++){
             if (quizOptions.get(i).isCorrect())
-                return i;
+                return Answer.fromNumber(i);
         }
-        return -1;
+        return Answer.none();
     }
 }

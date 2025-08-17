@@ -146,8 +146,8 @@ public class Match{
         Map<Integer, List<Long>> groups = new HashMap<>();
 
         players.forEach((playerId, player) -> {
-            int answer = player.getAnswer(curQuestionIndex);
-            groups.computeIfAbsent(answer, k -> new ArrayList<>()).add(playerId);
+            Answer answer = player.getAnswer(curQuestionIndex);
+            groups.computeIfAbsent(answer.asNumber(), k -> new ArrayList<>()).add(playerId);
         });
 
         return groups;
