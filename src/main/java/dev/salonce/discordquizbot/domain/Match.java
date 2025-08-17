@@ -5,6 +5,11 @@ import lombok.Getter;
 import java.util.*;
 import java.util.stream.Collectors;
 
+//modifications to make:
+//value object title for topic diff
+//remove topic construction from domain
+//batch answers sending
+
 @Getter
 public class Match{
     private String topic;
@@ -16,11 +21,11 @@ public class Match{
     private MatchState matchState = MatchState.ENROLLMENT;
 
     public Match(List<Question> questions, String topic, int difficulty, Long ownerId){
+        if (questions == null || questions.isEmpty() || topic == null || topic.isEmpty() || difficulty < 0 || ownerId == null) {
+            throw new IllegalArgumentException("Wrong data passed to the match.");
+        }
         this.questions = questions;
         players.put(ownerId, new Player(questions.size()));
-        if (topic != null) {
-            this.topic = topic.substring(0, 1).toUpperCase() + topic.substring(1);
-        }
         this.difficulty = difficulty;
     }
 
