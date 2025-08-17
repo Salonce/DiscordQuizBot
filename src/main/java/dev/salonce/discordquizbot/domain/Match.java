@@ -5,23 +5,30 @@ import lombok.Getter;
 import java.util.*;
 import java.util.stream.Collectors;
 
+//modifications to make:
+//value object title for topic diff
+//batch answers sending
+
 @Getter
 public class Match{
-    private String topic;
+    private final String title;
     private final int difficulty;
+    private final Map<Long, Player> players;
+    private final List<Question> questions;
+    private MatchState matchState;
     private int curQuestionIndex = 0;
     private int inactivity = 0;
-    private final Map<Long, Player> players = new LinkedHashMap<>();
-    private final List<Question> questions;
-    private MatchState matchState = MatchState.ENROLLMENT;
 
-    public Match(List<Question> questions, String topic, int difficulty, Long ownerId){
-        this.questions = questions;
-        players.put(ownerId, new Player(questions.size()));
-        if (topic != null) {
-            this.topic = topic.substring(0, 1).toUpperCase() + topic.substring(1);
+    public Match(List<Question> questions, String title, int difficulty, Long ownerId){
+        if (questions == null || questions.isEmpty() || title == null || title.isEmpty() || difficulty < 0 || ownerId == null) {
+            throw new IllegalArgumentException("Wrong data passed to the match.");
         }
+        this.title = title;
+        this.questions = questions;
         this.difficulty = difficulty;
+        this.matchState = MatchState.ENROLLMENT;
+        this.players = new LinkedHashMap<>();
+        this.players.put(ownerId, new Player(questions.size()));
     }
 
     public void addPlayer(Long userId) {
@@ -41,8 +48,8 @@ public class Match{
 
             long points = 0;
             for (int i = 0; i < questions.size(); i++) {
-                int answerIndex = player.getAnswer(i);
-                if (questions.get(i).isCorrectAnswer(answerIndex)) {
+                Answer answer = player.getAnswer(i);
+                if (questions.get(i).isCorrectAnswer(answer)) {
                     points++;
                 }
             }
@@ -68,8 +75,8 @@ public class Match{
         return players.keySet().iterator();
     }
 
-    public void setPlayerAnswer(Long userId, int questionIndex, int answerIndex){
-        players.get(userId).setAnswer(questionIndex, answerIndex);
+    public void setPlayerAnswer(Long userId, int questionIndex, Answer answer){
+        players.get(userId).setAnswer(questionIndex, answer);
     }
 
     public void startAnsweringPhase() {
@@ -135,11 +142,11 @@ public class Match{
         return Objects.equals(userId, getOwnerId());
     }
 
-    public Map<Integer, List<Long>> getPlayersGroupedByAnswer() {
-        Map<Integer, List<Long>> groups = new HashMap<>();
+    public Map<Answer, List<Long>> getPlayersGroupedByAnswer() {
+        Map<Answer, List<Long>> groups = new HashMap<>();
 
         players.forEach((playerId, player) -> {
-            int answer = player.getAnswer(curQuestionIndex);
+            Answer answer = player.getAnswer(curQuestionIndex);
             groups.computeIfAbsent(answer, k -> new ArrayList<>()).add(playerId);
         });
 

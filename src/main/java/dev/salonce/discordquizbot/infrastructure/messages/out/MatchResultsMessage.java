@@ -19,7 +19,7 @@ public class MatchResultsMessage {
     public EmbedCreateSpec createEmbed(Match match){
         return EmbedCreateSpec.builder()
                 .title("\uD83C\uDFC6 Final scoreboard")
-                .addField("\uD83D\uDCD8 Subject: " + match.getTopic() + " " + match.getDifficulty(), "", false)
+                .addField("\uD83D\uDCD8 Subject: " + match.getTitle() + " " + match.getDifficulty(), "", false)
                 .addField("❓ Questions: " + match.getQuestions().size(), "", false)
                 .addField("", getFinalScoreboard(match), false)
                 .build();

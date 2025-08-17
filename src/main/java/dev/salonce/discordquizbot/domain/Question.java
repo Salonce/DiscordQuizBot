@@ -9,24 +9,24 @@ import java.util.*;
 public class Question {
     private final String question;
     private final String explanation;
-    private final List<QuizOption> quizOptions;
+    private final List<QuestionOption> questionOptions;
 
-    public Question(String question, List<QuizOption> quizOptions, String explanation) {
+    public Question(String question, List<QuestionOption> questionOptions, String explanation) {
         this.question = question;
-        this.quizOptions = quizOptions;
+        this.questionOptions = questionOptions;
         this.explanation = explanation;
     }
 
-    public boolean isCorrectAnswer(int num){
-        if(num == -1) return false;
-        return (quizOptions.get(num).isCorrect());
+    public boolean isCorrectAnswer(Answer answer){
+        if(answer.isEmpty()) return false;
+        return (questionOptions.get(answer.asNumber()).isCorrect());
     }
 
-    public int getCorrectAnswerAsInt(){
-        for (int i = 0; i < quizOptions.size(); i++){
-            if (quizOptions.get(i).isCorrect())
-                return i;
+    public Answer getCorrectAnswer(){
+        for (int i = 0; i < questionOptions.size(); i++){
+            if (questionOptions.get(i).isCorrect())
+                return Answer.fromNumber(i);
         }
-        return -1;
+        return Answer.none();
     }
 }
