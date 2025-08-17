@@ -1,7 +1,6 @@
-package dev.salonce.discordquizbot.infrastructure;
+package dev.salonce.discordquizbot.infrastructure.storage;
 
 import dev.salonce.discordquizbot.domain.Match;
-import discord4j.core.object.entity.channel.MessageChannel;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;

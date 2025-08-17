@@ -1,7 +1,7 @@
 package dev.salonce.discordquizbot.application;
 
 import dev.salonce.discordquizbot.domain.Topic;
-import dev.salonce.discordquizbot.infrastructure.RawQuestionStore;
+import dev.salonce.discordquizbot.infrastructure.storage.RawQuestionStore;
 import dev.salonce.discordquizbot.infrastructure.configs.TopicsConfig;
 import dev.salonce.discordquizbot.infrastructure.dtos.RawQuestion;
 import jakarta.annotation.PostConstruct;

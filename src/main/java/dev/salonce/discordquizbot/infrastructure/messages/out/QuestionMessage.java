@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static dev.salonce.discordquizbot.infrastructure.DiscordFormatter.formatMentions;
+import static dev.salonce.discordquizbot.util.DiscordFormatter.formatMentions;
 
 @RequiredArgsConstructor
 @Component

@@ -14,7 +14,7 @@ public class ExecutionTime {
 
     private static final Logger logger = LoggerFactory.getLogger(ExecutionTime.class);
 
-    @Pointcut("execution(public * dev.salonce.discordquizbot.infrastructure.RawQuestionLoader.loadQuestionsFromResources(..))")
+    @Pointcut("execution(public * dev.salonce.discordquizbot.infrastructure.storage.RawQuestionLoader.loadQuestionsFromResources(..))")
     public void loadQuestionsFromResources(){};
 
     @Around("loadQuestionsFromResources()")

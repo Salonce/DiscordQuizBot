@@ -1,4 +1,4 @@
-package dev.salonce.discordquizbot.infrastructure;
+package dev.salonce.discordquizbot.util;
 
 import java.util.List;
 import java.util.stream.Collectors;

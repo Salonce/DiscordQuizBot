@@ -1,4 +1,4 @@
-package dev.salonce.discordquizbot.infrastructure;
+package dev.salonce.discordquizbot.infrastructure.storage;
 
 import dev.salonce.discordquizbot.infrastructure.dtos.RawQuestion;
 import jakarta.annotation.PostConstruct;
