@@ -1,5 +1,6 @@
 package dev.salonce.discordquizbot.application;
 
+import dev.salonce.discordquizbot.domain.Answer;
 import dev.salonce.discordquizbot.domain.Match;
 import dev.salonce.discordquizbot.domain.Question;
 import dev.salonce.discordquizbot.infrastructure.storage.MatchCache;
@@ -90,7 +91,7 @@ public class MatchService {
         return "Starting immediately";
     }
 
-    public String getPlayerAnswer(Long channelId, Long userId, int questionIndex, int answerIndex) {
+    public String getPlayerAnswer(Long channelId, Long userId, int questionIndex, Answer answer) {
         Match match = get(channelId);
 
         if (match == null || !match.isCurrentQuestion(questionIndex) || !match.isAnsweringState())
@@ -99,8 +100,8 @@ public class MatchService {
         if (!match.isInTheMatch(userId))
             return "You are not in the match.";
 
-        match.setPlayerAnswer(userId, questionIndex, answerIndex);
-        return "Your answer: " + (char) ('A' + answerIndex) + ".";
+        match.setPlayerAnswer(userId, questionIndex, answer);
+        return "Your answer: " + answer.asChar() + ".";
 
     }
 }

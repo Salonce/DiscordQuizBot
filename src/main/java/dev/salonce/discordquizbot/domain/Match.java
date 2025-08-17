@@ -75,8 +75,8 @@ public class Match{
         return players.keySet().iterator();
     }
 
-    public void setPlayerAnswer(Long userId, int questionIndex, int answerIndex){
-        players.get(userId).setAnswer(questionIndex, answerIndex);
+    public void setPlayerAnswer(Long userId, int questionIndex, Answer answer){
+        players.get(userId).setAnswer(questionIndex, answer);
     }
 
     public void startAnsweringPhase() {

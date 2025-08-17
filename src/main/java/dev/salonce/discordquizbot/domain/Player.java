@@ -5,21 +5,21 @@ import java.util.Collections;
 import java.util.List;
 
 public class Player {
-    private final List<Integer> answersList;
+    private final List<Answer> answersList;
 
     public Player(int numOfQuestions) {
-        this.answersList = new ArrayList<>(Collections.nCopies(numOfQuestions, -1));
+        this.answersList = new ArrayList<>(Collections.nCopies(numOfQuestions, Answer.none()));
     }
 
-    public int getAnswer(int index){
+    public Answer getAnswer(int index){
         return answersList.get(index);
     }
 
-    public void setAnswer(int index, int answer){
+    public void setAnswer(int index, Answer answer){
         this.answersList.set(index, answer);
     };
 
     public boolean isUnanswered(int index){
-        return (answersList.get(index) == -1);
+        return (answersList.get(index).isEmpty());
     }
 }

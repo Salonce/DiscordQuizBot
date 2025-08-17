@@ -2,6 +2,7 @@ package dev.salonce.discordquizbot.infrastructure.buttonhandlers;
 
 import dev.salonce.discordquizbot.application.MatchService;
 import dev.salonce.discordquizbot.application.ButtonHandler;
+import dev.salonce.discordquizbot.domain.Answer;
 import dev.salonce.discordquizbot.infrastructure.dtos.ButtonInteraction;
 import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import lombok.RequiredArgsConstructor;
@@ -25,8 +26,8 @@ public class AnswerButtonHandler implements ButtonHandler {
 
         String[] answerData = buttonId.split("-");
         int questionNumber = Integer.parseInt(answerData[2]);
-        int answerNumber = answerData[1].charAt(0) - 'A';
+        Answer answer = Answer.fromChar(answerData[1].charAt(0));
 
-        return Optional.of(matchService.getPlayerAnswer(buttonInteraction.channelId(), buttonInteraction.userId(), questionNumber, answerNumber));
+        return Optional.of(matchService.getPlayerAnswer(buttonInteraction.channelId(), buttonInteraction.userId(), questionNumber, answer));
     }
 }
