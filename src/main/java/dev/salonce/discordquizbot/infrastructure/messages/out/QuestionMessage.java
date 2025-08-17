@@ -135,26 +135,27 @@ public class QuestionMessage {
     }
     private String getUsersAnswers(Match match) {
         Question currentQuestion = match.getCurrentQuestion();
-        Map<Integer, List<Long>> playerGroups = match.getPlayersGroupedByAnswer();
+        int optionsLength = currentQuestion.getQuizOptions().size();
+        Map<Answer, List<Long>> playerGroups = match.getPlayersGroupedByAnswer();
         Answer answer = currentQuestion.getCorrectAnswer();
 
         StringBuilder sb = new StringBuilder();
 
         // Format each option
-        for (int i = 0; i < currentQuestion.getQuizOptions().size(); i++) {
+        for (int i = 0; i < optionsLength; i++) {
 
             if (i > 0) sb.append("\n");
 
             String prefix = answer.asNumber() == i ? "✅ **" + answer.asChar()+ "**"
                                                    : "❌ " + answer.asChar();
             sb.append(prefix).append(": ");
-            List<Long> playerIds = playerGroups.getOrDefault(i, Collections.emptyList());
+            List<Long> playerIds = playerGroups.getOrDefault(Answer.fromNumber(i), Collections.emptyList());
             sb.append(formatMentions(playerIds));
         }
 
         // Non-responders
         sb.append("\n\n💤: ");
-        List<Long> playerIds = playerGroups.getOrDefault(-1, Collections.emptyList());
+        List<Long> playerIds = playerGroups.getOrDefault(Answer.none(), Collections.emptyList());
         sb.append(formatMentions(playerIds));
 
         return sb.toString();

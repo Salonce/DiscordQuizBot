@@ -142,12 +142,12 @@ public class Match{
         return Objects.equals(userId, getOwnerId());
     }
 
-    public Map<Integer, List<Long>> getPlayersGroupedByAnswer() {
-        Map<Integer, List<Long>> groups = new HashMap<>();
+    public Map<Answer, List<Long>> getPlayersGroupedByAnswer() {
+        Map<Answer, List<Long>> groups = new HashMap<>();
 
         players.forEach((playerId, player) -> {
             Answer answer = player.getAnswer(curQuestionIndex);
-            groups.computeIfAbsent(answer.asNumber(), k -> new ArrayList<>()).add(playerId);
+            groups.computeIfAbsent(answer, k -> new ArrayList<>()).add(playerId);
         });
 
         return groups;
