@@ -146,8 +146,8 @@ public class QuestionMessage {
 
             if (i > 0) sb.append("\n");
 
-            String prefix = answer.asNumber() == i ? "✅ **" + answer.asChar()+ "**"
-                                                   : "❌ " + answer.asChar();
+            String prefix = answer.asNumber() == i ? "✅ **" + (char)('A' + i) + "**"
+                                                   : "❌ " + (char)('A' + i);
             sb.append(prefix).append(": ");
             List<Long> playerIds = playerGroups.getOrDefault(Answer.fromNumber(i), Collections.emptyList());
             sb.append(formatMentions(playerIds));
