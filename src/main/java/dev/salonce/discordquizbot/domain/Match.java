@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 
 //modifications to make:
 //value object title for topic diff
-//remove topic construction from domain
 //batch answers sending
 
 @Getter
