@@ -23,7 +23,7 @@ public class StartingMessage {
     public MessageCreateSpec createSpec(Match match, int timeToJoinLeft){
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("\uD83D\uDE80 Starting Soon...")
-                .addField("\uD83D\uDCD8 Subject: " + match.getTopic() + " " + match.getDifficulty(), "", false)
+                .addField("\uD83D\uDCD8 Subject: " + match.getTitle() + " " + match.getDifficulty(), "", false)
                 .addField("❓ Questions: " + match.getNumberOfQuestions(), "", false)
                 .addField("", "\uD83D\uDC65 " + "**Players:** " + getUserNames(match), false)
                 .addField("", "```⏳ " + timeToJoinLeft + " seconds to start.``` ", false)
@@ -38,7 +38,7 @@ public class StartingMessage {
     public MessageEditSpec editSpec(Match match, Long timeToJoinLeft){
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("\uD83D\uDE80 Starting Soon...")
-                .addField("\uD83D\uDCD8 Subject: " + match.getTopic() + " " + match.getDifficulty(), "", false)
+                .addField("\uD83D\uDCD8 Subject: " + match.getTitle() + " " + match.getDifficulty(), "", false)
                 .addField("❓ Questions: " + match.getNumberOfQuestions(), "", false)
                 .addField("", "\uD83D\uDC65 " + "**Players:** " + getUserNames(match), false)
                 .addField("", "```⏳ " + timeToJoinLeft + " seconds to start.``` ", false)
@@ -53,7 +53,7 @@ public class StartingMessage {
     public MessageEditSpec editSpec2(Match match, Long timeToStartLeft){
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title("\uD83D\uDE80 Starting Soon...")
-                .addField("\uD83D\uDCD8 Subject: " + match.getTopic() + " " + match.getDifficulty(), "", false)
+                .addField("\uD83D\uDCD8 Subject: " + match.getTitle() + " " + match.getDifficulty(), "", false)
                 .addField("❓ Questions: " + match.getNumberOfQuestions(), "", false)
                 .addField("", "\uD83D\uDC65 " + "**Players:** " + getUserNames(match), false)
                 .addField("", "```⏳ " + timeToStartLeft + " seconds to start.``` ", false)

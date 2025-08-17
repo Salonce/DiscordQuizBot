@@ -27,7 +27,7 @@ public class Statistics {
         log.info("Match nr {} started by user <{}> | Topic: '{}' | Difficulty: {}",
                 matchesStarted,
                 match.getOwnerId(),
-                match.getTopic(),
+                match.getTitle(),
                 match.getDifficulty()
         );
     }

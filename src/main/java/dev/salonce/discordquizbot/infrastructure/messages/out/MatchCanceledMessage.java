@@ -21,7 +21,7 @@ public class MatchCanceledMessage {
 
         return EmbedCreateSpec.builder()
                 .title(title)
-                .addField("\uD83D\uDCD8 Subject: " + match.getTopic() + " " + match.getDifficulty(), "", false)
+                .addField("\uD83D\uDCD8 Subject: " + match.getTitle() + " " + match.getDifficulty(), "", false)
                 .addField("❓ Questions: " + match.getNumberOfQuestions(), "", false)
                 .addField("" , "**\uD83E\uDD14 Reason: " + reason + "**", false)
                 .build();

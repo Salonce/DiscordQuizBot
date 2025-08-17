@@ -12,21 +12,24 @@ import java.util.stream.Collectors;
 
 @Getter
 public class Match{
-    private String topic;
+    private final String title;
     private final int difficulty;
+    private final Map<Long, Player> players;
+    private final List<Question> questions;
+    private MatchState matchState;
     private int curQuestionIndex = 0;
     private int inactivity = 0;
-    private final Map<Long, Player> players = new LinkedHashMap<>();
-    private final List<Question> questions;
-    private MatchState matchState = MatchState.ENROLLMENT;
 
-    public Match(List<Question> questions, String topic, int difficulty, Long ownerId){
-        if (questions == null || questions.isEmpty() || topic == null || topic.isEmpty() || difficulty < 0 || ownerId == null) {
+    public Match(List<Question> questions, String title, int difficulty, Long ownerId){
+        if (questions == null || questions.isEmpty() || title == null || title.isEmpty() || difficulty < 0 || ownerId == null) {
             throw new IllegalArgumentException("Wrong data passed to the match.");
         }
+        this.title = title;
         this.questions = questions;
-        players.put(ownerId, new Player(questions.size()));
         this.difficulty = difficulty;
+        this.matchState = MatchState.ENROLLMENT;
+        this.players = new LinkedHashMap<>();
+        this.players.put(ownerId, new Player(questions.size()));
     }
 
     public void addPlayer(Long userId) {
