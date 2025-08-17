@@ -11,11 +11,6 @@ public class DifficultyLevel {
     public List<RawQuestion> rawQuestions = new ArrayList<>();
 
     public DifficultyLevel(List<RawQuestion> rawQuestions) {
-        addRawQuestions(rawQuestions);
-    }
-
-    //add questions - size for < 65 and 50 for > 65
-    public void addRawQuestions(List<RawQuestion> rawQuestions) {
         if (rawQuestions.size() < 65) {
             int size = rawQuestions.size();
             for (int i = 0; i < size; i++) {
