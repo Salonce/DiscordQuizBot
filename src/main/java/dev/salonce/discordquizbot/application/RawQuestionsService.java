@@ -1,7 +1,8 @@
 package dev.salonce.discordquizbot.application;
 
+import dev.salonce.discordquizbot.domain.DifficultyLevel;
 import dev.salonce.discordquizbot.domain.Topic;
-import dev.salonce.discordquizbot.infrastructure.RawQuestionStore;
+import dev.salonce.discordquizbot.infrastructure.storage.RawQuestionStore;
 import dev.salonce.discordquizbot.infrastructure.configs.TopicsConfig;
 import dev.salonce.discordquizbot.infrastructure.dtos.RawQuestion;
 import jakarta.annotation.PostConstruct;
@@ -28,7 +29,9 @@ public class RawQuestionsService {
             String topicName = entry.getKey();
             Set<String> tagsSet = entry.getValue();
             List<RawQuestion> rawTopicQuestions = rawQuestionStore.getRawQuestions(tagsSet);
-            topicsMap.put(topicName, new Topic(topicName, rawTopicQuestions));
+            List<DifficultyLevel> difficultyLevels = prepareDifficultyLevels(rawTopicQuestions);
+            Topic topic = new Topic(topicName, difficultyLevels);
+            topicsMap.put(topicName, topic);
         }
     }
 
@@ -43,6 +46,38 @@ public class RawQuestionsService {
     public List<RawQuestion> getRawQuestionList(String topic, int level){
         if (!doesQuestionSetExist(topic, level))
             return null;
-        return new ArrayList<>(topicsMap.get(topic).getDifficultyLevel(level).getRawQuestions());
+        return new ArrayList<>(topicsMap.get(topic).getDifficultyLevel(level).rawQuestions());
+    }
+
+    public List<RawQuestion> removePrepareQuestionsForDifficultyLevel(List<RawQuestion> removableRawQuestions) {
+        List<RawQuestion> preparedRawQuestions = new ArrayList<>();
+        if (removableRawQuestions.size() < 65) {
+            int size = removableRawQuestions.size();
+            for (int i = 0; i < size; i++) {
+                preparedRawQuestions.add(removableRawQuestions.get(0));
+                removableRawQuestions.remove(0);
+            }
+        } else {
+            for (int i = 0; i < 50; i++) {
+                preparedRawQuestions.add(removableRawQuestions.get(0));
+                removableRawQuestions.remove(0);
+            }
+        }
+        return preparedRawQuestions;
+    }
+
+    private List<DifficultyLevel> prepareDifficultyLevels(List<RawQuestion> rawQuestions) {
+        rawQuestions.sort(Comparator
+                .comparing(RawQuestion::difficulty, Comparator.nullsLast(Integer::compareTo))
+                .thenComparing(RawQuestion::id, Comparator.nullsLast(Long::compareTo)));
+
+        List<DifficultyLevel> difficulties = new ArrayList<>();
+        List<RawQuestion> remaining = new ArrayList<>(rawQuestions);
+
+        while (!remaining.isEmpty()) {
+            List<RawQuestion> prepared = removePrepareQuestionsForDifficultyLevel(remaining);
+            difficulties.add(new DifficultyLevel(prepared));
+        }
+        return difficulties;
     }
 }

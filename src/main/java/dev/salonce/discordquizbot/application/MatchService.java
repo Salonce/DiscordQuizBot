@@ -1,9 +1,8 @@
 package dev.salonce.discordquizbot.application;
 
 import dev.salonce.discordquizbot.domain.Match;
-import dev.salonce.discordquizbot.domain.MatchState;
 import dev.salonce.discordquizbot.domain.Question;
-import dev.salonce.discordquizbot.infrastructure.MatchCache;
+import dev.salonce.discordquizbot.infrastructure.storage.MatchCache;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

@@ -1,19 +1,14 @@
 package dev.salonce.discordquizbot.infrastructure.messages.out;
 import dev.salonce.discordquizbot.domain.Match;
 import dev.salonce.discordquizbot.application.MatchService;
-import dev.salonce.discordquizbot.domain.Player;
-import discord4j.core.object.entity.Message;
-import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.spec.EmbedCreateSpec;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import reactor.core.publisher.Mono;
 
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
-import static dev.salonce.discordquizbot.infrastructure.DiscordFormatter.formatMentions;
+import static dev.salonce.discordquizbot.util.DiscordFormatter.formatMentions;
 
 @RequiredArgsConstructor
 @Component

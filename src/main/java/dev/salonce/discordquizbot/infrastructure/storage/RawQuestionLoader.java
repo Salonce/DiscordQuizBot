@@ -1,4 +1,4 @@
-package dev.salonce.discordquizbot.infrastructure;
+package dev.salonce.discordquizbot.infrastructure.storage;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;

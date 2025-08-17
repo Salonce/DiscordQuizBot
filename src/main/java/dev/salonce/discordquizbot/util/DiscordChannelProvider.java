@@ -1,4 +1,4 @@
-package dev.salonce.discordquizbot.infrastructure;
+package dev.salonce.discordquizbot.util;
 
 import discord4j.common.util.Snowflake;
 import discord4j.core.GatewayDiscordClient;
