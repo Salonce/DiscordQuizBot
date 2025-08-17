@@ -48,8 +48,8 @@ public class Match{
 
             long points = 0;
             for (int i = 0; i < questions.size(); i++) {
-                int answerIndex = player.getAnswer(i);
-                if (questions.get(i).isCorrectAnswer(answerIndex)) {
+                Answer answer = player.getAnswer(i);
+                if (questions.get(i).isCorrectAnswer(answer)) {
                     points++;
                 }
             }

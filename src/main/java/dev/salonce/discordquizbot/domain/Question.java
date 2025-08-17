@@ -17,9 +17,9 @@ public class Question {
         this.explanation = explanation;
     }
 
-    public boolean isCorrectAnswer(int num){
-        if(num == -1) return false;
-        return (quizOptions.get(num).isCorrect());
+    public boolean isCorrectAnswer(Answer answer){
+        if(answer.isEmpty()) return false;
+        return (quizOptions.get(answer.asNumber()).isCorrect());
     }
 
     public int getCorrectAnswerAsInt(){
