@@ -1,5 +1,6 @@
 package dev.salonce.discordquizbot.application;
 
+import dev.salonce.discordquizbot.domain.DifficultyLevel;
 import dev.salonce.discordquizbot.domain.Topic;
 import dev.salonce.discordquizbot.infrastructure.storage.RawQuestionStore;
 import dev.salonce.discordquizbot.infrastructure.configs.TopicsConfig;
@@ -18,7 +19,6 @@ public class RawQuestionsService {
 
     private final TopicsConfig topicsConfig;
     private final RawQuestionStore rawQuestionStore;
-    private final TopicFactory topicFactory;
 
     @Getter
     private final Map<String, Topic> topicsMap = new HashMap<>();
@@ -29,7 +29,8 @@ public class RawQuestionsService {
             String topicName = entry.getKey();
             Set<String> tagsSet = entry.getValue();
             List<RawQuestion> rawTopicQuestions = rawQuestionStore.getRawQuestions(tagsSet);
-            Topic topic = topicFactory.createTopic(topicName, rawTopicQuestions);
+            List<DifficultyLevel> difficultyLevels = prepareDifficultyLevels(rawTopicQuestions);
+            Topic topic = new Topic(topicName, difficultyLevels);
             topicsMap.put(topicName, topic);
         }
     }
@@ -63,5 +64,20 @@ public class RawQuestionsService {
             }
         }
         return preparedRawQuestions;
+    }
+
+    private List<DifficultyLevel> prepareDifficultyLevels(List<RawQuestion> rawQuestions) {
+        rawQuestions.sort(Comparator
+                .comparing(RawQuestion::difficulty, Comparator.nullsLast(Integer::compareTo))
+                .thenComparing(RawQuestion::id, Comparator.nullsLast(Long::compareTo)));
+
+        List<DifficultyLevel> difficulties = new ArrayList<>();
+        List<RawQuestion> remaining = new ArrayList<>(rawQuestions);
+
+        while (!remaining.isEmpty()) {
+            List<RawQuestion> prepared = removePrepareQuestionsForDifficultyLevel(remaining);
+            difficulties.add(new DifficultyLevel(prepared));
+        }
+        return difficulties;
     }
 }
