@@ -28,7 +28,8 @@ public class RawQuestionsService {
             String topicName = entry.getKey();
             Set<String> tagsSet = entry.getValue();
             List<RawQuestion> rawTopicQuestions = rawQuestionStore.getRawQuestions(tagsSet);
-            topicsMap.put(topicName, new Topic(topicName, rawTopicQuestions));
+            Topic topic = TopicFactory.createTopic(topicName, rawTopicQuestions);
+            topicsMap.put(topicName, topic);
         }
     }
 
