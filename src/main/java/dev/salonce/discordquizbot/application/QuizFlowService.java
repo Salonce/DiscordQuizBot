@@ -110,7 +110,7 @@ public class QuizFlowService {
     private Mono<Void> runQuestionFlow(Match match, MessageChannel messageChannel, long index) {
         int totalTime = quizSetupConfig.getTimeToPickAnswer();
         int timeForNextQuestionToAppear = quizSetupConfig.getTimeForNewQuestionToAppear();
-        int inactiveRoundsLimit = quizSetupConfig.getInactiveRoundsLimit();
+        int inactiveRoundsLimit = quizSetupConfig.getMaxInactivity();
 
         return Mono.just(questionMessage.createEmbed(match, index, totalTime))
                 .flatMap(messageChannel::createMessage)
