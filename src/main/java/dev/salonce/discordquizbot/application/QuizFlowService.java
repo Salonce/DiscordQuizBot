@@ -122,7 +122,7 @@ public class QuizFlowService {
                             .then(Mono.fromRunnable(match::startWaitingPhase))
                             .then(Mono.defer(() -> discordMessageSender.edit(message, questionMessage.editEmbedWithScores(match, index))))
                             .then(Mono.fromRunnable(match::updateInactiveRounds))
-                            .then(Mono.fromRunnable(() -> match.closeIfInactiveLimitReached(inactiveRoundsLimit)))
+                            .then(Mono.fromRunnable(match::closeIfInactive))
                             .then(Mono.delay(Duration.ofSeconds(timeForNextQuestionToAppear)))
                             .then(Mono.fromRunnable(match::skipToNextQuestion));
                 });

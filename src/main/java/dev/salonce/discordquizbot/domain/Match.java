@@ -17,9 +17,9 @@ public class Match{
     private final List<Question> questions;
     private MatchState matchState;
     private int curQuestionIndex = 0;
-    private int inactivity = 0;
+    private Inactivity inactivity;
 
-    public Match(List<Question> questions, String title, int difficulty, Long ownerId){
+    public Match(List<Question> questions, String title, int difficulty, Long ownerId, Inactivity inactivity){
         if (questions == null || questions.isEmpty() || title == null || title.isEmpty() || difficulty < 0 || ownerId == null) {
             throw new IllegalArgumentException("Wrong data passed to the match.");
         }
@@ -29,6 +29,7 @@ public class Match{
         this.matchState = MatchState.ENROLLMENT;
         this.players = new LinkedHashMap<>();
         this.players.put(ownerId, new Player(questions.size()));
+        this.inactivity = inactivity;
     }
 
     public void addPlayer(Long userId) {
@@ -179,13 +180,13 @@ public class Match{
         boolean allUnanswered = players.values().stream()
                 .allMatch(player -> player.isUnanswered(curQuestionIndex));
 
-        inactivity = allUnanswered ? inactivity + 1 : 0;
+        if (allUnanswered) inactivity.increment();else inactivity.reset();
 
-        return this; // fluent return
+        return this;
     }
 
-    public void closeIfInactiveLimitReached(int inactiveRoundsLimit){
-        if (inactivity >= inactiveRoundsLimit) {
+    public void closeIfInactive(){
+        if (inactivity.exceedsMax()) {
             matchState = MatchState.CLOSED_BY_INACTIVITY;
         }
     }

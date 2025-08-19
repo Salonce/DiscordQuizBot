@@ -1,8 +1,7 @@
 package dev.salonce.discordquizbot.application;
 
-import dev.salonce.discordquizbot.domain.Answer;
-import dev.salonce.discordquizbot.domain.Match;
-import dev.salonce.discordquizbot.domain.Question;
+import dev.salonce.discordquizbot.domain.*;
+import dev.salonce.discordquizbot.infrastructure.configs.QuizSetupConfig;
 import dev.salonce.discordquizbot.infrastructure.storage.MatchCache;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -17,11 +16,13 @@ public class MatchService {
 
     private final MatchCache matchCache;
     private final QuestionsService questionsService;
+    QuizSetupConfig config;
 
     public Match makeMatch(String topic, int difficulty, Long ownerId){
         List<Question> questions = questionsService.generateQuestions(topic, difficulty);
         String title  = topic.substring(0, 1).toUpperCase() + topic.substring(1);
-        return new Match(questions, title, difficulty, ownerId);
+        Inactivity inactivity = new Inactivity(config.getMaxInactivity());
+        return new Match(questions, title, difficulty, ownerId, inactivity);
     }
 
     public Match get(Long channelId) {

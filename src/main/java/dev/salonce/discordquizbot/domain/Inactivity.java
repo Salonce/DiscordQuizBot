@@ -1,37 +1,37 @@
 package dev.salonce.discordquizbot.domain;
 
 public class Inactivity {
-    private int current;
-    private final int max;
 
-    public Inactivity(int max) {
-        if (max < 1) throw new IllegalArgumentException("Max inactivity must be at least 1");
-        this.max = max;
+    private int current;
+    private final int maxAllowed;
+
+    public Inactivity(int maxAllowed) {
+        this.maxAllowed = maxAllowed;
         this.current = 0;
     }
 
-    // Increment current inactivity
-    public Inactivity increment() {
+    /** Increment the current inactivity count */
+    public void increment() {
         current++;
-        return this;
     }
 
-    // Reset current inactivity
-    public Inactivity reset() {
+    /** Reset inactivity count to zero */
+    public void reset() {
         current = 0;
-        return this;
     }
 
-    // Check if max inactivity reached
-    public boolean isMax() {
-        return current >= max;
-    }
-
+    /** Get current inactivity count */
     public int getCurrent() {
         return current;
     }
 
-    public int getMax() {
-        return max;
+    /** Check if current inactivity exceeds max allowed */
+    public boolean exceedsMax() {
+        return current > maxAllowed;
+    }
+
+    /** Optionally: get max allowed value */
+    public int getMaxAllowed() {
+        return maxAllowed;
     }
 }
