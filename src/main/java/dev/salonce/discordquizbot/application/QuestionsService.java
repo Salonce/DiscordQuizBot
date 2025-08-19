@@ -1,7 +1,7 @@
 package dev.salonce.discordquizbot.application;
 
 import dev.salonce.discordquizbot.domain.Question;
-import dev.salonce.discordquizbot.domain.QuestionOption;
+import dev.salonce.discordquizbot.domain.Option;
 import dev.salonce.discordquizbot.infrastructure.configs.QuizSetupConfig;
 import dev.salonce.discordquizbot.infrastructure.dtos.RawQuestion;
 import lombok.RequiredArgsConstructor;
@@ -22,12 +22,12 @@ public class QuestionsService {
     }
 
     private Question create(RawQuestion rawQuestion) {
-        List<QuestionOption> options = new ArrayList<>();
+        List<Option> options = new ArrayList<>();
         Random rand = new Random();
 
         // pick one correct answer
         int correctIndex = rand.nextInt(rawQuestion.correctAnswers().size());
-        options.add(new QuestionOption(rawQuestion.correctAnswers().get(correctIndex), true));
+        options.add(new Option(rawQuestion.correctAnswers().get(correctIndex), true));
 
         // pick incorrect answers
         Set<Integer> set = new HashSet<>();
@@ -35,7 +35,7 @@ public class QuestionsService {
         while (set.size() != size){
             set.add(rand.nextInt(rawQuestion.incorrectAnswers().size()));
         }
-        for (int i : set) options.add(new QuestionOption(rawQuestion.incorrectAnswers().get(i), false));
+        for (int i : set) options.add(new Option(rawQuestion.incorrectAnswers().get(i), false));
 
         Collections.shuffle(options);
         return new Question(rawQuestion.question(), options, rawQuestion.explanation());
