@@ -14,13 +14,12 @@ public class Match{
     private final String title;
     private final int difficulty;
     private final Map<Long, Player> players;
-    private final List<Question> questions;
+    private final Questions questions;
     private MatchState matchState;
-    private int curQuestionIndex = 0;
     private Inactivity inactivity;
 
-    public Match(List<Question> questions, String title, int difficulty, Long ownerId, Inactivity inactivity){
-        if (questions == null || questions.isEmpty() || title == null || title.isEmpty() || difficulty < 0 || ownerId == null) {
+    public Match(Questions questions, String title, int difficulty, Long ownerId, Inactivity inactivity){
+        if (questions == null || questions == null || title == null || title.isEmpty() || difficulty < 0 || ownerId == null) {
             throw new IllegalArgumentException("Wrong data passed to the match.");
         }
         this.title = title;
@@ -60,12 +59,12 @@ public class Match{
     }
 
     public void closeByOwner(){
-        if (!isClosed())
+        if (!isAborted())
             this.matchState = MatchState.CLOSED_BY_OWNER;
     }
 
     public boolean isCurrentQuestion(int index){
-        return (index == curQuestionIndex);
+        return (index == questions.getCurrentIndex());
     }
 
     public int getNumberOfQuestions(){
@@ -98,13 +97,17 @@ public class Match{
         this.matchState = MatchState.WAITING;
     }
 
-    public boolean isClosed(){
+    public boolean isAborted(){
         return ((matchState == MatchState.CLOSED_BY_INACTIVITY) || (matchState == MatchState.CLOSED_BY_OWNER));
+    }
+
+    public boolean isFinished(){
+        return (matchState == MatchState.FINISHED);
     }
 
     public boolean everyoneAnswered(){
         for (Player player : players.values()){
-            if (player.isUnanswered(curQuestionIndex))
+            if (player.isUnanswered(questions.getCurrentIndex()))
                 return false;
         }
         return true;
@@ -147,7 +150,7 @@ public class Match{
         Map<Answer, List<Long>> groups = new HashMap<>();
 
         players.forEach((playerId, player) -> {
-            Answer answer = player.getAnswer(curQuestionIndex);
+            Answer answer = player.getAnswer(questions.getCurrentIndex());
             groups.computeIfAbsent(answer, k -> new ArrayList<>()).add(playerId);
         });
 
@@ -162,23 +165,22 @@ public class Match{
                 ));
     }
 
-    public void skipToNextQuestion(){
-        curQuestionIndex++;
-    }
-    public boolean questionExists(){
-        return curQuestionIndex < questions.size();
+    public void nextQuestion(){
+        if (!questions.next())
+            matchState = MatchState.FINISHED;
     }
 
     public Question getCurrentQuestion(){
-        if (curQuestionIndex < questions.size())
-            return questions.get(curQuestionIndex);
-        else
-            return null;
+        return questions.current();
+    }
+
+    public int getCurrentQuestionIndex() {
+        return questions.getCurrentIndex();
     }
 
     public Match updateInactiveRounds() {
         boolean allUnanswered = players.values().stream()
-                .allMatch(player -> player.isUnanswered(curQuestionIndex));
+                .allMatch(player -> player.isUnanswered(questions.getCurrentIndex()));
 
         if (allUnanswered) inactivity.increment();else inactivity.reset();
 

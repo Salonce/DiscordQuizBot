@@ -2,6 +2,7 @@ package dev.salonce.discordquizbot.application;
 
 import dev.salonce.discordquizbot.domain.Question;
 import dev.salonce.discordquizbot.domain.Option;
+import dev.salonce.discordquizbot.domain.Questions;
 import dev.salonce.discordquizbot.infrastructure.configs.QuizSetupConfig;
 import dev.salonce.discordquizbot.infrastructure.dtos.RawQuestion;
 import lombok.RequiredArgsConstructor;
@@ -42,18 +43,18 @@ public class QuestionsService {
     }
 
 
-    public List<Question> generateQuestions(String tag, int difficulty){
+    public Questions generateQuestions(String tag, int difficulty){
         int NoQuestions = quizSetupConfig.getNoOfQuestions();
-        List<Question> questions = new ArrayList<>();
+        List<Question> list = new ArrayList<>();
         if (difficulty == 1)
-            questions.addAll(generateExactDifficultyQuestions(tag, difficulty, NoQuestions));
+            list.addAll(generateExactDifficultyQuestions(tag, difficulty, NoQuestions));
         else{
             int NoQuestionsEasier = NoQuestions/2;
             int NoQuestionsExact = NoQuestions - NoQuestionsEasier;
-            questions.addAll(generateLowerDifficultyQuestions(tag, difficulty, NoQuestionsEasier));
-            questions.addAll(generateExactDifficultyQuestions(tag, difficulty, NoQuestionsExact));
+            list.addAll(generateLowerDifficultyQuestions(tag, difficulty, NoQuestionsEasier));
+            list.addAll(generateExactDifficultyQuestions(tag, difficulty, NoQuestionsExact));
         }
-        return questions;
+        return new Questions(list);
     }
 
     private List<Question> generateExactDifficultyQuestions(String tag, int difficulty, int NoQuestions){

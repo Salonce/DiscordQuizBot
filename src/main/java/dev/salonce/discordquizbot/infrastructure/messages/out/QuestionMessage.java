@@ -131,7 +131,7 @@ public class QuestionMessage {
     }
 
     private String titleString(Match match){
-        return "Question " + (match.getCurQuestionIndex() + 1) + "/10";
+        return "Question " + (match.getCurrentQuestionIndex() + 1) + "/10";
     }
     private String getUsersAnswers(Match match) {
         Question currentQuestion = match.getCurrentQuestion();

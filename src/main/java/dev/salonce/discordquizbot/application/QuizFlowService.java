@@ -75,7 +75,7 @@ public class QuizFlowService {
                 .then();
 
         Mono<Void> cancelFlow = Flux.interval(Duration.ofMillis(500))
-                .filter(tick -> match.isClosed())
+                .filter(tick -> match.isAborted())
                 .next()
                 .flatMap(tick -> discordMessageSender.send(messageChannel, matchCanceledMessage.createEmbed(match)))
                 .then();
@@ -92,13 +92,13 @@ public class QuizFlowService {
         Match match = matchService.get(messageChannel.getId().asLong());
 
         return Flux.generate(sink -> {
-                    if (match.questionExists()) {
+                    if (!match.isFinished() && !match.isAborted()) {
                         sink.next(match.getCurrentQuestion());
                     } else {
                         sink.complete();
                     }
                 })
-                .takeWhile(question -> !match.isClosed())
+                .takeWhile(question -> !match.isAborted())
                 .index()
                 .concatMap(tuple -> {
                     long index = tuple.getT1();
@@ -110,7 +110,6 @@ public class QuizFlowService {
     private Mono<Void> runQuestionFlow(Match match, MessageChannel messageChannel, long index) {
         int totalTime = quizSetupConfig.getTimeToPickAnswer();
         int timeForNextQuestionToAppear = quizSetupConfig.getTimeForNewQuestionToAppear();
-        int inactiveRoundsLimit = quizSetupConfig.getMaxInactivity();
 
         return Mono.just(questionMessage.createEmbed(match, index, totalTime))
                 .flatMap(messageChannel::createMessage)
@@ -124,7 +123,7 @@ public class QuizFlowService {
                             .then(Mono.fromRunnable(match::updateInactiveRounds))
                             .then(Mono.fromRunnable(match::closeIfInactive))
                             .then(Mono.delay(Duration.ofSeconds(timeForNextQuestionToAppear)))
-                            .then(Mono.fromRunnable(match::skipToNextQuestion));
+                            .then(Mono.fromRunnable(match::nextQuestion));
                 });
     }
     private Mono<Void> createCountdownTimer(Match match, Message message, long index, int totalTime) {

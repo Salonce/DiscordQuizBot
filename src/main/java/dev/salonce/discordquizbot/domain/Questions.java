@@ -4,21 +4,23 @@ import java.util.List;
 
 public class Questions {
     private final List<Question> list;
-    private int currentIndex = 0;
+    private int currentIndex;
 
     public Questions(List<Question> questions) {
         if (questions == null || questions.isEmpty()) {
             throw new IllegalArgumentException("Questions cannot be empty.");
         }
         this.list = List.copyOf(questions); // make immutable
+        this.currentIndex = 0;
     }
 
     public Question current() {
         return exists() ? list.get(currentIndex) : null;
     }
 
-    public void next() {
-        if (exists()) currentIndex++;
+    public boolean next() {
+        currentIndex++;
+        return list.size() > currentIndex; // false if out of bounds
     }
 
     public boolean exists() {

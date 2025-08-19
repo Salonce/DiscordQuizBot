@@ -6,5 +6,6 @@ public enum MatchState {
     ANSWERING,
     WAITING,
     CLOSED_BY_OWNER,
-    CLOSED_BY_INACTIVITY
+    CLOSED_BY_INACTIVITY,
+    FINISHED
 }
