@@ -109,7 +109,7 @@ public class QuizFlowService {
 
     private Mono<Void> runQuestionFlow(Match match, MessageChannel messageChannel, long index) {
         int totalTime = quizSetupConfig.getTimeToPickAnswer();
-        int timeForNextQuestionToAppear = quizSetupConfig.getTimeForNewQuestionToAppear();
+        int timeBetweenQuestions = quizSetupConfig.getTimeForNewQuestionToAppear();
 
         return Mono.just(questionMessage.createEmbed(match, index, totalTime))
                 .flatMap(messageChannel::createMessage)
@@ -118,11 +118,11 @@ public class QuizFlowService {
                     return createCountdownTimer(match, message, index, totalTime)
                             .then(Mono.defer(() -> discordMessageSender.edit(message, questionMessage.editEmbedAfterAnswersWait(match, index))))
                             .then(Mono.delay(Duration.ofSeconds(1)))
-                            .then(Mono.fromRunnable(match::startWaitingPhase))
                             .then(Mono.defer(() -> discordMessageSender.edit(message, questionMessage.editEmbedWithScores(match, index))))
+                            .then(Mono.fromRunnable(match::startBetweenQuestionsPhase))
                             .then(Mono.fromRunnable(match::updateInactiveRounds))
                             .then(Mono.fromRunnable(match::closeIfInactive))
-                            .then(Mono.delay(Duration.ofSeconds(timeForNextQuestionToAppear)))
+                            .then(Mono.delay(Duration.ofSeconds(timeBetweenQuestions)))
                             .then(Mono.fromRunnable(match::nextQuestion));
                 });
     }

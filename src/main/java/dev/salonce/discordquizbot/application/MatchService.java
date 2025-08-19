@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Objects;
 
 @Component
@@ -72,7 +71,7 @@ public class MatchService {
         if (!match.isInTheMatch(userId)) {
             return "You are not even in the match.";
         }
-        if (!match.isEnrollmentState()) {
+        if (!match.isEnrolling()) {
             return "Excuse me, you can leave the match only during enrollment phase.";
         } else {
             match.removeUser(userId);
@@ -85,7 +84,7 @@ public class MatchService {
             return "This match doesn't exist anymore.";
         if (!Objects.equals(userId, get(channelId).getOwnerId()))
             return "You aren't the owner";
-        if (!get(channelId).isEnrollmentState())
+        if (!get(channelId).isEnrolling())
             return "Already started";
 
         get(channelId).startCountdownPhase();

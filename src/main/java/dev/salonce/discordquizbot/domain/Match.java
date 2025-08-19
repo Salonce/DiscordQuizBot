@@ -60,7 +60,7 @@ public class Match{
 
     public void closeByOwner(){
         if (!isAborted())
-            this.matchState = MatchState.CLOSED_BY_OWNER;
+            this.matchState = MatchState.ABORTED_BY_OWNER;
     }
 
     public boolean isCurrentQuestion(int index){
@@ -83,22 +83,22 @@ public class Match{
 //        if (matchState != MatchState.COUNTDOWN) {
 //            throw new IllegalStateException("Cannot close answering if not in countdown phase");
 //        }
-        this.matchState = MatchState.ANSWERING;
+        this.matchState = MatchState.QUESTION;
     }
 
     public void startCountdownPhase(){
         this.matchState = MatchState.COUNTDOWN;
     }
 
-    public void startWaitingPhase() {
+    public void startBetweenQuestionsPhase() {
 //        if (matchState != MatchState.ANSWERING) {
 //            throw new IllegalStateException("Cannot close answering if not in answering phase");
 //        }
-        this.matchState = MatchState.WAITING;
+        this.matchState = MatchState.BETWEEN_QUESTIONS;
     }
 
     public boolean isAborted(){
-        return ((matchState == MatchState.CLOSED_BY_INACTIVITY) || (matchState == MatchState.CLOSED_BY_OWNER));
+        return ((matchState == MatchState.ABORTED_BY_INACTIVITY) || (matchState == MatchState.ABORTED_BY_OWNER));
     }
 
     public boolean isFinished(){
@@ -117,20 +117,20 @@ public class Match{
         players.remove(userId);
     }
 
-    public boolean isEnrollmentState(){
+    public boolean isEnrolling(){
         return (this.matchState == MatchState.ENROLLMENT);
     }
 
     public boolean isAnsweringState(){
-        return (this.matchState == MatchState.ANSWERING);
+        return (this.matchState == MatchState.QUESTION);
     }
 
-    public boolean isClosedByOwnerState(){
-        return (this.matchState == MatchState.CLOSED_BY_OWNER);
+    public boolean isAbortedByOwner(){
+        return (this.matchState == MatchState.ABORTED_BY_OWNER);
     }
 
-    public boolean isClosedByInactivityState(){
-        return (this.matchState == MatchState.CLOSED_BY_INACTIVITY);
+    public boolean isAbortedByInactivity(){
+        return (this.matchState == MatchState.ABORTED_BY_INACTIVITY);
     }
 
     public boolean isInTheMatch(Long userId){
@@ -189,7 +189,7 @@ public class Match{
 
     public void closeIfInactive(){
         if (inactivity.exceedsMax()) {
-            matchState = MatchState.CLOSED_BY_INACTIVITY;
+            matchState = MatchState.ABORTED_BY_INACTIVITY;
         }
     }
 }
