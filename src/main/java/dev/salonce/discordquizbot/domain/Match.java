@@ -175,18 +175,13 @@ public class Match{
             return null;
     }
 
-    public void updateInactiveRounds(){
-        int noAnswersCount = 0;
-        for (Player player : players.values()){
-            if (player.isUnanswered(curQuestionIndex))
-                noAnswersCount++;
-            else break;
-        }
+    public Match updateInactiveRounds() {
+        boolean allUnanswered = players.values().stream()
+                .allMatch(player -> player.isUnanswered(curQuestionIndex));
 
-        if (noAnswersCount == players.size())
-            inactivity++;
-        else
-            inactivity = 0;
+        inactivity = allUnanswered ? inactivity + 1 : 0;
+
+        return this; // fluent return
     }
 
     public void closeIfInactiveLimitReached(int inactiveRoundsLimit){
