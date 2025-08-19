@@ -16,7 +16,7 @@ public class MatchService {
 
     private final MatchCache matchCache;
     private final QuestionsService questionsService;
-    QuizSetupConfig config;
+    private final QuizSetupConfig config;
 
     public Match makeMatch(String topic, int difficulty, Long ownerId){
         List<Question> questions = questionsService.generateQuestions(topic, difficulty);
