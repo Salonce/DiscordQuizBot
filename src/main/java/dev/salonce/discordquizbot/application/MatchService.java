@@ -39,63 +39,59 @@ public class MatchService {
         matchCache.remove(channelId);
     }
 
-    public String addPlayerToMatch(Long channelId, Long userId) {
+    public ResultStatus addPlayerToMatch(Long channelId, Long userId) {
         Match match = matchCache.get(channelId);
-        if (match == null) return "This match doesn't exist.";
-        try { match.addPlayer(userId); }
-        catch (IllegalStateException e) { return e.getMessage(); }
+        if (match == null) return ResultStatus.matchNotFound();
+        try { match.addPlayer(userId); } catch (IllegalStateException e) { return ResultStatus.tooLate(); }
         matchCache.put(channelId, match);
-        return "You've joined the match.";
+        return ResultStatus.playerJoined();
     }
 
-    public String ownerCancelsMatch(Long channelId, Long userId) {
+    public ResultStatus ownerCancelsMatch(Long channelId, Long userId) {
         Match match = get(channelId);
         if (match == null)
-            return "This match doesn't exist anymore.";
+            return ResultStatus.matchNotFound();
         if (!match.isOwner(userId))
-            return "You are not the owner. Only the owner can cancel the match.";
+            return ResultStatus.notOwner();
         match.closeByOwner();
-        return "With your undeniable power of ownership, you've cancelled the match";
+        return ResultStatus.matchCancelled();
     }
 
-    public String removeUserFromMatch(Long channelId, Long userId) {
+    public ResultStatus removeUserFromMatch(Long channelId, Long userId) {
         Match match = get(channelId);
-        if (match == null) {
-            return "This match doesn't exist.";
-        }
-        if (!match.isInTheMatch(userId)) {
-            return "You are not even in the match.";
-        }
+        if (match == null)
+            return ResultStatus.matchNotFound();
+        if (!match.isInTheMatch(userId))
+            return ResultStatus.notInMatch();
         if (!match.isEnrolling()) {
-            return "Excuse me, you can leave the match only during enrollment phase.";
-        } else {
-            match.removeUser(userId);
-            return "You've left the match.";
+            return ResultStatus.notEnrollment();
         }
+        match.removeUser(userId);
+        return ResultStatus.playerLeft();
     }
 
-    public String ownerStartsMatch(Long channelId, Long userId) {
+    public ResultStatus ownerStartsMatch(Long channelId, Long userId) {
         if (!matchExists(channelId))
-            return "This match doesn't exist anymore.";
+            return ResultStatus.matchNotFound();
         if (!Objects.equals(userId, get(channelId).getOwnerId()))
-            return "You aren't the owner";
+            return ResultStatus.notOwner();
         if (!get(channelId).isEnrolling())
-            return "Already started";
+            return ResultStatus.alreadyStarted();
 
         get(channelId).startCountdownPhase();
-        return "Starting immediately";
+        return ResultStatus.startingImmediately();
     }
 
-    public String addPlayerAnswer(Long channelId, Long userId, int questionIndex, Answer answer) {
+    public ResultStatus addPlayerAnswer(Long channelId, Long userId, int questionIndex, Answer answer) {
         Match match = get(channelId);
 
         if (match == null || !match.isCurrentQuestion(questionIndex) || !match.isAnsweringState())
-            return "Your answer came too late!";
+            return ResultStatus.tooLateToAnswer();
 
         if (!match.isInTheMatch(userId))
-            return "You are not in the match.";
+            return ResultStatus.notInMatch();
 
         match.setPlayerAnswer(userId, questionIndex, answer);
-        return "Your answer: " + answer.asChar() + ".";
+        return ResultStatus.answerAccepted(answer);
     }
 }

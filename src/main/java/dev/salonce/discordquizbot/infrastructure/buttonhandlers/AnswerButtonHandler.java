@@ -2,6 +2,7 @@ package dev.salonce.discordquizbot.infrastructure.buttonhandlers;
 
 import dev.salonce.discordquizbot.application.MatchService;
 import dev.salonce.discordquizbot.application.ButtonHandler;
+import dev.salonce.discordquizbot.application.ResultStatus;
 import dev.salonce.discordquizbot.domain.Answer;
 import dev.salonce.discordquizbot.infrastructure.dtos.ButtonInteraction;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,7 @@ public class AnswerButtonHandler implements ButtonHandler {
     private final MatchService matchService;
 
     @Override
-    public Optional<String> handle(ButtonInteraction buttonInteraction) {
+    public Optional<ResultStatus> handle(ButtonInteraction buttonInteraction) {
         String buttonId = buttonInteraction.buttonId();
         if (!buttonId.startsWith("Answer") || !buttonId.matches("Answer-[A-D]-\\d+"))
             return Optional.empty();

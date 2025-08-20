@@ -39,7 +39,7 @@ public class DiscordBotBootstrap {
         gateway.on(ButtonInteractionEvent.class, event ->
                 Mono.fromCallable(() -> ButtonMapper.toButtonInteractionData(event))
                         .flatMap(data -> Mono.justOrEmpty(buttonHandlerChain.handle(data)))
-                        .flatMap(response -> event.reply(response).withEphemeral(true))
+                        .flatMap(resultStatus -> event.reply(resultStatus.getMessage()).withEphemeral(true))
                         .doOnError(error -> log.error("Failed to handle button interaction", error))
                         .onErrorResume(error ->
                                 event.reply("An error occurred processing your request.")
