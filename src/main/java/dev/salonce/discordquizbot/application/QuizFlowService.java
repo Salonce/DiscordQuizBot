@@ -98,6 +98,7 @@ public class QuizFlowService {
                         sink.complete();
                     }
                 })
+                .takeWhile(question -> !match.isFinished())
                 .index()
                 .concatMap(tuple -> {
                     long index = tuple.getT1();
