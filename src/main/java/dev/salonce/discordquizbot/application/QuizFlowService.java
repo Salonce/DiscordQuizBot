@@ -31,27 +31,48 @@ public class QuizFlowService {
     Mono<Message> runJoiningPhase(Message message, Match match){
         int joinTimeout = quizSetupConfig.getTimeToJoinQuiz();
         return Flux.interval(Duration.ofSeconds(1))
-                .take(joinTimeout)
-                .takeUntil(interval -> match.isStarting())
-                .flatMap(interval -> {
-                    Long timeLeft = (long) (joinTimeout - interval.intValue() - 1);
-                    return messageSender.edit(message, startingMessage.editSpec(match, timeLeft));
-                })
-                .then(Mono.just(message));
+            .take(joinTimeout)
+            .takeUntil(interval -> match.isStarting())
+            .flatMap(interval -> {
+                Long timeLeft = (long) (joinTimeout - interval.intValue() - 1);
+                return messageSender.edit(message, startingMessage.editSpec(match, timeLeft));
+            })
+            .then(Mono.just(message));
     }
 
     Mono<Message> runCountdownPhase(Message message, Match match){
         int totalTimeToStart = quizSetupConfig.getTimeToStartMatch();
         match.startCountdownPhase();
         return Flux.interval(Duration.ofSeconds(1))
-                .take(totalTimeToStart + 1)
-                .concatMap(interval -> {
-                    Long timeLeft = (long) (totalTimeToStart - interval.intValue());
-                    return messageSender.edit(message, startingMessage.editSpec2(match, timeLeft));
-                })
-                .then(Mono.just(message));
+            .take(totalTimeToStart + 1)
+            .concatMap(interval -> {
+                Long timeLeft = (long) (totalTimeToStart - interval.intValue());
+                return messageSender.edit(message, startingMessage.editSpec2(match, timeLeft));
+            })
+            .then(Mono.just(message));
     }
 
+    Mono<Void> runCheckIfAborted(MessageChannel messageChannel, Match match){
+        return Flux.interval(Duration.ofMillis(500))
+            .filter(tick -> match.isAborted())
+            .next()
+            .flatMap(tick -> messageSender.send(messageChannel, matchCanceledMessage.createEmbed(match)))
+            .then();
+    }
+
+    private Mono<Void> runQuestionsPhase(MessageChannel messageChannel, Match match) {
+        return Flux.generate(sink -> {
+                    if (match.isFinished()) sink.complete();
+                    else sink.next(match.getCurrentQuestion());
+                })
+                .takeWhile(question -> !match.isFinished())
+                .concatMap(question -> runQuestionFlow(match, messageChannel))
+                .then();
+    }
+
+    private Mono<Message> runResultsPhase(MessageChannel messageChannel, Match match){
+        return messageSender.send(messageChannel, matchResultsMessage.createEmbed(match));
+    }
 
     public void startMatch(MessageChannel messageChannel, String topic, int difficulty, Long userId) {
 
@@ -61,43 +82,24 @@ public class QuizFlowService {
         }
 
         int joinTimeout = quizSetupConfig.getTimeToJoinQuiz();
-        int totalTimeToStart = quizSetupConfig.getTimeToStartMatch();
 
         Match match = matchService.makeMatch(topic, difficulty, userId);
         matchService.put(messageChannel.getId().asLong(), match);
 
-        Mono<Void> normalFlow = Mono.just(startingMessage.createSpec(match, joinTimeout))
+        Mono<Void> runQuizFlow = Mono.just(startingMessage.createSpec(match, joinTimeout))
                 .flatMap((spec) -> messageSender.send(messageChannel, spec))
                 .flatMap(message -> runJoiningPhase(message, match))
                 .flatMap(message -> runCountdownPhase(message, match))
-                .flatMap(message -> runQuestionsPhase(messageChannel))
-                .then(Mono.defer(() -> messageSender.send(messageChannel, matchResultsMessage.createEmbed(match))))
+                .flatMap(message -> runQuestionsPhase(messageChannel, match))
+                .then(Mono.defer(() -> runResultsPhase(messageChannel, match)))
                 .then();
 
-        Mono<Void> cancelFlow = Flux.interval(Duration.ofMillis(500))
-                .filter(tick -> match.isAborted())
-                .next()
-                .flatMap(tick -> messageSender.send(messageChannel, matchCanceledMessage.createEmbed(match)))
-                .then();
-
-        Mono.firstWithSignal(normalFlow, cancelFlow)
+        Mono.firstWithSignal(runQuizFlow, runCheckIfAborted(messageChannel, match))
                 .then(Mono.defer(() -> {
                     matchService.remove(messageChannel.getId().asLong());
                     return Mono.empty();
                 }))
                 .subscribe();
-    }
-
-    private Mono<Void> runQuestionsPhase(MessageChannel messageChannel) {
-        Match match = matchService.get(messageChannel.getId().asLong());
-
-        return Flux.generate(sink -> {
-                    if (match.isFinished()) sink.complete();
-                    else sink.next(match.getCurrentQuestion());
-                })
-                .takeWhile(question -> !match.isFinished())
-                .concatMap(question -> runQuestionFlow(match, messageChannel))
-                .then();
     }
 
     private Mono<Void> runQuestionFlow(Match match, MessageChannel channel) {
