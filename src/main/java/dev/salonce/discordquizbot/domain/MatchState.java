@@ -2,7 +2,7 @@ package dev.salonce.discordquizbot.domain;
 
 public enum MatchState {
     ENROLLMENT,
-    COUNTDOWN,
+    STARTING,
     QUESTION,
     BETWEEN_QUESTIONS,
     ABORTED_BY_OWNER,

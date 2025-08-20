@@ -39,25 +39,6 @@ public class Match{
         players.put(userId, new Player(questions.size()));
     }
 
-    public Map<Long, Long> getPlayersPoints() {
-        Map<Long, Long> playerPoints = new LinkedHashMap<>();
-
-        for (Map.Entry<Long, Player> entry : players.entrySet()) {
-            Long playerId = entry.getKey();
-            Player player = entry.getValue();
-
-            long points = 0;
-            for (int i = 0; i < questions.size(); i++) {
-                Answer answer = player.getAnswer(i);
-                if (questions.get(i).isCorrectAnswer(answer)) {
-                    points++;
-                }
-            }
-            playerPoints.put(playerId, points);
-        }
-        return playerPoints;
-    }
-
     public void closeByOwner(){
         if (!isAborted())
             this.matchState = MatchState.ABORTED_BY_OWNER;
@@ -87,7 +68,7 @@ public class Match{
     }
 
     public void startCountdownPhase(){
-        this.matchState = MatchState.COUNTDOWN;
+        this.matchState = MatchState.STARTING;
     }
 
     public void startBetweenQuestionsPhase() {
@@ -97,20 +78,16 @@ public class Match{
         this.matchState = MatchState.BETWEEN_QUESTIONS;
     }
 
+    public boolean isStarting(){
+        return (matchState == MatchState.STARTING);
+    }
+
     public boolean isAborted(){
         return ((matchState == MatchState.ABORTED_BY_INACTIVITY) || (matchState == MatchState.ABORTED_BY_OWNER));
     }
 
     public boolean isFinished(){
         return (matchState == MatchState.FINISHED);
-    }
-
-    public boolean everyoneAnswered(){
-        for (Player player : players.values()){
-            if (player.isUnanswered(questions.getCurrentIndex()))
-                return false;
-        }
-        return true;
     }
 
     public void removeUser(Long userId){
@@ -146,25 +123,6 @@ public class Match{
         return Objects.equals(userId, getOwnerId());
     }
 
-    public Map<Answer, List<Long>> getPlayersGroupedByAnswer() {
-        Map<Answer, List<Long>> groups = new HashMap<>();
-
-        players.forEach((playerId, player) -> {
-            Answer answer = player.getAnswer(questions.getCurrentIndex());
-            groups.computeIfAbsent(answer, k -> new ArrayList<>()).add(playerId);
-        });
-
-        return groups;
-    }
-
-    public Map<Integer, List<Long>> getPlayersGroupedByPoints() {
-        return getPlayersPoints().entrySet().stream()
-                .collect(Collectors.groupingBy(
-                        e -> e.getValue().intValue(),   // points as key
-                        Collectors.mapping(Map.Entry::getKey, Collectors.toList())
-                ));
-    }
-
     public void nextQuestion(){
         if (!questions.next())
             matchState = MatchState.FINISHED;
@@ -192,5 +150,51 @@ public class Match{
         } else {
             inactivity.reset();
         }
+    }
+
+    public boolean everyoneAnswered(){
+        for (Player player : players.values()){
+            if (player.isUnanswered(questions.getCurrentIndex()))
+                return false;
+        }
+        return true;
+    }
+
+    public Map<Long, Long> getPlayersPoints() {
+        Map<Long, Long> playerPoints = new LinkedHashMap<>();
+
+        for (Map.Entry<Long, Player> entry : players.entrySet()) {
+            Long playerId = entry.getKey();
+            Player player = entry.getValue();
+
+            long points = 0;
+            for (int i = 0; i < questions.size(); i++) {
+                Answer answer = player.getAnswer(i);
+                if (questions.get(i).isCorrectAnswer(answer)) {
+                    points++;
+                }
+            }
+            playerPoints.put(playerId, points);
+        }
+        return playerPoints;
+    }
+
+    public Map<Answer, List<Long>> getPlayersGroupedByAnswer() {
+        Map<Answer, List<Long>> groups = new HashMap<>();
+
+        players.forEach((playerId, player) -> {
+            Answer answer = player.getAnswer(questions.getCurrentIndex());
+            groups.computeIfAbsent(answer, k -> new ArrayList<>()).add(playerId);
+        });
+
+        return groups;
+    }
+
+    public Map<Integer, List<Long>> getPlayersGroupedByPoints() {
+        return getPlayersPoints().entrySet().stream()
+                .collect(Collectors.groupingBy(
+                        e -> e.getValue().intValue(),   // points as key
+                        Collectors.mapping(Map.Entry::getKey, Collectors.toList())
+                ));
     }
 }
