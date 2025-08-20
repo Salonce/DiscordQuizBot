@@ -97,6 +97,5 @@ public class MatchService {
 
         match.setPlayerAnswer(userId, questionIndex, answer);
         return "Your answer: " + answer.asChar() + ".";
-
     }
 }
