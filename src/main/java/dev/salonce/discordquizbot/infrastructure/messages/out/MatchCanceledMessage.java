@@ -1,7 +1,5 @@
 package dev.salonce.discordquizbot.infrastructure.messages.out;
 
-import dev.salonce.discordquizbot.application.MatchService;
-import dev.salonce.discordquizbot.domain.MatchState;
 import dev.salonce.discordquizbot.domain.Match;
 import discord4j.core.spec.EmbedCreateSpec;
 import lombok.RequiredArgsConstructor;
@@ -14,9 +12,9 @@ public class MatchCanceledMessage {
     public EmbedCreateSpec createEmbed(Match match){
         String title = "\uD83D\uDEAA Match aborted";
         String reason = "unknown.";
-        if (match.isClosedByInactivityState())
+        if (match.isAbortedByInactivity())
             reason = "autoclosed due to players' inactivity.";
-        else if (match.isClosedByOwnerState())
+        else if (match.isAbortedByOwner())
             reason = "<@" + match.getOwnerId() + "> (owner)" + " has cancelled the match.";
 
         return EmbedCreateSpec.builder()

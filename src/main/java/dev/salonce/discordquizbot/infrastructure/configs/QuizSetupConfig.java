@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class QuizSetupConfig {
 
     private final int noOfQuestions;
-    private final int inactiveRoundsLimit;
+    private final int maxInactivity;
     private final int timeToJoinQuiz;
     private final int timeToStartMatch;
     private final int timeToPickAnswer;
@@ -21,16 +21,16 @@ public class QuizSetupConfig {
     public QuizSetupConfig(@Value("${mode}") String mode) {
         switch (mode) {
             case "testing" -> {
-                this.noOfQuestions = 4;
-                this.inactiveRoundsLimit = 3;
-                this.timeToJoinQuiz = 7;
+                this.noOfQuestions = 3;
+                this.maxInactivity = 1;
+                this.timeToJoinQuiz = 10;
                 this.timeToStartMatch = 2;
-                this.timeToPickAnswer = 5;
+                this.timeToPickAnswer = 10;
                 this.timeForNewQuestionToAppear = 1;
             }
             case "standard" -> {
                 this.noOfQuestions = 10;
-                this.inactiveRoundsLimit = 3;
+                this.maxInactivity = 3;
                 this.timeToJoinQuiz = 30;
                 this.timeToStartMatch = 3;
                 this.timeToPickAnswer = 30;

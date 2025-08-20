@@ -3,7 +3,6 @@ package dev.salonce.discordquizbot.infrastructure.buttonhandlers;
 import dev.salonce.discordquizbot.application.ButtonHandler;
 import dev.salonce.discordquizbot.infrastructure.dtos.ButtonInteraction;
 import dev.salonce.discordquizbot.application.MatchService;
-import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -19,6 +18,6 @@ public class CancelMatchButtonHandler implements ButtonHandler {
     public Optional<String> handle(ButtonInteraction data) {
         if (!"cancelQuiz".equals(data.buttonId()))
             return Optional.empty();
-        return Optional.of(matchService.cancelMatch(data.channelId(), data.userId()));
+        return Optional.of(matchService.ownerCancelsMatch(data.channelId(), data.userId()));
     }
 }

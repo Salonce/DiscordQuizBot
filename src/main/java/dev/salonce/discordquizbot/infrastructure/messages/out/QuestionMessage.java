@@ -4,7 +4,7 @@ import dev.salonce.discordquizbot.domain.Answer;
 import dev.salonce.discordquizbot.domain.Match;
 import dev.salonce.discordquizbot.application.MatchService;
 import dev.salonce.discordquizbot.domain.Question;
-import dev.salonce.discordquizbot.domain.QuestionOption;
+import dev.salonce.discordquizbot.domain.Option;
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
 import discord4j.core.spec.EmbedCreateSpec;
@@ -27,19 +27,19 @@ public class QuestionMessage {
 
     private final MatchService matchService;
 
-    public MessageCreateSpec createEmbed(Match match, Long questionNumber, int timeLeft){
-        int answersSize = match.getCurrentQuestion().getQuestionOptions().size();
+    public MessageCreateSpec createEmbed(Match match, int timeLeft){
+        int answersSize = match.getCurrentQuestion().getOptions().size();
 
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
-            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))));
+            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + match.getCurrentQuestionIndex(), String.valueOf((char)('A' + i))));
         }
         buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title(titleString(match))
                 .addField("\n", "❓ **" + match.getCurrentQuestion().getQuestion() + "**", false)
-                .addField("\n", getOptionsString(match.getCurrentQuestion().getQuestionOptions()) + "\n", false)
+                .addField("\n", getOptionsString(match.getCurrentQuestion().getOptions()) + "\n", false)
                 .addField("\n", "```⏳ " + timeLeft + " seconds left.```", false)
                 .build();
 
@@ -51,19 +51,19 @@ public class QuestionMessage {
 
 
 
-    public MessageEditSpec editEmbedWithTime(Match match, Long questionNumber, int timeLeft){
-        int answersSize = match.getCurrentQuestion().getQuestionOptions().size();
+    public MessageEditSpec editEmbedWithTime(Match match, int timeLeft){
+        int answersSize = match.getCurrentQuestion().getOptions().size();
 
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
-            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))));
+            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + match.getCurrentQuestionIndex(), String.valueOf((char)('A' + i))));
         }
         buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title(titleString(match))
                 .addField("\n", "❓ **" + match.getCurrentQuestion().getQuestion() + "**", false)
-                .addField("\n", getOptionsString(match.getCurrentQuestion().getQuestionOptions()) + "\n", false)
+                .addField("\n", getOptionsString(match.getCurrentQuestion().getOptions()) + "\n", false)
                 .addField("\n", "```⏳ " + timeLeft + " seconds left.```", false)
                 .build();
 
@@ -73,19 +73,19 @@ public class QuestionMessage {
                 .build();
     }
 
-    public MessageEditSpec editEmbedAfterAnswersWait(Match match, Long questionNumber){
-        int answersSize = match.getCurrentQuestion().getQuestionOptions().size();
+    public MessageEditSpec editEmbedAfterAnswersWait(Match match){
+        int answersSize = match.getCurrentQuestion().getOptions().size();
 
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
-            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))).disabled());
+            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + match.getCurrentQuestionIndex(), String.valueOf((char)('A' + i))).disabled());
         }
         buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title(titleString(match))
                 .addField("\n", "❓ **" + match.getCurrentQuestion().getQuestion() + "**", false)
-                .addField("\n", getOptionsString(match.getCurrentQuestion().getQuestionOptions()) + "\n", false)
+                .addField("\n", getOptionsString(match.getCurrentQuestion().getOptions()) + "\n", false)
                 .build();
 
         return MessageEditSpec.builder()
@@ -94,19 +94,19 @@ public class QuestionMessage {
                 .build();
     }
 
-    public MessageEditSpec editEmbedWithScores(Match match, Long questionNumber){
-        int answersSize = match.getCurrentQuestion().getQuestionOptions().size();
+    public MessageEditSpec editEmbedWithScores(Match match){
+        int answersSize = match.getCurrentQuestion().getOptions().size();
 
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
-            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))).disabled());
+            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + match.getCurrentQuestionIndex(), String.valueOf((char)('A' + i))).disabled());
         }
         buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
 
         EmbedCreateSpec embed = EmbedCreateSpec.builder()
                 .title(titleString(match))
                 .addField("\n", "❓ **" + match.getCurrentQuestion().getQuestion() + "**", false)
-                .addField("\n", getOptionsRevealed(match.getCurrentQuestion().getQuestionOptions()) + "\n", false)
+                .addField("\n", getOptionsRevealed(match.getCurrentQuestion().getOptions()) + "\n", false)
                 .addField("\uD83D\uDCDD Explanation", match.getCurrentQuestion().getExplanation() + "\n", false)
                 .addField("\uD83D\uDCCB Answers", getUsersAnswers(match), false)
                 .addField("\uD83D\uDCCA Scoreboard", getScoreboard(match), false)
@@ -118,12 +118,12 @@ public class QuestionMessage {
                 .build();
     }
 
-    private String getOptionsRevealed(List<QuestionOption> questionOptions){
+    private String getOptionsRevealed(List<Option> options){
         StringBuilder sb = new StringBuilder();
         char letter = 'A';
-        for (QuestionOption questionOption : questionOptions){
-            if (!questionOption.isCorrect()) sb.append("❌ ").append(letter).append(") ").append(questionOption.text());
-            if (questionOption.isCorrect()) sb.append("✅** ").append(letter).append(") ").append(questionOption.text()).append("**");
+        for (Option option : options){
+            if (!option.isCorrect()) sb.append("❌ ").append(letter).append(") ").append(option.text());
+            if (option.isCorrect()) sb.append("✅** ").append(letter).append(") ").append(option.text()).append("**");
             letter++;
             sb.append("\n");
         }
@@ -131,11 +131,11 @@ public class QuestionMessage {
     }
 
     private String titleString(Match match){
-        return "Question " + (match.getCurQuestionIndex() + 1) + "/10";
+        return "Question " + (match.getCurrentQuestionIndex() + 1) + "/10";
     }
     private String getUsersAnswers(Match match) {
         Question currentQuestion = match.getCurrentQuestion();
-        int optionsLength = currentQuestion.getQuestionOptions().size();
+        int optionsLength = currentQuestion.getOptions().size();
         Map<Answer, List<Long>> playerGroups = match.getPlayersGroupedByAnswer();
         Answer answer = currentQuestion.getCorrectAnswer();
 
@@ -161,11 +161,11 @@ public class QuestionMessage {
         return sb.toString();
     }
 
-    private String getOptionsString(List<QuestionOption> questionOptions){
+    private String getOptionsString(List<Option> options){
         StringBuilder sb = new StringBuilder();
         char letter = 'A';
-        for (QuestionOption questionOption : questionOptions){
-            sb.append(letter).append(") ").append(questionOption.text());
+        for (Option option : options){
+            sb.append(letter).append(") ").append(option.text());
             letter++;
             sb.append("\n");
         }
