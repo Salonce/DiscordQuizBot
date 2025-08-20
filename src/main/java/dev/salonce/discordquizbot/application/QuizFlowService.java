@@ -58,18 +58,14 @@ public class QuizFlowService {
         Mono<Void> normalFlow = Mono.just(startingMessage.createSpec(match, joinTimeout))
                 .flatMap((spec) -> messageSender.send(messageChannel, spec))
                 .flatMap(message -> joiningPhase(message, match))
-                .map(message -> {
-                    match.startCountdownPhase();
-                    return message;
-                })
-                .flatMap(message ->
-                        Flux.interval(Duration.ofSeconds(1))
-                                .take(totalTimeToStart + 1)
-                                .flatMap(interval -> {
-                                    Long timeLeft = (long) (totalTimeToStart - interval.intValue());
-                                    return messageSender.edit(message, startingMessage.editSpec2(match, timeLeft));
-                                })
-                                .then(Mono.just(message))
+                .doOnNext(message -> match.startCountdownPhase())
+                .doOnNext(message ->
+                    Flux.interval(Duration.ofSeconds(1))
+                        .take(totalTimeToStart + 1)
+                        .flatMap(interval -> {
+                            Long timeLeft = (long) (totalTimeToStart - interval.intValue());
+                            return messageSender.edit(message, startingMessage.editSpec2(match, timeLeft));
+                        })
                 )
                 .flatMap(message -> {
                     messageChannel.getId();
