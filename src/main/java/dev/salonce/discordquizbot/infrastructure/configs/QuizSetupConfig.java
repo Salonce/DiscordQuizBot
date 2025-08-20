@@ -21,11 +21,11 @@ public class QuizSetupConfig {
     public QuizSetupConfig(@Value("${mode}") String mode) {
         switch (mode) {
             case "testing" -> {
-                this.noOfQuestions = 4;
-                this.maxInactivity = 3;
-                this.timeToJoinQuiz = 7;
+                this.noOfQuestions = 3;
+                this.maxInactivity = 1;
+                this.timeToJoinQuiz = 10;
                 this.timeToStartMatch = 2;
-                this.timeToPickAnswer = 5;
+                this.timeToPickAnswer = 10;
                 this.timeForNewQuestionToAppear = 1;
             }
             case "standard" -> {
