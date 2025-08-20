@@ -99,26 +99,22 @@ public class QuizFlowService {
                     }
                 })
                 .takeWhile(question -> !match.isFinished())
-                .index()
-                .concatMap(tuple -> {
-                    long index = tuple.getT1();
-                    return runQuestionFlow(match, messageChannel, index);
-                })
+                .concatMap(question -> runQuestionFlow(match, messageChannel))
                 .then();
     }
 
-    private Mono<Void> runQuestionFlow(Match match, MessageChannel messageChannel, long index) {
+    private Mono<Void> runQuestionFlow(Match match, MessageChannel messageChannel) {
         int totalTime = quizSetupConfig.getTimeToPickAnswer();
         int timeBetweenQuestions = quizSetupConfig.getTimeForNewQuestionToAppear();
 
-        return Mono.just(questionMessage.createEmbed(match, index, totalTime))
+        return Mono.just(questionMessage.createEmbed(match, totalTime))
                 .flatMap(messageChannel::createMessage)
                 .flatMap(message -> {
                     match.startAnsweringPhase();
-                    return createCountdownTimer(match, message, index, totalTime)
-                            .then(Mono.defer(() -> discordMessageSender.edit(message, questionMessage.editEmbedAfterAnswersWait(match, index))))
+                    return createCountdownTimer(match, message, totalTime)
+                            .then(Mono.defer(() -> discordMessageSender.edit(message, questionMessage.editEmbedAfterAnswersWait(match))))
                             .then(Mono.delay(Duration.ofSeconds(1)))
-                            .then(Mono.defer(() -> discordMessageSender.edit(message, questionMessage.editEmbedWithScores(match, index))))
+                            .then(Mono.defer(() -> discordMessageSender.edit(message, questionMessage.editEmbedWithScores(match))))
                             .then(Mono.fromRunnable(match::startBetweenQuestionsPhase))
                             .then(Mono.fromRunnable(match::updateInactiveRounds))
                             .then(Mono.fromRunnable(match::closeIfInactive))
@@ -126,13 +122,13 @@ public class QuizFlowService {
                             .then(Mono.fromRunnable(match::nextQuestion));
                 });
     }
-    private Mono<Void> createCountdownTimer(Match match, Message message, long index, int totalTime) {
+    private Mono<Void> createCountdownTimer(Match match, Message message, int totalTime) {
         return Flux.interval(Duration.ofSeconds(1))
                 .take(totalTime)
                 .takeUntil(tick -> match.everyoneAnswered())
                 .flatMap(tick -> {
                     int timeLeft = totalTime - (tick.intValue() + 1);
-                    return discordMessageSender.edit(message, questionMessage.editEmbedWithTime(match, index, timeLeft));
+                    return discordMessageSender.edit(message, questionMessage.editEmbedWithTime(match, timeLeft));
                 })
                 .then();
     }

@@ -27,12 +27,12 @@ public class QuestionMessage {
 
     private final MatchService matchService;
 
-    public MessageCreateSpec createEmbed(Match match, Long questionNumber, int timeLeft){
+    public MessageCreateSpec createEmbed(Match match, int timeLeft){
         int answersSize = match.getCurrentQuestion().getOptions().size();
 
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
-            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))));
+            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + match.getCurrentQuestionIndex(), String.valueOf((char)('A' + i))));
         }
         buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
 
@@ -51,12 +51,12 @@ public class QuestionMessage {
 
 
 
-    public MessageEditSpec editEmbedWithTime(Match match, Long questionNumber, int timeLeft){
+    public MessageEditSpec editEmbedWithTime(Match match, int timeLeft){
         int answersSize = match.getCurrentQuestion().getOptions().size();
 
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
-            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))));
+            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + match.getCurrentQuestionIndex(), String.valueOf((char)('A' + i))));
         }
         buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
 
@@ -73,12 +73,12 @@ public class QuestionMessage {
                 .build();
     }
 
-    public MessageEditSpec editEmbedAfterAnswersWait(Match match, Long questionNumber){
+    public MessageEditSpec editEmbedAfterAnswersWait(Match match){
         int answersSize = match.getCurrentQuestion().getOptions().size();
 
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
-            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))).disabled());
+            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + match.getCurrentQuestionIndex(), String.valueOf((char)('A' + i))).disabled());
         }
         buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
 
@@ -94,12 +94,12 @@ public class QuestionMessage {
                 .build();
     }
 
-    public MessageEditSpec editEmbedWithScores(Match match, Long questionNumber){
+    public MessageEditSpec editEmbedWithScores(Match match){
         int answersSize = match.getCurrentQuestion().getOptions().size();
 
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
-            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + questionNumber.toString(), String.valueOf((char)('A' + i))).disabled());
+            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + match.getCurrentQuestionIndex(), String.valueOf((char)('A' + i))).disabled());
         }
         buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
 
