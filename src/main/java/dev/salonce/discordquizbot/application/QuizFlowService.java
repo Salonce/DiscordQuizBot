@@ -69,7 +69,7 @@ public class QuizFlowService {
                 )
                 .flatMap(message -> {
                     messageChannel.getId();
-                    return createQuestionMessages(messageChannel);
+                    return runQuestionsFlow(messageChannel);
                 })
                 .then(Mono.defer(() -> discordMessageSender.send(messageChannel, matchResultsMessage.createEmbed(match))))
                 .then();
@@ -88,17 +88,16 @@ public class QuizFlowService {
                 .subscribe();
     }
 
-    private Mono<Void> createQuestionMessages(MessageChannel messageChannel) {
+    private Mono<Void> runQuestionsFlow(MessageChannel messageChannel) {
         Match match = matchService.get(messageChannel.getId().asLong());
 
         return Flux.generate(sink -> {
-                    if (!match.isFinished() && !match.isAborted()) {
+                    if (!match.isFinished()) {
                         sink.next(match.getCurrentQuestion());
                     } else {
                         sink.complete();
                     }
                 })
-                .takeWhile(question -> !match.isAborted())
                 .index()
                 .concatMap(tuple -> {
                     long index = tuple.getT1();

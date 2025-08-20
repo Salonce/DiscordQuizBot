@@ -178,13 +178,10 @@ public class Match{
         return questions.getCurrentIndex();
     }
 
-    public Match updateInactiveRounds() {
+    public void updateInactiveRounds() {
         boolean allUnanswered = players.values().stream()
                 .allMatch(player -> player.isUnanswered(questions.getCurrentIndex()));
-
         if (allUnanswered) inactivity.increment();else inactivity.reset();
-
-        return this;
     }
 
     public void closeIfInactive(){
