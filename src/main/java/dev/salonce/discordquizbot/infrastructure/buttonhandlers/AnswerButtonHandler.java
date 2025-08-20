@@ -4,7 +4,6 @@ import dev.salonce.discordquizbot.application.MatchService;
 import dev.salonce.discordquizbot.application.ButtonHandler;
 import dev.salonce.discordquizbot.domain.Answer;
 import dev.salonce.discordquizbot.infrastructure.dtos.ButtonInteraction;
-import discord4j.core.event.domain.interaction.ButtonInteractionEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -28,6 +27,6 @@ public class AnswerButtonHandler implements ButtonHandler {
         int questionNumber = Integer.parseInt(answerData[2]);
         Answer answer = Answer.fromChar(answerData[1].charAt(0));
 
-        return Optional.of(matchService.getPlayerAnswer(buttonInteraction.channelId(), buttonInteraction.userId(), questionNumber, answer));
+        return Optional.of(matchService.addPlayerAnswer(buttonInteraction.channelId(), buttonInteraction.userId(), questionNumber, answer));
     }
 }
