@@ -116,10 +116,10 @@ public class QuizFlowService {
                             .then(Mono.delay(Duration.ofSeconds(1)))
                             .then(Mono.defer(() -> discordMessageSender.edit(message, questionMessage.editEmbedWithScores(match))))
                             .then(Mono.fromRunnable(match::startBetweenQuestionsPhase))
-                            .then(Mono.fromRunnable(match::updateInactiveRounds))
-                            .then(Mono.fromRunnable(match::closeIfInactive))
+                            .then(Mono.fromRunnable(match::checkInactivity))
+                            .then(Mono.fromRunnable(match::nextQuestion))
                             .then(Mono.delay(Duration.ofSeconds(timeBetweenQuestions)))
-                            .then(Mono.fromRunnable(match::nextQuestion));
+                            .then(Mono.empty());
                 });
     }
     private Mono<Void> createCountdownTimer(Match match, Message message, int totalTime) {

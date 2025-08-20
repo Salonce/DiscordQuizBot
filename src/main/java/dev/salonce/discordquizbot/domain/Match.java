@@ -178,15 +178,19 @@ public class Match{
         return questions.getCurrentIndex();
     }
 
-    public void updateInactiveRounds() {
-        boolean allUnanswered = players.values().stream()
+    private boolean allPlayersUnanswered() {
+        return players.values().stream()
                 .allMatch(player -> player.isUnanswered(questions.getCurrentIndex()));
-        if (allUnanswered) inactivity.increment();else inactivity.reset();
     }
 
-    public void closeIfInactive(){
-        if (inactivity.exceedsMax()) {
-            matchState = MatchState.ABORTED_BY_INACTIVITY;
+    public void checkInactivity() {
+        if (allPlayersUnanswered()) {
+            inactivity.increment();
+            if (inactivity.exceedsMax()) {
+                matchState = MatchState.ABORTED_BY_INACTIVITY;
+            }
+        } else {
+            inactivity.reset();
         }
     }
 }
