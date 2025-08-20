@@ -28,7 +28,7 @@ public class QuizFlowService {
     private final MatchResultsMessage matchResultsMessage;
     private final messageSender messageSender;
 
-    Mono<Message> joiningPhase(Message message, Match match){
+    Mono<Message> runJoiningPhase(Message message, Match match){
         int joinTimeout = quizSetupConfig.getTimeToJoinQuiz();
         return Flux.interval(Duration.ofSeconds(1))
                 .take(joinTimeout)
@@ -39,6 +39,19 @@ public class QuizFlowService {
                 })
                 .then(Mono.just(message));
     }
+
+    Mono<Message> runCountdownPhase(Message message, Match match){
+        int totalTimeToStart = quizSetupConfig.getTimeToStartMatch();
+        match.startCountdownPhase();
+        return Flux.interval(Duration.ofSeconds(1))
+                .take(totalTimeToStart + 1)
+                .concatMap(interval -> {
+                    Long timeLeft = (long) (totalTimeToStart - interval.intValue());
+                    return messageSender.edit(message, startingMessage.editSpec2(match, timeLeft));
+                })
+                .then(Mono.just(message));
+    }
+
 
     public void startMatch(MessageChannel messageChannel, String topic, int difficulty, Long userId) {
 
@@ -53,24 +66,11 @@ public class QuizFlowService {
         Match match = matchService.makeMatch(topic, difficulty, userId);
         matchService.put(messageChannel.getId().asLong(), match);
 
-
-
         Mono<Void> normalFlow = Mono.just(startingMessage.createSpec(match, joinTimeout))
                 .flatMap((spec) -> messageSender.send(messageChannel, spec))
-                .flatMap(message -> joiningPhase(message, match))
-                .doOnNext(message -> match.startCountdownPhase())
-                .doOnNext(message ->
-                    Flux.interval(Duration.ofSeconds(1))
-                        .take(totalTimeToStart + 1)
-                        .flatMap(interval -> {
-                            Long timeLeft = (long) (totalTimeToStart - interval.intValue());
-                            return messageSender.edit(message, startingMessage.editSpec2(match, timeLeft));
-                        })
-                )
-                .flatMap(message -> {
-                    messageChannel.getId();
-                    return runQuestionsFlow(messageChannel);
-                })
+                .flatMap(message -> runJoiningPhase(message, match))
+                .flatMap(message -> runCountdownPhase(message, match))
+                .flatMap(message -> runQuestionsPhase(messageChannel))
                 .then(Mono.defer(() -> messageSender.send(messageChannel, matchResultsMessage.createEmbed(match))))
                 .then();
 
@@ -88,7 +88,7 @@ public class QuizFlowService {
                 .subscribe();
     }
 
-    private Mono<Void> runQuestionsFlow(MessageChannel messageChannel) {
+    private Mono<Void> runQuestionsPhase(MessageChannel messageChannel) {
         Match match = matchService.get(messageChannel.getId().asLong());
 
         return Flux.generate(sink -> {
