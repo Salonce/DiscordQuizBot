@@ -41,6 +41,40 @@ public class Match{
         players.put(userId, new Player(questions.size()));
     }
 
+    public Iterator<Long> getPlayersIdsIterator(){
+        return players.keySet().iterator();
+    }
+
+    public void setPlayerAnswer(Long userId, int questionIndex, Answer answer){
+        players.get(userId).setAnswer(questionIndex, answer);
+    }
+
+    public void removeUser(Long userId){
+        players.remove(userId);
+    }
+
+    public boolean isInTheMatch(Long userId){
+        return players.containsKey(userId);
+    }
+
+    public Long getOwnerId(){
+        try { return players.keySet().iterator().next(); }
+        catch (NoSuchElementException e){ return null; }
+    }
+
+    private boolean allPlayersUnanswered() {
+        return players.values().stream()
+                .allMatch(player -> player.isUnanswered(questions.getCurrentIndex()));
+    }
+
+    public boolean everyoneAnswered(){
+        for (Player player : players.values()){
+            if (player.isUnanswered(questions.getCurrentIndex()))
+                return false;
+        }
+        return true;
+    }
+
     public void abortByOwner(){
         if (!isAborted())
             this.matchState = MatchState.ABORTED_BY_OWNER;
@@ -52,14 +86,6 @@ public class Match{
 
     public int getNumberOfQuestions(){
         return questions.size();
-    }
-
-    public Iterator<Long> getPlayersIdsIterator(){
-        return players.keySet().iterator();
-    }
-
-    public void setPlayerAnswer(Long userId, int questionIndex, Answer answer){
-        players.get(userId).setAnswer(questionIndex, answer);
     }
 
     public void startAnsweringPhase() {
@@ -92,10 +118,6 @@ public class Match{
         return (matchState == MatchState.FINISHED);
     }
 
-    public void removeUser(Long userId){
-        players.remove(userId);
-    }
-
     public boolean isEnrolling(){
         return (this.matchState == MatchState.ENROLLMENT);
     }
@@ -112,14 +134,6 @@ public class Match{
         return (this.matchState == MatchState.ABORTED_BY_INACTIVITY);
     }
 
-    public boolean isInTheMatch(Long userId){
-        return players.containsKey(userId);
-    }
-
-    public Long getOwnerId(){
-        try { return players.keySet().iterator().next(); }
-        catch (NoSuchElementException e){ return null; }
-    }
 
     public boolean isOwner(Long userId){
         return Objects.equals(userId, getOwnerId());
@@ -138,10 +152,7 @@ public class Match{
         return questions.getCurrentIndex();
     }
 
-    private boolean allPlayersUnanswered() {
-        return players.values().stream()
-                .allMatch(player -> player.isUnanswered(questions.getCurrentIndex()));
-    }
+
 
     public void checkInactivity() {
         if (allPlayersUnanswered()) {
@@ -154,13 +165,7 @@ public class Match{
         }
     }
 
-    public boolean everyoneAnswered(){
-        for (Player player : players.values()){
-            if (player.isUnanswered(questions.getCurrentIndex()))
-                return false;
-        }
-        return true;
-    }
+
 
     public Map<Long, Long> getPlayersPoints() {
         Map<Long, Long> playerPoints = new LinkedHashMap<>();
