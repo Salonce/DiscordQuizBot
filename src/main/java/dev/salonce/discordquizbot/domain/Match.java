@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class Match{
     private final String title;
     private final int difficulty;
-    private final Map<Long, Player> players;
+    private final Players players;
     private final Questions questions;
     private MatchState matchState;
     private Inactivity inactivity;
@@ -28,17 +28,17 @@ public class Match{
         this.questions = questions;
         this.difficulty = difficulty;
         this.matchState = MatchState.ENROLLMENT;
-        this.players = new LinkedHashMap<>();
-        this.players.put(ownerId, new Player(questions.size()));
+        this.players = new Players();
+        this.players.add(ownerId, questions.size());
         this.inactivity = inactivity;
     }
 
     public void addPlayer(Long userId) {
         if (matchState != MatchState.ENROLLMENT)
-            throw new NotEnrollmentState();  // domain-level exception
-        if (players.containsKey(userId))
+            throw new NotEnrollmentState();
+        if (players.exists(userId))
             throw new UserAlreadyJoined();
-        players.put(userId, new Player(questions.size()));
+        players.add(userId, questions.size());
     }
 
     public Iterator<Long> getPlayersIdsIterator(){

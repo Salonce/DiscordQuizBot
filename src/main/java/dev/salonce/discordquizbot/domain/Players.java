@@ -15,10 +15,14 @@ public class Players {
         this.players = new HashMap<>();
     }
 
-    public void addPlayer(Long userId, int annswersSize) {
+    public void add(Long userId, int answersSize) {
         if (players.containsKey(userId))
             throw new UserAlreadyJoined();
-        players.put(userId, new Player(annswersSize));
+        players.put(userId, new Player(answersSize));
+    }
+
+    public boolean exists(Long userId){
+        return players.containsKey(userId);
     }
 
     public List<Long> getPlayersIds(){
