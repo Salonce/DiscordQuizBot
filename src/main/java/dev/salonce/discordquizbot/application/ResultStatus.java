@@ -9,20 +9,24 @@ public final class ResultStatus {
         this.message = message;
     }
 
+    public static ResultStatus alreadyJoined() {
+        return new ResultStatus("You've already joined the match!");
+    }
+
     public static ResultStatus matchNotFound() {
-        return new ResultStatus("Match not found");
+        return new ResultStatus("This match doesn't exist anymore!");
     }
 
     public static ResultStatus notOwner() {
-        return new ResultStatus("You are not the owner");
+        return new ResultStatus("Only the owner can do this!");
     }
 
     public static ResultStatus notInMatch() {
-        return new ResultStatus("You are not in the match");
+        return new ResultStatus("You wanna leave a match you aren't in? Interesting.");
     }
 
     public static ResultStatus alreadyStarted() {
-        return new ResultStatus("Match has already started");
+        return new ResultStatus("This match has already started...");
     }
 
     public static ResultStatus tooLate() {
@@ -30,16 +34,15 @@ public final class ResultStatus {
     }
 
     public static ResultStatus tooLateToAnswer() {
-        return new ResultStatus("Too late to answer");
+        return new ResultStatus("Too late to answer this question.");
     }
 
     public static ResultStatus answerAccepted(Answer answer) {
         return new ResultStatus("Your answer: " + answer.asChar() + ".");
     }
 
-    // Factory methods for successes
     public static ResultStatus playerJoined() {
-        return new ResultStatus("Player joined");
+        return new ResultStatus("You've joined the match!");
     }
 
     public static ResultStatus startingImmediately() {
@@ -55,7 +58,7 @@ public final class ResultStatus {
     }
 
     public static ResultStatus matchCancelled() {
-        return new ResultStatus("With your undeniable power of ownership, you've cancelled the match");
+        return new ResultStatus("With the undeniable power of ownership, you've aborted the match");
     }
 
     public static ResultStatus matchStarted() {

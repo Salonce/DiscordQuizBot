@@ -1,5 +1,7 @@
 package dev.salonce.discordquizbot.domain;
 
+import dev.salonce.discordquizbot.domain.exceptions.NotEnrollmentState;
+import dev.salonce.discordquizbot.domain.exceptions.UserAlreadyJoined;
 import lombok.Getter;
 
 import java.util.*;
@@ -33,13 +35,13 @@ public class Match{
 
     public void addPlayer(Long userId) {
         if (matchState != MatchState.ENROLLMENT)
-            throw new IllegalStateException("Cannot join now.");  // domain-level exception
+            throw new NotEnrollmentState();  // domain-level exception
         if (players.containsKey(userId))
-            throw new IllegalStateException("Already joined.");
+            throw new UserAlreadyJoined();
         players.put(userId, new Player(questions.size()));
     }
 
-    public void closeByOwner(){
+    public void abortByOwner(){
         if (!isAborted())
             this.matchState = MatchState.ABORTED_BY_OWNER;
     }

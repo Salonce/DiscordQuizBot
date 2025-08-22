@@ -1,6 +1,8 @@
 package dev.salonce.discordquizbot.application;
 
 import dev.salonce.discordquizbot.domain.*;
+import dev.salonce.discordquizbot.domain.exceptions.NotEnrollmentState;
+import dev.salonce.discordquizbot.domain.exceptions.UserAlreadyJoined;
 import dev.salonce.discordquizbot.infrastructure.configs.QuizSetupConfig;
 import dev.salonce.discordquizbot.infrastructure.storage.MatchCache;
 import lombok.RequiredArgsConstructor;
@@ -42,7 +44,9 @@ public class MatchService {
     public ResultStatus addPlayerToMatch(Long channelId, Long userId) {
         Match match = matchCache.get(channelId);
         if (match == null) return ResultStatus.matchNotFound();
-        try { match.addPlayer(userId); } catch (IllegalStateException e) { return ResultStatus.tooLate(); }
+        try { match.addPlayer(userId); }
+        catch (NotEnrollmentState e) { return ResultStatus.tooLate(); }
+        catch (UserAlreadyJoined e) { return ResultStatus.alreadyJoined(); }
         matchCache.put(channelId, match);
         return ResultStatus.playerJoined();
     }
@@ -53,7 +57,7 @@ public class MatchService {
             return ResultStatus.matchNotFound();
         if (!match.isOwner(userId))
             return ResultStatus.notOwner();
-        match.closeByOwner();
+        match.abortByOwner();
         return ResultStatus.matchCancelled();
     }
 
