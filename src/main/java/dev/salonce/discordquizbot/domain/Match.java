@@ -159,36 +159,15 @@ public class Match{
         }
     }
 
-
-
     public Map<Long, Long> getPlayersPoints() {
-        Map<Long, Long> playerPoints = new LinkedHashMap<>();
+        List<Answer> correctAnswers = questions.getCorrectAnswersList();
+        Map<Long, Long> scores = new LinkedHashMap<>();
 
-        for (Map.Entry<Long, Player> entry : players.entrySet()) {
-            Long playerId = entry.getKey();
-            Player player = entry.getValue();
-
-            long points = 0;
-            for (int i = 0; i < questions.size(); i++) {
-                Answer answer = player.getAnswer(i);
-                if (questions.get(i).isCorrectAnswer(answer)) {
-                    points++;
-                }
-            }
-            playerPoints.put(playerId, points);
+        for (Map.Entry<Long, Player> entry : players.getPlayersMap().entrySet()) {
+            scores.put(entry.getKey(), entry.getValue().calculateScore(correctAnswers));
         }
-        return playerPoints;
-    }
 
-    public Map<Answer, List<Long>> getPlayersGroupedByAnswer() {
-        Map<Answer, List<Long>> groups = new HashMap<>();
-
-        players.forEach((playerId, player) -> {
-            Answer answer = player.getAnswer(questions.getCurrentIndex());
-            groups.computeIfAbsent(answer, k -> new ArrayList<>()).add(playerId);
-        });
-
-        return groups;
+        return scores;
     }
 
     public Map<Integer, List<Long>> getPlayersGroupedByPoints() {
@@ -198,4 +177,10 @@ public class Match{
                         Collectors.mapping(Map.Entry::getKey, Collectors.toList())
                 ));
     }
+
+    public Map<Answer, List<Long>> getPlayersGroupedByAnswer() {
+        return players.getPlayersGroupedByAnswer(currentQuestionIndex());
+    }
+
+
 }

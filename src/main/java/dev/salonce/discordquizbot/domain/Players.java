@@ -3,6 +3,7 @@ package dev.salonce.discordquizbot.domain;
 import dev.salonce.discordquizbot.domain.exceptions.UserAlreadyJoined;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Players {
 
@@ -60,5 +61,26 @@ public class Players {
         return true;
     }
 
+    public Map<Long, List<Answer>> getAnswersByPlayer() {
+        return players.entrySet().stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        entry -> entry.getValue().getAnswersList()
+                ));
+    }
 
+    public Map<Long, Player> getPlayersMap() {
+        return Collections.unmodifiableMap(players);
+    }
+
+    public Map<Answer, List<Long>> getPlayersGroupedByAnswer(int index) {
+        Map<Answer, List<Long>> groups = new HashMap<>();
+
+        players.forEach((playerId, player) -> {
+            Answer answer = player.getAnswer(index);
+            groups.computeIfAbsent(answer, k -> new ArrayList<>()).add(playerId);
+        });
+
+        return groups;
+    }
 }
