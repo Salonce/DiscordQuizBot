@@ -173,7 +173,7 @@ public class QuestionMessage {
     }
 
     private String getScoreboard(Match match) {
-        Map<Long, Long> points = match.getPlayersPoints(); // use your new map
+        Map<Long, Integer> points = match.getPlayersPoints(); // use your new map
 
         return points.entrySet().stream()
                 .sorted((a, b) -> Long.compare(b.getValue(), a.getValue())) // sort descending

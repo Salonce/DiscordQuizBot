@@ -159,9 +159,9 @@ public class Match{
         }
     }
 
-    public Map<Long, Long> getPlayersPoints() {
+    public Map<Long, Integer> getPlayersPoints() {
         List<Answer> correctAnswers = questions.getCorrectAnswersList();
-        Map<Long, Long> scores = new LinkedHashMap<>();
+        Map<Long, Integer> scores = new LinkedHashMap<>();
 
         for (Map.Entry<Long, Player> entry : players.getPlayersMap().entrySet()) {
             scores.put(entry.getKey(), entry.getValue().calculateScore(correctAnswers));

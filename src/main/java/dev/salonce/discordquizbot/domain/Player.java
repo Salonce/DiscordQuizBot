@@ -27,8 +27,8 @@ public class Player {
         return answersList;
     }
 
-    public long calculateScore(List<Answer> correctAnswers) {
-        long score = 0;
+    public int calculateScore(List<Answer> correctAnswers) {
+        int score = 0;
         for (int i = 0; i < correctAnswers.size(); i++) {
             if (answersList.get(i).equals(correctAnswers.get(i))) {
                 score++;
