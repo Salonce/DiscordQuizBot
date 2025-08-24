@@ -65,7 +65,7 @@ public class MatchService {
         Match match = get(channelId);
         if (match == null)
             return ResultStatus.matchNotFound();
-        if (!match.isInTheMatch(userId))
+        if (!match.playerExists(userId))
             return ResultStatus.notInMatch();
         if (!match.isEnrolling()) {
             return ResultStatus.notEnrollment();
@@ -92,7 +92,7 @@ public class MatchService {
         if (match == null || !match.isCurrentQuestion(questionIndex) || !match.isAnsweringState())
             return ResultStatus.tooLateToAnswer();
 
-        if (!match.isInTheMatch(userId))
+        if (!match.playerExists(userId))
             return ResultStatus.notInMatch();
 
         match.setPlayerAnswer(userId, questionIndex, answer);

@@ -2,10 +2,7 @@ package dev.salonce.discordquizbot.domain;
 
 import dev.salonce.discordquizbot.domain.exceptions.UserAlreadyJoined;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 public class Players {
 
@@ -23,6 +20,10 @@ public class Players {
 
     public boolean exists(Long userId){
         return players.containsKey(userId);
+    }
+
+    public Iterator<Long> getPlayersIdsIterator(){
+        return players.keySet().iterator();
     }
 
     public List<Long> getPlayersIds(){
@@ -46,7 +47,7 @@ public class Players {
         return players.containsKey(userId);
     }
 
-    private boolean nooneAnswered(int index) {
+    public boolean nooneAnswered(int index) {
         return players.values().stream()
                 .allMatch(player -> player.isUnanswered(index));
     }

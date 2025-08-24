@@ -42,37 +42,31 @@ public class Match{
     }
 
     public Iterator<Long> getPlayersIdsIterator(){
-        return players.keySet().iterator();
+        return players.getPlayersIdsIterator();
     }
 
     public void setPlayerAnswer(Long userId, int questionIndex, Answer answer){
-        players.get(userId).setAnswer(questionIndex, answer);
+        players.setPlayerAnswer(userId, questionIndex, answer);
     }
 
     public void removeUser(Long userId){
-        players.remove(userId);
+        players.removePlayer(userId);
     }
 
-    public boolean isInTheMatch(Long userId){
-        return players.containsKey(userId);
+    public boolean playerExists(Long userId){
+        return players.exists(userId);
     }
 
     public Long getOwnerId(){
-        try { return players.keySet().iterator().next(); }
-        catch (NoSuchElementException e){ return null; }
+        return players.getOwnerId();
     }
 
     private boolean allPlayersUnanswered() {
-        return players.values().stream()
-                .allMatch(player -> player.isUnanswered(questions.getCurrentIndex()));
+        return players.nooneAnswered(currentQuestionIndex());
     }
 
-    public boolean everyoneAnswered(){
-        for (Player player : players.values()){
-            if (player.isUnanswered(questions.getCurrentIndex()))
-                return false;
-        }
-        return true;
+    public boolean everyoneAnsweredCurrentQuestion(){
+        return players.everyoneAnswered(currentQuestionIndex());
     }
 
     public void abortByOwner(){
@@ -148,7 +142,7 @@ public class Match{
         return questions.current();
     }
 
-    public int getCurrentQuestionIndex() {
+    public int currentQuestionIndex() {
         return questions.getCurrentIndex();
     }
 

@@ -129,7 +129,7 @@ public class QuizFlowService {
     private Mono<Void> emitUntilAllAnsweredOrTimeout(Match match, Message message, int totalTime) {
         return Flux.interval(Duration.ofSeconds(1))
                 .take(totalTime)
-                .takeUntil(tick -> match.everyoneAnswered())
+                .takeUntil(tick -> match.everyoneAnsweredCurrentQuestion())
                 .flatMap(tick -> {
                     int timeLeft = totalTime - (tick.intValue() + 1);
                     return messageSender.edit(message, questionMessage.editEmbedWithTime(match, timeLeft));

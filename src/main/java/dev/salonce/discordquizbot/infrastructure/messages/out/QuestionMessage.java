@@ -32,7 +32,7 @@ public class QuestionMessage {
 
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
-            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + match.getCurrentQuestionIndex(), String.valueOf((char)('A' + i))));
+            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + match.currentQuestionIndex(), String.valueOf((char)('A' + i))));
         }
         buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
 
@@ -56,7 +56,7 @@ public class QuestionMessage {
 
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
-            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + match.getCurrentQuestionIndex(), String.valueOf((char)('A' + i))));
+            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + match.currentQuestionIndex(), String.valueOf((char)('A' + i))));
         }
         buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
 
@@ -78,7 +78,7 @@ public class QuestionMessage {
 
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
-            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + match.getCurrentQuestionIndex(), String.valueOf((char)('A' + i))).disabled());
+            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + match.currentQuestionIndex(), String.valueOf((char)('A' + i))).disabled());
         }
         buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
 
@@ -99,7 +99,7 @@ public class QuestionMessage {
 
         List<Button> buttons = new ArrayList<>();
         for (int i = 0; i < answersSize; i++) {
-            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + match.getCurrentQuestionIndex(), String.valueOf((char)('A' + i))).disabled());
+            buttons.add(Button.success("Answer-" + (char)('A' + i) + "-" + match.currentQuestionIndex(), String.valueOf((char)('A' + i))).disabled());
         }
         buttons.add(Button.danger("cancelQuiz", "Abort quiz"));
 
@@ -131,7 +131,7 @@ public class QuestionMessage {
     }
 
     private String titleString(Match match){
-        return "Question " + (match.getCurrentQuestionIndex() + 1) + "/10";
+        return "Question " + (match.currentQuestionIndex() + 1) + "/10";
     }
     private String getUsersAnswers(Match match) {
         Question currentQuestion = match.getCurrentQuestion();
