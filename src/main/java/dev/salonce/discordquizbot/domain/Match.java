@@ -170,13 +170,7 @@ public class Match{
         return scores;
     }
 
-    public Map<Integer, List<Long>> getPlayersGroupedByPoints() {
-        return getPlayersPoints().entrySet().stream()
-                .collect(Collectors.groupingBy(
-                        e -> e.getValue().intValue(),   // points as key
-                        Collectors.mapping(Map.Entry::getKey, Collectors.toList())
-                ));
-    }
+
 
     public Map<Answer, List<Long>> getPlayersGroupedByAnswer() {
         return players.getPlayersGroupedByAnswer(currentQuestionIndex());
@@ -198,6 +192,14 @@ public class Match{
 
     public Scoreboard getScoreboard() {
         return new Scoreboard(getPlayersScores());
+    }
+
+    public Map<Integer, List<Long>> getPlayersGroupedByPoints() {
+        return getPlayersPoints().entrySet().stream()
+                .collect(Collectors.groupingBy(
+                        e -> e.getValue().intValue(),   // points as key
+                        Collectors.mapping(Map.Entry::getKey, Collectors.toList())
+                ));
     }
 
 

@@ -1,10 +1,7 @@
 package dev.salonce.discordquizbot.infrastructure.messages.out;
 
-import dev.salonce.discordquizbot.domain.Answer;
-import dev.salonce.discordquizbot.domain.Match;
+import dev.salonce.discordquizbot.domain.*;
 import dev.salonce.discordquizbot.application.MatchService;
-import dev.salonce.discordquizbot.domain.Question;
-import dev.salonce.discordquizbot.domain.Option;
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
 import discord4j.core.spec.EmbedCreateSpec;
@@ -173,13 +170,17 @@ public class QuestionMessage {
     }
 
     private String getScoreboard(Match match) {
-        Map<Long, Integer> points = match.getPlayersPoints(); // use your new map
+        Scoreboard scoreboard = match.getScoreboard();
 
-        return points.entrySet().stream()
-                .sorted((a, b) -> Long.compare(b.getValue(), a.getValue())) // sort descending
-                .map(entry -> "<@" + entry.getKey() + ">: " + entry.getValue() + " points")
+        return scoreboard.getRankedScores().stream()
+                .map(this::formatPlayerScore)
                 .collect(Collectors.joining("\n"));
     }
 
+    private String formatPlayerScore(PlayerScore playerScore) {
+        String pointsText = playerScore.getPoints() == 1 ? "point" : "points";
+        return "<@" + playerScore.getPlayerId() + ">: " +
+                playerScore.getPoints() + " " + pointsText;
+    }
 
 }
