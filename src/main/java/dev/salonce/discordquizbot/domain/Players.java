@@ -69,14 +69,14 @@ public class Players {
                 ));
     }
 
-    public AnswerOptionGroup getAnswerGroup(int questionIndex, Answer answer) {
+    public AnswerOptionGroup getAnswerGroup(int questionIndex, Answer answer, boolean isCorrect) {
         List<Long> userIds = new ArrayList<>();
 
         players.forEach((playerId, player) -> {
             if (player.getAnswer(questionIndex).equals(answer))
                 userIds.add(playerId);
         });
-        return new AnswerOptionGroup(userIds);
+        return new AnswerOptionGroup(userIds, answer, isCorrect);
     }
 
     public Map<Long, Player> getPlayersMap() {

@@ -8,9 +8,21 @@ import java.util.List;
 public class AnswerOptionGroup {
 
     private final List<Long> userIds;
+    private final Answer answer;
+    private final Boolean isCorrect;
 
-    public AnswerOptionGroup(List<Long> userIds) {
+    public AnswerOptionGroup(List<Long> userIds, Answer answer, Boolean isCorrect) {
         this.userIds = List.copyOf(userIds);
+        this.isCorrect = isCorrect;
+        this.answer = answer;
+    }
+
+    public Answer getAnswer(){
+        return this.answer;
+    }
+
+    public boolean isCorrect(){
+        return isCorrect;
     }
 
     public List<Long> getUserIds() {

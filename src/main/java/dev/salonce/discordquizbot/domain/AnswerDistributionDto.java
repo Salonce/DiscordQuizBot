@@ -19,6 +19,10 @@ public class AnswerDistributionDto {
         this.totalOptions = totalOptions;
     }
 
+    public boolean isCorrectAnswer(Answer answer){
+        return answer.equals(correctAnswer);
+    }
+
     // getters only
     public List<AnswerOptionGroup> getAnswerGroups() { return answerGroups; }
     public AnswerOptionGroup getNoAnswerGroup() { return noAnswerGroup; }

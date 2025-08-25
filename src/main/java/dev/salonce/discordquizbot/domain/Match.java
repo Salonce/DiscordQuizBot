@@ -182,10 +182,10 @@ public class Match{
         List<Answer> possibleAnswers = questions.current().getPossibleAnswers();
 
         List<AnswerOptionGroup> answerOptionGroupList = possibleAnswers.stream()
-                .map(answer -> players.getAnswerGroup(currentQuestionIndex(), answer))
+                .map(answer -> players.getAnswerGroup(currentQuestionIndex(), answer, getCurrentQuestion().isCorrectAnswer(answer)))
                 .toList();
 
-        AnswerOptionGroup noAnswerGroup = players.getAnswerGroup(currentQuestionIndex(), Answer.none());
+        AnswerOptionGroup noAnswerGroup = players.getAnswerGroup(currentQuestionIndex(), Answer.none(), getCurrentQuestion().isCorrectAnswer(Answer.none()));
 
         return new AnswerOptionGroups(answerOptionGroupList, noAnswerGroup);
     }
@@ -194,10 +194,10 @@ public class Match{
         List<Answer> possibleAnswers = questions.current().getPossibleAnswers();
 
         List<AnswerOptionGroup> answerOptionGroupList = possibleAnswers.stream()
-                .map(answer -> players.getAnswerGroup(currentQuestionIndex(), answer))
+                .map(answer -> players.getAnswerGroup(currentQuestionIndex(), answer, getCurrentQuestion().isCorrectAnswer(answer)))
                 .toList();
 
-        AnswerOptionGroup noAnswerGroup = players.getAnswerGroup(currentQuestionIndex(), Answer.none());
+        AnswerOptionGroup noAnswerGroup = players.getAnswerGroup(currentQuestionIndex(), Answer.none(), getCurrentQuestion().isCorrectAnswer(Answer.none()));
         Answer correctAnswer = getCurrentQuestion().getCorrectAnswer();
         int optionsSize = getCurrentQuestion().getOptions().size();
 

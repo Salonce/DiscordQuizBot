@@ -131,20 +131,20 @@ public class QuestionMessage {
         return "Question " + (match.currentQuestionIndex() + 1) + "/10";
     }
     private String getUsersAnswers(AnswerDistributionDto distributionDto) {
-        StringBuilder sb = new StringBuilder();
         List<AnswerOptionGroup> groups = distributionDto.getAnswerGroups();
-        int totalOptions = distributionDto.getTotalOptions();
-        Answer correctAnswer = distributionDto.getCorrectAnswer();
 
-        for (int i = 0; i < totalOptions; i++) {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < groups.size(); i++) {
+            Answer answer = groups.get(i).getAnswer();
+            boolean correct = groups.get(i).isCorrect();
+
             if (i > 0) sb.append("\n");
 
-            String prefix = correctAnswer.asNumber() == i
-                    ? "✅ **" + (char)('A' + i) + "**"
-                    : "❌ " + (char)('A' + i);
+            String prefix = correct ? "✅ **" + answer.asChar() + "**" : "❌ " + answer.asChar();
             sb.append(prefix).append(": ");
 
-            List<Long> playerIds = i < groups.size() ? groups.get(i).getUserIds() : Collections.emptyList();
+            List<Long> playerIds = groups.get(i).getUserIds();
             sb.append(formatMentions(playerIds));
         }
 
@@ -152,12 +152,6 @@ public class QuestionMessage {
         sb.append(formatMentions(distributionDto.getNoAnswerGroup().getUserIds()));
 
         return sb.toString();
-    }
-
-    private String formatMentions(List<Long> userIds) {
-        return userIds.stream()
-                .map(id -> "<@" + id + ">")
-                .collect(Collectors.joining(", "));
     }
 
     private String getOptionsString(List<Option> options){
