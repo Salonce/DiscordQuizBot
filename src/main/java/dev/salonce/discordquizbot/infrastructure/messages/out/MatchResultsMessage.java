@@ -1,12 +1,13 @@
 package dev.salonce.discordquizbot.infrastructure.messages.out;
 import dev.salonce.discordquizbot.domain.Match;
 import dev.salonce.discordquizbot.application.MatchService;
+import dev.salonce.discordquizbot.domain.RankGroup;
 import discord4j.core.spec.EmbedCreateSpec;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 import static dev.salonce.discordquizbot.util.DiscordFormatter.formatMentions;
 
@@ -26,40 +27,35 @@ public class MatchResultsMessage {
     }
 
     private String getFinalScoreboard(Match match) {
-        Map<Integer, List<Long>> pointsGrouped = match.getPlayersGroupedByPoints();
+        List<RankGroup> rankGroups = match.getScoreboard().getRankGroups();
 
-        // Sort the points in descending order
-        List<Integer> sortedPoints = pointsGrouped.keySet().stream()
-                .sorted((a, b) -> b - a)
-                .toList();
+        return rankGroups.stream()
+                .map(this::formatRankGroup)
+                .collect(Collectors.joining("\n"));
+    }
 
-        // Build the scoreboard message
-        StringBuilder scoreboard = new StringBuilder();
-        int place = 1;
+    private String formatRankGroup(RankGroup rankGroup) {
+        String playersList = formatMentions(rankGroup.getPlayerIds())
+                .replace("<@", "**<@")
+                .replace(">", ">**");
 
-        for (Integer points : sortedPoints) {
-            List<Long> playerIds = pointsGrouped.get(points);
-            String playersList = formatMentions(playerIds).replace("<@", "**<@").replace(">", ">**");
-            String pointWord = points == 1 ? "point" : "points";
+        String pointWord = rankGroup.getPoints() == 1 ? "point" : "points";
+        String label = getRankLabel(rankGroup.getRank());
 
-            String label = switch (place) {
-                case 1 -> "🥇";
-                case 2 -> "🥈";
-                case 3 -> "🥉";
-                default -> getOrdinalSuffix(place);
-            };
+        return label + ": " + playersList + " — **" + rankGroup.getPoints() + " " + pointWord + "**";
+    }
 
-            scoreboard.append(label).append(": ")
-                    .append(playersList).append(" — ")
-                    .append("**").append(points).append(" ").append(pointWord).append("**\n");
-            place++;
-        }
-
-        return scoreboard.toString().trim();
+    private String getRankLabel(int rank) {
+        return switch (rank) {
+            case 1 -> "🥇";
+            case 2 -> "🥈";
+            case 3 -> "🥉";
+            default -> toOrdinalString(rank);
+        };
     }
 
     // Helper method to get the ordinal suffix (1st, 2nd, 3rd, etc.)
-    private String getOrdinalSuffix(int place) {
+    private String toOrdinalString(int place) {
         if (place % 100 >= 11 && place % 100 <= 13) {
             return place + "th";
         }

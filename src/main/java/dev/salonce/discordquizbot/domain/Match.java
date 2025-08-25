@@ -146,8 +146,6 @@ public class Match{
         return questions.getCurrentIndex();
     }
 
-
-
     public void checkInactivity() {
         if (allPlayersUnanswered()) {
             inactivity.increment();
@@ -159,24 +157,15 @@ public class Match{
         }
     }
 
-    public Map<Long, Integer> getPlayersPoints() {
-        List<Answer> correctAnswers = questions.getCorrectAnswersList();
-        Map<Long, Integer> scores = new LinkedHashMap<>();
-
-        for (Map.Entry<Long, Player> entry : players.getPlayersMap().entrySet()) {
-            scores.put(entry.getKey(), entry.getValue().calculateScore(correctAnswers));
-        }
-
-        return scores;
-    }
-
-
-
     public Map<Answer, List<Long>> getPlayersGroupedByAnswer() {
         return players.getPlayersGroupedByAnswer(currentQuestionIndex());
     }
 
-    public List<PlayerScore> getPlayersScores() {
+    public Scoreboard getScoreboard() {
+        return new Scoreboard(getPlayersScores());
+    }
+
+    private List<PlayerScore> getPlayersScores() {
         List<Answer> correctAnswers = questions.getCorrectAnswersList();
         List<PlayerScore> scores = new ArrayList<>();
 
@@ -190,17 +179,7 @@ public class Match{
         return scores;
     }
 
-    public Scoreboard getScoreboard() {
-        return new Scoreboard(getPlayersScores());
-    }
 
-    public Map<Integer, List<Long>> getPlayersGroupedByPoints() {
-        return getPlayersPoints().entrySet().stream()
-                .collect(Collectors.groupingBy(
-                        e -> e.getValue().intValue(),   // points as key
-                        Collectors.mapping(Map.Entry::getKey, Collectors.toList())
-                ));
-    }
 
 
 }
