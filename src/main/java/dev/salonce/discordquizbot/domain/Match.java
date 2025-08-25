@@ -182,5 +182,19 @@ public class Match{
         return players.getPlayersGroupedByAnswer(currentQuestionIndex());
     }
 
+    public List<PlayerScore> getPlayersScores() {
+        List<Answer> correctAnswers = questions.getCorrectAnswersList();
+        List<PlayerScore> scores = new ArrayList<>();
+
+        for (Map.Entry<Long, Player> entry : players.getPlayersMap().entrySet()) {
+            scores.add(new PlayerScore(
+                    entry.getKey(),
+                    entry.getValue().calculateScore(correctAnswers)
+            ));
+        }
+
+        return scores;
+    }
+
 
 }
