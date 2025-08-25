@@ -13,16 +13,6 @@ public class AnswerGroup {
         this.userIds = List.copyOf(userIds);
     }
 
-//    public List<Long> getAnswerGroup(Players players, int questionIndex, Answer answer) {
-//        List<Long> group = new ArrayList<>();
-//
-//        players.getPlayersMap().forEach((playerId, player) -> {
-//            if (player.getAnswer(questionIndex).equals(answer))
-//                group.add(playerId);
-//        });
-//        return group;
-//    }
-
     public List<Long> getUserIds() {
         return Collections.unmodifiableList(userIds);
     }
@@ -37,18 +27,6 @@ public class AnswerGroup {
 
     public boolean contains(Long userId) {
         return userIds.contains(userId);
-    }
-
-    public AnswerGroup addUser(Long userId) {
-        List<Long> newList = new java.util.ArrayList<>(userIds);
-        newList.add(userId);
-        return new AnswerGroup(newList);
-    }
-
-    public AnswerGroup removeUser(Long userId) {
-        List<Long> newList = new java.util.ArrayList<>(userIds);
-        newList.remove(userId);
-        return new AnswerGroup(newList);
     }
 
     @Override

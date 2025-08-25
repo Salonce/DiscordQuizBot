@@ -179,7 +179,14 @@ public class Match{
         return scores;
     }
 
-
+    public AnswerGroups getAnswerGroups(){
+        int size = questions.current().getPossibleAnswers().size();
+        List<AnswerGroup> answerGroupList = new ArrayList<>();
+        for (int i = 0; i < size; i++){
+            answerGroupList.add(players.getAnswerGroup(currentQuestionIndex(), questions.current().getPossibleAnswers().get(i)));
+        }
+        return new AnswerGroups(answerGroupList);
+    }
 
 
 }
