@@ -69,6 +69,18 @@ public class Players {
                 ));
     }
 
+
+
+    public List<Long> getAnswerGroup(int index, Answer answer) {
+        List<Long> group = new ArrayList<>();
+
+        players.forEach((playerId, player) -> {
+            if (player.getAnswer(index).equals(answer))
+                group.add(playerId);
+        });
+        return group;
+    }
+
     public Map<Long, Player> getPlayersMap() {
         return Collections.unmodifiableMap(players);
     }
