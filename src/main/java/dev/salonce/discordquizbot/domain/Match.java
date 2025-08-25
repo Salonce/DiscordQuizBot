@@ -196,5 +196,9 @@ public class Match{
         return scores;
     }
 
+    public Scoreboard getScoreboard() {
+        return new Scoreboard(getPlayersScores());
+    }
+
 
 }
