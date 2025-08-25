@@ -1,6 +1,6 @@
 package dev.salonce.discordquizbot.application;
 
-import dev.salonce.discordquizbot.util.messageSender;
+import dev.salonce.discordquizbot.infrastructure.util.messageSender;
 import dev.salonce.discordquizbot.infrastructure.configs.QuizSetupConfig;
 import dev.salonce.discordquizbot.domain.Match;
 import dev.salonce.discordquizbot.infrastructure.messages.out.MatchCanceledMessage;

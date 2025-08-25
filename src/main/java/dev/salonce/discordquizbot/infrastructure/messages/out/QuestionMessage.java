@@ -13,8 +13,9 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-import static dev.salonce.discordquizbot.util.DiscordFormatter.formatMentions;
+import static dev.salonce.discordquizbot.infrastructure.util.DiscordFormatter.formatMentions;
 
 @RequiredArgsConstructor
 @Component
@@ -154,15 +155,10 @@ public class QuestionMessage {
         return sb.toString();
     }
 
-    private String getOptionsString(List<Option> options){
-        StringBuilder sb = new StringBuilder();
-        char letter = 'A';
-        for (Option option : options){
-            sb.append(letter).append(") ").append(option.text());
-            letter++;
-            sb.append("\n");
-        }
-        return sb.toString();
+    private String getOptionsString(List<Option> options) {
+        return IntStream.range(0, options.size())
+                .mapToObj(i -> (char) ('A' + i) + ") " + options.get(i).text())
+                .collect(Collectors.joining("\n"));
     }
 
     private String getScoreboard(Match match) {
