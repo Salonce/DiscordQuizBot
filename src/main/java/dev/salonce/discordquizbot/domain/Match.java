@@ -5,7 +5,6 @@ import dev.salonce.discordquizbot.domain.exceptions.UserAlreadyJoined;
 import lombok.Getter;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 //modifications to make:
 //value object title for topic diff
@@ -179,14 +178,14 @@ public class Match{
         return scores;
     }
 
-    public AnswerGroups getAnswerGroups(){
-        int size = questions.current().getPossibleAnswers().size();
-        List<AnswerGroup> answerGroupList = new ArrayList<>();
-        for (int i = 0; i < size; i++){
-            answerGroupList.add(players.getAnswerGroup(currentQuestionIndex(), questions.current().getPossibleAnswers().get(i)));
-        }
-        return new AnswerGroups(answerGroupList);
-    }
+    public AnswerDistribution getAnswerGroups() {
+        List<Answer> possibleAnswers = questions.current().getPossibleAnswers();
 
+        List<AnswerOptionGroup> answerOptionGroupList = possibleAnswers.stream()
+                .map(answer -> players.getAnswerGroup(currentQuestionIndex(), answer))
+                .toList();
+
+        return new AnswerDistribution(answerOptionGroupList);
+    }
 
 }

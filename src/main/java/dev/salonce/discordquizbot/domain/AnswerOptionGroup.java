@@ -5,11 +5,11 @@ import java.util.*;
 import java.util.Collections;
 import java.util.List;
 
-public class AnswerGroup {
+public class AnswerOptionGroup {
 
     private final List<Long> userIds;
 
-    public AnswerGroup(List<Long> userIds) {
+    public AnswerOptionGroup(List<Long> userIds) {
         this.userIds = List.copyOf(userIds);
     }
 
@@ -32,7 +32,7 @@ public class AnswerGroup {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof AnswerGroup that)) return false;
+        if (!(o instanceof AnswerOptionGroup that)) return false;
         return Objects.equals(userIds, that.userIds);
     }
 
