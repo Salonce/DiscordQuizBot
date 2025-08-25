@@ -54,7 +54,7 @@ public final class ResultStatus {
     }
 
     public static ResultStatus playerLeft() {
-        return new ResultStatus("Player left");
+        return new ResultStatus("You have left the match.");
     }
 
     public static ResultStatus matchCancelled() {
