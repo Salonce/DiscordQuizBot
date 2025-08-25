@@ -11,9 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import static dev.salonce.discordquizbot.util.DiscordFormatter.formatMentions;
@@ -105,7 +103,7 @@ public class QuestionMessage {
                 .addField("\n", "❓ **" + match.getCurrentQuestion().getQuestion() + "**", false)
                 .addField("\n", getOptionsRevealed(match.getCurrentQuestion().getOptions()) + "\n", false)
                 .addField("\uD83D\uDCDD Explanation", match.getCurrentQuestion().getExplanation() + "\n", false)
-                .addField("\uD83D\uDCCB Answers", getUsersAnswers(match.getDistributionDto()), false)
+                .addField("\uD83D\uDCCB Answers", getUsersAnswers(match.getAnswerDistribution()), false)
                 .addField("\uD83D\uDCCA Scoreboard", getScoreboard(match), false)
                 .build();
 
@@ -141,7 +139,9 @@ public class QuestionMessage {
 
             if (i > 0) sb.append("\n");
 
-            String prefix = correct ? "✅ **" + answer.asChar() + "**" : "❌ " + answer.asChar();
+            String prefix = correct ?
+                    "✅ **" + answer.asChar() + "**"
+                    : "❌ " + answer.asChar();
             sb.append(prefix).append(": ");
 
             List<Long> playerIds = groups.get(i).getUserIds();

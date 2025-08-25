@@ -156,10 +156,6 @@ public class Match{
         }
     }
 
-    public Map<Answer, List<Long>> getPlayersGroupedByAnswer() {
-        return players.getPlayersGroupedByAnswer(currentQuestionIndex());
-    }
-
     public Scoreboard getScoreboard() {
         return new Scoreboard(getPlayersScores());
     }
@@ -174,23 +170,10 @@ public class Match{
                     entry.getValue().calculateScore(correctAnswers)
             ));
         }
-
         return scores;
     }
 
-    public AnswerOptionGroups getAnswerOptionGroups() {
-        List<Answer> possibleAnswers = questions.current().getPossibleAnswers();
-
-        List<AnswerOptionGroup> answerOptionGroupList = possibleAnswers.stream()
-                .map(answer -> players.getAnswerGroup(currentQuestionIndex(), answer, getCurrentQuestion().isCorrectAnswer(answer)))
-                .toList();
-
-        AnswerOptionGroup noAnswerGroup = players.getAnswerGroup(currentQuestionIndex(), Answer.none(), getCurrentQuestion().isCorrectAnswer(Answer.none()));
-
-        return new AnswerOptionGroups(answerOptionGroupList, noAnswerGroup);
-    }
-
-    public AnswerDistributionDto getDistributionDto() {
+    public AnswerDistributionDto getAnswerDistribution() {
         List<Answer> possibleAnswers = questions.current().getPossibleAnswers();
 
         List<AnswerOptionGroup> answerOptionGroupList = possibleAnswers.stream()
