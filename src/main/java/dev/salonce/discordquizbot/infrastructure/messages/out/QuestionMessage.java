@@ -157,7 +157,7 @@ public class QuestionMessage {
 
     private String getOptionsString(List<Option> options) {
         return IntStream.range(0, options.size())
-                .mapToObj(i -> (char) ('A' + i) + ") " + options.get(i).text())
+                .mapToObj(i -> Answer.fromNumber(i).asChar() + ") " + options.get(i).text())
                 .collect(Collectors.joining("\n"));
     }
 

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static dev.salonce.discordquizbot.infrastructure.util.DiscordFormatter.formatBoldMentions;
 import static dev.salonce.discordquizbot.infrastructure.util.DiscordFormatter.formatMentions;
 
 @RequiredArgsConstructor
@@ -35,9 +36,7 @@ public class MatchResultsMessage {
     }
 
     private String formatRankGroup(RankGroup rankGroup) {
-        String playersList = formatMentions(rankGroup.getPlayerIds())
-                .replace("<@", "**<@")
-                .replace(">", ">**");
+        String playersList = formatBoldMentions(rankGroup.getPlayerIds());
 
         String pointWord = rankGroup.getPoints() == 1 ? "point" : "points";
         String label = getRankLabel(rankGroup.getRank());
