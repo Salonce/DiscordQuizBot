@@ -105,7 +105,7 @@ public class QuestionMessage {
                 .addField("\n", "❓ **" + match.getCurrentQuestion().getQuestion() + "**", false)
                 .addField("\n", getOptionsRevealed(match.getCurrentQuestion().getOptions()) + "\n", false)
                 .addField("\uD83D\uDCDD Explanation", match.getCurrentQuestion().getExplanation() + "\n", false)
-                .addField("\uD83D\uDCCB Answers", getUsersAnswers(match), false)
+                .addField("\uD83D\uDCCB Answers", getUsersAnswers(match.getDistributionDto()), false)
                 .addField("\uD83D\uDCCA Scoreboard", getScoreboard(match), false)
                 .build();
 
@@ -130,32 +130,34 @@ public class QuestionMessage {
     private String titleString(Match match){
         return "Question " + (match.currentQuestionIndex() + 1) + "/10";
     }
-    private String getUsersAnswers(Match match) {
-        Question currentQuestion = match.getCurrentQuestion();
-        int optionsLength = currentQuestion.getOptions().size();
-        Map<Answer, List<Long>> playerGroups = match.getPlayersGroupedByAnswer();
-        Answer answer = currentQuestion.getCorrectAnswer();
-
+    private String getUsersAnswers(AnswerDistributionDto distributionDto) {
         StringBuilder sb = new StringBuilder();
+        List<AnswerOptionGroup> groups = distributionDto.getAnswerGroups();
+        int totalOptions = distributionDto.getTotalOptions();
+        Answer correctAnswer = distributionDto.getCorrectAnswer();
 
-        // Format each option
-        for (int i = 0; i < optionsLength; i++) {
-
+        for (int i = 0; i < totalOptions; i++) {
             if (i > 0) sb.append("\n");
 
-            String prefix = answer.asNumber() == i ? "✅ **" + (char)('A' + i) + "**"
-                                                   : "❌ " + (char)('A' + i);
+            String prefix = correctAnswer.asNumber() == i
+                    ? "✅ **" + (char)('A' + i) + "**"
+                    : "❌ " + (char)('A' + i);
             sb.append(prefix).append(": ");
-            List<Long> playerIds = playerGroups.getOrDefault(Answer.fromNumber(i), Collections.emptyList());
+
+            List<Long> playerIds = i < groups.size() ? groups.get(i).getUserIds() : Collections.emptyList();
             sb.append(formatMentions(playerIds));
         }
 
-        // Non-responders
         sb.append("\n\n💤: ");
-        List<Long> playerIds = playerGroups.getOrDefault(Answer.none(), Collections.emptyList());
-        sb.append(formatMentions(playerIds));
+        sb.append(formatMentions(distributionDto.getNoAnswerGroup().getUserIds()));
 
         return sb.toString();
+    }
+
+    private String formatMentions(List<Long> userIds) {
+        return userIds.stream()
+                .map(id -> "<@" + id + ">")
+                .collect(Collectors.joining(", "));
     }
 
     private String getOptionsString(List<Option> options){

@@ -190,4 +190,18 @@ public class Match{
         return new AnswerOptionGroups(answerOptionGroupList, noAnswerGroup);
     }
 
+    public AnswerDistributionDto getDistributionDto() {
+        List<Answer> possibleAnswers = questions.current().getPossibleAnswers();
+
+        List<AnswerOptionGroup> answerOptionGroupList = possibleAnswers.stream()
+                .map(answer -> players.getAnswerGroup(currentQuestionIndex(), answer))
+                .toList();
+
+        AnswerOptionGroup noAnswerGroup = players.getAnswerGroup(currentQuestionIndex(), Answer.none());
+        Answer correctAnswer = getCurrentQuestion().getCorrectAnswer();
+        int optionsSize = getCurrentQuestion().getOptions().size();
+
+        return new AnswerDistributionDto(answerOptionGroupList, noAnswerGroup, correctAnswer, optionsSize);
+    }
+
 }
