@@ -69,16 +69,14 @@ public class Players {
                 ));
     }
 
-
-
-    public List<Long> getAnswerGroup(int index, Answer answer) {
-        List<Long> group = new ArrayList<>();
+    public AnswerGroup getAnswerGroup(int questionIndex, Answer answer) {
+        List<Long> userIds = new ArrayList<>();
 
         players.forEach((playerId, player) -> {
-            if (player.getAnswer(index).equals(answer))
-                group.add(playerId);
+            if (player.getAnswer(questionIndex).equals(answer))
+                userIds.add(playerId);
         });
-        return group;
+        return new AnswerGroup(userIds);
     }
 
     public Map<Long, Player> getPlayersMap() {
