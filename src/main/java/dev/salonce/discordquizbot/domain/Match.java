@@ -178,14 +178,16 @@ public class Match{
         return scores;
     }
 
-    public AnswerDistribution getAnswerGroups() {
+    public AnswerOptionGroups getAnswerOptionGroups() {
         List<Answer> possibleAnswers = questions.current().getPossibleAnswers();
 
         List<AnswerOptionGroup> answerOptionGroupList = possibleAnswers.stream()
                 .map(answer -> players.getAnswerGroup(currentQuestionIndex(), answer))
                 .toList();
 
-        return new AnswerDistribution(answerOptionGroupList);
+        AnswerOptionGroup noAnswerGroup = players.getAnswerGroup(currentQuestionIndex(), Answer.none());
+
+        return new AnswerOptionGroups(answerOptionGroupList, noAnswerGroup);
     }
 
 }

@@ -35,7 +35,6 @@ public class Question {
         for (int i = 0; i < options.size(); i++) {
             answers.add(Answer.fromNumber(i));
         }
-        answers.add(Answer.none());
         return answers;
     }
 }
