@@ -38,4 +38,8 @@ public class Questions {
     public Question get(int index) {
         return list.get(index);
     }
+
+    public List<Answer> getCorrectAnswersList(){
+        return list.stream().map(Question::getCorrectAnswer).toList();
+    }
 }

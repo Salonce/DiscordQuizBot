@@ -29,4 +29,12 @@ public class Question {
         }
         return Answer.none();
     }
+
+    public List<Answer> getPossibleAnswers() {
+        List<Answer> answers = new ArrayList<>();
+        for (int i = 0; i < options.size(); i++) {
+            answers.add(Answer.fromNumber(i));
+        }
+        return answers;
+    }
 }

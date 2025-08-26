@@ -22,4 +22,20 @@ public class Player {
     public boolean isUnanswered(int index){
         return (answersList.get(index).isEmpty());
     }
+
+    public List<Answer> getAnswersList() {
+        return answersList;
+    }
+
+    public int calculateScore(List<Answer> correctAnswers) {
+        int score = 0;
+        for (int i = 0; i < correctAnswers.size(); i++) {
+            if (answersList.get(i).equals(correctAnswers.get(i))) {
+                score++;
+            }
+        }
+        return score;
+    }
+
+
 }

@@ -1,9 +1,10 @@
 package dev.salonce.discordquizbot.domain;
 
+import dev.salonce.discordquizbot.domain.exceptions.NotEnrollmentState;
+import dev.salonce.discordquizbot.domain.exceptions.UserAlreadyJoined;
 import lombok.Getter;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 //modifications to make:
 //value object title for topic diff
@@ -13,7 +14,7 @@ import java.util.stream.Collectors;
 public class Match{
     private final String title;
     private final int difficulty;
-    private final Map<Long, Player> players;
+    private final Players players;
     private final Questions questions;
     private MatchState matchState;
     private Inactivity inactivity;
@@ -26,20 +27,48 @@ public class Match{
         this.questions = questions;
         this.difficulty = difficulty;
         this.matchState = MatchState.ENROLLMENT;
-        this.players = new LinkedHashMap<>();
-        this.players.put(ownerId, new Player(questions.size()));
+        this.players = new Players();
+        this.players.add(ownerId, questions.size());
         this.inactivity = inactivity;
     }
 
     public void addPlayer(Long userId) {
         if (matchState != MatchState.ENROLLMENT)
-            throw new IllegalStateException("Cannot join now.");  // domain-level exception
-        if (players.containsKey(userId))
-            throw new IllegalStateException("Already joined.");
-        players.put(userId, new Player(questions.size()));
+            throw new NotEnrollmentState();
+        if (players.exists(userId))
+            throw new UserAlreadyJoined();
+        players.add(userId, questions.size());
     }
 
-    public void closeByOwner(){
+    public Iterator<Long> getPlayersIdsIterator(){
+        return players.getPlayersIdsIterator();
+    }
+
+    public void setPlayerAnswer(Long userId, int questionIndex, Answer answer){
+        players.setPlayerAnswer(userId, questionIndex, answer);
+    }
+
+    public void removeUser(Long userId){
+        players.removePlayer(userId);
+    }
+
+    public boolean playerExists(Long userId){
+        return players.exists(userId);
+    }
+
+    public Long getOwnerId(){
+        return players.getOwnerId();
+    }
+
+    private boolean allPlayersUnanswered() {
+        return players.nooneAnswered(currentQuestionIndex());
+    }
+
+    public boolean everyoneAnsweredCurrentQuestion(){
+        return players.everyoneAnswered(currentQuestionIndex());
+    }
+
+    public void abortByOwner(){
         if (!isAborted())
             this.matchState = MatchState.ABORTED_BY_OWNER;
     }
@@ -50,14 +79,6 @@ public class Match{
 
     public int getNumberOfQuestions(){
         return questions.size();
-    }
-
-    public Iterator<Long> getPlayersIdsIterator(){
-        return players.keySet().iterator();
-    }
-
-    public void setPlayerAnswer(Long userId, int questionIndex, Answer answer){
-        players.get(userId).setAnswer(questionIndex, answer);
     }
 
     public void startAnsweringPhase() {
@@ -90,10 +111,6 @@ public class Match{
         return (matchState == MatchState.FINISHED);
     }
 
-    public void removeUser(Long userId){
-        players.remove(userId);
-    }
-
     public boolean isEnrolling(){
         return (this.matchState == MatchState.ENROLLMENT);
     }
@@ -110,14 +127,6 @@ public class Match{
         return (this.matchState == MatchState.ABORTED_BY_INACTIVITY);
     }
 
-    public boolean isInTheMatch(Long userId){
-        return players.containsKey(userId);
-    }
-
-    public Long getOwnerId(){
-        try { return players.keySet().iterator().next(); }
-        catch (NoSuchElementException e){ return null; }
-    }
 
     public boolean isOwner(Long userId){
         return Objects.equals(userId, getOwnerId());
@@ -132,13 +141,8 @@ public class Match{
         return questions.current();
     }
 
-    public int getCurrentQuestionIndex() {
+    public int currentQuestionIndex() {
         return questions.getCurrentIndex();
-    }
-
-    private boolean allPlayersUnanswered() {
-        return players.values().stream()
-                .allMatch(player -> player.isUnanswered(questions.getCurrentIndex()));
     }
 
     public void checkInactivity() {
@@ -152,49 +156,35 @@ public class Match{
         }
     }
 
-    public boolean everyoneAnswered(){
-        for (Player player : players.values()){
-            if (player.isUnanswered(questions.getCurrentIndex()))
-                return false;
+    public Scoreboard getScoreboard() {
+        return new Scoreboard(getPlayersScores());
+    }
+
+    private List<PlayerScore> getPlayersScores() {
+        List<Answer> correctAnswers = questions.getCorrectAnswersList();
+        List<PlayerScore> scores = new ArrayList<>();
+
+        for (Map.Entry<Long, Player> entry : players.getPlayersMap().entrySet()) {
+            scores.add(new PlayerScore(
+                    entry.getKey(),
+                    entry.getValue().calculateScore(correctAnswers)
+            ));
         }
-        return true;
+        return scores;
     }
 
-    public Map<Long, Long> getPlayersPoints() {
-        Map<Long, Long> playerPoints = new LinkedHashMap<>();
+    public AnswerDistributionDto getAnswerDistribution() {
+        List<Answer> possibleAnswers = questions.current().getPossibleAnswers();
 
-        for (Map.Entry<Long, Player> entry : players.entrySet()) {
-            Long playerId = entry.getKey();
-            Player player = entry.getValue();
+        List<AnswerOptionGroup> answerOptionGroupList = possibleAnswers.stream()
+                .map(answer -> players.getAnswerGroup(currentQuestionIndex(), answer, getCurrentQuestion().isCorrectAnswer(answer)))
+                .toList();
 
-            long points = 0;
-            for (int i = 0; i < questions.size(); i++) {
-                Answer answer = player.getAnswer(i);
-                if (questions.get(i).isCorrectAnswer(answer)) {
-                    points++;
-                }
-            }
-            playerPoints.put(playerId, points);
-        }
-        return playerPoints;
+        AnswerOptionGroup noAnswerGroup = players.getAnswerGroup(currentQuestionIndex(), Answer.none(), getCurrentQuestion().isCorrectAnswer(Answer.none()));
+        Answer correctAnswer = getCurrentQuestion().getCorrectAnswer();
+        int optionsSize = getCurrentQuestion().getOptions().size();
+
+        return new AnswerDistributionDto(answerOptionGroupList, noAnswerGroup, correctAnswer, optionsSize);
     }
 
-    public Map<Answer, List<Long>> getPlayersGroupedByAnswer() {
-        Map<Answer, List<Long>> groups = new HashMap<>();
-
-        players.forEach((playerId, player) -> {
-            Answer answer = player.getAnswer(questions.getCurrentIndex());
-            groups.computeIfAbsent(answer, k -> new ArrayList<>()).add(playerId);
-        });
-
-        return groups;
-    }
-
-    public Map<Integer, List<Long>> getPlayersGroupedByPoints() {
-        return getPlayersPoints().entrySet().stream()
-                .collect(Collectors.groupingBy(
-                        e -> e.getValue().intValue(),   // points as key
-                        Collectors.mapping(Map.Entry::getKey, Collectors.toList())
-                ));
-    }
 }

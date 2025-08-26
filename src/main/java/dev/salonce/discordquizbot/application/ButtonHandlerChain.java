@@ -11,11 +11,11 @@ import java.util.Optional;
 public class ButtonHandlerChain {
     private final List<ButtonHandler> buttonHandlers;
 
-    public Optional<String> handle(ButtonInteraction buttonInteraction) {
+    public Optional<ResultStatus> handle(ButtonInteraction buttonInteraction) {
         for (ButtonHandler handler : buttonHandlers) {
-            Optional<String> optionalString = handler.handle(buttonInteraction);
+            Optional<ResultStatus> optionalResult = handler.handle(buttonInteraction);
             if (handler.handle(buttonInteraction).isPresent()) {
-                return optionalString;
+                return optionalResult;
             }
         }
         return Optional.empty();

@@ -1,6 +1,7 @@
 package dev.salonce.discordquizbot.infrastructure.buttonhandlers;
 
 import dev.salonce.discordquizbot.application.ButtonHandler;
+import dev.salonce.discordquizbot.application.ResultStatus;
 import dev.salonce.discordquizbot.infrastructure.dtos.ButtonInteraction;
 import dev.salonce.discordquizbot.application.MatchService;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +16,7 @@ public class StartNowButtonHandler implements ButtonHandler {
     private final MatchService matchService;
 
     @Override
-    public Optional<String> handle(ButtonInteraction buttonInteraction) {
+    public Optional<ResultStatus> handle(ButtonInteraction buttonInteraction) {
 
         if (!"startNow".equals(buttonInteraction.buttonId()))
             return Optional.empty();

@@ -1,6 +1,6 @@
 package dev.salonce.discordquizbot.application;
 
-import dev.salonce.discordquizbot.util.messageSender;
+import dev.salonce.discordquizbot.infrastructure.util.messageSender;
 import dev.salonce.discordquizbot.infrastructure.configs.QuizSetupConfig;
 import dev.salonce.discordquizbot.domain.Match;
 import dev.salonce.discordquizbot.infrastructure.messages.out.MatchCanceledMessage;
@@ -129,7 +129,7 @@ public class QuizFlowService {
     private Mono<Void> emitUntilAllAnsweredOrTimeout(Match match, Message message, int totalTime) {
         return Flux.interval(Duration.ofSeconds(1))
                 .take(totalTime)
-                .takeUntil(tick -> match.everyoneAnswered())
+                .takeUntil(tick -> match.everyoneAnsweredCurrentQuestion())
                 .flatMap(tick -> {
                     int timeLeft = totalTime - (tick.intValue() + 1);
                     return messageSender.edit(message, questionMessage.editEmbedWithTime(match, timeLeft));
