@@ -25,20 +25,36 @@ public class RawQuestionStore {
         return new ArrayList<>(rawQuestions);
     }
 
-    public List<RawQuestion> getRawQuestions(Set<String> tags){
-        Set<RawQuestion> rawQuestions = new HashSet<>();
-        for (RawQuestion rawQuestion : this.rawQuestions){
-            for (String tag : tags){
-                if (rawQuestion.tags() == null) {
-                    log.debug("Missing or null tags for question: ID: {}, question: {}", rawQuestion.id(), rawQuestion.question());
-                    break;
-                }
-                if (rawQuestion.tags().contains(tag)) {
-                    rawQuestions.add(rawQuestion);
-                    break;
-                }
-            }
-        }
-        return new ArrayList<>(rawQuestions);
+    public List<RawQuestion> getRawQuestions(Set<String> tags) {
+        return this.rawQuestions.stream()
+                .filter(rawQuestion -> {
+                    Set<String> questionTags = rawQuestion.tags();
+                    if (questionTags == null) {
+                        log.debug("Missing or null tags for question: ID: {}, question: {}", rawQuestion.id(), rawQuestion.question());
+                        return false;
+                    }
+                    // Keep this question if it shares at least one tag
+                    return !Collections.disjoint(questionTags, tags);
+                })
+                .distinct()
+                .toList();
     }
+
+
+//    public List<RawQuestion> getRawQuestions(Set<String> tags){
+//        Set<RawQuestion> rawQuestions = new HashSet<>();
+//        for (RawQuestion rawQuestion : this.rawQuestions){
+//            for (String tag : tags){
+//                if (rawQuestion.tags() == null) {
+//                    log.debug("Missing or null tags for question: ID: {}, question: {}", rawQuestion.id(), rawQuestion.question());
+//                    break;
+//                }
+//                if (rawQuestion.tags().contains(tag)) {
+//                    rawQuestions.add(rawQuestion);
+//                    break;
+//                }
+//            }
+//        }
+//        return new ArrayList<>(rawQuestions);
+//    }
 }
