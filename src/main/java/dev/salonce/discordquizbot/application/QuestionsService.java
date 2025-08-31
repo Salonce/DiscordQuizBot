@@ -44,7 +44,7 @@ public class QuestionsService {
 
 
     public Questions generateQuestions(String tag, int difficulty){
-        int NoQuestions = quizSetupConfig.getNoOfQuestions();
+        int NoQuestions = quizSetupConfig.getQuestionsCount();
         List<Question> list = new ArrayList<>();
         if (difficulty == 1)
             list.addAll(generateExactDifficultyQuestions(tag, difficulty, NoQuestions));

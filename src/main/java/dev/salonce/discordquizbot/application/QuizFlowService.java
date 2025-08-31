@@ -42,7 +42,7 @@ public class QuizFlowService {
     }
 
     private Mono<Message> runJoiningPhase(MessageChannel messageChannel, Match match) {
-        int joinTimeout = quizSetupConfig.getTimeToJoinQuiz();
+        int joinTimeout = quizSetupConfig.getJoinTimeoutSeconds();
 
         return Mono.just(startingMessage.createSpec(match, joinTimeout))
             .flatMap(spec ->
@@ -61,7 +61,7 @@ public class QuizFlowService {
     }
 
    private Mono<Message> runCountdownPhase(Message message, Match match){
-        int totalTimeToStart = quizSetupConfig.getTimeToStartMatch();
+        int totalTimeToStart = quizSetupConfig.getMatchStartDelaySeconds();
         match.startCountdownPhase();
         return Flux.interval(Duration.ofSeconds(1))
             .take(totalTimeToStart + 1)
@@ -108,8 +108,8 @@ public class QuizFlowService {
     }
 
     private Mono<Void> runQuestionFlow(Match match, MessageChannel channel) {
-        int totalTime = quizSetupConfig.getTimeToPickAnswer();
-        int timeBetweenQuestions = quizSetupConfig.getTimeForNewQuestionToAppear();
+        int totalTime = quizSetupConfig.getAnswerTimeoutSeconds();
+        int timeBetweenQuestions = quizSetupConfig.getNextQuestionDelaySeconds();
 
         return Mono.just(questionMessage.createEmbed(match, totalTime))
                 .flatMap(channel::createMessage)
