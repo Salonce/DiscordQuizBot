@@ -17,11 +17,11 @@ import java.util.*;
 public class QuestionsService {
 
     private final QuizSetupConfig quizSetupConfig;
-    private final RawQuestionsService rawQuestionsService;
+    private final CategoriesService categoriesService;
     private final Random rand = new Random();
 
     public boolean doesQuestionSetExist(String topic, int level){
-        return rawQuestionsService.doesQuestionSetExist(topic, level);
+        return categoriesService.doesCategoryExist(topic, level);
     }
 
     private Question create(RawQuestion rawQuestion) {
@@ -60,7 +60,7 @@ public class QuestionsService {
     }
 
     private List<Question> generateExactDifficultyQuestions(String tag, int difficulty, int NoQuestions){
-        List<RawQuestion> rawQuestions = rawQuestionsService.getRawQuestionList(tag, difficulty);
+        List<RawQuestion> rawQuestions = categoriesService.getRawQuestionList(tag, difficulty);
         List<Question> questions = new ArrayList<>();
         if (rawQuestions.size() < NoQuestions)
             log.warn("Not enough questions in category {}.", tag);
@@ -75,7 +75,7 @@ public class QuestionsService {
     private List<Question> generateLowerDifficultyQuestions(String tag, int difficulty, int NoQuestions){
         List<RawQuestion> rawQuestions = new ArrayList<>();
         for (int i = 1; i < difficulty; i++){
-            rawQuestions.addAll(rawQuestionsService.getRawQuestionList(tag, i));
+            rawQuestions.addAll(categoriesService.getRawQuestionList(tag, i));
         }
         List<Question> questions = new ArrayList<>();
         if (rawQuestions.size() < NoQuestions)

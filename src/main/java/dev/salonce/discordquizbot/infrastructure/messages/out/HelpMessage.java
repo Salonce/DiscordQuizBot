@@ -1,5 +1,6 @@
 package dev.salonce.discordquizbot.infrastructure.messages.out;
 
+import dev.salonce.discordquizbot.application.CategoriesService;
 import dev.salonce.discordquizbot.application.RawQuestionsService;
 import dev.salonce.discordquizbot.domain.Category;
 import dev.salonce.discordquizbot.domain.Categories;
@@ -13,13 +14,13 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class HelpMessage {
 
-    private final RawQuestionsService rawQuestionsService;
+    private final CategoriesService categoriesService;
 
     public EmbedCreateSpec createEmbed() {
-        if (rawQuestionsService.areNoTopicsAvailable()) {
+        if (categoriesService.areNoCategoriesAvailable()) {
             return createNoDataEmbed();
         }
-        return createQuizHelpEmbed(rawQuestionsService.getTopics());
+        return createQuizHelpEmbed(categoriesService.getCategories());
     }
 
     private EmbedCreateSpec createNoDataEmbed() {
