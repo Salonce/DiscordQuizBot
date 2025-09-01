@@ -32,14 +32,12 @@ public class StartQuiz implements MessageHandler {
         try{
             difficulty = Integer.parseInt(message[message.length-1]);
         } catch (NumberFormatException e) {
-            System.out.println("wrong int");
             return true; // end the chain - wrong integer, perhaps send a message that it is wrong
         }
 
         StringBuilder sb = new StringBuilder();
         for (int i = 2; i < message.length - 1; i++) {
             sb.append(message[i]);
-            System.out.println(message[i]);
             if (i != message.length - 2)
                 sb.append(" ");
         }

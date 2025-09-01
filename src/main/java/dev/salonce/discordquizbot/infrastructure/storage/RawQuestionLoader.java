@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import dev.salonce.discordquizbot.infrastructure.dtos.RawQuestion;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.stereotype.Component;
@@ -13,6 +14,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Getter
 @Component
 public class RawQuestionLoader {
@@ -32,25 +34,25 @@ public class RawQuestionLoader {
                     resolver.getResources("classpath*:sample/data/**/*.json");
 
             String sourcePath = privateResources.length > 0 ? "private/data" : "sample/data";
-            System.out.println("📂 Loading questions from: " + sourcePath);
+            log.info("📂 Quiz questions source: {}", sourcePath);
 
             for (Resource resource : resources) {
                 String path = resource.getURI().toString();
-                System.out.println("📂 Found file: " + path);
+                //log.info("📂 Found file: {}", path);
 
                 try (InputStream is = resource.getInputStream()) {
                     CollectionType listType = objectMapper.getTypeFactory()
                             .constructCollectionType(List.class, RawQuestion.class);
                     List<RawQuestion> loaded = objectMapper.readValue(is, listType);
-                    System.out.println("Loaded " + loaded.size() + " from file " + path);
+                    //log.info("Loaded {} questions from file {}", loaded.size(), path);
                     rawQuestions.addAll(loaded);
                 } catch (IOException e) {
-                    System.err.println("❌ Failed to load file: " + path + " → " + e.getMessage());
+                    log.warn("❌ Failed to load file: {} → {}", path, e.getMessage());
                 }
             }
-            System.out.println("✅ Total questions loaded: " + rawQuestions.size());
+            log.info("✅ Total questions loaded: {}", rawQuestions.size());
         } catch (IOException e) {
-            System.err.println("❌ Error scanning for JSON files: " + e.getMessage());
+            log.warn("❌ Error scanning for JSON files: {}", e.getMessage());
         }
         return rawQuestions;
     }

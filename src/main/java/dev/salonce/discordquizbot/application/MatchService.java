@@ -21,7 +21,7 @@ public class MatchService {
     public Match makeMatch(String topic, int difficulty, Long ownerId){
         Questions questions = questionsService.generateQuestions(topic, difficulty);
         String title  = topic.substring(0, 1).toUpperCase() + topic.substring(1);
-        Inactivity inactivity = new Inactivity(config.getMaxInactivity());
+        Inactivity inactivity = new Inactivity(config.getMaxInactivityCount());
         return new Match(questions, title, difficulty, ownerId, inactivity);
     }
 
