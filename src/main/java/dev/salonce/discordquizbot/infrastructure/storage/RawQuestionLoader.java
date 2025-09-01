@@ -47,12 +47,12 @@ public class RawQuestionLoader {
                     //log.info("Loaded {} questions from file {}", loaded.size(), path);
                     rawQuestions.addAll(loaded);
                 } catch (IOException e) {
-                    log.debug("❌ Failed to load file: {} → {}", path, e.getMessage());
+                    log.warn("❌ Failed to load file: {} → {}", path, e.getMessage());
                 }
             }
             log.info("✅ Total questions loaded: {}", rawQuestions.size());
         } catch (IOException e) {
-            log.debug("❌ Error scanning for JSON files: {}", e.getMessage());
+            log.warn("❌ Error scanning for JSON files: {}", e.getMessage());
         }
         return rawQuestions;
     }

@@ -27,7 +27,7 @@ public class RawQuestionStore {
             .filter(rawQuestion -> {
                 Set<String> rawQuestionTags = rawQuestion.tags();
                 if (rawQuestionTags == null) {
-                    log.debug("Missing or null tags for question: ID: {}, question: {}", rawQuestion.id(), rawQuestion.question());
+                    log.warn("Missing or null tags for question: ID: {}, question: {}", rawQuestion.id(), rawQuestion.question());
                     return false;
                 }
                 return !Collections.disjoint(rawQuestionTags, topicTags);

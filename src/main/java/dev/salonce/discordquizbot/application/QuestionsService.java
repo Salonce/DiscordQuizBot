@@ -63,7 +63,7 @@ public class QuestionsService {
         List<RawQuestion> rawQuestions = rawQuestionsService.getRawQuestionList(tag, difficulty);
         List<Question> questions = new ArrayList<>();
         if (rawQuestions.size() < NoQuestions)
-            log.debug("Not enough questions in category {}.", tag);
+            log.warn("Not enough questions in category {}.", tag);
         for(int i = 0; i < NoQuestions; i++){
             int next = rand.nextInt(rawQuestions.size());
             questions.add(create(rawQuestions.get(next)));
@@ -79,7 +79,7 @@ public class QuestionsService {
         }
         List<Question> questions = new ArrayList<>();
         if (rawQuestions.size() < NoQuestions)
-            log.debug("Not enough questions in category {}.", tag);
+            log.warn("Not enough questions in category {}.", tag);
         for(int i = 0; i < NoQuestions; i++){
             int next = rand.nextInt(rawQuestions.size());
             questions.add(create(rawQuestions.get(next)));
