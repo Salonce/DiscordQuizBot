@@ -8,11 +8,14 @@ import dev.salonce.discordquizbot.infrastructure.dtos.RawQuestion;
 import jakarta.annotation.PostConstruct;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class RawQuestionsService {
@@ -28,7 +31,7 @@ public class RawQuestionsService {
         for (Map.Entry<String, Set<String>> entry : topicsConfig.getAvailableTopics().entrySet()){
             String topicName = entry.getKey();
             Set<String> tagsSet = entry.getValue();
-            List<RawQuestion> rawTopicQuestions = rawQuestionStore.getRawQuestions(tagsSet);
+            List<RawQuestion> rawTopicQuestions = getRawQuestionsForTags(tagsSet);
             List<DifficultyLevel> difficultyLevels = prepareDifficultyLevels(rawTopicQuestions);
             Topic topic = new Topic(topicName, difficultyLevels);
             topicsMap.put(topicName, topic);
@@ -79,5 +82,19 @@ public class RawQuestionsService {
             difficulties.add(new DifficultyLevel(prepared));
         }
         return difficulties;
+    }
+
+    private List<RawQuestion> getRawQuestionsForTags(Set<String> topicTags) {
+        return rawQuestionStore.getRawQuestions().stream()
+                .filter(rawQuestion -> {
+                    Set<String> rawQuestionTags = rawQuestion.tags();
+                    if (rawQuestionTags == null) {
+                        log.warn("Missing or null tags for question: ID: {}, question: {}", rawQuestion.id(), rawQuestion.question());
+                        return false;
+                    }
+                    return !Collections.disjoint(rawQuestionTags, topicTags);
+                })
+                .distinct()
+                .collect(Collectors.toList());
     }
 }
