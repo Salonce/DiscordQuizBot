@@ -2,6 +2,7 @@ package dev.salonce.discordquizbot.infrastructure.messages.out;
 
 import dev.salonce.discordquizbot.application.RawQuestionsService;
 import dev.salonce.discordquizbot.domain.Topic;
+import dev.salonce.discordquizbot.domain.Topics;
 import discord4j.core.object.entity.Message;
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.spec.EmbedCreateSpec;
@@ -20,9 +21,7 @@ public class HelpMessage {
     private final RawQuestionsService rawQuestionsService;
 
     public EmbedCreateSpec createEmbed() {
-        Map<String, Topic> topics = rawQuestionsService.getTopicsMap();
-
-        if (topics.isEmpty()) {
+        if (rawQuestionsService.areNoTopicsAvailable()) {
             return createNoDataEmbed();
         }
 
@@ -36,7 +35,7 @@ public class HelpMessage {
                 .build();
     }
 
-    private EmbedCreateSpec createQuizHelpEmbed(Map<String, Topic> topics) {
+    private EmbedCreateSpec createQuizHelpEmbed(Topics topics) {
         String examples = createExamples(topics);
         String categories = createCategoriesList(topics);
 
@@ -48,19 +47,18 @@ public class HelpMessage {
                 .build();
     }
 
-    private String createExamples(Map<String, Topic> topics) {
-        Iterator<Topic> iterator = topics.values().iterator();
+    private String createExamples(Topics topics) {
         StringBuilder examples = new StringBuilder();
 
-        if (iterator.hasNext()) {
-            Topic topic1 = iterator.next();
+        //if (iterator.hasNext()) {
+            Topic topic1 = topics.getFirstTopic();
             examples.append(createExampleText(topic1.getName(), 1));
-        }
+        //}
 
-        if (iterator.hasNext()) {
-            Topic topic2 = iterator.next();
+        //if (iterator.hasNext()) {
+            Topic topic2 = topics.getSecondTopic();
             examples.append(createExampleText(topic2.getName(), 2));
-        }
+        //}
 
         return examples.toString();
     }
@@ -70,8 +68,8 @@ public class HelpMessage {
                 ", type: **qq quiz " + topicName + " " + difficulty + "**\n";
     }
 
-    private String createCategoriesList(Map<String, Topic> topics) {
-        return topics.entrySet().stream()
+    private String createCategoriesList(Topics topics) {
+        return topics.getAsMap().entrySet().stream()
                 .sorted(Map.Entry.comparingByKey())
                 .map(this::formatCategoryEntry)
                 .collect(Collectors.joining("\n"));

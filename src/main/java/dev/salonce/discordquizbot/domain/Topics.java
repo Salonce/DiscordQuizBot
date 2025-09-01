@@ -2,14 +2,36 @@ package dev.salonce.discordquizbot.domain;
 
 import dev.salonce.discordquizbot.infrastructure.dtos.RawQuestion;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Topics {
 
     private final Map<String, Topic> topicsMap = new HashMap<>();
+
+    public Map<String, Topic> getAsMap(){
+        return topicsMap;
+    }
+
+    public Topic getFirstTopic(){
+        Iterator<Topic> iterator = topicsMap.values().iterator();
+
+        if (iterator.hasNext()) {
+            return iterator.next();
+        }
+        else
+            return null;
+    }
+
+    public Topic getSecondTopic(){
+        Iterator<Topic> iterator = topicsMap.values().iterator();
+
+        if (iterator.hasNext()) {
+            iterator.next();
+            if (iterator.hasNext())
+                return iterator.next();
+        }
+        return null;
+    }
 
     public void addTopic(String topicName, Topic topic){
         topicsMap.put(topicName, topic);
@@ -21,6 +43,10 @@ public class Topics {
         if (!topicsMap.get(topic).difficultyLevelExists(level))
             return false;
         return true;
+    }
+
+    public boolean areNone(){
+        return topicsMap.isEmpty();
     }
 
     public List<RawQuestion> getRawQuestionsForTopicDifficultyLevel(String topic, int level){
