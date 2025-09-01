@@ -1,17 +1,12 @@
 package dev.salonce.discordquizbot.infrastructure.messages.out;
 
 import dev.salonce.discordquizbot.application.RawQuestionsService;
-import dev.salonce.discordquizbot.domain.Topic;
-import dev.salonce.discordquizbot.domain.Topics;
-import discord4j.core.object.entity.Message;
-import discord4j.core.object.entity.channel.MessageChannel;
+import dev.salonce.discordquizbot.domain.Category;
+import dev.salonce.discordquizbot.domain.Categories;
 import discord4j.core.spec.EmbedCreateSpec;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import reactor.core.publisher.Mono;
 
-import java.util.Iterator;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @Component
@@ -34,7 +29,7 @@ public class HelpMessage {
                 .build();
     }
 
-    private EmbedCreateSpec createQuizHelpEmbed(Topics topics) {
+    private EmbedCreateSpec createQuizHelpEmbed(Categories topics) {
         String examples = createExamples(topics);
         String categories = createCategoriesList(topics);
 
@@ -46,17 +41,17 @@ public class HelpMessage {
                 .build();
     }
 
-    private String createExamples(Topics topics) {
+    private String createExamples(Categories categories) {
         StringBuilder examples = new StringBuilder();
 
         //if (iterator.hasNext()) {
-            Topic topic1 = topics.getFirstTopic();
-            examples.append(createExampleText(topic1.getName(), 1));
+            Category category1 = categories.getFirstTopic();
+            examples.append(createExampleText(category1.getName(), 1));
         //}
 
         //if (iterator.hasNext()) {
-            Topic topic2 = topics.getSecondTopic();
-            examples.append(createExampleText(topic2.getName(), 2));
+            Category category2 = categories.getSecondTopic();
+            examples.append(createExampleText(category2.getName(), 2));
         //}
 
         return examples.toString();
@@ -67,9 +62,9 @@ public class HelpMessage {
                 ", type: **qq quiz " + topicName + " " + difficulty + "**\n";
     }
 
-    private String createCategoriesList(Topics topics) {
-        return topics.getSortedList().stream()
-                .map(topic -> topic.getName() + " (1-" + topic.getMaxDifficultyLevelAsInt() + ")")
+    private String createCategoriesList(Categories categories) {
+        return categories.getSortedList().stream()
+                .map(category -> category.getName() + " (1-" + category.getMaxDifficultyLevelAsInt() + ")")
                 .collect(Collectors.joining("\n"));
     }
 }

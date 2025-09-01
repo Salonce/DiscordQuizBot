@@ -1,14 +1,11 @@
 package dev.salonce.discordquizbot.application;
 
+import dev.salonce.discordquizbot.domain.Categories;
+import dev.salonce.discordquizbot.domain.Category;
 import dev.salonce.discordquizbot.domain.DifficultyLevel;
-import dev.salonce.discordquizbot.domain.Topic;
-import dev.salonce.discordquizbot.domain.Topics;
 import dev.salonce.discordquizbot.infrastructure.storage.RawQuestionStore;
 import dev.salonce.discordquizbot.infrastructure.configs.TopicsConfig;
 import dev.salonce.discordquizbot.infrastructure.dtos.RawQuestion;
-import jakarta.annotation.PostConstruct;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +17,7 @@ import java.util.stream.Collectors;
 public class RawQuestionsService {
 
     private final RawQuestionStore rawQuestionStore;
-    private final Topics topics = new Topics();
+    private final Categories categories = new Categories();
 
     public RawQuestionsService(TopicsConfig topicsConfig, RawQuestionStore rawQuestionStore){
         this.rawQuestionStore = rawQuestionStore;
@@ -30,25 +27,25 @@ public class RawQuestionsService {
             Set<String> tagsSet = entry.getValue();
             List<RawQuestion> rawTopicQuestions = getRawQuestionsForTags(tagsSet);
             List<DifficultyLevel> difficultyLevels = prepareDifficultyLevels(rawTopicQuestions);
-            Topic topic = new Topic(topicName, difficultyLevels);
-            topics.addTopic(topicName, topic);
+            Category category = new Category(topicName, difficultyLevels);
+            categories.addTopic(topicName, category);
         }
     }
 
-    public Topics getTopics() {
-        return topics;
+    public Categories getTopics() {
+        return categories;
     }
 
     public boolean areNoTopicsAvailable(){
-        return topics.areNone();
+        return categories.areNone();
     }
 
     public boolean doesQuestionSetExist(String topic, int level){
-        return topics.doesQuestionSetExist(topic, level);
+        return categories.doesQuestionSetExist(topic, level);
     }
 
     public List<RawQuestion> getRawQuestionList(String topic, int level){
-        return topics.getRawQuestionList(topic, level);
+        return categories.getRawQuestionList(topic, level);
     }
 
     public List<RawQuestion> removePrepareQuestionsForDifficultyLevel(List<RawQuestion> removableRawQuestions) {
