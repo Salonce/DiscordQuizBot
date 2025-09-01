@@ -35,12 +35,8 @@ public class RawQuestionsService {
         }
     }
 
-    public Topic getFirstTopic(){
-        return getFirstTopic();
-    }
-
-    public Topic getSecondTopic(){
-        return getSecondTopic();
+    public Topics getTopics() {
+        return topics;
     }
 
     public boolean areNoTopicsAvailable(){

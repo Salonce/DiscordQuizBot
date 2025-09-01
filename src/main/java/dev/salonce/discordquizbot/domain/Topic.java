@@ -20,4 +20,8 @@ public class Topic {
     public DifficultyLevel getDifficultyLevel(int level) {
         return difficulties.get(level - 1);
     }
+
+    public int getMaxDifficultyLevelAsInt(){
+        return difficulties.size();
+    }
 }

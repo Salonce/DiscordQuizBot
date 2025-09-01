@@ -3,6 +3,7 @@ package dev.salonce.discordquizbot.domain;
 import dev.salonce.discordquizbot.infrastructure.dtos.RawQuestion;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Topics {
 
@@ -10,6 +11,12 @@ public class Topics {
 
     public Map<String, Topic> getAsMap(){
         return topicsMap;
+    }
+
+    public List<Topic> getSortedList(){
+        return topicsMap.values().stream()
+                .sorted(Comparator.comparing(Topic::getName))
+                .toList();
     }
 
     public Topic getFirstTopic(){

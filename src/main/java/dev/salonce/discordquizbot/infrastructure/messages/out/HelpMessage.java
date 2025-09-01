@@ -24,8 +24,7 @@ public class HelpMessage {
         if (rawQuestionsService.areNoTopicsAvailable()) {
             return createNoDataEmbed();
         }
-
-        return createQuizHelpEmbed(topics);
+        return createQuizHelpEmbed(rawQuestionsService.getTopics());
     }
 
     private EmbedCreateSpec createNoDataEmbed() {
@@ -69,16 +68,8 @@ public class HelpMessage {
     }
 
     private String createCategoriesList(Topics topics) {
-        return topics.getAsMap().entrySet().stream()
-                .sorted(Map.Entry.comparingByKey())
-                .map(this::formatCategoryEntry)
+        return topics.getSortedList().stream()
+                .map(topic -> topic.getName() + " (1-" + topic.getMaxDifficultyLevelAsInt() + ")")
                 .collect(Collectors.joining("\n"));
     }
-
-    private String formatCategoryEntry(Map.Entry<String, Topic> entry) {
-        String topic = entry.getKey();
-        int maxDifficulty = entry.getValue().getDifficulties().size();
-        return topic + " (1-" + maxDifficulty + ")";
-    }
-
 }
