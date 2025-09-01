@@ -34,16 +34,16 @@ public class DiscordBotBootstrap {
                 .flatMap(message ->
                         Mono.justOrEmpty(MessageMapper.toDiscordMessage(message))
                                 .doOnNext(messageHandlerChain::handle)
-                                .onErrorResume(ClientException.class, ex -> {
-                                    if (ex.getStatus().code() == 403) {
-                                        log.error("❌ Bot missing permissions in channel {} for message {}",
+                                .onErrorResume(ex -> {
+                                    if (ex instanceof ClientException ce && ce.getStatus().code() == 403) {
+                                        log.error("❌ Missing permissions in channel {} for message {}",
                                                 message.getChannelId().asString(), message.getId().asString());
                                     } else {
-                                        log.error("⚠️ Client exception processing message {}", message.getId().asString(), ex);
+                                        log.error("💥 Unexpected error while processing message {} in channel {}",
+                                                message.getId().asString(), message.getChannelId().asString(), ex);
                                     }
                                     return Mono.empty();
                                 })
-                                .doOnError(error -> log.error("Failed to handle message {}", message.getId().asString(), error))
                 )
                 .subscribe();
     }
@@ -52,10 +52,16 @@ public class DiscordBotBootstrap {
         gateway.on(ButtonInteractionEvent.class, event ->
                 Mono.fromCallable(() -> ButtonMapper.toButtonInteractionData(event))
                         .flatMap(data -> Mono.justOrEmpty(buttonHandlerChain.handle(data)))
-                        .flatMap(resultStatus -> event.reply(resultStatus.getMessage()).withEphemeral(true))
+                        .flatMap(resultStatus ->event.reply(resultStatus.getMessage()).withEphemeral(true))
                         .onErrorResume(ex -> {
-                            log.error("Failed to handle button interaction", ex);
-                            return Mono.empty();
+                            if (ex instanceof ClientException ce && ce.getStatus().code() == 403) {
+                                log.error("❌ Missing permissions to reply to button interaction {} in channel {}",
+                                        event.getCustomId(), event.getInteraction().getChannelId().asString());
+                            } else {
+                                log.error("💥 Unexpected error while handling button interaction {} in channel {}",
+                                        event.getCustomId(), event.getInteraction().getChannelId().asString(), ex);
+                            }
+                            return Mono.empty(); // swallow error, keep bot alive
                         })
         ).subscribe();
     }
