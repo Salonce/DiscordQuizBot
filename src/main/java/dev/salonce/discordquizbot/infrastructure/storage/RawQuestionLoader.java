@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-@Getter
 @Component
 public class RawQuestionLoader {
 
@@ -56,4 +55,5 @@ public class RawQuestionLoader {
         }
         return rawQuestions;
     }
+
 }
