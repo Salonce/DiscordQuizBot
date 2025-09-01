@@ -61,7 +61,7 @@ public class DiscordBotBootstrap {
                                 log.error("💥 Unexpected error while handling button interaction {} in channel {}",
                                         event.getCustomId(), event.getInteraction().getChannelId().asString(), ex);
                             }
-                            return Mono.empty(); // swallow error, keep bot alive
+                            return Mono.empty();
                         })
         ).subscribe();
     }
