@@ -14,21 +14,19 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 import java.util.stream.Collectors;
 
-
 @Slf4j
 @Service
-@RequiredArgsConstructor
 public class RawQuestionsService {
 
-    private final TopicsConfig topicsConfig;
     private final RawQuestionStore rawQuestionStore;
 
     @Getter
     private final Map<String, Topic> topicsMap = new HashMap<>();
 
-    @PostConstruct
-    public void init(){
-        for (Map.Entry<String, Set<String>> entry : topicsConfig.getAvailableTopics().entrySet()){
+    public RawQuestionsService(TopicsConfig topicsConfig, RawQuestionStore rawQuestionStore){
+        this.rawQuestionStore = rawQuestionStore;
+
+        for (Map.Entry<String, Set<String>> entry : topicsConfig.getAvailableTopics().entrySet()) {
             String topicName = entry.getKey();
             Set<String> tagsSet = entry.getValue();
             List<RawQuestion> rawTopicQuestions = getRawQuestionsForTags(tagsSet);
@@ -37,6 +35,7 @@ public class RawQuestionsService {
             topicsMap.put(topicName, topic);
         }
     }
+
 
     public boolean doesQuestionSetExist(String topic, int level){
         if (!topicsMap.containsKey(topic))
