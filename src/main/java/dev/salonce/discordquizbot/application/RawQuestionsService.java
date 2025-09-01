@@ -3,8 +3,8 @@ package dev.salonce.discordquizbot.application;
 import dev.salonce.discordquizbot.domain.Categories;
 import dev.salonce.discordquizbot.domain.Category;
 import dev.salonce.discordquizbot.domain.DifficultyLevel;
+import dev.salonce.discordquizbot.infrastructure.configs.CategoriesConfig;
 import dev.salonce.discordquizbot.infrastructure.storage.RawQuestionStore;
-import dev.salonce.discordquizbot.infrastructure.configs.TopicsConfig;
 import dev.salonce.discordquizbot.infrastructure.dtos.RawQuestion;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +19,20 @@ import java.util.stream.Collectors;
 public class RawQuestionsService {
 
     private final RawQuestionStore rawQuestionStore;
+    private final CategoriesConfig categoriesConfig;
+
+    public Categories createCategories(){
+        Categories categories = new Categories();
+        for (Map.Entry<String, Set<String>> entry : categoriesConfig.getAvailableTopics().entrySet()) {
+            String topicName = entry.getKey();
+            Set<String> tagsSet = entry.getValue();
+            List<RawQuestion> rawTopicQuestions = getRawQuestionsForTags(tagsSet);
+            List<DifficultyLevel> difficultyLevels = prepareDifficultyLevels(rawTopicQuestions);
+            Category category = new Category(topicName, difficultyLevels);
+            categories.addTopic(topicName, category);
+        }
+        return categories;
+    }
 
     private List<RawQuestion> removePrepareQuestionsForDifficultyLevel(List<RawQuestion> removableRawQuestions) {
         List<RawQuestion> preparedRawQuestions = new ArrayList<>();
@@ -37,7 +51,7 @@ public class RawQuestionsService {
         return preparedRawQuestions;
     }
 
-    public List<DifficultyLevel> prepareDifficultyLevels(List<RawQuestion> rawQuestions) {
+    private List<DifficultyLevel> prepareDifficultyLevels(List<RawQuestion> rawQuestions) {
         rawQuestions.sort(Comparator
                 .comparing(RawQuestion::difficulty, Comparator.nullsLast(Integer::compareTo))
                 .thenComparing(RawQuestion::id, Comparator.nullsLast(Long::compareTo)));
@@ -52,7 +66,7 @@ public class RawQuestionsService {
         return difficulties;
     }
 
-    public List<RawQuestion> getRawQuestionsForTags(Set<String> topicTags) {
+    private List<RawQuestion> getRawQuestionsForTags(Set<String> topicTags) {
         return rawQuestionStore.getRawQuestions().stream()
                 .filter(rawQuestion -> {
                     Set<String> rawQuestionTags = rawQuestion.tags();
