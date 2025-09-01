@@ -1,16 +1,10 @@
 package dev.salonce.discordquizbot.application;
 
 import dev.salonce.discordquizbot.domain.Categories;
-import dev.salonce.discordquizbot.domain.Category;
-import dev.salonce.discordquizbot.domain.DifficultyLevel;
-import dev.salonce.discordquizbot.infrastructure.configs.CategoriesConfig;
 import dev.salonce.discordquizbot.infrastructure.dtos.RawQuestion;
-import dev.salonce.discordquizbot.infrastructure.storage.RawQuestionStore;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 @Service
 public class CategoriesService {
@@ -29,12 +23,12 @@ public class CategoriesService {
         return categories.areNone();
     }
 
-    public boolean doesCategoryExist(String topic, int level){
-        return categories.doesQuestionSetExist(topic, level);
+    public boolean doesCategoryExist(String category, int level){
+        return categories.doesQuestionSetExist(category, level);
     }
 
-    public List<RawQuestion> getRawQuestionList(String topic, int level){
-        return categories.getRawQuestionList(topic, level);
+    public List<RawQuestion> getRawQuestionList(String category, int level){
+        return categories.getRawQuestionList(category, level);
     }
 
 

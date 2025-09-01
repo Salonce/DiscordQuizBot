@@ -1,7 +1,6 @@
 package dev.salonce.discordquizbot.infrastructure.messages.out;
 
 import dev.salonce.discordquizbot.application.CategoriesService;
-import dev.salonce.discordquizbot.application.RawQuestionsService;
 import dev.salonce.discordquizbot.domain.Category;
 import dev.salonce.discordquizbot.domain.Categories;
 import discord4j.core.spec.EmbedCreateSpec;
