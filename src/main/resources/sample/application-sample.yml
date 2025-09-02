@@ -7,7 +7,7 @@ discord:
     token: ${DISCORD_BOT_QUIZZY}
 
 questions:
-  available-topics:
+  available-categories:
     "[programming]": ["programming"]
     "[philosophy]": ["philosophy"]
 

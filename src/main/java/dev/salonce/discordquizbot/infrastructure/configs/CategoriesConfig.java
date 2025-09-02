@@ -14,14 +14,14 @@ import java.util.*;
 @Getter
 @ConfigurationProperties(prefix = "questions")
 @Component
-public class TopicsConfig {
+public class CategoriesConfig {
 
-    private Map<String, Set<String>> availableTopics = new HashMap<>();
-    private static final Logger log = LoggerFactory.getLogger(TopicsConfig.class);
+    private Map<String, Set<String>> availableCategories = new HashMap<>();
+    private static final Logger log = LoggerFactory.getLogger(CategoriesConfig.class);
 
     @PostConstruct
     private void postConstruct() {
-        String topics = String.join(", ", availableTopics.keySet());
-        log.info("Topics available: {}", topics);
+        String categories = String.join(", ", availableCategories.keySet());
+        log.info("Categories available: {}", categories);
     }
 }

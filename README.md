@@ -3,7 +3,7 @@
 
 
 
-A Discord quiz bot built in **Java** using **Discord4J** and **reactive streams**, designed primarily for **learning** through **A, B, C, D multiple-choice questions** — you're free to add any kind of topics you want.
+A Discord quiz bot built in **Java** using **Discord4J** and **reactive streams**, designed primarily for **learning** through **A, B, C, D multiple-choice questions** — you're free to add any kind of categories you want.
 
 ---
 
@@ -111,7 +111,7 @@ All questions are to be put in **JSON** format as specified earlier:
 ### 7. Configure your Question sets
 ```
 questions:
-  available-topics:
+  available-categories:
     "[programming]": ["programming"]
     "[philosophy]": ["philosophy"]
 ```

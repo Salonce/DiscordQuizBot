@@ -41,16 +41,16 @@ public class StartQuiz implements MessageHandler {
             if (i != message.length - 2)
                 sb.append(" ");
         }
-        String topic = sb.toString();
-        if (!questionsService.doesQuestionSetExist(topic, difficulty))
+        String category = sb.toString();
+        if (!questionsService.doesQuestionSetExist(category, difficulty))
             return true;
 
         Long userId = discordMessage.userId();
         MessageChannel messageChannel = discordMessage.channel();
         messageChannel.getId();
 
-        log.info("User {} started a match: {} {}", userId, topic, difficulty);
-        quizFlowService.startMatch(messageChannel, topic, difficulty, userId);
+        log.info("User {} started a match: {} {}", userId, category, difficulty);
+        quizFlowService.startMatch(messageChannel, category, difficulty, userId);
         return true;
     }
 }

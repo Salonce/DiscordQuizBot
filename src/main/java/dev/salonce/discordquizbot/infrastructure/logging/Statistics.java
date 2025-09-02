@@ -24,7 +24,7 @@ public class Statistics {
     @AfterReturning(pointcut = "execution(* *..MatchService.makeMatch(..))", returning = "match")
     public void logMatchCreation(JoinPoint joinPoint, Match match) {
         matchesStarted++;
-        log.info("Match nr {} started by user <{}> | Topic: '{}' | Difficulty: {}",
+        log.info("Match nr {} started by user <{}> | Category: '{}' | Difficulty: {}",
                 matchesStarted,
                 match.getOwnerId(),
                 match.getTitle(),

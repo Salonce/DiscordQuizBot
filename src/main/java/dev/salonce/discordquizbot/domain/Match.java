@@ -6,10 +6,6 @@ import lombok.Getter;
 
 import java.util.*;
 
-//modifications to make:
-//value object title for topic diff
-//batch answers sending
-
 @Getter
 public class Match{
     private final String title;

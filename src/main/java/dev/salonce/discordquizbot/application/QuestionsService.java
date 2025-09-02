@@ -17,11 +17,11 @@ import java.util.*;
 public class QuestionsService {
 
     private final QuizSetupConfig quizSetupConfig;
-    private final RawQuestionsService rawQuestionsService;
+    private final CategoriesService categoriesService;
     private final Random rand = new Random();
 
-    public boolean doesQuestionSetExist(String topic, int level){
-        return rawQuestionsService.doesQuestionSetExist(topic, level);
+    public boolean doesQuestionSetExist(String category, int level){
+        return categoriesService.doesCategoryExist(category, level);
     }
 
     private Question create(RawQuestion rawQuestion) {
@@ -45,25 +45,25 @@ public class QuestionsService {
     }
 
 
-    public Questions generateQuestions(String tag, int difficulty){
+    public Questions generateQuestions(String category, int difficulty){
         int NoQuestions = quizSetupConfig.getQuestionsCount();
         List<Question> list = new ArrayList<>();
         if (difficulty == 1)
-            list.addAll(generateExactDifficultyQuestions(tag, difficulty, NoQuestions));
+            list.addAll(generateExactDifficultyQuestions(category, difficulty, NoQuestions));
         else{
             int NoQuestionsEasier = NoQuestions/2;
             int NoQuestionsExact = NoQuestions - NoQuestionsEasier;
-            list.addAll(generateLowerDifficultyQuestions(tag, difficulty, NoQuestionsEasier));
-            list.addAll(generateExactDifficultyQuestions(tag, difficulty, NoQuestionsExact));
+            list.addAll(generateLowerDifficultyQuestions(category, difficulty, NoQuestionsEasier));
+            list.addAll(generateExactDifficultyQuestions(category, difficulty, NoQuestionsExact));
         }
         return new Questions(list);
     }
 
-    private List<Question> generateExactDifficultyQuestions(String tag, int difficulty, int NoQuestions){
-        List<RawQuestion> rawQuestions = rawQuestionsService.getRawQuestionList(tag, difficulty);
+    private List<Question> generateExactDifficultyQuestions(String category, int difficulty, int NoQuestions){
+        List<RawQuestion> rawQuestions = categoriesService.getRawQuestionList(category, difficulty);
         List<Question> questions = new ArrayList<>();
         if (rawQuestions.size() < NoQuestions)
-            log.warn("Not enough questions in category {}.", tag);
+            log.warn("Not enough questions in category {}.", category);
         for(int i = 0; i < NoQuestions; i++){
             int next = rand.nextInt(rawQuestions.size());
             questions.add(create(rawQuestions.get(next)));
@@ -72,14 +72,14 @@ public class QuestionsService {
         return questions;
     }
 
-    private List<Question> generateLowerDifficultyQuestions(String tag, int difficulty, int NoQuestions){
+    private List<Question> generateLowerDifficultyQuestions(String category, int difficulty, int NoQuestions){
         List<RawQuestion> rawQuestions = new ArrayList<>();
         for (int i = 1; i < difficulty; i++){
-            rawQuestions.addAll(rawQuestionsService.getRawQuestionList(tag, i));
+            rawQuestions.addAll(categoriesService.getRawQuestionList(category, i));
         }
         List<Question> questions = new ArrayList<>();
         if (rawQuestions.size() < NoQuestions)
-            log.warn("Not enough questions in category {}.", tag);
+            log.warn("Not enough questions in category {}.", category);
         for(int i = 0; i < NoQuestions; i++){
             int next = rand.nextInt(rawQuestions.size());
             questions.add(create(rawQuestions.get(next)));

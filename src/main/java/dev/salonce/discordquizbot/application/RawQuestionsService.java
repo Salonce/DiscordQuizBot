@@ -1,55 +1,40 @@
 package dev.salonce.discordquizbot.application;
 
+import dev.salonce.discordquizbot.domain.Categories;
+import dev.salonce.discordquizbot.domain.Category;
 import dev.salonce.discordquizbot.domain.DifficultyLevel;
-import dev.salonce.discordquizbot.domain.Topic;
+import dev.salonce.discordquizbot.infrastructure.configs.CategoriesConfig;
 import dev.salonce.discordquizbot.infrastructure.storage.RawQuestionStore;
-import dev.salonce.discordquizbot.infrastructure.configs.TopicsConfig;
 import dev.salonce.discordquizbot.infrastructure.dtos.RawQuestion;
-import jakarta.annotation.PostConstruct;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class RawQuestionsService {
 
-    private final TopicsConfig topicsConfig;
     private final RawQuestionStore rawQuestionStore;
+    private final CategoriesConfig categoriesConfig;
 
-    @Getter
-    private final Map<String, Topic> topicsMap = new HashMap<>();
-
-    @PostConstruct
-    public void init(){
-        for (Map.Entry<String, Set<String>> entry : topicsConfig.getAvailableTopics().entrySet()){
-            String topicName = entry.getKey();
+    public Categories createCategories(){
+        Categories categories = new Categories();
+        for (Map.Entry<String, Set<String>> entry : categoriesConfig.getAvailableCategories().entrySet()) {
+            String categoryName = entry.getKey();
             Set<String> tagsSet = entry.getValue();
-            List<RawQuestion> rawTopicQuestions = rawQuestionStore.getRawQuestions(tagsSet);
-            List<DifficultyLevel> difficultyLevels = prepareDifficultyLevels(rawTopicQuestions);
-            Topic topic = new Topic(topicName, difficultyLevels);
-            topicsMap.put(topicName, topic);
+            List<RawQuestion> categoryQuestions = getRawQuestionsByTags(tagsSet);
+            List<DifficultyLevel> difficultyLevels = prepareDifficultyLevels(categoryQuestions);
+            Category category = new Category(categoryName, difficultyLevels);
+            categories.addCategory(categoryName, category);
         }
+        return categories;
     }
 
-    public boolean doesQuestionSetExist(String topic, int level){
-        if (!topicsMap.containsKey(topic))
-            return false;
-        if (!topicsMap.get(topic).difficultyLevelExists(level))
-            return false;
-        return true;
-    }
-
-    public List<RawQuestion> getRawQuestionList(String topic, int level){
-        if (!doesQuestionSetExist(topic, level))
-            return null;
-        return new ArrayList<>(topicsMap.get(topic).getDifficultyLevel(level).rawQuestions());
-    }
-
-    public List<RawQuestion> removePrepareQuestionsForDifficultyLevel(List<RawQuestion> removableRawQuestions) {
+    private List<RawQuestion> removePrepareQuestionsForDifficultyLevel(List<RawQuestion> removableRawQuestions) {
         List<RawQuestion> preparedRawQuestions = new ArrayList<>();
         if (removableRawQuestions.size() < 65) {
             int size = removableRawQuestions.size();
@@ -79,5 +64,19 @@ public class RawQuestionsService {
             difficulties.add(new DifficultyLevel(prepared));
         }
         return difficulties;
+    }
+
+    private List<RawQuestion> getRawQuestionsByTags(Set<String> categoryTags) {
+        return rawQuestionStore.getRawQuestions().stream()
+                .filter(rawQuestion -> {
+                    Set<String> rawQuestionTags = rawQuestion.tags();
+                    if (rawQuestionTags == null) {
+                        log.warn("Missing or null tags for question: ID: {}, question: {}", rawQuestion.id(), rawQuestion.question());
+                        return false;
+                    }
+                    return !Collections.disjoint(rawQuestionTags, categoryTags);
+                })
+                .distinct()
+                .collect(Collectors.toList());
     }
 }
