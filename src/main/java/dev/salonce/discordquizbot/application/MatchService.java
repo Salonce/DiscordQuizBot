@@ -18,9 +18,9 @@ public class MatchService {
     private final QuestionsService questionsService;
     private final QuizSetupConfig config;
 
-    public Match makeMatch(String topic, int difficulty, Long ownerId){
-        Questions questions = questionsService.generateQuestions(topic, difficulty);
-        String title  = topic.substring(0, 1).toUpperCase() + topic.substring(1);
+    public Match makeMatch(String category, int difficulty, Long ownerId){
+        Questions questions = questionsService.generateQuestions(category, difficulty);
+        String title  = category.substring(0, 1).toUpperCase() + category.substring(1);
         Inactivity inactivity = new Inactivity(config.getMaxInactivityCount());
         return new Match(questions, title, difficulty, ownerId, inactivity);
     }

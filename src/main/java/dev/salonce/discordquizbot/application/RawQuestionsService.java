@@ -23,13 +23,13 @@ public class RawQuestionsService {
 
     public Categories createCategories(){
         Categories categories = new Categories();
-        for (Map.Entry<String, Set<String>> entry : categoriesConfig.getAvailableTopics().entrySet()) {
-            String topicName = entry.getKey();
+        for (Map.Entry<String, Set<String>> entry : categoriesConfig.getAvailableCategories().entrySet()) {
+            String categoryName = entry.getKey();
             Set<String> tagsSet = entry.getValue();
-            List<RawQuestion> rawTopicQuestions = getRawQuestionsForTags(tagsSet);
-            List<DifficultyLevel> difficultyLevels = prepareDifficultyLevels(rawTopicQuestions);
-            Category category = new Category(topicName, difficultyLevels);
-            categories.addTopic(topicName, category);
+            List<RawQuestion> categoryQuestions = getRawQuestionsByTags(tagsSet);
+            List<DifficultyLevel> difficultyLevels = prepareDifficultyLevels(categoryQuestions);
+            Category category = new Category(categoryName, difficultyLevels);
+            categories.addCategory(categoryName, category);
         }
         return categories;
     }
@@ -66,7 +66,7 @@ public class RawQuestionsService {
         return difficulties;
     }
 
-    private List<RawQuestion> getRawQuestionsForTags(Set<String> topicTags) {
+    private List<RawQuestion> getRawQuestionsByTags(Set<String> categoryTags) {
         return rawQuestionStore.getRawQuestions().stream()
                 .filter(rawQuestion -> {
                     Set<String> rawQuestionTags = rawQuestion.tags();
@@ -74,7 +74,7 @@ public class RawQuestionsService {
                         log.warn("Missing or null tags for question: ID: {}, question: {}", rawQuestion.id(), rawQuestion.question());
                         return false;
                     }
-                    return !Collections.disjoint(rawQuestionTags, topicTags);
+                    return !Collections.disjoint(rawQuestionTags, categoryTags);
                 })
                 .distinct()
                 .collect(Collectors.toList());

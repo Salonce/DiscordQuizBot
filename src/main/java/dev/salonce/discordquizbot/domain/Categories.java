@@ -8,17 +8,13 @@ public class Categories {
 
     private final Map<String, Category> categoriesMap = new HashMap<>();
 
-    public Map<String, Category> getAsMap(){
-        return categoriesMap;
-    }
-
     public List<Category> getSortedList(){
         return categoriesMap.values().stream()
                 .sorted(Comparator.comparing(Category::getName))
                 .toList();
     }
 
-    public Category getFirstTopic(){
+    public Category getFirstCategory(){
         Iterator<Category> iterator = categoriesMap.values().iterator();
 
         if (iterator.hasNext()) {
@@ -28,7 +24,7 @@ public class Categories {
             return null;
     }
 
-    public Category getSecondTopic(){
+    public Category getSecondCategory(){
         Iterator<Category> iterator = categoriesMap.values().iterator();
 
         if (iterator.hasNext()) {
@@ -39,14 +35,14 @@ public class Categories {
         return null;
     }
 
-    public void addTopic(String topicName, Category category){
-        categoriesMap.put(topicName, category);
+    public void addCategory(String categoryName, Category category){
+        categoriesMap.put(categoryName, category);
     }
 
-    public boolean doesQuestionSetExist(String topic, int level){
-        if (!categoriesMap.containsKey(topic))
+    public boolean doesQuestionSetExist(String category, int level){
+        if (!categoriesMap.containsKey(category))
             return false;
-        if (!categoriesMap.get(topic).difficultyLevelExists(level))
+        if (!categoriesMap.get(category).difficultyLevelExists(level))
             return false;
         return true;
     }
@@ -55,15 +51,9 @@ public class Categories {
         return categoriesMap.isEmpty();
     }
 
-    public List<RawQuestion> getRawQuestionsForTopicDifficultyLevel(String topic, int level){
-        if (!doesQuestionSetExist(topic, level))
+    public List<RawQuestion> getRawQuestionList(String category, int level){
+        if (!doesQuestionSetExist(category, level))
             return null;
-        return new ArrayList<>(categoriesMap.get(topic).getDifficultyLevel(level).rawQuestions());
-    }
-
-    public List<RawQuestion> getRawQuestionList(String topic, int level){
-        if (!doesQuestionSetExist(topic, level))
-            return null;
-        return new ArrayList<>(categoriesMap.get(topic).getDifficultyLevel(level).rawQuestions());
+        return new ArrayList<>(categoriesMap.get(category).getDifficultyLevel(level).rawQuestions());
     }
 }

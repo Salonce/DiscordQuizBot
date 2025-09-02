@@ -29,9 +29,9 @@ public class HelpMessage {
                 .build();
     }
 
-    private EmbedCreateSpec createQuizHelpEmbed(Categories topics) {
-        String examples = createExamples(topics);
-        String categories = createCategoriesList(topics);
+    private EmbedCreateSpec createQuizHelpEmbed(Categories categoriesNames) {
+        String examples = createExamples(categoriesNames);
+        String categories = createCategoriesList(categoriesNames);
 
         return EmbedCreateSpec.builder()
                 .addField("Basics", "Choose a category. Start at level 1. Each level adds 50 questions. Move up in levels when you can easily score 9-10/10.", false)
@@ -45,21 +45,21 @@ public class HelpMessage {
         StringBuilder examples = new StringBuilder();
 
         //if (iterator.hasNext()) {
-            Category category1 = categories.getFirstTopic();
+            Category category1 = categories.getFirstCategory();
             examples.append(createExampleText(category1.getName(), 1));
         //}
 
         //if (iterator.hasNext()) {
-            Category category2 = categories.getSecondTopic();
+            Category category2 = categories.getSecondCategory();
             examples.append(createExampleText(category2.getName(), 2));
         //}
 
         return examples.toString();
     }
 
-    private String createExampleText(String topicName, int difficulty) {
-        return "To start **" + topicName + "** quiz, at level " + difficulty +
-                ", type: **qq quiz " + topicName + " " + difficulty + "**\n";
+    private String createExampleText(String category, int difficulty) {
+        return "To start **" + category + "** quiz, at level " + difficulty +
+                ", type: **qq quiz " + category + " " + difficulty + "**\n";
     }
 
     private String createCategoriesList(Categories categories) {

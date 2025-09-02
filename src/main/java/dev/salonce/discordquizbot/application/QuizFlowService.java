@@ -29,11 +29,11 @@ public class QuizFlowService {
     private final messageSender messageSender;
 
 
-    public void startMatch(MessageChannel messageChannel, String topic, int difficulty, Long userId) {
+    public void startMatch(MessageChannel messageChannel, String category, int difficulty, Long userId) {
 
         if (matchService.matchExists(messageChannel.getId().asLong())) return;
 
-        Match match = matchService.makeMatch(topic, difficulty, userId);
+        Match match = matchService.makeMatch(category, difficulty, userId);
         matchService.put(messageChannel.getId().asLong(), match);
 
         Mono.firstWithSignal(runQuizFlow(messageChannel, match), runCheckIfAborted(messageChannel, match))
