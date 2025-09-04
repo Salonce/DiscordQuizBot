@@ -1,4 +1,4 @@
-package dev.salonce.discordquizbot.infrastructure.messages.out;
+package dev.salonce.discordquizbot.presentation.messages;
 import dev.salonce.discordquizbot.domain.Match;
 import dev.salonce.discordquizbot.application.MatchService;
 import dev.salonce.discordquizbot.domain.RankGroup;
@@ -9,8 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static dev.salonce.discordquizbot.infrastructure.util.DiscordFormatter.formatBoldMentions;
-import static dev.salonce.discordquizbot.infrastructure.util.DiscordFormatter.formatMentions;
+import static dev.salonce.discordquizbot.presentation.DiscordFormatter.formatBoldMentions;
 
 @RequiredArgsConstructor
 @Component

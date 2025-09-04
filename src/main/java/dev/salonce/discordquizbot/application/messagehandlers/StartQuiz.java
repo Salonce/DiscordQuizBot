@@ -1,4 +1,4 @@
-package dev.salonce.discordquizbot.infrastructure.messages.in;
+package dev.salonce.discordquizbot.application.messagehandlers;
 
 import dev.salonce.discordquizbot.infrastructure.dtos.DiscordMessage;
 import dev.salonce.discordquizbot.application.MatchService;
