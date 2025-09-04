@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static dev.salonce.discordquizbot.presentation.DiscordFormatter.formatBoldMentions;
+import static dev.salonce.discordquizbot.presentation.MessageFormatter.formatBoldMentions;
 
 @RequiredArgsConstructor
 @Component
