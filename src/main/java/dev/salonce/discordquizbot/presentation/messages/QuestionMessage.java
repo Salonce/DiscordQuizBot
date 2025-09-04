@@ -1,4 +1,4 @@
-package dev.salonce.discordquizbot.infrastructure.messages.out;
+package dev.salonce.discordquizbot.presentation.messages;
 
 import dev.salonce.discordquizbot.domain.*;
 import dev.salonce.discordquizbot.application.MatchService;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static dev.salonce.discordquizbot.infrastructure.util.DiscordFormatter.formatMentions;
+import static dev.salonce.discordquizbot.presentation.MessageFormatter.formatMentions;
 
 @RequiredArgsConstructor
 @Component

@@ -1,9 +1,9 @@
-package dev.salonce.discordquizbot.infrastructure.util;
+package dev.salonce.discordquizbot.presentation;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class DiscordFormatter {
+public class MessageFormatter {
 
     public static String formatMentions(List<Long> playerIds) {
         return playerIds.stream()

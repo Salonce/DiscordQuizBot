@@ -1,4 +1,4 @@
-package dev.salonce.discordquizbot.infrastructure.buttonhandlers;
+package dev.salonce.discordquizbot.application.buttonhandlers;
 
 import dev.salonce.discordquizbot.application.ButtonHandler;
 import dev.salonce.discordquizbot.application.ResultStatus;

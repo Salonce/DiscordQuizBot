@@ -1,8 +1,7 @@
-package dev.salonce.discordquizbot.infrastructure.messages.out;
+package dev.salonce.discordquizbot.presentation.messages;
 
 import dev.salonce.discordquizbot.domain.Match;
 import dev.salonce.discordquizbot.application.MatchService;
-import dev.salonce.discordquizbot.domain.Player;
 import discord4j.core.object.component.ActionRow;
 import discord4j.core.object.component.Button;
 import discord4j.core.spec.EmbedCreateSpec;
@@ -12,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.Iterator;
-import java.util.Map;
 
 @Component
 @RequiredArgsConstructor

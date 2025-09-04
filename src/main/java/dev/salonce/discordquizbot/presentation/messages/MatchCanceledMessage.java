@@ -1,4 +1,4 @@
-package dev.salonce.discordquizbot.infrastructure.messages.out;
+package dev.salonce.discordquizbot.presentation.messages;
 
 import dev.salonce.discordquizbot.domain.Match;
 import discord4j.core.spec.EmbedCreateSpec;
